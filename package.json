@@ -83,92 +83,92 @@
   "exports": {
     "./Accordion": {
       "import": {
-        "default": "./dist/Accordion/index.js",
-        "types": "./dist/Accordion/index.d.ts"
+        "types": "./dist/Accordion/index.d.ts",
+        "default": "./dist/Accordion/index.js"
       },
       "require": {
-        "default": "./dist/Accordion/index.cjs",
-        "types": "./dist/Accordion/index.d.ts"
+        "types": "./dist/Accordion/index.d.ts",
+        "default": "./dist/Accordion/index.cjs"
       }
     },
     "./Alert": {
       "import": {
-        "default": "./dist/Alert/index.js",
-        "types": "./dist/Alert/index.d.ts"
+        "types": "./dist/Alert/index.d.ts",
+        "default": "./dist/Alert/index.js"
       },
       "require": {
-        "default": "./dist/Alert/index.cjs",
-        "types": "./dist/Alert/index.d.ts"
+        "types": "./dist/Alert/index.d.ts",
+        "default": "./dist/Alert/index.cjs"
       }
     },
     "./Badge": {
       "import": {
-        "default": "./dist/Badge/index.js",
-        "types": "./dist/Badge/index.d.ts"
+        "types": "./dist/Badge/index.d.ts",
+        "default": "./dist/Badge/index.js"
       },
       "require": {
-        "default": "./dist/Badge/index.cjs",
-        "types": "./dist/Badge/index.d.ts"
+        "types": "./dist/Badge/index.d.ts",
+        "default": "./dist/Badge/index.cjs"
       }
     },
     "./Breadcrumb": {
       "import": {
-        "default": "./dist/Breadcrumb/index.js",
-        "types": "./dist/Breadcrumb/index.d.ts"
+        "types": "./dist/Breadcrumb/index.d.ts",
+        "default": "./dist/Breadcrumb/index.js"
       },
       "require": {
-        "default": "./dist/Breadcrumb/index.cjs",
-        "types": "./dist/Breadcrumb/index.d.ts"
+        "types": "./dist/Breadcrumb/index.d.ts",
+        "default": "./dist/Breadcrumb/index.cjs"
       }
     },
     "./Button": {
       "import": {
-        "default": "./dist/Button/index.js",
-        "types": "./dist/Button/index.d.ts"
+        "types": "./dist/Button/index.d.ts",
+        "default": "./dist/Button/index.js"
       },
       "require": {
-        "default": "./dist/Button/index.cjs",
-        "types": "./dist/Button/index.d.ts"
+        "types": "./dist/Button/index.d.ts",
+        "default": "./dist/Button/index.cjs"
       }
     },
     "./Divider": {
       "import": {
-        "default": "./dist/Divider/index.js",
-        "types": "./dist/Divider/index.d.ts"
+        "types": "./dist/Divider/index.d.ts",
+        "default": "./dist/Divider/index.js"
       },
       "require": {
-        "default": "./dist/Divider/index.cjs",
-        "types": "./dist/Divider/index.d.ts"
+        "types": "./dist/Divider/index.d.ts",
+        "default": "./dist/Divider/index.cjs"
       }
     },
     ".": {
       "import": {
-        "default": "./dist/index.js",
-        "types": "./dist/index.d.ts"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
       },
       "require": {
-        "default": "./dist/index.cjs",
-        "types": "./dist/index.d.ts"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.cjs"
       }
     },
     "./Pagination": {
       "import": {
-        "default": "./dist/Pagination/index.js",
-        "types": "./dist/Pagination/index.d.ts"
+        "types": "./dist/Pagination/index.d.ts",
+        "default": "./dist/Pagination/index.js"
       },
       "require": {
-        "default": "./dist/Pagination/index.cjs",
-        "types": "./dist/Pagination/index.d.ts"
+        "types": "./dist/Pagination/index.d.ts",
+        "default": "./dist/Pagination/index.cjs"
       }
     },
     "./Slider": {
       "import": {
-        "default": "./dist/Slider/index.js",
-        "types": "./dist/Slider/index.d.ts"
+        "types": "./dist/Slider/index.d.ts",
+        "default": "./dist/Slider/index.js"
       },
       "require": {
-        "default": "./dist/Slider/index.cjs",
-        "types": "./dist/Slider/index.d.ts"
+        "types": "./dist/Slider/index.d.ts",
+        "default": "./dist/Slider/index.cjs"
       }
     }
   }

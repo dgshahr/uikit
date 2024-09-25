@@ -24,12 +24,12 @@ packageJson.exports = components.reduce((exports, component) => {
 
   exports[isMainIndex ? '.' : `./${component}`] = {
     import: {
-      default: `${componentPath}/index.js`,
       types: `${componentPath}/index.d.ts`,
+      default: `${componentPath}/index.js`,
     },
     require: {
-      default: `${componentPath}/index.cjs`,
       types: `${componentPath}/index.d.ts`,
+      default: `${componentPath}/index.cjs`,
     },
   };
   return exports;
