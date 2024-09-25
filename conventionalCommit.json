@@ -37,6 +37,8 @@
   "scopes": {
     "components": {},
     "src": {},
-    "icons": {}
+    "icons": {},
+    "scripts": {},
+    "storybook": {}
   }
 }
