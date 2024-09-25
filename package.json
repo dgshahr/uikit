@@ -1,11 +1,13 @@
 {
   "name": "@dgshahr/ui-kit",
-  "private": true,
   "version": "0.0.1",
   "description": "dgshahr ui-kit",
   "author": "dgshahr",
   "license": "MIT",
   "type": "module",
+  "repository": {
+    "url": "https://github.com/dgshahr/uikit"
+  },
   "files": [
     "dist"
   ],
@@ -74,10 +76,6 @@
   "lint-staged": {
     "*.+(js|jsx|ts|tsx)": [
       "yarn lint",
-      "yarn format",
-      "git add"
-    ],
-    "*.+(json|css)": [
       "yarn format",
       "git add"
     ]
