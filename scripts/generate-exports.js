@@ -1,6 +1,9 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import packageJson from '../package.json' assert { type: 'json' };
+import { fileURLToPath } from 'url';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const FILE_EXT_REG = /\.(js|mjs|jsx|ts|tsx)$/;
 const componentsDir = path.resolve(__dirname, '../src/components');
 const distDir = './dist';
@@ -13,7 +16,6 @@ const components = fs.readdirSync(componentsDir).filter((dir) => {
 });
 
 // Read the existing package.json
-const packageJson = require(packageJsonPath);
 
 // Update the exports field
 packageJson.exports = components.reduce((exports, component) => {
