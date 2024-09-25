@@ -34,11 +34,7 @@ if (existsSync(componentsIndexRoute)) {
 }
 
 export default defineConfig({
-  plugins: [
-    react(),
-    libInjectCss(),
-    dts({ entryRoot: 'src/components', exclude: ['src/icons', 'src/components/Form/Wrappers'] }),
-  ],
+  plugins: [react(), libInjectCss(), dts({ entryRoot: 'src/components', exclude: ['src/icons'] })],
   resolve: {
     alias: {
       '@/src': resolve(__dirname, 'src'),
