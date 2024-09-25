@@ -35,15 +35,8 @@
     }
   },
   "scopes": {
-    "api": {},
-    "app": {},
     "components": {},
-    "functions": {},
-    "hooks": {},
-    "store": {},
-    "types": {},
-    "root": {},
     "src": {},
-    "public": {}
+    "icons": {}
   }
 }

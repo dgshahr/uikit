@@ -1,4 +1,4 @@
-import conventionalCommit from './conventionalCommit.json';
+import conventionalCommit from './conventionalCommit.json' assert { type: 'json' };
 
 const typesEnum = Object.keys(conventionalCommit.types);
 const scopesEnum = Object.keys(conventionalCommit.scopes);
