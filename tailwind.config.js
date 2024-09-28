@@ -4,5 +4,6 @@ export default {
   theme: {
     extend: {},
   },
+  // eslint-disable-next-line no-undef
   plugins: [require('@dgshahr/dg-theme-tailwind-plugin')],
 };
