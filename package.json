@@ -151,7 +151,7 @@
   },
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build": "tsc && vite build && node scripts/generate-exports.js",
+    "build": "rm -rf dist && tsc && vite build && node scripts/generate-exports.js",
     "build:story": "storybook build",
     "lint": "eslint --fix src/**/* --report-unused-disable-directives --max-warnings 0 -f codeframe",
     "format": "prettier src/**/* --write --ignore-unknown",
