@@ -76,10 +76,13 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
   }
 
   return (
-    <div className={clsx('overflow-hidden relative group', className)}>
+    <div
+      className={clsx('overflow-hidden relative group', className)}
+      style={{ direction: 'rtl' }}
+    >
       <div
         className={clsx(
-          'flex snap-x snap-mandatory overflow-x-hidden [&>*]:snap-start no-scrollbar [&>*]:snap-always',
+          'flex snap-x snap-mandatory overflow-x-auto no-scrollbar',
           containerClassName,
         )}
         style={{ marginLeft: -spaceBetween }}
@@ -93,8 +96,12 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
       {haveNavigation && (
         <div
           className={clsx('flex', {
-            'items-center justify-between mt-2': navigationVariant === 'outside',
+            'items-center mt-2': navigationVariant === 'outside',
             'absolute bottom-4 w-full justify-center': navigationVariant === 'inside',
+            'justify-between':
+              navigationVariant === 'outside' && navigationButtonsShowType !== 'hide',
+            'justify-center':
+              navigationVariant === 'outside' && navigationButtonsShowType === 'hide',
           })}
         >
           {navigationButtonsShowType && navigationButtonsShowType !== 'hide' && (
