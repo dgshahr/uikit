@@ -9,16 +9,12 @@ const componentsDir = path.resolve(__dirname, '../src/components');
 const distDir = './dist';
 const packageJsonPath = path.resolve(__dirname, '../package.json');
 
-// Read the component directories
 const components = fs.readdirSync(componentsDir).filter((dir) => {
   const fullPath = path.resolve(componentsDir, dir, FILE_EXT_REG.test(dir) ? '' : 'index.tsx');
   return fs.existsSync(fullPath);
 });
 
-// Read the existing package.json
-
-// Update the exports field
-packageJson.exports = components.reduce((exports, component) => {
+const exports = components.reduce((exports, component) => {
   const isMainIndex = component === 'index.ts';
   const componentPath = `${distDir}${isMainIndex ? '' : `/${component}`}`;
 
@@ -35,5 +31,10 @@ packageJson.exports = components.reduce((exports, component) => {
   return exports;
 }, {});
 
+const packageJsonEntries = Object.entries(packageJson);
+const typesIndex = packageJsonEntries.findIndex(([key]) => key === 'types');
+packageJsonEntries.splice(typesIndex + 1, 0, ['exports', exports]);
+const updatedPackageJson = Object.fromEntries(packageJsonEntries);
+
 // Write the updated package.json back
-fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
+fs.writeFileSync(packageJsonPath, JSON.stringify(updatedPackageJson, null, 2));
