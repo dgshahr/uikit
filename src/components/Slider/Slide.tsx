@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import type { FC, PropsWithChildren } from 'react';
+import { useEffect, useRef, useState, type FC, type PropsWithChildren } from 'react';
 import { useSliderContext } from './context';
 
 interface SlideProps {
@@ -8,13 +8,22 @@ interface SlideProps {
 const Slide: FC<PropsWithChildren<SlideProps>> = (props) => {
   const { children, className } = props;
   const { slidesPerView, spaceBetween } = useSliderContext();
+  const ref = useRef<HTMLDivElement>(null);
+  const [childIndex, setChildIndex] = useState(0);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    setChildIndex(Array.prototype.indexOf.call(ref.current.parentNode?.children, ref.current));
+  }, [ref]);
 
   return (
     <div
-      className={clsx('shrink-0', className)}
+      ref={ref}
+      className={clsx('shrink-0 snap-always', className)}
       style={{
         width: 100 / (slidesPerView ?? 1) + '%',
         paddingLeft: spaceBetween,
+        scrollSnapAlign: childIndex % slidesPerView === 0 ? 'start' : 'none',
       }}
     >
       {children}
