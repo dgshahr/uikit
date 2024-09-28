@@ -153,10 +153,11 @@
     "dev": "storybook dev -p 6006",
     "build": "tsc && vite build && node scripts/generate-exports.js",
     "build:story": "storybook build",
-    "lint": "eslint --fix src/**/* --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint --fix src/**/* --report-unused-disable-directives --max-warnings 0 -f codeframe",
     "format": "prettier src/**/* --write --ignore-unknown",
     "prepublishOnly": "npm run build",
-    "prepare": "husky"
+    "prepare": "husky",
+    "transform-icons": "rm -rf src/icons/ && svgr assets/icons/ --config-file svgr.config.cjs"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
@@ -171,6 +172,7 @@
     "@storybook/builder-vite": "^8.3.2",
     "@storybook/react": "^8.3.2",
     "@storybook/react-vite": "^8.3.2",
+    "@svgr/cli": "^8.1.0",
     "@types/node": "^22.5.5",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
@@ -181,6 +183,7 @@
     "clsx": "^2.0.0",
     "eslint": "^9.11.1",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-formatter-codeframe": "^7.32.1",
     "eslint-plugin-jest-dom": "^5.1.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
