@@ -18,6 +18,16 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.cjs"
+      }
+    },
     "./Accordion": {
       "import": {
         "types": "./dist/Accordion/index.d.ts",
@@ -78,14 +88,44 @@
         "default": "./dist/Divider/index.cjs"
       }
     },
-    ".": {
+    "./Form/Checkbox": {
       "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
+        "types": "./dist/Form/Checkbox/index.d.ts",
+        "default": "./dist/Form/Checkbox/index.js"
       },
       "require": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.cjs"
+        "types": "./dist/Form/Checkbox/index.d.ts",
+        "default": "./dist/Form/Checkbox/index.cjs"
+      }
+    },
+    "./Form/Input": {
+      "import": {
+        "types": "./dist/Form/Input/index.d.ts",
+        "default": "./dist/Form/Input/index.js"
+      },
+      "require": {
+        "types": "./dist/Form/Input/index.d.ts",
+        "default": "./dist/Form/Input/index.cjs"
+      }
+    },
+    "./Form/RadioButton": {
+      "import": {
+        "types": "./dist/Form/RadioButton/index.d.ts",
+        "default": "./dist/Form/RadioButton/index.js"
+      },
+      "require": {
+        "types": "./dist/Form/RadioButton/index.d.ts",
+        "default": "./dist/Form/RadioButton/index.cjs"
+      }
+    },
+    "./Form/Textarea": {
+      "import": {
+        "types": "./dist/Form/Textarea/index.d.ts",
+        "default": "./dist/Form/Textarea/index.js"
+      },
+      "require": {
+        "types": "./dist/Form/Textarea/index.d.ts",
+        "default": "./dist/Form/Textarea/index.cjs"
       }
     },
     "./Pagination": {

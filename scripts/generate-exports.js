@@ -4,21 +4,34 @@ import packageJson from '../package.json' assert { type: 'json' };
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const FILE_EXT_REG = /\.(js|mjs|jsx|ts|tsx)$/;
 const componentsDir = path.resolve(__dirname, '../src/components');
 const distDir = './dist';
 const packageJsonPath = path.resolve(__dirname, '../package.json');
 
-const components = fs.readdirSync(componentsDir).filter((dir) => {
-  const fullPath = path.resolve(componentsDir, dir, FILE_EXT_REG.test(dir) ? '' : 'index.tsx');
-  return fs.existsSync(fullPath);
-});
+function findComponents(dir) {
+  const components = fs.readdirSync(dir).flatMap((fileOrDir) => {
+    const fullPath = path.resolve(dir, fileOrDir);
+    const isDirectory = fs.statSync(fullPath).isDirectory();
+    if (isDirectory) {
+      return findComponents(fullPath).map((subComponent) => path.join(fileOrDir, subComponent));
+    }
+    if (fileOrDir === 'index.ts' || fileOrDir === 'index.tsx') {
+      return '';
+    }
+    return [];
+  });
+
+  return components;
+}
+
+const components = findComponents(componentsDir).filter((component) => Boolean(component));
+components.unshift('index.ts');
 
 const exports = components.reduce((exports, component) => {
   const isMainIndex = component === 'index.ts';
-  const componentPath = `${distDir}${isMainIndex ? '' : `/${component}`}`;
+  const componentPath = `${distDir}${isMainIndex ? '' : `/${component.replace(/\\/g, '/')}`}`;
 
-  exports[isMainIndex ? '.' : `./${component}`] = {
+  exports[isMainIndex ? '.' : `./${component.replace(/\\/g, '/')}`] = {
     import: {
       types: `${componentPath}/index.d.ts`,
       default: `${componentPath}/index.js`,
@@ -33,7 +46,7 @@ const exports = components.reduce((exports, component) => {
 
 const packageJsonEntries = Object.entries(packageJson);
 const typesIndex = packageJsonEntries.findIndex(([key]) => key === 'types');
-packageJsonEntries.splice(typesIndex + 1, 0, ['exports', exports]);
+packageJsonEntries.splice(typesIndex + 1, 1, ['exports', exports]);
 const updatedPackageJson = Object.fromEntries(packageJsonEntries);
 
 // Write the updated package.json back
