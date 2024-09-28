@@ -1,6 +1,6 @@
-import ArrowLeft2Icon from '@/src/icons/ArrowLeft2';
 import clsx from 'clsx';
 import type { ReactNode } from 'react';
+import ArrowLeft2Icon from '@/src/icons/ArrowLeft2';
 
 import '@/src/styles.css';
 

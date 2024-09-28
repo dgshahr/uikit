@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import type { TextFieldBaseProps } from './TextFieldWrapper';
 import InfoCircleOutlineIcon from '@/src/icons/InfoCircleOutline';
+import type { TextFieldBaseProps } from './TextFieldWrapper';
 
 interface FieldBottomInfoProps extends Pick<TextFieldBaseProps, 'errorMessage' | 'hintMessage'> {
   maxLength?: number;

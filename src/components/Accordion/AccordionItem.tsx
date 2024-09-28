@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import { useId } from 'react';
 import type { FC, PropsWithChildren, ReactNode } from 'react';
-import Divider from '../Divider';
-import { useAccordionData } from './context';
 import ArrowDown2Icon from '@/src/icons/ArrowDown2';
+import { useAccordionData } from './context';
+import Divider from '../Divider';
 
 interface AccordionItemProps {
   title: string | ReactNode;

@@ -1,9 +1,9 @@
 import clsx from 'clsx';
-import type { SelectableInputBaseUnionProps } from '../Wrappers/SelectableInputWrapper/SelectableInputWrapper';
 import type { DetailedHTMLProps, InputHTMLAttributes } from 'react';
-import SelectableInputWrapper from '../Wrappers/SelectableInputWrapper/SelectableInputWrapper';
-import Minus4Icon from '@/src/icons/Minus4';
 import CheckmarkIcon from '@/src/icons/Checkmark';
+import Minus4Icon from '@/src/icons/Minus4';
+import type { SelectableInputBaseUnionProps } from '../Wrappers/SelectableInputWrapper/SelectableInputWrapper';
+import SelectableInputWrapper from '../Wrappers/SelectableInputWrapper/SelectableInputWrapper';
 
 type CheckboxProps = SelectableInputBaseUnionProps &
   Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'type'> & {

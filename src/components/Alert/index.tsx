@@ -1,11 +1,11 @@
 import clsx from 'clsx';
-import Button, { type ButtonProps } from '../Button';
-import { alertVariantClassNames, alertSizeClassNames } from './variants';
 import { useState } from 'react';
-import DangerBoldIcon from '@/src/icons/DangerBold';
-import InfoCircleBoldIcon from '@/src/icons/InfoCircleBold';
 import CheckCircleBoldIcon from '@/src/icons/CheckCircleBold';
 import CloseRemoveIcon from '@/src/icons/CloseRemove';
+import DangerBoldIcon from '@/src/icons/DangerBold';
+import InfoCircleBoldIcon from '@/src/icons/InfoCircleBold';
+import { alertVariantClassNames, alertSizeClassNames } from './variants';
+import Button, { type ButtonProps } from '../Button';
 
 import '@/src/styles.css';
 

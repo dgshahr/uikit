@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import { type ForwardedRef, type InputHTMLAttributes, forwardRef, useState } from 'react';
-import type { TextFieldBaseProps } from '../Wrappers/TextFieldWrapper/TextFieldWrapper';
-import TextFieldWrapper from '../Wrappers/TextFieldWrapper/TextFieldWrapper';
 import CloseSquareIcon from '@/src/icons/CloseSquare';
 import EyeIcon from '@/src/icons/Eye';
 import HideIcon from '@/src/icons/Hide';
+import TextFieldWrapper from '../Wrappers/TextFieldWrapper/TextFieldWrapper';
+import type { TextFieldBaseProps } from '../Wrappers/TextFieldWrapper/TextFieldWrapper';
 
 interface InputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'dir'>,

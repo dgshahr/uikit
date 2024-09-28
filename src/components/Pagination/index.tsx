@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { getPaginationRange, DOTS } from './utils';
 import clsx from 'clsx';
-import Button from '../Button';
-import ArrowRight2Icon from '@/src/icons/ArrowRight2';
+import { useState } from 'react';
 import ArrowLeft2Icon from '@/src/icons/ArrowLeft2';
+import ArrowRight2Icon from '@/src/icons/ArrowRight2';
+import { getPaginationRange, DOTS } from './utils';
+import Button from '../Button';
 
 import '@/src/styles.css';
 

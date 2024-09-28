@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React, {
   useEffect,
   useState,
@@ -6,9 +7,8 @@ import React, {
   type Dispatch,
   type SetStateAction,
 } from 'react';
-import FieldLabel from './FieldLabel';
-import clsx from 'clsx';
 import FieldBottomInfo from './FieldBottomInfo';
+import FieldLabel from './FieldLabel';
 
 import '@/src/styles.css';
 

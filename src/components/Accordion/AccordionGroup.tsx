@@ -1,7 +1,7 @@
+import clsx from 'clsx';
 import { useState } from 'react';
 import type { FC, PropsWithChildren } from 'react';
 import { accordionContext } from './context';
-import clsx from 'clsx';
 
 interface AccordionGroupProps {
   defaultActiveKey?: string;

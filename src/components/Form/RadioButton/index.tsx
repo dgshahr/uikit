@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import type { SelectableInputBaseUnionProps } from '../Wrappers/SelectableInputWrapper/SelectableInputWrapper';
 import type { DetailedHTMLProps, InputHTMLAttributes } from 'react';
+import type { SelectableInputBaseUnionProps } from '../Wrappers/SelectableInputWrapper/SelectableInputWrapper';
 import SelectableInputWrapper from '../Wrappers/SelectableInputWrapper/SelectableInputWrapper';
 
 type RadioButtonProps = SelectableInputBaseUnionProps &

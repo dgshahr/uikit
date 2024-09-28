@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import { useRef, useState, Children, type FC, type PropsWithChildren, type UIEvent } from 'react';
-import { sliderContext } from './context';
-import Button from '../Button';
-import NavigationDot from './NavigationDot';
-import ArrowRight2Icon from '@/src/icons/ArrowRight2';
 import ArrowLeft2Icon from '@/src/icons/ArrowLeft2';
+import ArrowRight2Icon from '@/src/icons/ArrowRight2';
+import { sliderContext } from './context';
+import NavigationDot from './NavigationDot';
+import Button from '../Button';
 
 interface SliderPropsBase {
   className?: string;
