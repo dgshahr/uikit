@@ -153,6 +153,7 @@
     "dev": "storybook dev -p 6006",
     "build": "rm -rf dist && tsc && vite build && node scripts/generate-exports.js",
     "build:story": "storybook build",
+    "start:story": "npx http-server storybook-static",
     "lint": "eslint --fix src/**/* --report-unused-disable-directives --max-warnings 0 -f codeframe",
     "format": "prettier src/**/* --write --ignore-unknown",
     "prepublishOnly": "npm run build",
