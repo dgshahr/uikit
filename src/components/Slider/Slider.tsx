@@ -19,6 +19,7 @@ interface SliderPropsBase {
       };
   spaceBetween?: number;
   showPaginationText?: boolean;
+  navigationContainerClassName?: string;
 }
 
 interface InsideNavigationSliderProps extends SliderPropsBase {
@@ -44,6 +45,7 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
     spaceBetween = 0,
     navigationVariant = 'outside',
     showPaginationText = false,
+    navigationContainerClassName = '',
   } = props;
 
   const [slideIndex, setSlideIndex] = useState(0);
@@ -95,14 +97,18 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
       </div>
       {haveNavigation && (
         <div
-          className={clsx('flex', {
-            'items-center mt-2': navigationVariant === 'outside',
-            'absolute bottom-4 w-full justify-center': navigationVariant === 'inside',
-            'justify-between':
-              navigationVariant === 'outside' && navigationButtonsShowType !== 'hide',
-            'justify-center':
-              navigationVariant === 'outside' && navigationButtonsShowType === 'hide',
-          })}
+          className={clsx(
+            'flex',
+            {
+              'items-center mt-2': navigationVariant === 'outside',
+              'absolute bottom-4 w-full justify-center': navigationVariant === 'inside',
+              'justify-between':
+                navigationVariant === 'outside' && navigationButtonsShowType !== 'hide',
+              'justify-center':
+                navigationVariant === 'outside' && navigationButtonsShowType === 'hide',
+            },
+            navigationContainerClassName,
+          )}
         >
           {navigationButtonsShowType && navigationButtonsShowType !== 'hide' && (
             <div

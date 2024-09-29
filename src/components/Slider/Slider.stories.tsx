@@ -98,6 +98,15 @@ const meta = {
         },
       },
     },
+    navigationContainerClassName: {
+      control: { type: 'text' },
+      table: {
+        type: { summary: 'string' },
+        defaultValue: {
+          summary: '',
+        },
+      },
+    },
     children: {
       control: { type: 'object' },
       description: 'use `Slide` component for every slide you have',
