@@ -12,3 +12,4 @@ tailwind.config.js
 tsconfig.json
 vite.config.ts
 assets
+storybook-static
