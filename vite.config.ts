@@ -1,9 +1,9 @@
-import { resolve } from 'node:path';
 import react from '@vitejs/plugin-react-swc';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-import { readdirSync, existsSync, statSync } from 'fs';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
+import { readdirSync, existsSync, statSync } from 'fs';
+import { resolve } from 'node:path';
 
 import { peerDependencies } from './package.json';
 
@@ -42,7 +42,6 @@ export default defineConfig({
   },
   build: {
     target: 'esnext',
-    minify: false,
     lib: {
       entry: entries,
       name: '@dgshahr/ui-kit',
