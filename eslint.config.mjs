@@ -28,9 +28,9 @@ export default [
       'plugin:react-hooks/recommended',
       'plugin:jest-dom/recommended',
       'plugin:storybook/recommended',
-      'prettier',
       'plugin:import/recommended',
       'plugin:import/typescript',
+      'prettier',
     ),
   ),
   {
@@ -43,11 +43,6 @@ export default [
         ...globals.browser,
       },
       parser: tsParser,
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
     },
 
     settings: {
