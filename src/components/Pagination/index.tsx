@@ -48,7 +48,12 @@ const Pagination = (props: PaginationProps) => {
   }
 
   return (
-    <div className={clsx('flex justify-between w-full px-4 text-gray-600', className)}>
+    <div
+      className={clsx(
+        'dgs-ui-kit-flex dgs-ui-kit-justify-between dgs-ui-kit-w-full dgs-ui-kit-px-4 dgs-ui-kit-text-gray-600',
+        className,
+      )}
+    >
       <Button
         disabled={currentPage === 1}
         onClick={() => handlePageChange(currentPage - 1)}
@@ -58,7 +63,7 @@ const Pagination = (props: PaginationProps) => {
       >
         {navigationButtonsWithText && 'صفحه قبل'}
       </Button>
-      <div className="flex items-center gap-x-1 tablet:gap-x-4">
+      <div className="dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-x-1 md:dgs-ui-kit-gap-x-4">
         {paginationRange.map((pageNumber) => {
           if (typeof pageNumber === 'string') {
             return <div key={pageNumber}>{DOTS}</div>;
@@ -67,10 +72,10 @@ const Pagination = (props: PaginationProps) => {
             <button
               key={pageNumber}
               className={clsx(
-                'ss02 w-9 h-9 tablet:w-11 tablet:h-11 flex justify-center items-center font-h6-bold tablet:font-h5-bold transition border border-solid border-transparent rounded-lg',
+                'ss02 dgs-ui-kit-w-9 dgs-ui-kit-h-9 md:dgs-ui-kit-w-11 md:dgs-ui-kit-h-11 dgs-ui-kit-flex dgs-ui-kit-justify-center dgs-ui-kit-items-center dgs-ui-kit-font-h6-bold md:dgs-ui-kit-font-h5-bold dgs-ui-kit-transition dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-border-transparent dgs-ui-kit-rounded-lg',
                 pageNumber === currentPage
-                  ? 'bg-primary-500 text-white'
-                  : 'hover:text-primary-500 hover:border-primary-200',
+                  ? 'dgs-ui-kit-bg-primary-500 dgs-ui-kit-text-white'
+                  : 'hover:dgs-ui-kit-text-primary-500 hover:dgs-ui-kit-border-primary-200',
                 className,
               )}
               onClick={() => handlePageChange(pageNumber)}

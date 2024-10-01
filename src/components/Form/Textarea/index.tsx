@@ -28,9 +28,11 @@ const Textarea = forwardRef(function Textarea(
           {...restProps}
           ref={ref}
           className={clsx(
-            'text-gray-800 bg-transparent w-full h-full focus:outline-none ss02 flex-1 resize-none',
-            dir === 'rtl' ? 'text-right' : '!text-left',
-            placeholderDir === 'rtl' ? 'placeholder:text-right' : 'placeholder:text-left',
+            'dgs-ui-kit-text-gray-800 dgs-ui-kit-bg-transparent dgs-ui-kit-w-full dgs-ui-kit-h-full focus:dgs-ui-kit-outline-none ss02 dgs-ui-kit-flex-1 dgs-ui-kit-resize-none',
+            dir === 'rtl' ? 'dgs-ui-kit-text-right' : '!dgs-ui-kit-text-left',
+            placeholderDir === 'rtl'
+              ? 'placeholder:dgs-ui-kit-text-right'
+              : 'placeholder:dgs-ui-kit-text-left',
             restProps.className,
           )}
           onChange={handleChangeField}

@@ -43,13 +43,13 @@ const SelectableInputWrapper: FC<SelectableInputWrapperProps> = (props) => {
   return (
     <label
       className={clsx(
-        'flex w-fit justify-between items-center group has-[:disabled]:opacity-40 has-[:disabled]:cursor-not-allowed transition',
+        'dgs-ui-kit-flex dgs-ui-kit-w-fit dgs-ui-kit-justify-between dgs-ui-kit-items-center dgs-ui-kit-group has-[:disabled]:dgs-ui-kit-opacity-40 has-[:disabled]:dgs-ui-kit-cursor-not-allowed dgs-ui-kit-transition',
         {
-          'p-3 border w-full border-solid rounded-xl bg-white has-[:checked]:bg-primary-50':
+          'dgs-ui-kit-p-3 dgs-ui-kit-border dgs-ui-kit-w-full dgs-ui-kit-border-solid dgs-ui-kit-rounded-xl dgs-ui-kit-bg-white has-[:checked]:dgs-ui-kit-bg-primary-50':
             variant === 'bordered',
-          'has-[:checked]:border-primary-500 border-gray-200 hover:ring-4 hover:ring-gray-100 has-[:focus]:ring has-[:focus]:ring-primary-300 has-[:focus]:ring-offset-1 has-[:focus]:ring-offset-white':
+          'has-[:checked]:dgs-ui-kit-border-primary-500 dgs-ui-kit-border-gray-200 hover:dgs-ui-kit-ring-4 hover:dgs-ui-kit-ring-gray-100 has-[:focus]:ring has-[:focus]:dgs-ui-kit-ring-primary-300 has-[:focus]:dgs-ui-kit-ring-offset-1 has-[:focus]:dgs-ui-kit-ring-offset-white':
             variant === 'bordered' && !isError,
-          'border-error-500 hover:ring-4 hover:ring-error-50 has-[:focus]:ring has-[:focus]:ring-error-300 has-[:focus]:ring-offset-1 has-[:focus]:ring-offset-white':
+          'dgs-ui-kit-border-error-500 hover:dgs-ui-kit-ring-4 hover:dgs-ui-kit-ring-error-50 has-[:focus]:ring has-[:focus]:dgs-ui-kit-ring-error-300 has-[:focus]:dgs-ui-kit-ring-offset-1 has-[:focus]:dgs-ui-kit-ring-offset-white':
             variant === 'bordered' && isError,
         },
         containerClassName,
@@ -57,35 +57,41 @@ const SelectableInputWrapper: FC<SelectableInputWrapperProps> = (props) => {
     >
       <div
         className={clsx(
-          'flex space-x-2 space-x-reverse',
-          (errorMessage ?? helperMessage) ? 'items-start' : 'items-center',
+          'dgs-ui-kit-flex dgs-ui-kit-space-x-2 dgs-ui-kit-space-x-reverse',
+          (errorMessage ?? helperMessage) ? 'dgs-ui-kit-items-start' : 'dgs-ui-kit-items-center',
         )}
       >
-        <div className={clsx('relative h-[18px] w-[18px]', { 'mt-1': label })}>
+        <div
+          className={clsx('dgs-ui-kit-relative dgs-ui-kit-h-[18px] dgs-ui-kit-w-[18px]', {
+            'dgs-ui-kit-mt-1': label,
+          })}
+        >
           {children({
             inputClassName: clsx(
-              'peer w-full h-full disabled:bg-gray-200 appearance-none border border-gray-300 group-hover:border-primary-500 checked:bg-primary-500 checked:border-transparent transition-all',
+              'dgs-ui-kit-peer dgs-ui-kit-w-full dgs-ui-kit-h-full disabled:dgs-ui-kit-bg-gray-200 dgs-ui-kit-appearance-none dgs-ui-kit-border dgs-ui-kit-border-gray-300 group-hover:dgs-ui-kit-border-primary-500 checked:dgs-ui-kit-bg-primary-500 checked:dgs-ui-kit-border-transparent dgs-ui-kit-transition-all',
               {
-                'group-hover:ring-4 group-hover:ring-gray-100 focus:!ring focus:!ring-primary-300 focus:ring-offset-1 focus:ring-offset-white':
+                'group-hover:dgs-ui-kit-ring-4 group-hover:dgs-ui-kit-ring-gray-100 focus:!dgs-ui-kit-ring focus:!dgs-ui-kit-ring-primary-300 focus:dgs-ui-kit-ring-offset-1 focus:dgs-ui-kit-ring-offset-white':
                   variant !== 'bordered' && !isError,
-                '!border-error-500 group-hover:ring-4 group-hover:ring-error-50 focus:!ring focus:!ring-error-300 focus:ring-offset-1 focus:ring-offset-white':
+                '!dgs-ui-kit-border-error-500 group-hover:dgs-ui-kit-ring-4 group-hover:dgs-ui-kit-ring-error-50 focus:!dgs-ui-kit-ring focus:!dgs-ui-kit-ring-error-300 focus:dgs-ui-kit-ring-offset-1 focus:dgs-ui-kit-ring-offset-white':
                   variant !== 'bordered' && isError,
               },
             ),
             checkedInputClassName:
-              'absolute top-0 left-0 w-full h-full flex items-center justify-center text-white opacity-0 peer-checked:opacity-100 transition-opacity',
+              'dgs-ui-kit-absolute dgs-ui-kit-top-0 dgs-ui-kit-left-0 dgs-ui-kit-w-full dgs-ui-kit-h-full dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-justify-center dgs-ui-kit-text-white dgs-ui-kit-opacity-0 peer-checked:dgs-ui-kit-opacity-100 dgs-ui-kit-transition-opacity',
           })}
         </div>
         {Boolean(label) && (
-          <div className="space-y-1">
-            <div className="font-p2-medium text-gray-700 transition group-hover:text-primary-500">
+          <div className="dgs-ui-kit-space-y-1">
+            <div className="dgs-ui-kit-font-p2-medium dgs-ui-kit-text-gray-700 dgs-ui-kit-transition group-hover:dgs-ui-kit-text-primary-500">
               {label}
             </div>
             {Boolean(errorMessage ?? helperMessage) && (
               <div
                 className={clsx(
-                  'font-p3-regular',
-                  errorMessage && isError ? 'text-error-500' : 'text-gray-500',
+                  'dgs-ui-kit-font-p3-regular',
+                  errorMessage && isError
+                    ? 'dgs-ui-kit-text-error-500'
+                    : 'dgs-ui-kit-text-gray-500',
                 )}
               >
                 {isError && errorMessage ? errorMessage : helperMessage}
@@ -95,7 +101,7 @@ const SelectableInputWrapper: FC<SelectableInputWrapperProps> = (props) => {
         )}
       </div>
       {variant === 'bordered' && icon ? (
-        <div className="text-gray-600 group-hover:text-primary-500 group-checked:text-primary-500">
+        <div className="dgs-ui-kit-text-gray-600 group-hover:dgs-ui-kit-text-primary-500 group-checked:dgs-ui-kit-text-primary-500">
           {icon}
         </div>
       ) : null}

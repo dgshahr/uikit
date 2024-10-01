@@ -34,7 +34,10 @@ function getAlertIcon(
 
   return (
     <IconComponent
-      className={clsx('shrink-0 my-[2px]', alertVariantClassNames.icon[variant])}
+      className={clsx(
+        'dgs-ui-kit-shrink-0 dgs-ui-kit-my-[2px]',
+        alertVariantClassNames.icon[variant],
+      )}
       width={alertSizeClassNames.icon[size]}
       height={alertSizeClassNames.icon[size]}
     />
@@ -58,14 +61,14 @@ const Alert = (props: AlertProps) => {
     return (
       <div
         className={clsx(
-          'w-full flex gap-x-3 rounded-xl border border-solid',
+          'dgs-ui-kit-w-full dgs-ui-kit-flex dgs-ui-kit-gap-x-3 dgs-ui-kit-rounded-xl dgs-ui-kit-border dgs-ui-kit-border-solid',
           alertVariantClassNames.container[variant],
           alertSizeClassNames.container[size],
           className,
         )}
       >
         {getAlertIcon(variant, size)}
-        <div className="flex flex-col flex-1">
+        <div className="dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-flex-1">
           {Boolean(title) && (
             <div
               className={clsx(
@@ -80,7 +83,12 @@ const Alert = (props: AlertProps) => {
             {text}
           </p>
           {(Boolean(primaryButton?.text) || Boolean(outlineButton?.text)) && (
-            <div className={clsx('flex gap-x-2 items-center', size === 'large' ? 'mt-4' : 'mt-3')}>
+            <div
+              className={clsx(
+                'dgs-ui-kit-flex dgs-ui-kit-gap-x-2 dgs-ui-kit-items-center',
+                size === 'large' ? 'dgs-ui-kit-mt-4' : 'dgs-ui-kit-mt-3',
+              )}
+            >
               {Boolean(primaryButton?.text) && (
                 <Button
                   variant="primary"
@@ -106,7 +114,7 @@ const Alert = (props: AlertProps) => {
         </div>
         {closable && (
           <button
-            className="shrink-0 my-[2px] h-fit"
+            className="dgs-ui-kit-shrink-0 dgs-ui-kit-my-[2px] dgs-ui-kit-h-fit"
             onClick={() => setShow(false)}
           >
             <CloseRemoveIcon

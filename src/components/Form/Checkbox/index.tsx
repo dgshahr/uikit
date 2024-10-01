@@ -18,7 +18,7 @@ const Checkbox = (props: CheckboxProps) => {
         <>
           <input
             type="checkbox"
-            className={clsx('rounded', inputClassName, className)}
+            className={clsx('dgs-ui-kit-rounded', inputClassName, className)}
             {...rest}
           />
           <div className={checkedInputClassName}>

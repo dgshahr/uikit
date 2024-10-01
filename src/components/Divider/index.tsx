@@ -8,23 +8,23 @@ interface DividerProps {
 }
 
 function styleDivider({ type, size = 'thin', color = 'gray', className }: DividerProps) {
-  const typeClassName = type === 'horizontal' ? 'w-full' : 'h-full';
+  const typeClassName = type === 'horizontal' ? 'dgs-ui-kit-w-full' : 'dgs-ui-kit-h-full';
 
   const sizeClassName: Record<
     Required<DividerProps>['type'],
     Record<Required<DividerProps>['size'], string>
   > = {
     horizontal: {
-      thin: 'h-[1px]',
-      thick: 'h-1',
+      thin: 'dgs-ui-kit-h-[1px]',
+      thick: 'dgs-ui-kit-h-1',
     },
     vertical: {
-      thin: 'w-[1px]',
-      thick: 'w-1',
+      thin: 'dgs-ui-kit-w-[1px]',
+      thick: 'dgs-ui-kit-w-1',
     },
   };
 
-  const colorClassName = color === 'gray' ? 'bg-gray-200' : 'bg-gray-100';
+  const colorClassName = color === 'gray' ? 'dgs-ui-kit-bg-gray-200' : 'dgs-ui-kit-bg-gray-100';
 
   return [typeClassName, sizeClassName[type][size], colorClassName, className ?? '']
     .slice()

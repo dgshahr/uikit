@@ -19,7 +19,7 @@ const Slide: FC<PropsWithChildren<SlideProps>> = (props) => {
   return (
     <div
       ref={ref}
-      className={clsx('shrink-0 snap-always', className)}
+      className={clsx('dgs-ui-kit-shrink-0 dgs-ui-kit-snap-always', className)}
       style={{
         width: 100 / (slidesPerView ?? 1) + '%',
         paddingLeft: spaceBetween,

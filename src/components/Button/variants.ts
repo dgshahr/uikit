@@ -6,53 +6,58 @@ export const variantStyle: Record<
 > = {
   primary: {
     primary:
-      'bg-primary-500 active:bg-primary-600 hover:bg-primary-300 text-white border-transparent',
+      'dgs-ui-kit-bg-primary-500 active:dgs-ui-kit-bg-primary-600 hover:dgs-ui-kit-bg-primary-300 dgs-ui-kit-text-white dgs-ui-kit-border-transparent',
     success:
-      'bg-success-500 active:bg-success-600 hover:bg-success-300 text-white border-transparent',
-    error: 'bg-error-500 active:bg-error-600 hover:bg-error-300 text-white border-transparent',
+      'dgs-ui-kit-bg-success-500 active:dgs-ui-kit-bg-success-600 hover:dgs-ui-kit-bg-success-300 dgs-ui-kit-text-white dgs-ui-kit-border-transparent',
+    error:
+      'dgs-ui-kit-bg-error-500 active:dgs-ui-kit-bg-error-600 hover:dgs-ui-kit-bg-error-300 dgs-ui-kit-text-white dgs-ui-kit-border-transparent',
     warning:
-      'bg-warning-500 active:bg-warning-600 hover:bg-warning-300 text-gray-900 border-transparent',
-    gray: 'bg-gray-500 active:bg-gray-600 hover:bg-gray-300 text-white border-transparent',
+      'dgs-ui-kit-bg-warning-500 active:dgs-ui-kit-bg-warning-600 hover:dgs-ui-kit-bg-warning-300 dgs-ui-kit-text-gray-900 dgs-ui-kit-border-transparent',
+    gray: 'dgs-ui-kit-bg-gray-500 active:dgs-ui-kit-bg-gray-600 hover:dgs-ui-kit-bg-gray-300 dgs-ui-kit-text-white dgs-ui-kit-border-transparent',
   },
   secondary: {
     primary:
-      'text-primary-500 bg-gray-100 active:bg-gray-200 hover:bg-gray-50 disabled:bg-gray-100 border-transparent',
+      'dgs-ui-kit-text-primary-500 dgs-ui-kit-bg-gray-100 active:dgs-ui-kit-bg-gray-200 hover:dgs-ui-kit-bg-gray-50 disabled:dgs-ui-kit-bg-gray-100 dgs-ui-kit-border-transparent',
     success:
-      'text-gray-700 hover:text-gray-600 active:text-gray-800 bg-success-100 active:bg-success-200 hover:bg-success-50 disabled:bg-success-100 border-transparent',
+      'dgs-ui-kit-text-gray-700 hover:dgs-ui-kit-text-gray-600 active:dgs-ui-kit-text-gray-800 dgs-ui-kit-bg-success-100 active:dgs-ui-kit-bg-success-200 hover:dgs-ui-kit-bg-success-50 disabled:dgs-ui-kit-bg-success-100 dgs-ui-kit-border-transparent',
     error:
-      'text-gray-700 hover:text-gray-600 active:text-gray-800 bg-error-100 active:bg-error-200 hover:bg-error-50 disabled:bg-error-100 border-transparent',
+      'dgs-ui-kit-text-gray-700 hover:dgs-ui-kit-text-gray-600 active:dgs-ui-kit-text-gray-800 dgs-ui-kit-bg-error-100 active:dgs-ui-kit-bg-error-200 hover:dgs-ui-kit-bg-error-50 disabled:dgs-ui-kit-bg-error-100 dgs-ui-kit-border-transparent',
     warning:
-      'text-gray-700 hover:text-gray-600 active:text-gray-800 bg-warning-100 active:bg-warning-200 hover:bg-warning-50 disabled:bg-warning-100 border-transparent',
-    gray: 'text-gray-700 hover:text-gray-600 active:text-gray-800 bg-gray-100 active:bg-gray-200 hover:bg-gray-50 disabled:bg-gray-100 border-transparent',
+      'dgs-ui-kit-text-gray-700 hover:dgs-ui-kit-text-gray-600 active:dgs-ui-kit-text-gray-800 dgs-ui-kit-bg-warning-100 active:dgs-ui-kit-bg-warning-200 hover:dgs-ui-kit-bg-warning-50 disabled:dgs-ui-kit-bg-warning-100 dgs-ui-kit-border-transparent',
+    gray: 'dgs-ui-kit-text-gray-700 hover:dgs-ui-kit-text-gray-600 active:dgs-ui-kit-text-gray-800 dgs-ui-kit-bg-gray-100 active:dgs-ui-kit-bg-gray-200 hover:dgs-ui-kit-bg-gray-50 disabled:dgs-ui-kit-bg-gray-100 dgs-ui-kit-border-transparent',
   },
   outline: {
     primary:
-      'text-primary-500 border-primary-300 hover:border-primary-200 active:border-primary-600 active:text-primary-600',
+      'dgs-ui-kit-text-primary-500 dgs-ui-kit-border-primary-300 hover:dgs-ui-kit-border-primary-200 active:dgs-ui-kit-border-primary-600 active:dgs-ui-kit-text-primary-600',
     success:
-      'text-success-600 hover:text-success-400 border-success-500 hover:border-success-400 active:border-success-600 active:text-success-800',
+      'dgs-ui-kit-text-success-600 hover:dgs-ui-kit-text-success-400 dgs-ui-kit-border-success-500 hover:dgs-ui-kit-border-success-400 active:dgs-ui-kit-border-success-600 active:dgs-ui-kit-text-success-800',
     error:
-      'text-error-600 hover:text-error-400 border-error-500 hover:border-error-400 active:border-error-600 active:text-error-800',
+      'dgs-ui-kit-text-error-600 hover:dgs-ui-kit-text-error-400 dgs-ui-kit-border-error-500 hover:dgs-ui-kit-border-error-400 active:dgs-ui-kit-border-error-600 active:dgs-ui-kit-text-error-800',
     warning:
-      'text-warning-600 hover:text-warning-400 border-warning-500 hover:border-warning-400 active:border-warning-600 active:text-warning-800',
-    gray: 'text-gray-600 hover:text-gray-400 border-gray-500 hover:border-gray-400 active:border-gray-600 active:text-gray-800',
+      'dgs-ui-kit-text-warning-600 hover:dgs-ui-kit-text-warning-400 dgs-ui-kit-border-warning-500 hover:dgs-ui-kit-border-warning-400 active:dgs-ui-kit-border-warning-600 active:dgs-ui-kit-text-warning-800',
+    gray: 'dgs-ui-kit-text-gray-600 hover:dgs-ui-kit-text-gray-400 dgs-ui-kit-border-gray-500 hover:dgs-ui-kit-border-gray-400 active:dgs-ui-kit-border-gray-600 active:dgs-ui-kit-text-gray-800',
   },
   text: {
-    primary: 'text-primary-500 hover:text-primary-300 border-transparent active:text-primary-700',
-    success: 'text-success-700 hover:text-success-600 border-transparent active:text-success-800',
-    error: 'text-error-700 hover:text-error-600 border-transparent active:text-error-800',
-    warning: 'text-warning-700 hover:text-warning-600 border-transparent active:text-warning-800',
-    gray: 'text-gray-700 hover:text-gray-600 border-transparent active:text-gray-800',
+    primary:
+      'dgs-ui-kit-text-primary-500 hover:dgs-ui-kit-text-primary-300 dgs-ui-kit-border-transparent active:dgs-ui-kit-text-primary-700',
+    success:
+      'dgs-ui-kit-text-success-700 hover:dgs-ui-kit-text-success-600 dgs-ui-kit-border-transparent active:dgs-ui-kit-text-success-800',
+    error:
+      'dgs-ui-kit-text-error-700 hover:dgs-ui-kit-text-error-600 dgs-ui-kit-border-transparent active:dgs-ui-kit-text-error-800',
+    warning:
+      'dgs-ui-kit-text-warning-700 hover:dgs-ui-kit-text-warning-600 dgs-ui-kit-border-transparent active:dgs-ui-kit-text-warning-800',
+    gray: 'dgs-ui-kit-text-gray-700 hover:dgs-ui-kit-text-gray-600 dgs-ui-kit-border-transparent active:dgs-ui-kit-text-gray-800',
   },
 };
 
 export const sizeStyle: Record<Required<ButtonProps>['size'], string> = {
-  small: 'button-small-icon py-2.5 px-4 font-button-small',
-  medium: 'button-medium-icon py-3 px-5 font-button-medium',
-  large: 'button-large-icon py-3 px-6 font-button-large',
+  small: 'button-small-icon dgs-ui-kit-py-2.5 dgs-ui-kit-px-4 dgs-ui-kit-font-button-small',
+  medium: 'button-medium-icon dgs-ui-kit-py-3 dgs-ui-kit-px-5 dgs-ui-kit-font-button-medium',
+  large: 'button-large-icon dgs-ui-kit-py-3 dgs-ui-kit-px-6 dgs-ui-kit-font-button-large',
 };
 
 export const iconOnlyButtonSizeStyle: Record<Required<ButtonProps>['size'], string> = {
-  small: 'button-small-icon p-[10px]',
-  medium: 'button-medium-icon p-3',
-  large: 'button-large-icon p-3',
+  small: 'button-small-icon dgs-ui-kit-p-[10px]',
+  medium: 'button-medium-icon dgs-ui-kit-p-3',
+  large: 'button-large-icon dgs-ui-kit-p-3',
 };

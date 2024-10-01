@@ -42,6 +42,7 @@ export default defineConfig({
   },
   build: {
     target: 'esnext',
+    minify: false,
     lib: {
       entry: entries,
       name: '@dgshahr/ui-kit',

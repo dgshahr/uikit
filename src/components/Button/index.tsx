@@ -29,11 +29,11 @@ function styleButton({
   children,
 }: ButtonProps) {
   const defaultClassName =
-    'border relative rounded-lg min-w-max h-fit disabled:cursor-not-allowed transition-all duration-300 flex items-center disabled:opacity-40';
+    'dgs-ui-kit-border dgs-ui-kit-relative dgs-ui-kit-rounded-lg dgs-ui-kit-min-w-max dgs-ui-kit-h-fit disabled:dgs-ui-kit-cursor-not-allowed dgs-ui-kit-transition-all duration-300 dgs-ui-kit-flex dgs-ui-kit-items-center disabled:dgs-ui-kit-opacity-40';
 
   return [
     defaultClassName,
-    isFullWidth ? 'w-full justify-center' : 'w-fit',
+    isFullWidth ? 'dgs-ui-kit-w-full dgs-ui-kit-justify-center' : 'dgs-ui-kit-w-fit',
     variantStyle[variant][color],
     children ? sizeStyle[size] : iconOnlyButtonSizeStyle[size],
     Number(className?.length) > 0 && className,
@@ -56,23 +56,21 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
 }) => {
   return (
     <button
-      className={
-        styleButton({
-          variant,
-          color,
-          isFullWidth,
-          className,
-          size,
-          children,
-        }) + ' rounded-lg'
-      }
+      className={styleButton({
+        variant,
+        color,
+        isFullWidth,
+        className,
+        size,
+        children,
+      })}
       {...props}
     >
       {rightIcon && (
         <span
           className={clsx(
-            'block icon-button',
-            { 'ml-2': children },
+            'dgs-ui-kit-block icon-button',
+            { 'dgs-ui-kit-ml-2': children },
             { [REMOVE_OPACITY_CLASS]: isLoading },
           )}
         >
@@ -81,15 +79,15 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
       )}
       {children && <div className={clsx({ [REMOVE_OPACITY_CLASS]: isLoading })}>{children}</div>}
       {isLoading && (
-        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+        <div className="dgs-ui-kit-absolute dgs-ui-kit-top-0 dgs-ui-kit-left-0 dgs-ui-kit-w-full dgs-ui-kit-h-full dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-justify-center">
           <div className="dot-flashing" />
         </div>
       )}
       {leftIcon && (
         <span
           className={clsx(
-            'block icon-button',
-            { 'mr-2': children },
+            'dgs-ui-kit-block icon-button',
+            { 'dgs-ui-kit-mr-2': children },
             { [REMOVE_OPACITY_CLASS]: isLoading },
           )}
         >

@@ -81,14 +81,14 @@ const TextFieldWrapper = <T extends HTMLTextAreaElement | HTMLInputElement>(
       />
       <div
         className={clsx(
-          'relative cursor-text border border-solid rounded-lg ring-4 flex justify-between gap-x-3 p-3 bg-gray-100 transition-all ring-transparent hover:ring-gray-50 has-[:focus]:bg-white',
+          'dgs-ui-kit-relative dgs-ui-kit-cursor-text dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-rounded-lg dgs-ui-kit-ring-4 dgs-ui-kit-flex dgs-ui-kit-justify-between dgs-ui-kit-gap-x-3 dgs-ui-kit-p-3 dgs-ui-kit-bg-gray-100 dgs-ui-kit-transition-all dgs-ui-kit-ring-transparent hover:dgs-ui-kit-ring-gray-50 has-[:focus]:dgs-ui-kit-bg-white',
           isError || errorMessage
-            ? 'border-error-500 has-[:focus]:ring-error-50'
-            : 'border-transparent hover:border-gray-300 has-[:focus]:border-primary-500 has-[:focus]:ring-primary-50',
+            ? 'dgs-ui-kit-border-error-500 has-[:focus]:dgs-ui-kit-ring-error-50'
+            : 'dgs-ui-kit-border-transparent hover:dgs-ui-kit-border-gray-300 has-[:focus]:dgs-ui-kit-border-primary-500 has-[:focus]:dgs-ui-kit-ring-primary-50',
           containerClassName,
         )}
       >
-        {rightIcon && <div className="text-gray-600">{rightIcon}</div>}
+        {rightIcon && <div className="dgs-ui-kit-text-gray-600">{rightIcon}</div>}
         {children({ handleChangeField, setValue, value })}
       </div>
       <FieldBottomInfo

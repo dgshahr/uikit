@@ -24,40 +24,43 @@ interface BadgePropsWithoutIcon extends Omit<BadgePropsBase, 'icon'> {
 type BadgeProps = BadgePropsWithIcon | BadgePropsWithoutIcon;
 
 function styleBadge(options: Omit<Required<BadgeProps>, 'value' | 'icon' | 'width'>) {
-  const defaultClassName = 'inline-flex items-center justify-center rounded-[20px]';
+  const defaultClassName =
+    'dgs-ui-kit-inline-flex dgs-ui-kit-items-center dgs-ui-kit-justify-center dgs-ui-kit-rounded-[20px]';
 
   const typeClassName: Record<
     Required<BadgeProps>['type'],
     Record<Required<BadgeProps>['color'], string>
   > = {
     twoTone: {
-      primary: 'bg-primary-50 text-primary-600',
-      secondary: 'bg-secondary-100 text-secondary-700',
-      gray: 'bg-gray-100 text-gray-600',
-      success: 'bg-success-50 text-success-800',
-      error: 'bg-error-50 text-error-600',
-      warning: 'bg-warning-50 text-warning-700',
+      primary: 'dgs-ui-kit-bg-primary-50 dgs-ui-kit-text-primary-600',
+      secondary: 'dgs-ui-kit-bg-secondary-100 dgs-ui-kit-text-secondary-700',
+      gray: 'dgs-ui-kit-bg-gray-100 dgs-ui-kit-text-gray-600',
+      success: 'dgs-ui-kit-bg-success-50 dgs-ui-kit-text-success-800',
+      error: 'dgs-ui-kit-bg-error-50 dgs-ui-kit-text-error-600',
+      warning: 'dgs-ui-kit-bg-warning-50 dgs-ui-kit-text-warning-700',
     },
     solid: {
-      primary: 'bg-primary-500 text-white',
-      secondary: 'bg-secondary-600 text-white',
-      gray: 'bg-gray-600 text-white',
-      success: 'bg-success-600 text-white',
-      error: 'bg-error-500 text-white',
-      warning: 'bg-warning-500 text-black',
+      primary: 'dgs-ui-kit-bg-primary-500 dgs-ui-kit-text-white',
+      secondary: 'dgs-ui-kit-bg-secondary-600 dgs-ui-kit-text-white',
+      gray: 'dgs-ui-kit-bg-gray-600 dgs-ui-kit-text-white',
+      success: 'dgs-ui-kit-bg-success-600 dgs-ui-kit-text-white',
+      error: 'dgs-ui-kit-bg-error-500 dgs-ui-kit-text-white',
+      warning: 'dgs-ui-kit-bg-warning-500 dgs-ui-kit-text-black',
     },
   };
 
   const textSizeClassName: Record<Required<BadgeProps>['size'], string> = {
-    small: 'font-oveline-demibold py-1 px-2 gap-[2px]',
-    medium: 'font-caption-demibold py-1 px-[10px] gap-1',
-    large: 'font-button-small py-2 px-4 gap-[6px]',
+    small: 'dgs-ui-kit-font-oveline-demibold dgs-ui-kit-py-1 dgs-ui-kit-px-2 dgs-ui-kit-gap-[2px]',
+    medium:
+      'dgs-ui-kit-font-caption-demibold dgs-ui-kit-py-1 dgs-ui-kit-px-[10px] dgs-ui-kit-gap-1',
+    large: 'dgs-ui-kit-font-button-small dgs-ui-kit-py-2 dgs-ui-kit-px-4 dgs-ui-kit-gap-[6px]',
   };
 
   const numberSizeClassName: Record<Required<BadgeProps>['size'], string> = {
-    small: 'font-caption-demibold py-[2px] px-[6px] min-w-5',
-    medium: 'font-p3-medium px-[6px] min-w-6',
-    large: 'font-h5-bold py-[2px] px-2 min-w-8',
+    small:
+      'dgs-ui-kit-font-caption-demibold dgs-ui-kit-py-[2px] dgs-ui-kit-px-[6px] dgs-ui-kit-min-w-5',
+    medium: 'dgs-ui-kit-font-p3-medium dgs-ui-kit-px-[6px] dgs-ui-kit-min-w-6',
+    large: 'dgs-ui-kit-font-h5-bold dgs-ui-kit-py-[2px] dgs-ui-kit-px-2 dgs-ui-kit-min-w-8',
   };
 
   return [
@@ -73,9 +76,9 @@ function styleBadge(options: Omit<Required<BadgeProps>, 'value' | 'icon' | 'widt
 }
 
 function getIconSize(badgSize: Required<BadgeProps>['size']) {
-  if (badgSize === 'small') return 'w-3 h-3';
-  if (badgSize === 'medium') return 'w-[14px] h-[14px]';
-  return 'w-4 h-4';
+  if (badgSize === 'small') return 'dgs-ui-kit-w-3 dgs-ui-kit-h-3';
+  if (badgSize === 'medium') return 'dgs-ui-kit-w-[14px] dgs-ui-kit-h-[14px]';
+  return 'dgs-ui-kit-w-4 dgs-ui-kit-h-4';
 }
 
 const Badge = (props: BadgeProps) => {

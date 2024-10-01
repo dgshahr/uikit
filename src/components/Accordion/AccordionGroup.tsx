@@ -13,7 +13,7 @@ const AccordionGroup: FC<PropsWithChildren<AccordionGroupProps>> = (props) => {
   const [activeKey, setActiveKey] = useState(defaultActiveKey);
 
   return (
-    <div className={clsx('flex flex-col', className)}>
+    <div className={clsx('dgs-ui-kit-flex dgs-ui-kit-flex-col', className)}>
       <accordionContext.Provider
         value={{
           activeKey,

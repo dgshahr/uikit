@@ -14,17 +14,17 @@ const FieldBottomInfo = (props: FieldBottomInfoProps) => {
     return (
       <div
         className={clsx(
-          'flex font-p3-regular',
+          'dgs-ui-kit-flex dgs-ui-kit-font-p3-regular',
           {
-            'justify-between': (errorMessage || hintMessage) && maxLength,
-            'justify-start': (errorMessage || hintMessage) && !maxLength,
-            'justify-end': !(errorMessage || hintMessage) && maxLength,
+            'dgs-ui-kit-justify-between': (errorMessage || hintMessage) && maxLength,
+            'dgs-ui-kit-justify-start': (errorMessage || hintMessage) && !maxLength,
+            'dgs-ui-kit-justify-end': !(errorMessage || hintMessage) && maxLength,
           },
-          errorMessage ? 'text-error-500' : 'text-gray-500',
+          errorMessage ? 'dgs-ui-kit-text-error-500' : 'dgs-ui-kit-text-gray-500',
         )}
       >
         {(errorMessage || hintMessage) && (
-          <div className="flex items-center gap-2">
+          <div className="dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-2">
             <InfoCircleOutlineIcon
               width={16}
               height={16}

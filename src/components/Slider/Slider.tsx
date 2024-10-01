@@ -80,12 +80,12 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
 
   return (
     <div
-      className={clsx('overflow-hidden relative group', className)}
+      className={clsx('dgs-ui-kit-overflow-hidden dgs-ui-kit-relative dgs-ui-kit-group', className)}
       style={{ direction: 'rtl' }}
     >
       <div
         className={clsx(
-          'flex snap-x snap-mandatory overflow-x-auto no-scrollbar',
+          'dgs-ui-kit-flex dgs-ui-kit-snap-x dgs-ui-kit-snap-mandatory dgs-ui-kit-overflow-x-auto no-scrollbar',
           containerClassName,
         )}
         style={{ marginLeft: -spaceBetween }}
@@ -99,13 +99,14 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
       {haveNavigation && (
         <div
           className={clsx(
-            'flex',
+            'dgs-ui-kit-flex',
             {
-              'items-center mt-2': navigationVariant === 'outside',
-              'absolute bottom-4 w-full justify-center': navigationVariant === 'inside',
-              'justify-between':
+              'dgs-ui-kit-items-center dgs-ui-kit-mt-2': navigationVariant === 'outside',
+              'dgs-ui-kit-absolute dgs-ui-kit-bottom-4 dgs-ui-kit-w-full dgs-ui-kit-justify-center':
+                navigationVariant === 'inside',
+              'dgs-ui-kit-justify-between':
                 navigationVariant === 'outside' && navigationButtonsShowType !== 'hide',
-              'justify-center':
+              'dgs-ui-kit-justify-center':
                 navigationVariant === 'outside' && navigationButtonsShowType === 'hide',
             },
             navigationContainerClassName,
@@ -113,9 +114,10 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
         >
           {navigationButtonsShowType && navigationButtonsShowType !== 'hide' && (
             <div
-              className={clsx('flex gap-2', {
-                'absolute bottom-0 left-[5.5%]': navigationVariant === 'inside',
-                'opacity-0 group-hover:opacity-100 transition':
+              className={clsx('dgs-ui-kit-flex dgs-ui-kit-gap-2', {
+                'dgs-ui-kit-absolute dgs-ui-kit-bottom-0 dgs-ui-kit-left-[5.5%]':
+                  navigationVariant === 'inside',
+                'dgs-ui-kit-opacity-0 group-hover:dgs-ui-kit-opacity-100 dgs-ui-kit-transition':
                   navigationButtonsShowType === 'hover',
               })}
             >
@@ -134,13 +136,13 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
             </div>
           )}
           {(showNavigationDots || showPaginationText) && (
-            <div className="flex items-center gap-3">
+            <div className="dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-3">
               {showPaginationText && (
-                <div className="flex items-center gap-1 font-caption-regular text-gray-400 ss02">
+                <div className="dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-1 dgs-ui-kit-font-caption-regular dgs-ui-kit-text-gray-400 ss02">
                   <span
-                    className={clsx('font-bold', {
-                      'text-gray-600': navigationVariant === 'outside',
-                      'text-white': navigationVariant === 'inside',
+                    className={clsx('dgs-ui-kit-font-bold', {
+                      'dgs-ui-kit-text-gray-600': navigationVariant === 'outside',
+                      'dgs-ui-kit-text-white': navigationVariant === 'inside',
                     })}
                   >
                     {slideIndex + 1}
@@ -150,7 +152,12 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
                 </div>
               )}
               {showNavigationDots && (
-                <div className={clsx('flex items-center justify-center gap-2', dotsClassName)}>
+                <div
+                  className={clsx(
+                    'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-justify-center dgs-ui-kit-gap-2',
+                    dotsClassName,
+                  )}
+                >
                   {Array.from(Array(slidesCount).keys()).map((item, index) => (
                     <NavigationDot
                       key={item + slidesCount}

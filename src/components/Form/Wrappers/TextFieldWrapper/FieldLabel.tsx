@@ -12,22 +12,22 @@ const FieldLabel = (props: FieldLabelProps) => {
   if (showLabel)
     return (
       <div
-        className={clsx('flex mb-2', {
-          'justify-between': labelContent && link?.href,
-          'justify-start': labelContent && !link?.href,
-          'justify-end': !labelContent && link?.href,
+        className={clsx('dgs-ui-kit-flex dgs-ui-kit-mb-2', {
+          'dgs-ui-kit-justify-between': labelContent && link?.href,
+          'dgs-ui-kit-justify-start': labelContent && !link?.href,
+          'dgs-ui-kit-justify-end': !labelContent && link?.href,
         })}
       >
         {labelContent && (
-          <label className="px-0 text-sm font-bold text-right md:mx-0">
+          <label className="dgs-ui-kit-px-0 dgs-ui-kit-text-sm dgs-ui-kit-font-bold dgs-ui-kit-text-right md:dgs-ui-kit-mx-0">
             {labelContent}
-            {required && <span className="ms-2 text-error-500">*</span>}
+            {required && <span className="dgs-ui-kit-ms-2 dgs-ui-kit-text-error-500">*</span>}
           </label>
         )}
         {link?.href && (
           <a
             href={link.href}
-            className="font-button-small text-primary-400"
+            className="dgs-ui-kit-font-button-small dgs-ui-kit-text-primary-400"
           >
             {link.cnotent}
           </a>

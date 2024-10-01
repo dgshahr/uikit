@@ -12,11 +12,15 @@ interface NavigationDotProps {
 
 function styleNavigationDot({ active, autoplay, variant }: NavigationDotProps) {
   const variantClassName: Record<NavigationDotProps['variant'], string> = {
-    inside: 'bg-gray-500/50 hover:bg-gray-500/80',
-    outside: 'bg-gray-200 hover:bg-gray-300',
+    inside: 'dgs-ui-kit-bg-gray-500/50 hover:dgs-ui-kit-bg-gray-500/80',
+    outside: 'dgs-ui-kit-bg-gray-200 hover:dgs-ui-kit-bg-gray-300',
   };
 
-  return [variantClassName[variant], active ? 'w-[22px]' : 'w-[6px]', autoplay ? 'p-[1px]' : ''];
+  return [
+    variantClassName[variant],
+    active ? 'dgs-ui-kit-w-[22px]' : 'dgs-ui-kit-w-[6px]',
+    autoplay ? 'dgs-ui-kit-p-[1px]' : '',
+  ];
 }
 
 const NavigationDot = (props: NavigationDotProps) => {
@@ -48,16 +52,16 @@ const NavigationDot = (props: NavigationDotProps) => {
   return (
     <button
       className={clsx(
-        'rounded-full overflow-hidden transition-all h-[6px]',
+        'dgs-ui-kit-rounded-full dgs-ui-kit-overflow-hidden dgs-ui-kit-transition-all dgs-ui-kit-h-[6px]',
         styleNavigationDot({ active, autoplay, variant }),
       )}
       onClick={onClick}
     >
       {active && (
         <div
-          className={clsx('h-full rounded-full', {
-            'bg-white': variant === 'inside',
-            'bg-gray-700': variant === 'outside',
+          className={clsx('dgs-ui-kit-h-full dgs-ui-kit-rounded-full', {
+            'dgs-ui-kit-bg-white': variant === 'inside',
+            'dgs-ui-kit-bg-gray-700': variant === 'outside',
           })}
           style={{ width: autoplay ? `${fillPercentage}%` : '100%' }}
         />

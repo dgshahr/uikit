@@ -18,23 +18,28 @@ const Breadcrumb = (props: BreadcrumbProps) => {
   const { items, pageTitle, className } = props;
 
   return (
-    <div className={clsx('bg-gray-100 overflow-x-hidden w-full', className)}>
-      <div className="flex items-center gap-x-1 w-full py-3 container">
+    <div
+      className={clsx(
+        'dgs-ui-kit-bg-gray-100 dgs-ui-kit-overflow-x-hidden dgs-ui-kit-w-full',
+        className,
+      )}
+    >
+      <div className="dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-x-1 dgs-ui-kit-w-full dgs-ui-kit-py-3 dgs-ui-kit-container">
         {items.map((breadcrumbItem) => (
           <a
             key={breadcrumbItem.link}
             href={breadcrumbItem.link}
-            className="transition flex items-center gap-x-1 text-gray-500 hover:text-primary-500"
+            className="dgs-ui-kit-transition dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-x-1 dgs-ui-kit-text-gray-500 hover:dgs-ui-kit-text-primary-500"
           >
             {breadcrumbItem.icon && breadcrumbItem.icon}
-            <div className="font-caption-demibold">{breadcrumbItem.title}</div>
+            <div className="dgs-ui-kit-font-caption-demibold">{breadcrumbItem.title}</div>
             <ArrowLeft2Icon
               width={16}
               height={16}
             />
           </a>
         ))}
-        <div className="text-gray-500 font-caption-regular">{pageTitle}</div>
+        <div className="dgs-ui-kit-text-gray-500 dgs-ui-kit-font-caption-regular">{pageTitle}</div>
       </div>
     </div>
   );
