@@ -77,11 +77,11 @@ const meta = {
       },
     },
     navigationButtonsShowType: {
-      options: ['hide', 'permanent', 'hover'],
+      options: ['hide', 'permanent', 'hover', 'onSides'],
       control: { type: 'select' },
       table: {
         type: {
-          summary: 'hide, permanent, hover',
+          summary: 'hide, permanent, hover, onSides',
           detail: 'type is "hide, permanent" if  navigationVariant is outside',
         },
         defaultValue: {
@@ -126,7 +126,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     containerClassName: 'dgs-ui-kit-w-[400px]',
-    children: Array(10)
+    children: Array(5)
       .fill(null)
       .map((_, index) => (
         <Slide key={index}>

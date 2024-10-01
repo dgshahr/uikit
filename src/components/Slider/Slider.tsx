@@ -24,7 +24,7 @@ interface SliderPropsBase {
 
 interface InsideNavigationSliderProps extends SliderPropsBase {
   navigationVariant?: 'inside';
-  navigationButtonsShowType?: 'hide' | 'hover' | 'permanent';
+  navigationButtonsShowType?: 'hide' | 'hover' | 'permanent' | 'onSides';
 }
 interface OutsideNavigationSliderProps extends SliderPropsBase {
   navigationVariant?: 'outside';
@@ -116,9 +116,11 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
             <div
               className={clsx('dgs-ui-kit-flex dgs-ui-kit-gap-2', {
                 'dgs-ui-kit-absolute dgs-ui-kit-bottom-0 dgs-ui-kit-left-[5.5%]':
-                  navigationVariant === 'inside',
+                  navigationVariant === 'inside' && navigationButtonsShowType !== 'onSides',
                 'dgs-ui-kit-opacity-0 group-hover:dgs-ui-kit-opacity-100 dgs-ui-kit-transition':
-                  navigationButtonsShowType === 'hover',
+                  navigationButtonsShowType === 'hover' || navigationButtonsShowType === 'onSides',
+                'dgs-ui-kit-fixed dgs-ui-kit-justify-between dgs-ui-kit-top-1/2 -dgs-ui-kit-translate-y-1/2 dgs-ui-kit-w-full dgs-ui-kit-px-[5.5%]':
+                  navigationVariant === 'inside' && navigationButtonsShowType === 'onSides',
               })}
             >
               <Button
