@@ -53,9 +53,10 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
   const childsCount = Children.count(props.children);
   const slidesCount = Math.ceil(childsCount / slidesPerView);
   const haveNavigation =
-    showNavigationDots ||
-    (navigationButtonsShowType && navigationButtonsShowType !== 'hide') ||
-    showPaginationText;
+    (showNavigationDots ||
+      (navigationButtonsShowType && navigationButtonsShowType !== 'hide') ||
+      showPaginationText) &&
+    slidesCount > 1;
 
   function detectCarouselPosition(e: UIEvent<HTMLDivElement>) {
     const itemsWidth = e.currentTarget.scrollWidth / slidesCount;
