@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import packageJson from '../package.json' assert { type: 'json' };
 import { fileURLToPath } from 'url';
+import packageJson from '../package.json' assert { type: 'json' };
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const componentsDir = path.resolve(__dirname, '../src/components');
@@ -50,4 +50,6 @@ packageJsonEntries.splice(typesIndex + 1, 1, ['exports', exports]);
 const updatedPackageJson = Object.fromEntries(packageJsonEntries);
 
 // Write the updated package.json back
-fs.writeFileSync(packageJsonPath, JSON.stringify(updatedPackageJson, null, 2));
+fs.writeFileSync(packageJsonPath, JSON.stringify(updatedPackageJson, null, 2) + '\n', {
+  encoding: 'utf-8',
+});
