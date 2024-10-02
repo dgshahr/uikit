@@ -7,7 +7,7 @@ interface SlideProps {
 }
 const Slide: FC<PropsWithChildren<SlideProps>> = (props) => {
   const { children, className } = props;
-  const { slidesPerView, spaceBetween } = useSliderContext();
+  const { slidesPerView = 1, spaceBetween } = useSliderContext();
   const ref = useRef<HTMLDivElement>(null);
   const [childIndex, setChildIndex] = useState(0);
 
