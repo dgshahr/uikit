@@ -1,10 +1,7 @@
 import clsx from 'clsx';
 import { useRef, useState, Children, type FC, type PropsWithChildren, type UIEvent } from 'react';
-import ArrowLeft2Icon from '@/src/icons/ArrowLeft2';
-import ArrowRight2Icon from '@/src/icons/ArrowRight2';
 import { sliderContext } from './context';
-import NavigationDot from './NavigationDot';
-import Button from '../Button';
+import Navigation from './Navigation';
 
 interface SliderPropsBase {
   className?: string;
@@ -38,14 +35,14 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
     className = '',
     containerClassName = '',
     showNavigationDots = true,
-    dotsClassName = '',
+    dotsClassName,
     slidesPerView = 1,
     autoplay,
     navigationButtonsShowType = 'hide',
     spaceBetween = 0,
     navigationVariant = 'outside',
-    showPaginationText = false,
-    navigationContainerClassName = '',
+    showPaginationText,
+    navigationContainerClassName,
   } = props;
 
   const [slideIndex, setSlideIndex] = useState(0);
@@ -97,84 +94,18 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
         </sliderContext.Provider>
       </div>
       {haveNavigation && (
-        <div
-          className={clsx(
-            'dgs-ui-kit-flex',
-            {
-              'dgs-ui-kit-items-center dgs-ui-kit-mt-2': navigationVariant === 'outside',
-              'dgs-ui-kit-absolute dgs-ui-kit-bottom-4 dgs-ui-kit-w-full dgs-ui-kit-justify-center':
-                navigationVariant === 'inside',
-              'dgs-ui-kit-justify-between':
-                navigationVariant === 'outside' && navigationButtonsShowType !== 'hide',
-              'dgs-ui-kit-justify-center':
-                navigationVariant === 'outside' && navigationButtonsShowType === 'hide',
-            },
-            navigationContainerClassName,
-          )}
-        >
-          {navigationButtonsShowType && navigationButtonsShowType !== 'hide' && (
-            <div
-              className={clsx('dgs-ui-kit-flex dgs-ui-kit-gap-2', {
-                'dgs-ui-kit-absolute dgs-ui-kit-bottom-0 dgs-ui-kit-left-[5.5%]':
-                  navigationVariant === 'inside' && navigationButtonsShowType !== 'onSides',
-                'dgs-ui-kit-opacity-0 group-hover:dgs-ui-kit-opacity-100 dgs-ui-kit-transition':
-                  navigationButtonsShowType === 'hover' || navigationButtonsShowType === 'onSides',
-                'dgs-ui-kit-fixed dgs-ui-kit-justify-between dgs-ui-kit-top-1/2 -dgs-ui-kit-translate-y-1/2 dgs-ui-kit-w-full dgs-ui-kit-px-[5.5%]':
-                  navigationVariant === 'inside' && navigationButtonsShowType === 'onSides',
-              })}
-            >
-              <Button
-                type="button"
-                variant="secondary"
-                onClick={() => navigate(slideIndex - 1)}
-                rightIcon={<ArrowRight2Icon />}
-              />
-              <Button
-                type="button"
-                variant="secondary"
-                onClick={() => navigate(slideIndex + 1)}
-                rightIcon={<ArrowLeft2Icon />}
-              />
-            </div>
-          )}
-          {(showNavigationDots || showPaginationText) && (
-            <div className="dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-3">
-              {showPaginationText && (
-                <div className="dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-1 dgs-ui-kit-font-caption-regular dgs-ui-kit-text-gray-400 ss02">
-                  <span
-                    className={clsx('dgs-ui-kit-font-bold', {
-                      'dgs-ui-kit-text-gray-600': navigationVariant === 'outside',
-                      'dgs-ui-kit-text-white': navigationVariant === 'inside',
-                    })}
-                  >
-                    {slideIndex + 1}
-                  </span>
-                  <span>از</span>
-                  <span>{slidesCount}</span>
-                </div>
-              )}
-              {showNavigationDots && (
-                <div
-                  className={clsx(
-                    'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-justify-center dgs-ui-kit-gap-2',
-                    dotsClassName,
-                  )}
-                >
-                  {Array.from(Array(slidesCount).keys()).map((item, index) => (
-                    <NavigationDot
-                      key={item + slidesCount}
-                      active={slideIndex === index}
-                      autoplay={autoplay ?? false}
-                      variant={navigationVariant}
-                      onClick={() => navigate(index)}
-                      onNavigateToNext={() => navigate(slideIndex + 1)}
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
-        </div>
+        <Navigation
+          onNavigate={navigate}
+          slideIndex={slideIndex}
+          slidesCount={slidesCount}
+          autoplay={autoplay}
+          dotsClassName={dotsClassName}
+          navigationButtonsShowType={navigationButtonsShowType}
+          navigationVariant={navigationVariant}
+          navigationContainerClassName={navigationContainerClassName}
+          showNavigationDots={showNavigationDots}
+          showPaginationText={showPaginationText}
+        />
       )}
     </div>
   );
