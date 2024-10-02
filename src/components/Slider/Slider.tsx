@@ -35,16 +35,14 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
     className = '',
     containerClassName = '',
     showNavigationDots = true,
-    dotsClassName,
     slidesPerView = 1,
-    autoplay,
     navigationButtonsShowType = 'hide',
     spaceBetween = 0,
-    navigationVariant = 'outside',
     showPaginationText,
-    navigationContainerClassName,
   } = props;
-
+  const propsWithoutChildren = Object.fromEntries(
+    Object.entries(props).filter(([key]) => key !== 'children'),
+  );
   const [slideIndex, setSlideIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const childsCount = Children.count(props.children);
@@ -76,38 +74,34 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
   }
 
   return (
-    <div
-      className={clsx('dgs-ui-kit-overflow-hidden dgs-ui-kit-relative dgs-ui-kit-group', className)}
-      style={{ direction: 'rtl' }}
-    >
+    <sliderContext.Provider value={propsWithoutChildren}>
       <div
         className={clsx(
-          'dgs-ui-kit-flex dgs-ui-kit-snap-x dgs-ui-kit-snap-mandatory dgs-ui-kit-overflow-x-auto no-scrollbar',
-          containerClassName,
+          'dgs-ui-kit-overflow-hidden dgs-ui-kit-relative dgs-ui-kit-group',
+          className,
         )}
-        style={{ marginLeft: -spaceBetween }}
-        onScroll={detectCarouselPosition}
-        ref={containerRef}
+        style={{ direction: 'rtl' }}
       >
-        <sliderContext.Provider value={{ slidesPerView, spaceBetween }}>
+        <div
+          className={clsx(
+            'dgs-ui-kit-flex dgs-ui-kit-snap-x dgs-ui-kit-snap-mandatory dgs-ui-kit-overflow-x-auto no-scrollbar',
+            containerClassName,
+          )}
+          style={{ marginLeft: -spaceBetween }}
+          onScroll={detectCarouselPosition}
+          ref={containerRef}
+        >
           {props.children}
-        </sliderContext.Provider>
+        </div>
+        {haveNavigation && (
+          <Navigation
+            onNavigate={navigate}
+            slideIndex={slideIndex}
+            slidesCount={slidesCount}
+          />
+        )}
       </div>
-      {haveNavigation && (
-        <Navigation
-          onNavigate={navigate}
-          slideIndex={slideIndex}
-          slidesCount={slidesCount}
-          autoplay={autoplay}
-          dotsClassName={dotsClassName}
-          navigationButtonsShowType={navigationButtonsShowType}
-          navigationVariant={navigationVariant}
-          navigationContainerClassName={navigationContainerClassName}
-          showNavigationDots={showNavigationDots}
-          showPaginationText={showPaginationText}
-        />
-      )}
-    </div>
+    </sliderContext.Provider>
   );
 };
 

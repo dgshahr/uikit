@@ -1,17 +1,24 @@
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
+import { useSliderContext } from './context';
 import type { SliderProps } from './Slider';
 
 interface NavigationDotProps {
   active: boolean;
-  autoplay: Required<SliderProps>['autoplay'];
-  variant: 'inside' | 'outside';
   onClick?: () => void;
   onNavigateToNext?: () => void;
 }
 
-function styleNavigationDot({ active, autoplay, variant }: NavigationDotProps) {
-  const variantClassName: Record<NavigationDotProps['variant'], string> = {
+function styleNavigationDot({
+  active,
+  autoplay,
+  variant = 'outside',
+}: {
+  active: NavigationDotProps['active'];
+  autoplay: SliderProps['autoplay'];
+  variant: SliderProps['navigationVariant'];
+}) {
+  const variantClassName: Record<Required<SliderProps>['navigationVariant'], string> = {
     inside: 'dgs-ui-kit-bg-gray-500/50 hover:dgs-ui-kit-bg-gray-500/80',
     outside: 'dgs-ui-kit-bg-gray-200 hover:dgs-ui-kit-bg-gray-300',
   };
@@ -24,7 +31,8 @@ function styleNavigationDot({ active, autoplay, variant }: NavigationDotProps) {
 }
 
 const NavigationDot = (props: NavigationDotProps) => {
-  const { active, autoplay, variant, onClick, onNavigateToNext } = props;
+  const { active, onClick, onNavigateToNext } = props;
+  const { autoplay, navigationVariant = 'outside' } = useSliderContext();
   const [fillPercentage, setFillPercentage] = useState(0);
 
   useEffect(() => {
@@ -53,15 +61,15 @@ const NavigationDot = (props: NavigationDotProps) => {
     <button
       className={clsx(
         'dgs-ui-kit-rounded-full dgs-ui-kit-overflow-hidden dgs-ui-kit-transition-all dgs-ui-kit-h-[6px]',
-        styleNavigationDot({ active, autoplay, variant }),
+        styleNavigationDot({ active, autoplay, variant: navigationVariant }),
       )}
       onClick={onClick}
     >
       {active && (
         <div
           className={clsx('dgs-ui-kit-h-full dgs-ui-kit-rounded-full', {
-            'dgs-ui-kit-bg-white': variant === 'inside',
-            'dgs-ui-kit-bg-gray-700': variant === 'outside',
+            'dgs-ui-kit-bg-white': navigationVariant === 'inside',
+            'dgs-ui-kit-bg-gray-700': navigationVariant === 'outside',
           })}
           style={{ width: autoplay ? `${fillPercentage}%` : '100%' }}
         />

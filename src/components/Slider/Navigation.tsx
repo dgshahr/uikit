@@ -2,39 +2,27 @@ import clsx from 'clsx';
 import type { FC } from 'react';
 import ArrowLeft2Icon from '@/src/icons/ArrowLeft2';
 import ArrowRight2Icon from '@/src/icons/ArrowRight2';
+import { useSliderContext } from './context';
 import NavigationDot from './NavigationDot';
-import type { SliderProps } from './Slider';
 import Button from '../Button';
 
-interface NavigationProps
-  extends Pick<
-    SliderProps,
-    | 'navigationVariant'
-    | 'navigationButtonsShowType'
-    | 'showPaginationText'
-    | 'dotsClassName'
-    | 'navigationContainerClassName'
-    | 'showNavigationDots'
-    | 'autoplay'
-  > {
+interface NavigationProps {
   onNavigate: (slide: number) => void;
   slideIndex: number;
   slidesCount: number;
 }
 
 const Navigation: FC<NavigationProps> = (props) => {
+  const { onNavigate, slideIndex, slidesCount } = props;
+
   const {
-    navigationButtonsShowType,
+    navigationButtonsShowType = 'hide',
     dotsClassName,
     navigationContainerClassName,
     navigationVariant = 'outside',
     showNavigationDots = true,
-    showPaginationText = false,
-    onNavigate,
-    slideIndex,
-    slidesCount,
-    autoplay,
-  } = props;
+    showPaginationText,
+  } = useSliderContext();
 
   const NavigationButtons = (
     <div
@@ -114,8 +102,6 @@ const Navigation: FC<NavigationProps> = (props) => {
                   <NavigationDot
                     key={item + slidesCount}
                     active={slideIndex === index}
-                    autoplay={autoplay ?? false}
-                    variant={navigationVariant}
                     onClick={() => onNavigate(index)}
                     onNavigateToNext={() => onNavigate(slideIndex + 1)}
                   />
