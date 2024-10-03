@@ -48,7 +48,7 @@ const meta = {
       },
     },
     centred: {
-      if: { arg: 'fullWidth', eq: 'true' },
+      if: { arg: 'fullWidth', eq: true },
       control: { type: 'boolean' },
       description: 'available only when fullWidth is true',
       table: {
@@ -69,7 +69,6 @@ export const Default: Story = {
   args: {
     className: '[direction:rtl]',
     activeKey: 1,
-    fullWidth: true,
     onChange: (key) => alert('tab key: ' + key + ' selected'),
     items: [
       { key: 1, title: 'تب اول', icon: <UserBoldIcon />, badgeNumber: 1 },
