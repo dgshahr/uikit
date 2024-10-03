@@ -39,8 +39,12 @@ const Tabs: FC<TabsProps> = (props) => {
     <div
       className={clsx(
         'dgs-ui-kit-flex dgs-ui-kit-border-b dgs-ui-kit-border-gray-200 dgs-ui-kit-border-solid',
-        { 'dgs-ui-kit-w-full': fullWidth },
-        { 'dgs-ui-kit-justify-center': fullWidth && centred },
+        {
+          'dgs-ui-kit-w-full': fullWidth,
+          'dgs-ui-kit-justify-center': fullWidth && centred,
+          'dgs-ui-kit-w-fit': !fullWidth,
+        },
+
         className,
       )}
     >
