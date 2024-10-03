@@ -68,7 +68,7 @@ function styleBadge(options: Omit<Required<BadgeProps>, 'value' | 'icon' | 'widt
     typeClassName[options.type][options.color],
     options.valueType === 'text'
       ? textSizeClassName[options.size]
-      : numberSizeClassName[options.size],
+      : numberSizeClassName[options.size] + ' ss02',
     options.className.length > 0 ? options.className : '',
   ]
     .slice()
