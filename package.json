@@ -147,6 +147,16 @@
         "types": "./dist/Slider/index.d.ts",
         "default": "./dist/Slider/index.cjs"
       }
+    },
+    "./Tabs": {
+      "import": {
+        "types": "./dist/Tabs/index.d.ts",
+        "default": "./dist/Tabs/index.js"
+      },
+      "require": {
+        "types": "./dist/Tabs/index.d.ts",
+        "default": "./dist/Tabs/index.cjs"
+      }
     }
   },
   "scripts": {
