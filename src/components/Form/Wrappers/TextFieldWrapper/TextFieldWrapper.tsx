@@ -5,6 +5,7 @@ import React, {
   type ChangeEvent,
   type ChangeEventHandler,
   type Dispatch,
+  type ReactNode,
   type SetStateAction,
 } from 'react';
 import FieldBottomInfo from './FieldBottomInfo';
@@ -25,6 +26,7 @@ export interface TextFieldBaseProps {
   isError?: boolean;
   errorMessage?: string;
   hintMessage?: string;
+  wrapperClassName?: string;
 }
 
 interface TextFieldFunctionArgumants<T> {
@@ -38,7 +40,7 @@ interface TextFieldWrapperProps<T> extends TextFieldBaseProps {
   required?: boolean;
   maxLength?: number;
   value?: string | number | readonly string[];
-  children: (argumants: TextFieldFunctionArgumants<T>) => React.JSX.Element;
+  children: (argumants: TextFieldFunctionArgumants<T>) => ReactNode;
 }
 
 const TextFieldWrapper = <T extends HTMLTextAreaElement | HTMLInputElement>(
@@ -56,6 +58,7 @@ const TextFieldWrapper = <T extends HTMLTextAreaElement | HTMLInputElement>(
     maxLength,
     value: initialValue,
     onChange,
+    wrapperClassName,
     children,
   } = props;
 
@@ -72,13 +75,21 @@ const TextFieldWrapper = <T extends HTMLTextAreaElement | HTMLInputElement>(
     }
   };
 
+  const showInfo = Boolean(errorMessage || hintMessage || maxLength);
+  const showLabel = Boolean(labelContent || link?.href);
+  const WrapperElement = showInfo || showLabel ? 'div' : React.Fragment;
+
   return (
-    <>
-      <FieldLabel
-        labelContent={labelContent}
-        link={link}
-        required={required}
-      />
+    <WrapperElement
+      {...(WrapperElement === 'div' && wrapperClassName ? { className: wrapperClassName } : {})}
+    >
+      {showLabel && (
+        <FieldLabel
+          labelContent={labelContent}
+          link={link}
+          required={required}
+        />
+      )}
       <div
         className={clsx(
           'dgs-ui-kit-relative dgs-ui-kit-cursor-text dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-rounded-lg dgs-ui-kit-ring-4 dgs-ui-kit-flex dgs-ui-kit-justify-between dgs-ui-kit-gap-x-3 dgs-ui-kit-p-3 dgs-ui-kit-bg-gray-100 dgs-ui-kit-transition-all dgs-ui-kit-ring-transparent hover:dgs-ui-kit-ring-gray-50 has-[:focus]:dgs-ui-kit-bg-white',
@@ -91,13 +102,15 @@ const TextFieldWrapper = <T extends HTMLTextAreaElement | HTMLInputElement>(
         {rightIcon && <div className="dgs-ui-kit-text-gray-600">{rightIcon}</div>}
         {children({ handleChangeField, setValue, value })}
       </div>
-      <FieldBottomInfo
-        errorMessage={errorMessage}
-        hintMessage={hintMessage}
-        maxLength={maxLength}
-        value={value}
-      />
-    </>
+      {showInfo && (
+        <FieldBottomInfo
+          errorMessage={errorMessage}
+          hintMessage={hintMessage}
+          maxLength={maxLength}
+          value={value}
+        />
+      )}
+    </WrapperElement>
   );
 };
 
