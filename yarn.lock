@@ -395,10 +395,10 @@
     "@types/conventional-commits-parser" "^5.0.0"
     chalk "^5.3.0"
 
-"@dgshahr/dg-theme-tailwind-plugin@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@dgshahr/dg-theme-tailwind-plugin/-/dg-theme-tailwind-plugin-1.0.3.tgz#263d62bb7dbb341bbdc992565b130ca0d68081dd"
-  integrity sha512-m7+ikOfftAMFmAcBlc/qvwHfrdpA8ZqmMGeDUCT206886R6I/G63p9X8Jr7f5DGQEQa+opz6MOPe8GP26bNjYg==
+"@dgshahr/dg-theme-tailwind-plugin@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@dgshahr/dg-theme-tailwind-plugin/-/dg-theme-tailwind-plugin-1.0.6.tgz#f6bf7a5c9f6aa750929f00a93479f92a2e3eaab2"
+  integrity sha512-xZ8IEYVawQZBWavxT9+FoM4uKnTvovZEFiZltZkdCVe4OJ9dPt8AvPaApLNxC3g2Me4d2kFO9fwdVut7fpz9sA==
   dependencies:
     tailwindcss "^3.4.3"
 
