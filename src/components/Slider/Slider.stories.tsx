@@ -147,9 +147,9 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     containerClassName: 'dgs-ui-kit-w-[400px]',
-    responsive: { 768: { slidesPerView: 1, spaceBetween: 0 } },
-    slidesPerView: 2,
-    spaceBetween: 8,
+    responsive: { 768: { slidesPerView: 2, spaceBetween: 8 } },
+    slidesPerView: 1,
+    spaceBetween: 0,
     children: Array(5)
       .fill(null)
       .map((_, index) => (

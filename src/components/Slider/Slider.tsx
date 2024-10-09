@@ -96,7 +96,7 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
     const sortedResponsiveKeys = Object.keys(props.responsive!).sort();
 
     const foundedPropsKey = sortedResponsiveKeys.findLast(
-      (key) => Number(key) >= window.innerWidth,
+      (key) => Number(key) <= window.innerWidth,
     );
     const foundedCurrentProps = foundedPropsKey ? props.responsive![Number(foundedPropsKey)] : null;
     if (foundedCurrentProps) setCurrentProps({ ...currentProps, ...foundedCurrentProps });
