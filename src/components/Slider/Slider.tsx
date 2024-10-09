@@ -11,7 +11,7 @@ import {
 import { sliderContext } from './context';
 import Navigation from './Navigation';
 
-interface SliderProps {
+export interface SliderProps {
   className?: string;
   containerClassName?: string;
   showNavigationDots?: boolean;
