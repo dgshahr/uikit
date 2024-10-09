@@ -1,9 +1,17 @@
 import clsx from 'clsx';
-import { useRef, useState, Children, type FC, type PropsWithChildren, type UIEvent } from 'react';
+import {
+  useRef,
+  useState,
+  Children,
+  type FC,
+  type PropsWithChildren,
+  type UIEvent,
+  useEffect,
+} from 'react';
 import { sliderContext } from './context';
 import Navigation from './Navigation';
 
-interface SliderPropsBase {
+interface SliderProps {
   className?: string;
   containerClassName?: string;
   showNavigationDots?: boolean;
@@ -18,20 +26,14 @@ interface SliderPropsBase {
   spaceBetween?: number;
   showPaginationText?: boolean;
   navigationContainerClassName?: string;
-}
-
-interface InsideNavigationSliderProps extends SliderPropsBase {
-  navigationVariant?: 'inside';
+  navigationVariant?: 'inside' | 'outside';
   navigationButtonsShowType?: 'hide' | 'hover' | 'permanent' | 'onSides';
+  responsive?: Record<number, Omit<SliderProps, 'responsive'>>;
 }
-interface OutsideNavigationSliderProps extends SliderPropsBase {
-  navigationVariant?: 'outside';
-  navigationButtonsShowType?: 'hide' | 'permanent';
-}
-
-export type SliderProps = InsideNavigationSliderProps | OutsideNavigationSliderProps;
 
 const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [currentProps, setCurrentProps] = useState<SliderProps>(props);
   const {
     className = '',
     containerClassName = '',
@@ -40,11 +42,10 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
     navigationButtonsShowType = 'hide',
     spaceBetween = 0,
     showPaginationText,
-  } = props;
+  } = currentProps;
   const propsWithoutChildren = Object.fromEntries(
-    Object.entries(props).filter(([key]) => key !== 'children'),
+    Object.entries(currentProps).filter(([key]) => key !== 'children'),
   );
-  const [slideIndex, setSlideIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const childsCount = Children.count(props.children);
   const slidesCount = Math.ceil(childsCount / Math.floor(slidesPerView));
@@ -90,6 +91,28 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
       behavior: 'smooth',
     });
   }
+
+  function detectResponsiveProps() {
+    const sortedResponsiveKeys = Object.keys(props.responsive!).sort();
+
+    const foundedPropsKey = sortedResponsiveKeys.findLast(
+      (key) => Number(key) >= window.innerWidth,
+    );
+    const foundedCurrentProps = foundedPropsKey ? props.responsive![Number(foundedPropsKey)] : null;
+    if (foundedCurrentProps) setCurrentProps({ ...currentProps, ...foundedCurrentProps });
+    else setCurrentProps(props);
+  }
+
+  useEffect(() => {
+    if (props?.responsive && Object.keys(props.responsive).length <= 0) return;
+
+    detectResponsiveProps();
+    window.addEventListener('resize', detectResponsiveProps);
+
+    return () => {
+      window.removeEventListener('resize', detectResponsiveProps);
+    };
+  }, [props.responsive]);
 
   return (
     <sliderContext.Provider value={propsWithoutChildren}>

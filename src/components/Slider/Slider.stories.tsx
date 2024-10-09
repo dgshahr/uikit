@@ -117,6 +117,17 @@ const meta = {
         },
       },
     },
+    responsive: {
+      control: { type: 'object' },
+      description:
+        "It designed based on mobile first approach, so if you for example use `768` breakpoint it's props applied after `768px` device width.",
+      table: {
+        type: {
+          summary: 'Record<number, SliderProps>',
+          detail: 'example: { 768: { slidesPerView: 1, spaceBetween: 0 } }',
+        },
+      },
+    },
     children: {
       control: { type: 'object' },
       description: 'use `Slide` component for every slide you have',
@@ -136,6 +147,9 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     containerClassName: 'dgs-ui-kit-w-[400px]',
+    responsive: { 768: { slidesPerView: 1, spaceBetween: 0 } },
+    slidesPerView: 2,
+    spaceBetween: 8,
     children: Array(5)
       .fill(null)
       .map((_, index) => (
