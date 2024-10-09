@@ -17,7 +17,7 @@ const FieldLabel = (props: FieldLabelProps) => {
       })}
     >
       {labelContent && (
-        <label className="dgs-ui-kit-px-0 dgs-ui-kit-text-sm dgs-ui-kit-font-bold dgs-ui-kit-text-right md:dgs-ui-kit-mx-0">
+        <label className="dgs-ui-kit-px-0 dgs-ui-kit-font-p2-medium md:dgs-ui-kit-mx-0">
           {labelContent}
           {required && <span className="dgs-ui-kit-ms-2 dgs-ui-kit-text-error-500">*</span>}
         </label>
