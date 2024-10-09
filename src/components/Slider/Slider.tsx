@@ -46,7 +46,7 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
   const [slideIndex, setSlideIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const childsCount = Children.count(props.children);
-  const slidesCount = Math.ceil(childsCount / slidesPerView);
+  const slidesCount = Math.ceil(childsCount / Math.floor(slidesPerView));
   const haveNavigation =
     (showNavigationDots ||
       (navigationButtonsShowType && navigationButtonsShowType !== 'hide') ||
@@ -54,6 +54,15 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
     slidesCount > 1;
 
   function detectCarouselPosition(e: UIEvent<HTMLDivElement>) {
+    if (
+      Math.ceil(Math.abs(e.currentTarget.scrollLeft)) + e.currentTarget.clientWidth ===
+      e.currentTarget.scrollWidth
+    ) {
+      // is last slide
+      setSlideIndex(slidesCount - 1);
+      return;
+    }
+
     const itemsWidth = e.currentTarget.scrollWidth / slidesCount;
     const position = (e.currentTarget.scrollWidth - e.currentTarget.scrollLeft) / itemsWidth;
     setSlideIndex(Math.round(position % slidesCount));
@@ -61,7 +70,9 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
 
   function navigate(target: number) {
     if (!containerRef.current) return;
-    const slideWidth = containerRef.current.offsetWidth;
+    const isSlidePerViewDecimal = slidesPerView % 1 !== 0;
+    const containerWidth = containerRef.current.offsetWidth;
+    const slideWidth = isSlidePerViewDecimal ? containerWidth / slidesPerView : containerWidth;
 
     let nextSlideScroll = -(slideWidth * target);
     if (target < 0) nextSlideScroll = -(slideWidth * slidesCount);

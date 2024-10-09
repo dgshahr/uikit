@@ -41,7 +41,7 @@ const meta = {
     slidesPerView: {
       control: { type: 'number' },
       table: {
-        type: { summary: 'number' },
+        type: { summary: 'number, accepts decimal' },
         defaultValue: {
           summary: '1',
         },

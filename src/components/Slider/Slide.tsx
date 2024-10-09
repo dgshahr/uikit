@@ -23,7 +23,7 @@ const Slide: FC<PropsWithChildren<SlideProps>> = (props) => {
       style={{
         width: 100 / (slidesPerView ?? 1) + '%',
         paddingLeft: spaceBetween,
-        scrollSnapAlign: childIndex % slidesPerView === 0 ? 'start' : 'none',
+        scrollSnapAlign: childIndex % Math.floor(slidesPerView) === 0 ? 'start' : 'none',
       }}
     >
       {children}
