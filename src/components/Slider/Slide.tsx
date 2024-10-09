@@ -1,10 +1,15 @@
 import clsx from 'clsx';
-import { useEffect, useRef, useState, type FC, type PropsWithChildren } from 'react';
+import {
+  useEffect,
+  useRef,
+  useState,
+  type DetailedHTMLProps,
+  type FC,
+  type HTMLAttributes,
+  type PropsWithChildren,
+} from 'react';
 import { useSliderContext } from './context';
 
-interface SlideProps {
-  className?: string;
-}
 function getScrollSnapAlign({
   slidesPerView,
   childIndex,
@@ -25,8 +30,10 @@ function getScrollSnapAlign({
   return 'start';
 }
 
-const Slide: FC<PropsWithChildren<SlideProps>> = (props) => {
-  const { children, className } = props;
+const Slide: FC<
+  PropsWithChildren<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>>
+> = (props) => {
+  const { children, ...rest } = props;
   const { slidesPerView = 1, spaceBetween, centerMode = false } = useSliderContext();
   const ref = useRef<HTMLDivElement>(null);
   const [childIndex, setChildIndex] = useState(0);
@@ -39,7 +46,7 @@ const Slide: FC<PropsWithChildren<SlideProps>> = (props) => {
   return (
     <div
       ref={ref}
-      className={clsx('dgs-ui-kit-shrink-0 dgs-ui-kit-snap-always', className)}
+      className={clsx('dgs-ui-kit-shrink-0 dgs-ui-kit-snap-always', rest.className)}
       style={{
         width: 100 / (slidesPerView ?? 1) + '%',
         paddingLeft: spaceBetween,
@@ -49,7 +56,9 @@ const Slide: FC<PropsWithChildren<SlideProps>> = (props) => {
           centerMode,
           childsLength: ref.current?.parentNode?.children.length || 0,
         }),
+        ...rest.style,
       }}
+      {...rest}
     >
       {children}
     </div>
