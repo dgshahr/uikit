@@ -125,7 +125,7 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
       >
         <div
           className={clsx(
-            'dgs-ui-kit-flex dgs-ui-kit-snap-x dgs-ui-kit-overflow-x-auto no-scrollbar',
+            'dgs-ui-kit-flex dgs-ui-kit-snap-x dgs-ui-kit-snap-mandatory dgs-ui-kit-overflow-x-auto no-scrollbar',
             containerClassName,
           )}
           style={{ marginLeft: -spaceBetween }}
