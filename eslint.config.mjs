@@ -61,6 +61,7 @@ export default [
     rules: {
       '@typescript-eslint/no-require-imports': 'off',
       'no-console': ['error', { allow: ['error'] }],
+      'react-hooks/exhaustive-deps': 'off',
       'import/namespace': 'off',
       'import/order': [
         'error',
