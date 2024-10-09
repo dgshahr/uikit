@@ -47,6 +47,16 @@ const meta = {
         },
       },
     },
+    centerMode: {
+      control: { type: 'boolean' },
+      description: 'Center current slide (usefull with decimal slidesPerView)',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: {
+          summary: 'false',
+        },
+      },
+    },
     autoplay: {
       control: { type: 'boolean' },
       table: {

@@ -5,11 +5,27 @@ import { useSliderContext } from './context';
 interface SlideProps {
   className?: string;
 }
+
 const Slide: FC<PropsWithChildren<SlideProps>> = (props) => {
   const { children, className } = props;
-  const { slidesPerView = 1, spaceBetween } = useSliderContext();
+  const { slidesPerView = 1, spaceBetween, centerMode } = useSliderContext();
   const ref = useRef<HTMLDivElement>(null);
   const [childIndex, setChildIndex] = useState(0);
+
+  function getScrollSnapAlign() {
+    if (childIndex % Math.floor(slidesPerView) !== 0) return 'none';
+    if (centerMode) {
+      if (childIndex === 0) return 'start';
+      if (
+        ref.current &&
+        ref.current.parentNode &&
+        childIndex === ref.current.parentNode.children.length - 1
+      )
+        return 'none';
+      return 'center';
+    }
+    return 'start';
+  }
 
   useEffect(() => {
     if (!ref.current) return;
@@ -23,7 +39,7 @@ const Slide: FC<PropsWithChildren<SlideProps>> = (props) => {
       style={{
         width: 100 / (slidesPerView ?? 1) + '%',
         paddingLeft: spaceBetween,
-        scrollSnapAlign: childIndex % Math.floor(slidesPerView) === 0 ? 'start' : 'none',
+        scrollSnapAlign: getScrollSnapAlign(),
       }}
     >
       {children}

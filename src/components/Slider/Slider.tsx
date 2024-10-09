@@ -9,6 +9,7 @@ interface SliderPropsBase {
   showNavigationDots?: boolean;
   dotsClassName?: string;
   slidesPerView?: number;
+  centerMode?: boolean;
   autoplay?:
     | boolean
     | {
@@ -65,6 +66,12 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
 
     const itemsWidth = e.currentTarget.scrollWidth / slidesCount;
     const position = (e.currentTarget.scrollWidth - e.currentTarget.scrollLeft) / itemsWidth;
+
+    if (position <= slidesCount) {
+      setSlideIndex(0);
+      return;
+    }
+
     setSlideIndex(Math.round(position % slidesCount));
   }
 
@@ -95,7 +102,7 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
       >
         <div
           className={clsx(
-            'dgs-ui-kit-flex dgs-ui-kit-snap-x dgs-ui-kit-snap-mandatory dgs-ui-kit-overflow-x-auto no-scrollbar',
+            'dgs-ui-kit-flex dgs-ui-kit-snap-x dgs-ui-kit-overflow-x-auto no-scrollbar',
             containerClassName,
           )}
           style={{ marginLeft: -spaceBetween }}
