@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import type { FC, ReactNode } from 'react';
 import Badge from '../Badge';
+import '@/src/styles.css';
 
 interface ITabItem {
   key: string | number;
