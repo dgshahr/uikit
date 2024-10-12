@@ -1,6 +1,6 @@
 'use client';
 import clsx from 'clsx';
-import { useState, type ChangeEvent, type FC, type KeyboardEvent } from 'react';
+import { useEffect, useState, type ChangeEvent, type FC, type KeyboardEvent } from 'react';
 import Input from '../Input';
 import FieldBottomInfo from '../Wrappers/TextFieldWrapper/FieldBottomInfo';
 import FieldLabel from '../Wrappers/TextFieldWrapper/FieldLabel';
@@ -14,6 +14,7 @@ interface OtpInputProps
   onEnd?: (value: string) => void;
   className?: string;
   inputsContainerClassName?: string;
+  value?: string;
 }
 
 const OtpInput: FC<OtpInputProps> = (props) => {
@@ -26,8 +27,16 @@ const OtpInput: FC<OtpInputProps> = (props) => {
     labelContent,
     hintMessage,
     errorMessage,
+    value: propsValue,
   } = props;
   const [values, setValues] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (propsValue) {
+      const initialValue = propsValue.split('');
+      setValues(initialValue);
+    }
+  }, []);
 
   function focusOnInput(index: number) {
     document.getElementById(`dgs-ui-kit-otp-input-${index}`)?.focus();
@@ -43,7 +52,8 @@ const OtpInput: FC<OtpInputProps> = (props) => {
         focusOnInput(index - 1);
       }
       setValues(newValues);
-    }
+    } else if (key.includes('ArrowLeft')) focusOnInput(index + 1);
+    else if (key.includes('ArrowRight')) focusOnInput(index - 1);
   }
 
   function handleInputChange(e: ChangeEvent<HTMLInputElement>, index: number) {
@@ -51,8 +61,9 @@ const OtpInput: FC<OtpInputProps> = (props) => {
     const newValues = [...values];
     newValues[index] = currentValue;
 
-    if (index + 1 !== inputsNumber) focusOnInput(index + 1);
-    else if (typeof onEnd === 'function' && currentValue) onEnd(newValues.join(''));
+    if (index + 1 !== inputsNumber && currentValue) focusOnInput(index + 1);
+    else if (typeof onEnd === 'function' && newValues.every((value) => Boolean(value)))
+      onEnd(newValues.join(''));
 
     setValues(newValues);
 
