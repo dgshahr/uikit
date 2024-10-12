@@ -5,6 +5,13 @@ import Badge from './index';
 const meta = {
   title: 'Components/Badge',
   component: Badge,
+  parameters: {
+    docs: {
+      description: {
+        component: `### \n\`\`\`js\nimport Badge from '@dgshahr/ui-kit/Badge';\nOr\nimport { Badge } from '@dgshahr/ui-kit';\n\`\`\``,
+      },
+    },
+  },
   argTypes: {
     type: {
       options: ['twoTone', 'solid'],

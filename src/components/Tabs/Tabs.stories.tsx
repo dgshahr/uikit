@@ -7,6 +7,13 @@ import Tabs from './index';
 const meta = {
   title: 'Components/Tabs',
   component: Tabs,
+  parameters: {
+    docs: {
+      description: {
+        component: `### \n\`\`\`js\nimport Tabs from '@dgshahr/ui-kit/Tabs';\nOr\nimport { Tabs } from '@dgshahr/ui-kit';\n\`\`\``,
+      },
+    },
+  },
   argTypes: {
     items: {
       control: { type: 'object' },

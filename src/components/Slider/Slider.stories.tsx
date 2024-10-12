@@ -6,6 +6,13 @@ import { Slider, Slide } from './index';
 const meta = {
   title: 'Components/Slider',
   component: Slider,
+  parameters: {
+    docs: {
+      description: {
+        component: `### \n\`\`\`js\nimport { Slider, Slide } from '@dgshahr/ui-kit/Slider';\nOr\nimport { Slider, Slide } from '@dgshahr/ui-kit';\n\`\`\``,
+      },
+    },
+  },
   argTypes: {
     containerClassName: {
       control: { type: 'text' },

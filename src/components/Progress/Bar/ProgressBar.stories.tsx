@@ -5,6 +5,13 @@ import ProgressBar from './index';
 const meta = {
   title: 'Components/ProgressBar',
   component: ProgressBar,
+  parameters: {
+    docs: {
+      description: {
+        component: `### \n\`\`\`js\nimport ProgressBar from '@dgshahr/ui-kit/Progress/Bar';\nOr\nimport { ProgressBar } from '@dgshahr/ui-kit';\n\`\`\``,
+      },
+    },
+  },
   argTypes: {
     title: {
       control: { type: 'text' },
