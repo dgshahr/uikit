@@ -9,4 +9,6 @@ export { default as Input } from './Form/Input';
 export { default as RadioButton } from './Form/RadioButton';
 export { default as Textarea } from './Form/Textarea';
 export { default as Pagination } from './Pagination';
+export { default as ProgressBar } from './Progress/Bar';
 export { Slider, Slide } from './Slider';
+export { default as Tabs } from './Tabs';
