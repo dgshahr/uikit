@@ -5,9 +5,6 @@ import Badge from './index';
 const meta = {
   title: 'Components/Badge',
   component: Badge,
-  parameters: {
-    layout: 'centered',
-  },
   argTypes: {
     type: {
       options: ['twoTone', 'solid'],

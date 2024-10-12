@@ -5,9 +5,6 @@ import ProgressBar from './index';
 const meta = {
   title: 'Components/ProgressBar',
   component: ProgressBar,
-  parameters: {
-    layout: 'centered',
-  },
   argTypes: {
     title: {
       control: { type: 'text' },

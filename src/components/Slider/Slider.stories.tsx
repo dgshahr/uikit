@@ -7,9 +7,6 @@ import { Slider, Slide } from './index';
 const meta = {
   title: 'Components/Slider',
   component: Slider,
-  parameters: {
-    layout: 'centered',
-  },
   argTypes: {
     containerClassName: {
       control: { type: 'text' },

@@ -8,9 +8,6 @@ import Tabs from './index';
 const meta = {
   title: 'Components/Tabs',
   component: Tabs,
-  parameters: {
-    layout: 'centered',
-  },
   argTypes: {
     items: {
       control: { type: 'object' },
