@@ -1,3 +1,4 @@
+'use client';
 import clsx from 'clsx';
 import { useState } from 'react';
 import ArrowLeft2Icon from '@/src/icons/ArrowLeft2';
