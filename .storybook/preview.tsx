@@ -1,4 +1,5 @@
 import type { Preview } from '@storybook/react';
+import React from 'react';
 
 const preview: Preview = {
   parameters: {
@@ -11,6 +12,13 @@ const preview: Preview = {
       },
     },
   },
+  decorators: [
+    (Story) => (
+      <div style={{ direction: 'rtl' }}>
+        <Story />
+      </div>
+    ),
+  ],
   tags: ['autodocs'],
 };
 
