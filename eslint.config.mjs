@@ -62,6 +62,13 @@ export default [
       '@typescript-eslint/no-require-imports': 'off',
       'no-console': ['error', { allow: ['error'] }],
       'react-hooks/exhaustive-deps': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: 'React',
+        },
+      ],
       'import/namespace': 'off',
       'import/order': [
         'error',

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React from 'react';
 
 import { Slider, Slide } from './index';
