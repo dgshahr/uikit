@@ -28,6 +28,7 @@ export interface TextFieldBaseProps {
   errorMessage?: string;
   hintMessage?: string;
   wrapperClassName?: string;
+  showMaxLength?: boolean;
 }
 
 interface TextFieldFunctionArgumants<T> {
@@ -61,6 +62,7 @@ const TextFieldWrapper = <T extends HTMLTextAreaElement | HTMLInputElement>(
     onChange,
     wrapperClassName,
     children,
+    showMaxLength,
   } = props;
 
   const [value, setValue] = useState(initialValue?.toString());
@@ -76,7 +78,7 @@ const TextFieldWrapper = <T extends HTMLTextAreaElement | HTMLInputElement>(
     }
   };
 
-  const showInfo = Boolean(errorMessage || hintMessage || maxLength);
+  const showInfo = Boolean(errorMessage || hintMessage || (maxLength && showMaxLength));
   const showLabel = Boolean(labelContent || link?.href);
   const WrapperElement = showInfo || showLabel ? 'div' : React.Fragment;
 
@@ -107,7 +109,7 @@ const TextFieldWrapper = <T extends HTMLTextAreaElement | HTMLInputElement>(
         <FieldBottomInfo
           errorMessage={errorMessage}
           hintMessage={hintMessage}
-          maxLength={maxLength}
+          maxLength={showMaxLength ? maxLength : undefined}
           value={value}
         />
       )}
