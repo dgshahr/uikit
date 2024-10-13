@@ -1,6 +1,6 @@
 'use client';
 import clsx from 'clsx';
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import CheckCircleBoldIcon from '@/src/icons/CheckCircleBold';
 import CloseRemoveIcon from '@/src/icons/CloseRemove';
 import DangerBoldIcon from '@/src/icons/DangerBold';
@@ -18,10 +18,11 @@ export interface AlertProps {
   variant?: 'warning' | 'primary' | 'error' | 'success' | 'gray';
   size?: 'large' | 'small';
   title?: string;
-  text: string;
+  text: ReactNode;
   primaryButton?: AlertButtonProps;
   outlineButton?: AlertButtonProps;
   closable?: boolean;
+  showTitleIcon?: boolean;
   className?: string;
 }
 
@@ -54,6 +55,7 @@ const Alert = (props: AlertProps) => {
     primaryButton,
     outlineButton,
     closable,
+    showTitleIcon = true,
     className,
   } = props;
   const [show, setShow] = useState(true);
@@ -68,7 +70,7 @@ const Alert = (props: AlertProps) => {
           className,
         )}
       >
-        {getAlertIcon(variant, size)}
+        {showTitleIcon && getAlertIcon(variant, size)}
         <div className="dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-flex-1">
           {Boolean(title) && (
             <div
