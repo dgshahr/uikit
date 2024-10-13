@@ -34,7 +34,7 @@ export interface TextFieldBaseProps {
 interface TextFieldFunctionArgumants<T> {
   handleChangeField: (e: ChangeEvent<T>) => void;
   value: string | undefined;
-  setValue: Dispatch<SetStateAction<string | undefined>>;
+  setValue: Dispatch<SetStateAction<string>>;
 }
 
 interface TextFieldWrapperProps<T> extends TextFieldBaseProps {
@@ -65,10 +65,10 @@ const TextFieldWrapper = <T extends HTMLTextAreaElement | HTMLInputElement>(
     showMaxLength,
   } = props;
 
-  const [value, setValue] = useState(initialValue?.toString());
+  const [value, setValue] = useState(initialValue?.toString() ?? '');
 
   useEffect(() => {
-    setValue(initialValue?.toString());
+    if (initialValue) setValue(initialValue?.toString());
   }, [initialValue]);
 
   const handleChangeField = (e: ChangeEvent<T>) => {
