@@ -105,7 +105,7 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
   }
 
   useEffect(() => {
-    if (props?.responsive && Object.keys(props.responsive).length <= 0) return;
+    if (!props.responsive || Object.keys(props.responsive).length <= 0) return;
 
     detectResponsiveProps();
     window.addEventListener('resize', detectResponsiveProps);
