@@ -108,6 +108,16 @@
         "default": "./dist/Form/Input/index.cjs"
       }
     },
+    "./Form/OtpInput": {
+      "import": {
+        "types": "./dist/Form/OtpInput/index.d.ts",
+        "default": "./dist/Form/OtpInput/index.js"
+      },
+      "require": {
+        "types": "./dist/Form/OtpInput/index.d.ts",
+        "default": "./dist/Form/OtpInput/index.cjs"
+      }
+    },
     "./Form/RadioButton": {
       "import": {
         "types": "./dist/Form/RadioButton/index.d.ts",
@@ -136,6 +146,16 @@
       "require": {
         "types": "./dist/Pagination/index.d.ts",
         "default": "./dist/Pagination/index.cjs"
+      }
+    },
+    "./Progress/Bar": {
+      "import": {
+        "types": "./dist/Progress/Bar/index.d.ts",
+        "default": "./dist/Progress/Bar/index.js"
+      },
+      "require": {
+        "types": "./dist/Progress/Bar/index.d.ts",
+        "default": "./dist/Progress/Bar/index.cjs"
       }
     },
     "./Slider": {
