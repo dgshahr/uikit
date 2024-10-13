@@ -2,6 +2,7 @@ import react from '@vitejs/plugin-react-swc';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
+import preserveDirectives from 'rollup-preserve-directives';
 import { readdirSync, existsSync, statSync } from 'fs';
 import { resolve } from 'node:path';
 
@@ -34,7 +35,12 @@ if (existsSync(componentsIndexRoute)) {
 }
 
 export default defineConfig({
-  plugins: [react(), libInjectCss(), dts({ entryRoot: 'src/components', exclude: ['src/icons'] })],
+  plugins: [
+    react(),
+    libInjectCss(),
+    dts({ entryRoot: 'src/components', exclude: ['src/icons'] }),
+    preserveDirectives(),
+  ],
   resolve: {
     alias: {
       '@/src': resolve(__dirname, 'src'),
