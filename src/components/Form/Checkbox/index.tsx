@@ -17,9 +17,9 @@ const Checkbox = (props: CheckboxProps) => {
       {({ inputClassName, checkedInputClassName }) => (
         <>
           <input
+            {...rest}
             type="checkbox"
             className={clsx('dgs-ui-kit-rounded', inputClassName, className)}
-            {...rest}
           />
           <div className={checkedInputClassName}>
             {isIndeterminate ? (

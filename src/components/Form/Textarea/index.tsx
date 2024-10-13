@@ -19,7 +19,7 @@ const Textarea = forwardRef(function Textarea(
   props: TextareaProps,
   ref: ForwardedRef<HTMLTextAreaElement>,
 ) {
-  const { dir = 'rtl', placeholderDir = dir, ...restProps } = props;
+  const { dir = 'rtl', placeholderDir = dir, className, ...restProps } = props;
 
   return (
     <TextFieldWrapper {...props}>
@@ -33,7 +33,7 @@ const Textarea = forwardRef(function Textarea(
             placeholderDir === 'rtl'
               ? 'placeholder:dgs-ui-kit-text-right'
               : 'placeholder:dgs-ui-kit-text-left',
-            restProps.className,
+            className,
           )}
           onChange={handleChangeField}
           rows={restProps.rows ?? 5}

@@ -34,7 +34,7 @@ function getScrollSnapAlign({
 const Slide: FC<
   PropsWithChildren<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>>
 > = (props) => {
-  const { children, ...rest } = props;
+  const { children, className, style, ...rest } = props;
   const { slidesPerView = 1, spaceBetween, centerMode = false } = useSliderContext();
   const ref = useRef<HTMLDivElement>(null);
   const [childIndex, setChildIndex] = useState(0);
@@ -46,8 +46,9 @@ const Slide: FC<
 
   return (
     <div
+      {...rest}
       ref={ref}
-      className={clsx('dgs-ui-kit-shrink-0 dgs-ui-kit-snap-always', rest.className)}
+      className={clsx('dgs-ui-kit-shrink-0 dgs-ui-kit-snap-always', className)}
       style={{
         width: 100 / (slidesPerView ?? 1) + '%',
         paddingLeft: spaceBetween,
@@ -57,9 +58,8 @@ const Slide: FC<
           centerMode,
           childsLength: ref.current?.parentNode?.children.length || 0,
         }),
-        ...rest.style,
+        ...style,
       }}
-      {...rest}
     >
       {children}
     </div>
