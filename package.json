@@ -88,6 +88,16 @@
         "default": "./dist/Divider/index.cjs"
       }
     },
+    "./Drawer": {
+      "import": {
+        "types": "./dist/Drawer/index.d.ts",
+        "default": "./dist/Drawer/index.js"
+      },
+      "require": {
+        "types": "./dist/Drawer/index.d.ts",
+        "default": "./dist/Drawer/index.cjs"
+      }
+    },
     "./Form/Checkbox": {
       "import": {
         "types": "./dist/Form/Checkbox/index.d.ts",
