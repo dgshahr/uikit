@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import type { FC, PropsWithChildren } from 'react';
 import { iconOnlyButtonSizeStyle, sizeStyle, variantStyle } from './variants';
 
-import './Button.css';
+import '@/src/styles.css';
 
 export interface ButtonProps
   extends React.DetailedHTMLProps<
@@ -18,7 +18,7 @@ export interface ButtonProps
   isLoading?: boolean;
 }
 
-const REMOVE_OPACITY_CLASS = 'opacity-0';
+const REMOVE_OPACITY_CLASS = 'dgs-ui-kit-opacity-0';
 
 function styleButton({
   variant = 'primary',
