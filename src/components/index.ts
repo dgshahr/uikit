@@ -4,6 +4,7 @@ export { default as Badge } from './Badge';
 export { default as Breadcrumb } from './Breadcrumb';
 export { default as Button } from './Button';
 export { default as Divider } from './Divider';
+export { default as Drawer } from './Drawer';
 export { default as Checkbox } from './Form/Checkbox';
 export { default as Input } from './Form/Input';
 export { default as OtpInput } from './Form/OtpInput';
