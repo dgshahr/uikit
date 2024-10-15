@@ -25,7 +25,7 @@ function getScrollSnapAlign({
   if (childIndex % Math.floor(slidesPerView) !== 0) return 'none';
   if (centerMode && slidesPerView % 1 !== 0) {
     if (childIndex === 0) return 'start';
-    if (childIndex === childsLength - 1) return 'none';
+    if (childIndex === childsLength - 1) return 'end';
     return 'center';
   }
   return 'start';
