@@ -30,6 +30,7 @@ export interface SliderProps {
   navigationVariant?: 'inside' | 'outside';
   navigationButtonsShowType?: 'hide' | 'hover' | 'permanent' | 'onSides';
   responsive?: Record<number, Omit<SliderProps, 'responsive'>>;
+  containerXPadding?: number;
 }
 
 const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {

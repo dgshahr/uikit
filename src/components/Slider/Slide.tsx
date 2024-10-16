@@ -35,9 +35,15 @@ const Slide: FC<
   PropsWithChildren<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>>
 > = (props) => {
   const { children, className, style, ...rest } = props;
-  const { slidesPerView = 1, spaceBetween, centerMode = false } = useSliderContext();
+  const {
+    slidesPerView = 1,
+    spaceBetween = 0,
+    centerMode = false,
+    containerXPadding = 0,
+  } = useSliderContext();
   const ref = useRef<HTMLDivElement>(null);
   const [childIndex, setChildIndex] = useState(0);
+  const childsLength = ref.current?.parentNode?.children.length;
 
   useEffect(() => {
     if (!ref.current) return;
@@ -51,12 +57,16 @@ const Slide: FC<
       className={clsx('dgs-ui-kit-shrink-0 dgs-ui-kit-snap-always', className)}
       style={{
         width: 100 / (slidesPerView ?? 1) + '%',
-        paddingLeft: spaceBetween,
+        paddingLeft:
+          childsLength && childIndex === childsLength - 1
+            ? containerXPadding + spaceBetween
+            : spaceBetween,
+        paddingRight: childIndex === 0 ? containerXPadding : 0,
         scrollSnapAlign: getScrollSnapAlign({
           slidesPerView,
           childIndex,
           centerMode,
-          childsLength: ref.current?.parentNode?.children.length || 0,
+          childsLength: childsLength || 0,
         }),
         ...style,
       }}

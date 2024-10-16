@@ -131,6 +131,10 @@ const meta = {
         },
       },
     },
+    containerXPadding: {
+      description:
+        "it's add padding to first and last slide (it's just a temporary solution and i'm trying to handle it on container)",
+    },
     children: {
       control: { type: 'object' },
       description: 'use `Slide` component for every slide you have',
