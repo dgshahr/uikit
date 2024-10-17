@@ -47,6 +47,7 @@ const meta = {
     },
     padding: {
       control: { type: 'number' },
+      table: { defaultValue: { summary: '8' } },
     },
     header: {
       control: { type: 'object' },

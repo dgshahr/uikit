@@ -57,7 +57,7 @@ const Drawer: FC<PropsWithChildren<DrawerProps>> = (props) => {
     className,
     maskClassName,
     containerClassName,
-    padding,
+    padding = 8,
     header,
     footer,
   } = props;
