@@ -40,9 +40,9 @@ function getSize({
 }) {
   if (item === 'width') {
     if (position === 'bottom' || position === 'top') return `calc(100% - ${padding * 2})`;
-    else return `100%`;
+    else return `auto`;
   } else {
-    if (position === 'bottom' || position === 'top') return '100%';
+    if (position === 'bottom' || position === 'top') return 'auto';
     else return `calc(100% - ${padding * 2})`;
   }
 }
@@ -100,10 +100,8 @@ const Drawer: FC<PropsWithChildren<DrawerProps>> = (props) => {
     >
       <div
         className={clsx(
-          'dgs-ui-kit-rounded-2xl dgs-ui-kit-absolute dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-z-10 dgs-ui-kit-bg-white dgs-ui-kit-opacity-0 dgs-ui-kit-transition dgs-ui-kit-duration-100 dgs-ui-kit-divide-y dgs-ui-kit-divide-gray-200 dgs-ui-kit-divide-solid',
+          'dgs-ui-kit-overflow-x-hidden dgs-ui-kit-rounded-2xl dgs-ui-kit-absolute dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-z-10 dgs-ui-kit-bg-white dgs-ui-kit-opacity-0 dgs-ui-kit-transition dgs-ui-kit-duration-100 dgs-ui-kit-divide-y dgs-ui-kit-divide-gray-200 dgs-ui-kit-divide-solid',
           {
-            'dgs-ui-kit-max-h-[376px]': position === 'bottom' || position === 'top',
-            'dgs-ui-kit-max-w-[400px]': position === 'left' || position === 'right',
             'dgs-ui-kit-opacity-100': show,
             'dgs-ui-kit-translate-y-full': !show && position === 'bottom',
             '-dgs-ui-kit-translate-y-full': !show && position === 'top',
@@ -160,13 +158,11 @@ const Drawer: FC<PropsWithChildren<DrawerProps>> = (props) => {
             )}
           </div>
         )}
-        <div
-          className={clsx('dgs-ui-kit-p-4 dgs-ui-kit-w-full dgs-ui-kit-h-full', containerClassName)}
-        >
-          {children}
-        </div>
+        <div className={clsx('dgs-ui-kit-p-4', containerClassName)}>{children}</div>
         {footer?.element ? (
-          <div className={clsx('dgs-ui-kit-p-4', footer.containerClassName)}>{footer.element}</div>
+          <div className={clsx('dgs-ui-kit-p-4 dgs-ui-kit-mt-auto', footer.containerClassName)}>
+            {footer.element}
+          </div>
         ) : null}
       </div>
     </button>

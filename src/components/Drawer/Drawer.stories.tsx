@@ -105,7 +105,7 @@ const DrawerExample: FC = () => {
             ),
           }}
         >
-          <div className="dgs-ui-kit-border dgs-ui-kit-border-primary-500 dgs-ui-kit-border-dashed dgs-ui-kit-bg-gray-50 dgs-ui-kit-text-gray-500 dgs-ui-kit-w-full dgs-ui-kit-h-full dgs-ui-kit-rounded-lg dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-justify-center">
+          <div className="dgs-ui-kit-border dgs-ui-kit-border-primary-500 dgs-ui-kit-border-dashed dgs-ui-kit-bg-gray-50 dgs-ui-kit-text-gray-500 dgs-ui-kit-rounded-lg dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-justify-center dgs-ui-kit-h-[200px] dgs-ui-kit-w-[500px]">
             Component
           </div>
         </Drawer>,
