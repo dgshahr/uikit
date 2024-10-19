@@ -27,6 +27,7 @@ const OtpInput: FC<OtpInputProps> = (props) => {
     labelContent,
     hintMessage,
     errorMessage,
+    isError,
     value: propsValue,
   } = props;
   const [values, setValues] = useState<string[]>([]);
@@ -92,6 +93,7 @@ const OtpInput: FC<OtpInputProps> = (props) => {
             maxLength={1}
             value={values[index]}
             showMaxLength={false}
+            isError={Boolean(errorMessage) || isError}
           />
         ))}
       </div>
