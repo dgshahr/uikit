@@ -25,6 +25,22 @@ const meta = {
         type: { summary: 'function', detail: '(value:number)=> void' },
       },
     },
+    isError: {
+      control: { type: 'boolean' },
+      table: {
+        type: {
+          summary: 'boolean',
+        },
+      },
+    },
+    errorMessage: {
+      control: {
+        type: 'text',
+      },
+      table: {
+        type: { summary: 'string' },
+      },
+    },
   },
 } satisfies Meta<typeof OtpInput>;
 
