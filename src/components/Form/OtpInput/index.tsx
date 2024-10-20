@@ -40,7 +40,9 @@ const OtpInput: FC<OtpInputProps> = (props) => {
   }, []);
 
   function focusOnInput(index: number) {
-    document.getElementById(`dgs-ui-kit-otp-input-${index}`)?.focus();
+    const input = document.getElementById(`dgs-ui-kit-otp-input-${index}`) as HTMLInputElement;
+    input?.focus();
+    input?.select();
   }
 
   function hnadleInputKeyUp(e: KeyboardEvent<HTMLInputElement>, index: number) {
