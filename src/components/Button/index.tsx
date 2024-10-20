@@ -69,7 +69,7 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
       {rightIcon && (
         <span
           className={clsx(
-            'dgs-ui-kit-block icon-button',
+            'dgs-ui-kit-block icon-button [&_svg]:dgs-ui-kit-size-full',
             { 'dgs-ui-kit-ml-2': children },
             { [REMOVE_OPACITY_CLASS]: isLoading },
           )}
@@ -86,7 +86,7 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
       {leftIcon && (
         <span
           className={clsx(
-            'dgs-ui-kit-block icon-button',
+            'dgs-ui-kit-block icon-button [&_svg]:dgs-ui-kit-size-full',
             { 'dgs-ui-kit-mr-2': children },
             { [REMOVE_OPACITY_CLASS]: isLoading },
           )}
