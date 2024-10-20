@@ -39,11 +39,11 @@ function getSize({
   item: 'height' | 'width';
 }) {
   if (item === 'width') {
-    if (position === 'bottom' || position === 'top') return `calc(100% - ${padding * 2})`;
+    if (position === 'bottom' || position === 'top') return `calc(100% - ${padding * 2}px)`;
     else return `auto`;
   } else {
     if (position === 'bottom' || position === 'top') return 'auto';
-    else return `calc(100% - ${padding * 2})`;
+    else return `calc(100% - ${padding * 2}px)`;
   }
 }
 
@@ -111,10 +111,12 @@ const Drawer: FC<PropsWithChildren<DrawerProps>> = (props) => {
           className,
         )}
         style={{
-          top: position !== 'bottom' ? (padding ?? 0) : 'auto',
-          bottom: position !== 'top' ? (padding ?? 0) : 'auto',
-          left: position !== 'right' ? (padding ?? 0) : 'auto',
-          right: position !== 'left' ? (padding ?? 0) : 'auto',
+          top: position !== 'bottom' ? (padding ?? 0) : 'unset',
+          bottom: position !== 'top' ? (padding ?? 0) : 'unset',
+          left: position !== 'right' ? (padding ?? 0) : 'unset',
+          right: position !== 'left' ? (padding ?? 0) : 'unset',
+          maxHeight: `calc(100vh - ${padding * 2}px)`,
+          maxWidth: `calc(100vw - ${padding * 2}px)`,
           width: getSize({ position, padding, item: 'width' }),
           height: getSize({ position, padding, item: 'height' }),
         }}
