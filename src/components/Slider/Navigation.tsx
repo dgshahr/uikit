@@ -30,7 +30,7 @@ const Navigation: FC<NavigationProps> = (props) => {
         'dgs-ui-kit-absolute dgs-ui-kit-bottom-0 dgs-ui-kit-left-[5.5%]':
           navigationVariant === 'inside' && navigationButtonsShowType !== 'onSides',
         'dgs-ui-kit-absolute dgs-ui-kit-justify-between dgs-ui-kit-top-1/2 -dgs-ui-kit-translate-y-1/2 dgs-ui-kit-w-full dgs-ui-kit-px-[5.5%]':
-          navigationVariant === 'inside' && navigationButtonsShowType === 'onSides',
+          navigationButtonsShowType === 'onSides',
         'dgs-ui-kit-opacity-0 group-hover:dgs-ui-kit-opacity-100 dgs-ui-kit-transition':
           navigationButtonsShowType === 'hover' || navigationButtonsShowType === 'onSides',
       })}
@@ -64,9 +64,12 @@ const Navigation: FC<NavigationProps> = (props) => {
             'dgs-ui-kit-absolute dgs-ui-kit-bottom-4 dgs-ui-kit-w-full dgs-ui-kit-justify-center':
               navigationVariant === 'inside',
             'dgs-ui-kit-justify-between':
-              navigationVariant === 'outside' && navigationButtonsShowType !== 'hide',
+              navigationVariant === 'outside' &&
+              navigationButtonsShowType !== 'hide' &&
+              navigationButtonsShowType !== 'onSides',
             'dgs-ui-kit-justify-center':
-              navigationVariant === 'outside' && navigationButtonsShowType === 'hide',
+              navigationVariant === 'outside' &&
+              (navigationButtonsShowType === 'hide' || navigationButtonsShowType === 'onSides'),
           },
           navigationContainerClassName,
         )}
