@@ -68,7 +68,8 @@ const TextFieldWrapper = <T extends HTMLTextAreaElement | HTMLInputElement>(
   const [value, setValue] = useState(initialValue?.toString() ?? '');
 
   useEffect(() => {
-    if (initialValue) setValue(initialValue?.toString());
+    if (typeof initialValue !== 'undefined' && initialValue !== null)
+      setValue(initialValue?.toString());
   }, [initialValue]);
 
   const handleChangeField = (e: ChangeEvent<T>) => {
