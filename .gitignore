@@ -2,3 +2,5 @@ node_modules
 dist
 .github
 storybook-static
+.idea
+.DS_Store

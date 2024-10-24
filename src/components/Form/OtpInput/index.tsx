@@ -88,6 +88,7 @@ const OtpInput: FC<OtpInputProps> = (props) => {
             containerClassName="dgs-ui-kit-w-12 dgs-ui-kit-h-12 dgs-ui-kit-p-0"
             className="dgs-ui-kit-w-full dgs-ui-kit-h-full !dgs-ui-kit-text-center placeholder:!dgs-ui-kit-text-center"
             placeholder="-"
+            type="tel"
             autoFocus={index === 0}
             onChange={(e) => handleInputChange(e, index)}
             onKeyUp={(e) => hnadleInputKeyUp(e, index)}
