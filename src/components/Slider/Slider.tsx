@@ -73,18 +73,14 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
 
   function navigate(target: number) {
     if (!containerRef.current) return;
-    const isSlidePerViewDecimal = slidesPerView % 1 !== 0;
     const containerWidth = containerRef.current.offsetWidth;
-    const slideWidth = isSlidePerViewDecimal ? containerWidth / slidesPerView : containerWidth;
 
-    let nextSlideScroll = -(slideWidth * target);
-    if (target < 0) nextSlideScroll = -(slideWidth * slidesCount);
-    else if (target >= slidesCount) nextSlideScroll = 0;
-
-    containerRef.current.scrollTo({
-      left: nextSlideScroll,
-      behavior: 'smooth',
-    });
+    if (target < 0)
+      containerRef.current.scrollTo({ behavior: 'smooth', left: -(containerWidth * slidesCount) });
+    else if (target >= slidesCount) containerRef.current.scrollTo({ behavior: 'smooth', left: 0 });
+    else if (slideIndex > target)
+      containerRef.current.scrollBy({ behavior: 'smooth', left: containerWidth });
+    else containerRef.current.scrollBy({ behavior: 'smooth', left: -containerWidth });
   }
 
   function detectResponsiveProps() {
