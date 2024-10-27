@@ -1,14 +1,6 @@
 'use client';
 import clsx from 'clsx';
-import {
-  useRef,
-  useState,
-  Children,
-  type FC,
-  type PropsWithChildren,
-  type UIEvent,
-  useEffect,
-} from 'react';
+import { useRef, useState, type FC, type PropsWithChildren, type UIEvent, useEffect } from 'react';
 import { sliderContext } from './context';
 import Navigation from './Navigation';
 
@@ -36,6 +28,8 @@ export interface SliderProps {
 const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
   const [slideIndex, setSlideIndex] = useState(0);
   const [currentProps, setCurrentProps] = useState<SliderProps>(props);
+  const [childsCount, setChildsCount] = useState(0);
+
   const {
     className = '',
     containerClassName = '',
@@ -49,7 +43,6 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
     Object.entries(currentProps).filter(([key]) => key !== 'children'),
   );
   const containerRef = useRef<HTMLDivElement>(null);
-  const childsCount = Children.count(props.children);
   const slidesCount = Math.ceil(childsCount / Math.floor(slidesPerView));
   const haveNavigation =
     (showNavigationDots ||
@@ -104,6 +97,12 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
     if (foundedCurrentProps) setCurrentProps({ ...currentProps, ...foundedCurrentProps });
     else setCurrentProps(props);
   }
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    setChildsCount(containerRef.current.childNodes.length);
+  }, [props.children]);
 
   useEffect(() => {
     if (!props.responsive || Object.keys(props.responsive).length <= 0) return;
