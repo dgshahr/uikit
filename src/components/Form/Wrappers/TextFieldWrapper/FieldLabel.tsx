@@ -3,10 +3,11 @@ import type { TextFieldBaseProps } from './TextFieldWrapper';
 
 interface FieldLabelProps extends Pick<TextFieldBaseProps, 'link' | 'labelContent'> {
   required?: boolean;
+  disabled?: boolean;
 }
 
 const FieldLabel = (props: FieldLabelProps) => {
-  const { link, labelContent, required } = props;
+  const { link, labelContent, required, disabled } = props;
 
   return (
     <div
@@ -14,6 +15,7 @@ const FieldLabel = (props: FieldLabelProps) => {
         'dgs-ui-kit-justify-between': labelContent && link?.href,
         'dgs-ui-kit-justify-start': labelContent && !link?.href,
         'dgs-ui-kit-justify-end': !labelContent && link?.href,
+        'dgs-ui-kit-text-gray-400': disabled,
       })}
     >
       {labelContent && (
