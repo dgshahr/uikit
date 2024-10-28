@@ -11,7 +11,7 @@ import TextFieldWrapper from '../Wrappers/TextFieldWrapper/TextFieldWrapper';
 interface TextareaProps
   extends Omit<
       DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>,
-      'dir'
+      'dir' | 'onClick'
     >,
     TextFieldBaseProps {}
 
@@ -21,8 +21,17 @@ const Textarea = forwardRef(function Textarea(
 ) {
   const { dir = 'rtl', placeholderDir = dir, className, ...restProps } = props;
 
+  const handleFocusInput = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const divElement = e.currentTarget;
+    const inputElement = divElement.querySelector('textarea') as HTMLTextAreaElement | null;
+    if (inputElement) inputElement.focus();
+  };
+
   return (
-    <TextFieldWrapper {...props}>
+    <TextFieldWrapper
+      onClick={handleFocusInput}
+      {...props}
+    >
       {({ handleChangeField }) => (
         <textarea
           {...restProps}

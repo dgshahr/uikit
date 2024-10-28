@@ -33,10 +33,7 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
 
   const handleFocusInput = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const divElement = e.currentTarget;
-    const inputElement = divElement.querySelector('input, textarea') as
-      | HTMLInputElement
-      | HTMLTextAreaElement
-      | null;
+    const inputElement = divElement.querySelector('input') as HTMLInputElement | null;
     if (inputElement) inputElement.focus();
   };
 
