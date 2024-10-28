@@ -15,22 +15,27 @@ function getScrollSnapAlign({
   slidesPerView,
   childIndex,
   centerMode,
-  childsLength,
+  childrenCount,
 }: {
   slidesPerView: number;
   childIndex: number;
   centerMode: boolean;
-  childsLength: number;
-}) {
-  if (childIndex % Math.floor(slidesPerView) !== 0) return 'none';
-  if (centerMode && slidesPerView % 1 !== 0) {
-    if (childIndex === 0) return 'start';
-    if (childIndex === childsLength - 1) return 'end';
+  childrenCount: number;
+}): React.CSSProperties['scrollSnapAlign'] {
+  const isFirstSlideInRow = childIndex % Math.floor(slidesPerView) === 0;
+  const hasPartialSlides = slidesPerView % 1 !== 0;
+  const isFirstChild = childIndex === 0;
+  const isLastChild = childIndex === childrenCount - 1;
+
+  if (!isFirstSlideInRow) return 'none';
+  if (centerMode && hasPartialSlides) {
+    if (isFirstChild) return 'start';
+    if (isLastChild) return 'end';
     return 'center';
   }
+
   return 'start';
 }
-
 const Slide: FC<
   PropsWithChildren<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>>
 > = (props) => {
@@ -43,7 +48,7 @@ const Slide: FC<
   } = useSliderContext();
   const ref = useRef<HTMLDivElement>(null);
   const [childIndex, setChildIndex] = useState(0);
-  const childsLength = ref.current?.parentNode?.children.length;
+  const childrenCount = ref.current?.parentNode?.children.length;
 
   useEffect(() => {
     if (!ref.current) return;
@@ -58,7 +63,7 @@ const Slide: FC<
       style={{
         width: 100 / (slidesPerView ?? 1) + '%',
         paddingLeft:
-          childsLength && childIndex === childsLength - 1
+          childrenCount && childIndex === childrenCount - 1
             ? containerXPadding + spaceBetween
             : spaceBetween,
         paddingRight: childIndex === 0 ? containerXPadding : 0,
@@ -66,7 +71,7 @@ const Slide: FC<
           slidesPerView,
           childIndex,
           centerMode,
-          childsLength: childsLength || 0,
+          childrenCount: childrenCount || 0,
         }),
         ...style,
       }}
