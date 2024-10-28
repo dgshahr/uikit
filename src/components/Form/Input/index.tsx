@@ -31,10 +31,20 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
 
   const [type, setType] = useState(restProps.type);
 
+  const handleFocusInput = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const divElement = e.currentTarget;
+    const inputElement = divElement.querySelector('input, textarea') as
+      | HTMLInputElement
+      | HTMLTextAreaElement
+      | null;
+    if (inputElement) inputElement.focus();
+  };
+
   return (
     <TextFieldWrapper
       {...props}
       containerClassName={clsx('dgs-ui-kit-items-center', containerClassName)}
+      onClick={handleFocusInput}
     >
       {({ handleChangeField, value, setValue }) => (
         <>

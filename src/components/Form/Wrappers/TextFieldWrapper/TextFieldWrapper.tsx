@@ -38,11 +38,12 @@ interface TextFieldFunctionArgumants<T> {
 }
 
 interface TextFieldWrapperProps<T> extends TextFieldBaseProps {
-  onChange?: ChangeEventHandler<T>;
   required?: boolean;
   disabled?: boolean;
   maxLength?: number;
   value?: string | number | readonly string[];
+  onChange?: ChangeEventHandler<T>;
+  onClick?: React.DOMAttributes<HTMLDivElement>['onClick'];
   children: (argumants: TextFieldFunctionArgumants<T>) => ReactNode;
 }
 
@@ -61,10 +62,11 @@ const TextFieldWrapper = <T extends HTMLTextAreaElement | HTMLInputElement>(
     maxLength,
     disabled,
     value: initialValue,
-    onChange,
     wrapperClassName,
-    children,
     showMaxLength,
+    onClick,
+    onChange,
+    children,
   } = props;
 
   const [value, setValue] = useState(initialValue?.toString() ?? '');
@@ -98,6 +100,7 @@ const TextFieldWrapper = <T extends HTMLTextAreaElement | HTMLInputElement>(
         />
       )}
       <div
+        onClick={onClick}
         className={clsx(
           'dgs-ui-kit-relative dgs-ui-kit-cursor-text dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-rounded-lg dgs-ui-kit-ring-4 dgs-ui-kit-flex dgs-ui-kit-justify-between dgs-ui-kit-gap-x-3 dgs-ui-kit-p-3 dgs-ui-kit-bg-gray-100 dgs-ui-kit-transition-all dgs-ui-kit-ring-transparent hover:dgs-ui-kit-ring-gray-50 has-[:focus]:dgs-ui-kit-bg-white ',
           isError || errorMessage
