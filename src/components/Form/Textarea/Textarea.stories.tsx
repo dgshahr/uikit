@@ -21,6 +21,14 @@ const meta = {
         },
       },
     },
+    disabled: {
+      control: { type: 'boolean' },
+      table: {
+        type: {
+          summary: 'boolean',
+        },
+      },
+    },
     errorMessage: {
       control: {
         type: 'text',
