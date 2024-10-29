@@ -5,10 +5,11 @@ import type { TextFieldBaseProps } from './TextFieldWrapper';
 interface FieldBottomInfoProps extends Pick<TextFieldBaseProps, 'errorMessage' | 'hintMessage'> {
   maxLength?: number;
   value?: string;
+  disabled?: boolean;
 }
 
 const FieldBottomInfo = (props: FieldBottomInfoProps) => {
-  const { errorMessage, hintMessage, maxLength, value } = props;
+  const { errorMessage, hintMessage, maxLength, value, disabled } = props;
   return (
     <div
       className={clsx(
@@ -17,12 +18,20 @@ const FieldBottomInfo = (props: FieldBottomInfoProps) => {
           'dgs-ui-kit-justify-between': (errorMessage || hintMessage) && maxLength,
           'dgs-ui-kit-justify-start': (errorMessage || hintMessage) && !maxLength,
           'dgs-ui-kit-justify-end': !(errorMessage || hintMessage) && maxLength,
+          'dgs-ui-kit-text-gray-400': disabled,
         },
         errorMessage ? 'dgs-ui-kit-text-error-500' : 'dgs-ui-kit-text-gray-500',
       )}
     >
       {(errorMessage || hintMessage) && (
-        <div className="dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-2">
+        <div
+          className={clsx(
+            'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-2 dgs-ui-kit-font-light',
+            {
+              'dgs-ui-kit-text-gray-400': disabled,
+            },
+          )}
+        >
           <InfoCircleOutlineIcon
             width={16}
             height={16}
