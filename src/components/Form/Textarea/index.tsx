@@ -21,17 +21,8 @@ const Textarea = forwardRef(function Textarea(
 ) {
   const { dir = 'rtl', placeholderDir = dir, className, ...restProps } = props;
 
-  const handleFocusInput = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    const divElement = e.currentTarget;
-    const inputElement = divElement.querySelector('textarea') as HTMLTextAreaElement | null;
-    if (inputElement) inputElement.focus();
-  };
-
   return (
-    <TextFieldWrapper
-      onClick={handleFocusInput}
-      {...props}
-    >
+    <TextFieldWrapper {...props}>
       {({ handleChangeField }) => (
         <textarea
           {...restProps}

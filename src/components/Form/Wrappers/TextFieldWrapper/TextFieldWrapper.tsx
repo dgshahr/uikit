@@ -43,7 +43,6 @@ interface TextFieldWrapperProps<T> extends TextFieldBaseProps {
   maxLength?: number;
   value?: string | number | readonly string[];
   onChange?: ChangeEventHandler<T>;
-  onClick?: React.DOMAttributes<HTMLDivElement>['onClick'];
   children: (argumants: TextFieldFunctionArgumants<T>) => ReactNode;
 }
 
@@ -64,7 +63,6 @@ const TextFieldWrapper = <T extends HTMLTextAreaElement | HTMLInputElement>(
     value: initialValue,
     wrapperClassName,
     showMaxLength,
-    onClick,
     onChange,
     children,
   } = props;
@@ -87,6 +85,15 @@ const TextFieldWrapper = <T extends HTMLTextAreaElement | HTMLInputElement>(
   const showLabel = Boolean(labelContent || link?.href);
   const WrapperElement = showInfo || showLabel ? 'div' : React.Fragment;
 
+  const handleFocusInputOnClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const divElement = e.currentTarget;
+    const inputElement = divElement.querySelector('textarea, input') as
+      | HTMLTextAreaElement
+      | HTMLInputElement
+      | null;
+    if (inputElement) inputElement.focus();
+  };
+
   return (
     <WrapperElement
       {...(WrapperElement === 'div' && wrapperClassName ? { className: wrapperClassName } : {})}
@@ -100,7 +107,7 @@ const TextFieldWrapper = <T extends HTMLTextAreaElement | HTMLInputElement>(
         />
       )}
       <div
-        onClick={onClick}
+        onClick={handleFocusInputOnClick}
         className={clsx(
           'dgs-ui-kit-relative dgs-ui-kit-cursor-text dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-rounded-lg dgs-ui-kit-ring-4 dgs-ui-kit-flex dgs-ui-kit-justify-between dgs-ui-kit-gap-x-3 dgs-ui-kit-p-3 dgs-ui-kit-bg-gray-100 dgs-ui-kit-transition-all dgs-ui-kit-ring-transparent hover:dgs-ui-kit-ring-gray-50 has-[:focus]:dgs-ui-kit-bg-white ',
           isError || errorMessage
