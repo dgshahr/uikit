@@ -1,6 +1,14 @@
 'use client';
 import clsx from 'clsx';
-import { useRef, useState, type FC, type PropsWithChildren, type UIEvent, useEffect } from 'react';
+import {
+  useRef,
+  useState,
+  useEffect,
+  useImperativeHandle,
+  forwardRef,
+  type PropsWithChildren,
+  type UIEvent,
+} from 'react';
 import { sliderContext } from './context';
 import Navigation from './Navigation';
 
@@ -26,10 +34,15 @@ export interface SliderProps {
   onSlideIndexChange?: (slideIndex: number) => void;
 }
 
-const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
+export interface SliderForwardRefType {
+  navigate: (target: number) => void;
+  element: HTMLDivElement | null;
+}
+
+const Slider = forwardRef<SliderForwardRefType, PropsWithChildren<SliderProps>>((props, ref) => {
   const [slideIndex, setSlideIndex] = useState(0);
   const [currentProps, setCurrentProps] = useState<SliderProps>(props);
-  const [childsCount, setChildsCount] = useState(0);
+  const [childrenCount, setChildrenCount] = useState(0);
 
   const {
     className = '',
@@ -45,7 +58,7 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
     Object.entries(currentProps).filter(([key]) => key !== 'children'),
   );
   const containerRef = useRef<HTMLDivElement>(null);
-  const slidesCount = Math.ceil(childsCount / Math.floor(slidesPerView));
+  const slidesCount = Math.ceil(childrenCount / Math.floor(slidesPerView));
   const haveNavigation =
     (showNavigationDots ||
       (navigationButtonsShowType && navigationButtonsShowType !== 'hide') ||
@@ -96,10 +109,15 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
     else setCurrentProps(props);
   }
 
+  useImperativeHandle(ref, () => ({
+    element: containerRef.current,
+    navigate: navigate,
+  }));
+
   useEffect(() => {
     if (!containerRef.current) return;
 
-    setChildsCount(containerRef.current.childNodes.length);
+    setChildrenCount(containerRef.current.childNodes.length);
   }, [props.children]);
 
   useEffect(() => {
@@ -148,6 +166,8 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
       </div>
     </sliderContext.Provider>
   );
-};
+});
+
+Slider.displayName = 'Slider';
 
 export default Slider;
