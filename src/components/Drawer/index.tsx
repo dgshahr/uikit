@@ -129,11 +129,11 @@ const Drawer: FC<PropsWithChildren<DrawerProps>> = (props) => {
           width: getSize({ position, padding, item: 'width' }),
           height: getSize({ position, padding, item: 'height' }),
         }}
-        onClick={(e) => e.stopPropagation()}
       >
         <div
           className="dgs-ui-kit-overflow-x-hidden dgs-ui-kit-rounded-2xl dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-bg-white dgs-ui-kit-divide-y dgs-ui-kit-divide-gray-200 dgs-ui-kit-divide-solid"
           style={{ width: width ?? '100%' }}
+          onClick={(e) => e.stopPropagation()}
         >
           {header && haveHeader && (
             <div
