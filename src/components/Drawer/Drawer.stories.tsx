@@ -85,7 +85,8 @@ const DrawerExample: FC = () => {
           open={open}
           onClose={() => setOpen(false)}
           padding={8}
-          position="right"
+          position="bottom"
+          width={700}
           header={{
             title: 'عنوان',
             description: 'متن توضیحات',

@@ -1,7 +1,14 @@
 'use client';
 
 import clsx from 'clsx';
-import { useEffect, useState, type FC, type PropsWithChildren, type ReactNode } from 'react';
+import {
+  useEffect,
+  useState,
+  type CSSProperties,
+  type FC,
+  type PropsWithChildren,
+  type ReactNode,
+} from 'react';
 import '@/src/styles.css';
 import CloseRemoveIcon from '@/src/icons/CloseRemove';
 
@@ -16,6 +23,7 @@ interface DrawerProps {
   maskClassName?: string;
   containerClassName?: string;
   padding?: number;
+  width?: CSSProperties['width'];
   header?: {
     title?: string;
     description?: string;
@@ -58,6 +66,7 @@ const Drawer: FC<PropsWithChildren<DrawerProps>> = (props) => {
     maskClassName,
     containerClassName,
     padding = 8,
+    width,
     header,
     footer,
   } = props;
@@ -100,7 +109,7 @@ const Drawer: FC<PropsWithChildren<DrawerProps>> = (props) => {
     >
       <div
         className={clsx(
-          'dgs-ui-kit-overflow-x-hidden dgs-ui-kit-rounded-2xl dgs-ui-kit-absolute dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-z-10 dgs-ui-kit-bg-white dgs-ui-kit-opacity-0 dgs-ui-kit-transition dgs-ui-kit-duration-100 dgs-ui-kit-divide-y dgs-ui-kit-divide-gray-200 dgs-ui-kit-divide-solid',
+          'dgs-ui-kit-absolute dgs-ui-kit-z-10 dgs-ui-kit-opacity-0 dgs-ui-kit-transition dgs-ui-kit-duration-100 dgs-ui-kit-flex dgs-ui-kit-justify-center',
           {
             'dgs-ui-kit-opacity-100': show,
             'dgs-ui-kit-translate-y-full': !show && position === 'bottom',
@@ -122,50 +131,55 @@ const Drawer: FC<PropsWithChildren<DrawerProps>> = (props) => {
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        {header && haveHeader && (
-          <div
-            className={clsx(
-              'dgs-ui-kit-h-16 dgs-ui-kit-relative dgs-ui-kit-shrink-0',
-              header?.containerClassName,
-            )}
-          >
-            {header.actionElement ? (
-              <div className="dgs-ui-kit-absolute dgs-ui-kit-top-1/2 -dgs-ui-kit-translate-y-1/2 dgs-ui-kit-right-4 [&>svg]:dgs-ui-kit-w-6 [&_svg]:dgs-ui-kit-h-6 dgs-ui-kit-text-gray-600">
-                {header.actionElement}
-              </div>
-            ) : null}
-            {header.title ? (
-              <div className="dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-absolute dgs-ui-kit-top-1/2 dgs-ui-kit-right-1/2 -dgs-ui-kit-translate-y-1/2 dgs-ui-kit-translate-x-1/2 dgs-ui-kit-text-center">
-                <span className="dgs-ui-kit-font-h6-bold dgs-ui-kit-text-gray-800">
-                  {header.title}
-                </span>
-                {header.description ? (
-                  <span className="dgs-ui-kit-font-caption-regular dgs-ui-kit-text-gray-500">
-                    {header.description}
+        <div
+          className="dgs-ui-kit-overflow-x-hidden dgs-ui-kit-rounded-2xl dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-bg-white dgs-ui-kit-divide-y dgs-ui-kit-divide-gray-200 dgs-ui-kit-divide-solid"
+          style={{ width: width ?? '100%' }}
+        >
+          {header && haveHeader && (
+            <div
+              className={clsx(
+                'dgs-ui-kit-h-16 dgs-ui-kit-relative dgs-ui-kit-shrink-0',
+                header?.containerClassName,
+              )}
+            >
+              {header.actionElement ? (
+                <div className="dgs-ui-kit-absolute dgs-ui-kit-top-1/2 -dgs-ui-kit-translate-y-1/2 dgs-ui-kit-right-4 [&>svg]:dgs-ui-kit-w-6 [&_svg]:dgs-ui-kit-h-6 dgs-ui-kit-text-gray-600">
+                  {header.actionElement}
+                </div>
+              ) : null}
+              {header.title ? (
+                <div className="dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-absolute dgs-ui-kit-top-1/2 dgs-ui-kit-right-1/2 -dgs-ui-kit-translate-y-1/2 dgs-ui-kit-translate-x-1/2 dgs-ui-kit-text-center">
+                  <span className="dgs-ui-kit-font-h6-bold dgs-ui-kit-text-gray-800">
+                    {header.title}
                   </span>
-                ) : null}
-              </div>
-            ) : null}
-            {header.haveCloseIcon && (
-              <button
-                onClick={closeDrawer}
-                className="dgs-ui-kit-absolute dgs-ui-kit-top-1/2 -dgs-ui-kit-translate-y-1/2 dgs-ui-kit-left-4"
-              >
-                <CloseRemoveIcon
-                  width={24}
-                  height={24}
-                  className="dgs-ui-kit-text-gray-600"
-                />
-              </button>
-            )}
-          </div>
-        )}
-        <div className={clsx('dgs-ui-kit-p-4', containerClassName)}>{children}</div>
-        {footer?.element ? (
-          <div className={clsx('dgs-ui-kit-p-4 dgs-ui-kit-mt-auto', footer.containerClassName)}>
-            {footer.element}
-          </div>
-        ) : null}
+                  {header.description ? (
+                    <span className="dgs-ui-kit-font-caption-regular dgs-ui-kit-text-gray-500">
+                      {header.description}
+                    </span>
+                  ) : null}
+                </div>
+              ) : null}
+              {header.haveCloseIcon && (
+                <button
+                  onClick={closeDrawer}
+                  className="dgs-ui-kit-absolute dgs-ui-kit-top-1/2 -dgs-ui-kit-translate-y-1/2 dgs-ui-kit-left-4"
+                >
+                  <CloseRemoveIcon
+                    width={24}
+                    height={24}
+                    className="dgs-ui-kit-text-gray-600"
+                  />
+                </button>
+              )}
+            </div>
+          )}
+          <div className={clsx('dgs-ui-kit-p-4', containerClassName)}>{children}</div>
+          {footer?.element ? (
+            <div className={clsx('dgs-ui-kit-p-4 dgs-ui-kit-mt-auto', footer.containerClassName)}>
+              {footer.element}
+            </div>
+          ) : null}
+        </div>
       </div>
     </button>
   );
