@@ -23,6 +23,7 @@ export interface SliderProps {
   navigationButtonsShowType?: 'hide' | 'hover' | 'permanent' | 'onSides';
   responsive?: Record<number, Omit<SliderProps, 'responsive'>>;
   containerXPadding?: number;
+  onSlideIndexChange?: (slideIndex: number) => void;
 }
 
 const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
@@ -38,6 +39,7 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
     navigationButtonsShowType = 'hide',
     spaceBetween = 0,
     showPaginationText,
+    onSlideIndexChange,
   } = currentProps;
   const propsWithoutChildren = Object.fromEntries(
     Object.entries(currentProps).filter(([key]) => key !== 'children'),
@@ -110,6 +112,11 @@ const Slider: FC<PropsWithChildren<SliderProps>> = (props) => {
       window.removeEventListener('resize', detectResponsiveProps);
     };
   }, [props.responsive]);
+
+  useEffect(() => {
+    if (onSlideIndexChange && typeof onSlideIndexChange === 'function')
+      onSlideIndexChange(slideIndex);
+  }, [slideIndex]);
 
   return (
     <sliderContext.Provider value={propsWithoutChildren}>
