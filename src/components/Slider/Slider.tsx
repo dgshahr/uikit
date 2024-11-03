@@ -31,6 +31,7 @@ export interface SliderProps {
   navigationButtonsShowType?: 'hide' | 'hover' | 'permanent' | 'onSides';
   responsive?: Record<number, Omit<SliderProps, 'responsive'>>;
   containerXPadding?: number;
+  initialSlide?: number;
   onSlideIndexChange?: (slideIndex: number) => void;
 }
 
@@ -40,10 +41,7 @@ export interface SliderForwardRefType {
 }
 
 const Slider = forwardRef<SliderForwardRefType, PropsWithChildren<SliderProps>>((props, ref) => {
-  const [slideIndex, setSlideIndex] = useState(0);
   const [currentProps, setCurrentProps] = useState<SliderProps>(props);
-  const [childrenCount, setChildrenCount] = useState(0);
-
   const {
     className = '',
     containerClassName = '',
@@ -53,7 +51,12 @@ const Slider = forwardRef<SliderForwardRefType, PropsWithChildren<SliderProps>>(
     spaceBetween = 0,
     showPaginationText,
     onSlideIndexChange,
+    initialSlide,
   } = currentProps;
+
+  const [slideIndex, setSlideIndex] = useState(initialSlide || 0);
+  const [childrenCount, setChildrenCount] = useState(0);
+
   const propsWithoutChildren = Object.fromEntries(
     Object.entries(currentProps).filter(([key]) => key !== 'children'),
   );
