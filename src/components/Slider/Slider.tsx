@@ -54,7 +54,7 @@ const Slider = forwardRef<SliderForwardRefType, PropsWithChildren<SliderProps>>(
     initialSlide,
   } = currentProps;
 
-  const [slideIndex, setSlideIndex] = useState(initialSlide || 0);
+  const [slideIndex, setSlideIndex] = useState(0);
   const [childrenCount, setChildrenCount] = useState(0);
 
   const propsWithoutChildren = Object.fromEntries(
@@ -92,13 +92,13 @@ const Slider = forwardRef<SliderForwardRefType, PropsWithChildren<SliderProps>>(
   function navigate(target: number) {
     if (!containerRef.current) return;
     const containerWidth = containerRef.current.offsetWidth;
+    const slideChangeAmount = slideIndex - target;
+    const pageSlideScrollAmount = slideChangeAmount * containerWidth;
 
     if (target < 0)
       containerRef.current.scrollTo({ behavior: 'smooth', left: -(containerWidth * slidesCount) });
     else if (target >= slidesCount) containerRef.current.scrollTo({ behavior: 'smooth', left: 0 });
-    else if (slideIndex > target)
-      containerRef.current.scrollBy({ behavior: 'smooth', left: containerWidth });
-    else containerRef.current.scrollBy({ behavior: 'smooth', left: -containerWidth });
+    else containerRef.current.scrollBy({ behavior: 'smooth', left: pageSlideScrollAmount });
   }
 
   function detectResponsiveProps() {
@@ -138,6 +138,11 @@ const Slider = forwardRef<SliderForwardRefType, PropsWithChildren<SliderProps>>(
     if (onSlideIndexChange && typeof onSlideIndexChange === 'function')
       onSlideIndexChange(slideIndex);
   }, [slideIndex]);
+
+  useEffect(() => {
+    if (typeof initialSlide === 'number' && !!containerRef.current)
+      navigate(Math.max(0, initialSlide - 1));
+  }, [initialSlide, containerRef.current]);
 
   return (
     <sliderContext.Provider value={propsWithoutChildren}>
