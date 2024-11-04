@@ -35,12 +35,12 @@ export interface SliderProps {
   onSlideIndexChange?: (slideIndex: number) => void;
 }
 
-export interface SliderForwardRefType {
+export interface SliderRef {
   navigate: (target: number) => void;
   element: HTMLDivElement | null;
 }
 
-const Slider = forwardRef<SliderForwardRefType, PropsWithChildren<SliderProps>>((props, ref) => {
+const Slider = forwardRef<SliderRef, PropsWithChildren<SliderProps>>((props, ref) => {
   const [currentProps, setCurrentProps] = useState<SliderProps>(props);
   const {
     className = '',
@@ -114,7 +114,7 @@ const Slider = forwardRef<SliderForwardRefType, PropsWithChildren<SliderProps>>(
 
   useImperativeHandle(ref, () => ({
     element: containerRef.current,
-    navigate: navigate,
+    navigate: (target: number) => navigate(Math.max(0, target - 1)),
   }));
 
   useEffect(() => {
