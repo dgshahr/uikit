@@ -59,7 +59,7 @@ const Slide: FC<
     <div
       {...rest}
       ref={ref}
-      className={clsx('dgs-ui-kit-shrink-0 dgs-ui-kit-snap-always', className)}
+      className={clsx('dgs-ui-kit-shrink-0 dgs-ui-kit-snap-normal', className)}
       style={{
         width: 100 / (slidesPerView ?? 1) + '%',
         paddingLeft:
