@@ -32,13 +32,6 @@ const OtpInput: FC<OtpInputProps> = (props) => {
   } = props;
   const [values, setValues] = useState<string[]>([]);
 
-  useEffect(() => {
-    if (propsValue) {
-      const initialValue = propsValue.split('');
-      setValues(initialValue);
-    }
-  }, []);
-
   function focusOnInput(index: number) {
     const input = document.getElementById(`dgs-ui-kit-otp-input-${index}`) as HTMLInputElement;
     input?.focus();
@@ -72,6 +65,13 @@ const OtpInput: FC<OtpInputProps> = (props) => {
 
     if (typeof onChange === 'function') onChange(newValues.join(''));
   }
+
+  useEffect(() => {
+    if (propsValue) {
+      const initialValue = propsValue.split('');
+      setValues(initialValue);
+    }
+  }, [propsValue]);
 
   return (
     <div className={clsx('dgs-ui-kit-space-y-2', className)}>
