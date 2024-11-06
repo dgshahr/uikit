@@ -16,13 +16,13 @@ const meta = {
     onChange: {
       control: { type: 'object' },
       table: {
-        type: { summary: 'function', detail: '(value:number)=> void' },
+        type: { summary: 'function', detail: '(value:string)=> void' },
       },
     },
     onEnd: {
       control: { type: 'object' },
       table: {
-        type: { summary: 'function', detail: '(value:number)=> void' },
+        type: { summary: 'function', detail: '(value:string)=> void' },
       },
     },
     isError: {
