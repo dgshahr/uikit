@@ -131,8 +131,27 @@ const meta = {
       },
     },
     containerXPadding: {
+      control: { type: 'number' },
       description:
         "it's add padding to first and last slide (it's just a temporary solution and i'm trying to handle it on container)",
+    },
+    onSlideIndexChange: {
+      control: { type: 'object' },
+      table: {
+        type: { summary: 'function', detail: '(slideIndex: number)=> void' },
+      },
+    },
+    ref: {
+      control: {
+        type: 'object',
+      },
+      description: 'returns two keys as a result `navigate` and `element`',
+    },
+    initialSlide: {
+      control: { type: 'number' },
+      table: {
+        type: { summary: 'number' },
+      },
     },
     children: {
       control: { type: 'object' },
@@ -156,6 +175,7 @@ export const Default: Story = {
     responsive: { 768: { slidesPerView: 2, spaceBetween: 8 } },
     slidesPerView: 1,
     spaceBetween: 0,
+    onSlideIndexChange() {},
     children: Array(5)
       .fill(null)
       .map((_, index) => (
