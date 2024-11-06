@@ -114,32 +114,7 @@ const meta = {
     navigationContainerClassName: {
       control: { type: 'text' },
       table: {
-        type: { summary: '' },
-        defaultValue: {
-          summary: '',
-        },
-      },
-    },
-    onSlideIndexChange: {
-      table: {
-        type: {
-          summary: 'onSlideIndexChange?: (slideIndex: number) => void',
-          detail: 'triggers an event whenever slide changes',
-        },
-      },
-    },
-    ref: {
-      description: 'reference to slider container',
-      table: {
-        type: {
-          summary: 'returns two keys as a result `navigate` and `element`',
-        },
-      },
-    },
-    initialSlide: {
-      control: { type: 'number' },
-      table: {
-        type: { summary: 'number' },
+        type: { summary: 'string' },
         defaultValue: {
           summary: '',
         },
@@ -179,10 +154,9 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     containerClassName: 'dgs-ui-kit-w-[400px]',
-    responsive: {},
-    slidesPerView: 3,
-    spaceBetween: 10,
-
+    responsive: { 768: { slidesPerView: 2, spaceBetween: 8 } },
+    slidesPerView: 1,
+    spaceBetween: 0,
     children: Array(5)
       .fill(null)
       .map((_, index) => (
@@ -192,6 +166,5 @@ export const Default: Story = {
           </div>
         </Slide>
       )),
-    initialSlide: 2,
   },
 };
