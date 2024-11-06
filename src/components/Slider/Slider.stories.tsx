@@ -95,7 +95,6 @@ const meta = {
       table: {
         type: {
           summary: 'hide, permanent, hover, onSides',
-          detail: 'type is "hide, permanent" if  navigationVariant is outside',
         },
         defaultValue: {
           summary: 'hide',
