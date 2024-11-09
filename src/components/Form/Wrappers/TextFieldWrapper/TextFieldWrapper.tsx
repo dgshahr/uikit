@@ -16,6 +16,7 @@ import '@/src/styles.css';
 
 export interface TextFieldBaseProps {
   labelContent?: string;
+  labelAddon?: React.ReactNode;
   link?: {
     cnotent: string;
     href: string;
