@@ -38,7 +38,7 @@ const OtpInput: FC<OtpInputProps> = (props) => {
     input?.select();
   }
 
-  function hnadleInputKeyUp(e: KeyboardEvent<HTMLInputElement>, index: number) {
+  function handleInputKeyUp(e: KeyboardEvent<HTMLInputElement>, index: number) {
     const key = [e.code, e.key];
     if (key.includes('Backspace') || key.includes('Delete')) {
       const newValues = [...values];
@@ -58,8 +58,6 @@ const OtpInput: FC<OtpInputProps> = (props) => {
     newValues[index] = currentValue;
 
     if (index + 1 !== inputsNumber && currentValue) focusOnInput(index + 1);
-    else if (typeof onEnd === 'function' && newValues.every((value) => Boolean(value)))
-      onEnd(newValues.join(''));
 
     setValues(newValues);
 
@@ -70,6 +68,9 @@ const OtpInput: FC<OtpInputProps> = (props) => {
     if (propsValue) {
       const initialValue = propsValue.split('');
       setValues(initialValue);
+      const didFillTheWholeInput = inputsNumber === propsValue.length;
+      focusOnInput(propsValue.length);
+      if (didFillTheWholeInput && typeof onEnd === 'function') onEnd(propsValue);
     }
   }, [propsValue]);
 
@@ -91,7 +92,7 @@ const OtpInput: FC<OtpInputProps> = (props) => {
             type="tel"
             autoFocus={index === 0}
             onChange={(e) => handleInputChange(e, index)}
-            onKeyUp={(e) => hnadleInputKeyUp(e, index)}
+            onKeyUp={(e) => handleInputKeyUp(e, index)}
             id={`dgs-ui-kit-otp-input-${index}`}
             maxLength={1}
             value={values[index]}
