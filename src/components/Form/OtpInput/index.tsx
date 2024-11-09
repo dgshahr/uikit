@@ -69,6 +69,7 @@ const OtpInput: FC<OtpInputProps> = (props) => {
       const initialValue = propsValue.split('');
       setValues(initialValue);
       const didFillTheWholeInput = inputsNumber === propsValue.length;
+      focusOnInput(propsValue.length);
       if (didFillTheWholeInput && typeof onEnd === 'function') onEnd(propsValue);
     }
   }, [propsValue]);
