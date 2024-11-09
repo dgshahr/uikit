@@ -13,6 +13,7 @@ interface InputProps
   prefix?: string;
   postfix?: string;
   isClearOption?: boolean;
+  labelAddon?: React.ReactNode;
   onClear?: () => void;
 }
 

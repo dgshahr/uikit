@@ -13,7 +13,9 @@ interface TextareaProps
       DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>,
       'dir' | 'onClick'
     >,
-    TextFieldBaseProps {}
+    TextFieldBaseProps {
+  labelAddon?: React.ReactNode;
+}
 
 const Textarea = forwardRef(function Textarea(
   props: TextareaProps,
