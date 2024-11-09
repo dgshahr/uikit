@@ -16,6 +16,7 @@ import '@/src/styles.css';
 
 export interface TextFieldBaseProps {
   labelContent?: string;
+  labelAddon?: React.ReactNode;
   link?: {
     cnotent: string;
     href: string;
@@ -41,6 +42,7 @@ interface TextFieldWrapperProps<T> extends TextFieldBaseProps {
   required?: boolean;
   disabled?: boolean;
   maxLength?: number;
+  labelAddon?: React.ReactNode;
   value?: string | number | readonly string[];
   onChange?: ChangeEventHandler<T>;
   children: (argumants: TextFieldFunctionArgumants<T>) => ReactNode;
@@ -58,6 +60,7 @@ const TextFieldWrapper = <T extends HTMLTextAreaElement | HTMLInputElement>(
     errorMessage,
     hintMessage,
     required,
+    labelAddon,
     maxLength,
     disabled,
     value: initialValue,
@@ -104,7 +107,9 @@ const TextFieldWrapper = <T extends HTMLTextAreaElement | HTMLInputElement>(
           labelContent={labelContent}
           link={link}
           required={required}
-        />
+        >
+          {labelAddon}
+        </FieldLabel>
       )}
       <div
         onClick={handleFocusInputOnClick}

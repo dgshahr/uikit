@@ -13,6 +13,10 @@ const meta = {
     },
   },
   argTypes: {
+    labelAddon: {
+      description: 'A React node that is placed between the label and input field.',
+      control: 'text', // You can use `control: { type: 'text' }` for basic representation or customize it as needed
+    },
     isError: {
       control: { type: 'boolean' },
       table: {
