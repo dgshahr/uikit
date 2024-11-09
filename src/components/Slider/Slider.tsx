@@ -70,7 +70,7 @@ const Slider = forwardRef<SliderRef, PropsWithChildren<SliderProps>>((props, ref
 
   function detectCarouselPosition(e: UIEvent<HTMLDivElement>) {
     if (
-      Math.ceil(Math.abs(e.currentTarget.scrollLeft)) + e.currentTarget.clientWidth ===
+      Math.ceil(Math.abs(e.currentTarget.scrollLeft)) + e.currentTarget.clientWidth + 1 ===
       e.currentTarget.scrollWidth
     ) {
       // is last slide
