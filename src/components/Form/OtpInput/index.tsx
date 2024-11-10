@@ -7,7 +7,7 @@ import FieldLabel from '../Wrappers/TextFieldWrapper/FieldLabel';
 import type { TextFieldBaseProps } from '../Wrappers/TextFieldWrapper/TextFieldWrapper';
 import '@/src/styles.css';
 
-interface OtpInputProps
+export interface OtpInputProps
   extends Pick<TextFieldBaseProps, 'labelContent' | 'errorMessage' | 'isError' | 'hintMessage'> {
   inputsNumber?: number;
   onChange?: (value: string) => void;
@@ -50,14 +50,31 @@ const OtpInput: FC<OtpInputProps> = (props) => {
       setValues(newValues);
     } else if (key.includes('ArrowLeft')) focusOnInput(index + 1);
     else if (key.includes('ArrowRight')) focusOnInput(index - 1);
+
+    if (key.includes(values[index] as string)) focusOnInput(index);
   }
 
   function handleInputChange(e: ChangeEvent<HTMLInputElement>, index: number) {
     const currentValue = e.currentTarget.value;
     const newValues = [...values];
-    newValues[index] = currentValue;
+
+    if (currentValue.length > 1) {
+      currentValue
+        .split('')
+        .forEach((value, currentValueIndex) => (newValues[currentValueIndex] = value));
+    } else newValues[index] = currentValue;
 
     if (index + 1 !== inputsNumber && currentValue) focusOnInput(index + 1);
+    else if (typeof onEnd === 'function' && newValues.every((value) => Boolean(value))) {
+      if (
+        (typeof onChange === 'function' && !propsValue) ||
+        (typeof onChange !== 'function' && propsValue) ||
+        (typeof onChange !== 'function' && !propsValue) ||
+        propsValue !== newValues.join('')
+      )
+        onEnd(newValues.join(''));
+      focusOnInput(inputsNumber - 1);
+    }
 
     setValues(newValues);
 
@@ -94,10 +111,10 @@ const OtpInput: FC<OtpInputProps> = (props) => {
             onChange={(e) => handleInputChange(e, index)}
             onKeyUp={(e) => handleInputKeyUp(e, index)}
             id={`dgs-ui-kit-otp-input-${index}`}
-            maxLength={1}
             value={values[index]}
             showMaxLength={false}
             isError={Boolean(errorMessage) || isError}
+            autoComplete="off"
           />
         ))}
       </div>
