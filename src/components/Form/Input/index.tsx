@@ -31,6 +31,23 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
 
   const [type, setType] = useState(restProps.type);
 
+  function renderClearButton(setValue: React.Dispatch<React.SetStateAction<string>>) {
+    return (
+      <button
+        onClick={() => {
+          setValue('');
+          if (typeof onClear === 'function') onClear();
+        }}
+      >
+        <CloseSquareIcon
+          className="dgs-ui-kit-text-gray-600"
+          width={20}
+          height={20}
+        />
+      </button>
+    );
+  }
+
   return (
     <TextFieldWrapper
       {...props}
@@ -41,6 +58,11 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
           {prefix && (
             <span className="dgs-ui-kit-font-p1-regular dgs-ui-kit-text-gray-500">{prefix}</span>
           )}
+          {isClearOption &&
+            value &&
+            value.length > 0 &&
+            dir === 'ltr' &&
+            renderClearButton(setValue)}
           <input
             {...restProps}
             ref={ref}
@@ -60,20 +82,11 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
             onChange={handleChangeField}
             type={type}
           />
-          {isClearOption && value && value.length > 0 && (
-            <button
-              onClick={() => {
-                setValue('');
-                if (typeof onClear === 'function') onClear();
-              }}
-            >
-              <CloseSquareIcon
-                className="dgs-ui-kit-text-gray-600"
-                width={20}
-                height={20}
-              />
-            </button>
-          )}
+          {isClearOption &&
+            value &&
+            value.length > 0 &&
+            dir === 'rtl' &&
+            renderClearButton(setValue)}
           {postfix && (
             <span className="dgs-ui-kit-font-p1-regular dgs-ui-kit-text-gray-500">{postfix}</span>
           )}
