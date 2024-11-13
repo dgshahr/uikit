@@ -16,7 +16,11 @@ const RadioButton = (props: RadioButtonProps) => {
           <input
             {...rest}
             type="radio"
-            className={clsx('dgs-ui-kit-rounded-full', inputClassName, className)}
+            className={clsx(
+              'dgs-ui-kit-rounded-full dgs-ui-kit-shrink-0',
+              inputClassName,
+              className,
+            )}
           />
           <div className={checkedInputClassName}>
             <div className="dgs-ui-kit-bg-white dgs-ui-kit-rounded-full dgs-ui-kit-w-2 dgs-ui-kit-h-2" />
