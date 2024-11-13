@@ -47,6 +47,27 @@ const meta = {
         },
       },
     },
+    variant: {
+      control: { type: 'select' },
+      options: ['bordered', 'default'],
+      table: {
+        type: {
+          summary: 'bordered, default',
+        },
+        defaultValue: {
+          summary: 'default',
+        },
+      },
+    },
+    icon: {
+      control: { type: 'object' },
+      table: {
+        type: {
+          summary: 'ReactNode',
+          detail: "it's only available on variant='bordered'",
+        },
+      },
+    },
   },
 } satisfies Meta<typeof Checkbox>;
 
