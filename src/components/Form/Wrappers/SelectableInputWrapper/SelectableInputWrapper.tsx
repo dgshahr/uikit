@@ -57,8 +57,7 @@ const SelectableInputWrapper: FC<SelectableInputWrapperProps> = (props) => {
     >
       <div
         className={clsx(
-          'dgs-ui-kit-flex dgs-ui-kit-space-x-2 dgs-ui-kit-space-x-reverse',
-          (errorMessage ?? helperMessage) ? 'dgs-ui-kit-items-start' : 'dgs-ui-kit-items-center',
+          'dgs-ui-kit-flex dgs-ui-kit-items-start dgs-ui-kit-space-x-2 dgs-ui-kit-space-x-reverse',
         )}
       >
         <div
