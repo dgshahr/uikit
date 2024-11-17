@@ -10,6 +10,7 @@ import {
   type ReactNode,
 } from 'react';
 import '@/src/styles.css';
+import { createPortal } from 'react-dom';
 import CloseRemoveIcon from '@/src/icons/CloseRemove';
 
 const ANIMATION_DURATION = 150;
@@ -98,11 +99,11 @@ const Drawer: FC<PropsWithChildren<DrawerProps>> = (props) => {
     ? Object.values(header).some((headerItem) => Boolean(headerItem))
     : false;
 
-  return (
+  return createPortal(
     <button
       className={clsx(
         'dgs-ui-kit-bg-black/40 dgs-ui-kit-fixed dgs-ui-kit-top-0 dgs-ui-kit-left-0 dgs-ui-kit-z-50 dgs-ui-kit-opacity-0 dgs-ui-kit-overflow-hidden dgs-ui-kit-cursor-default dgs-ui-kit-transition dgs-ui-kit-ease-linear',
-        { 'dgs-ui-kit-opacity-100': show, 'dgs-ui-kit-w-screen dgs-ui-kit-h-screen': open },
+        { 'dgs-ui-kit-opacity-100': show, 'dgs-ui-kit-w-full dgs-ui-kit-h-full': open },
         maskClassName,
       )}
       onClick={closeDrawer}
@@ -173,7 +174,9 @@ const Drawer: FC<PropsWithChildren<DrawerProps>> = (props) => {
               )}
             </div>
           )}
-          <div className={clsx('dgs-ui-kit-p-4', containerClassName)}>{children}</div>
+          <div className={clsx('dgs-ui-kit-p-4 dgs-ui-kit-overflow-y-auto', containerClassName)}>
+            {children}
+          </div>
           {footer?.element ? (
             <div className={clsx('dgs-ui-kit-p-4 dgs-ui-kit-mt-auto', footer.containerClassName)}>
               {footer.element}
@@ -181,7 +184,8 @@ const Drawer: FC<PropsWithChildren<DrawerProps>> = (props) => {
           ) : null}
         </div>
       </div>
-    </button>
+    </button>,
+    document.body,
   );
 };
 
