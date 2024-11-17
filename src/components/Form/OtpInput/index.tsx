@@ -48,8 +48,8 @@ const OtpInput: FC<OtpInputProps> = (props) => {
         focusOnInput(index - 1);
       }
       setValues(newValues);
-    } else if (key.includes('ArrowLeft')) focusOnInput(index + 1);
-    else if (key.includes('ArrowRight')) focusOnInput(index - 1);
+    } else if (key.includes('ArrowLeft')) focusOnInput(index - 1);
+    else if (key.includes('ArrowRight')) focusOnInput(index + 1);
 
     if (key.includes(values[index] as string)) focusOnInput(index);
   }
@@ -96,7 +96,7 @@ const OtpInput: FC<OtpInputProps> = (props) => {
       {labelContent ? <FieldLabel labelContent={labelContent} /> : null}
       <div
         className={clsx(
-          'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-2',
+          'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-2 [direction:ltr]',
           inputsContainerClassName,
         )}
       >
