@@ -50,13 +50,19 @@ const Slide: FC<
     centerMode = false,
     containerXPadding = 0,
     childrenCount = 0,
+    sliderId,
   } = useSliderContext();
   const ref = useRef<HTMLDivElement>(null);
   const [childIndex, setChildIndex] = useState(0);
 
   useEffect(() => {
     if (!ref.current) return;
-    setChildIndex(Array.prototype.indexOf.call(ref.current.parentNode?.children, ref.current));
+    setChildIndex(
+      Array.prototype.indexOf.call(
+        document.querySelectorAll(`[id='slide-item-${sliderId}']`),
+        ref.current,
+      ),
+    );
   }, [ref]);
 
   return (
@@ -73,6 +79,7 @@ const Slide: FC<
       <div
         {...rest}
         ref={ref}
+        id={`slide-item-${sliderId}`}
         className={clsx('dgs-ui-kit-shrink-0 dgs-ui-kit-snap-normal', className)}
         style={{
           width: 100 / (slidesPerView ?? 1) + '%',

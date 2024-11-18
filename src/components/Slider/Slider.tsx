@@ -8,6 +8,7 @@ import {
   forwardRef,
   type PropsWithChildren,
   type UIEvent,
+  useId,
 } from 'react';
 import { sliderContext } from './context';
 import Navigation from './Navigation';
@@ -153,7 +154,7 @@ const Slider = forwardRef<SliderRef, PropsWithChildren<SliderProps>>((props, ref
   }, [initialSlide, containerRef.current]);
 
   return (
-    <sliderContext.Provider value={{ ...propsWithoutChildren, childrenCount }}>
+    <sliderContext.Provider value={{ ...propsWithoutChildren, childrenCount, sliderId: useId() }}>
       <div
         className={clsx(
           'dgs-ui-kit-overflow-hidden dgs-ui-kit-relative dgs-ui-kit-group',

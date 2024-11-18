@@ -3,6 +3,7 @@ import type { SliderProps } from './Slider';
 
 interface ContextType extends SliderProps {
   childrenCount: number;
+  sliderId: string;
 }
 
 export const sliderContext = createContext<ContextType>({
@@ -12,6 +13,7 @@ export const sliderContext = createContext<ContextType>({
   showNavigationDots: true,
   showPaginationText: false,
   childrenCount: 0,
+  sliderId: '',
 });
 
 export const useSliderContext = () => useContext(sliderContext);
