@@ -63,7 +63,7 @@ const Slide: FC<
         ref.current,
       ),
     );
-  }, [ref]);
+  }, [ref, childrenCount]);
 
   return (
     <>

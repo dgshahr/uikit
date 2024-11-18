@@ -130,7 +130,7 @@ const Slider = forwardRef<SliderRef, PropsWithChildren<SliderProps>>((props, ref
     if (containerXPadding > 0) newChildrensCount -= 2;
 
     setChildrenCount(newChildrensCount);
-  }, [props.children]);
+  }, [props.children, containerRef]);
 
   useEffect(() => {
     if (!props.responsive || Object.keys(props.responsive).length <= 0) return;
