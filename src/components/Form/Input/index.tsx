@@ -82,11 +82,11 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
             onChange={handleChangeField}
             type={type}
             onInput={(e) => {
+              if (typeof restProps.onInput === 'function') restProps.onInput(e);
               if (type !== 'number') return;
               const element = e.currentTarget;
               if (element.value.length > element.maxLength)
                 element.value = element.value.slice(0, element.maxLength);
-              if (typeof restProps.onInput === 'function') restProps.onInput(e);
             }}
           />
           {isClearOption &&
