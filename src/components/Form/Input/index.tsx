@@ -86,6 +86,7 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
               const element = e.currentTarget;
               if (element.value.length > element.maxLength)
                 element.value = element.value.slice(0, element.maxLength);
+              if (typeof restProps.onInput === 'function') restProps.onInput(e);
             }}
           />
           {isClearOption &&
