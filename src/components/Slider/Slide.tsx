@@ -16,11 +16,13 @@ function getScrollSnapAlign({
   childIndex,
   centerMode,
   childrenCount,
+  haveContainerPadding,
 }: {
   slidesPerView: number;
   childIndex: number;
   centerMode: boolean;
   childrenCount: number;
+  haveContainerPadding: boolean;
 }): React.CSSProperties['scrollSnapAlign'] {
   const isFirstSlideInRow = childIndex % Math.floor(slidesPerView) === 0;
   const hasPartialSlides = slidesPerView % 1 !== 0;
@@ -28,9 +30,11 @@ function getScrollSnapAlign({
   const isLastChild = childIndex === childrenCount - 1;
 
   if (!isFirstSlideInRow) return 'none';
-  if (centerMode && hasPartialSlides) {
-    if (isFirstChild) return 'start';
-    if (isLastChild) return 'end';
+  if (centerMode) {
+    if (hasPartialSlides && !haveContainerPadding) {
+      if (isFirstChild) return 'start';
+      if (isLastChild) return 'end';
+    }
     return 'center';
   }
 
@@ -45,10 +49,10 @@ const Slide: FC<
     spaceBetween = 0,
     centerMode = false,
     containerXPadding = 0,
+    childrenCount = 0,
   } = useSliderContext();
   const ref = useRef<HTMLDivElement>(null);
   const [childIndex, setChildIndex] = useState(0);
-  const childrenCount = ref.current?.parentNode?.children.length;
 
   useEffect(() => {
     if (!ref.current) return;
@@ -56,28 +60,45 @@ const Slide: FC<
   }, [ref]);
 
   return (
-    <div
-      {...rest}
-      ref={ref}
-      className={clsx('dgs-ui-kit-shrink-0 dgs-ui-kit-snap-normal', className)}
-      style={{
-        width: 100 / (slidesPerView ?? 1) + '%',
-        paddingLeft:
-          childrenCount && childIndex === childrenCount - 1
-            ? containerXPadding + spaceBetween
-            : spaceBetween,
-        paddingRight: childIndex === 0 ? containerXPadding : 0,
-        scrollSnapAlign: getScrollSnapAlign({
-          slidesPerView,
-          childIndex,
-          centerMode,
-          childrenCount: childrenCount || 0,
-        }),
-        ...style,
-      }}
-    >
-      {children}
-    </div>
+    <>
+      {childIndex === 0 && containerXPadding > 0 && (
+        <div
+          className="dgs-ui-kit-shrink-0"
+          style={{
+            width: containerXPadding,
+            paddingLeft: spaceBetween,
+          }}
+        />
+      )}
+      <div
+        {...rest}
+        ref={ref}
+        className={clsx('dgs-ui-kit-shrink-0 dgs-ui-kit-snap-normal', className)}
+        style={{
+          width: 100 / (slidesPerView ?? 1) + '%',
+          paddingLeft: spaceBetween,
+          scrollSnapAlign: getScrollSnapAlign({
+            slidesPerView,
+            childIndex,
+            centerMode,
+            childrenCount: childrenCount || 0,
+            haveContainerPadding: containerXPadding > 0,
+          }),
+          ...style,
+        }}
+      >
+        {children}
+      </div>
+      {childIndex === childrenCount - 1 && containerXPadding > 0 && (
+        <div
+          className="dgs-ui-kit-shrink-0 "
+          style={{
+            width: containerXPadding,
+            paddingLeft: spaceBetween,
+          }}
+        />
+      )}
+    </>
   );
 };
 

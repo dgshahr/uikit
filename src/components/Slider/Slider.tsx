@@ -52,6 +52,7 @@ const Slider = forwardRef<SliderRef, PropsWithChildren<SliderProps>>((props, ref
     showPaginationText,
     onSlideIndexChange,
     initialSlide,
+    containerXPadding = 0,
   } = currentProps;
 
   const [slideIndex, setSlideIndex] = useState(0);
@@ -70,7 +71,10 @@ const Slider = forwardRef<SliderRef, PropsWithChildren<SliderProps>>((props, ref
 
   function detectCarouselPosition(e: UIEvent<HTMLDivElement>) {
     if (
-      Math.ceil(Math.abs(e.currentTarget.scrollLeft)) + e.currentTarget.clientWidth + 1 ===
+      Math.ceil(Math.abs(e.currentTarget.scrollLeft)) +
+        e.currentTarget.clientWidth +
+        1 +
+        containerXPadding >=
       e.currentTarget.scrollWidth
     ) {
       // is last slide
@@ -78,8 +82,9 @@ const Slider = forwardRef<SliderRef, PropsWithChildren<SliderProps>>((props, ref
       return;
     }
 
-    const itemsWidth = e.currentTarget.scrollWidth / slidesCount;
-    const position = (e.currentTarget.scrollWidth - e.currentTarget.scrollLeft) / itemsWidth;
+    const containerWidth = e.currentTarget.scrollWidth - containerXPadding * 2;
+    const itemsWidth = containerWidth / slidesCount;
+    const position = (containerWidth - e.currentTarget.scrollLeft - containerXPadding) / itemsWidth;
 
     if (position <= slidesCount) {
       setSlideIndex(0);
@@ -93,7 +98,8 @@ const Slider = forwardRef<SliderRef, PropsWithChildren<SliderProps>>((props, ref
     if (!containerRef.current) return;
     const containerWidth = containerRef.current.offsetWidth;
     const slideChangeAmount = slideIndex - target;
-    const pageSlideScrollAmount = slideChangeAmount * containerWidth;
+    const itemsWidth = containerRef.current.scrollWidth / slidesCount;
+    const pageSlideScrollAmount = slideChangeAmount * itemsWidth;
 
     if (target < 0)
       containerRef.current.scrollTo({ behavior: 'smooth', left: -(containerWidth * slidesCount) });
@@ -119,8 +125,10 @@ const Slider = forwardRef<SliderRef, PropsWithChildren<SliderProps>>((props, ref
 
   useEffect(() => {
     if (!containerRef.current) return;
+    let newChildrensCount = containerRef.current.childElementCount;
+    if (containerXPadding > 0) newChildrensCount -= 2;
 
-    setChildrenCount(containerRef.current.childNodes.length);
+    setChildrenCount(newChildrensCount);
   }, [props.children]);
 
   useEffect(() => {
@@ -140,12 +148,12 @@ const Slider = forwardRef<SliderRef, PropsWithChildren<SliderProps>>((props, ref
   }, [slideIndex]);
 
   useEffect(() => {
-    if (typeof initialSlide === 'number' && !!containerRef.current)
+    if (typeof initialSlide === 'number' && containerRef.current)
       navigate(Math.max(0, initialSlide - 1));
   }, [initialSlide, containerRef.current]);
 
   return (
-    <sliderContext.Provider value={propsWithoutChildren}>
+    <sliderContext.Provider value={{ ...propsWithoutChildren, childrenCount }}>
       <div
         className={clsx(
           'dgs-ui-kit-overflow-hidden dgs-ui-kit-relative dgs-ui-kit-group',
