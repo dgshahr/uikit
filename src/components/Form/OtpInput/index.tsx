@@ -115,6 +115,7 @@ const OtpInput: FC<OtpInputProps> = (props) => {
             showMaxLength={false}
             isError={Boolean(errorMessage) || isError}
             autoComplete="off"
+            maxLength={1}
           />
         ))}
       </div>
