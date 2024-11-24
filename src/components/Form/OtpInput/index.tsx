@@ -1,6 +1,6 @@
 'use client';
 import clsx from 'clsx';
-import { useEffect, type ChangeEvent, type FC, type KeyboardEvent } from 'react';
+import { useEffect, useRef, type ChangeEvent, type FC, type KeyboardEvent } from 'react';
 import Input from '../Input';
 import FieldBottomInfo from '../Wrappers/TextFieldWrapper/FieldBottomInfo';
 import FieldLabel from '../Wrappers/TextFieldWrapper/FieldLabel';
@@ -30,6 +30,8 @@ const OtpInput: FC<OtpInputProps> = (props) => {
     isError,
     value,
   } = props;
+
+  const canTriggerOnEnd = useRef(false);
 
   function focusOnInput(index: number) {
     const input = document.getElementById(`dgs-ui-kit-otp-input-${index}`) as HTMLInputElement;
@@ -76,10 +78,15 @@ const OtpInput: FC<OtpInputProps> = (props) => {
   }
 
   useEffect(() => {
-    if (value.length === inputsNumber && typeof onEnd === 'function') {
-      onEnd(value);
+    if (value.length === inputsNumber && canTriggerOnEnd.current) {
+      canTriggerOnEnd.current = false;
+      if (typeof onEnd === 'function') {
+        onEnd(value);
+      }
+    } else if (value.length < inputsNumber) {
+      canTriggerOnEnd.current = true;
     }
-  }, [value, inputsNumber, onEnd]);
+  }, [value]);
 
   return (
     <div className={clsx('dgs-ui-kit-space-y-2', className)}>
