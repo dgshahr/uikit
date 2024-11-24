@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
-import OtpInput from './index';
+import React, { FC, useState } from 'react';
+import OtpInput, { OtpInputProps } from './index';
 
 const meta = {
   title: 'Components/Form/OtpInput',
@@ -13,10 +13,18 @@ const meta = {
     },
   },
   argTypes: {
+    value: {
+      control: { disable: true },
+    },
     onChange: {
-      control: { type: 'object' },
+      control: { type: 'object', disable: true },
       table: {
         type: { summary: 'function', detail: '(value:string)=> void' },
+      },
+    },
+    inputsNumber: {
+      table: {
+        defaultValue: { summary: '4' },
       },
     },
     onEnd: {
@@ -48,13 +56,25 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const OtpExample: FC<OtpInputProps> = (props) => {
+  const [value, setValue] = useState('');
+
+  return (
+    <OtpInput
+      {...props}
+      value={value}
+      onChange={setValue}
+    />
+  );
+};
+
 export const Default: Story = {
   args: {
+    value: '',
+    onChange() {},
     inputsNumber: 4,
     labelContent: 'عنوان',
     hintMessage: 'متن راهنما',
-    onEnd(value) {
-      alert(value);
-    },
   },
+  render: (args) => <OtpExample {...args} />,
 };
