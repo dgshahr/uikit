@@ -1,21 +1,14 @@
 'use client';
 
 import clsx from 'clsx';
-import {
-  useEffect,
-  useState,
-  type CSSProperties,
-  type FC,
-  type PropsWithChildren,
-  type ReactNode,
-} from 'react';
+import { useEffect, useState, type CSSProperties, type FC, type ReactNode } from 'react';
 import '@/src/styles.css';
 import { createPortal } from 'react-dom';
 import CloseRemoveIcon from '@/src/icons/CloseRemove';
 
 const ANIMATION_DURATION = 150;
 
-interface DrawerProps {
+export interface DrawerProps {
   open: boolean;
   onClose: () => void;
   persist?: boolean;
@@ -36,6 +29,7 @@ interface DrawerProps {
     element?: ReactNode;
     containerClassName?: string;
   };
+  children?: ReactNode | undefined;
 }
 
 function getSize({
@@ -56,7 +50,7 @@ function getSize({
   }
 }
 
-const Drawer: FC<PropsWithChildren<DrawerProps>> = (props) => {
+const Drawer: FC<DrawerProps> = (props) => {
   const {
     open,
     onClose,
