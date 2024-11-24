@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { FC, useState } from 'react';
-import { createPortal } from 'react-dom';
 import ArrowLeftMd from '../../icons/ArrowLeftMd';
 import Button from '../Button';
 import Drawer from './index';
@@ -53,7 +52,7 @@ const meta = {
       control: { type: 'object' },
       table: {
         type: {
-          summary: 'DrawerTableType',
+          summary: 'DrawerHeaderType',
           detail:
             '{\n title?: string;\n description?: string;\n haveCloseIcon?: boolean;\n actionElement?: ReactNode;\n containerClassName?: string;\n }',
         },
@@ -80,38 +79,35 @@ const DrawerExample: FC = () => {
   return (
     <>
       <Button onClick={() => setOpen(true)}>open drawer</Button>
-      {createPortal(
-        <Drawer
-          open={open}
-          onClose={() => setOpen(false)}
-          padding={8}
-          position="bottom"
-          width={700}
-          header={{
-            title: 'عنوان',
-            description: 'متن توضیحات',
-            haveCloseIcon: true,
-            actionElement: (
-              <button>
-                <ArrowLeftMd />
-              </button>
-            ),
-          }}
-          footer={{
-            element: (
-              <div className="dgs-ui-kit-flex dgs-ui-kit-justify-end dgs-ui-kit-gap-2">
-                <Button variant="secondary">اولویت دوم</Button>
-                <Button>اولویت اول</Button>
-              </div>
-            ),
-          }}
-        >
-          <div className="dgs-ui-kit-border dgs-ui-kit-border-primary-500 dgs-ui-kit-border-dashed dgs-ui-kit-bg-gray-50 dgs-ui-kit-text-gray-500 dgs-ui-kit-rounded-lg dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-justify-center dgs-ui-kit-h-[200px] dgs-ui-kit-w-[500px]">
-            Component
-          </div>
-        </Drawer>,
-        document.body,
-      )}
+      <Drawer
+        open={open}
+        onClose={() => setOpen(false)}
+        padding={8}
+        position="bottom"
+        width={700}
+        header={{
+          title: 'عنوان',
+          description: 'متن توضیحات',
+          haveCloseIcon: true,
+          actionElement: (
+            <button>
+              <ArrowLeftMd />
+            </button>
+          ),
+        }}
+        footer={{
+          element: (
+            <div className="dgs-ui-kit-flex dgs-ui-kit-justify-end dgs-ui-kit-gap-2">
+              <Button variant="secondary">اولویت دوم</Button>
+              <Button>اولویت اول</Button>
+            </div>
+          ),
+        }}
+      >
+        <div className="dgs-ui-kit-border dgs-ui-kit-border-primary-500 dgs-ui-kit-border-dashed dgs-ui-kit-bg-gray-50 dgs-ui-kit-text-gray-500 dgs-ui-kit-rounded-lg dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-justify-center dgs-ui-kit-h-[200px] dgs-ui-kit-w-[500px]">
+          Component
+        </div>
+      </Drawer>
     </>
   );
 };
