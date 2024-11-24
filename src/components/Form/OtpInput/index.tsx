@@ -1,6 +1,6 @@
 'use client';
 import clsx from 'clsx';
-import { useEffect, useState, type ChangeEvent, type FC, type KeyboardEvent } from 'react';
+import { useEffect, type ChangeEvent, type FC, type KeyboardEvent } from 'react';
 import Input from '../Input';
 import FieldBottomInfo from '../Wrappers/TextFieldWrapper/FieldBottomInfo';
 import FieldLabel from '../Wrappers/TextFieldWrapper/FieldLabel';
@@ -10,11 +10,11 @@ import '@/src/styles.css';
 export interface OtpInputProps
   extends Pick<TextFieldBaseProps, 'labelContent' | 'errorMessage' | 'isError' | 'hintMessage'> {
   inputsNumber?: number;
-  onChange?: (value: string) => void;
+  onChange: (value: string) => void;
   onEnd?: (value: string) => void;
   className?: string;
   inputsContainerClassName?: string;
-  value?: string;
+  value: string;
 }
 
 const OtpInput: FC<OtpInputProps> = (props) => {
@@ -28,9 +28,8 @@ const OtpInput: FC<OtpInputProps> = (props) => {
     hintMessage,
     errorMessage,
     isError,
-    value: propsValue,
+    value,
   } = props;
-  const [values, setValues] = useState<string[]>([]);
 
   function focusOnInput(index: number) {
     const input = document.getElementById(`dgs-ui-kit-otp-input-${index}`) as HTMLInputElement;
@@ -41,55 +40,46 @@ const OtpInput: FC<OtpInputProps> = (props) => {
   function handleInputKeyUp(e: KeyboardEvent<HTMLInputElement>, index: number) {
     const key = [e.code, e.key];
     if (key.includes('Backspace') || key.includes('Delete')) {
-      const newValues = [...values];
+      const newValues = value.split('');
       newValues[index] = '';
       if (index !== 0) {
         newValues[index - 1] = '';
         focusOnInput(index - 1);
       }
-      setValues(newValues);
-    } else if (key.includes('ArrowLeft')) focusOnInput(index - 1);
-    else if (key.includes('ArrowRight')) focusOnInput(index + 1);
-
-    if (key.includes(values[index] as string)) focusOnInput(index);
+      onChange(newValues.join(''));
+    } else if (key.includes('ArrowLeft')) {
+      focusOnInput(index - 1);
+    } else if (key.includes('ArrowRight')) {
+      focusOnInput(index + 1);
+    }
   }
 
   function handleInputChange(e: ChangeEvent<HTMLInputElement>, index: number) {
     const currentValue = e.currentTarget.value;
-    const newValues = [...values];
+    const newValues = value.split('');
 
     if (currentValue.length > 1) {
-      currentValue
-        .split('')
-        .forEach((value, currentValueIndex) => (newValues[currentValueIndex] = value));
-    } else newValues[index] = currentValue;
-
-    if (index + 1 !== inputsNumber && currentValue) focusOnInput(index + 1);
-    else if (typeof onEnd === 'function' && newValues.every((value) => Boolean(value))) {
-      if (
-        (typeof onChange === 'function' && !propsValue) ||
-        (typeof onChange !== 'function' && propsValue) ||
-        (typeof onChange !== 'function' && !propsValue) ||
-        propsValue !== newValues.join('')
-      )
-        onEnd(newValues.join(''));
-      focusOnInput(inputsNumber - 1);
+      currentValue.split('').forEach((char, currentIndex) => {
+        if (currentIndex < inputsNumber) {
+          newValues[currentIndex] = char;
+        }
+      });
+    } else {
+      newValues[index] = currentValue;
     }
 
-    setValues(newValues);
+    onChange(newValues.join(''));
 
-    if (typeof onChange === 'function') onChange(newValues.join(''));
+    if (index + 1 !== inputsNumber && currentValue) {
+      focusOnInput(index + 1);
+    }
   }
 
   useEffect(() => {
-    if (propsValue) {
-      const initialValue = propsValue.split('');
-      setValues(initialValue);
-      const didFillTheWholeInput = inputsNumber === propsValue.length;
-      focusOnInput(propsValue.length);
-      if (didFillTheWholeInput && typeof onEnd === 'function') onEnd(propsValue);
+    if (value.length === inputsNumber && typeof onEnd === 'function') {
+      onEnd(value);
     }
-  }, [propsValue]);
+  }, [value, inputsNumber, onEnd]);
 
   return (
     <div className={clsx('dgs-ui-kit-space-y-2', className)}>
@@ -111,7 +101,7 @@ const OtpInput: FC<OtpInputProps> = (props) => {
             onChange={(e) => handleInputChange(e, index)}
             onKeyUp={(e) => handleInputKeyUp(e, index)}
             id={`dgs-ui-kit-otp-input-${index}`}
-            value={values[index]}
+            value={value[index] || ''}
             showMaxLength={false}
             isError={Boolean(errorMessage) || isError}
             autoComplete="off"
