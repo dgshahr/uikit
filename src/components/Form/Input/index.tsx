@@ -3,6 +3,7 @@ import { type ForwardedRef, type InputHTMLAttributes, forwardRef, useState } fro
 import CloseSquareIcon from '@/src/icons/CloseSquare';
 import EyeIcon from '@/src/icons/Eye';
 import HideIcon from '@/src/icons/Hide';
+import omitObject from '@/src/utils/omitObjects';
 import TextFieldWrapper from '../Wrappers/TextFieldWrapper/TextFieldWrapper';
 import type { TextFieldBaseProps } from '../Wrappers/TextFieldWrapper/TextFieldWrapper';
 
@@ -27,6 +28,17 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
     value,
     ...restProps
   } = props;
+  const inputProps = omitObject(restProps, [
+    'labelAddon',
+    'labelContent',
+    'link',
+    'rightIcon',
+    'isError',
+    'errorMessage',
+    'hintMessage',
+    'wrapperClassName',
+    'showMaxLength',
+  ]);
 
   const [type, setType] = useState(restProps.type);
 
@@ -57,7 +69,7 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
       )}
       {typeof onClear === 'function' && value && dir === 'ltr' && renderClearButton()}
       <input
-        {...restProps}
+        {...inputProps}
         ref={ref}
         className={clsx(
           'dgs-ui-kit-bg-transparent focus:dgs-ui-kit-outline-none dgs-ui-kit-flex-1',
