@@ -39,6 +39,7 @@
     "src": {},
     "icons": {},
     "scripts": {},
-    "storybook": {}
+    "storybook": {},
+    "utils": {}
   }
 }
