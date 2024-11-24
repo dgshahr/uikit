@@ -1,14 +1,6 @@
 'use client';
 import clsx from 'clsx';
-import React, {
-  useEffect,
-  useState,
-  type ChangeEvent,
-  type ChangeEventHandler,
-  type Dispatch,
-  type ReactNode,
-  type SetStateAction,
-} from 'react';
+import React, { type FC, type ReactNode } from 'react';
 import FieldBottomInfo from './FieldBottomInfo';
 import FieldLabel from './FieldLabel';
 
@@ -32,25 +24,16 @@ export interface TextFieldBaseProps {
   showMaxLength?: boolean;
 }
 
-interface TextFieldFunctionArgumants<T> {
-  handleChangeField: (e: ChangeEvent<T>) => void;
-  value: string | undefined;
-  setValue: Dispatch<SetStateAction<string>>;
-}
-
-interface TextFieldWrapperProps<T> extends TextFieldBaseProps {
+interface TextFieldWrapperProps extends TextFieldBaseProps {
   required?: boolean;
   disabled?: boolean;
   maxLength?: number;
   labelAddon?: React.ReactNode;
   value?: string | number | readonly string[];
-  onChange?: ChangeEventHandler<T>;
-  children: (argumants: TextFieldFunctionArgumants<T>) => ReactNode;
+  children: ReactNode;
 }
 
-const TextFieldWrapper = <T extends HTMLTextAreaElement | HTMLInputElement>(
-  props: TextFieldWrapperProps<T>,
-) => {
+const TextFieldWrapper: FC<TextFieldWrapperProps> = (props) => {
   const {
     labelContent,
     link,
@@ -63,26 +46,11 @@ const TextFieldWrapper = <T extends HTMLTextAreaElement | HTMLInputElement>(
     labelAddon,
     maxLength,
     disabled,
-    value: initialValue,
+    value,
     wrapperClassName,
     showMaxLength,
-    onChange,
     children,
   } = props;
-
-  const [value, setValue] = useState(initialValue?.toString() ?? '');
-
-  useEffect(() => {
-    if (typeof initialValue !== 'undefined' && initialValue !== null)
-      setValue(initialValue?.toString());
-  }, [initialValue]);
-
-  const handleChangeField = (e: ChangeEvent<T>) => {
-    setValue(e.currentTarget.value);
-    if (onChange) {
-      onChange(e);
-    }
-  };
 
   const showInfo = Boolean(errorMessage || hintMessage || (maxLength && showMaxLength));
   const showLabel = Boolean(labelContent || link?.href);
@@ -125,7 +93,7 @@ const TextFieldWrapper = <T extends HTMLTextAreaElement | HTMLInputElement>(
         )}
       >
         {rightIcon && <div className="dgs-ui-kit-text-gray-600">{rightIcon}</div>}
-        {children({ handleChangeField, setValue, value })}
+        {children}
       </div>
       {showInfo && (
         <FieldBottomInfo
@@ -133,7 +101,7 @@ const TextFieldWrapper = <T extends HTMLTextAreaElement | HTMLInputElement>(
           errorMessage={errorMessage}
           hintMessage={hintMessage}
           maxLength={showMaxLength ? maxLength : undefined}
-          value={value}
+          value={value?.toString()}
         />
       )}
     </WrapperElement>

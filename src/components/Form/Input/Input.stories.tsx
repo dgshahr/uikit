@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
-import Input from './index';
+import React, { FC, useState } from 'react';
+import Input, { InputProps } from './index';
 
 const meta = {
   title: 'Components/Form/Input',
@@ -15,7 +15,7 @@ const meta = {
   argTypes: {
     labelAddon: {
       description: 'A React node that is placed between the label and input field.',
-      control: 'text', // You can use `control: { type: 'text' }` for basic representation or customize it as needed
+      control: 'text',
     },
     isError: {
       control: { type: 'boolean' },
@@ -56,9 +56,24 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const InputExample: FC<InputProps> = (props) => {
+  const [value, setValue] = useState('');
+
+  return (
+    <Input
+      {...props}
+      value={value}
+      onChange={(e) => setValue(e.currentTarget.value)}
+      onClear={() => setValue('')}
+    />
+  );
+};
+
 export const Default: Story = {
   args: {
     labelContent: 'عنوان',
     hintMessage: 'متن راهنما',
   },
+
+  render: (args) => <InputExample {...args} />,
 };

@@ -6,13 +6,12 @@ import HideIcon from '@/src/icons/Hide';
 import TextFieldWrapper from '../Wrappers/TextFieldWrapper/TextFieldWrapper';
 import type { TextFieldBaseProps } from '../Wrappers/TextFieldWrapper/TextFieldWrapper';
 
-interface InputProps
+export interface InputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'dir'>,
     TextFieldBaseProps {
   leftIcon?: JSX.Element;
   prefix?: string;
   postfix?: string;
-  isClearOption?: boolean;
   onClear?: () => void;
 }
 
@@ -24,18 +23,17 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
     leftIcon,
     prefix,
     postfix,
-    isClearOption,
     onClear,
+    value,
     ...restProps
   } = props;
 
   const [type, setType] = useState(restProps.type);
 
-  function renderClearButton(setValue: React.Dispatch<React.SetStateAction<string>>) {
+  function renderClearButton() {
     return (
       <button
         onClick={() => {
-          setValue('');
           if (typeof onClear === 'function') onClear();
         }}
       >
@@ -52,71 +50,59 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
     <TextFieldWrapper
       {...props}
       containerClassName={clsx('dgs-ui-kit-items-center', containerClassName)}
+      value={value}
     >
-      {({ handleChangeField, value, setValue }) => (
-        <>
-          {prefix && (
-            <span className="dgs-ui-kit-font-p1-regular dgs-ui-kit-text-gray-500">{prefix}</span>
+      {prefix && (
+        <span className="dgs-ui-kit-font-p1-regular dgs-ui-kit-text-gray-500">{prefix}</span>
+      )}
+      {typeof onClear === 'function' && value && dir === 'ltr' && renderClearButton()}
+      <input
+        {...restProps}
+        ref={ref}
+        className={clsx(
+          'dgs-ui-kit-bg-transparent focus:dgs-ui-kit-outline-none dgs-ui-kit-flex-1',
+          dir === 'rtl' ? 'dgs-ui-kit-text-right' : '!dgs-ui-kit-text-left',
+          placeholderDir === 'rtl'
+            ? 'placeholder:dgs-ui-kit-text-right'
+            : 'placeholder:dgs-ui-kit-text-left',
+          {
+            ss02: restProps.type != 'password',
+          },
+          props.className,
+        )}
+        {...(dir === 'ltr' ? { style: { direction: 'ltr' } } : {})}
+        value={value}
+        type={type}
+        onInput={(e) => {
+          if (typeof restProps.onInput === 'function') restProps.onInput(e);
+          if (type !== 'number') return;
+          const element = e.currentTarget;
+          if (element.value.length > element.maxLength)
+            element.value = element.value.slice(0, element.maxLength);
+        }}
+      />
+      {typeof onClear === 'function' && value && dir === 'rtl' && renderClearButton()}
+      {postfix && (
+        <span className="dgs-ui-kit-font-p1-regular dgs-ui-kit-text-gray-500">{postfix}</span>
+      )}
+      {leftIcon && <div className="dgs-ui-kit-text-gray-600">{leftIcon}</div>}
+      {restProps.type === 'password' && (
+        <button
+          onClick={() => setType((prv) => (prv === 'text' ? 'password' : 'text'))}
+          className="dgs-ui-kit-text-gray-600"
+        >
+          {type === 'password' ? (
+            <EyeIcon
+              width={20}
+              height={20}
+            />
+          ) : (
+            <HideIcon
+              width={20}
+              height={20}
+            />
           )}
-          {isClearOption &&
-            value &&
-            value.length > 0 &&
-            dir === 'ltr' &&
-            renderClearButton(setValue)}
-          <input
-            {...restProps}
-            ref={ref}
-            className={clsx(
-              'dgs-ui-kit-bg-transparent focus:dgs-ui-kit-outline-none dgs-ui-kit-flex-1',
-              dir === 'rtl' ? 'dgs-ui-kit-text-right' : '!dgs-ui-kit-text-left',
-              placeholderDir === 'rtl'
-                ? 'placeholder:dgs-ui-kit-text-right'
-                : 'placeholder:dgs-ui-kit-text-left',
-              {
-                ss02: restProps.type != 'password',
-              },
-              props.className,
-            )}
-            {...(dir === 'ltr' ? { style: { direction: 'ltr' } } : {})}
-            value={value}
-            onChange={handleChangeField}
-            type={type}
-            onInput={(e) => {
-              if (typeof restProps.onInput === 'function') restProps.onInput(e);
-              if (type !== 'number') return;
-              const element = e.currentTarget;
-              if (element.value.length > element.maxLength)
-                element.value = element.value.slice(0, element.maxLength);
-            }}
-          />
-          {isClearOption &&
-            value &&
-            value.length > 0 &&
-            dir === 'rtl' &&
-            renderClearButton(setValue)}
-          {postfix && (
-            <span className="dgs-ui-kit-font-p1-regular dgs-ui-kit-text-gray-500">{postfix}</span>
-          )}
-          {leftIcon && <div className="dgs-ui-kit-text-gray-600">{leftIcon}</div>}
-          {restProps.type === 'password' && (
-            <button
-              onClick={() => setType((prv) => (prv === 'text' ? 'password' : 'text'))}
-              className="dgs-ui-kit-text-gray-600"
-            >
-              {type === 'password' ? (
-                <EyeIcon
-                  width={20}
-                  height={20}
-                />
-              ) : (
-                <HideIcon
-                  width={20}
-                  height={20}
-                />
-              )}
-            </button>
-          )}
-        </>
+        </button>
       )}
     </TextFieldWrapper>
   );
