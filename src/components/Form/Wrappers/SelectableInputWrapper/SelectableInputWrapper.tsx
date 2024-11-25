@@ -61,9 +61,12 @@ const SelectableInputWrapper: FC<SelectableInputWrapperProps> = (props) => {
         )}
       >
         <div
-          className={clsx('dgs-ui-kit-relative dgs-ui-kit-h-[18px] dgs-ui-kit-w-[18px]', {
-            'dgs-ui-kit-mt-1': label,
-          })}
+          className={clsx(
+            'dgs-ui-kit-relative dgs-ui-kit-h-[18px] dgs-ui-kit-w-[18px] dgs-ui-kit-shrink-0',
+            {
+              'dgs-ui-kit-mt-1': label,
+            },
+          )}
         >
           {children({
             inputClassName: clsx(
