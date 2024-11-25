@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import type { DetailedHTMLProps, InputHTMLAttributes } from 'react';
+import omitObject from '@/src/utils/omitObjects';
 import type { SelectableInputBaseUnionProps } from '../Wrappers/SelectableInputWrapper/SelectableInputWrapper';
 import SelectableInputWrapper from '../Wrappers/SelectableInputWrapper/SelectableInputWrapper';
 
@@ -8,13 +9,20 @@ type RadioButtonProps = SelectableInputBaseUnionProps &
 
 const RadioButton = (props: RadioButtonProps) => {
   const { className, ...rest } = props;
+  const inputProps = omitObject(rest, [
+    'label',
+    'isError',
+    'errorMessage',
+    'helperMessage',
+    'containerClassName',
+  ]);
 
   return (
     <SelectableInputWrapper {...rest}>
       {({ inputClassName, checkedInputClassName }) => (
         <>
           <input
-            {...rest}
+            {...inputProps}
             type="radio"
             className={clsx(
               'dgs-ui-kit-rounded-full dgs-ui-kit-shrink-0',
