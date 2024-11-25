@@ -4,7 +4,7 @@ import omitObject from '@/src/utils/omitObjects';
 import type { SelectableInputBaseUnionProps } from '../Wrappers/SelectableInputWrapper/SelectableInputWrapper';
 import SelectableInputWrapper from '../Wrappers/SelectableInputWrapper/SelectableInputWrapper';
 
-type RadioButtonProps = SelectableInputBaseUnionProps &
+export type RadioButtonProps = SelectableInputBaseUnionProps &
   Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'type'>;
 
 const RadioButton = (props: RadioButtonProps) => {

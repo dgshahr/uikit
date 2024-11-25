@@ -6,7 +6,7 @@ import omitObject from '@/src/utils/omitObjects';
 import type { SelectableInputBaseUnionProps } from '../Wrappers/SelectableInputWrapper/SelectableInputWrapper';
 import SelectableInputWrapper from '../Wrappers/SelectableInputWrapper/SelectableInputWrapper';
 
-type CheckboxProps = SelectableInputBaseUnionProps &
+export type CheckboxProps = SelectableInputBaseUnionProps &
   Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'type'> & {
     isIndeterminate?: boolean;
   };
