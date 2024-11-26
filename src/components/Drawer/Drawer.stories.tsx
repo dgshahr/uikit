@@ -91,6 +91,15 @@ const meta = {
         },
       },
     },
+    containerElement: {
+      control: { type: 'object' },
+      description:
+        "CAUTION: this will change the mask position to 'absolute' to fit in your container so it's not going to positioned relative to viewport.",
+      table: {
+        type: { summary: 'Element' },
+        defaultValue: { summary: 'document.body' },
+      },
+    },
   },
 } satisfies Meta<typeof Drawer>;
 

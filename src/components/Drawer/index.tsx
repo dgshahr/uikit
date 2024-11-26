@@ -30,6 +30,7 @@ export interface DrawerProps {
     containerClassName?: string;
   };
   children?: ReactNode | undefined;
+  containerElement?: Element | null;
 }
 
 function getSize({
@@ -64,11 +65,13 @@ const Drawer: FC<DrawerProps> = (props) => {
     width,
     header,
     footer,
+    containerElement,
   } = props;
   const [show, setShow] = useState(false);
+  const container = containerElement ?? document.body;
 
   function openDrawer() {
-    document.body.classList.add('dgs-ui-kit-overflow-hidden');
+    container.classList.add('dgs-ui-kit-overflow-hidden', 'dgs-ui-kit-relative');
     setTimeout(() => {
       setShow(true);
     }, ANIMATION_DURATION);
@@ -80,7 +83,7 @@ const Drawer: FC<DrawerProps> = (props) => {
     setShow(false);
 
     setTimeout(() => {
-      document.body.classList.remove('dgs-ui-kit-overflow-hidden');
+      container.classList.remove('dgs-ui-kit-overflow-hidden', 'dgs-ui-kit-relative');
       onClose();
     }, ANIMATION_DURATION);
   }
@@ -94,10 +97,11 @@ const Drawer: FC<DrawerProps> = (props) => {
     : false;
 
   return createPortal(
-    <button
+    <div
       className={clsx(
-        'dgs-ui-kit-bg-black/40 dgs-ui-kit-fixed dgs-ui-kit-top-0 dgs-ui-kit-left-0 dgs-ui-kit-z-50 dgs-ui-kit-opacity-0 dgs-ui-kit-overflow-hidden dgs-ui-kit-cursor-default dgs-ui-kit-transition dgs-ui-kit-ease-linear',
+        'dgs-ui-kit-bg-black/40 dgs-ui-kit-top-0 dgs-ui-kit-left-0 dgs-ui-kit-z-50 dgs-ui-kit-opacity-0 dgs-ui-kit-overflow-hidden dgs-ui-kit-cursor-default dgs-ui-kit-transition dgs-ui-kit-ease-linear',
         { 'dgs-ui-kit-opacity-100': show, 'dgs-ui-kit-w-full dgs-ui-kit-h-full': open },
+        containerElement ? 'dgs-ui-kit-absolute' : 'dgs-ui-kit-fixed',
         maskClassName,
       )}
       onClick={closeDrawer}
@@ -178,8 +182,8 @@ const Drawer: FC<DrawerProps> = (props) => {
           ) : null}
         </div>
       </div>
-    </button>,
-    document.body,
+    </div>,
+    container,
   );
 };
 
