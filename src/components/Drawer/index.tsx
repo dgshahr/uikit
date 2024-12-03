@@ -123,7 +123,7 @@ const Drawer: FC<DrawerProps> = (props) => {
           bottom: position !== 'top' ? (padding ?? 0) : 'unset',
           left: position !== 'right' ? (padding ?? 0) : 'unset',
           right: position !== 'left' ? (padding ?? 0) : 'unset',
-          maxHeight: `calc(100vh - ${padding * 2}px)`,
+          maxHeight: `calc(100svh - ${padding * 2}px)`,
           maxWidth: `calc(100vw - ${padding * 2}px)`,
           width: getSize({ position, padding, item: 'width' }),
           height: getSize({ position, padding, item: 'height' }),
