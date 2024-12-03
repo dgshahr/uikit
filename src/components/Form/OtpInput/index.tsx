@@ -1,14 +1,12 @@
 'use client';
 import clsx from 'clsx';
 import { useEffect, useRef, type ChangeEvent, type FC, type KeyboardEvent } from 'react';
-import Input from '../Input';
+import Input, { type InputProps } from '../Input';
 import FieldBottomInfo from '../Wrappers/TextFieldWrapper/FieldBottomInfo';
 import FieldLabel from '../Wrappers/TextFieldWrapper/FieldLabel';
-import type { TextFieldBaseProps } from '../Wrappers/TextFieldWrapper/TextFieldWrapper';
 import '@/src/styles.css';
 
-export interface OtpInputProps
-  extends Pick<TextFieldBaseProps, 'labelContent' | 'errorMessage' | 'isError' | 'hintMessage'> {
+export interface OtpInputProps extends Omit<InputProps, 'value' | 'onChange'> {
   inputsNumber?: number;
   onChange: (value: string) => void;
   onEnd?: (value: string) => void;
@@ -29,6 +27,7 @@ const OtpInput: FC<OtpInputProps> = (props) => {
     errorMessage,
     isError,
     value,
+    ...rest
   } = props;
 
   const canTriggerOnEnd = useRef(false);
@@ -103,7 +102,6 @@ const OtpInput: FC<OtpInputProps> = (props) => {
             containerClassName="dgs-ui-kit-w-12 dgs-ui-kit-h-12 dgs-ui-kit-p-0"
             className="dgs-ui-kit-w-full dgs-ui-kit-h-full !dgs-ui-kit-text-center placeholder:!dgs-ui-kit-text-center"
             placeholder="-"
-            type="tel"
             autoFocus={index === 0}
             onChange={(e) => handleInputChange(e, index)}
             onKeyUp={(e) => handleInputKeyUp(e, index)}
@@ -113,6 +111,7 @@ const OtpInput: FC<OtpInputProps> = (props) => {
             isError={Boolean(errorMessage) || isError}
             autoComplete="off"
             maxLength={1}
+            {...rest}
           />
         ))}
       </div>
