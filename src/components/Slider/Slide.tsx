@@ -63,49 +63,29 @@ const Slide: FC<
         ref.current,
       ),
     );
-  }, [ref, childrenCount]);
+  }, [ref, childrenCount, containerXPadding]);
 
   return (
-    <>
-      {childIndex === 0 && containerXPadding > 0 && (
-        <div
-          className="dgs-ui-kit-shrink-0"
-          style={{
-            width: containerXPadding,
-            paddingLeft: spaceBetween,
-          }}
-        />
-      )}
-      <div
-        {...rest}
-        ref={ref}
-        id={`slide-item-${sliderId}`}
-        className={clsx('dgs-ui-kit-shrink-0 dgs-ui-kit-snap-normal', className)}
-        style={{
-          width: 100 / (slidesPerView ?? 1) + '%',
-          paddingLeft: spaceBetween,
-          scrollSnapAlign: getScrollSnapAlign({
-            slidesPerView,
-            childIndex,
-            centerMode,
-            childrenCount: childrenCount || 0,
-            haveContainerPadding: containerXPadding > 0,
-          }),
-          ...style,
-        }}
-      >
-        {children}
-      </div>
-      {childIndex === childrenCount - 1 && containerXPadding > 0 && (
-        <div
-          className="dgs-ui-kit-shrink-0 "
-          style={{
-            width: containerXPadding,
-            paddingLeft: spaceBetween,
-          }}
-        />
-      )}
-    </>
+    <div
+      {...rest}
+      ref={ref}
+      id={`slide-item-${sliderId}`}
+      className={clsx('dgs-ui-kit-shrink-0 dgs-ui-kit-snap-normal', className)}
+      style={{
+        width: 100 / (slidesPerView ?? 1) + '%',
+        paddingLeft: spaceBetween,
+        scrollSnapAlign: getScrollSnapAlign({
+          slidesPerView,
+          childIndex,
+          centerMode,
+          childrenCount: childrenCount || 0,
+          haveContainerPadding: containerXPadding > 0,
+        }),
+        ...style,
+      }}
+    >
+      {children}
+    </div>
   );
 };
 

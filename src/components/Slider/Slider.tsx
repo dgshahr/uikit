@@ -130,7 +130,7 @@ const Slider = forwardRef<SliderRef, PropsWithChildren<SliderProps>>((props, ref
     if (containerXPadding > 0) newChildrensCount -= 2;
 
     setChildrenCount(newChildrensCount);
-  }, [props.children, containerRef]);
+  }, [props.children, containerRef, containerXPadding]);
 
   useEffect(() => {
     if (!props.responsive || Object.keys(props.responsive).length <= 0) return;
@@ -171,7 +171,25 @@ const Slider = forwardRef<SliderRef, PropsWithChildren<SliderProps>>((props, ref
           onScroll={detectCarouselPosition}
           ref={containerRef}
         >
+          {containerXPadding > 0 && (
+            <div
+              className="dgs-ui-kit-shrink-0"
+              style={{
+                width: containerXPadding,
+                paddingLeft: spaceBetween,
+              }}
+            />
+          )}
           {props.children}
+          {containerXPadding > 0 && (
+            <div
+              className="dgs-ui-kit-shrink-0"
+              style={{
+                width: containerXPadding,
+                paddingLeft: spaceBetween,
+              }}
+            />
+          )}
         </div>
         {haveNavigation && (
           <Navigation
