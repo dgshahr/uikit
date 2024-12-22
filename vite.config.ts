@@ -17,7 +17,7 @@ const findEntries = (dir: string) => {
     if (statSync(itemPath).isDirectory()) {
       const indexPath = resolve(itemPath, 'index.tsx');
       if (existsSync(indexPath)) {
-        const componentsName = itemPath.replace(`${componentDir}\\`, '');
+        const componentsName = itemPath.replace(`${componentDir}/`, '');
         entries[componentsName] = indexPath;
       }
       Object.assign(entries, findEntries(itemPath));
@@ -62,6 +62,7 @@ export default defineConfig({
       external: ['react/jsx-runtime', ...Object.keys(peerDependencies)],
       output: {
         assetFileNames: 'assets/[name][extname]',
+        entryFileNames: '[name]/index.[format].js',
       },
     },
   },
