@@ -41,9 +41,9 @@ const meta = {
     },
     position: {
       control: { type: 'select' },
-      options: ['bottom', 'top', 'right', 'left'],
+      options: ['bottom', 'top', 'right', 'left', 'center'],
       table: {
-        type: { summary: 'bottom, top, right, left' },
+        type: { summary: 'bottom, top, right, left, center' },
         defaultValue: { summary: 'bottom' },
       },
     },

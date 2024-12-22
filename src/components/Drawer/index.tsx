@@ -12,7 +12,7 @@ export interface DrawerProps {
   open: boolean;
   onClose: () => void;
   persist?: boolean;
-  position?: 'bottom' | 'top' | 'right' | 'left';
+  position?: 'bottom' | 'top' | 'right' | 'left' | 'center';
   className?: string;
   maskClassName?: string;
   containerClassName?: string;
@@ -42,7 +42,8 @@ function getSize({
   padding: DrawerProps['padding'];
   item: 'height' | 'width';
 }) {
-  if (item === 'width') {
+  if (position === 'center') return 'auto';
+  else if (item === 'width') {
     if (position === 'bottom' || position === 'top') return `calc(100% - ${padding * 2}px)`;
     else return `auto`;
   } else {
@@ -68,7 +69,7 @@ const Drawer: FC<DrawerProps> = (props) => {
     containerElement,
   } = props;
   const [show, setShow] = useState(false);
-  const container = containerElement ?? document.body;
+  const container = containerElement ?? document?.body;
 
   function openDrawer() {
     container.classList.add('dgs-ui-kit-overflow-hidden', 'dgs-ui-kit-relative');
@@ -96,6 +97,16 @@ const Drawer: FC<DrawerProps> = (props) => {
     ? Object.values(header).some((headerItem) => Boolean(headerItem))
     : false;
 
+  const cardPosition: CSSProperties =
+    position === 'center'
+      ? { top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }
+      : {
+          top: position !== 'bottom' ? (padding ?? 0) : 'unset',
+          bottom: position !== 'top' ? (padding ?? 0) : 'unset',
+          left: position !== 'right' ? (padding ?? 0) : 'unset',
+          right: position !== 'left' ? (padding ?? 0) : 'unset',
+        };
+
   return createPortal(
     <div
       className={clsx(
@@ -119,10 +130,7 @@ const Drawer: FC<DrawerProps> = (props) => {
           className,
         )}
         style={{
-          top: position !== 'bottom' ? (padding ?? 0) : 'unset',
-          bottom: position !== 'top' ? (padding ?? 0) : 'unset',
-          left: position !== 'right' ? (padding ?? 0) : 'unset',
-          right: position !== 'left' ? (padding ?? 0) : 'unset',
+          ...cardPosition,
           maxHeight: `calc(100svh - ${padding * 2}px)`,
           maxWidth: `calc(100vw - ${padding * 2}px)`,
           width: getSize({ position, padding, item: 'width' }),
