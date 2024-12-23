@@ -101,17 +101,21 @@ const Drawer: FC<DrawerProps> = (props) => {
     }, ANIMATION_DURATION);
   }
 
-  function closeDrawer() {
-    setShow(false);
-
+  function removeContainerClasses() {
     setTimeout(() => {
       container.classList.remove('dgs-ui-kit-overflow-hidden', 'dgs-ui-kit-relative');
       onClose();
     }, ANIMATION_DURATION);
   }
 
+  function closeDrawer() {
+    setShow(false);
+    removeContainerClasses();
+  }
+
   useEffect(() => {
     if (open) openDrawer();
+    else removeContainerClasses();
   }, [open]);
 
   const haveHeader = header
