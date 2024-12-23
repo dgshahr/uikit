@@ -52,6 +52,29 @@ function getSize({
   }
 }
 
+function getRadius({
+  position,
+  padding = 0,
+}: {
+  position: DrawerProps['position'];
+  padding: DrawerProps['padding'];
+}) {
+  const defaultRadius = 'dgs-ui-kit-rounded-2xl';
+  if (padding > 0 || position === 'center') return defaultRadius;
+  switch (position) {
+    case 'bottom':
+      return `${defaultRadius} dgs-ui-kit-rounded-b-none`;
+    case 'left':
+      return `${defaultRadius} dgs-ui-kit-rounded-l-none`;
+    case 'right':
+      return `${defaultRadius} dgs-ui-kit-rounded-r-none`;
+    case 'top':
+      return `${defaultRadius} dgs-ui-kit-rounded-t-none`;
+    default:
+      return defaultRadius;
+  }
+}
+
 const Drawer: FC<DrawerProps> = (props) => {
   const {
     open,
@@ -136,7 +159,10 @@ const Drawer: FC<DrawerProps> = (props) => {
         }}
       >
         <div
-          className="dgs-ui-kit-overflow-x-hidden dgs-ui-kit-rounded-2xl dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-bg-white dgs-ui-kit-divide-y dgs-ui-kit-divide-gray-200 dgs-ui-kit-divide-solid"
+          className={clsx(
+            'dgs-ui-kit-overflow-x-hidden dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-bg-white dgs-ui-kit-divide-y dgs-ui-kit-divide-gray-200 dgs-ui-kit-divide-solid',
+            getRadius({ position, padding }),
+          )}
           style={{ width: width ?? '100%' }}
           onClick={(e) => e.stopPropagation()}
         >
