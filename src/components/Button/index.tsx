@@ -29,7 +29,7 @@ function styleButton({
   children,
 }: ButtonProps) {
   const defaultClassName =
-    'dgs-ui-kit-border dgs-ui-kit-relative dgs-ui-kit-rounded-lg dgs-ui-kit-min-w-max dgs-ui-kit-h-fit disabled:dgs-ui-kit-cursor-not-allowed dgs-ui-kit-transition-all duration-300 dgs-ui-kit-flex dgs-ui-kit-items-center disabled:dgs-ui-kit-opacity-40';
+    'dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-relative dgs-ui-kit-rounded-lg dgs-ui-kit-min-w-max dgs-ui-kit-h-fit disabled:dgs-ui-kit-cursor-not-allowed dgs-ui-kit-transition-all duration-300 dgs-ui-kit-flex dgs-ui-kit-items-center disabled:dgs-ui-kit-opacity-40';
 
   return [
     defaultClassName,
