@@ -79,8 +79,6 @@ const Drawer: FC<DrawerProps> = (props) => {
   }
 
   function closeDrawer() {
-    if (persist) return;
-
     setShow(false);
 
     setTimeout(() => {
@@ -115,7 +113,7 @@ const Drawer: FC<DrawerProps> = (props) => {
         containerElement ? 'dgs-ui-kit-absolute' : 'dgs-ui-kit-fixed',
         maskClassName,
       )}
-      onClick={closeDrawer}
+      onClick={() => (persist ? null : closeDrawer())}
     >
       <div
         className={clsx(
