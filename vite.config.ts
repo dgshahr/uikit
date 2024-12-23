@@ -62,7 +62,6 @@ export default defineConfig({
       external: ['react/jsx-runtime', ...Object.keys(peerDependencies)],
       output: {
         assetFileNames: 'assets/[name][extname]',
-        entryFileNames: '[name]/index.[format].js',
       },
     },
   },
