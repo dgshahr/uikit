@@ -47,6 +47,8 @@ const NavigationDot = (props: NavigationDotProps) => {
 
       if (elapsed >= autoplayTime && typeof onNavigateToNext === 'function') {
         onNavigateToNext();
+        setFillPercentage(0);
+        clearInterval(autoplayInterval);
       }
     }, 100);
 
