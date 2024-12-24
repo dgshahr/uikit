@@ -101,18 +101,18 @@ const Drawer: FC<DrawerProps> = (props) => {
     }, ANIMATION_DURATION);
   }
 
-  function closeDrawer() {
+  function closeDrawer(runOnClose = true) {
     setShow(false);
 
     setTimeout(() => {
       container.classList.remove('dgs-ui-kit-overflow-hidden', 'dgs-ui-kit-relative');
-      onClose();
+      if (runOnClose) onClose();
     }, ANIMATION_DURATION);
   }
 
   useEffect(() => {
     if (open) openDrawer();
-    else if (show) closeDrawer();
+    else if (show) closeDrawer(false);
   }, [open]);
 
   const haveHeader = header
@@ -193,7 +193,7 @@ const Drawer: FC<DrawerProps> = (props) => {
               ) : null}
               {header.haveCloseIcon && (
                 <button
-                  onClick={closeDrawer}
+                  onClick={() => closeDrawer()}
                   className="dgs-ui-kit-absolute dgs-ui-kit-top-1/2 -dgs-ui-kit-translate-y-1/2 dgs-ui-kit-left-4"
                 >
                   <CloseRemoveIcon
