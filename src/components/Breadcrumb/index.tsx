@@ -19,7 +19,7 @@ const Breadcrumb = (props: BreadcrumbProps) => {
 
   return (
     <div className={clsx('dgs-ui-kit-bg-gray-100 dgs-ui-kit-w-full', className)}>
-      <div className="dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-x-1 dgs-ui-kit-py-3 dgs-ui-kit-overflow-x-auto dgs-ui-kit-container">
+      <div className="dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-x-1 dgs-ui-kit-py-3 dgs-ui-kit-overflow-x-auto no-scrollbar dgs-ui-kit-container">
         {items.map((breadcrumbItem, index) => (
           <a
             key={breadcrumbItem.link}
