@@ -10,7 +10,7 @@ interface BreadcrumbProps {
     title: string;
     icon?: ReactNode;
   }[];
-  pageTitle: string;
+  pageTitle?: string;
   className?: string;
 }
 
@@ -20,7 +20,7 @@ const Breadcrumb = (props: BreadcrumbProps) => {
   return (
     <div className={clsx('dgs-ui-kit-bg-gray-100 dgs-ui-kit-w-full', className)}>
       <div className="dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-x-1 dgs-ui-kit-py-3 dgs-ui-kit-overflow-x-auto dgs-ui-kit-container">
-        {items.map((breadcrumbItem) => (
+        {items.map((breadcrumbItem, index) => (
           <a
             key={breadcrumbItem.link}
             href={breadcrumbItem.link}
@@ -28,15 +28,19 @@ const Breadcrumb = (props: BreadcrumbProps) => {
           >
             {breadcrumbItem.icon && breadcrumbItem.icon}
             <div className="dgs-ui-kit-font-caption-demibold">{breadcrumbItem.title}</div>
-            <ArrowLeft2Icon
-              width={16}
-              height={16}
-            />
+            {index !== items.length - 1 || (index === items.length - 1 && pageTitle) ? (
+              <ArrowLeft2Icon
+                width={16}
+                height={16}
+              />
+            ) : null}
           </a>
         ))}
-        <div className="dgs-ui-kit-text-gray-500 dgs-ui-kit-font-caption-regular dgs-ui-kit-shrink-0">
-          {pageTitle}
-        </div>
+        {pageTitle ? (
+          <div className="dgs-ui-kit-text-gray-500 dgs-ui-kit-font-caption-regular dgs-ui-kit-shrink-0">
+            {pageTitle}
+          </div>
+        ) : null}
       </div>
     </div>
   );
