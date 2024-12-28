@@ -5,6 +5,7 @@ import type { SliderProps } from './Slider';
 
 interface NavigationDotProps {
   active: boolean;
+  index: number;
   onClick?: () => void;
   onNavigateToNext?: () => void;
 }
@@ -31,7 +32,7 @@ function styleNavigationDot({
 }
 
 const NavigationDot = (props: NavigationDotProps) => {
-  const { active, onClick, onNavigateToNext } = props;
+  const { active, onClick, onNavigateToNext, index } = props;
   const { autoplay, navigationVariant = 'outside' } = useSliderContext();
   const [fillPercentage, setFillPercentage] = useState(0);
 
@@ -66,6 +67,7 @@ const NavigationDot = (props: NavigationDotProps) => {
         styleNavigationDot({ active, autoplay, variant: navigationVariant }),
       )}
       onClick={onClick}
+      aria-label={`slider-navigation-dot-${index + 1}`}
     >
       {active && (
         <div

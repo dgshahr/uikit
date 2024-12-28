@@ -40,12 +40,14 @@ const Navigation: FC<NavigationProps> = (props) => {
         variant="secondary"
         onClick={() => onNavigate(slideIndex - 1)}
         rightIcon={<ArrowRight2Icon />}
+        aria-label="slider-previous-button"
       />
       <Button
         type="button"
         variant="secondary"
         onClick={() => onNavigate(slideIndex + 1)}
         rightIcon={<ArrowLeft2Icon />}
+        aria-label="slider-next-button"
       />
     </div>
   );
@@ -105,6 +107,7 @@ const Navigation: FC<NavigationProps> = (props) => {
                   <NavigationDot
                     key={item + slidesCount}
                     active={slideIndex === index}
+                    index={index}
                     onClick={() => onNavigate(index)}
                     onNavigateToNext={() => onNavigate(slideIndex + 1)}
                   />
