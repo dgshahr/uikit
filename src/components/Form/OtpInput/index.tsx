@@ -111,6 +111,10 @@ const OtpInput: FC<OtpInputProps> = (props) => {
             isError={Boolean(errorMessage) || isError}
             autoComplete="off"
             maxLength={1}
+            onPaste={(e) => {
+              const pastedText = e.clipboardData.getData('text');
+              if (Number(pastedText)) onChange(pastedText);
+            }}
             {...rest}
           />
         ))}
