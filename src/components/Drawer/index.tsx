@@ -115,6 +115,10 @@ const Drawer: FC<DrawerProps> = (props) => {
     else if (show) closeDrawer(false);
   }, [open]);
 
+  useEffect(() => {
+    return () => closeDrawer(false);
+  }, []);
+
   const haveHeader = header
     ? Object.values(header).some((headerItem) => Boolean(headerItem))
     : false;
