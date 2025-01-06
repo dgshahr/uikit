@@ -9,8 +9,9 @@ export default {
     'type-enum': [2, 'always', typesEnum],
     'scope-case': [2, 'always', ['camel-case']],
     'scope-enum': [2, 'always', scopesEnum],
+    'scope-empty': [1, 'never'],
     'subject-empty': [2, 'never'],
-    'subject-case': [2, 'always', ['lower-case']],
-    'header-max-length': [2, 'always', 72],
+    'subject-case': [2, 'always', ['lower-case', 'camel-case']],
+    'header-max-length': [1, 'always', 72],
   },
 };
