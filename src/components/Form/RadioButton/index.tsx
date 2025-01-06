@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import type { DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import omitObject from '@/src/utils/omitObjects';
-import type { SelectableInputBaseUnionProps } from '../Wrappers/SelectableInputWrapper/SelectableInputWrapper';
-import SelectableInputWrapper from '../Wrappers/SelectableInputWrapper/SelectableInputWrapper';
+import type { RadioCheckboxBaseUnionProps } from '../Wrappers/RadioCheckboxWrapper/RadioCheckboxWrapper';
+import RadioCheckboxWrapper from '../Wrappers/RadioCheckboxWrapper/RadioCheckboxWrapper';
 
-export type RadioButtonProps = SelectableInputBaseUnionProps &
+export type RadioButtonProps = RadioCheckboxBaseUnionProps &
   Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'type'>;
 
 const RadioButton = (props: RadioButtonProps) => {
@@ -18,7 +18,7 @@ const RadioButton = (props: RadioButtonProps) => {
   ]);
 
   return (
-    <SelectableInputWrapper {...rest}>
+    <RadioCheckboxWrapper {...rest}>
       {({ inputClassName, checkedInputClassName }) => (
         <>
           <input
@@ -31,7 +31,7 @@ const RadioButton = (props: RadioButtonProps) => {
           </div>
         </>
       )}
-    </SelectableInputWrapper>
+    </RadioCheckboxWrapper>
   );
 };
 

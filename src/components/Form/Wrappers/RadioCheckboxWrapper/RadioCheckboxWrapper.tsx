@@ -3,7 +3,7 @@ import type { FC, ReactNode } from 'react';
 
 import '@/src/styles.css';
 
-interface SelectableInputBaseProps {
+interface RadioCheckboxBaseProps {
   label?: string | ReactNode;
   isError?: boolean;
   errorMessage?: string;
@@ -11,23 +11,23 @@ interface SelectableInputBaseProps {
   containerClassName?: string;
 }
 
-interface SelectableInputBordered extends SelectableInputBaseProps {
+interface RadioCheckboxBordered extends RadioCheckboxBaseProps {
   variant: 'bordered';
   icon?: ReactNode;
 }
 
-interface SelectableInputDefault extends SelectableInputBaseProps {
+interface RadioCheckboxDefault extends RadioCheckboxBaseProps {
   variant?: 'default';
   icon?: never;
 }
 
-export type SelectableInputBaseUnionProps = SelectableInputBordered | SelectableInputDefault;
+export type RadioCheckboxBaseUnionProps = RadioCheckboxBordered | RadioCheckboxDefault;
 
-type SelectableInputWrapperProps = SelectableInputBaseUnionProps & {
+type RadioCheckboxWrapperProps = RadioCheckboxBaseUnionProps & {
   children: (classNames: { inputClassName: string; checkedInputClassName: string }) => ReactNode;
 };
 
-const SelectableInputWrapper: FC<SelectableInputWrapperProps> = (props) => {
+const RadioCheckboxWrapper: FC<RadioCheckboxWrapperProps> = (props) => {
   const {
     children,
     containerClassName,
@@ -38,7 +38,7 @@ const SelectableInputWrapper: FC<SelectableInputWrapperProps> = (props) => {
     variant = 'default',
   } = props;
 
-  const icon = (props as SelectableInputBordered).icon;
+  const icon = (props as RadioCheckboxBordered).icon;
   const showError = isError || Boolean(errorMessage);
 
   return (
@@ -110,4 +110,4 @@ const SelectableInputWrapper: FC<SelectableInputWrapperProps> = (props) => {
   );
 };
 
-export default SelectableInputWrapper;
+export default RadioCheckboxWrapper;

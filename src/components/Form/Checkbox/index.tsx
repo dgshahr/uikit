@@ -3,10 +3,10 @@ import type { DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import CheckmarkIcon from '@/src/icons/Checkmark';
 import Minus4Icon from '@/src/icons/Minus4';
 import omitObject from '@/src/utils/omitObjects';
-import type { SelectableInputBaseUnionProps } from '../Wrappers/SelectableInputWrapper/SelectableInputWrapper';
-import SelectableInputWrapper from '../Wrappers/SelectableInputWrapper/SelectableInputWrapper';
+import type { RadioCheckboxBaseUnionProps } from '../Wrappers/RadioCheckboxWrapper/RadioCheckboxWrapper';
+import RadioCheckboxWrapper from '../Wrappers/RadioCheckboxWrapper/RadioCheckboxWrapper';
 
-export type CheckboxProps = SelectableInputBaseUnionProps &
+export type CheckboxProps = RadioCheckboxBaseUnionProps &
   Omit<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'type'> & {
     isIndeterminate?: boolean;
   };
@@ -22,7 +22,7 @@ const Checkbox = (props: CheckboxProps) => {
   ]);
 
   return (
-    <SelectableInputWrapper {...rest}>
+    <RadioCheckboxWrapper {...rest}>
       {({ inputClassName, checkedInputClassName }) => (
         <>
           <input
@@ -45,7 +45,7 @@ const Checkbox = (props: CheckboxProps) => {
           </div>
         </>
       )}
-    </SelectableInputWrapper>
+    </RadioCheckboxWrapper>
   );
 };
 
