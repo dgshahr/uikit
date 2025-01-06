@@ -40,7 +40,7 @@ const Textarea = forwardRef(function Textarea(
         {...inputProps}
         ref={ref}
         className={clsx(
-          'dgs-ui-kit-bg-transparent dgs-ui-kit-w-full dgs-ui-kit-h-full focus:dgs-ui-kit-outline-none ss02 dgs-ui-kit-flex-1 dgs-ui-kit-resize-none',
+          'dgs-ui-kit-bg-transparent dgs-ui-kit-leading-normal dgs-ui-kit-w-full dgs-ui-kit-h-full focus:dgs-ui-kit-outline-none ss02 dgs-ui-kit-flex-1 dgs-ui-kit-resize-none',
           dir === 'rtl' ? 'dgs-ui-kit-text-right' : '!dgs-ui-kit-text-left',
           placeholderDir === 'rtl'
             ? 'placeholder:dgs-ui-kit-text-right'
