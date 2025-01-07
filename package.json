@@ -1,6 +1,6 @@
 {
   "name": "@dgshahr/ui-kit",
-  "version": "0.0.58",
+  "version": "0.0.59",
   "description": "dgshahr ui-kit",
   "author": "dgshahr",
   "license": "MIT",
@@ -136,6 +136,16 @@
       "require": {
         "types": "./dist/Form/RadioButton/index.d.ts",
         "default": "./dist/Form/RadioButton/index.cjs"
+      }
+    },
+    "./Form/Select": {
+      "import": {
+        "types": "./dist/Form/Select/index.d.ts",
+        "default": "./dist/Form/Select/index.js"
+      },
+      "require": {
+        "types": "./dist/Form/Select/index.d.ts",
+        "default": "./dist/Form/Select/index.cjs"
       }
     },
     "./Form/Textarea": {
