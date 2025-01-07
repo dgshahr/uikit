@@ -36,6 +36,7 @@
   },
   "scopes": {
     "components": {},
+    "hooks": {},
     "src": {},
     "icons": {},
     "scripts": {},
