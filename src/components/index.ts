@@ -9,6 +9,7 @@ export { default as Checkbox } from './Form/Checkbox';
 export { default as Input } from './Form/Input';
 export { default as OtpInput } from './Form/OtpInput';
 export { default as RadioButton } from './Form/RadioButton';
+export { default as Select } from './Form/Select';
 export { default as Textarea } from './Form/Textarea';
 export { default as Pagination } from './Pagination';
 export { default as ProgressBar } from './Progress/Bar';
