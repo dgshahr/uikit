@@ -7,7 +7,17 @@ type OptionItemProps<T> = Partial<SelectProps<T>> & {
   option: Option<T>;
 };
 
-function renderDefaultOptionItem(label: string, isMultiple: boolean, isActive: boolean) {
+function renderDefaultOptionItem({
+  label,
+  isMultiple,
+  isActive,
+  disabled,
+}: {
+  label: string;
+  isMultiple: boolean;
+  isActive: boolean;
+  disabled: boolean;
+}) {
   if (!isMultiple) return label;
 
   return (
@@ -15,6 +25,7 @@ function renderDefaultOptionItem(label: string, isMultiple: boolean, isActive: b
       checked={isActive}
       label={label}
       readOnly
+      disabled={disabled}
     />
   );
 }
@@ -55,7 +66,12 @@ const OptionItem = <T,>(props: OptionItemProps<T>) => {
     >
       {optionCell
         ? optionCell(option)
-        : renderDefaultOptionItem(option.label, mode === 'multiple', isOptionActive())}
+        : renderDefaultOptionItem({
+            label: option.label,
+            isMultiple: mode === 'multiple',
+            isActive: isOptionActive(),
+            disabled: option.disabled ?? false,
+          })}
     </button>
   );
 };
