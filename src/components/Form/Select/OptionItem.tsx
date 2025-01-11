@@ -65,7 +65,7 @@ const OptionItem = <T,>(props: OptionItemProps<T>) => {
       disabled={option.disabled}
     >
       {optionCell
-        ? optionCell(option)
+        ? optionCell(option, isOptionActive())
         : renderDefaultOptionItem({
             label: option.label,
             isMultiple: mode === 'multiple',

@@ -13,7 +13,7 @@ type SelectPropsBase<T> = {
   searchable?: boolean;
   isLoading?: boolean;
   disabled?: boolean;
-  optionCell?: (option: Option<T>) => ReactNode;
+  optionCell?: (option: Option<T>, isActive: boolean) => ReactNode;
   optionCellClassName?: string;
   className?: string;
   beforOptions?: ReactNode;

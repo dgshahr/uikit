@@ -47,13 +47,13 @@ const customOptionProps = {
   inputProps: {
     placeholder: 'متن نما',
   },
-  optionCell(option) {
+  optionCell(option, isActive) {
     return (
       <div className="dgs-ui-kit-flex dgs-ui-kit-justify-between dgs-ui-kit-items-center">
         <div className="dgs-ui-kit-flex dgs-ui-kit-items-center">
           <div className="dgs-ui-kit-bg-gray-600 dgs-ui-kit-w-5 dgs-ui-kit-h-5 dgs-ui-kit-rounded dgs-ui-kit-ml-3" />
           <span className="dgs-ui-kit-font-p1-regular dgs-ui-kit-text-gray-700">
-            {option.label}
+            {option.label} {isActive && 'انتخاب شده'}
           </span>
         </div>
         {option.disabled && (
