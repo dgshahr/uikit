@@ -17,7 +17,103 @@ const meta = {
       },
     },
   },
-  argTypes: {},
+  argTypes: {
+    options: {
+      control: 'object',
+      table: {
+        type: {
+          summary: 'Option<T>[]',
+          detail: `{
+  value: T;
+  label: string;
+  disabled?: boolean;
+}`,
+        },
+      },
+    },
+    value: {
+      control: 'object',
+      table: {
+        type: { summary: 'T | T[]', detail: "it should be array if select is 'multiple' mode." },
+      },
+    },
+    onChange: {
+      control: 'object',
+      type: 'function',
+      table: {
+        type: {
+          summary: 'onChange: (value: T | T[]) => void',
+          detail: "value argumant is array if select is 'multiple' mode.",
+        },
+      },
+    },
+    mode: {
+      control: { type: 'select' },
+      options: ['single', 'multiple'],
+      table: { type: { summary: 'single, multiple' }, defaultValue: { summary: 'single' } },
+    },
+    separateSelectedOptions: {
+      control: 'boolean',
+      table: { type: { summary: 'boolean', detail: "only available in 'multiple' mode" } },
+    },
+    customInput: {
+      control: 'object',
+      type: 'function',
+      table: {
+        type: {
+          summary: '(isShowOptions: boolean) => ReactNode',
+          detail: "only available if 'inputProps' is not provided",
+        },
+      },
+    },
+    inputProps: {
+      control: 'object',
+      table: {
+        type: {
+          summary: "Omit<InputProps, 'leftIcon'>",
+          detail: "only available if 'customInput' is not provided",
+        },
+      },
+    },
+    optionsContainer: {
+      control: { type: 'select' },
+      options: ['popover', 'drawer'],
+      table: { type: { summary: 'popover, drawer' }, defaultValue: { summary: 'popover' } },
+    },
+    drawerProps: {
+      control: 'object',
+      table: {
+        type: {
+          summary: "Omit<DrawerProps, 'children' | 'onClose' | 'open'>",
+          detail: "only available if optionsContainer='drawer'",
+        },
+      },
+    },
+    popoverClassName: {
+      control: 'text',
+      table: {
+        type: {
+          summary: 'string',
+          detail: "only available if optionsContainer='popover'",
+        },
+      },
+    },
+    optionCell: {
+      control: 'object',
+      type: 'function',
+      table: {
+        type: {
+          summary: '(option: Option<T>, isActive: boolean) => ReactNode',
+        },
+      },
+    },
+    beforOptions: {
+      description: 'befor options in options container',
+    },
+    afterOptions: {
+      description: 'after options in options container',
+    },
+  },
 } satisfies Meta<typeof Select>;
 
 export default meta;
