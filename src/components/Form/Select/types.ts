@@ -11,6 +11,8 @@ type SelectPropsBase<T> = {
   options: Option<T>[];
   optionsContainer?: 'drawer' | 'popover';
   searchable?: boolean;
+  isLoading?: boolean;
+  disabled?: boolean;
   optionCell?: (option: Option<T>) => ReactNode;
   optionCellClassName?: string;
   className?: string;

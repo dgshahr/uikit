@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx';
 import { useState } from 'react';
 import { useOutsideClick } from '@/src/hooks/useOutsideClick';
@@ -29,65 +31,106 @@ const Select = <T,>(props: SelectProps<T>) => {
     drawerProps,
     popoverClassName,
     value,
+    isLoading,
+    disabled = isLoading,
   } = props;
   const [isShowOptions, setIsShowOptions] = useState(false);
+  const [isOptionsInDom, setIsOptionsInDom] = useState(false);
 
   const containerRef = useOutsideClick<HTMLDivElement>(
     () => optionsContainer === 'popover' && setIsShowOptions(false),
   );
+
+  function onSelectClick() {
+    if (disabled || isLoading) return;
+    const newState = !isShowOptions;
+
+    if (newState) {
+      setIsOptionsInDom(true);
+      setTimeout(() => {
+        setIsShowOptions(true);
+      }, 0);
+    } else {
+      setIsShowOptions(false);
+      setTimeout(() => {
+        setIsOptionsInDom(false);
+      }, 400);
+    }
+  }
 
   const optionsProps = {
     ...props,
     setIsShowOptions,
   };
 
+  const cursorClass = clsx({
+    '!dgs-ui-kit-cursor-not-allowed': disabled,
+    '!dgs-ui-kit-cursor-wait': isLoading,
+    '!dgs-ui-kit-cursor-pointer': !isLoading && !disabled,
+  });
+
   return (
     <div
       ref={containerRef}
       className={clsx('dgs-ui-kit-relative', className)}
     >
-      <button onClick={() => setIsShowOptions((state) => !state)}>
+      <button
+        className={clsx('dgs-ui-kit-w-full', cursorClass)}
+        onClick={onSelectClick}
+      >
         {customInput ? (
           customInput(isShowOptions)
         ) : (
           <Input
-            wrapperClassName="dgs-ui-kit-cursor-default"
             leftIcon={
-              <ArrowDown2Icon
-                width={20}
-                height={20}
-                className={clsx('dgs-ui-kit-transition', DURATION_CLASS, {
-                  'dgs-ui-kit-rotate-180': isShowOptions,
-                })}
-              />
+              isLoading ? (
+                <div className="dot-flashing dgs-ui-kit-mr-2" />
+              ) : (
+                <ArrowDown2Icon
+                  width={20}
+                  height={20}
+                  className={clsx('dgs-ui-kit-transition', DURATION_CLASS, {
+                    'dgs-ui-kit-rotate-180': isShowOptions,
+                  })}
+                />
+              )
             }
-            containerClassName="!dgs-ui-kit-cursor-pointer"
-            className="dgs-ui-kit-cursor-pointer dgs-ui-kit-caret-transparent"
+            containerClassName={clsx(cursorClass, {
+              'dgs-ui-kit-items-baseline': isLoading,
+            })}
+            className={clsx('dgs-ui-kit-caret-transparent', cursorClass)}
             value={findValue(value, options)}
+            disabled={disabled}
             {...inputProps}
           />
         )}
       </button>
-      {optionsContainer === 'popover' ? (
-        <div
-          className={clsx(
-            'dgs-ui-kit-absolute dgs-ui-kit-min-w-[300px] dgs-ui-kit-bottom-0 dgs-ui-kit-right-0 dgs-ui-kit-translate-y-[calc(100%+8px)] dgs-ui-kit-overflow-y-auto dgs-ui-kit-overflow-x-hidden dgs-ui-kit-shadow-lg dgs-ui-kit-w-full dgs-ui-kit-max-h-[360px] dgs-ui-kit-transition dgs-ui-kit-bg-white dgs-ui-kit-z-50 dgs-ui-kit-rounded-lg dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-border-gray-200 dgs-ui-kit-py-3',
-            DURATION_CLASS,
-            isShowOptions ? 'dgs-ui-kit-opacity-100' : 'dgs-ui-kit-opacity-0 dgs-ui-kit-scale-y-0',
-            popoverClassName,
+      {isOptionsInDom && (
+        <>
+          {optionsContainer === 'popover' ? (
+            <div
+              className={clsx(
+                'dgs-ui-kit-absolute dgs-ui-kit-min-w-[300px] dgs-ui-kit-bottom-0 dgs-ui-kit-right-0 dgs-ui-kit-translate-y-[calc(100%+8px)] dgs-ui-kit-overflow-y-auto dgs-ui-kit-overflow-x-hidden dgs-ui-kit-shadow-lg dgs-ui-kit-w-full dgs-ui-kit-max-h-[360px] dgs-ui-kit-transition-all dgs-ui-kit-bg-white dgs-ui-kit-z-50 dgs-ui-kit-rounded-lg dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-border-gray-200 dgs-ui-kit-py-3',
+                DURATION_CLASS,
+                isShowOptions
+                  ? 'dgs-ui-kit-opacity-100'
+                  : 'dgs-ui-kit-opacity-0 dgs-ui-kit-max-h-0',
+                popoverClassName,
+              )}
+            >
+              <Options {...optionsProps} />
+            </div>
+          ) : (
+            <Drawer
+              open={isShowOptions}
+              onClose={() => setIsShowOptions(false)}
+              containerClassName="!dgs-ui-kit-py-3 !dgs-ui-kit-px-0"
+              {...drawerProps}
+            >
+              <Options {...optionsProps} />
+            </Drawer>
           )}
-        >
-          <Options {...optionsProps} />
-        </div>
-      ) : (
-        <Drawer
-          open={isShowOptions}
-          onClose={() => setIsShowOptions(false)}
-          containerClassName="!dgs-ui-kit-py-3 !dgs-ui-kit-px-0"
-          {...drawerProps}
-        >
-          <Options {...optionsProps} />
-        </Drawer>
+        </>
       )}
     </div>
   );
