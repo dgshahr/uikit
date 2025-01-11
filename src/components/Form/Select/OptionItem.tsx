@@ -14,6 +14,7 @@ function renderDefaultOptionItem(label: string, isMultiple: boolean, isActive: b
     <Checkbox
       checked={isActive}
       label={label}
+      readOnly
     />
   );
 }
