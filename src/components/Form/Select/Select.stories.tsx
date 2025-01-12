@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import clsx from 'clsx';
 import React, { useState } from 'react';
+import cities from './cities.json';
 import ArrowDown2 from '../../../icons/ArrowDown2';
 import Ringing3OutlineIcon from '../../../icons/Ringing3Outline';
 import Badge from '../../Badge';
 import Button from '../../Button';
 import Select from './index';
-
 const meta = {
   title: 'Components/Form/Select',
   component: Select,
@@ -120,15 +120,12 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const options = [
-  { label: 'عنوان گزینه 1', value: 1 },
-  { label: 'عنوان گزینه 2', value: 2 },
-  { label: 'عنوان گزینه 3', value: 3, disabled: true },
-  { label: 'عنوان گزینه 4', value: 4 },
-  { label: 'عنوان گزینه 5', value: 5 },
-  { label: 'عنوان گزینه 6', value: 6 },
-  { label: 'عنوان گزینه 7', value: 7 },
-];
+const options = Object.values(cities ?? {})
+  .flat()
+  .map((item) => ({
+    label: item.title,
+    value: item.id,
+  }));
 
 const defaultProps = {
   options: options,
