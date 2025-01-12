@@ -114,7 +114,7 @@ const Select = <T,>(props: SelectProps<T>) => {
                 DURATION_CLASS,
                 isShowOptions
                   ? 'dgs-ui-kit-opacity-100'
-                  : 'dgs-ui-kit-opacity-0 dgs-ui-kit-max-h-0',
+                  : 'dgs-ui-kit-opacity-0 !dgs-ui-kit-max-h-0',
                 popoverClassName,
               )}
             >
