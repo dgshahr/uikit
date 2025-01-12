@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { memo } from 'react';
 import type { Option, SelectProps } from './types';
 import Checkbox from '../Checkbox';
 
@@ -76,4 +77,4 @@ const OptionItem = <T,>(props: OptionItemProps<T>) => {
   );
 };
 
-export default OptionItem;
+export default memo(OptionItem) as typeof OptionItem;

@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useState, type Dispatch, type SetStateAction } from 'react';
+import { useDeferredValue, useMemo, useState, type Dispatch, type SetStateAction } from 'react';
 import SearchIcon from '@/src/icons/Search';
 import OptionItem from './OptionItem';
 import type { Option, SelectProps, SelectWithMultipleMode, SelectWithSingleMode } from './types';
@@ -23,6 +23,7 @@ const Options = <T,>(props: OptionsProps<T>) => {
     value,
   } = props;
   const [search, setSearch] = useState('');
+  const deferredSearch = useDeferredValue(search);
 
   function handleChange(optionValue: T) {
     if (typeof onChange !== 'function') return;
@@ -38,7 +39,11 @@ const Options = <T,>(props: OptionsProps<T>) => {
     }
   }
 
-  let filteredOptions = options?.filter((option) => option.label.includes(search));
+  let filteredOptions = useMemo(
+    () =>
+      deferredSearch ? options?.filter((option) => option.label.includes(deferredSearch)) : options,
+    [deferredSearch],
+  );
   let selectedOptions: Option<T>[] = [];
   if (mode === 'multiple' && separateSelectedOptions) {
     filteredOptions = filteredOptions?.filter((option) => !(value as T[]).includes(option.value));
@@ -69,7 +74,7 @@ const Options = <T,>(props: OptionsProps<T>) => {
           <p className="dgs-ui-kit-font-p2-regular dgs-ui-kit-text-gray-400 dgs-ui-kit-px-3 dgs-ui-kit-py-2">{`${optionsTitle}‌های انتخاب شده`}</p>
           {selectedOptions.map((option) => (
             <OptionItem
-              key={option.label}
+              key={option.value as number | string}
               onClick={() => handleChange(option.value)}
               option={option}
               {...props}
@@ -83,7 +88,7 @@ const Options = <T,>(props: OptionsProps<T>) => {
         )}
         {filteredOptions?.map((option) => (
           <OptionItem
-            key={option.label}
+            key={option.value as number | string}
             onClick={() => handleChange(option.value)}
             option={option}
             {...props}
