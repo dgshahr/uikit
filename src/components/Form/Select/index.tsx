@@ -1,7 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { useOutsideClick } from '@/src/hooks/useOutsideClick';
 import ArrowDown2Icon from '@/src/icons/ArrowDown2';
 import Options from './Options';
@@ -10,6 +10,8 @@ import Drawer from '../../Drawer';
 import Input from '../Input';
 
 const DURATION_CLASS = 'dgs-ui-kit-duration-300';
+// it should be bigger than duration class to show transition fully
+const REMOVE_CONTAINER_TIMEOUT = 400;
 
 function findValue<T>(value: T | T[], options: SelectProps<T>['options']) {
   if (Array.isArray(value))
@@ -37,9 +39,14 @@ const Select = <T,>(props: SelectProps<T>) => {
   const [isShowOptions, setIsShowOptions] = useState(false);
   const [isOptionsInDom, setIsOptionsInDom] = useState(false);
 
-  const containerRef = useOutsideClick<HTMLDivElement>(
-    () => optionsContainer === 'popover' && setIsShowOptions(false),
-  );
+  const containerRef = useOutsideClick<HTMLDivElement>(() => {
+    if (optionsContainer === 'popover' && isShowOptions) {
+      setIsShowOptions(false);
+      setTimeout(() => {
+        setIsOptionsInDom(false);
+      }, REMOVE_CONTAINER_TIMEOUT);
+    }
+  });
 
   function onSelectClick() {
     if (disabled || isLoading) return;
@@ -54,7 +61,7 @@ const Select = <T,>(props: SelectProps<T>) => {
       setIsShowOptions(false);
       setTimeout(() => {
         setIsOptionsInDom(false);
-      }, 400);
+      }, REMOVE_CONTAINER_TIMEOUT);
     }
   }
 
@@ -72,6 +79,7 @@ const Select = <T,>(props: SelectProps<T>) => {
   return (
     <div
       ref={containerRef}
+      id={`dgs-ui-kit-select-${useId()}`}
       className={clsx('dgs-ui-kit-relative', className)}
     >
       <button
@@ -114,7 +122,7 @@ const Select = <T,>(props: SelectProps<T>) => {
                 DURATION_CLASS,
                 isShowOptions
                   ? 'dgs-ui-kit-opacity-100'
-                  : 'dgs-ui-kit-opacity-0 !dgs-ui-kit-max-h-0',
+                  : 'dgs-ui-kit-opacity-0 dgs-ui-kit-max-h-0 dgs-ui-kit-overflow-y-hidden',
                 popoverClassName,
               )}
             >
