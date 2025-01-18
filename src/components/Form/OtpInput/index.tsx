@@ -115,6 +115,11 @@ const OtpInput: FC<OtpInputProps> = (props) => {
               const pastedText = e.clipboardData.getData('text');
               if (Number(pastedText)) onChange(pastedText);
             }}
+            onInput={(e) => {
+              const element = e.currentTarget;
+              if (Number(element.value) && element.value.length > 1) return true;
+              return false;
+            }}
             {...rest}
           />
         ))}

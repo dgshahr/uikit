@@ -14,6 +14,8 @@ export interface InputProps
   prefix?: string;
   postfix?: string;
   onClear?: () => void;
+  // return true in onInput to stop rest of the function from execution
+  onInput?: (event: React.FormEvent<HTMLInputElement>) => void | boolean;
 }
 
 const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTMLInputElement>) {
@@ -86,7 +88,10 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
         value={value}
         type={type}
         onInput={(e) => {
-          if (typeof restProps.onInput === 'function') restProps.onInput(e);
+          if (typeof restProps.onInput === 'function') {
+            const stopExecution = restProps.onInput(e);
+            if (stopExecution) return;
+          }
           if (type !== 'number') return;
           const element = e.currentTarget;
           if (element.value.length > element.maxLength)
