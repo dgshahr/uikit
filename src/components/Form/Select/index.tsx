@@ -1,7 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
-import { useId, useState } from 'react';
+import { useState } from 'react';
 import { useOutsideClick } from '@/src/hooks/useOutsideClick';
 import ArrowDown2Icon from '@/src/icons/ArrowDown2';
 import Options from './Options';
@@ -79,7 +79,6 @@ const Select = <T,>(props: SelectProps<T>) => {
   return (
     <div
       ref={containerRef}
-      id={`dgs-ui-kit-select-${useId()}`}
       className={clsx('dgs-ui-kit-relative', className)}
     >
       <button
