@@ -35,7 +35,6 @@ const OtpInput: FC<OtpInputProps> = (props) => {
   function focusOnInput(index: number) {
     const input = document.getElementById(`dgs-ui-kit-otp-input-${index}`) as HTMLInputElement;
     input?.focus();
-    input?.select();
   }
 
   function handleInputKeyUp(e: KeyboardEvent<HTMLInputElement>, index: number) {
@@ -104,6 +103,7 @@ const OtpInput: FC<OtpInputProps> = (props) => {
             autoFocus={index === 0}
             onChange={(e) => handleInputChange(e, index)}
             onKeyUp={(e) => handleInputKeyUp(e, index)}
+            onFocus={(e) => e.currentTarget.select()}
             id={`dgs-ui-kit-otp-input-${index}`}
             value={value[index] || ''}
             showMaxLength={false}
