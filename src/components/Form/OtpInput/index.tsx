@@ -44,7 +44,6 @@ const OtpInput: FC<OtpInputProps> = (props) => {
       const newValues = value.split('');
       newValues[index] = '';
       if (index !== 0) {
-        newValues[index - 1] = '';
         focusOnInput(index - 1);
       }
       onChange(newValues.join(''));
