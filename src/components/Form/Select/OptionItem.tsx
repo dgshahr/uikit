@@ -32,18 +32,7 @@ function renderDefaultOptionItem({
 }
 
 const OptionItem = <T,>(props: OptionItemProps<T>) => {
-  const {
-    option,
-    onClick,
-    value,
-    searchable,
-    beforOptions,
-    mode,
-    separateSelectedOptions,
-    afterOptions,
-    optionCellClassName,
-    optionCell,
-  } = props;
+  const { option, onClick, value, mode, optionCellClassName, optionCell } = props;
 
   function isOptionActive() {
     if (Array.isArray(value)) return value.includes(option.value);
@@ -54,13 +43,10 @@ const OptionItem = <T,>(props: OptionItemProps<T>) => {
     <button
       onClick={onClick}
       className={clsx(
-        'dgs-ui-kit-w-full dgs-ui-kit-text-start dgs-ui-kit-px-3 dgs-ui-kit-border-t disabled:dgs-ui-kit-cursor-not-allowed dgs-ui-kit-border-solid dgs-ui-kit-border-gray-100 dgs-ui-kit-py-3 dgs-ui-kit-font-p1-regular disabled:dgs-ui-kit-bg-gray-50 dgs-ui-kit-transition',
+        'dgs-ui-kit-w-full dgs-ui-kit-text-start dgs-ui-kit-px-3 disabled:dgs-ui-kit-cursor-not-allowed dgs-ui-kit-py-3 dgs-ui-kit-font-p1-regular disabled:dgs-ui-kit-bg-gray-50 dgs-ui-kit-transition',
         isOptionActive()
           ? 'dgs-ui-kit-bg-primary-50 dgs-ui-kit-text-primary-500'
           : 'dgs-ui-kit-text-gray-700 disabled:dgs-ui-kit-text-gray-400',
-        ((!searchable && !beforOptions) || (mode === 'multiple' && separateSelectedOptions)) &&
-          'first-of-type:dgs-ui-kit-border-t-0',
-        Boolean(afterOptions) && 'last-of-type:dgs-ui-kit-border-b',
         optionCellClassName,
       )}
       disabled={option.disabled}
