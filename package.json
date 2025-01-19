@@ -260,8 +260,8 @@
     "vite-plugin-lib-inject-css": "^2.1.1"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0"
   },
   "lint-staged": {
     "*.+(js|jsx|ts|tsx)": [
