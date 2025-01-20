@@ -9,6 +9,8 @@ import type { SelectProps } from './types';
 import Drawer from '../../Drawer';
 import Input from '../Input';
 
+import '@/src/styles.css';
+
 const DURATION_CLASS = 'dgs-ui-kit-duration-300';
 // it should be bigger than duration class to show transition fully
 const REMOVE_CONTAINER_TIMEOUT = 400;
