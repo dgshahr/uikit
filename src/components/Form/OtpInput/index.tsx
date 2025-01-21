@@ -1,6 +1,7 @@
 'use client';
 import clsx from 'clsx';
 import { useEffect, useRef, type ChangeEvent, type FC, type KeyboardEvent } from 'react';
+import { persianToEnglish } from '@/src/utils/convertNumbers';
 import Input, { type InputProps } from '../Input';
 import FieldBottomInfo from '../Wrappers/TextFieldWrapper/FieldBottomInfo';
 import FieldLabel from '../Wrappers/TextFieldWrapper/FieldLabel';
@@ -54,7 +55,7 @@ const OtpInput: FC<OtpInputProps> = (props) => {
   }
 
   function handleInputChange(e: ChangeEvent<HTMLInputElement>, index: number) {
-    const currentValue = e.currentTarget.value;
+    const currentValue = persianToEnglish(e.currentTarget.value);
     const newValues = value.split('');
 
     if (currentValue.length > 1) {
