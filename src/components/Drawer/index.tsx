@@ -7,6 +7,8 @@ import { createPortal } from 'react-dom';
 import CloseRemoveIcon from '@/src/icons/CloseRemove';
 
 const ANIMATION_DURATION = 150;
+let openDrawerCount = 0;
+let updateOpenDrawerCountTimeout: ReturnType<typeof setTimeout>;
 
 export interface DrawerProps {
   open: boolean;
@@ -94,8 +96,21 @@ const Drawer: FC<DrawerProps> = (props) => {
   const [show, setShow] = useState(false);
   const container = containerElement ?? document?.body;
 
+  function updateBodyClasses() {
+    if (updateOpenDrawerCountTimeout) clearTimeout(updateOpenDrawerCountTimeout);
+
+    updateOpenDrawerCountTimeout = setTimeout(() => {
+      if (openDrawerCount > 0) {
+        container.classList.add('dgs-ui-kit-overflow-hidden', 'dgs-ui-kit-relative');
+      } else {
+        container.classList.remove('dgs-ui-kit-overflow-hidden', 'dgs-ui-kit-relative');
+      }
+    }, ANIMATION_DURATION);
+  }
+
   function openDrawer() {
-    container.classList.add('dgs-ui-kit-overflow-hidden', 'dgs-ui-kit-relative');
+    if (openDrawerCount === 0) updateBodyClasses();
+    openDrawerCount++;
     setTimeout(() => {
       setShow(true);
     }, ANIMATION_DURATION);
@@ -105,7 +120,8 @@ const Drawer: FC<DrawerProps> = (props) => {
     setShow(false);
 
     setTimeout(() => {
-      container.classList.remove('dgs-ui-kit-overflow-hidden', 'dgs-ui-kit-relative');
+      openDrawerCount = Math.max(0, openDrawerCount - 1);
+      updateBodyClasses();
       if (runOnClose) onClose();
     }, ANIMATION_DURATION);
   }
