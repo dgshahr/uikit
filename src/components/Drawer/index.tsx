@@ -119,6 +119,8 @@ const Drawer: FC<DrawerProps> = (props) => {
     return () => closeDrawer(false);
   }, []);
 
+  if (!open) return;
+
   const haveHeader = header
     ? Object.values(header).some((headerItem) => Boolean(headerItem))
     : false;
