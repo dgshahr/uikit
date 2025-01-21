@@ -96,26 +96,13 @@ const Drawer: FC<DrawerProps> = (props) => {
   const [show, setShow] = useState(false);
   const container = containerElement ?? document?.body;
 
-  function handleTouchMove(e: TouchEvent) {
-    e.preventDefault();
-  }
-
-  function addTouchMoveEventListener() {
-    document.documentElement.addEventListener('touchmove', handleTouchMove, { passive: false });
-  }
-  function removeTouchMoveEventListener() {
-    document.documentElement.removeEventListener('touchmove', handleTouchMove);
-  }
-
   function updateBodyClasses() {
     if (updateOpenDrawerCountTimeout) clearTimeout(updateOpenDrawerCountTimeout);
 
     updateOpenDrawerCountTimeout = setTimeout(() => {
       if (openDrawerCount > 0) {
-        addTouchMoveEventListener();
         container.classList.add('dgs-ui-kit-overflow-hidden', 'dgs-ui-kit-relative');
       } else {
-        removeTouchMoveEventListener();
         container.classList.remove('dgs-ui-kit-overflow-hidden', 'dgs-ui-kit-relative');
       }
     }, ANIMATION_DURATION);
@@ -147,7 +134,6 @@ const Drawer: FC<DrawerProps> = (props) => {
   useEffect(() => {
     return () => {
       closeDrawer(false);
-      removeTouchMoveEventListener();
     };
   }, []);
 
