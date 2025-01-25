@@ -1,6 +1,6 @@
 {
   "name": "@dgshahr/ui-kit",
-  "version": "0.0.66",
+  "version": "0.0.67",
   "description": "dgshahr ui-kit",
   "author": "dgshahr",
   "license": "MIT",
@@ -76,6 +76,16 @@
       "require": {
         "types": "./dist/Button/index.d.ts",
         "default": "./dist/Button/index.cjs"
+      }
+    },
+    "./Chip": {
+      "import": {
+        "types": "./dist/Chip/index.d.ts",
+        "default": "./dist/Chip/index.js"
+      },
+      "require": {
+        "types": "./dist/Chip/index.d.ts",
+        "default": "./dist/Chip/index.cjs"
       }
     },
     "./Divider": {
