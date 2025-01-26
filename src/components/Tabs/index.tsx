@@ -22,10 +22,10 @@ interface TabsPropsBase {
 
 interface TabsPropsFullWidth extends TabsPropsBase {
   fullWidth: true;
-  centred?: boolean;
+  fullWidthButtons?: boolean;
 }
 
-interface TabsPropsAutoWidth extends Omit<TabsPropsBase, 'centred'> {
+interface TabsPropsAutoWidth extends Omit<TabsPropsBase, 'fullWidthButtons'> {
   fullWidth?: false;
 }
 
@@ -34,18 +34,13 @@ type TabsProps = TabsPropsFullWidth | TabsPropsAutoWidth;
 const Tabs: FC<TabsProps> = (props) => {
   const { activeKey, onChange, items, className, tabItemClassName, fullWidth } = props;
 
-  const centred = (props as TabsPropsFullWidth).centred;
+  const fullWidthButtons = (props as TabsPropsFullWidth).fullWidthButtons;
 
   return (
     <div
       className={clsx(
         'dgs-ui-kit-flex dgs-ui-kit-border-b dgs-ui-kit-border-gray-200 dgs-ui-kit-border-solid',
-        {
-          'dgs-ui-kit-w-full': fullWidth,
-          'dgs-ui-kit-justify-center': fullWidth && centred,
-          'dgs-ui-kit-w-fit': !fullWidth,
-        },
-
+        fullWidth ? 'dgs-ui-kit-w-full' : 'dgs-ui-kit-w-fit',
         className,
       )}
     >
@@ -54,7 +49,9 @@ const Tabs: FC<TabsProps> = (props) => {
           key={tab.key}
           onClick={() => onChange(tab.key)}
           disabled={tab.disabled}
-          className="dgs-ui-kit-group"
+          className={clsx('dgs-ui-kit-group', {
+            'dgs-ui-kit-flex-1': fullWidth && fullWidthButtons,
+          })}
         >
           <div
             className={clsx(
@@ -64,6 +61,7 @@ const Tabs: FC<TabsProps> = (props) => {
                 'dgs-ui-kit-text-gray-500 group-hover:dgs-ui-kit-text-gray-600':
                   activeKey !== tab.key,
                 'dgs-ui-kit-cursor-not-allowed dgs-ui-kit-opacity-40': tab.disabled,
+                'dgs-ui-kit-justify-center': fullWidth && fullWidthButtons,
               },
               tabItemClassName,
             )}

@@ -50,7 +50,7 @@ const meta = {
         },
       },
     },
-    centred: {
+    fullWidthButtons: {
       if: { arg: 'fullWidth', eq: true },
       control: { type: 'boolean' },
       description: 'available only when fullWidth is true',
@@ -70,7 +70,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    className: '[direction:rtl]',
     activeKey: 1,
     onChange: (key) => alert('tab key: ' + key + ' selected'),
     items: [
