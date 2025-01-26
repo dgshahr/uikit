@@ -54,7 +54,7 @@ const TextFieldWrapper: FC<TextFieldWrapperProps> = (props) => {
 
   const showInfo = Boolean(errorMessage || hintMessage || (maxLength && showMaxLength));
   const showLabel = Boolean(labelContent || link?.href);
-  const WrapperElement = showInfo || showLabel ? 'div' : React.Fragment;
+  const WrapperElement = showInfo || showLabel || wrapperClassName ? 'div' : React.Fragment;
 
   const handleFocusInputOnClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const divElement = e.currentTarget;
@@ -66,9 +66,7 @@ const TextFieldWrapper: FC<TextFieldWrapperProps> = (props) => {
   };
 
   return (
-    <WrapperElement
-      {...(WrapperElement === 'div' && wrapperClassName ? { className: wrapperClassName } : {})}
-    >
+    <WrapperElement {...(wrapperClassName ? { className: wrapperClassName } : {})}>
       {showLabel && (
         <FieldLabel
           disabled={disabled}
