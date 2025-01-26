@@ -29,7 +29,7 @@ const Options = <T,>(props: OptionsProps<T>) => {
     searchable = true,
     setIsShowOptions,
     separateSelectedOptions = true,
-    optionsTitle = 'عنوان',
+    optionsTitle = 'عنوان‌ها',
     value,
     optionCellClassName,
   } = props;
@@ -110,9 +110,9 @@ const Options = <T,>(props: OptionsProps<T>) => {
     <>
       {searchable && (
         <Input
-          containerClassName={clsx(
-            'dgs-ui-kit-mx-3',
-            beforOptions ? 'dgs-ui-kit-mb-2' : 'dgs-ui-kit-mb-3',
+          wrapperClassName={clsx(
+            'dgs-ui-kit-sticky dgs-ui-kit-top-0 dgs-ui-kit-pt-3 dgs-ui-kit-right-0 dgs-ui-kit-bg-white dgs-ui-kit-z-10 dgs-ui-kit-px-3',
+            beforOptions ? 'dgs-ui-kit-pb-2' : 'dgs-ui-kit-pb-3',
           )}
           placeholder="جستجوی عنوان"
           onChange={(e) => setSearch(e.currentTarget.value)}
@@ -127,7 +127,7 @@ const Options = <T,>(props: OptionsProps<T>) => {
       {beforOptions}
       {mode === 'multiple' && separateSelectedOptions && selectedOptions.length > 0 && (
         <>
-          <p className="dgs-ui-kit-font-p2-regular dgs-ui-kit-text-gray-400 dgs-ui-kit-px-3 dgs-ui-kit-py-2">{`${optionsTitle}‌های انتخاب شده`}</p>
+          <p className="dgs-ui-kit-font-p2-regular dgs-ui-kit-text-gray-400 dgs-ui-kit-px-3 dgs-ui-kit-py-2">{`${optionsTitle}‌ی انتخاب شده`}</p>
           {selectedOptions.map((option) => (
             <OptionItem
               key={option.value as number | string}
@@ -141,7 +141,9 @@ const Options = <T,>(props: OptionsProps<T>) => {
       )}
       <>
         {mode === 'multiple' && separateSelectedOptions && (
-          <p className="dgs-ui-kit-font-p2-regular dgs-ui-kit-text-gray-400 dgs-ui-kit-px-3 dgs-ui-kit-py-2">{`${optionsTitle}‌ها`}</p>
+          <p className="dgs-ui-kit-font-p2-regular dgs-ui-kit-text-gray-400 dgs-ui-kit-px-3 dgs-ui-kit-py-2">
+            {optionsTitle}
+          </p>
         )}
         <div
           ref={containerRef}

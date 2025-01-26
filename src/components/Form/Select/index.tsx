@@ -36,6 +36,7 @@ const Select = <T,>(props: SelectProps<T>) => {
     popoverClassName,
     value,
     isLoading,
+    searchable = true,
     disabled = isLoading,
   } = props;
   const [isShowOptions, setIsShowOptions] = useState(false);
@@ -119,11 +120,12 @@ const Select = <T,>(props: SelectProps<T>) => {
           {optionsContainer === 'popover' ? (
             <div
               className={clsx(
-                'dgs-ui-kit-absolute dgs-ui-kit-min-w-[300px] dgs-ui-kit-bottom-0 dgs-ui-kit-right-0 dgs-ui-kit-translate-y-[calc(100%+8px)] dgs-ui-kit-overflow-y-auto dgs-ui-kit-overflow-x-hidden dgs-ui-kit-shadow-lg dgs-ui-kit-w-full dgs-ui-kit-max-h-[360px] dgs-ui-kit-transition-all dgs-ui-kit-bg-white dgs-ui-kit-z-50 dgs-ui-kit-rounded-lg dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-border-gray-200 dgs-ui-kit-py-3',
+                'dgs-ui-kit-absolute dgs-ui-kit-min-w-[300px] dgs-ui-kit-bottom-0 dgs-ui-kit-right-0 dgs-ui-kit-translate-y-[calc(100%+8px)] dgs-ui-kit-overflow-y-auto dgs-ui-kit-overflow-x-hidden dgs-ui-kit-shadow-lg dgs-ui-kit-w-full dgs-ui-kit-max-h-[360px] dgs-ui-kit-transition-all dgs-ui-kit-bg-white dgs-ui-kit-z-50 dgs-ui-kit-rounded-lg dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-border-gray-200 dgs-ui-kit-pb-3',
                 DURATION_CLASS,
                 isShowOptions
                   ? 'dgs-ui-kit-opacity-100'
                   : 'dgs-ui-kit-opacity-0 dgs-ui-kit-max-h-0 dgs-ui-kit-overflow-y-hidden',
+                { 'dgs-ui-kit-pt-3': !searchable },
                 popoverClassName,
               )}
             >
@@ -133,7 +135,10 @@ const Select = <T,>(props: SelectProps<T>) => {
             <Drawer
               open={isShowOptions}
               onClose={() => setIsShowOptions(false)}
-              containerClassName="!dgs-ui-kit-py-3 !dgs-ui-kit-px-0"
+              containerClassName={clsx(
+                '!dgs-ui-kit-pb-3 !dgs-ui-kit-px-0',
+                searchable ? '!dgs-ui-kit-pt-0' : '!dgs-ui-kit-pt-3',
+              )}
               {...drawerProps}
             >
               <Options {...optionsProps} />
