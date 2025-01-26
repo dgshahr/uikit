@@ -122,6 +122,7 @@ const Options = <T,>(props: OptionsProps<T>) => {
               height={20}
             />
           }
+          autoFocus
         />
       )}
       {beforOptions}
