@@ -4,7 +4,16 @@ import '@/src/styles.css';
 
 interface BadgePropsBase {
   type?: 'twoTone' | 'solid';
-  color?: 'primary' | 'secondary' | 'gray' | 'success' | 'error' | 'warning';
+  color?:
+    | 'primary'
+    | 'secondary'
+    | 'gray'
+    | 'success'
+    | 'error'
+    | 'warning'
+    | 'sky'
+    | 'violet'
+    | 'flamingo';
   size?: 'small' | 'medium' | 'large';
   valueType?: 'text' | 'number';
   value: string | number;
@@ -38,6 +47,9 @@ function styleBadge(options: Omit<Required<BadgeProps>, 'value' | 'icon' | 'widt
       success: 'dgs-ui-kit-bg-success-50 dgs-ui-kit-text-success-800',
       error: 'dgs-ui-kit-bg-error-50 dgs-ui-kit-text-error-600',
       warning: 'dgs-ui-kit-bg-warning-50 dgs-ui-kit-text-warning-700',
+      sky: 'dgs-ui-kit-bg-sky-50 dgs-ui-kit-text-sky-700',
+      violet: 'dgs-ui-kit-bg-violet-50 dgs-ui-kit-text-violet-800',
+      flamingo: 'dgs-ui-kit-bg-flamingo-50 dgs-ui-kit-text-flamingo-700',
     },
     solid: {
       primary: 'dgs-ui-kit-bg-primary-500 dgs-ui-kit-text-white',
@@ -46,6 +58,9 @@ function styleBadge(options: Omit<Required<BadgeProps>, 'value' | 'icon' | 'widt
       success: 'dgs-ui-kit-bg-success-600 dgs-ui-kit-text-white',
       error: 'dgs-ui-kit-bg-error-500 dgs-ui-kit-text-white',
       warning: 'dgs-ui-kit-bg-warning-500 dgs-ui-kit-text-black',
+      sky: 'dgs-ui-kit-bg-sky-600 dgs-ui-kit-text-white',
+      violet: 'dgs-ui-kit-bg-violet-500 dgs-ui-kit-text-white',
+      flamingo: 'dgs-ui-kit-bg-flamingo-500 dgs-ui-kit-text-white',
     },
   };
 

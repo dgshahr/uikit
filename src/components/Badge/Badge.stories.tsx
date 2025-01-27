@@ -44,10 +44,22 @@ const meta = {
       },
     },
     color: {
-      options: ['primary', 'secondary', 'gray', 'success', 'error', 'warning'],
+      options: [
+        'primary',
+        'secondary',
+        'gray',
+        'success',
+        'error',
+        'warning',
+        'sky',
+        'violet',
+        'flamingo',
+      ],
       control: { type: 'select' },
       table: {
-        type: { summary: 'primary, secondary, gray, success, error, warning' },
+        type: {
+          summary: 'primary, secondary, gray, success, error, warning, sky, violet, flamingo',
+        },
         defaultValue: {
           summary: 'primary',
         },
