@@ -113,6 +113,16 @@ const meta = {
     afterOptions: {
       description: 'after options in options container',
     },
+    searchable: {
+      control: 'boolean',
+      table: {
+        type: {
+          summary: "boolean | Omit<InputProps, 'onChange'>",
+          detail: "if set to 'true' it will show search input on options with default props",
+        },
+        defaultValue: { summary: 'true' },
+      },
+    },
   },
 } satisfies Meta<typeof Select>;
 

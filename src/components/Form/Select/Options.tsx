@@ -11,7 +11,7 @@ import {
 import SearchIcon from '@/src/icons/Search';
 import OptionItem from './OptionItem';
 import type { SelectProps, SelectWithMultipleMode, SelectWithSingleMode } from './types';
-import Input from '../Input';
+import Input, { type InputProps } from '../Input';
 
 type OptionsProps<T> = Partial<SelectProps<T>> & {
   setIsShowOptions: Dispatch<SetStateAction<boolean>>;
@@ -43,6 +43,13 @@ const Options = <T,>(props: OptionsProps<T>) => {
       'first-of-type:dgs-ui-kit-border-t-0',
     Boolean(afterOptions) && 'last-of-type:dgs-ui-kit-border-b',
   );
+  let isSearchable: boolean;
+  const inputSearchable = searchable as InputProps;
+
+  if (typeof searchable === 'boolean') isSearchable = searchable;
+  else {
+    isSearchable = Object.keys(searchable).length > 0;
+  }
 
   const filteredOptions = useMemo(() => {
     if (search) {
@@ -108,21 +115,25 @@ const Options = <T,>(props: OptionsProps<T>) => {
 
   return (
     <>
-      {searchable && (
+      {isSearchable && (
         <Input
           wrapperClassName={clsx(
             'dgs-ui-kit-sticky dgs-ui-kit-top-0 dgs-ui-kit-pt-3 dgs-ui-kit-right-0 dgs-ui-kit-bg-white dgs-ui-kit-z-10 dgs-ui-kit-px-3',
             beforOptions ? 'dgs-ui-kit-pb-2' : 'dgs-ui-kit-pb-3',
+            inputSearchable?.wrapperClassName,
           )}
-          placeholder="جستجوی عنوان"
+          placeholder={inputSearchable?.placeholder ?? 'جستجوی عنوان'}
           onChange={(e) => setSearch(e.currentTarget.value)}
           rightIcon={
-            <SearchIcon
-              width={20}
-              height={20}
-            />
+            inputSearchable?.rightIcon ?? (
+              <SearchIcon
+                width={20}
+                height={20}
+              />
+            )
           }
           autoFocus
+          {...(typeof searchable === 'object' ? searchable : {})}
         />
       )}
       {beforOptions}
