@@ -17,7 +17,7 @@ const compat = new FlatCompat({
 /** @type { import("eslint").Linter.Config[] } */
 export default [
   {
-    ignores: ['**/dist', 'vite.config.ts', '**/storybook-static'],
+    ignores: ['**/dist', 'vite.config.ts', '**/docs'],
   },
   ...fixupConfigRules(
     compat.extends(
