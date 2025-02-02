@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'danaVf';
+  src:
+    url('./DanaVF.woff') format('woff-variations'),
+    /* will be the standard and works in Safari now */ url('./DanaVF.woff') format('woff');
+  /* for the other supporting browsers */
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: 'dana';
+  src: url('./Dana-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'dana';
+  src: url('./Dana-Bold.woff') format('woff');
+  font-weight: bold;
+}
+
+* {
+  font-family: 'danaVf', 'dana', 'Courier New', Courier, monospace !important;
+}
