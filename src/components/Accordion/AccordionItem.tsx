@@ -7,7 +7,7 @@ import { useAccordionData } from './context';
 import Divider from '../Divider';
 
 interface AccordionItemProps {
-  title: string | ReactNode;
+  title: ReactNode;
   accordionKey?: string;
   className?: string;
   contentClassName?: string;
