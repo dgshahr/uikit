@@ -42,7 +42,7 @@ type SelectWithCustomInput = {
 };
 
 type SelectWithoutCustomInput = {
-  inputProps?: Omit<InputProps, 'leftIcon'>;
+  inputProps?: Omit<InputProps, 'leftIcon' | 'id'>;
   customInput?: never;
 };
 

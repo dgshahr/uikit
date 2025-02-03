@@ -9,6 +9,7 @@ import {
   type SetStateAction,
 } from 'react';
 import SearchIcon from '@/src/icons/Search';
+import focusAndOpenKeyboard from '@/src/utils/focusAndOpenKeyboard';
 import OptionItem from './OptionItem';
 import type { SelectProps, SelectWithMultipleMode, SelectWithSingleMode } from './types';
 import Input, { type InputProps } from '../Input';
@@ -96,6 +97,10 @@ const Options = <T,>(props: OptionsProps<T>) => {
     return () => container.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
 
+  useEffect(() => {
+    if (isSearchable) focusAndOpenKeyboard(document.getElementById('search-input'), 400);
+  }, []);
+
   const handleChange = useCallback(
     (optionValue: T) => {
       if (typeof onChange !== 'function') return;
@@ -117,6 +122,7 @@ const Options = <T,>(props: OptionsProps<T>) => {
     <>
       {isSearchable && (
         <Input
+          id="search-input"
           wrapperClassName={clsx(
             'dgs-ui-kit-sticky dgs-ui-kit-top-0 dgs-ui-kit-pt-3 dgs-ui-kit-right-0 dgs-ui-kit-bg-white dgs-ui-kit-z-10 dgs-ui-kit-px-3',
             beforOptions ? 'dgs-ui-kit-pb-2' : 'dgs-ui-kit-pb-3',
@@ -132,7 +138,6 @@ const Options = <T,>(props: OptionsProps<T>) => {
               />
             )
           }
-          autoFocus
           {...(typeof searchable === 'object' ? searchable : {})}
         />
       )}
