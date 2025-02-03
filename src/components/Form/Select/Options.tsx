@@ -12,6 +12,7 @@ import SearchIcon from '@/src/icons/Search';
 import focusAndOpenKeyboard from '@/src/utils/focusAndOpenKeyboard';
 import OptionItem from './OptionItem';
 import type { SelectProps, SelectWithMultipleMode, SelectWithSingleMode } from './types';
+import Button from '../../Button';
 import Input, { type InputProps } from '../Input';
 
 type OptionsProps<T> = Partial<SelectProps<T>> & {
@@ -33,6 +34,8 @@ const Options = <T,>(props: OptionsProps<T>) => {
     optionsTitle = 'عنوان‌ها',
     value,
     optionCellClassName,
+    emptyContent = 'نتیجه‌ای یافت نشد !',
+    showClearButtonOnEmpty = true,
   } = props;
   const [search, setSearch] = useState('');
   const [startIndex, setStartIndex] = useState(0);
@@ -129,6 +132,7 @@ const Options = <T,>(props: OptionsProps<T>) => {
             inputSearchable?.wrapperClassName,
           )}
           placeholder={inputSearchable?.placeholder ?? 'جستجوی عنوان'}
+          value={search}
           onChange={(e) => setSearch(e.currentTarget.value)}
           rightIcon={
             inputSearchable?.rightIcon ?? (
@@ -181,6 +185,21 @@ const Options = <T,>(props: OptionsProps<T>) => {
             </div>
           ))}
         </div>
+        {!visibleOptions?.length && !selectedOptions.length && (
+          <div className="dgs-ui-kit-text-center dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-items-center dgs-ui-kit-mt-2">
+            <p className="dgs-ui-kit-text-gray-500 dgs-ui-kit-font-p3-medium">{emptyContent}</p>
+            {showClearButtonOnEmpty && (
+              <Button
+                className="dgs-ui-kit-mt-1"
+                variant="text"
+                size="small"
+                onClick={() => setSearch('')}
+              >
+                پاک کردن
+              </Button>
+            )}
+          </div>
+        )}
       </>
       {afterOptions}
     </>

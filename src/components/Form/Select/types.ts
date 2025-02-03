@@ -18,6 +18,8 @@ type SelectPropsBase<T> = {
   className?: string;
   beforOptions?: ReactNode;
   afterOptions?: ReactNode;
+  emptyContent?: ReactNode;
+  showClearButtonOnEmpty?: boolean;
 };
 
 export type SelectWithSingleMode<T> = {
