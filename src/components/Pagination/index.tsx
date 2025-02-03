@@ -65,9 +65,9 @@ const Pagination = (props: PaginationProps) => {
         {navigationButtonsWithText && 'صفحه قبل'}
       </Button>
       <div className="dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-x-1 md:dgs-ui-kit-gap-x-4">
-        {paginationRange.map((pageNumber) => {
+        {paginationRange.map((pageNumber, index) => {
           if (typeof pageNumber === 'string') {
-            return <div key={pageNumber}>{DOTS}</div>;
+            return <div key={`${pageNumber}-${index}`}>{DOTS}</div>;
           }
           return (
             <button
