@@ -4,6 +4,7 @@ import type { SelectProps } from './types';
 import PickerWrapper from '../Wrappers/PickerWrapper/PickerWrapper';
 
 import '@/src/styles.css';
+import type { PickerWrapperProps } from '../Wrappers/PickerWrapper/type';
 
 function findValue<T>(value: T | T[], options: SelectProps<T>['options']) {
   if (Array.isArray(value))
@@ -18,10 +19,10 @@ function findValue<T>(value: T | T[], options: SelectProps<T>['options']) {
 const Select = <T,>(props: SelectProps<T>) => {
   const { searchable = true, value, options } = props;
 
-  const wrapperProps = { ...props };
-  if (wrapperProps.pickerContainer === 'popover' && !searchable)
+  const wrapperProps: Omit<PickerWrapperProps, 'children'> = { ...props };
+  if (wrapperProps.dropdownType === 'popover' && !searchable)
     wrapperProps.popoverClassName = clsx('dgs-ui-kit-pt-3', wrapperProps.popoverClassName);
-  if (wrapperProps.pickerContainer === 'drawer')
+  if (wrapperProps.dropdownType === 'drawer')
     wrapperProps.drawerProps = {
       ...wrapperProps.drawerProps,
       containerClassName: clsx(
@@ -33,7 +34,7 @@ const Select = <T,>(props: SelectProps<T>) => {
     wrapperProps.inputProps = { ...wrapperProps.inputProps, value: findValue(value, options) };
 
   return (
-    <PickerWrapper {...wrapperProps}>
+    <PickerWrapper {...(wrapperProps as PickerWrapperProps)}>
       <Options {...props} />
     </PickerWrapper>
   );
