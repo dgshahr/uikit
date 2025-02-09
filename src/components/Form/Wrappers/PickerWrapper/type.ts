@@ -20,13 +20,13 @@ interface PickerWrapperWithoutCustomInput {
 }
 
 interface PickerWrapperWithDrawerContainer {
-  pickerContainer: 'drawer';
+  dropdownType: 'drawer';
   drawerProps?: Omit<DrawerProps, 'children' | 'onClose' | 'open'>;
   popoverClassName?: never;
 }
 
 interface PickerWrapperWithPopoverContainer {
-  pickerContainer?: 'popover';
+  dropdownType?: 'popover';
   popoverClassName?: string;
   drawerProps?: never;
 }

@@ -17,7 +17,7 @@ const REMOVE_CONTAINER_TIMEOUT = 400;
 
 const PickerWrapper: FC<PickerWrapperProps> = (props) => {
   const {
-    pickerContainer = 'popover',
+    dropdownType = 'popover',
     disabled,
     isLoading,
     wrapperClassName,
@@ -32,7 +32,7 @@ const PickerWrapper: FC<PickerWrapperProps> = (props) => {
   let transitionTimeout: ReturnType<typeof setTimeout>;
 
   const containerRef = useOutsideClick<HTMLDivElement>(() => {
-    if (pickerContainer === 'popover' && isShowWrapper) {
+    if (dropdownType === 'popover' && isShowWrapper) {
       setIsShowWrapper(false);
       if (transitionTimeout) clearTimeout(transitionTimeout);
       transitionTimeout = setTimeout(() => {
@@ -108,7 +108,7 @@ const PickerWrapper: FC<PickerWrapperProps> = (props) => {
       >
         {isWrapperInDom && (
           <>
-            {pickerContainer === 'popover' ? (
+            {dropdownType === 'popover' ? (
               <div
                 className={clsx(
                   'dgs-ui-kit-absolute dgs-ui-kit-min-w-[300px] dgs-ui-kit-bottom-0 dgs-ui-kit-right-0 dgs-ui-kit-translate-y-[calc(100%+8px)] dgs-ui-kit-overflow-y-auto dgs-ui-kit-overflow-x-hidden dgs-ui-kit-shadow-lg dgs-ui-kit-w-full dgs-ui-kit-max-h-[360px] dgs-ui-kit-transition-all dgs-ui-kit-bg-white dgs-ui-kit-z-50 dgs-ui-kit-rounded-lg dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-border-gray-200 dgs-ui-kit-pb-3',

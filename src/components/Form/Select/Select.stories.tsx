@@ -81,7 +81,7 @@ const meta = {
         },
       },
     },
-    optionsContainer: {
+    dropdownType: {
       control: { type: 'select' },
       options: ['popover', 'drawer'],
       table: { type: { summary: 'popover, drawer' }, defaultValue: { summary: 'popover' } },
@@ -91,7 +91,7 @@ const meta = {
       table: {
         type: {
           summary: "Omit<DrawerProps, 'children' | 'onClose' | 'open'>",
-          detail: "only available if optionsContainer='drawer'",
+          detail: "only available if dropdownType='drawer'",
         },
       },
     },
@@ -100,7 +100,7 @@ const meta = {
       table: {
         type: {
           summary: 'string',
-          detail: "only available if optionsContainer='popover'",
+          detail: "only available if dropdownType='popover'",
         },
       },
     },
