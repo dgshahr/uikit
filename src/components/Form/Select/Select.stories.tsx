@@ -19,7 +19,7 @@ const meta = {
   },
   argTypes: {
     options: {
-      control: 'object',
+      control: { type: 'object', disable: true },
       table: {
         type: {
           summary: 'Option<T>[]',
@@ -55,6 +55,12 @@ const meta = {
     separateSelectedOptions: {
       control: 'boolean',
       table: { type: { summary: 'boolean', detail: "only available in 'multiple' mode" } },
+    },
+    optionsTitle: {
+      control: 'text',
+      table: {
+        type: { summary: 'string', detail: "only available in 'multiple' mode." },
+      },
     },
     customInput: {
       control: 'object',
