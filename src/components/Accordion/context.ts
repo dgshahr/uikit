@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react';
 
 interface IAccordionContext {
-  activeKey: string | null;
+  activeKey: string | string[] | null;
   setActiveKey: (key: IAccordionContext['activeKey']) => void;
 }
 

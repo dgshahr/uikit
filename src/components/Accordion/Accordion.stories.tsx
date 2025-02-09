@@ -13,7 +13,11 @@ const meta = {
       },
     },
   },
-  argTypes: {},
+  argTypes: {
+    disableAccordion: {
+      description: "disable accordion effect and multiple 'AcordionItem' can be open at same time.",
+    },
+  },
 } satisfies Meta<typeof AccordionGroup>;
 
 export default meta;

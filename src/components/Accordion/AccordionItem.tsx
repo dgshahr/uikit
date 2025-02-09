@@ -18,7 +18,19 @@ const AccordionItem: FC<PropsWithChildren<AccordionItemProps>> = (props) => {
   const { activeKey, setActiveKey } = useAccordionData();
   const reactUseId = useId();
   const accordionItemKey = accordionKey ?? reactUseId;
-  const isItemActive = accordionItemKey === activeKey;
+  const isAccordionDisable = Array.isArray(activeKey);
+  const isItemActive = isAccordionDisable
+    ? activeKey.includes(accordionItemKey)
+    : accordionItemKey === activeKey;
+
+  function toggleItemVisibility() {
+    if (isItemActive) {
+      if (isAccordionDisable) setActiveKey(activeKey.filter((key) => key !== accordionItemKey));
+      else setActiveKey(null);
+    } else if (isAccordionDisable) {
+      setActiveKey([...activeKey, accordionItemKey]);
+    } else setActiveKey(accordionItemKey);
+  }
 
   return (
     <div className={clsx('dgs-ui-kit-bg-white dgs-ui-kit-px-4 dgs-ui-kit-pt-4', className)}>
@@ -27,10 +39,7 @@ const AccordionItem: FC<PropsWithChildren<AccordionItemProps>> = (props) => {
           'dgs-ui-kit-flex dgs-ui-kit-justify-between dgs-ui-kit-items-center dgs-ui-kit-w-full',
           isItemActive ? 'dgs-ui-kit-text-primary-500' : 'dgs-ui-kit-text-gray-600',
         )}
-        onClick={() => {
-          if (isItemActive) setActiveKey(null);
-          else setActiveKey(accordionItemKey);
-        }}
+        onClick={toggleItemVisibility}
       >
         <div className={isItemActive ? 'dgs-ui-kit-font-h5-bold' : 'dgs-ui-kit-font-p1-medium'}>
           {title}

@@ -5,13 +5,28 @@ import type { FC, PropsWithChildren } from 'react';
 import { accordionContext } from './context';
 
 interface AccordionGroupProps {
-  defaultActiveKey?: string;
+  defaultActiveKey?: string | string[];
   className?: string;
+  disableAccordion?: boolean;
+}
+
+function initializeState(
+  defaultActiveKey: AccordionGroupProps['defaultActiveKey'],
+  disableAccordion: AccordionGroupProps['disableAccordion'] = false,
+) {
+  if (!defaultActiveKey) return disableAccordion ? [] : null;
+  const isDefaultKeyArray = Array.isArray(defaultActiveKey);
+
+  if (disableAccordion) return isDefaultKeyArray ? defaultActiveKey : [defaultActiveKey];
+
+  return isDefaultKeyArray ? (defaultActiveKey[0] as string) : defaultActiveKey;
 }
 
 const AccordionGroup: FC<PropsWithChildren<AccordionGroupProps>> = (props) => {
-  const { defaultActiveKey = null, className, children } = props;
-  const [activeKey, setActiveKey] = useState(defaultActiveKey);
+  const { defaultActiveKey, className, children, disableAccordion } = props;
+  const [activeKey, setActiveKey] = useState<string | string[] | null>(
+    initializeState(defaultActiveKey, disableAccordion),
+  );
 
   return (
     <div className={clsx('dgs-ui-kit-flex dgs-ui-kit-flex-col', className)}>
