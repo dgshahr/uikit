@@ -1,19 +1,19 @@
 'use client';
 import { j as t } from './jsx-runtime-DEdD30eg.js';
-import { c as o } from './clsx-B-dksMZM.js';
-import { r as s } from './index-RYns6xqu.js';
-import { A as U } from './ArrowDown2-BROvoNUr.js';
-import { B as Y } from './index-CWMq8u1A.js';
+import { c as n } from './clsx-B-dksMZM.js';
+import { r as a } from './index-RYns6xqu.js';
+import { A as F } from './ArrowDown2-BROvoNUr.js';
+import { B as tt } from './index-CWMq8u1A.js';
 import { B as I } from './index-y1yO4rQx.js';
-import { C as Z } from './index-lCehmLaF.js';
-import { I as K } from './index-XFALN22V.js';
-import { D as tt } from './index-Di97dHj_.js';
+import { C as it } from './index-lCehmLaF.js';
+import { I as H } from './index-XFALN22V.js';
+import { D as et } from './index-Di97dHj_.js';
 /* empty css               */ import './omitObjects-DTdUR98j.js';
 import './RadioCheckboxWrapper-DZkUpp96.js';
 import './TextFieldWrapper-B3jGPd_h.js';
 import './index-DYmNCwer.js';
 import './CloseRemove-DAxcZzP_.js';
-const it = {
+const lt = {
     'آذربایجان شرقی': [
       { id: 5, title: 'آذرشهر' },
       { id: 21, title: 'خسروشهر' },
@@ -1196,7 +1196,7 @@ const it = {
       { id: 1104, title: 'مروست' },
     ],
   },
-  W = (i) =>
+  U = (i) =>
     t.jsxs('svg', {
       xmlns: 'http://www.w3.org/2000/svg',
       width: '1em',
@@ -1215,42 +1215,25 @@ const it = {
         }),
       ],
     });
-W.__docgenInfo = { description: '', methods: [], displayName: 'Ringing3OutlineIcon' };
-const et = (i) => {
-    const l = s.useRef(null);
-    return (
-      s.useEffect(() => {
-        const e = (r) => {
-          l.current && !l.current.contains(r.target) && i();
-        };
-        return (
-          document.addEventListener('click', e, !0),
-          () => {
-            document.removeEventListener('click', e, !0);
-          }
-        );
-      }, [l, i]),
-      l
-    );
-  },
-  G = (i) =>
-    t.jsx('svg', {
-      xmlns: 'http://www.w3.org/2000/svg',
-      width: '1em',
-      height: '1em',
-      fill: 'none',
-      viewBox: '0 0 24 24',
-      ...i,
-      children: t.jsx('path', {
-        stroke: 'currentColor',
-        strokeLinecap: 'round',
-        strokeLinejoin: 'round',
-        strokeWidth: 1.5,
-        d: 'M11.767 20.755a8.989 8.989 0 1 0 0-17.977 8.989 8.989 0 0 0 0 17.977M18.018 18.485 21.542 22',
-      }),
-    });
-G.__docgenInfo = { description: '', methods: [], displayName: 'SearchIcon' };
-function lt(i, l = 100) {
+U.__docgenInfo = { description: '', methods: [], displayName: 'Ringing3OutlineIcon' };
+const K = (i) =>
+  t.jsx('svg', {
+    xmlns: 'http://www.w3.org/2000/svg',
+    width: '1em',
+    height: '1em',
+    fill: 'none',
+    viewBox: '0 0 24 24',
+    ...i,
+    children: t.jsx('path', {
+      stroke: 'currentColor',
+      strokeLinecap: 'round',
+      strokeLinejoin: 'round',
+      strokeWidth: 1.5,
+      d: 'M11.767 20.755a8.989 8.989 0 1 0 0-17.977 8.989 8.989 0 0 0 0 17.977M18.018 18.485 21.542 22',
+    }),
+  });
+K.__docgenInfo = { description: '', methods: [], displayName: 'SearchIcon' };
+function dt(i, l = 100) {
   if (!i) return;
   const e = document.createElement('input');
   (e.style.position = 'absolute'),
@@ -1264,36 +1247,36 @@ function lt(i, l = 100) {
       i.focus(), i.click(), document.body.removeChild(e);
     }, l);
 }
-function dt({ label: i, isMultiple: l, isActive: e, disabled: r }) {
-  return l ? t.jsx(Z, { checked: e, label: i, readOnly: !0, disabled: r }) : i;
+function st({ label: i, isMultiple: l, isActive: e, disabled: s }) {
+  return l ? t.jsx(it, { checked: e, label: i, readOnly: !0, disabled: s }) : i;
 }
-const J = (i) => {
-    const { option: l, onClick: e, value: r, mode: c, optionCellClassName: f, optionCell: n } = i;
-    function k() {
-      return Array.isArray(r) ? r.includes(l.value) : l.value === r;
+const G = (i) => {
+    const { option: l, onClick: e, value: s, mode: r, optionCellClassName: g, optionCell: o } = i;
+    function u() {
+      return Array.isArray(s) ? s.includes(l.value) : l.value === s;
     }
     return t.jsx('button', {
       onClick: e,
-      className: o(
+      className: n(
         'dgs-ui-kit-w-full dgs-ui-kit-text-start dgs-ui-kit-px-3 disabled:dgs-ui-kit-cursor-not-allowed dgs-ui-kit-py-3 dgs-ui-kit-font-p1-regular disabled:dgs-ui-kit-bg-gray-50 dgs-ui-kit-transition',
-        k()
+        u()
           ? 'dgs-ui-kit-bg-primary-50 dgs-ui-kit-text-primary-500'
           : 'dgs-ui-kit-text-gray-700 disabled:dgs-ui-kit-text-gray-400',
-        f,
+        g,
       ),
       disabled: l.disabled,
-      children: n
-        ? n(l, k())
-        : dt({
+      children: o
+        ? o(l, u())
+        : st({
             label: l.label,
-            isMultiple: c === 'multiple',
-            isActive: k(),
+            isMultiple: r === 'multiple',
+            isActive: u(),
             disabled: l.disabled ?? !1,
           }),
     });
   },
-  z = s.memo(J);
-J.__docgenInfo = {
+  V = a.memo(G);
+G.__docgenInfo = {
   description: '',
   methods: [],
   displayName: 'OptionItem',
@@ -1330,103 +1313,105 @@ J.__docgenInfo = {
     },
   },
 };
-const st = 20,
-  D = (i) => {
+const J = a.createContext({ toggleWrapperVisibility: () => {} }),
+  rt = () => a.useContext(J),
+  at = 20,
+  Q = (i) => {
     const {
         options: l,
         mode: e = 'single',
-        afterOptions: r,
-        beforOptions: c,
-        onChange: f,
-        searchable: n = !0,
-        setIsShowOptions: k,
-        separateSelectedOptions: h = !0,
-        optionsTitle: u = 'عنوان‌ها',
-        value: p,
-        optionCellClassName: b,
-        emptyContent: m = 'نتیجه‌ای یافت نشد !',
-        showClearButtonOnEmpty: y = !0,
+        afterOptions: s,
+        beforOptions: r,
+        onChange: g,
+        searchable: o = !0,
+        separateSelectedOptions: u = !0,
+        optionsTitle: v = 'عنوان‌ها',
+        value: f,
+        optionCellClassName: k,
+        emptyContent: b = 'نتیجه‌ای یافت نشد !',
+        showClearButtonOnEmpty: x = !0,
       } = i,
-      [x, v] = s.useState(''),
-      [j, q] = s.useState(0),
-      g = s.useRef(null),
-      w = o(
+      [y, c] = a.useState(''),
+      [h, w] = a.useState(0),
+      m = a.useRef(null),
+      { toggleWrapperVisibility: q } = rt(),
+      B = n(
         'dgs-ui-kit-border-t dgs-ui-kit-border-solid dgs-ui-kit-border-gray-100',
-        ((!n && !c) || (e === 'multiple' && h)) && 'first-of-type:dgs-ui-kit-border-t-0',
-        !!r && 'last-of-type:dgs-ui-kit-border-b',
+        ((!o && !r) || (e === 'multiple' && u)) && 'first-of-type:dgs-ui-kit-border-t-0',
+        !!s && 'last-of-type:dgs-ui-kit-border-b',
       );
     let C;
-    const P = n;
-    typeof n == 'boolean' ? (C = n) : (C = Object.keys(n).length > 0);
-    const M = s.useMemo(() => (x ? l?.filter((d) => d.label.includes(x)) : l), [x, l]),
-      A = s.useMemo(
-        () => (e === 'multiple' && h ? (l?.filter((d) => p.includes(d.value)) ?? []) : []),
-        [l, p],
+    const P = o;
+    typeof o == 'boolean' ? (C = o) : (C = Object.keys(o).length > 0);
+    const E = a.useMemo(() => (y ? l?.filter((d) => d.label.includes(y)) : l), [y, l]),
+      R = a.useMemo(
+        () => (e === 'multiple' && u ? (l?.filter((d) => f.includes(d.value)) ?? []) : []),
+        [l, f],
       ),
-      B = s.useMemo(() => {
-        let d = M;
-        e === 'multiple' && h && (d = d?.filter((_) => !p.includes(_.value)));
-        const a = Math.min(j + st, d?.length ?? 0);
-        return d?.slice(j, a);
-      }, [M, j, p]),
-      O = g?.current?.children[0]?.clientHeight ?? 50,
-      X = (M?.length ?? 0) * O,
-      R = s.useCallback(() => {
-        const d = g?.current?.parentElement;
+      L = a.useMemo(() => {
+        let d = E;
+        e === 'multiple' && u && (d = d?.filter((A) => !f.includes(A.value)));
+        const p = Math.min(h + at, d?.length ?? 0);
+        return d?.slice(h, p);
+      }, [E, h, f]),
+      j = m?.current?.children[0]?.clientHeight ?? 50,
+      Z = (E?.length ?? 0) * j,
+      M = a.useCallback(() => {
+        const d = m?.current?.parentElement;
         if (!d) return;
-        const a = d.scrollTop,
-          _ = g.current.offsetTop,
-          $ = Math.floor((a - _) / O);
-        q($ >= 0 ? $ : 0);
-      }, [O]);
-    s.useEffect(() => {
-      const d = g.current?.parentElement;
-      if (d) return d.addEventListener('scroll', R), () => d.removeEventListener('scroll', R);
-    }, [R]),
-      s.useEffect(() => {
-        C && lt(document.getElementById('search-input'), 400);
+        const p = d.scrollTop,
+          A = m.current.offsetTop,
+          D = Math.floor((p - A) / j);
+        w(D >= 0 ? D : 0);
+      }, [j]);
+    a.useEffect(() => {
+      const d = m.current?.parentElement;
+      if (d) return d.addEventListener('scroll', M), () => d.removeEventListener('scroll', M);
+    }, [M]),
+      a.useEffect(() => {
+        C && dt(document.getElementById('search-input'), 400);
       }, []);
-    const V = s.useCallback(
+    const W = a.useCallback(
       (d) => {
-        if (typeof f == 'function')
+        if (typeof g == 'function')
           if (e === 'multiple') {
-            const a = [...(p ?? [])];
-            a.includes(d) ? a.splice(a.indexOf(d), 1) : a.push(d), f(a);
-          } else f(d), k(!1);
+            const p = [...(f ?? [])];
+            p.includes(d) ? p.splice(p.indexOf(d), 1) : p.push(d), g(p);
+          } else g(d), q();
       },
-      [p],
+      [f],
     );
     return t.jsxs(t.Fragment, {
       children: [
         C &&
-          t.jsx(K, {
+          t.jsx(H, {
             id: 'search-input',
-            wrapperClassName: o(
+            wrapperClassName: n(
               'dgs-ui-kit-sticky dgs-ui-kit-top-0 dgs-ui-kit-pt-3 dgs-ui-kit-right-0 dgs-ui-kit-bg-white dgs-ui-kit-z-10 dgs-ui-kit-px-3',
-              c ? 'dgs-ui-kit-pb-2' : 'dgs-ui-kit-pb-3',
+              r ? 'dgs-ui-kit-pb-2' : 'dgs-ui-kit-pb-3',
               P?.wrapperClassName,
             ),
             placeholder: P?.placeholder ?? 'جستجوی عنوان',
-            value: x,
-            onChange: (d) => v(d.currentTarget.value),
-            rightIcon: P?.rightIcon ?? t.jsx(G, { width: 20, height: 20 }),
-            ...(typeof n == 'object' ? n : {}),
+            value: y,
+            onChange: (d) => c(d.currentTarget.value),
+            rightIcon: P?.rightIcon ?? t.jsx(K, { width: 20, height: 20 }),
+            ...(typeof o == 'object' ? o : {}),
           }),
-        c,
+        r,
         e === 'multiple' &&
-          h &&
-          A.length > 0 &&
+          u &&
+          R.length > 0 &&
           t.jsxs(t.Fragment, {
             children: [
               t.jsx('p', {
                 className:
                   'dgs-ui-kit-font-p2-regular dgs-ui-kit-text-gray-400 dgs-ui-kit-px-3 dgs-ui-kit-py-2',
-                children: `${u}‌ی انتخاب شده`,
+                children: `${v}‌ی انتخاب شده`,
               }),
-              A.map((d) =>
+              R.map((d) =>
                 t.jsx(
-                  z,
-                  { onClick: () => V(d.value), option: d, optionCellClassName: o(w, b), ...i },
+                  V,
+                  { onClick: () => W(d.value), option: d, optionCellClassName: n(B, k), ...i },
                   d.value,
                 ),
               ),
@@ -1435,79 +1420,284 @@ const st = 20,
         t.jsxs(t.Fragment, {
           children: [
             e === 'multiple' &&
-              h &&
+              u &&
               t.jsx('p', {
                 className:
                   'dgs-ui-kit-font-p2-regular dgs-ui-kit-text-gray-400 dgs-ui-kit-px-3 dgs-ui-kit-py-2',
-                children: u,
+                children: v,
               }),
             t.jsx('div', {
-              ref: g,
+              ref: m,
               className: 'dgs-ui-kit-relative',
-              style: { height: X },
-              children: B?.map((d, a) =>
+              style: { height: Z },
+              children: L?.map((d, p) =>
                 t.jsx(
                   'div',
                   {
-                    className: o('dgs-ui-kit-absolute dgs-ui-kit-w-full', w),
-                    style: { top: `${(j + a) * O}px` },
-                    children: t.jsx(z, { onClick: () => V(d.value), option: d, ...i }),
+                    className: n('dgs-ui-kit-absolute dgs-ui-kit-w-full', B),
+                    style: { top: `${(h + p) * j}px` },
+                    children: t.jsx(V, { onClick: () => W(d.value), option: d, ...i }),
                   },
                   d.value,
                 ),
               ),
             }),
-            !B?.length &&
-              !A.length &&
+            !L?.length &&
+              !R.length &&
               t.jsxs('div', {
                 className:
                   'dgs-ui-kit-text-center dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-items-center dgs-ui-kit-mt-2',
                 children: [
                   t.jsx('p', {
                     className: 'dgs-ui-kit-text-gray-500 dgs-ui-kit-font-p3-medium',
-                    children: m,
+                    children: b,
                   }),
-                  y &&
+                  x &&
                     t.jsx(I, {
                       className: 'dgs-ui-kit-mt-1',
                       variant: 'text',
                       size: 'small',
-                      onClick: () => v(''),
+                      onClick: () => c(''),
                       children: 'پاک کردن',
                     }),
                 ],
               }),
           ],
         }),
-        r,
+        s,
       ],
     });
   };
-D.__docgenInfo = {
+Q.__docgenInfo = {
   description: '',
   methods: [],
   displayName: 'Options',
   props: {
-    setIsShowOptions: {
+    options: {
       required: !0,
       tsType: {
-        name: 'Dispatch',
+        name: 'Array',
         elements: [
           {
-            name: 'SetStateAction',
-            elements: [{ name: 'boolean' }],
-            raw: 'SetStateAction<boolean>',
+            name: 'signature',
+            type: 'object',
+            raw: `{
+  value: T;
+  label: string;
+  disabled?: boolean;
+}`,
+            signature: {
+              properties: [
+                { key: 'value', value: { name: 'T', required: !0 } },
+                { key: 'label', value: { name: 'string', required: !0 } },
+                { key: 'disabled', value: { name: 'boolean', required: !1 } },
+              ],
+            },
           },
         ],
-        raw: 'Dispatch<SetStateAction<boolean>>',
+        raw: 'Option<T>[]',
       },
       description: '',
     },
+    optionsContainer: {
+      required: !1,
+      tsType: {
+        name: 'union',
+        raw: "'drawer' | 'popover'",
+        elements: [
+          { name: 'literal', value: "'drawer'" },
+          { name: 'literal', value: "'popover'" },
+        ],
+      },
+      description: '',
+    },
+    searchable: {
+      required: !1,
+      tsType: {
+        name: 'union',
+        raw: "boolean | Omit<InputProps, 'onChange'>",
+        elements: [
+          { name: 'boolean' },
+          {
+            name: 'Omit',
+            elements: [{ name: 'InputProps' }, { name: 'literal', value: "'onChange'" }],
+            raw: "Omit<InputProps, 'onChange'>",
+          },
+        ],
+      },
+      description: '',
+    },
+    optionCell: {
+      required: !1,
+      tsType: {
+        name: 'signature',
+        type: 'function',
+        raw: '(option: Option<T>, isActive: boolean) => ReactNode',
+        signature: {
+          arguments: [
+            {
+              type: {
+                name: 'signature',
+                type: 'object',
+                raw: `{
+  value: T;
+  label: string;
+  disabled?: boolean;
+}`,
+                signature: {
+                  properties: [
+                    { key: 'value', value: { name: 'T', required: !0 } },
+                    { key: 'label', value: { name: 'string', required: !0 } },
+                    { key: 'disabled', value: { name: 'boolean', required: !1 } },
+                  ],
+                },
+              },
+              name: 'option',
+            },
+            { type: { name: 'boolean' }, name: 'isActive' },
+          ],
+          return: { name: 'ReactNode' },
+        },
+      },
+      description: '',
+    },
+    optionCellClassName: { required: !1, tsType: { name: 'string' }, description: '' },
+    beforOptions: { required: !1, tsType: { name: 'ReactNode' }, description: '' },
+    afterOptions: { required: !1, tsType: { name: 'ReactNode' }, description: '' },
+    emptyContent: { required: !1, tsType: { name: 'ReactNode' }, description: '' },
+    showClearButtonOnEmpty: { required: !1, tsType: { name: 'boolean' }, description: '' },
   },
 };
-const F = 'dgs-ui-kit-duration-300',
-  H = 400;
-function rt(i, l) {
+const nt = (i) => {
+    const l = a.useRef(null);
+    return (
+      a.useEffect(() => {
+        const e = (s) => {
+          l.current && !l.current.contains(s.target) && i();
+        };
+        return (
+          document.addEventListener('click', e, !0),
+          () => {
+            document.removeEventListener('click', e, !0);
+          }
+        );
+      }, [l, i]),
+      l
+    );
+  },
+  $ = 'dgs-ui-kit-duration-300',
+  z = 400,
+  X = (i) => {
+    const {
+        dropdownType: l = 'popover',
+        disabled: e,
+        isLoading: s,
+        wrapperClassName: r,
+        customInput: g,
+        children: o,
+        drawerProps: u,
+        inputProps: v,
+        popoverClassName: f,
+      } = i,
+      [k, b] = a.useState(!1),
+      [x, y] = a.useState(!1);
+    let c;
+    const h = nt(() => {
+      l === 'popover' &&
+        k &&
+        (b(!1),
+        c && clearTimeout(c),
+        (c = setTimeout(() => {
+          y(!1);
+        }, z)));
+    });
+    function w() {
+      if (e || s) return;
+      const q = !x;
+      c && clearTimeout(c),
+        q
+          ? (y(!0),
+            (c = setTimeout(() => {
+              b(!0);
+            }, 0)))
+          : (b(!1),
+            (c = setTimeout(() => {
+              y(!1);
+            }, z)));
+    }
+    const m = n({
+      '!dgs-ui-kit-cursor-not-allowed': e,
+      '!dgs-ui-kit-cursor-wait': s,
+      '!dgs-ui-kit-cursor-pointer': !s && !e,
+    });
+    return t.jsxs('div', {
+      ref: h,
+      className: n('dgs-ui-kit-relative', r),
+      children: [
+        t.jsx('button', {
+          className: n('dgs-ui-kit-w-full', m),
+          onClick: w,
+          children: g
+            ? g(k)
+            : t.jsx(H, {
+                leftIcon: s
+                  ? t.jsx('div', { className: 'dot-flashing dgs-ui-kit-mr-2' })
+                  : t.jsx(F, {
+                      width: 20,
+                      height: 20,
+                      className: n('dgs-ui-kit-transition', $, { 'dgs-ui-kit-rotate-180': k }),
+                    }),
+                containerClassName: n(m, { 'dgs-ui-kit-items-baseline': s }),
+                className: n('dgs-ui-kit-caret-transparent', m),
+                disabled: e,
+                ...v,
+              }),
+        }),
+        t.jsx(J.Provider, {
+          value: { toggleWrapperVisibility: w },
+          children:
+            x &&
+            t.jsx(t.Fragment, {
+              children:
+                l === 'popover'
+                  ? t.jsx('div', {
+                      className: n(
+                        'dgs-ui-kit-absolute dgs-ui-kit-min-w-[300px] dgs-ui-kit-bottom-0 dgs-ui-kit-right-0 dgs-ui-kit-translate-y-[calc(100%+8px)] dgs-ui-kit-overflow-y-auto dgs-ui-kit-overflow-x-hidden dgs-ui-kit-shadow-lg dgs-ui-kit-w-full dgs-ui-kit-max-h-[360px] dgs-ui-kit-transition-all dgs-ui-kit-bg-white dgs-ui-kit-z-50 dgs-ui-kit-rounded-lg dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-border-gray-200 dgs-ui-kit-pb-3',
+                        $,
+                        k
+                          ? 'dgs-ui-kit-opacity-100'
+                          : 'dgs-ui-kit-opacity-0 dgs-ui-kit-max-h-0 dgs-ui-kit-overflow-y-hidden',
+                        f,
+                      ),
+                      children: o,
+                    })
+                  : t.jsx(et, {
+                      ...u,
+                      open: k,
+                      onClose: () => b(!1),
+                      containerClassName: n(
+                        '!dgs-ui-kit-pb-3 !dgs-ui-kit-px-0',
+                        u?.containerClassName,
+                      ),
+                      children: o,
+                    }),
+            }),
+        }),
+      ],
+    });
+  };
+X.__docgenInfo = {
+  description: '',
+  methods: [],
+  displayName: 'PickerWrapper',
+  props: {
+    isLoading: { required: !1, tsType: { name: 'boolean' }, description: '' },
+    disabled: { required: !1, tsType: { name: 'boolean' }, description: '' },
+    wrapperClassName: { required: !1, tsType: { name: 'string' }, description: '' },
+    children: { required: !0, tsType: { name: 'ReactNode' }, description: '' },
+  },
+};
+function ot(i, l) {
   return Array.isArray(i)
     ? l
         .filter((e) => i.includes(e.value))
@@ -1515,103 +1705,26 @@ function rt(i, l) {
         .join(', ')
     : (l.find((e) => e.value === i)?.label ?? '');
 }
-const E = (i) => {
-  const {
-      options: l,
-      optionsContainer: e = 'popover',
-      className: r,
-      customInput: c,
-      inputProps: f,
-      drawerProps: n,
-      popoverClassName: k,
-      value: h,
-      isLoading: u,
-      searchable: p = !0,
-      disabled: b = u,
-    } = i,
-    [m, y] = s.useState(!1),
-    [x, v] = s.useState(!1),
-    j = et(() => {
-      e === 'popover' &&
-        m &&
-        (y(!1),
-        setTimeout(() => {
-          v(!1);
-        }, H));
-    });
-  function q() {
-    if (b || u) return;
-    !m
-      ? (v(!0),
-        setTimeout(() => {
-          y(!0);
-        }, 0))
-      : (y(!1),
-        setTimeout(() => {
-          v(!1);
-        }, H));
-  }
-  const g = { ...i, setIsShowOptions: y },
-    w = o({
-      '!dgs-ui-kit-cursor-not-allowed': b,
-      '!dgs-ui-kit-cursor-wait': u,
-      '!dgs-ui-kit-cursor-pointer': !u && !b,
-    });
-  return t.jsxs('div', {
-    ref: j,
-    className: o('dgs-ui-kit-relative', r),
-    children: [
-      t.jsx('button', {
-        className: o('dgs-ui-kit-w-full', w),
-        onClick: q,
-        children: c
-          ? c(m)
-          : t.jsx(K, {
-              leftIcon: u
-                ? t.jsx('div', { className: 'dot-flashing dgs-ui-kit-mr-2' })
-                : t.jsx(U, {
-                    width: 20,
-                    height: 20,
-                    className: o('dgs-ui-kit-transition', F, { 'dgs-ui-kit-rotate-180': m }),
-                  }),
-              containerClassName: o(w, { 'dgs-ui-kit-items-baseline': u }),
-              className: o('dgs-ui-kit-caret-transparent', w),
-              value: rt(h, l),
-              disabled: b,
-              ...f,
-            }),
+const S = (i) => {
+  const { searchable: l = !0, value: e, options: s } = i,
+    r = { ...i };
+  return (
+    r.dropdownType === 'popover' &&
+      !l &&
+      (r.popoverClassName = n('dgs-ui-kit-pt-3', r.popoverClassName)),
+    r.dropdownType === 'drawer' &&
+      (r.drawerProps = {
+        ...r.drawerProps,
+        containerClassName: n(
+          l ? '!dgs-ui-kit-pt-0' : '!dgs-ui-kit-pt-3',
+          r.drawerProps?.containerClassName,
+        ),
       }),
-      x &&
-        t.jsx(t.Fragment, {
-          children:
-            e === 'popover'
-              ? t.jsx('div', {
-                  className: o(
-                    'dgs-ui-kit-absolute dgs-ui-kit-min-w-[300px] dgs-ui-kit-bottom-0 dgs-ui-kit-right-0 dgs-ui-kit-translate-y-[calc(100%+8px)] dgs-ui-kit-overflow-y-auto dgs-ui-kit-overflow-x-hidden dgs-ui-kit-shadow-lg dgs-ui-kit-w-full dgs-ui-kit-max-h-[360px] dgs-ui-kit-transition-all dgs-ui-kit-bg-white dgs-ui-kit-z-50 dgs-ui-kit-rounded-lg dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-border-gray-200 dgs-ui-kit-pb-3',
-                    F,
-                    m
-                      ? 'dgs-ui-kit-opacity-100'
-                      : 'dgs-ui-kit-opacity-0 dgs-ui-kit-max-h-0 dgs-ui-kit-overflow-y-hidden',
-                    { 'dgs-ui-kit-pt-3': !p },
-                    k,
-                  ),
-                  children: t.jsx(D, { ...g }),
-                })
-              : t.jsx(tt, {
-                  open: m,
-                  onClose: () => y(!1),
-                  containerClassName: o(
-                    '!dgs-ui-kit-pb-3 !dgs-ui-kit-px-0',
-                    p ? '!dgs-ui-kit-pt-0' : '!dgs-ui-kit-pt-3',
-                  ),
-                  ...n,
-                  children: t.jsx(D, { ...g }),
-                }),
-        }),
-    ],
-  });
+    r.customInput || (r.inputProps = { ...r.inputProps, value: ot(e, s) }),
+    t.jsx(X, { ...r, children: t.jsx(Q, { ...i }) })
+  );
 };
-E.__docgenInfo = {
+S.__docgenInfo = {
   description: '',
   methods: [],
   displayName: 'Select',
@@ -1670,8 +1783,6 @@ E.__docgenInfo = {
       },
       description: '',
     },
-    isLoading: { required: !1, tsType: { name: 'boolean' }, description: '' },
-    disabled: { required: !1, tsType: { name: 'boolean' }, description: '' },
     optionCell: {
       required: !1,
       tsType: {
@@ -1707,7 +1818,6 @@ E.__docgenInfo = {
       description: '',
     },
     optionCellClassName: { required: !1, tsType: { name: 'string' }, description: '' },
-    className: { required: !1, tsType: { name: 'string' }, description: '' },
     beforOptions: { required: !1, tsType: { name: 'ReactNode' }, description: '' },
     afterOptions: { required: !1, tsType: { name: 'ReactNode' }, description: '' },
     emptyContent: { required: !1, tsType: { name: 'ReactNode' }, description: '' },
@@ -1716,7 +1826,7 @@ E.__docgenInfo = {
 };
 const St = {
     title: 'Components/Form/Select',
-    component: E,
+    component: S,
     parameters: {
       docs: {
         description: {
@@ -1727,7 +1837,7 @@ const St = {
     },
     argTypes: {
       options: {
-        control: 'object',
+        control: { type: 'object', disable: !0 },
         table: {
           type: {
             summary: 'Option<T>[]',
@@ -1764,6 +1874,10 @@ const St = {
         control: 'boolean',
         table: { type: { summary: 'boolean', detail: "only available in 'multiple' mode" } },
       },
+      optionsTitle: {
+        control: 'text',
+        table: { type: { summary: 'string', detail: "only available in 'multiple' mode." } },
+      },
       customInput: {
         control: 'object',
         type: 'function',
@@ -1783,7 +1897,7 @@ const St = {
           },
         },
       },
-      optionsContainer: {
+      dropdownType: {
         control: { type: 'select' },
         options: ['popover', 'drawer'],
         table: { type: { summary: 'popover, drawer' }, defaultValue: { summary: 'popover' } },
@@ -1793,15 +1907,13 @@ const St = {
         table: {
           type: {
             summary: "Omit<DrawerProps, 'children' | 'onClose' | 'open'>",
-            detail: "only available if optionsContainer='drawer'",
+            detail: "only available if dropdownType='drawer'",
           },
         },
       },
       popoverClassName: {
         control: 'text',
-        table: {
-          type: { summary: 'string', detail: "only available if optionsContainer='popover'" },
-        },
+        table: { type: { summary: 'string', detail: "only available if dropdownType='popover'" } },
       },
       optionCell: {
         control: 'object',
@@ -1822,12 +1934,12 @@ const St = {
       },
     },
   },
-  L = Object.values(it ?? {})
+  _ = Object.values(lt ?? {})
     .flat()
     .map((i) => ({ label: i.title, value: i.id })),
-  ot = { options: L, inputProps: { placeholder: 'متن نما', postfix: 'پسوند' } },
-  nt = {
-    options: L,
+  ut = { options: _, inputProps: { placeholder: 'متن نما', postfix: 'پسوند' } },
+  pt = {
+    options: _,
     inputProps: { placeholder: 'متن نما' },
     optionCell(i, l) {
       return t.jsxs('div', {
@@ -1851,7 +1963,7 @@ const St = {
               className:
                 'dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-justify-center dgs-ui-kit-items-center',
               children: [
-                t.jsx(W, { width: 16, height: 16 }),
+                t.jsx(U, { width: 16, height: 16 }),
                 t.jsx('span', {
                   className: 'dgs-ui-kit-mt-1 dgs-ui-kit-font-oveline-demibold',
                   children: 'ناموجود',
@@ -1862,11 +1974,11 @@ const St = {
       });
     },
   },
-  at = {
-    options: L,
+  ct = {
+    options: _,
     customInput(i) {
       return t.jsxs('div', {
-        className: o(
+        className: n(
           'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-x-2 dgs-ui-kit-bg-gray-100 dgs-ui-kit-py-3 dgs-ui-kit-px-4 dgs-ui-kit-rounded-lg dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-transition',
           i
             ? 'dgs-ui-kit-border-primary-500 dgs-ui-kit-text-primary-500'
@@ -1874,8 +1986,8 @@ const St = {
         ),
         children: [
           t.jsx('span', { children: 'شهر' }),
-          t.jsx(Y, { value: '۳', valueType: 'number' }),
-          t.jsx(U, { width: 16, height: 16 }),
+          t.jsx(tt, { value: '۳', valueType: 'number' }),
+          t.jsx(F, { width: 16, height: 16 }),
         ],
       });
     },
@@ -1903,27 +2015,27 @@ const St = {
       children: t.jsx(I, { children: 'اعمال' }),
     }),
   },
-  Q = (i) => {
-    const [l, e] = s.useState(0);
-    return t.jsx(E, { ...i, value: l, onChange: (r) => e(r) });
+  Y = (i) => {
+    const [l, e] = a.useState(0);
+    return t.jsx(S, { ...i, value: l, onChange: (s) => e(s) });
   },
-  S = { args: ot, render: (i) => t.jsx(Q, { ...i }) },
-  N = { args: nt, render: (i) => t.jsx(Q, { ...i }) },
-  ut = (i) => {
-    const [l, e] = s.useState([]);
-    return t.jsx(E, { ...i, mode: 'multiple', value: l, onChange: (r) => e(r) });
+  T = { args: ut, render: (i) => t.jsx(Y, { ...i }) },
+  N = { args: pt, render: (i) => t.jsx(Y, { ...i }) },
+  mt = (i) => {
+    const [l, e] = a.useState([]);
+    return t.jsx(S, { ...i, mode: 'multiple', value: l, onChange: (s) => e(s) });
   },
-  T = { args: at, render: (i) => t.jsx(ut, { ...i }) };
-S.parameters = {
-  ...S.parameters,
+  O = { args: ct, render: (i) => t.jsx(mt, { ...i }) };
+T.parameters = {
+  ...T.parameters,
   docs: {
-    ...S.parameters?.docs,
+    ...T.parameters?.docs,
     source: {
       originalSource: `{
   args: defaultProps as Story['args'],
   render: args => <SelectExample {...args as typeof defaultProps} />
 }`,
-      ...S.parameters?.docs?.source,
+      ...T.parameters?.docs?.source,
     },
   },
 };
@@ -1940,24 +2052,24 @@ N.parameters = {
     },
   },
 };
-T.parameters = {
-  ...T.parameters,
+O.parameters = {
+  ...O.parameters,
   docs: {
-    ...T.parameters?.docs,
+    ...O.parameters?.docs,
     source: {
       originalSource: `{
   args: multiSelectProps as Story['args'],
   render: args => <MultiSelectExample {...args as typeof multiSelectProps} />
 }`,
-      ...T.parameters?.docs?.source,
+      ...O.parameters?.docs?.source,
     },
   },
 };
-const Nt = ['Default', 'CustomOption', 'MultiSelect'];
+const qt = ['Default', 'CustomOption', 'MultiSelect'];
 export {
   N as CustomOption,
-  S as Default,
-  T as MultiSelect,
-  Nt as __namedExportsOrder,
+  T as Default,
+  O as MultiSelect,
+  qt as __namedExportsOrder,
   St as default,
 };

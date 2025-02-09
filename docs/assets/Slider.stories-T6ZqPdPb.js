@@ -240,9 +240,9 @@ const T = n.forwardRef((s, t) => {
       C(v - 1);
       return;
     }
-    const x = a.currentTarget.scrollWidth - g * 2,
-      b = x / v,
-      w = (x - a.currentTarget.scrollLeft - g) / b;
+    const b = a.currentTarget.scrollWidth - g * 2,
+      x = b / v,
+      w = (b - a.currentTarget.scrollLeft - g) / x;
     if (w <= v) {
       C(0);
       return;
@@ -251,22 +251,22 @@ const T = n.forwardRef((s, t) => {
   }
   function j(a) {
     if (!p.current) return;
-    const x = p.current.offsetWidth,
-      b = N - a,
+    const b = p.current.offsetWidth,
+      x = N - a,
       w = p.current.scrollWidth / v,
-      q = b * w;
+      q = x * w;
     a < 0
-      ? p.current.scrollTo({ behavior: 'smooth', left: -(x * v) })
+      ? p.current.scrollTo({ behavior: 'smooth', left: -(b * v) })
       : a >= v
         ? p.current.scrollTo({ behavior: 'smooth', left: 0 })
         : p.current.scrollBy({ behavior: 'smooth', left: q });
   }
   function I() {
-    const x = Object.keys(s.responsive)
+    const b = Object.keys(s.responsive)
         .sort()
         .findLast((w) => Number(w) <= window.innerWidth),
-      b = x ? s.responsive[Number(x)] : null;
-    o(b ? { ...r, ...b } : s);
+      x = b ? s.responsive[Number(b)] : null;
+    o(x ? { ...r, ...x } : s);
   }
   return (
     n.useImperativeHandle(t, () => ({
@@ -485,8 +485,8 @@ const Y = {
       },
       containerXPadding: {
         control: { type: 'number' },
-        description:
-          "it's add padding to first and last slide (it's just a temporary solution and i'm trying to handle it on container)",
+        description: 'it adds two children to start and end of slider with given width.',
+        table: { type: { summary: 'number' } },
       },
       onSlideIndexChange: {
         control: { type: 'object' },
