@@ -132,8 +132,10 @@ const meta = {
     },
     containerXPadding: {
       control: { type: 'number' },
-      description:
-        "it's add padding to first and last slide (it's just a temporary solution and i'm trying to handle it on container)",
+      description: 'it adds two children to start and end of slider with given width.',
+      table: {
+        type: { summary: 'number' },
+      },
     },
     onSlideIndexChange: {
       control: { type: 'object' },
