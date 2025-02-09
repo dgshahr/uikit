@@ -1,27 +1,16 @@
 import clsx from 'clsx';
-import {
-  useEffect,
-  useRef,
-  useState,
-  useMemo,
-  useCallback,
-  type Dispatch,
-  type SetStateAction,
-} from 'react';
+import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import SearchIcon from '@/src/icons/Search';
 import focusAndOpenKeyboard from '@/src/utils/focusAndOpenKeyboard';
 import OptionItem from './OptionItem';
 import type { SelectProps, SelectWithMultipleMode, SelectWithSingleMode } from './types';
 import Button from '../../Button';
 import Input, { type InputProps } from '../Input';
-
-type OptionsProps<T> = Partial<SelectProps<T>> & {
-  setIsShowOptions: Dispatch<SetStateAction<boolean>>;
-};
+import { usePickerWrapper } from '../Wrappers/PickerWrapper/contexts';
 
 const VISIBLE_ITEM_COUNT = 20;
 
-const Options = <T,>(props: OptionsProps<T>) => {
+const Options = <T,>(props: SelectProps<T>) => {
   const {
     options,
     mode = 'single' as 'single' | 'multiple',
@@ -29,7 +18,6 @@ const Options = <T,>(props: OptionsProps<T>) => {
     beforOptions,
     onChange,
     searchable = true,
-    setIsShowOptions,
     separateSelectedOptions = true,
     optionsTitle = 'عنوان‌ها',
     value,
@@ -40,6 +28,7 @@ const Options = <T,>(props: OptionsProps<T>) => {
   const [search, setSearch] = useState('');
   const [startIndex, setStartIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const { toggleWrapperVisibility } = usePickerWrapper();
 
   const itemClassName = clsx(
     'dgs-ui-kit-border-t dgs-ui-kit-border-solid dgs-ui-kit-border-gray-100',
@@ -115,7 +104,7 @@ const Options = <T,>(props: OptionsProps<T>) => {
         (onChange as SelectWithMultipleMode<T>['onChange'])(newValue);
       } else {
         (onChange as SelectWithSingleMode<T>['onChange'])(optionValue);
-        setIsShowOptions(false);
+        toggleWrapperVisibility();
       }
     },
     [value],

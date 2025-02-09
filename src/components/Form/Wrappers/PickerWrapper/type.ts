@@ -1,0 +1,36 @@
+import type { ReactNode } from 'react';
+import type { DrawerProps } from '@/src/components/Drawer';
+import type { InputProps } from '../../Input';
+
+interface PickerWrapperPropsBase {
+  isLoading?: boolean;
+  disabled?: boolean;
+  wrapperClassName?: string;
+  children: ReactNode;
+}
+
+interface PickerWrapperWithCustomInput {
+  customInput?: (isOpen: boolean) => ReactNode;
+  inputProps?: never;
+}
+
+interface PickerWrapperWithoutCustomInput {
+  inputProps?: Omit<InputProps, 'leftIcon'>;
+  customInput?: never;
+}
+
+interface PickerWrapperWithDrawerContainer {
+  pickerContainer: 'drawer';
+  drawerProps?: Omit<DrawerProps, 'children' | 'onClose' | 'open'>;
+  popoverClassName?: never;
+}
+
+interface PickerWrapperWithPopoverContainer {
+  pickerContainer?: 'popover';
+  popoverClassName?: string;
+  drawerProps?: never;
+}
+
+export type PickerWrapperProps = PickerWrapperPropsBase &
+  (PickerWrapperWithCustomInput | PickerWrapperWithoutCustomInput) &
+  (PickerWrapperWithDrawerContainer | PickerWrapperWithPopoverContainer);
