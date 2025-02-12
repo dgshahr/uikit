@@ -2,9 +2,9 @@ import clsx from 'clsx';
 import Options from './Options';
 import type { SelectProps } from './types';
 import PickerWrapper from '../Wrappers/PickerWrapper/PickerWrapper';
+import type { PickerWrapperProps } from '../Wrappers/PickerWrapper/type';
 
 import '@/src/styles.css';
-import type { PickerWrapperProps } from '../Wrappers/PickerWrapper/type';
 
 function findValue<T>(value: T | T[], options: SelectProps<T>['options']) {
   if (Array.isArray(value))
