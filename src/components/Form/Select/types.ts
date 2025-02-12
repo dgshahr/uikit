@@ -36,5 +36,5 @@ export type SelectWithMultipleMode<T> = {
 };
 
 export type SelectProps<T> = SelectPropsBase<T> &
-  Omit<PickerWrapperProps, 'children'> &
+  PickerWrapperProps &
   (SelectWithSingleMode<T> | SelectWithMultipleMode<T>);

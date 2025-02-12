@@ -1,7 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
-import { useState, type FC } from 'react';
+import { useState, type FC, type PropsWithChildren } from 'react';
 import Drawer from '@/src/components/Drawer';
 import { useOutsideClick } from '@/src/hooks/useOutsideClick';
 import ArrowDown2Icon from '@/src/icons/ArrowDown2';
@@ -15,7 +15,7 @@ const DURATION_CLASS = 'dgs-ui-kit-duration-300';
 // it should be bigger than duration class to show transition fully
 const REMOVE_CONTAINER_TIMEOUT = 400;
 
-const PickerWrapper: FC<PickerWrapperProps> = (props) => {
+const PickerWrapper: FC<PropsWithChildren<PickerWrapperProps>> = (props) => {
   const {
     dropdownType = 'popover',
     disabled,

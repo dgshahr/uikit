@@ -6,7 +6,6 @@ interface PickerWrapperPropsBase {
   isLoading?: boolean;
   disabled?: boolean;
   wrapperClassName?: string;
-  children: ReactNode;
 }
 
 interface PickerWrapperWithCustomInput {
