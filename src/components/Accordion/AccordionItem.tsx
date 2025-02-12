@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { useId } from 'react';
 import type { FC, PropsWithChildren, ReactNode } from 'react';
 import ArrowDown2Icon from '@/src/icons/ArrowDown2';
-import { useAccordionData } from './context';
+import { useAccordionContext } from './context';
 import Divider from '../Divider';
 
 interface AccordionItemProps {
@@ -15,7 +15,7 @@ interface AccordionItemProps {
 
 const AccordionItem: FC<PropsWithChildren<AccordionItemProps>> = (props) => {
   const { children, title, accordionKey, className, contentClassName } = props;
-  const { activeKey, setActiveKey } = useAccordionData();
+  const { activeKey, setActiveKey } = useAccordionContext();
   const reactUseId = useId();
   const accordionItemKey = accordionKey ?? reactUseId;
   const isAccordionDisable = Array.isArray(activeKey);

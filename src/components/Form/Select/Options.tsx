@@ -6,7 +6,7 @@ import OptionItem from './OptionItem';
 import type { SelectProps, SelectWithMultipleMode, SelectWithSingleMode } from './types';
 import Button from '../../Button';
 import Input, { type InputProps } from '../Input';
-import { usePickerWrapper } from '../Wrappers/PickerWrapper/contexts';
+import { usePickerWrapperContext } from '../Wrappers/PickerWrapper/contexts';
 
 const VISIBLE_ITEM_COUNT = 20;
 
@@ -28,7 +28,7 @@ const Options = <T,>(props: SelectProps<T>) => {
   const [search, setSearch] = useState('');
   const [startIndex, setStartIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const { toggleWrapperVisibility } = usePickerWrapper();
+  const { toggleWrapperVisibility } = usePickerWrapperContext();
 
   const itemClassName = clsx(
     'dgs-ui-kit-border-t dgs-ui-kit-border-solid dgs-ui-kit-border-gray-100',

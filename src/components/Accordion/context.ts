@@ -10,4 +10,4 @@ export const accordionContext = createContext<IAccordionContext>({
   setActiveKey: () => {},
 });
 
-export const useAccordionData = () => useContext(accordionContext);
+export const useAccordionContext = () => useContext(accordionContext);

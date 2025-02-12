@@ -8,4 +8,4 @@ export const pickerWrapperContext = createContext<IPickerWrapperContext>({
   toggleWrapperVisibility: () => {},
 });
 
-export const usePickerWrapper = () => useContext(pickerWrapperContext);
+export const usePickerWrapperContext = () => useContext(pickerWrapperContext);

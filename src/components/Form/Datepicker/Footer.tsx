@@ -2,11 +2,11 @@ import clsx from 'clsx';
 import type { FC } from 'react';
 import { useDatepickerContext } from './context';
 import Button from '../../Button';
-import { usePickerWrapper } from '../Wrappers/PickerWrapper/contexts';
+import { usePickerWrapperContext } from '../Wrappers/PickerWrapper/contexts';
 
 const Footer: FC = () => {
   const { datepickerProps } = useDatepickerContext();
-  const { toggleWrapperVisibility } = usePickerWrapper();
+  const { toggleWrapperVisibility } = usePickerWrapperContext();
   const { showClearButton = true, showTodayButton = true, onChange } = datepickerProps;
 
   return (
