@@ -118,12 +118,12 @@ const Days: FC = () => {
 
   return (
     <>
-      <div className="dgs-ui-kit-bg-gray-50 dgs-ui-kit-px-1 dgs-ui-kit-font-button-small dgs-ui-kit-text-gray-600 dgs-ui-kit-text-center dgs-ui-kit-grid dgs-ui-kit-grid-rows-1 dgs-ui-kit-grid-cols-7 dgs-ui-kit-py-3">
+      <div className="dgs-ui-kit-bg-gray-50 dgs-ui-kit-p-3 dgs-ui-kit-font-button-small dgs-ui-kit-text-gray-600 dgs-ui-kit-text-center dgs-ui-kit-grid dgs-ui-kit-grid-rows-1 dgs-ui-kit-grid-cols-7">
         {SHORT_WEEK_DAYS.map((weekDay) => (
           <span key={weekDay}>{weekDay}</span>
         ))}
       </div>
-      <div className="dgs-ui-kit-grid dgs-ui-kit-grid-cols-7 dgs-ui-kit-text-center dgs-ui-kit-font-p3-medium ss02 dgs-ui-kit-py-2 dgs-ui-kit-px-1 dgs-ui-kit-gap-y-2">
+      <div className="dgs-ui-kit-grid dgs-ui-kit-grid-cols-7 dgs-ui-kit-text-center dgs-ui-kit-font-p3-medium ss02 dgs-ui-kit-p-3 dgs-ui-kit-gap-y-2">
         {daysOfCalendar.map((dayItem) => (
           <button
             key={dayItem.date.toString()}
