@@ -7,7 +7,15 @@ import { usePickerWrapperContext } from '../Wrappers/PickerWrapper/contexts';
 const Footer: FC = () => {
   const { datepickerProps } = useDatepickerContext();
   const { toggleWrapperVisibility } = usePickerWrapperContext();
-  const { showClearButton = true, showTodayButton = true, onChange } = datepickerProps;
+  const {
+    showClearButton = true,
+    acceptRange,
+    showTodayButton = true,
+    onClear,
+    onChange,
+  } = datepickerProps;
+
+  const canShowTodayButton = !acceptRange && showTodayButton;
 
   return (
     <div
@@ -20,20 +28,20 @@ const Footer: FC = () => {
         <Button
           variant="text"
           size="small"
-          isFullWidth
+          isFullWidth={canShowTodayButton}
           onClick={() => {
-            onChange(null);
+            if (typeof onClear === 'function') onClear();
             toggleWrapperVisibility();
           }}
         >
           پاک کردن
         </Button>
       )}
-      {showTodayButton && (
+      {canShowTodayButton && (
         <Button
           variant="secondary"
           size="small"
-          isFullWidth
+          isFullWidth={showClearButton}
           onClick={() => {
             onChange(new Date());
             toggleWrapperVisibility();

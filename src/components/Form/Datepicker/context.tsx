@@ -1,5 +1,10 @@
 import { createContext, useContext, useState, type FC, type PropsWithChildren } from 'react';
-import { DateTypes, type ContextProviderProps, type IDatepickerContext } from './types';
+import {
+  DateTypes,
+  type ContextProviderProps,
+  type DatepickerProps,
+  type IDatepickerContext,
+} from './types';
 
 const datepickerContext = createContext<IDatepickerContext>({
   dateType: DateTypes.Day,
@@ -9,13 +14,22 @@ const datepickerContext = createContext<IDatepickerContext>({
   datepickerProps: {
     value: new Date(),
     onChange: () => {},
+    onClear: () => {},
   },
 });
+
+function initiateInternalDate(value: DatepickerProps['value']) {
+  if (!value) return new Date();
+
+  if (value instanceof Date) return value;
+
+  return value.start ?? new Date();
+}
 
 export const DatePickerProvider: FC<PropsWithChildren<ContextProviderProps>> = (props) => {
   const { children, datepickerProps } = props;
   const [dateType, setDateType] = useState(DateTypes.Day);
-  const [internalDate, setInternalDate] = useState(datepickerProps.value ?? new Date());
+  const [internalDate, setInternalDate] = useState(initiateInternalDate(datepickerProps.value));
 
   return (
     <datepickerContext.Provider

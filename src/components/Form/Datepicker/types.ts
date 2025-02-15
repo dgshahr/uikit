@@ -6,16 +6,40 @@ export enum DateTypes {
   Year,
 }
 
-export type DatepickerProps = PickerWrapperProps & {
+type DatepickerPropsBase = PickerWrapperProps & {
   startDate?: Date;
   endDate?: Date;
   showExtraDays?: boolean;
   showTodayButton?: boolean;
   showClearButton?: boolean;
   acceptRange?: boolean;
-  value: Date | null;
-  onChange: (value: DatepickerProps['value']) => void;
 };
+
+interface DatepickerWithClearButton {
+  showClearButton?: true;
+  onClear: () => void;
+}
+
+interface DatepickerWithoutClearButton {
+  showClearButton?: false;
+  onClear?: never;
+}
+
+export interface DatepickerWithRange {
+  acceptRange: true;
+  value: { start: Date | null; end: Date | null };
+  onChange: (value: DatepickerWithRange['value']) => void;
+}
+
+export interface DatepickerWithoutRange {
+  acceptRange?: false;
+  value: Date;
+  onChange: (value: DatepickerWithoutRange['value']) => void;
+}
+
+export type DatepickerProps = DatepickerPropsBase &
+  (DatepickerWithClearButton | DatepickerWithoutClearButton) &
+  (DatepickerWithRange | DatepickerWithoutRange);
 
 export interface IDatepickerContext {
   dateType: DateTypes;

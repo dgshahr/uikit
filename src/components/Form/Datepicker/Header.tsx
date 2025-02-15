@@ -5,6 +5,7 @@ import { format } from 'date-fns-jalali/format';
 import { isSameMonth } from 'date-fns-jalali/isSameMonth';
 import { isSameYear } from 'date-fns-jalali/isSameYear';
 import { startOfDecade } from 'date-fns-jalali/startOfDecade';
+import { startOfMonth } from 'date-fns-jalali/startOfMonth';
 import { sub } from 'date-fns-jalali/sub';
 import type { FC } from 'react';
 import ArrowDown2Icon from '@/src/icons/ArrowDown2';
@@ -30,7 +31,7 @@ function getButtonTitle(dateType: DateTypes, internalDate: Date) {
 function isPrevNavigationDisabled(internalDate: Date, dateType: DateTypes, startDate: Date) {
   switch (dateType) {
     case DateTypes.Day:
-      return isSameMonth(internalDate, startDate);
+      return isSameMonth(internalDate, add(startDate, { days: 1 }));
     case DateTypes.Month:
       return isSameYear(internalDate, startDate);
     case DateTypes.Year:
@@ -41,7 +42,7 @@ function isPrevNavigationDisabled(internalDate: Date, dateType: DateTypes, start
 function isNextNavigationDisabled(internalDate: Date, dateType: DateTypes, endDate: Date) {
   switch (dateType) {
     case DateTypes.Day:
-      return isSameMonth(endDate, internalDate);
+      return isSameMonth(sub(endDate, { days: 1 }), internalDate);
     case DateTypes.Month:
       return isSameYear(endDate, internalDate);
     case DateTypes.Year:
@@ -58,7 +59,7 @@ const Header: FC = () => {
     const calculationFunc = type === 'next' ? add : sub;
     switch (dateType) {
       case DateTypes.Day: {
-        setInternalDate(calculationFunc(internalDate, { months: 1 }));
+        setInternalDate(calculationFunc(startOfMonth(internalDate), { months: 1 }));
         break;
       }
       case DateTypes.Month: {
