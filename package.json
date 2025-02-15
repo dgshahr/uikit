@@ -1,6 +1,6 @@
 {
   "name": "@dgshahr/ui-kit",
-  "version": "0.0.72",
+  "version": "0.0.73",
   "description": "dgshahr ui-kit",
   "author": "dgshahr",
   "license": "MIT",
@@ -116,6 +116,16 @@
       "require": {
         "types": "./dist/Form/Checkbox/index.d.ts",
         "default": "./dist/Form/Checkbox/index.cjs"
+      }
+    },
+    "./Form/Datepicker": {
+      "import": {
+        "types": "./dist/Form/Datepicker/index.d.ts",
+        "default": "./dist/Form/Datepicker/index.js"
+      },
+      "require": {
+        "types": "./dist/Form/Datepicker/index.d.ts",
+        "default": "./dist/Form/Datepicker/index.cjs"
       }
     },
     "./Form/Input": {
