@@ -19,7 +19,8 @@ function getYearClassName({ year, value, startDate, endDate }: { year: Date } & 
 
   if (value instanceof Date) {
     if (isSameYear(value, year)) className = `${className} ${activeClassName}`;
-  } else if (value.start) className = `${className} ${activeClassName}`;
+  } else if (value.start && isSameYear(year, value.start))
+    className = `${className} ${activeClassName}`;
 
   if (!isSelectable)
     className = `${className} dgs-ui-kit-line-through dgs-ui-kit-pointer-events-none`;

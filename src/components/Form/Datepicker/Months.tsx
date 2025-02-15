@@ -25,7 +25,8 @@ function getMonthClassName({
 
   if (value instanceof Date) {
     if (isSameMonth(value, month)) className = `${className} ${activeClassName}`;
-  } else if (value.start) className = `${className} ${activeClassName}`;
+  } else if (value.start && isSameMonth(month, value.start))
+    className = `${className} ${activeClassName}`;
 
   if (!isSelectable)
     className = `${className} dgs-ui-kit-line-through dgs-ui-kit-pointer-events-none`;
