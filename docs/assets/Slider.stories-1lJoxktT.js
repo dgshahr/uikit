@@ -4,7 +4,7 @@ import { r as n } from './index-RYns6xqu.js';
 import { c as k } from './clsx-B-dksMZM.js';
 import { A as O } from './ArrowLeft2-FpSjjEcJ.js';
 import { A as F } from './ArrowRight2-CDwrWT4r.js';
-import { B } from './index-y1yO4rQx.js';
+import { B } from './index-C6XlpC8Y.js';
 /* empty css               */ const A = n.createContext({
     slidesPerView: 1,
     spaceBetween: 0,
