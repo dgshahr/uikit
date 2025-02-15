@@ -13,7 +13,32 @@ const meta = {
       },
     },
   },
-  argTypes: {},
+  argTypes: {
+    value: {
+      table: {
+        type: {
+          summary: 'Date | {start: Date | null, end: Date | null}',
+          detail: "'start' and 'end' only available if acceptRange='true'",
+        },
+      },
+    },
+    onChange: {
+      table: {
+        type: {
+          summary: '(value: ValueType) => void',
+        },
+      },
+    },
+    onClear: {
+      if: { arg: 'showClearButton', neq: true },
+      table: {
+        type: {
+          summary: '() => void',
+          detail: 'only available if showClearButton is not true.',
+        },
+      },
+    },
+  },
 } satisfies Meta<typeof Datepicker>;
 
 export default meta;
