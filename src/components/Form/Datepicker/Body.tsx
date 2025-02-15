@@ -1,7 +1,9 @@
 import type { FC } from 'react';
 import { useDatepickerContext } from './context';
 import Days from './Days';
+import Months from './Months';
 import { DateTypes } from './types';
+import Years from './Years';
 
 const Body: FC = () => {
   const { dateType } = useDatepickerContext();
@@ -10,9 +12,9 @@ const Body: FC = () => {
     case DateTypes.Day:
       return <Days />;
     case DateTypes.Month:
-      return null;
+      return <Months />;
     case DateTypes.Year:
-      return null;
+      return <Years />;
     default:
       return null;
   }

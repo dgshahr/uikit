@@ -1,10 +1,8 @@
 import { add } from 'date-fns-jalali/add';
-import { addYears } from 'date-fns-jalali/addYears';
-import { endOfDecade } from 'date-fns-jalali/endOfDecade';
 import { format } from 'date-fns-jalali/format';
 import { isSameMonth } from 'date-fns-jalali/isSameMonth';
 import { isSameYear } from 'date-fns-jalali/isSameYear';
-import { startOfDecade } from 'date-fns-jalali/startOfDecade';
+import { isWithinInterval } from 'date-fns-jalali/isWithinInterval';
 import { startOfMonth } from 'date-fns-jalali/startOfMonth';
 import { sub } from 'date-fns-jalali/sub';
 import type { FC } from 'react';
@@ -22,7 +20,7 @@ function getButtonTitle(dateType: DateTypes, internalDate: Date) {
     case DateTypes.Month:
       return format(internalDate, 'yyyy');
     case DateTypes.Year:
-      return `${format(addYears(endOfDecade(internalDate), 1), 'yyyy')}-${format(startOfDecade(internalDate), 'yyyy')}`;
+      return `${format(internalDate, 'yyyy')}-${format(sub(internalDate, { years: 11 }), 'yyyy')}`;
     default:
       return 'تاریخ اشتباه';
   }
@@ -35,7 +33,10 @@ function isPrevNavigationDisabled(internalDate: Date, dateType: DateTypes, start
     case DateTypes.Month:
       return isSameYear(internalDate, startDate);
     case DateTypes.Year:
-      return isSameYear(endOfDecade(internalDate), endOfDecade(startDate));
+      return isWithinInterval(startDate, {
+        start: internalDate,
+        end: sub(internalDate, { years: 12 }),
+      });
   }
 }
 
@@ -46,7 +47,10 @@ function isNextNavigationDisabled(internalDate: Date, dateType: DateTypes, endDa
     case DateTypes.Month:
       return isSameYear(endDate, internalDate);
     case DateTypes.Year:
-      return isSameYear(endOfDecade(endDate), endOfDecade(internalDate));
+      return isWithinInterval(endDate, {
+        start: internalDate,
+        end: sub(internalDate, { years: 12 }),
+      });
   }
 }
 
@@ -67,7 +71,7 @@ const Header: FC = () => {
         break;
       }
       case DateTypes.Year:
-        setInternalDate(calculationFunc(internalDate, { years: 11 }));
+        setInternalDate(calculationFunc(internalDate, { years: 12 }));
         break;
       default: {
         console.error('wrong date type');
