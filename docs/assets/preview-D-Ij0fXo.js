@@ -3,8 +3,8 @@ const __vite__mapDeps = (
   m = __vite__mapDeps,
   d = m.f ||
     (m.f = [
-      './DocsRenderer-CFRXHY34-KHt_KgzE.js',
-      './iframe-iBaccpoL.js',
+      './DocsRenderer-CFRXHY34-WC4IiV3q.js',
+      './iframe-BkvFZphO.js',
       './index-RYns6xqu.js',
       './jsx-runtime-DEdD30eg.js',
       './index-DYmNCwer.js',
@@ -13,7 +13,7 @@ const __vite__mapDeps = (
       './react-18-CJwW9gwZ.js',
     ]),
 ) => i.map((i) => d[i]);
-import { _ as a } from './iframe-iBaccpoL.js';
+import { _ as a } from './iframe-BkvFZphO.js';
 import '../sb-preview/runtime.js';
 const { global: s } = __STORYBOOK_MODULE_GLOBAL__;
 var _ = Object.entries(s.TAGS_OPTIONS ?? {}).reduce((e, r) => {
@@ -24,7 +24,7 @@ var _ = Object.entries(s.TAGS_OPTIONS ?? {}).reduce((e, r) => {
     docs: {
       renderer: async () => {
         let { DocsRenderer: e } = await a(
-          () => import('./DocsRenderer-CFRXHY34-KHt_KgzE.js').then((r) => r.ak),
+          () => import('./DocsRenderer-CFRXHY34-WC4IiV3q.js').then((r) => r.ak),
           __vite__mapDeps([0, 1, 2, 3, 4, 5, 6, 7]),
           import.meta.url,
         );

@@ -2,8 +2,9 @@ import { j as s } from './jsx-runtime-DEdD30eg.js';
 import { c as d } from './clsx-B-dksMZM.js';
 import { r as m } from './index-RYns6xqu.js';
 import { o as c } from './omitObjects-DTdUR98j.js';
-import { T as u } from './TextFieldWrapper-CPrZIvq7.js';
-/* empty css               */ const n = m.forwardRef(function (t, i) {
+import { T as u } from './TextFieldWrapper-DC_wTCY-.js';
+import './InfoCircleOutline-BidNIAAo.js';
+/* empty css               */ const i = m.forwardRef(function (t, n) {
   const { dir: r = 'rtl', placeholderDir: o = r, className: l, ...a } = t,
     p = c(a, [
       'labelAddon',
@@ -21,7 +22,7 @@ import { T as u } from './TextFieldWrapper-CPrZIvq7.js';
     ...t,
     children: s.jsx('textarea', {
       ...p,
-      ref: i,
+      ref: n,
       className: d(
         'dgs-ui-kit-bg-transparent dgs-ui-kit-leading-normal dgs-ui-kit-w-full dgs-ui-kit-h-full focus:dgs-ui-kit-outline-none ss02 dgs-ui-kit-flex-1 dgs-ui-kit-resize-none',
         r === 'rtl' ? 'dgs-ui-kit-text-right' : '!dgs-ui-kit-text-left',
@@ -32,7 +33,7 @@ import { T as u } from './TextFieldWrapper-CPrZIvq7.js';
     }),
   });
 });
-n.__docgenInfo = {
+i.__docgenInfo = {
   description: '',
   methods: [],
   displayName: 'Textarea',
@@ -95,9 +96,9 @@ n.__docgenInfo = {
   },
   composes: ['Omit'],
 };
-const k = {
+const q = {
     title: 'Components/Form/Textarea',
-    component: n,
+    component: i,
     parameters: {
       docs: {
         description: {
@@ -133,5 +134,5 @@ e.parameters = {
     },
   },
 };
-const q = ['Default'];
-export { e as Default, q as __namedExportsOrder, k as default };
+const w = ['Default'];
+export { e as Default, w as __namedExportsOrder, q as default };
