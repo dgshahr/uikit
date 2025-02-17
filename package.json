@@ -217,6 +217,16 @@
         "types": "./dist/Tabs/index.d.ts",
         "default": "./dist/Tabs/index.cjs"
       }
+    },
+    "./Tooltip": {
+      "import": {
+        "types": "./dist/Tooltip/index.d.ts",
+        "default": "./dist/Tooltip/index.js"
+      },
+      "require": {
+        "types": "./dist/Tooltip/index.d.ts",
+        "default": "./dist/Tooltip/index.cjs"
+      }
     }
   },
   "scripts": {
