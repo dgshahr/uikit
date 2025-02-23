@@ -11,8 +11,9 @@ import { useDatepickerContext } from './context';
 import { DateTypes, type DatepickerProps } from './types';
 
 function getYearClassName({ year, value, startDate, endDate }: { year: Date } & DatepickerProps) {
-  let className = 'dgs-ui-kit-rounded-full dgs-ui-kit-py-1';
-  const activeClassName = 'dgs-ui-kit-bg-primary-500 dgs-ui-kit-text-white';
+  let className =
+    'dgs-ui-kit-rounded-full dgs-ui-kit-py-1 dgs-ui-kit-transition hover:dgs-ui-kit-bg-primary-50 hover:dgs-ui-kit-text-primary-500';
+  const activeClassName = '!dgs-ui-kit-bg-primary-500 !dgs-ui-kit-text-white';
   const isSelectable =
     (startDate ? isAfter(endOfYear(year), startDate) : true) &&
     (endDate ? isBefore(year, endOfYear(endDate)) : true);

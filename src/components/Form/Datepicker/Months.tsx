@@ -17,8 +17,9 @@ function getMonthClassName({
   startDate,
   endDate,
 }: { month: Date } & DatepickerProps) {
-  let className = 'dgs-ui-kit-rounded-full dgs-ui-kit-py-1';
-  const activeClassName = 'dgs-ui-kit-bg-primary-500 dgs-ui-kit-text-white';
+  let className =
+    'dgs-ui-kit-rounded-full dgs-ui-kit-py-1 dgs-ui-kit-transition hover:dgs-ui-kit-bg-primary-50 hover:dgs-ui-kit-text-primary-500';
+  const activeClassName = '!dgs-ui-kit-bg-primary-500 !dgs-ui-kit-text-white';
   const isSelectable =
     (startDate ? isAfter(endOfMonth(month), startDate) : true) &&
     (endDate ? isBefore(month, endOfMonth(endDate)) : true);

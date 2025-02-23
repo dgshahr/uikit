@@ -72,8 +72,10 @@ function getDayClassName({
   const isToday = isSameDay(new Date(), date);
   const isSelectable =
     (startDate ? isAfter(date, startDate) : true) && (endDate ? isBefore(date, endDate) : true);
-  const activeItemClass = 'dgs-ui-kit-bg-primary-500 dgs-ui-kit-text-white dgs-ui-kit-border-none';
-  let className = 'dgs-ui-kit-py-1 dgs-ui-kit-rounded-2xl';
+  const activeItemClass =
+    '!dgs-ui-kit-bg-primary-500 !dgs-ui-kit-text-white dgs-ui-kit-border-none';
+  let className =
+    'dgs-ui-kit-py-1 dgs-ui-kit-rounded-2xl dgs-ui-kit-transition hover:dgs-ui-kit-bg-primary-50 hover:dgs-ui-kit-text-primary-500';
 
   if (isToday) className = `${className} dgs-ui-kit-border dgs-ui-kit-border-primary-300`;
   if (!isInMonth && isDateVisible) className = `${className} dgs-ui-kit-text-gray-400`;
