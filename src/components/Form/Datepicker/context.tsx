@@ -14,7 +14,6 @@ const datepickerContext = createContext<IDatepickerContext>({
   datepickerProps: {
     value: new Date(),
     onChange: () => {},
-    onClear: () => {},
   },
 });
 
