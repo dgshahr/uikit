@@ -8,39 +8,38 @@ import { usePickerWrapperContext } from '../Wrappers/PickerWrapper/contexts';
 const Footer: FC = () => {
   const { datepickerProps, setDateType, setInternalDate } = useDatepickerContext();
   const { toggleWrapperVisibility } = usePickerWrapperContext();
-  const { showClearButton = true, showTodayButton = true, onClear } = datepickerProps;
+  const { showSubmitButton = true, showTodayButton = true, onSubmit } = datepickerProps;
 
   return (
     <div
       className={clsx(
         'dgs-ui-kit-flex dgs-ui-kit-p-3 dgs-ui-kit-items-center dgs-ui-kit-border-t dgs-ui-kit-border-gray-200 dgs-ui-kit-gap-4',
-        showClearButton ? 'dgs-ui-kit-justify-between' : 'dgs-ui-kit-justify-end',
+        showTodayButton ? 'dgs-ui-kit-justify-between' : 'dgs-ui-kit-justify-end',
       )}
     >
-      {showClearButton && (
+      {showTodayButton && (
         <Button
           variant="text"
           size="small"
-          isFullWidth={showTodayButton}
-          onClick={() => {
-            if (typeof onClear === 'function') onClear();
-            toggleWrapperVisibility();
-          }}
-        >
-          پاک کردن
-        </Button>
-      )}
-      {showTodayButton && (
-        <Button
-          variant="secondary"
-          size="small"
-          isFullWidth={showClearButton}
+          isFullWidth={showSubmitButton}
           onClick={() => {
             setInternalDate(new Date());
             setDateType(DateTypes.Day);
           }}
         >
-          امروز
+          رفتن به امروز
+        </Button>
+      )}
+      {showSubmitButton && (
+        <Button
+          size="small"
+          isFullWidth={showTodayButton}
+          onClick={() => {
+            if (typeof onSubmit === 'function') onSubmit();
+            toggleWrapperVisibility();
+          }}
+        >
+          اعمال
         </Button>
       )}
     </div>

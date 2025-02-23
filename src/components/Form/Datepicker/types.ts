@@ -11,18 +11,18 @@ type DatepickerPropsBase = PickerWrapperProps & {
   endDate?: Date;
   showExtraDays?: boolean;
   showTodayButton?: boolean;
-  showClearButton?: boolean;
+  showSubmitButton?: boolean;
   acceptRange?: boolean;
 };
 
-interface DatepickerWithClearButton {
-  showClearButton?: true;
-  onClear: () => void;
+interface DatepickerWithSubmitButton {
+  showSubmitButton?: true;
+  onSubmit?: () => void;
 }
 
-interface DatepickerWithoutClearButton {
-  showClearButton?: false;
-  onClear?: never;
+interface DatepickerWithoutSubmitButton {
+  showSubmitButton?: false;
+  onSubmit?: never;
 }
 
 export interface DatepickerWithRange {
@@ -38,7 +38,7 @@ export interface DatepickerWithoutRange {
 }
 
 export type DatepickerProps = DatepickerPropsBase &
-  (DatepickerWithClearButton | DatepickerWithoutClearButton) &
+  (DatepickerWithSubmitButton | DatepickerWithoutSubmitButton) &
   (DatepickerWithRange | DatepickerWithoutRange);
 
 export interface IDatepickerContext {

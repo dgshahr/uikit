@@ -29,12 +29,12 @@ const meta = {
         },
       },
     },
-    onClear: {
-      if: { arg: 'showClearButton', neq: true },
+    onSubmit: {
+      if: { arg: 'showSubmitButton', neq: true },
       table: {
         type: {
           summary: '() => void',
-          detail: 'only available if showClearButton is not true.',
+          detail: 'only available if showSubmitButton is not true.',
         },
       },
     },
@@ -62,7 +62,6 @@ export const Default: Story = {
   args: {
     value: new Date(),
     onChange: () => {},
-    onClear: () => {},
   },
   render: (args) => <DefaulutDatepickerExample {...args} />,
 };
@@ -87,7 +86,6 @@ export const Range: Story = {
   args: {
     value: new Date(),
     onChange: () => {},
-    onClear: () => {},
     inputProps: {
       placeholder: 'تاریخ موردنظر خود را انتخاب کنید',
     },

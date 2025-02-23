@@ -21,7 +21,7 @@ function formatValue(value: DatepickerProps['value']) {
 }
 
 const DatePicker: FC<DatepickerProps> = (props) => {
-  const { showClearButton = true, showTodayButton = true, value } = props;
+  const { showSubmitButton = true, showTodayButton = true, value } = props;
 
   const wrapperProps: Omit<PickerWrapperProps, 'children'> = { ...props };
   if (wrapperProps.dropdownType === 'drawer') {
@@ -46,7 +46,7 @@ const DatePicker: FC<DatepickerProps> = (props) => {
       <DatePickerProvider datepickerProps={props}>
         <Header />
         <Body />
-        {(showClearButton || showTodayButton) && <Footer />}
+        {(showSubmitButton || showTodayButton) && <Footer />}
       </DatePickerProvider>
     </PickerWrapper>
   );
