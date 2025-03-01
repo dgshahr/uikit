@@ -4,12 +4,13 @@ import StepperConnector from './Connector';
 import { useStepperContext } from './context';
 import StepIcon from './StepIcon';
 import type { StepperSize, StepperStepOrientation, StepperStepStatus } from './type';
-import { getStepStatus, getStepSubtitle, isNullish } from './utils';
+import { getStepStatus, isNullish } from './utils';
 
 export interface StepProps {
   icon: ReactNode;
   activeIcon?: ReactNode;
   title: string;
+  subTitle?: string;
   index?: number;
 }
 
@@ -30,7 +31,7 @@ const stepOrientationClassnameMap: Record<StepperStepOrientation, string> = {
 };
 
 const Step = forwardRef<HTMLDivElement, StepProps>((props, ref) => {
-  const { index, title, icon, activeIcon } = props;
+  const { index, title, subTitle, icon, activeIcon } = props;
 
   const context = useStepperContext();
   const { size, activeStep, orientation } = context;
@@ -70,9 +71,7 @@ const Step = forwardRef<HTMLDivElement, StepProps>((props, ref) => {
           )}
         >
           {index === activeStep && (
-            <p className="dgs-ui-kit-text-xs dgs-ui-kit-font-normal dgs-ui-kit-text-gray-400">
-              {getStepSubtitle(index, context.totalSteps)}
-            </p>
+            <p className="dgs-ui-kit-font-normal dgs-ui-kit-text-gray-400">{subTitle}</p>
           )}
           <p className="dgs-ui-kit-text-center">{title}</p>
         </div>
