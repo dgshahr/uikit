@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import type { FC, ReactNode } from 'react';
+import { useStepperContext } from './context';
 import type { StepperStepStatus, StepperSize } from './type';
 
 interface StepIconProps {
   status: StepperStepStatus;
-  size: StepperSize;
   icon: ReactNode;
   activeIcon?: ReactNode;
 }
@@ -21,9 +21,10 @@ const stepIconStatusClassNameMap: Record<StepperSize, string> = {
 };
 
 const StepIcon: FC<StepIconProps> = (props) => {
-  const { status, size, icon, activeIcon } = props;
+  const { status, icon, activeIcon } = props;
 
-  const ActiveIcon = activeIcon ? activeIcon : icon;
+  const { size } = useStepperContext();
+  const ActiveIcon = activeIcon ?? icon;
   const IconComponent = status === 'current' ? ActiveIcon : icon;
 
   const classnames = clsx(

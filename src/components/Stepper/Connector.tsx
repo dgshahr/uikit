@@ -4,7 +4,7 @@ import { useStepperContext } from './context';
 import type { StepperStepStatus } from './type';
 import { getStepStatus } from './utils';
 
-interface StepperConnectorProps {
+interface ConnectorProps {
   index: number;
 }
 
@@ -14,7 +14,7 @@ const connectorStatusClassnameMap: Record<StepperStepStatus, string> = {
   inactive: 'dgs-ui-kit-bg-gray-200 dgs-ui-kit-opacity-50',
 };
 
-const StepperConnector: FC<StepperConnectorProps> = ({ index }) => {
+const Connector: FC<ConnectorProps> = ({ index }) => {
   const context = useStepperContext();
   const status = getStepStatus(context.activeStep, index - 1);
 
@@ -30,4 +30,4 @@ const StepperConnector: FC<StepperConnectorProps> = ({ index }) => {
   );
 };
 
-export default StepperConnector;
+export default Connector;

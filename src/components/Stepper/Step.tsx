@@ -1,16 +1,17 @@
 import clsx from 'clsx';
-import { forwardRef, type ReactNode } from 'react';
-import StepperConnector from './Connector';
+import { useEffect, useRef, type FC, type ReactNode } from 'react';
+import isNullish from '@/src/utils/isNullish';
+import Connector from './Connector';
 import { useStepperContext } from './context';
 import StepIcon from './StepIcon';
 import type { StepperSize, StepperStepOrientation, StepperStepStatus } from './type';
-import { getStepStatus, isNullish } from './utils';
+import { getStepStatus } from './utils';
 
 export interface StepProps {
-  icon: ReactNode;
-  activeIcon?: ReactNode;
   title: string;
   subTitle?: string;
+  icon: ReactNode;
+  activeIcon?: ReactNode;
   index?: number;
 }
 
@@ -30,11 +31,12 @@ const stepOrientationClassnameMap: Record<StepperStepOrientation, string> = {
   vertical: 'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-2 dgs-ui-kit-flex-col',
 };
 
-const Step = forwardRef<HTMLDivElement, StepProps>((props, ref) => {
+const Step: FC<StepProps> = (props) => {
   const { index, title, subTitle, icon, activeIcon } = props;
 
-  const context = useStepperContext();
-  const { size, activeStep, orientation } = context;
+  const ref = useRef<HTMLDivElement>(null);
+
+  const { size, activeStep, stepOrientation } = useStepperContext();
 
   if (isNullish(index))
     throw new Error(
@@ -47,19 +49,28 @@ const Step = forwardRef<HTMLDivElement, StepProps>((props, ref) => {
     'dgs-ui-kit-flex dgs-ui-kit-flex-grow dgs-ui-kit-min-w-max',
     stepStatusClassnameMap[status],
     stepSizeClassnameMap[size],
-    stepOrientationClassnameMap[orientation],
+    stepOrientationClassnameMap[stepOrientation],
   );
+
+  useEffect(() => {
+    if (status === 'current') {
+      ref.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'center',
+      });
+    }
+  }, [status]);
 
   return (
     <>
-      {index !== 0 && <StepperConnector index={index} />}
+      {index !== 0 && <Connector index={index} />}
       <div
-        ref={ref}
         className={classname}
+        ref={ref}
       >
         <StepIcon
           status={status}
-          size={size}
           icon={icon}
           activeIcon={activeIcon}
         />
@@ -67,7 +78,7 @@ const Step = forwardRef<HTMLDivElement, StepProps>((props, ref) => {
         <div
           className={clsx(
             'dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-gap-1 dgs-ui-kit-mt-0',
-            orientation === 'vertical' ? 'dgs-ui-kit-items-center' : '',
+            stepOrientation === 'vertical' && 'dgs-ui-kit-items-center',
           )}
         >
           {index === activeStep && (
@@ -78,8 +89,6 @@ const Step = forwardRef<HTMLDivElement, StepProps>((props, ref) => {
       </div>
     </>
   );
-});
-
-Step.displayName = 'Step';
+};
 
 export default Step;

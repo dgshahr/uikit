@@ -4,14 +4,14 @@ import type { StepperSize, StepperStepOrientation } from './type';
 interface ContextType {
   activeStep: number;
   totalSteps: number;
-  orientation: StepperStepOrientation;
+  stepOrientation: StepperStepOrientation;
   size: StepperSize;
 }
 
 export const StepperContext = createContext<ContextType>({
   activeStep: 1,
   totalSteps: 0,
-  orientation: 'horizontal',
+  stepOrientation: 'horizontal',
   size: 'medium',
 });
 

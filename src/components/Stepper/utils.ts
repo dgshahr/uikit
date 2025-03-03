@@ -6,6 +6,4 @@ const getStepStatus = (activeStep: number, index: number): StepperStepStatus => 
   return 'inactive';
 };
 
-const isNullish = (value: unknown) => typeof value === 'undefined' || value === null;
-
-export { getStepStatus, isNullish };
+export { getStepStatus };
