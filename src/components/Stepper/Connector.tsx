@@ -15,11 +15,16 @@ const connectorStatusClassnameMap: Record<StepperStepStatus, string> = {
 };
 
 const Connector: FC<ConnectorProps> = ({ index }) => {
-  const context = useStepperContext();
-  const status = getStepStatus(context.activeStep, index - 1);
+  const { activeStep, stepOrientation } = useStepperContext();
+  const status = getStepStatus(activeStep, index - 1);
 
   return (
-    <div className="dgs-ui-kit-flex dgs-ui-kit-min-w-5 dgs-ui-kit-items-center dgs-ui-kit-w-full dgs-ui-kit-h-10">
+    <div
+      className={clsx(
+        'dgs-ui-kit-flex dgs-ui-kit-min-w-5 dgs-ui-kit-items-center dgs-ui-kit-w-full',
+        stepOrientation === 'vertical' ? 'dgs-ui-kit-h-10' : 'dgs-ui-kit-h-15',
+      )}
+    >
       <div
         className={clsx(
           'dgs-ui-kit-h-0.5 dgs-ui-kit-w-full dgs-ui-kit-rounded-md',
