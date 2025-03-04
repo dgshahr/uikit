@@ -35,17 +35,17 @@ export const Default: Story = {
     <Stepper {...args}>
       <Step
         title="آیتم اول"
-        subTitle="متن اول"
+        subTitle="مرحله ۱ از ۳"
         icon={<QuestionMarkCircle />}
       />
       <Step
         title="آیتم دوم"
-        subTitle="متن دوم"
+        subTitle="مرحله ۲ از ۳"
         icon={<QuestionMarkCircle />}
       />
       <Step
         title="آیتم سوم"
-        subTitle="متن سوم"
+        subTitle="مرحله پایانی"
         icon={<QuestionMarkCircle />}
       />
     </Stepper>
