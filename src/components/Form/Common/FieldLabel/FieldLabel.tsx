@@ -1,25 +1,26 @@
 import clsx from 'clsx';
-import type { FC, PropsWithChildren } from 'react';
+import type { FC } from 'react';
 
 export interface FieldLabelProps {
   required?: boolean;
   disabled?: boolean;
   labelContent?: string;
+  labelAddon?: React.ReactNode;
   link?: {
     cnotent: string;
     href: string;
   };
 }
 
-const FieldLabel: FC<PropsWithChildren<FieldLabelProps>> = (props) => {
-  const { link, labelContent, required, disabled, children } = props;
+const FieldLabel: FC<FieldLabelProps> = (props) => {
+  const { link, labelContent, required, disabled, labelAddon } = props;
 
   return (
     <>
       <div
         className={clsx('dgs-ui-kit-flex', {
           'dgs-ui-kit-justify-between': labelContent && link?.href,
-          'dgs-ui-kit-mb-2': !children,
+          'dgs-ui-kit-mb-2': !labelAddon,
           'dgs-ui-kit-justify-start': labelContent && !link?.href,
           'dgs-ui-kit-justify-end': !labelContent && link?.href,
           'dgs-ui-kit-text-gray-400': disabled,
@@ -40,7 +41,7 @@ const FieldLabel: FC<PropsWithChildren<FieldLabelProps>> = (props) => {
           </a>
         )}
       </div>
-      {children}
+      {labelAddon}
     </>
   );
 };

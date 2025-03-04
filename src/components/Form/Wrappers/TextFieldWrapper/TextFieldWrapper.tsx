@@ -1,34 +1,27 @@
 'use client';
 import clsx from 'clsx';
 import React, { type FC, type ReactNode } from 'react';
-import FieldBottomInfo from '../../Common/FieldBottomInfo/FieldBottomInfo';
+import FieldBottomInfo, {
+  type FieldBottomInfoProps,
+} from '../../Common/FieldBottomInfo/FieldBottomInfo';
+import FieldLabel, { type FieldLabelProps } from '../../Common/FieldLabel/FieldLabel';
 
 import '@/src/styles.css';
-import FieldLabel from '../../Common/FieldLabel/FieldLabel';
 
-export interface TextFieldBaseProps {
-  labelContent?: string;
-  labelAddon?: React.ReactNode;
-  link?: {
-    cnotent: string;
-    href: string;
-  };
+export interface TextFieldBaseProps
+  extends FieldLabelProps,
+    Omit<FieldBottomInfoProps, 'extraHelper'> {
   containerClassName?: string;
   rightIcon?: JSX.Element;
   dir?: 'rtl' | 'ltr';
   placeholderDir?: 'rtl' | 'ltr';
   isError?: boolean;
-  errorMessage?: string;
-  hintMessage?: string;
   wrapperClassName?: string;
   showMaxLength?: boolean;
 }
 
 interface TextFieldWrapperProps extends TextFieldBaseProps {
-  required?: boolean;
-  disabled?: boolean;
   maxLength?: number;
-  labelAddon?: React.ReactNode;
   value?: string | number | readonly string[];
   children: ReactNode;
 }
@@ -73,9 +66,8 @@ const TextFieldWrapper: FC<TextFieldWrapperProps> = (props) => {
           labelContent={labelContent}
           link={link}
           required={required}
-        >
-          {labelAddon}
-        </FieldLabel>
+          labelAddon={labelAddon}
+        />
       )}
       <div
         onClick={handleFocusInputOnClick}
@@ -98,8 +90,13 @@ const TextFieldWrapper: FC<TextFieldWrapperProps> = (props) => {
           disabled={disabled}
           errorMessage={errorMessage}
           hintMessage={hintMessage}
-          maxLength={showMaxLength ? maxLength : undefined}
-          value={value?.toString()}
+          extraHelper={
+            maxLength && (
+              <span className="ss02">
+                {value?.toString()?.length ?? 0}/{maxLength}
+              </span>
+            )
+          }
         />
       )}
     </WrapperElement>

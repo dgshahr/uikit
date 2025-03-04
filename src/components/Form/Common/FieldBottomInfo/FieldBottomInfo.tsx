@@ -1,24 +1,24 @@
 import clsx from 'clsx';
+import type { ReactNode } from 'react';
 import InfoCircleOutlineIcon from '@/src/icons/InfoCircleOutline';
 
 export interface FieldBottomInfoProps {
-  maxLength?: number;
-  value?: string;
   disabled?: boolean;
   errorMessage?: string;
   hintMessage?: string;
+  extraHelper?: ReactNode;
 }
 
 const FieldBottomInfo = (props: FieldBottomInfoProps) => {
-  const { errorMessage, hintMessage, maxLength, value, disabled } = props;
+  const { errorMessage, hintMessage, extraHelper, disabled } = props;
   return (
     <div
       className={clsx(
         'dgs-ui-kit-flex dgs-ui-kit-font-p3-regular',
         {
-          'dgs-ui-kit-justify-between': (errorMessage ?? hintMessage) && maxLength,
-          'dgs-ui-kit-justify-start': (errorMessage ?? hintMessage) && !maxLength,
-          'dgs-ui-kit-justify-end': !(errorMessage ?? hintMessage) && maxLength,
+          'dgs-ui-kit-justify-between': (errorMessage ?? hintMessage) && extraHelper,
+          'dgs-ui-kit-justify-start': (errorMessage ?? hintMessage) && !extraHelper,
+          'dgs-ui-kit-justify-end': !(errorMessage ?? hintMessage) && extraHelper,
           'dgs-ui-kit-text-gray-400': disabled,
         },
         errorMessage ? 'dgs-ui-kit-text-error-500' : 'dgs-ui-kit-text-gray-500',
@@ -40,11 +40,7 @@ const FieldBottomInfo = (props: FieldBottomInfoProps) => {
           <span>{errorMessage ?? hintMessage}</span>
         </div>
       )}
-      {maxLength && (
-        <span className="ss02">
-          {value?.length ?? 0}/{maxLength}
-        </span>
-      )}
+      {extraHelper}
     </div>
   );
 };
