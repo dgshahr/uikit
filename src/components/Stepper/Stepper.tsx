@@ -26,9 +26,7 @@ const Stepper: FC<PropsWithChildren<StepperProps>> = (props) => {
   });
 
   return (
-    <StepperContext.Provider
-      value={{ activeStep: currentStepIndex, stepOrientation, size, totalSteps: steps.length }}
-    >
+    <StepperContext.Provider value={{ activeStep: currentStepIndex, stepOrientation, size }}>
       <div className="dgs-ui-kit-flex dgs-ui-kit-justify-center dgs-ui-kit-flex-row dgs-ui-kit-gap-5 no-scrollbar dgs-ui-kit-overflow-x-auto">
         {steps}
       </div>
