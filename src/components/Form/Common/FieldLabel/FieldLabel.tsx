@@ -1,10 +1,14 @@
 import clsx from 'clsx';
 import type { FC, PropsWithChildren } from 'react';
-import type { TextFieldBaseProps } from './TextFieldWrapper';
 
-interface FieldLabelProps extends Pick<TextFieldBaseProps, 'link' | 'labelContent'> {
+export interface FieldLabelProps {
   required?: boolean;
   disabled?: boolean;
+  labelContent?: string;
+  link?: {
+    cnotent: string;
+    href: string;
+  };
 }
 
 const FieldLabel: FC<PropsWithChildren<FieldLabelProps>> = (props) => {

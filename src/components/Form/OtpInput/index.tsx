@@ -2,9 +2,9 @@
 import clsx from 'clsx';
 import { useEffect, useRef, type ChangeEvent, type FC, type KeyboardEvent } from 'react';
 import { persianToEnglish } from '@/src/utils/convertNumbers';
+import FieldBottomInfo from '../Common/FieldBottomInfo/FieldBottomInfo';
+import FieldLabel from '../Common/FieldLabel/FieldLabel';
 import Input, { type InputProps } from '../Input';
-import FieldBottomInfo from '../Wrappers/TextFieldWrapper/FieldBottomInfo';
-import FieldLabel from '../Wrappers/TextFieldWrapper/FieldLabel';
 import '@/src/styles.css';
 
 export interface OtpInputProps extends Omit<InputProps, 'value' | 'onChange'> {

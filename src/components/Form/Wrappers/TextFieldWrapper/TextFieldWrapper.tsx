@@ -1,10 +1,10 @@
 'use client';
 import clsx from 'clsx';
 import React, { type FC, type ReactNode } from 'react';
-import FieldBottomInfo from './FieldBottomInfo';
-import FieldLabel from './FieldLabel';
+import FieldBottomInfo from '../../Common/FieldBottomInfo/FieldBottomInfo';
 
 import '@/src/styles.css';
+import FieldLabel from '../../Common/FieldLabel/FieldLabel';
 
 export interface TextFieldBaseProps {
   labelContent?: string;
