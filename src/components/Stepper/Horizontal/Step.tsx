@@ -4,10 +4,14 @@ import isNullish from '@/src/utils/isNullish';
 import Connector from './Connector';
 import { useStepperContext } from './context';
 import StepIcon from './StepIcon';
-import type { StepperSize, StepperStepOrientation, StepperStepStatus } from './type';
+import type {
+  HorizontalStepperSize,
+  HorizontalStepperStepOrientation,
+  HorizontalStepperStepStatus,
+} from './type';
 import { getStepStatus } from './utils';
 
-export interface StepProps {
+export interface HorizontalStepProps {
   title: string;
   subTitle?: string;
   icon: ReactNode;
@@ -15,23 +19,23 @@ export interface StepProps {
   index?: number;
 }
 
-const stepStatusClassnameMap: Record<StepperStepStatus, string> = {
+const stepStatusClassnameMap: Record<HorizontalStepperStepStatus, string> = {
   active: 'dgs-ui-kit-text-secondary-500',
   current: 'dgs-ui-kit-text-primary-500 dgs-ui-kit-font-medium dgs-ui-kit-font-semibold',
   inactive: 'dgs-ui-kit-text-gray-400',
 };
 
-const stepSizeClassnameMap: Record<StepperSize, string> = {
+const stepSizeClassnameMap: Record<HorizontalStepperSize, string> = {
   small: 'dgs-ui-kit-text-sm',
   medium: 'dgs-ui-kit-text-base',
 };
 
-const stepOrientationClassnameMap: Record<StepperStepOrientation, string> = {
+const stepOrientationClassnameMap: Record<HorizontalStepperStepOrientation, string> = {
   horizontal: 'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-2',
   vertical: 'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-2 dgs-ui-kit-flex-col',
 };
 
-const Step: FC<StepProps> = (props) => {
+const HorizontalStep: FC<HorizontalStepProps> = (props) => {
   const { index, title, subTitle, icon, activeIcon } = props;
 
   const ref = useRef<HTMLDivElement>(null);
@@ -91,4 +95,4 @@ const Step: FC<StepProps> = (props) => {
   );
 };
 
-export default Step;
+export default HorizontalStep;

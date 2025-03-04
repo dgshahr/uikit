@@ -1,10 +1,10 @@
 import { createContext, useContext } from 'react';
-import type { StepperSize, StepperStepOrientation } from './type';
+import type { HorizontalStepperSize, HorizontalStepperStepOrientation } from './type';
 
 interface ContextType {
   activeStep: number;
-  stepOrientation: StepperStepOrientation;
-  size: StepperSize;
+  stepOrientation: HorizontalStepperStepOrientation;
+  size: HorizontalStepperSize;
 }
 
 export const StepperContext = createContext<ContextType>({

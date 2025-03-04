@@ -1,14 +1,14 @@
 import clsx from 'clsx';
 import type { FC } from 'react';
 import { useStepperContext } from './context';
-import type { StepperStepStatus } from './type';
+import type { HorizontalStepperStepStatus } from './type';
 import { getStepStatus } from './utils';
 
 interface ConnectorProps {
   index: number;
 }
 
-const connectorStatusClassnameMap: Record<StepperStepStatus, string> = {
+const connectorStatusClassnameMap: Record<HorizontalStepperStepStatus, string> = {
   active: 'dgs-ui-kit-bg-teal-500 dgs-ui-kit-opacity-100',
   current: 'dgs-ui-kit-bg-gray-300 dgs-ui-kit-opacity-75',
   inactive: 'dgs-ui-kit-bg-gray-200 dgs-ui-kit-opacity-50',

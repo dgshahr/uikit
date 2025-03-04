@@ -1,21 +1,21 @@
 import clsx from 'clsx';
 import type { FC, ReactNode } from 'react';
 import { useStepperContext } from './context';
-import type { StepperStepStatus, StepperSize } from './type';
+import type { HorizontalStepperStepStatus, HorizontalStepperSize } from './type';
 
 interface StepIconProps {
-  status: StepperStepStatus;
+  status: HorizontalStepperStepStatus;
   icon: ReactNode;
   activeIcon?: ReactNode;
 }
 
-const stepIconSizeClassNameMap: Record<StepperStepStatus, string> = {
+const stepIconSizeClassNameMap: Record<HorizontalStepperStepStatus, string> = {
   active: 'dgs-ui-kit-text-secondary-400 dgs-ui-kit-rounded-lg',
   current: 'dgs-ui-kit-bg-primary-50 dgs-ui-kit-text-primary-400 dgs-ui-kit-rounded-lg',
   inactive: 'dgs-ui-kit-bg-gray-50 dgs-ui-kit-text-gray-400 dgs-ui-kit-rounded-lg',
 };
 
-const stepIconStatusClassNameMap: Record<StepperSize, string> = {
+const stepIconStatusClassNameMap: Record<HorizontalStepperSize, string> = {
   medium: 'dgs-ui-kit-w-10 dgs-ui-kit-h-10 dgs-ui-kit-text-xl',
   small: 'dgs-ui-kit-w-10 dgs-ui-kit-h-10 dgs-ui-kit-text-lg',
 };

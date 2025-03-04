@@ -1,13 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { ComponentType } from 'react';
-import Step from './Step';
-import Stepper from './Stepper';
-import QuestionMarkCircle from '../../icons/QuestionMarkCircle';
+import HorizontalStep from './Step';
+import HorizontalStepper from './Stepper';
+import QuestionMarkCircle from '../../../icons/QuestionMarkCircle';
 
-const meta: Meta<typeof Stepper> = {
-  title: 'Components/Stepper',
-  component: Stepper,
-  subcomponents: { Step: Step as ComponentType<unknown> },
+const meta: Meta<typeof HorizontalStepper> = {
+  title: 'Components/Stepper/HorizontalStepper',
+  component: HorizontalStepper,
+  subcomponents: { Step: HorizontalStep as ComponentType<unknown> },
+  parameters: {
+    docs: {
+      description: {
+        component: `### \n\`\`\`js\nimport { HorizontalStepper, HorizontalStep } from '@dgshahr/ui-kit/Stepper/Horizontal';\nOr\nimport { HorizontalStepper, HorizontalStep } from '@dgshahr/ui-kit';\n\`\`\``,
+      },
+    },
+  },
   argTypes: {
     activeStep: { control: { type: 'number', min: 0, max: 2 } },
     stepOrientation: {
@@ -23,7 +30,7 @@ const meta: Meta<typeof Stepper> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Stepper>;
+type Story = StoryObj<typeof HorizontalStepper>;
 
 export const Default: Story = {
   args: {
@@ -32,22 +39,22 @@ export const Default: Story = {
     size: 'medium',
   },
   render: (args) => (
-    <Stepper {...args}>
-      <Step
+    <HorizontalStepper {...args}>
+      <HorizontalStep
         title="آیتم اول"
         subTitle="مرحله ۱ از ۳"
         icon={<QuestionMarkCircle />}
       />
-      <Step
+      <HorizontalStep
         title="آیتم دوم"
         subTitle="مرحله ۲ از ۳"
         icon={<QuestionMarkCircle />}
       />
-      <Step
+      <HorizontalStep
         title="آیتم سوم"
         subTitle="مرحله پایانی"
         icon={<QuestionMarkCircle />}
       />
-    </Stepper>
+    </HorizontalStepper>
   ),
 };

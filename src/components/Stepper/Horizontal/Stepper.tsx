@@ -1,15 +1,15 @@
 'use client';
 import React, { type FC, type PropsWithChildren } from 'react';
 import { StepperContext } from './context';
-import type { StepperSize, StepperStepOrientation } from './type';
+import type { HorizontalStepperSize, HorizontalStepperStepOrientation } from './type';
 
-export interface StepperProps {
-  stepOrientation?: StepperStepOrientation;
-  size?: StepperSize;
+export interface HorizontalStepperProps {
+  stepOrientation?: HorizontalStepperStepOrientation;
+  size?: HorizontalStepperSize;
   activeStep?: number;
 }
 
-const Stepper: FC<PropsWithChildren<StepperProps>> = (props) => {
+const HorizontalStepper: FC<PropsWithChildren<HorizontalStepperProps>> = (props) => {
   const { stepOrientation = 'horizontal', size = 'medium', activeStep = 0, children } = props;
 
   const childrenArray = React.Children.toArray(children).filter(
@@ -34,4 +34,4 @@ const Stepper: FC<PropsWithChildren<StepperProps>> = (props) => {
   );
 };
 
-export default Stepper;
+export default HorizontalStepper;
