@@ -5,7 +5,7 @@ import HorizontalStepper from './Stepper';
 import QuestionMarkCircle from '../../../icons/QuestionMarkCircle';
 
 const meta: Meta<typeof HorizontalStepper> = {
-  title: 'Components/Stepper/HorizontalStepper',
+  title: 'Components/Stepper/Horizontal',
   component: HorizontalStepper,
   subcomponents: { Step: HorizontalStep as ComponentType<unknown> },
   parameters: {
