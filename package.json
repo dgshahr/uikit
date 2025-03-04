@@ -208,6 +208,16 @@
         "default": "./dist/Slider/index.cjs"
       }
     },
+    "./Stepper/HorizontalStepper": {
+      "import": {
+        "types": "./dist/Stepper/Horizontal/index.d.ts",
+        "default": "./dist/Stepper/Horizontal/index.js"
+      },
+      "require": {
+        "types": "./dist/Stepper/Horizontal/index.d.ts",
+        "default": "./dist/Stepper/Horizontal/index.cjs"
+      }
+    },
     "./Tabs": {
       "import": {
         "types": "./dist/Tabs/index.d.ts",
