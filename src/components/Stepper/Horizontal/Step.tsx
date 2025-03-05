@@ -15,14 +15,15 @@ export interface HorizontalStepProps {
   title: string;
   subTitle?: string;
   icon: ReactNode;
+  completeIcon?: ReactNode;
   activeIcon?: ReactNode;
   index?: number;
 }
 
 const stepStatusClassnameMap: Record<HorizontalStepperStepStatus, string> = {
-  active: 'dgs-ui-kit-text-secondary-500',
+  complete: 'dgs-ui-kit-text-secondary-500',
   current: 'dgs-ui-kit-text-primary-500 dgs-ui-kit-font-medium dgs-ui-kit-font-semibold',
-  inactive: 'dgs-ui-kit-text-gray-400',
+  incomplete: 'dgs-ui-kit-text-gray-400',
 };
 
 const stepSizeClassnameMap: Record<HorizontalStepperSize, string> = {
@@ -36,7 +37,7 @@ const stepOrientationClassnameMap: Record<HorizontalStepperStepOrientation, stri
 };
 
 const HorizontalStep: FC<HorizontalStepProps> = (props) => {
-  const { index, title, subTitle, icon, activeIcon } = props;
+  const { index, title, subTitle, icon, activeIcon, completeIcon } = props;
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -77,6 +78,7 @@ const HorizontalStep: FC<HorizontalStepProps> = (props) => {
           status={status}
           icon={icon}
           activeIcon={activeIcon}
+          completeIcon={completeIcon}
         />
 
         <div

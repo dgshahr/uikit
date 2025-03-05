@@ -9,9 +9,9 @@ interface ConnectorProps {
 }
 
 const connectorStatusClassnameMap: Record<HorizontalStepperStepStatus, string> = {
-  active: 'dgs-ui-kit-bg-teal-500 dgs-ui-kit-opacity-100',
+  complete: 'dgs-ui-kit-bg-teal-500 dgs-ui-kit-opacity-100',
   current: 'dgs-ui-kit-bg-gray-300 dgs-ui-kit-opacity-75',
-  inactive: 'dgs-ui-kit-bg-gray-200 dgs-ui-kit-opacity-50',
+  incomplete: 'dgs-ui-kit-bg-gray-200 dgs-ui-kit-opacity-50',
 };
 
 const Connector: FC<ConnectorProps> = ({ index }) => {
