@@ -3,7 +3,7 @@ import { c as p } from './clsx-B-dksMZM.js';
 import { r as a } from './index-RYns6xqu.js';
 import { A as G } from './ArrowDown2-BROvoNUr.js';
 import { B as J } from './index-C-F8QTVl.js';
-import { B as w } from './index-CF7Sa1yP.js';
+import { B as j } from './index-CF7Sa1yP.js';
 import { C as Q } from './index-BkZpzFVU.js';
 import { I as X } from './index-CYrzEuCa.js';
 import { u as Y, P as Z } from './PickerWrapper-OmRbBnN-.js';
@@ -1340,7 +1340,7 @@ const lt = 20,
         !!r && 'last-of-type:dgs-ui-kit-border-b',
       );
     let b;
-    const C = o;
+    const w = o;
     typeof o == 'boolean' ? (b = o) : (b = Object.keys(o).length > 0);
     const T = a.useMemo(() => (y ? d?.filter((l) => l.label.includes(y)) : d), [y, d]),
       O = a.useMemo(
@@ -1388,12 +1388,12 @@ const lt = 20,
             wrapperClassName: p(
               'dgs-ui-kit-sticky dgs-ui-kit-top-0 dgs-ui-kit-pt-3 dgs-ui-kit-right-0 dgs-ui-kit-bg-white dgs-ui-kit-z-10 dgs-ui-kit-px-3',
               s ? 'dgs-ui-kit-pb-2' : 'dgs-ui-kit-pb-3',
-              C?.wrapperClassName,
+              w?.wrapperClassName,
             ),
-            placeholder: C?.placeholder ?? 'جستجوی عنوان',
+            placeholder: w?.placeholder ?? 'جستجوی عنوان',
             value: y,
             onChange: (l) => P(l.currentTarget.value),
-            rightIcon: C?.rightIcon ?? t.jsx(L, { width: 20, height: 20 }),
+            rightIcon: w?.rightIcon ?? t.jsx(L, { width: 20, height: 20 }),
             ...(typeof o == 'object' ? o : {}),
           }),
         s,
@@ -1452,7 +1452,7 @@ const lt = 20,
                     children: F,
                   }),
                   H &&
-                    t.jsx(w, {
+                    t.jsx(j, {
                       className: 'dgs-ui-kit-mt-1',
                       variant: 'text',
                       size: 'small',
@@ -1495,18 +1495,6 @@ $.__docgenInfo = {
           },
         ],
         raw: 'Option<T>[]',
-      },
-      description: '',
-    },
-    optionsContainer: {
-      required: !1,
-      tsType: {
-        name: 'union',
-        raw: "'drawer' | 'popover'",
-        elements: [
-          { name: 'literal', value: "'drawer'" },
-          { name: 'literal', value: "'popover'" },
-        ],
       },
       description: '',
     },
@@ -1578,7 +1566,7 @@ function dt(i, d) {
         .join(', ')
     : (d.find((e) => e.value === i)?.label ?? '');
 }
-const j = (i) => {
+const C = (i) => {
   const { searchable: d = !0, value: e, options: r } = i,
     s = { ...i };
   return (
@@ -1597,7 +1585,7 @@ const j = (i) => {
     t.jsx(Z, { ...s, children: t.jsx($, { ...i }) })
   );
 };
-j.__docgenInfo = {
+C.__docgenInfo = {
   description: '',
   methods: [],
   displayName: 'Select',
@@ -1625,18 +1613,6 @@ j.__docgenInfo = {
           },
         ],
         raw: 'Option<T>[]',
-      },
-      description: '',
-    },
-    optionsContainer: {
-      required: !1,
-      tsType: {
-        name: 'union',
-        raw: "'drawer' | 'popover'",
-        elements: [
-          { name: 'literal', value: "'drawer'" },
-          { name: 'literal', value: "'popover'" },
-        ],
       },
       description: '',
     },
@@ -1702,7 +1678,7 @@ j.__docgenInfo = {
 };
 const Ot = {
     title: 'Components/Form/Select',
-    component: j,
+    component: C,
     parameters: {
       docs: {
         description: {
@@ -1871,13 +1847,13 @@ const Ot = {
       className:
         'dgs-ui-kit-flex dgs-ui-kit-gap-3 dgs-ui-kit-px-3 dgs-ui-kit-justify-end dgs-ui-kit-items-center',
       children: [
-        t.jsx(w, {
+        t.jsx(j, {
           variant: 'text',
           size: 'small',
           className: '!dgs-ui-kit-px-0',
           children: 'انتخاب همه',
         }),
-        t.jsx(w, {
+        t.jsx(j, {
           variant: 'text',
           size: 'small',
           className: '!dgs-ui-kit-px-0',
@@ -1888,18 +1864,18 @@ const Ot = {
     }),
     afterOptions: t.jsx('div', {
       className: 'dgs-ui-kit-pt-3 dgs-ui-kit-px-3 dgs-ui-kit-flex dgs-ui-kit-justify-end',
-      children: t.jsx(w, { children: 'اعمال' }),
+      children: t.jsx(j, { children: 'اعمال' }),
     }),
   },
   z = (i) => {
     const [d, e] = a.useState(0);
-    return t.jsx(j, { ...i, value: d, onChange: (r) => e(r) });
+    return t.jsx(C, { ...i, value: d, onChange: (r) => e(r) });
   },
   h = { args: st, render: (i) => t.jsx(z, { ...i }) },
   v = { args: rt, render: (i) => t.jsx(z, { ...i }) },
   nt = (i) => {
     const [d, e] = a.useState([]);
-    return t.jsx(j, { ...i, mode: 'multiple', value: d, onChange: (r) => e(r) });
+    return t.jsx(C, { ...i, mode: 'multiple', value: d, onChange: (r) => e(r) });
   },
   x = { args: at, render: (i) => t.jsx(nt, { ...i }) };
 h.parameters = {
