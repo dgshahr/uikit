@@ -7,12 +7,13 @@ interface StepIconProps {
   status: HorizontalStepperStepStatus;
   icon: ReactNode;
   activeIcon?: ReactNode;
+  completeIcon?: ReactNode;
 }
 
 const stepIconSizeClassNameMap: Record<HorizontalStepperStepStatus, string> = {
-  active: 'dgs-ui-kit-text-secondary-400 dgs-ui-kit-rounded-lg',
+  complete: 'dgs-ui-kit-text-secondary-400 dgs-ui-kit-rounded-lg',
   current: 'dgs-ui-kit-bg-primary-50 dgs-ui-kit-text-primary-400 dgs-ui-kit-rounded-lg',
-  inactive: 'dgs-ui-kit-bg-gray-50 dgs-ui-kit-text-gray-400 dgs-ui-kit-rounded-lg',
+  incomplete: 'dgs-ui-kit-bg-gray-50 dgs-ui-kit-text-gray-400 dgs-ui-kit-rounded-lg',
 };
 
 const stepIconStatusClassNameMap: Record<HorizontalStepperSize, string> = {
@@ -21,11 +22,17 @@ const stepIconStatusClassNameMap: Record<HorizontalStepperSize, string> = {
 };
 
 const StepIcon: FC<StepIconProps> = (props) => {
-  const { status, icon, activeIcon } = props;
+  const { status, icon, activeIcon, completeIcon } = props;
 
   const { size } = useStepperContext();
-  const ActiveIcon = activeIcon ?? icon;
-  const IconComponent = status === 'current' ? ActiveIcon : icon;
+
+  const iconComponentMap: Record<HorizontalStepperStepStatus, ReactNode> = {
+    incomplete: icon,
+    current: activeIcon,
+    complete: completeIcon,
+  };
+
+  const IconComponent = iconComponentMap[status] ?? icon;
 
   const classnames = clsx(
     stepIconSizeClassNameMap[status],

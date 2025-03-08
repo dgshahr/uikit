@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React, { ComponentType } from 'react';
 import HorizontalStep from './Step';
 import HorizontalStepper from './Stepper';
+import ArrowDown2 from '../../../icons/ArrowDown2';
 import QuestionMarkCircle from '../../../icons/QuestionMarkCircle';
 
 const meta: Meta<typeof HorizontalStepper> = {
@@ -44,6 +45,7 @@ export const Default: Story = {
         title="آیتم اول"
         subTitle="مرحله ۱ از ۳"
         icon={<QuestionMarkCircle />}
+        completeIcon={<ArrowDown2 />}
       />
       <HorizontalStep
         title="آیتم دوم"

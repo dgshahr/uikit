@@ -9,7 +9,6 @@ export type Option<T> = {
 };
 type SelectPropsBase<T> = {
   options: Option<T>[];
-  optionsContainer?: 'drawer' | 'popover';
   searchable?: boolean | Omit<InputProps, 'onChange'>;
   optionCell?: (option: Option<T>, isActive: boolean) => ReactNode;
   optionCellClassName?: string;
