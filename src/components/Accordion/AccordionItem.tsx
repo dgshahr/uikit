@@ -11,10 +11,11 @@ interface AccordionItemProps {
   accordionKey?: string;
   className?: string;
   contentClassName?: string;
+  hideDivider?: boolean;
 }
 
 const AccordionItem: FC<PropsWithChildren<AccordionItemProps>> = (props) => {
-  const { children, title, accordionKey, className, contentClassName } = props;
+  const { children, title, accordionKey, className, contentClassName, hideDivider = false } = props;
   const { activeKey, setActiveKey } = useAccordionContext();
   const reactUseId = useId();
   const accordionItemKey = accordionKey ?? reactUseId;
@@ -64,11 +65,13 @@ const AccordionItem: FC<PropsWithChildren<AccordionItemProps>> = (props) => {
       >
         <div className="dgs-ui-kit-overflow-hidden">{children}</div>
       </div>
-      <Divider
-        type="horizontal"
-        color="white"
-        className="dgs-ui-kit-mt-4"
-      />
+      {!hideDivider && (
+        <Divider
+          type="horizontal"
+          color="white"
+          className="dgs-ui-kit-mt-4"
+        />
+      )}
     </div>
   );
 };
