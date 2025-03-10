@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React, { ComponentType } from 'react';
 import HorizontalStep from './Step';
 import HorizontalStepper from './Stepper';
-import ArrowDown2 from '../../../icons/ArrowDown2';
+import AlignCenter from '../../../icons/AlignCenter';
+import CheckCircleBold from '../../../icons/CheckCircleBold';
 import QuestionMarkCircle from '../../../icons/QuestionMarkCircle';
 
 const meta: Meta<typeof HorizontalStepper> = {
@@ -17,7 +18,7 @@ const meta: Meta<typeof HorizontalStepper> = {
     },
   },
   argTypes: {
-    activeStep: { control: { type: 'number', min: 0, max: 2 } },
+    activeStep: { control: { type: 'number', min: 0, max: 3 } },
     stepOrientation: {
       control: { type: 'radio' },
       options: ['horizontal', 'vertical'],
@@ -43,19 +44,39 @@ export const Default: Story = {
     <HorizontalStepper {...args}>
       <HorizontalStep
         title="آیتم اول"
-        subTitle="مرحله ۱ از ۳"
+        activeTitle="آیتم انتخاب شده"
+        completeTitle="مرحله تمام شده"
+        subTitle="مرحله ۱ از ۴"
         icon={<QuestionMarkCircle />}
-        completeIcon={<ArrowDown2 />}
+        activeIcon={<AlignCenter />}
+        completeIcon={<CheckCircleBold />}
       />
       <HorizontalStep
         title="آیتم دوم"
-        subTitle="مرحله ۲ از ۳"
+        activeTitle="آیتم انتخاب شده"
+        completeTitle="مرحله تمام شده"
+        subTitle="مرحله ۲ از ۴"
         icon={<QuestionMarkCircle />}
+        activeIcon={<AlignCenter />}
+        completeIcon={<CheckCircleBold />}
       />
       <HorizontalStep
         title="آیتم سوم"
+        activeTitle="آیتم انتخاب شده"
+        completeTitle="مرحله تمام شده"
+        subTitle="مرحله ۳ از ۴"
+        icon={<QuestionMarkCircle />}
+        activeIcon={<AlignCenter />}
+        completeIcon={<CheckCircleBold />}
+      />
+      <HorizontalStep
+        title="آیتم چهارم"
+        activeTitle="آیتم انتخاب شده"
+        completeTitle="مرحله تمام شده"
         subTitle="مرحله پایانی"
         icon={<QuestionMarkCircle />}
+        activeIcon={<AlignCenter />}
+        completeIcon={<CheckCircleBold />}
       />
     </HorizontalStepper>
   ),

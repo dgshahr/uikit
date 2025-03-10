@@ -15,6 +15,7 @@ export { default as Select } from './Form/Select';
 export { default as Textarea } from './Form/Textarea';
 export { default as Pagination } from './Pagination';
 export { default as ProgressBar } from './Progress/Bar';
+export { default as ProgressDoughnut } from './Progress/Doughnut';
 export { Slider, Slide } from './Slider';
 export { HorizontalStepper, HorizontalStep } from './Stepper/Horizontal';
 export { default as Tabs } from './Tabs';

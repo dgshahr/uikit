@@ -13,6 +13,8 @@ import { getStepStatus } from './utils';
 
 export interface HorizontalStepProps {
   title: string;
+  activeTitle?: string;
+  completeTitle?: string;
   subTitle?: string;
   icon: ReactNode;
   completeIcon?: ReactNode;
@@ -37,7 +39,8 @@ const stepOrientationClassnameMap: Record<HorizontalStepperStepOrientation, stri
 };
 
 const HorizontalStep: FC<HorizontalStepProps> = (props) => {
-  const { index, title, subTitle, icon, activeIcon, completeIcon } = props;
+  const { index, title, activeTitle, completeTitle, subTitle, icon, activeIcon, completeIcon } =
+    props;
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -49,6 +52,14 @@ const HorizontalStep: FC<HorizontalStepProps> = (props) => {
     );
 
   const status = getStepStatus(activeStep, index);
+
+  const titleMap: Record<HorizontalStepperStepStatus, string | undefined> = {
+    current: activeTitle,
+    incomplete: title,
+    complete: completeTitle,
+  };
+
+  const stepTitle = titleMap[status] ?? title;
 
   const classname = clsx(
     'dgs-ui-kit-flex dgs-ui-kit-flex-grow dgs-ui-kit-min-w-max',
@@ -90,7 +101,7 @@ const HorizontalStep: FC<HorizontalStepProps> = (props) => {
           {index === activeStep && (
             <p className="dgs-ui-kit-font-normal dgs-ui-kit-text-gray-400">{subTitle}</p>
           )}
-          <p className="dgs-ui-kit-text-center">{title}</p>
+          <p className="dgs-ui-kit-text-center">{stepTitle}</p>
         </div>
       </div>
     </>
