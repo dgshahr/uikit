@@ -198,6 +198,16 @@
         "default": "./dist/Progress/Bar/index.cjs"
       }
     },
+    "./Progress/Doughnut": {
+      "import": {
+        "types": "./dist/Progress/Doughnut/index.d.ts",
+        "default": "./dist/Progress/Doughnut/index.js"
+      },
+      "require": {
+        "types": "./dist/Progress/Doughnut/index.d.ts",
+        "default": "./dist/Progress/Doughnut/index.cjs"
+      }
+    },
     "./Slider": {
       "import": {
         "types": "./dist/Slider/index.d.ts",
