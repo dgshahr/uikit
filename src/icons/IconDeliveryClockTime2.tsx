@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconDeliveryClockTime2Icon = (props: SVGProps<SVGSVGElement>) => (
+const IconDeliveryClockTime2 = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -16,4 +16,4 @@ const IconDeliveryClockTime2Icon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconDeliveryClockTime2Icon;
+export default IconDeliveryClockTime2;

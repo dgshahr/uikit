@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconFlipForwardIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconFlipForward = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -22,4 +22,4 @@ const IconFlipForwardIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconFlipForwardIcon;
+export default IconFlipForward;

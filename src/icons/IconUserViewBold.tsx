@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconUserViewBoldIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconUserViewBold = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -26,4 +26,4 @@ const IconUserViewBoldIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconUserViewBoldIcon;
+export default IconUserViewBold;

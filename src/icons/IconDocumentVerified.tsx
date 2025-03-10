@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconDocumentVerifiedIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconDocumentVerified = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -26,4 +26,4 @@ const IconDocumentVerifiedIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconDocumentVerifiedIcon;
+export default IconDocumentVerified;

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { DetailedHTMLProps, InputHTMLAttributes } from 'react';
-import CheckmarkIcon from '@/src/icons/Checkmark';
-import Minus4Icon from '@/src/icons/Minus4';
+import IconCheckmark from '@/src/icons/IconCheckmark';
+import IconMinus4 from '@/src/icons/IconMinus4';
 import omitObject from '@/src/utils/omitObjects';
 import type { RadioCheckboxBaseUnionProps } from '../Wrappers/RadioCheckboxWrapper/RadioCheckboxWrapper';
 import RadioCheckboxWrapper from '../Wrappers/RadioCheckboxWrapper/RadioCheckboxWrapper';
@@ -32,12 +32,12 @@ const Checkbox = (props: CheckboxProps) => {
           />
           <div className={checkedInputClassName}>
             {isIndeterminate ? (
-              <Minus4Icon
+              <IconMinus4
                 width={16}
                 height={16}
               />
             ) : (
-              <CheckmarkIcon
+              <IconCheckmark
                 width={16}
                 height={16}
               />

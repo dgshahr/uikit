@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { useState, type FC, type PropsWithChildren } from 'react';
 import Drawer from '@/src/components/Drawer';
 import { useOutsideClick } from '@/src/hooks/useOutsideClick';
-import ArrowDown2Icon from '@/src/icons/ArrowDown2';
+import IconArrowDown2 from '@/src/icons/IconArrowDown2';
 import { pickerWrapperContext } from './contexts';
 import type { PickerWrapperProps } from './type';
 import Input from '../../Input';
@@ -83,7 +83,7 @@ const PickerWrapper: FC<PropsWithChildren<PickerWrapperProps>> = (props) => {
               isLoading ? (
                 <div className="dot-flashing dgs-ui-kit-mr-2" />
               ) : (
-                <ArrowDown2Icon
+                <IconArrowDown2
                   width={20}
                   height={20}
                   className={clsx('dgs-ui-kit-transition', DURATION_CLASS, {

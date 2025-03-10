@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import type { ReactNode } from 'react';
-import ArrowLeft2Icon from '@/src/icons/ArrowLeft2';
 
 import '@/src/styles.css';
+import IconArrowLeft2 from '@/src/icons/IconArrowLeft2';
 
 interface BreadcrumbProps {
   items: {
@@ -29,7 +29,7 @@ const Breadcrumb = (props: BreadcrumbProps) => {
             {breadcrumbItem.icon && breadcrumbItem.icon}
             <div className="dgs-ui-kit-font-caption-demibold">{breadcrumbItem.title}</div>
             {index !== items.length - 1 || (index === items.length - 1 && pageTitle) ? (
-              <ArrowLeft2Icon
+              <IconArrowLeft2
                 width={16}
                 height={16}
               />

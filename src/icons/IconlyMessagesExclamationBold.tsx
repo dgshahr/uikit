@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconlyMessagesExclamationBoldIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconlyMessagesExclamationBold = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -16,4 +16,4 @@ const IconlyMessagesExclamationBoldIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconlyMessagesExclamationBoldIcon;
+export default IconlyMessagesExclamationBold;

@@ -2,7 +2,7 @@
 import clsx from 'clsx';
 import { useId } from 'react';
 import type { FC, PropsWithChildren, ReactNode } from 'react';
-import ArrowDown2Icon from '@/src/icons/ArrowDown2';
+import IconArrowDown2 from '@/src/icons/IconArrowDown2';
 import { useAccordionContext } from './context';
 import Divider from '../Divider';
 
@@ -45,7 +45,7 @@ const AccordionItem: FC<PropsWithChildren<AccordionItemProps>> = (props) => {
         <div className={isItemActive ? 'dgs-ui-kit-font-h5-bold' : 'dgs-ui-kit-font-p1-medium'}>
           {title}
         </div>
-        <ArrowDown2Icon
+        <IconArrowDown2
           className={clsx(
             'dgs-ui-kit-transition dgs-ui-kit-duration-300 dgs-ui-kit-ease-in-out dgs-ui-kit-shrink-0 dgs-ui-kit-w-auto dgs-ui-kit-h-auto',
             isItemActive && 'dgs-ui-kit-rotate-180',

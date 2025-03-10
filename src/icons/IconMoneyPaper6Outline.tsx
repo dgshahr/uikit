@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconMoneyPaper6OutlineIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconMoneyPaper6Outline = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -22,4 +22,4 @@ const IconMoneyPaper6OutlineIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconMoneyPaper6OutlineIcon;
+export default IconMoneyPaper6Outline;

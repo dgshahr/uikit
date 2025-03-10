@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconReceiptBillBoldIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconReceiptBillBold = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -16,4 +16,4 @@ const IconReceiptBillBoldIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconReceiptBillBoldIcon;
+export default IconReceiptBillBold;

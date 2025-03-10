@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconPauseOutlineIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconPauseOutline = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -16,4 +16,4 @@ const IconPauseOutlineIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconPauseOutlineIcon;
+export default IconPauseOutline;

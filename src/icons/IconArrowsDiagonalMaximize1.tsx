@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconArrowsDiagonalMaximize1Icon = (props: SVGProps<SVGSVGElement>) => (
+const IconArrowsDiagonalMaximize1 = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -16,4 +16,4 @@ const IconArrowsDiagonalMaximize1Icon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconArrowsDiagonalMaximize1Icon;
+export default IconArrowsDiagonalMaximize1;

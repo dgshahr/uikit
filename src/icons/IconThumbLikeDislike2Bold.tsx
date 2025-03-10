@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconThumbLikeDislike2BoldIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconThumbLikeDislike2Bold = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -22,4 +22,4 @@ const IconThumbLikeDislike2BoldIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconThumbLikeDislike2BoldIcon;
+export default IconThumbLikeDislike2Bold;

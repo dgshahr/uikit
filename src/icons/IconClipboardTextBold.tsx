@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconClipboardTextBoldIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconClipboardTextBold = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -22,4 +22,4 @@ const IconClipboardTextBoldIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconClipboardTextBoldIcon;
+export default IconClipboardTextBold;

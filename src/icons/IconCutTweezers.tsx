@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconCutTweezersIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconCutTweezers = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -28,4 +28,4 @@ const IconCutTweezersIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconCutTweezersIcon;
+export default IconCutTweezers;

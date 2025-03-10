@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { useEffect, useState, type CSSProperties, type FC, type ReactNode } from 'react';
 import '@/src/styles.css';
 import { createPortal } from 'react-dom';
-import CloseRemoveIcon from '@/src/icons/CloseRemove';
+import IconCloseRemove from '@/src/icons/IconCloseRemove';
 
 const ANIMATION_DURATION = 150;
 let openDrawerCount = 0;
@@ -220,7 +220,7 @@ const Drawer: FC<DrawerProps> = (props) => {
                   onClick={() => closeDrawer()}
                   className="dgs-ui-kit-absolute dgs-ui-kit-top-1/2 -dgs-ui-kit-translate-y-1/2 dgs-ui-kit-left-4"
                 >
-                  <CloseRemoveIcon
+                  <IconCloseRemove
                     width={24}
                     height={24}
                     className="dgs-ui-kit-text-gray-600"

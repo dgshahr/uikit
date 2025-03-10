@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconArrowUp2Icon = (props: SVGProps<SVGSVGElement>) => (
+const IconArrowUp2 = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -14,4 +14,4 @@ const IconArrowUp2Icon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconArrowUp2Icon;
+export default IconArrowUp2;

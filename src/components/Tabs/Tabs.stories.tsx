@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import UserBoldIcon from '../../icons/UserBold';
+import IconUserBold from '../../icons/IconUserBold';
 
 import Tabs from './index';
 
@@ -73,9 +73,9 @@ export const Default: Story = {
     activeKey: 1,
     onChange: (key) => alert('tab key: ' + key + ' selected'),
     items: [
-      { key: 1, title: 'تب اول', icon: <UserBoldIcon />, badgeNumber: 1 },
-      { key: 2, title: 'تب دوم', icon: <UserBoldIcon />, badgeNumber: 1 },
-      { key: 3, title: 'تب سوم', icon: <UserBoldIcon />, badgeNumber: 1, disabled: true },
+      { key: 1, title: 'تب اول', icon: <IconUserBold />, badgeNumber: 1 },
+      { key: 2, title: 'تب دوم', icon: <IconUserBold />, badgeNumber: 1 },
+      { key: 3, title: 'تب سوم', icon: <IconUserBold />, badgeNumber: 1, disabled: true },
     ],
   },
 };

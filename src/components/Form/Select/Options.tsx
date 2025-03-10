@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
-import SearchIcon from '@/src/icons/Search';
+import IconSearch from '@/src/icons/IconSearch';
 import focusAndOpenKeyboard from '@/src/utils/focusAndOpenKeyboard';
 import OptionItem from './OptionItem';
 import type { SelectProps, SelectWithMultipleMode, SelectWithSingleMode } from './types';
@@ -125,7 +125,7 @@ const Options = <T,>(props: SelectProps<T>) => {
           onChange={(e) => setSearch(e.currentTarget.value)}
           rightIcon={
             inputSearchable?.rightIcon ?? (
-              <SearchIcon
+              <IconSearch
                 width={20}
                 height={20}
               />

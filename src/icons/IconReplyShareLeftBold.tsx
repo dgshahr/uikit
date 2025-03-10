@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconReplyShareLeftBoldIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconReplyShareLeftBold = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -16,4 +16,4 @@ const IconReplyShareLeftBoldIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconReplyShareLeftBoldIcon;
+export default IconReplyShareLeftBold;

@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconDcoumentCheck2Icon = (props: SVGProps<SVGSVGElement>) => (
+const IconDcoumentCheck2 = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -26,4 +26,4 @@ const IconDcoumentCheck2Icon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconDcoumentCheck2Icon;
+export default IconDcoumentCheck2;

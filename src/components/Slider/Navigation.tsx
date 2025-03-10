@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { FC } from 'react';
-import ArrowLeft2Icon from '@/src/icons/ArrowLeft2';
-import ArrowRight2Icon from '@/src/icons/ArrowRight2';
+import IconArrowLeft2 from '@/src/icons/IconArrowLeft2';
+import IconArrowRight2 from '@/src/icons/IconArrowRight2';
 import { useSliderContext } from './context';
 import NavigationDot from './NavigationDot';
 import Button from '../Button';
@@ -39,14 +39,14 @@ const Navigation: FC<NavigationProps> = (props) => {
         type="button"
         variant="secondary"
         onClick={() => onNavigate(slideIndex - 1)}
-        rightIcon={<ArrowRight2Icon />}
+        rightIcon={<IconArrowRight2 />}
         aria-label="slider-previous-button"
       />
       <Button
         type="button"
         variant="secondary"
         onClick={() => onNavigate(slideIndex + 1)}
-        rightIcon={<ArrowLeft2Icon />}
+        rightIcon={<IconArrowLeft2 />}
         aria-label="slider-next-button"
       />
     </div>

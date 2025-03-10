@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconCableMouseIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconCableMouse = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -18,4 +18,4 @@ const IconCableMouseIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconCableMouseIcon;
+export default IconCableMouse;

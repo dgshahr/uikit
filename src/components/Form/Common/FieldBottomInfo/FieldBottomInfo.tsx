@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import type { ReactNode } from 'react';
-import InfoCircleOutlineIcon from '@/src/icons/InfoCircleOutline';
+import IconInfoCircleOutline from '@/src/icons/IconInfoCircleOutline';
 
 export interface FieldBottomInfoProps {
   disabled?: boolean;
@@ -33,7 +33,7 @@ const FieldBottomInfo = (props: FieldBottomInfoProps) => {
             },
           )}
         >
-          <InfoCircleOutlineIcon
+          <IconInfoCircleOutline
             width={16}
             height={16}
           />

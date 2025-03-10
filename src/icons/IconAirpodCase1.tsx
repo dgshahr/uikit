@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconAirpodCase1Icon = (props: SVGProps<SVGSVGElement>) => (
+const IconAirpodCase1 = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -16,4 +16,4 @@ const IconAirpodCase1Icon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconAirpodCase1Icon;
+export default IconAirpodCase1;

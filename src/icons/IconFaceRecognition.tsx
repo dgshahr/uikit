@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconFaceRecognitionIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconFaceRecognition = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -16,4 +16,4 @@ const IconFaceRecognitionIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconFaceRecognitionIcon;
+export default IconFaceRecognition;

@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconDangerTriangleOutlineIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconDangerTriangleOutline = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -16,4 +16,4 @@ const IconDangerTriangleOutlineIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconDangerTriangleOutlineIcon;
+export default IconDangerTriangleOutline;

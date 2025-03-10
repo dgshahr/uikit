@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconlyForwardClockTimer10Icon = (props: SVGProps<SVGSVGElement>) => (
+const IconlyForwardClockTimer10 = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -24,4 +24,4 @@ const IconlyForwardClockTimer10Icon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconlyForwardClockTimer10Icon;
+export default IconlyForwardClockTimer10;

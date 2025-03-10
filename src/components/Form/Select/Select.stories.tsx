@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import clsx from 'clsx';
 import React, { useState } from 'react';
 import cities from './cities.json';
-import ArrowDown2 from '../../../icons/ArrowDown2';
-import Ringing3OutlineIcon from '../../../icons/Ringing3Outline';
+import IconArrowDown2 from '../../../icons/IconArrowDown2';
+import IconRinging3Outline from '../../../icons/IconRinging3Outline';
 import Badge from '../../Badge';
 import Button from '../../Button';
 import Select from './index';
@@ -167,7 +167,7 @@ const customOptionProps = {
         </div>
         {option.disabled && (
           <div className="dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-justify-center dgs-ui-kit-items-center">
-            <Ringing3OutlineIcon
+            <IconRinging3Outline
               width={16}
               height={16}
             />
@@ -196,7 +196,7 @@ const multiSelectProps = {
           value="۳"
           valueType="number"
         />
-        <ArrowDown2
+        <IconArrowDown2
           width={16}
           height={16}
         />

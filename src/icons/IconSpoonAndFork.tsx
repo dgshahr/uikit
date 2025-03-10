@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconSpoonAndForkIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconSpoonAndFork = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -24,4 +24,4 @@ const IconSpoonAndForkIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconSpoonAndForkIcon;
+export default IconSpoonAndFork;

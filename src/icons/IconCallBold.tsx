@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconCallBoldIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconCallBold = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -16,4 +16,4 @@ const IconCallBoldIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconCallBoldIcon;
+export default IconCallBold;

@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconMicrosoftExcelIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconMicrosoftExcel = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -28,4 +28,4 @@ const IconMicrosoftExcelIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconMicrosoftExcelIcon;
+export default IconMicrosoftExcel;

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import QuestionMarkCircle from '../../icons/QuestionMarkCircle';
+import IconQuestionMarkCircle from '../../icons/IconQuestionMarkCircle';
 
 import Breadcrumb from './index';
 
@@ -39,7 +39,7 @@ export const Default: Story = {
         link: '/',
         title: 'خانه',
         icon: (
-          <QuestionMarkCircle
+          <IconQuestionMarkCircle
             width={16}
             height={16}
           />

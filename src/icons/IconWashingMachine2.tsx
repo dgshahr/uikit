@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconWashingMachine2Icon = (props: SVGProps<SVGSVGElement>) => (
+const IconWashingMachine2 = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -22,4 +22,4 @@ const IconWashingMachine2Icon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconWashingMachine2Icon;
+export default IconWashingMachine2;

@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconCalendarIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconCalendar = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -28,4 +28,4 @@ const IconCalendarIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconCalendarIcon;
+export default IconCalendar;

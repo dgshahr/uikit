@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconDeleteBoldIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconDeleteBold = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -16,4 +16,4 @@ const IconDeleteBoldIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconDeleteBoldIcon;
+export default IconDeleteBold;

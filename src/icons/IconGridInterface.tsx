@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconGridInterfaceIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconGridInterface = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -16,4 +16,4 @@ const IconGridInterfaceIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconGridInterfaceIcon;
+export default IconGridInterface;

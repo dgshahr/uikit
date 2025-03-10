@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconHourglassIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconHourglass = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -22,4 +22,4 @@ const IconHourglassIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconHourglassIcon;
+export default IconHourglass;

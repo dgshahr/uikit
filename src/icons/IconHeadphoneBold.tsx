@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconHeadphoneBoldIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconHeadphoneBold = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -14,4 +14,4 @@ const IconHeadphoneBoldIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconHeadphoneBoldIcon;
+export default IconHeadphoneBold;

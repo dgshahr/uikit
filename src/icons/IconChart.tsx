@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconChartIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconChart = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -16,4 +16,4 @@ const IconChartIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconChartIcon;
+export default IconChart;

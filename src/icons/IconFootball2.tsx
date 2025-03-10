@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconFootball2Icon = (props: SVGProps<SVGSVGElement>) => (
+const IconFootball2 = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -22,4 +22,4 @@ const IconFootball2Icon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconFootball2Icon;
+export default IconFootball2;

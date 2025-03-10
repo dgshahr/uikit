@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconCloseSquareIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconCloseSquare = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -28,4 +28,4 @@ const IconCloseSquareIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconCloseSquareIcon;
+export default IconCloseSquare;

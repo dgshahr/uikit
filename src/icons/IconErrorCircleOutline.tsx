@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconErrorCircleOutlineIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconErrorCircleOutline = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -22,4 +22,4 @@ const IconErrorCircleOutlineIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconErrorCircleOutlineIcon;
+export default IconErrorCircleOutline;

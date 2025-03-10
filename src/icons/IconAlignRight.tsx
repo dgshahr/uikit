@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconAlignRightIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconAlignRight = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -16,4 +16,4 @@ const IconAlignRightIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconAlignRightIcon;
+export default IconAlignRight;

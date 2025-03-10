@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconPalmBoldIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconPalmBold = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -16,4 +16,4 @@ const IconPalmBoldIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconPalmBoldIcon;
+export default IconPalmBold;

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import ArrowDown2Icon from '../../icons/ArrowDown2';
-import UserIcon from '../../icons/User';
+import IconArrowDown2 from '../../icons/IconArrowDown2';
+import IconUser from '../../icons/IconUser';
 
 import Chip from './index';
 
@@ -48,7 +48,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     label: 'برچسب',
-    rightIcon: <UserIcon />,
-    leftIcon: <ArrowDown2Icon />,
+    rightIcon: <IconUser />,
+    leftIcon: <IconArrowDown2 />,
   },
 };

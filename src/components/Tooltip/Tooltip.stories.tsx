@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import InfoCircleOutline from '../../icons/InfoCircleOutline';
+import IconInfoCircleOutline from '../../icons/IconInfoCircleOutline';
 
 import Tooltip from './index';
 
@@ -39,7 +39,7 @@ export const Default: Story = {
   args: {
     children: <span>hover me</span>,
     title: 'عنوان پیام',
-    icon: <InfoCircleOutline />,
+    icon: <IconInfoCircleOutline />,
     content:
       'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.',
     footer: (

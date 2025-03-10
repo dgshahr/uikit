@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconPencilOutlineIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconPencilOutline = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -18,4 +18,4 @@ const IconPencilOutlineIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconPencilOutlineIcon;
+export default IconPencilOutline;

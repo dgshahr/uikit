@@ -6,9 +6,9 @@ import { isWithinInterval } from 'date-fns-jalali/isWithinInterval';
 import { startOfMonth } from 'date-fns-jalali/startOfMonth';
 import { sub } from 'date-fns-jalali/sub';
 import type { FC } from 'react';
-import ArrowDown2Icon from '@/src/icons/ArrowDown2';
-import ArrowLeft2Icon from '@/src/icons/ArrowLeft2';
-import ArrowRight2Icon from '@/src/icons/ArrowRight2';
+import IconArrowDown2 from '@/src/icons/IconArrowDown2';
+import IconArrowLeft2 from '@/src/icons/IconArrowLeft2';
+import IconArrowRight2 from '@/src/icons/IconArrowRight2';
 import { useDatepickerContext } from './context';
 import { DateTypes } from './types';
 import Button from '../../Button';
@@ -90,7 +90,7 @@ const Header: FC = () => {
         <span className="dgs-ui-kit-font-button-large dgs-ui-kit-text-gray-700 ss02">
           {getButtonTitle(dateType, internalDate)}
         </span>
-        <ArrowDown2Icon
+        <IconArrowDown2
           width={20}
           height={20}
           className="dgs-ui-kit-text-gray-600"
@@ -99,13 +99,13 @@ const Header: FC = () => {
       <div className="dgs-ui-kit-flex dgs-ui-kit-gap-2">
         <Button
           variant="outline"
-          rightIcon={<ArrowRight2Icon />}
+          rightIcon={<IconArrowRight2 />}
           disabled={startDate && isPrevNavigationDisabled(internalDate, dateType, startDate)}
           onClick={() => handleNavigate('prev')}
         />
         <Button
           variant="outline"
-          rightIcon={<ArrowLeft2Icon />}
+          rightIcon={<IconArrowLeft2 />}
           disabled={endDate && isNextNavigationDisabled(internalDate, dateType, endDate)}
           onClick={() => handleNavigate('next')}
         />

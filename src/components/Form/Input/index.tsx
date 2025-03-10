@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { type ForwardedRef, type InputHTMLAttributes, forwardRef, useState } from 'react';
-import CloseSquareIcon from '@/src/icons/CloseSquare';
-import EyeIcon from '@/src/icons/Eye';
-import HideIcon from '@/src/icons/Hide';
+import IconCloseSquare from '@/src/icons/IconCloseSquare';
+import IconEye from '@/src/icons/IconEye';
+import IconHide from '@/src/icons/IconHide';
 import omitObject from '@/src/utils/omitObjects';
 import TextFieldWrapper from '../Wrappers/TextFieldWrapper/TextFieldWrapper';
 import type { TextFieldBaseProps } from '../Wrappers/TextFieldWrapper/TextFieldWrapper';
@@ -51,7 +51,7 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
           if (typeof onClear === 'function') onClear();
         }}
       >
-        <CloseSquareIcon
+        <IconCloseSquare
           className="dgs-ui-kit-text-gray-600"
           width={20}
           height={20}
@@ -109,12 +109,12 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
           className="dgs-ui-kit-text-gray-600"
         >
           {type === 'password' ? (
-            <EyeIcon
+            <IconEye
               width={20}
               height={20}
             />
           ) : (
-            <HideIcon
+            <IconHide
               width={20}
               height={20}
             />

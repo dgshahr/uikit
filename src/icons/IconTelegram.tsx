@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconTelegramIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconTelegram = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -16,4 +16,4 @@ const IconTelegramIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconTelegramIcon;
+export default IconTelegram;

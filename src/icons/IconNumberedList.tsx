@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconNumberedListIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconNumberedList = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -14,4 +14,4 @@ const IconNumberedListIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconNumberedListIcon;
+export default IconNumberedList;

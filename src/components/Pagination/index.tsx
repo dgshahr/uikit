@@ -1,8 +1,8 @@
 'use client';
 import clsx from 'clsx';
 import { useState } from 'react';
-import ArrowLeft2Icon from '@/src/icons/ArrowLeft2';
-import ArrowRight2Icon from '@/src/icons/ArrowRight2';
+import IconArrowLeft2 from '@/src/icons/IconArrowLeft2';
+import IconArrowRight2 from '@/src/icons/IconArrowRight2';
 import { getPaginationRange, DOTS } from './utils';
 import Button from '../Button';
 
@@ -58,7 +58,7 @@ const Pagination = (props: PaginationProps) => {
       <Button
         disabled={currentPage === 1}
         onClick={() => handlePageChange(currentPage - 1)}
-        rightIcon={<ArrowRight2Icon />}
+        rightIcon={<IconArrowRight2 />}
         variant={navigationButtonsWithText ? 'text' : 'secondary'}
         size={navigationButtonsWithText ? 'medium' : 'small'}
       >
@@ -89,7 +89,7 @@ const Pagination = (props: PaginationProps) => {
       <Button
         disabled={currentPage === lastPage}
         onClick={() => handlePageChange(currentPage + 1)}
-        leftIcon={<ArrowLeft2Icon />}
+        leftIcon={<IconArrowLeft2 />}
         variant={navigationButtonsWithText ? 'text' : 'secondary'}
         size={navigationButtonsWithText ? 'medium' : 'small'}
       >

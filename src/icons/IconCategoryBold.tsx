@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconCategoryBoldIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconCategoryBold = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -14,4 +14,4 @@ const IconCategoryBoldIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconCategoryBoldIcon;
+export default IconCategoryBold;

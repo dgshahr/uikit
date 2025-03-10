@@ -1,10 +1,10 @@
 'use client';
 import clsx from 'clsx';
 import { useState, type ReactNode } from 'react';
-import CheckCircleBoldIcon from '@/src/icons/CheckCircleBold';
-import CloseRemoveIcon from '@/src/icons/CloseRemove';
-import DangerBoldIcon from '@/src/icons/DangerBold';
-import InfoCircleBoldIcon from '@/src/icons/InfoCircleBold';
+import IconCheckCircleBold from '@/src/icons/IconCheckCircleBold';
+import IconCloseRemove from '@/src/icons/IconCloseRemove';
+import IconDangerBold from '@/src/icons/IconDangerBold';
+import IconInfoCircleBold from '@/src/icons/IconInfoCircleBold';
 import { alertVariantClassNames, alertSizeClassNames } from './variants';
 import Button, { type ButtonProps } from '../Button';
 
@@ -30,9 +30,9 @@ function getAlertIcon(
   variant: Required<AlertProps>['variant'],
   size: Required<AlertProps>['size'],
 ) {
-  let IconComponent = InfoCircleBoldIcon;
-  if (variant === 'error') IconComponent = DangerBoldIcon;
-  else if (variant === 'success') IconComponent = CheckCircleBoldIcon;
+  let IconComponent = IconInfoCircleBold;
+  if (variant === 'error') IconComponent = IconDangerBold;
+  else if (variant === 'success') IconComponent = IconCheckCircleBold;
 
   return (
     <IconComponent
@@ -120,7 +120,7 @@ const Alert = (props: AlertProps) => {
             className="dgs-ui-kit-shrink-0 dgs-ui-kit-my-[2px] dgs-ui-kit-h-fit"
             onClick={() => setShow(false)}
           >
-            <CloseRemoveIcon
+            <IconCloseRemove
               className={clsx(alertVariantClassNames.close[variant])}
               width={alertSizeClassNames.close[size]}
               height={alertSizeClassNames.close[size]}

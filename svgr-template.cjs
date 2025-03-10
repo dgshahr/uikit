@@ -4,7 +4,6 @@ const svgrTemplate = (variables, { tpl }) => {
   let componentName = variables.componentName.startsWith('Svg')
     ? variables.componentName.slice(3)
     : variables.componentName;
-  componentName += 'Icon';
 
   return tpl`
   ${variables.imports};

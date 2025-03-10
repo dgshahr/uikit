@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconZoomInIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconZoomIn = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -16,4 +16,4 @@ const IconZoomInIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconZoomInIcon;
+export default IconZoomIn;

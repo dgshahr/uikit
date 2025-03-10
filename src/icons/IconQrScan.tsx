@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconQrScanIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconQrScan = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -22,4 +22,4 @@ const IconQrScanIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconQrScanIcon;
+export default IconQrScan;

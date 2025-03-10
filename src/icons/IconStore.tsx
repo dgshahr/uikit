@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-const IconStoreIcon = (props: SVGProps<SVGSVGElement>) => (
+const IconStore = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -26,4 +26,4 @@ const IconStoreIcon = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default IconStoreIcon;
+export default IconStore;

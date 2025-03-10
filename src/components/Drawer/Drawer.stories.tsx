@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { FC, useState } from 'react';
-import ArrowLeftMd from '../../icons/ArrowLeftMd';
+import IconArrowLeftMd from '../../icons/IconArrowLeftMd';
 import Button from '../Button';
 import Drawer, { DrawerProps } from './index';
 
@@ -135,7 +135,7 @@ export const Default: Story = {
       haveCloseIcon: true,
       actionElement: (
         <button>
-          <ArrowLeftMd />
+          <IconArrowLeftMd />
         </button>
       ),
     },
