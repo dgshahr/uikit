@@ -179,6 +179,7 @@ const Options = <T,>(props: SelectProps<T>) => {
             <p className="dgs-ui-kit-text-gray-500 dgs-ui-kit-font-p3-medium">{emptyContent}</p>
             {showClearButtonOnEmpty && (
               <Button
+                type="button"
                 className="dgs-ui-kit-mt-1"
                 variant="text"
                 size="small"

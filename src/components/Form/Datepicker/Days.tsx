@@ -128,6 +128,7 @@ const Days: FC = () => {
       <div className="dgs-ui-kit-grid dgs-ui-kit-grid-cols-7 dgs-ui-kit-text-center dgs-ui-kit-font-p3-medium ss02 dgs-ui-kit-p-3 dgs-ui-kit-gap-y-2">
         {daysOfCalendar.map((dayItem) => (
           <button
+            type="button"
             key={dayItem.date.toString()}
             className={getDayClassName({ ...dayItem, ...datepickerProps })}
             onClick={() => handleChange(dayItem.date)}

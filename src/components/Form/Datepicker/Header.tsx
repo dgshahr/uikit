@@ -83,6 +83,7 @@ const Header: FC = () => {
   return (
     <div className="dgs-ui-kit-p-3 dgs-ui-kit-flex dgs-ui-kit-justify-between dgs-ui-kit-items-center dgs-ui-kit-border-b dgs-ui-kit-border-gray-200">
       <button
+        type="button"
         className="dgs-ui-kit-bg-gray-100 dgs-ui-kit-rounded-lg dgs-ui-kit-p-3 dgs-ui-kit-min-w-[50%] dgs-ui-kit-flex dgs-ui-kit-justify-between dgs-ui-kit-items-center disabled:dgs-ui-kit-cursor-not-allowed"
         disabled={dateType === DateTypes.Year}
         onClick={() => dateType !== DateTypes.Year && setDateType(dateType + 1)}

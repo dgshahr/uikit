@@ -72,6 +72,7 @@ const PickerWrapper: FC<PropsWithChildren<PickerWrapperProps>> = (props) => {
       className={clsx('dgs-ui-kit-relative', wrapperClassName)}
     >
       <button
+        type="button"
         className={clsx('dgs-ui-kit-w-full', cursorClass)}
         onClick={toggleWrapperVisibility}
       >

@@ -43,6 +43,7 @@ const Years: FC = () => {
         end: subYears(internalDate, 11),
       }).map((year) => (
         <button
+          type="button"
           key={year.toString()}
           onClick={() => handleYearSelect(year)}
           className={getYearClassName({ year, ...datepickerProps })}
