@@ -1,5 +1,6 @@
 'use client';
-import type { FC } from 'react';
+import clsx from 'clsx';
+import { Fragment, type FC } from 'react';
 import FileInput from './FileInput';
 import SingleModePreview from './SingleModePreview';
 import type { FileType, FileUploaderProps } from './types';
@@ -11,9 +12,16 @@ const FileUploader: FC<FileUploaderProps> = (props) => {
     props;
   const haveFiles = Array.isArray(files) ? files.length > 0 : Boolean(files);
 
+  const wrapperClassName = clsx(
+    Boolean(mode === 'multiple' && previewProps?.type === 'grid') &&
+      'dgs-ui-kit-flex dgs-ui-kit-space-x-2 rtl:dgs-ui-kit-space-x-reverse',
+    className,
+  );
+  const WrapperElement = wrapperClassName ? 'div' : Fragment;
+
   return (
-    <div className={className}>
-      {!haveFiles && (
+    <WrapperElement className={wrapperClassName}>
+      {((!haveFiles && mode === 'single') || mode !== 'single') && (
         <FileInput
           {...fileInputProps}
           disabled={disabled}
@@ -27,7 +35,7 @@ const FileUploader: FC<FileUploaderProps> = (props) => {
           files={files as FileType}
         />
       )}
-    </div>
+    </WrapperElement>
   );
 };
 

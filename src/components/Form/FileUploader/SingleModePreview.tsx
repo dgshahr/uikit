@@ -37,7 +37,7 @@ const SingleModePreview: FC<SingleModePreviewProps> = (props) => {
   const { errorMessage, file, hintMessage, loading, status, title } = files;
 
   return (
-    <>
+    <div className="dgs-ui-kit-space-y-2">
       <div
         className={clsx(
           'dgs-ui-kit-p-1 dgs-ui-kit-border dgs-ui-kit-border-transparent dgs-ui-kit-rounded-lg',
@@ -87,12 +87,11 @@ const SingleModePreview: FC<SingleModePreviewProps> = (props) => {
       </div>
       {(hintMessage ?? errorMessage) ? (
         <FieldBottomInfo
-          className="dgs-ui-kit-mt-2"
           errorMessage={errorMessage}
           hintMessage={hintMessage}
         />
       ) : null}
-    </>
+    </div>
   );
 };
 

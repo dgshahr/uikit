@@ -56,11 +56,11 @@ const FileInput: FC<FileInputProps> = (props) => {
   }
 
   return (
-    <>
+    <div className="dgs-ui-kit-space-y-2">
       <div
         className={clsx(
           'dgs-ui-kit-relative dgs-ui-kit-text-center dgs-ui-kit-bg-white dgs-ui-kit-transition-all',
-          'dgs-ui-kit-mb-2 dgs-ui-kit-space-y-4 dgs-ui-kit-p-4',
+          'dgs-ui-kit-space-y-4 dgs-ui-kit-p-4',
           'dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-justify-center dgs-ui-kit-items-center',
           'dgs-ui-kit-border dgs-ui-kit-border-gray-300 dgs-ui-kit-border-dashed dgs-ui-kit-rounded-lg',
           'hover:dgs-ui-kit-ring-4 hover:dgs-ui-kit-ring-gray-100',
@@ -96,7 +96,7 @@ const FileInput: FC<FileInputProps> = (props) => {
       </div>
 
       {Object.keys(helperProps ?? {}).length > 0 && <FieldBottomInfo {...helperProps} />}
-    </>
+    </div>
   );
 };
 
