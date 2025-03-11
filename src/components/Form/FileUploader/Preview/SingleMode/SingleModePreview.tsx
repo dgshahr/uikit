@@ -78,7 +78,7 @@ const SingleModePreview: FC<SingleModePreviewProps> = (props) => {
           <div
             className={clsx(
               getTitleClass(loading, errorMessage, status),
-              'dgs-ui-kit-px-3 dgs-ui-kit-py-1.5 dgs-ui-kit-rounded-lg dgs-ui-kit-font-p2-medium dgs-ui-kit-text-center dgs-ui-kit-line-clamp-1 dgs-ui-kit-mt-1',
+              'dgs-ui-kit-px-3 dgs-ui-kit-py-1.5 dgs-ui-kit-rounded-lg dgs-ui-kit-font-p2-medium dgs-ui-kit-text-center dgs-ui-kit-line-clamp-1 dgs-ui-kit-mt-1 dgs-ui-kit-w-0 dgs-ui-kit-min-w-full',
             )}
           >
             {title ?? file?.name}
