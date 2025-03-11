@@ -5,13 +5,14 @@ import FileInputIcon from './FileInputIcon';
 import Button from '../../../Button';
 import FieldBottomInfo from '../../Common/FieldBottomInfo/FieldBottomInfo';
 import {
+  DEFAULT_GRID_SIZE_CLASS,
   DEFAULT_SIZE_CLASS,
   DISABLED_CLASS,
   DRAG_CLASS,
   ERROR_CLASS,
   FOCUS_CLASS,
 } from '../constants';
-import type { FileInputProps } from '../types';
+import type { FileInputProps, FilePreviewProps } from '../types';
 
 function renderUploadButton(button: FileInputProps['button']) {
   const zIndexClass = 'dgs-ui-kit-relative dgs-ui-kit-z-10';
@@ -35,7 +36,11 @@ function renderUploadButton(button: FileInputProps['button']) {
   }
 }
 
-const FileInput: FC<FileInputProps> = (props) => {
+interface Props extends FileInputProps {
+  previewtype?: FilePreviewProps['type'];
+}
+
+const FileInput: FC<Props> = (props) => {
   const {
     title,
     description,
@@ -45,9 +50,11 @@ const FileInput: FC<FileInputProps> = (props) => {
     className,
     onChange,
     helperProps,
+    previewtype,
     ...rest
   } = props;
   const [isOnDrag, setIsOnDrag] = useState(false);
+  const isGridPreview = previewtype === 'grid';
 
   function handleDrop(e: DragEvent<HTMLInputElement>) {
     e.preventDefault();
@@ -68,7 +75,7 @@ const FileInput: FC<FileInputProps> = (props) => {
           DISABLED_CLASS,
           (isError || helperProps?.errorMessage) && ERROR_CLASS,
           isOnDrag && DRAG_CLASS,
-          DEFAULT_SIZE_CLASS,
+          isGridPreview ? DEFAULT_GRID_SIZE_CLASS : DEFAULT_SIZE_CLASS,
           className,
         )}
       >
@@ -95,7 +102,9 @@ const FileInput: FC<FileInputProps> = (props) => {
         />
       </div>
 
-      {Object.keys(helperProps ?? {}).length > 0 && <FieldBottomInfo {...helperProps} />}
+      {!isGridPreview && Object.keys(helperProps ?? {}).length > 0 && (
+        <FieldBottomInfo {...helperProps} />
+      )}
     </div>
   );
 };

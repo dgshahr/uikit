@@ -5,13 +5,10 @@ import IconDelete1 from '@/src/icons/IconDelete1';
 import IconMinimize from '@/src/icons/IconMinimize';
 import FieldBottomInfo from '../../../Common/FieldBottomInfo/FieldBottomInfo';
 import { TITLE_CLASS } from '../../constants';
-import type { FilePreviewProps, FileType } from '../../types';
-import { renderPreviewDefaultAction } from '../../utils';
+import type { FileType } from '../../types';
 import FilePreview from '../FilePreview';
-
-interface SingleModePreviewProps extends FilePreviewProps {
-  files: FileType;
-}
+import type { PreviewProps } from '../types';
+import { getPreviewBorder, renderPreviewDefaultAction } from '../utils';
 
 export function getTitleClass(
   loading: FileType['loading'],
@@ -25,7 +22,7 @@ export function getTitleClass(
   return TITLE_CLASS[status];
 }
 
-const SingleModePreview: FC<SingleModePreviewProps> = (props) => {
+const SingleModePreview: FC<PreviewProps<FileType>> = (props) => {
   const {
     files,
     leftButton = true,
@@ -40,11 +37,7 @@ const SingleModePreview: FC<SingleModePreviewProps> = (props) => {
     <div className="dgs-ui-kit-space-y-2">
       <div
         className={clsx(
-          'dgs-ui-kit-p-1 dgs-ui-kit-border dgs-ui-kit-border-transparent dgs-ui-kit-rounded-lg',
-          {
-            '!dgs-ui-kit-border-error-500': !loading && (status === 'error' || errorMessage),
-            '!dgs-ui-kit-border-warning-700': !loading && status === 'warning',
-          },
+          getPreviewBorder(loading, errorMessage ? 'error' : status),
           wrapperClassName,
         )}
       >
@@ -52,12 +45,12 @@ const SingleModePreview: FC<SingleModePreviewProps> = (props) => {
           file={files}
           className={previewClassName}
         >
-          {renderPreviewDefaultAction(leftButton, {
+          {renderPreviewDefaultAction(leftButton, files, {
             color: 'error',
             icon: <IconDelete1 />,
             className: 'dgs-ui-kit-left-2 dgs-ui-kit-top-2',
           })}
-          {renderPreviewDefaultAction(rightButton, {
+          {renderPreviewDefaultAction(rightButton, files, {
             color: 'gray',
             icon: <IconMinimize />,
             className: 'dgs-ui-kit-right-2 dgs-ui-kit-bottom-2',
@@ -69,6 +62,9 @@ const SingleModePreview: FC<SingleModePreviewProps> = (props) => {
                 '!dgs-ui-kit-absolute dgs-ui-kit-top-1/2 dgs-ui-kit-left-1/2 -dgs-ui-kit-translate-y-1/2 -dgs-ui-kit-translate-x-1/2',
               )}
               {...exteraButton}
+              onClick={(e) => {
+                if (typeof exteraButton.onClick === 'function') exteraButton.onClick(files, e);
+              }}
             >
               {exteraButton.children}
             </Button>

@@ -1,6 +1,7 @@
 import type { FileType } from './types';
 
 export const DEFAULT_SIZE_CLASS = 'dgs-ui-kit-h-[190px] dgs-ui-kit-w-[330px]';
+export const DEFAULT_GRID_SIZE_CLASS = 'dgs-ui-kit-size-[120px]';
 export const ABSOLUTE_CENTER =
   '!dgs-ui-kit-absolute dgs-ui-kit-top-1/2 dgs-ui-kit-left-1/2 -dgs-ui-kit-translate-y-1/2 -dgs-ui-kit-translate-x-1/2';
 export const FOCUS_CLASS =

@@ -2,8 +2,9 @@
 import clsx from 'clsx';
 import { Fragment, type FC } from 'react';
 import FileInput from './Input/FileInput';
+import MultipleModePreveiw from './Preview/MultipleMode/MultipleModePreveiw';
 import SingleModePreview from './Preview/SingleMode/SingleModePreview';
-import type { FileType, FileUploaderProps } from './types';
+import type { FilePreviewProps, FileType, FileUploaderProps } from './types';
 
 import '@/src/styles.css';
 
@@ -14,7 +15,7 @@ const FileUploader: FC<FileUploaderProps> = (props) => {
 
   const wrapperClassName = clsx(
     Boolean(mode === 'multiple' && previewProps?.type === 'grid') &&
-      'dgs-ui-kit-flex dgs-ui-kit-space-x-2 rtl:dgs-ui-kit-space-x-reverse',
+      'dgs-ui-kit-flex dgs-ui-kit-space-x-2 dgs-ui-kit-space-x-reverse',
     className,
   );
   const WrapperElement = wrapperClassName ? 'div' : Fragment;
@@ -24,16 +25,26 @@ const FileUploader: FC<FileUploaderProps> = (props) => {
       {((!haveFiles && mode === 'single') || mode !== 'single') && (
         <FileInput
           {...fileInputProps}
+          previewtype={(previewProps as FilePreviewProps)?.type}
           disabled={disabled}
           isError={isError}
           onChange={onChange}
         />
       )}
-      {haveFiles && mode === 'single' && (
-        <SingleModePreview
-          {...previewProps}
-          files={files as FileType}
-        />
+      {haveFiles && (
+        <>
+          {mode === 'single' ? (
+            <SingleModePreview
+              {...previewProps}
+              files={files as FileType}
+            />
+          ) : (
+            <MultipleModePreveiw
+              {...previewProps}
+              files={files as FileType[]}
+            />
+          )}
+        </>
       )}
     </WrapperElement>
   );

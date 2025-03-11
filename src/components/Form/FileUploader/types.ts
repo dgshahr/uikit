@@ -1,4 +1,4 @@
-import type { DetailedHTMLProps, InputHTMLAttributes } from 'react';
+import type { DetailedHTMLProps, InputHTMLAttributes, MouseEvent } from 'react';
 import type { ButtonProps } from '../../Button';
 import type { FieldBottomInfoProps } from '../Common/FieldBottomInfo/FieldBottomInfo';
 
@@ -13,13 +13,15 @@ interface FileTypeBase extends Omit<FieldBottomInfoProps, 'disabled' | 'extraHel
 export type FileType = FileTypeBase &
   (Required<Pick<FileTypeBase, 'file'>> | Required<Pick<FileTypeBase, 'src'>>);
 
-type FileInputCustomButtonProps = boolean | ButtonProps;
+interface PreviewCustomButtonInterface extends Omit<ButtonProps, 'onClick'> {
+  onClick?: (file: FileType, e: MouseEvent<HTMLButtonElement>) => void;
+}
 
 export interface FilePreviewProps {
   type?: 'list' | 'grid';
-  leftButton?: FileInputCustomButtonProps;
-  rightButton?: FileInputCustomButtonProps;
-  exteraButton?: ButtonProps;
+  leftButton?: boolean | PreviewCustomButtonInterface;
+  rightButton?: boolean | PreviewCustomButtonInterface;
+  exteraButton?: PreviewCustomButtonInterface;
   wrapperClassName?: string;
   previewClassName?: string;
 }
@@ -32,7 +34,7 @@ export interface FileInputProps
   title?: string;
   description?: string;
   hideIcon?: boolean;
-  button?: FileInputCustomButtonProps;
+  button?: boolean | ButtonProps;
   isError?: boolean;
   onChange: FileUploaderPropsBase['onChange'];
   helperProps?: Omit<FieldBottomInfoProps, 'disabled'>;
