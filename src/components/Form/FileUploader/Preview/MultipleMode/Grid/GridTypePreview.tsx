@@ -31,12 +31,12 @@ const GridTypePreview: FC<PreviewProps<FileType>> = (props) => {
         {renderPreviewDefaultAction(leftButton, file, {
           color: 'error',
           icon: <IconDelete1 />,
-          className: 'dgs-ui-kit-left-2 dgs-ui-kit-top-2',
+          className: '!dgs-ui-kit-absolute dgs-ui-kit-left-2 dgs-ui-kit-top-2',
         })}
         {renderPreviewDefaultAction(rightButton, file, {
           color: 'gray',
           icon: <IconMinimize />,
-          className: 'dgs-ui-kit-right-2 dgs-ui-kit-bottom-2',
+          className: '!dgs-ui-kit-absolute dgs-ui-kit-right-2 dgs-ui-kit-bottom-2',
         })}
       </FilePreview>
     </div>

@@ -6,27 +6,23 @@ import type { FilePreviewProps, FileType } from '../types';
 export function renderPreviewDefaultAction(
   button: FilePreviewProps['leftButton'],
   file: FileType,
-  defaults: {
-    color: ButtonProps['color'];
-    icon: ButtonProps['rightIcon'];
-    className: ButtonProps['className'];
+  defaults?: Omit<ButtonProps, 'rightIcon' | 'leftIcon'> & {
+    icon?: ButtonProps['rightIcon'];
   },
 ) {
   if (!button) return null;
 
-  const { color, icon, className } = defaults;
-
   return (
     <Button
       className={clsx(
-        '!dgs-ui-kit-absolute dgs-ui-kit-opacity-50 dgs-ui-kit-z-10',
-        className,
+        'dgs-ui-kit-opacity-50 dgs-ui-kit-z-10',
+        defaults?.className,
         (button as ButtonProps)?.className,
       )}
       type="button"
-      rightIcon={icon}
-      color={color}
+      rightIcon={defaults?.icon}
       size="small"
+      {...defaults}
       {...(typeof button === 'boolean' ? {} : button)}
       onClick={(e) => {
         if (typeof button !== 'boolean' && typeof button.onClick === 'function')
@@ -44,7 +40,7 @@ export function getPreviewBorder(loading: FileType['loading'], status: FileType[
     status && status !== 'default' && 'dgs-ui-kit-p-1',
     {
       '!dgs-ui-kit-border-error-500': !loading && status === 'error',
-      '!dgs-ui-kit-border-warning-700': !loading && status === 'warning',
+      '!dgs-ui-kit-border-warning-600': !loading && status === 'warning',
     },
   );
 }

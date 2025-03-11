@@ -6,7 +6,7 @@ import { ABSOLUTE_CENTER, DEFAULT_SIZE_CLASS } from '../constants';
 import type { FileType } from '../types';
 
 interface FilePreviewProps {
-  children: ReactNode;
+  children?: ReactNode;
   file: FileType;
   className?: string;
 }

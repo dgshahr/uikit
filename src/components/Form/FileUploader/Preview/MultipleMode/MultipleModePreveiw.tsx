@@ -1,5 +1,7 @@
+import clsx from 'clsx';
 import type { FC } from 'react';
 import GridTypePreview from './Grid/GridTypePreview';
+import ListTypePreview from './List/ListTypePreview';
 import type { FileType } from '../../types';
 import type { PreviewProps } from '../types';
 
@@ -8,7 +10,7 @@ function getFileKey(file: FileType) {
 }
 
 const MultipleModePreveiw: FC<PreviewProps<FileType[]>> = (props) => {
-  const { files, type } = props;
+  const { files, type = 'list', wrapperClassName } = props;
 
   if (type === 'grid')
     return files.map((file) => (
@@ -19,7 +21,17 @@ const MultipleModePreveiw: FC<PreviewProps<FileType[]>> = (props) => {
       />
     ));
 
-  return <div>MultipleModePreveiw</div>;
+  return (
+    <div className={clsx('dgs-ui-kit-mt-4 dgs-ui-kit-space-y-2', wrapperClassName)}>
+      {files.map((file) => (
+        <ListTypePreview
+          key={getFileKey(file)}
+          {...props}
+          files={file}
+        />
+      ))}
+    </div>
+  );
 };
 
 export default MultipleModePreveiw;
