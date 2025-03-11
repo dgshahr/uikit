@@ -128,6 +128,16 @@
         "default": "./dist/Form/Datepicker/index.cjs"
       }
     },
+    "./Form/FileUploader": {
+      "import": {
+        "types": "./dist/Form/FileUploader/index.d.ts",
+        "default": "./dist/Form/FileUploader/index.js"
+      },
+      "require": {
+        "types": "./dist/Form/FileUploader/index.d.ts",
+        "default": "./dist/Form/FileUploader/index.cjs"
+      }
+    },
     "./Form/Input": {
       "import": {
         "types": "./dist/Form/Input/index.d.ts",

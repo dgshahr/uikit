@@ -8,6 +8,7 @@ export { default as Divider } from './Divider';
 export { default as Drawer } from './Drawer';
 export { default as Checkbox } from './Form/Checkbox';
 export { default as Datepicker } from './Form/Datepicker';
+export { default as FileUploader } from './Form/FileUploader';
 export { default as Input } from './Form/Input';
 export { default as OtpInput } from './Form/OtpInput';
 export { default as RadioButton } from './Form/RadioButton';
