@@ -7,10 +7,11 @@ export interface FieldBottomInfoProps {
   errorMessage?: string;
   hintMessage?: string;
   extraHelper?: ReactNode;
+  className?: string;
 }
 
 const FieldBottomInfo = (props: FieldBottomInfoProps) => {
-  const { errorMessage, hintMessage, extraHelper, disabled } = props;
+  const { errorMessage, hintMessage, extraHelper, disabled, className } = props;
   return (
     <div
       className={clsx(
@@ -22,6 +23,7 @@ const FieldBottomInfo = (props: FieldBottomInfoProps) => {
           'dgs-ui-kit-text-gray-400': disabled,
         },
         errorMessage ? 'dgs-ui-kit-text-error-500' : 'dgs-ui-kit-text-gray-500',
+        className,
       )}
     >
       {(errorMessage || hintMessage) && (
