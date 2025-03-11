@@ -1,13 +1,13 @@
 import clsx from 'clsx';
 import type { FC } from 'react';
+import Button from '@/src/components/Button';
 import IconDelete1 from '@/src/icons/IconDelete1';
 import IconMinimize from '@/src/icons/IconMinimize';
-import { TITLE_CLASS } from './constants';
-import FilePreview from './FilePreview';
-import type { FilePreviewProps, FileType } from './types';
-import { renderPreviewDefaultAction } from './utils';
-import Button from '../../Button';
-import FieldBottomInfo from '../Common/FieldBottomInfo/FieldBottomInfo';
+import FieldBottomInfo from '../../../Common/FieldBottomInfo/FieldBottomInfo';
+import { TITLE_CLASS } from '../../constants';
+import type { FilePreviewProps, FileType } from '../../types';
+import { renderPreviewDefaultAction } from '../../utils';
+import FilePreview from '../FilePreview';
 
 interface SingleModePreviewProps extends FilePreviewProps {
   files: FileType;

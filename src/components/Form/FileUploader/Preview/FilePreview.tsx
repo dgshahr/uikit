@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import type { FC, ReactNode, SyntheticEvent } from 'react';
-import { ABSOLUTE_CENTER, DEFAULT_SIZE_CLASS } from './constants';
 import fallbackImage from './preveiwFallback.svg';
-import type { FileType } from './types';
-import ProgressDoughnut from '../../Progress/Doughnut';
+import ProgressDoughnut from '../../../Progress/Doughnut';
+import { ABSOLUTE_CENTER, DEFAULT_SIZE_CLASS } from '../constants';
+import type { FileType } from '../types';
 
 interface FilePreviewProps {
   children: ReactNode;

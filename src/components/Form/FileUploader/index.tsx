@@ -1,8 +1,8 @@
 'use client';
 import clsx from 'clsx';
 import { Fragment, type FC } from 'react';
-import FileInput from './FileInput';
-import SingleModePreview from './SingleModePreview';
+import FileInput from './Input/FileInput';
+import SingleModePreview from './Preview/SingleMode/SingleModePreview';
 import type { FileType, FileUploaderProps } from './types';
 
 import '@/src/styles.css';

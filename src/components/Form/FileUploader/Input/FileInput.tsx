@@ -1,17 +1,17 @@
 import clsx from 'clsx';
 import { useState, type DragEvent, type FC } from 'react';
 import IconPlus4 from '@/src/icons/IconPlus4';
+import FileInputIcon from './FileInputIcon';
+import Button from '../../../Button';
+import FieldBottomInfo from '../../Common/FieldBottomInfo/FieldBottomInfo';
 import {
   DEFAULT_SIZE_CLASS,
   DISABLED_CLASS,
   DRAG_CLASS,
   ERROR_CLASS,
   FOCUS_CLASS,
-} from './constants';
-import FileInputIcon from './FileInputIcon';
-import type { FileInputProps } from './types';
-import Button from '../../Button';
-import FieldBottomInfo from '../Common/FieldBottomInfo/FieldBottomInfo';
+} from '../constants';
+import type { FileInputProps } from '../types';
 
 function renderUploadButton(button: FileInputProps['button']) {
   const zIndexClass = 'dgs-ui-kit-relative dgs-ui-kit-z-10';
