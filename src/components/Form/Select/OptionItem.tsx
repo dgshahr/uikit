@@ -41,6 +41,7 @@ const OptionItem = <T,>(props: OptionItemProps<T>) => {
 
   return (
     <button
+      type="button"
       onClick={onClick}
       className={clsx(
         'dgs-ui-kit-w-full dgs-ui-kit-text-start dgs-ui-kit-px-3 disabled:dgs-ui-kit-cursor-not-allowed dgs-ui-kit-py-3 dgs-ui-kit-font-p1-regular disabled:dgs-ui-kit-bg-gray-50 dgs-ui-kit-transition',

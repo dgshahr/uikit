@@ -50,6 +50,7 @@ const Months: FC = () => {
         end: endOfYear(internalDate),
       }).map((month) => (
         <button
+          type="button"
           key={month.toString()}
           className={getMonthClassName({ month, ...datepickerProps })}
           onClick={() => handleMonthSelect(month)}
