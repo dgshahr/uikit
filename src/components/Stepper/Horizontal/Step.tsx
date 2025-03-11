@@ -20,6 +20,7 @@ export interface HorizontalStepProps {
   completeIcon?: ReactNode;
   activeIcon?: ReactNode;
   index?: number;
+  classname?: string;
 }
 
 const stepStatusClassnameMap: Record<HorizontalStepperStepStatus, string> = {
@@ -39,8 +40,17 @@ const stepOrientationClassnameMap: Record<HorizontalStepperStepOrientation, stri
 };
 
 const HorizontalStep: FC<HorizontalStepProps> = (props) => {
-  const { index, title, activeTitle, completeTitle, subTitle, icon, activeIcon, completeIcon } =
-    props;
+  const {
+    index,
+    title,
+    activeTitle,
+    completeTitle,
+    subTitle,
+    icon,
+    activeIcon,
+    completeIcon,
+    classname,
+  } = props;
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -61,8 +71,9 @@ const HorizontalStep: FC<HorizontalStepProps> = (props) => {
 
   const stepTitle = titleMap[status] ?? title;
 
-  const classname = clsx(
+  const containerClassname = clsx(
     'dgs-ui-kit-flex dgs-ui-kit-flex-grow dgs-ui-kit-min-w-max',
+    classname,
     stepStatusClassnameMap[status],
     stepSizeClassnameMap[size],
     stepOrientationClassnameMap[stepOrientation],
@@ -82,7 +93,7 @@ const HorizontalStep: FC<HorizontalStepProps> = (props) => {
     <>
       {index !== 0 && <Connector index={index} />}
       <div
-        className={classname}
+        className={containerClassname}
         ref={ref}
       >
         <StepIcon

@@ -105,6 +105,7 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
       {leftIcon && <div className="dgs-ui-kit-text-gray-600">{leftIcon}</div>}
       {restProps.type === 'password' && (
         <button
+          type="button"
           onClick={() => setType((prv) => (prv === 'text' ? 'password' : 'text'))}
           className="dgs-ui-kit-text-gray-600"
         >
