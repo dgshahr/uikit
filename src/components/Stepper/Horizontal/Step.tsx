@@ -71,7 +71,7 @@ const HorizontalStep: FC<HorizontalStepProps> = (props) => {
 
   const stepTitle = titleMap[status] ?? title;
 
-  const rootClassname = clsx(
+  const containerClassname = clsx(
     'dgs-ui-kit-flex dgs-ui-kit-flex-grow dgs-ui-kit-min-w-max',
     classname,
     stepStatusClassnameMap[status],
@@ -93,7 +93,7 @@ const HorizontalStep: FC<HorizontalStepProps> = (props) => {
     <>
       {index !== 0 && <Connector index={index} />}
       <div
-        className={rootClassname}
+        className={containerClassname}
         ref={ref}
       >
         <StepIcon
