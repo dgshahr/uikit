@@ -178,6 +178,16 @@
         "default": "./dist/Form/Select/index.cjs"
       }
     },
+    "./Form/Switch": {
+      "import": {
+        "types": "./dist/Form/Switch/index.d.ts",
+        "default": "./dist/Form/Switch/index.js"
+      },
+      "require": {
+        "types": "./dist/Form/Switch/index.d.ts",
+        "default": "./dist/Form/Switch/index.cjs"
+      }
+    },
     "./Form/Textarea": {
       "import": {
         "types": "./dist/Form/Textarea/index.d.ts",
