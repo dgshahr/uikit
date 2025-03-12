@@ -13,7 +13,79 @@ const meta = {
       },
     },
   },
-  argTypes: {},
+  argTypes: {
+    fileInputProps: {
+      table: {
+        type: {
+          summary: 'FileInputProps',
+          detail: `FileInputProps
+          extends Omit<
+            InputElement,
+            'type' | 'onChange' | 'onDragEnter' | 'onDragLeave' | 'onDrop'
+          > {
+          title?: string;
+          description?: string;
+          hideIcon?: boolean;
+          button?: boolean | ButtonProps;
+          helperProps?: {
+            errorMessage?: string;
+            hintMessage?: string;
+            extraHelper?: ReactNode;
+            className?: string;
+            };
+        }`,
+        },
+      },
+    },
+    mode: {
+      control: 'select',
+      options: ['single', 'multiple'],
+      table: {
+        type: {
+          summary: 'single, multiple',
+        },
+        defaultValue: { summary: 'single' },
+      },
+    },
+    files: {
+      table: {
+        type: {
+          summary: 'FileType (array on multiple mode)',
+          detail: `FileTyp {
+            file?: File;
+            src?: string;
+            loading?: boolean | number;
+            status?: 'warning' | 'error' | 'default';
+            title?: string;
+            errorMessage?: string;
+            hintMessage?: string;
+            className?: string;
+          }`,
+        },
+      },
+    },
+    previewProps: {
+      table: {
+        type: {
+          summary: 'FilePreviewProps (type is omited in single mode)',
+          detail: `FilePreviewProps {
+            type?: 'list' | 'grid';
+            leftButton?: boolean | Omit<ButtonProps, 'onClick'> {
+              onClick?: (file: FileType, e: MouseEvent<HTMLButtonElement>) => void;
+            };
+            rightButton?: boolean | Omit<ButtonProps, 'onClick'> {
+              onClick?: (file: FileType, e: MouseEvent<HTMLButtonElement>) => void;
+            };
+            exteraButton?: Omit<ButtonProps, 'onClick'> {
+              onClick?: (file: FileType, e: MouseEvent<HTMLButtonElement>) => void;
+            };
+            wrapperClassName?: string;
+            previewClassName?: string;
+          }`,
+        },
+      },
+    },
+  },
 } satisfies Meta<typeof FileUploader>;
 
 export default meta;
