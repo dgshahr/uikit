@@ -3,7 +3,7 @@ import type { FC } from 'react';
 
 import '@/src/styles.css';
 
-interface SwitchProps {
+export interface SwitchProps {
   checked: boolean;
   onChange: (checked: SwitchProps['checked']) => void;
   isIntermediate?: boolean;
