@@ -6,8 +6,6 @@ import MultipleModePreveiw from './Preview/MultipleMode/MultipleModePreveiw';
 import SingleModePreview from './Preview/SingleMode/SingleModePreview';
 import type { FilePreviewProps, FileType, FileUploaderProps } from './types';
 
-import '@/src/styles.css';
-
 const FileUploader: FC<FileUploaderProps> = (props) => {
   const { mode, fileInputProps, isError, disabled, onChange, files, previewProps, className } =
     props;
