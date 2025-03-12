@@ -4,7 +4,7 @@ import { c as a } from './clsx-B-dksMZM.js';
 import { r as B } from './index-RYns6xqu.js';
 import { I as b } from './IconCheckCircleBold-CcQAVhL9.js';
 import { I as v } from './IconCloseRemove-kum6LYKD.js';
-import { B as d } from './index-Cvf6grKF.js';
+import { B as d } from './index-C_dYOen0.js';
 /* empty css               */ const g = (i) =>
   e.jsx('svg', {
     xmlns: 'http://www.w3.org/2000/svg',

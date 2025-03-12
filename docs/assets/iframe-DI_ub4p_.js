@@ -3,55 +3,56 @@ const __vite__mapDeps = (
   m = __vite__mapDeps,
   d = m.f ||
     (m.f = [
-      './Accordion.stories-ATpkaxhH.js',
+      './Accordion.stories-BwHG88s7.js',
       './jsx-runtime-DEdD30eg.js',
       './index-RYns6xqu.js',
       './clsx-B-dksMZM.js',
       './IconArrowDown2-Eol_5cU7.js',
-      './index-630pQtdG.js',
-      './styles-Bss09-jC.css',
-      './Alert.stories-89aa1A75.js',
+      './index-CGFy4d2-.js',
+      './styles-BxoCF4MC.css',
+      './Alert.stories-BYeCgTis.js',
       './IconCheckCircleBold-CcQAVhL9.js',
       './IconCloseRemove-kum6LYKD.js',
-      './index-Cvf6grKF.js',
-      './Badge.stories-DUEKcIkg.js',
-      './index-B9ILpVy6.js',
-      './Breadcrumb.stories-CTQLteqZ.js',
+      './index-C_dYOen0.js',
+      './Badge.stories-Cqn-jVEK.js',
+      './index-BRONCrcv.js',
+      './Breadcrumb.stories-CohLyNoG.js',
       './IconQuestionMarkCircle-a5fTzrvb.js',
       './IconArrowLeft2-fPdVUTa8.js',
-      './Button.stories-Cu-S6kDI.js',
+      './Button.stories-C-r2fTT5.js',
       './IconArrowRight2-Cp_L8K-F.js',
-      './Chip.stories-CJC8qP7N.js',
-      './Divider.stories-D-kZv8Ha.js',
-      './Drawer.stories-CbOEjJ5-.js',
-      './index-CCWGEjvn.js',
+      './Chip.stories-DqM9Pv3I.js',
+      './Divider.stories-C-aqnD1B.js',
+      './Drawer.stories-Bedxs2vR.js',
+      './index-DR5mFksV.js',
       './index-DYmNCwer.js',
-      './Checkbox.stories-zSa5xaXL.js',
-      './index-DCpF48VY.js',
+      './Checkbox.stories-ZwJ5tH-6.js',
+      './index-d9U9ZUil.js',
       './omitObjects-DTdUR98j.js',
-      './RadioCheckboxWrapper-CEmpTwKo.js',
-      './Datepicker.stories-xpBqn4y5.js',
-      './PickerWrapper-CczaT49y.js',
-      './index-BeQ5uGMs.js',
+      './RadioCheckboxWrapper-D9e80v_H.js',
+      './Datepicker.stories-CmJ8wySF.js',
+      './PickerWrapper-Bc1YZHkP.js',
+      './index-Bt4iTh3Y.js',
       './IconEye-B0QP_hKN.js',
-      './TextFieldWrapper-DR0XtrR6.js',
+      './TextFieldWrapper-BouNr5dk.js',
       './FieldBottomInfo-CAJDJ2C4.js',
       './IconInfoCircleOutline-dnxLfpkw.js',
-      './FileUploader.stories-OCw-DyiT.js',
+      './FileUploader.stories-CRHCGro2.js',
       './index-HbNBLzHe.js',
-      './Input.stories-BkMFROlA.js',
-      './OtpInput.stories-Cm1dx68f.js',
-      './RadioButton.stories-Bz-n-sxF.js',
-      './Select.stories-CUS46tsD.js',
-      './Textarea.stories-DCR6jTDh.js',
-      './Pagination.stories-D8jNashS.js',
-      './ProgressBar.stories-C0BNkxtU.js',
+      './Input.stories-33petNgm.js',
+      './OtpInput.stories-Ms5WfNh0.js',
+      './RadioButton.stories-BBF44KYm.js',
+      './Select.stories-C26KkCkd.js',
+      './Switch.stories-CVZBkKpR.js',
+      './Textarea.stories-Aea15KHz.js',
+      './Pagination.stories-BMUwFQn9.js',
+      './ProgressBar.stories-BWdE6cPI.js',
       './ProgressDoughnut.stories-qTLTg8eT.js',
-      './Slider.stories-DdNBN41I.js',
+      './Slider.stories-Bs2yyDzG.js',
       './Stepper.stories-BQslCWmB.js',
-      './Tabs.stories-BlHat1M-.js',
-      './Tooltip.stories-DWUF_a6J.js',
-      './entry-preview-CvtRaqXA.js',
+      './Tabs.stories-ESbDuiXP.js',
+      './Tooltip.stories-DOrqQ3Ec.js',
+      './entry-preview-Dw6N2l2p.js',
       './chunk-H6MOWX77-DTQOW814.js',
       './entry-preview-docs-CKpws5_G.js',
       './index-B8HTi1Im.js',
@@ -149,172 +150,178 @@ window.CONFIG_TYPE === 'DEVELOPMENT' && (window.__STORYBOOK_SERVER_CHANNEL__ = E
 const D = {
   './src/components/Accordion/Accordion.stories.tsx': async () =>
     t(
-      () => import('./Accordion.stories-ATpkaxhH.js'),
+      () => import('./Accordion.stories-BwHG88s7.js'),
       __vite__mapDeps([0, 1, 2, 3, 4, 5, 6]),
       import.meta.url,
     ),
   './src/components/Alert/Alert.stories.tsx': async () =>
     t(
-      () => import('./Alert.stories-89aa1A75.js'),
+      () => import('./Alert.stories-BYeCgTis.js'),
       __vite__mapDeps([7, 1, 2, 3, 8, 9, 10, 6]),
       import.meta.url,
     ),
   './src/components/Badge/Badge.stories.tsx': async () =>
     t(
-      () => import('./Badge.stories-DUEKcIkg.js'),
+      () => import('./Badge.stories-Cqn-jVEK.js'),
       __vite__mapDeps([11, 12, 1, 2, 6]),
       import.meta.url,
     ),
   './src/components/Breadcrumb/Breadcrumb.stories.tsx': async () =>
     t(
-      () => import('./Breadcrumb.stories-CTQLteqZ.js'),
+      () => import('./Breadcrumb.stories-CohLyNoG.js'),
       __vite__mapDeps([13, 1, 2, 14, 3, 15, 6]),
       import.meta.url,
     ),
   './src/components/Button/Button.stories.tsx': async () =>
     t(
-      () => import('./Button.stories-Cu-S6kDI.js'),
+      () => import('./Button.stories-C-r2fTT5.js'),
       __vite__mapDeps([16, 1, 2, 15, 17, 10, 3, 6]),
       import.meta.url,
     ),
   './src/components/Chip/Chip.stories.tsx': async () =>
     t(
-      () => import('./Chip.stories-CJC8qP7N.js'),
+      () => import('./Chip.stories-DqM9Pv3I.js'),
       __vite__mapDeps([18, 1, 2, 4, 3, 12, 6]),
       import.meta.url,
     ),
   './src/components/Divider/Divider.stories.tsx': async () =>
     t(
-      () => import('./Divider.stories-D-kZv8Ha.js'),
+      () => import('./Divider.stories-C-aqnD1B.js'),
       __vite__mapDeps([19, 1, 2, 5, 6]),
       import.meta.url,
     ),
   './src/components/Drawer/Drawer.stories.tsx': async () =>
     t(
-      () => import('./Drawer.stories-CbOEjJ5-.js'),
+      () => import('./Drawer.stories-Bedxs2vR.js'),
       __vite__mapDeps([20, 1, 2, 10, 3, 6, 21, 22, 9]),
       import.meta.url,
     ),
   './src/components/Form/Checkbox/Checkbox.stories.tsx': async () =>
     t(
-      () => import('./Checkbox.stories-zSa5xaXL.js'),
+      () => import('./Checkbox.stories-ZwJ5tH-6.js'),
       __vite__mapDeps([23, 24, 1, 2, 3, 25, 26, 6]),
       import.meta.url,
     ),
   './src/components/Form/Datepicker/Datepicker.stories.tsx': async () =>
     t(
-      () => import('./Datepicker.stories-xpBqn4y5.js'),
+      () => import('./Datepicker.stories-CmJ8wySF.js'),
       __vite__mapDeps([27, 1, 2, 3, 10, 6, 28, 21, 22, 9, 4, 29, 30, 25, 31, 32, 33, 15, 17]),
       import.meta.url,
     ),
   './src/components/Form/FileUploader/FileUploader.stories.tsx': async () =>
     t(
-      () => import('./FileUploader.stories-OCw-DyiT.js'),
+      () => import('./FileUploader.stories-CRHCGro2.js'),
       __vite__mapDeps([34, 1, 2, 3, 10, 6, 32, 33, 35, 30]),
       import.meta.url,
     ),
   './src/components/Form/Input/Input.stories.tsx': async () =>
     t(
-      () => import('./Input.stories-BkMFROlA.js'),
+      () => import('./Input.stories-33petNgm.js'),
       __vite__mapDeps([36, 1, 2, 29, 3, 30, 25, 31, 32, 33, 6]),
       import.meta.url,
     ),
   './src/components/Form/OtpInput/OtpInput.stories.tsx': async () =>
     t(
-      () => import('./OtpInput.stories-Cm1dx68f.js'),
+      () => import('./OtpInput.stories-Ms5WfNh0.js'),
       __vite__mapDeps([37, 1, 2, 3, 32, 33, 31, 6, 29, 30, 25]),
       import.meta.url,
     ),
   './src/components/Form/RadioButton/RadioButton.stories.tsx': async () =>
     t(
-      () => import('./RadioButton.stories-Bz-n-sxF.js'),
+      () => import('./RadioButton.stories-BBF44KYm.js'),
       __vite__mapDeps([38, 1, 2, 3, 25, 26, 6]),
       import.meta.url,
     ),
   './src/components/Form/Select/Select.stories.tsx': async () =>
     t(
-      () => import('./Select.stories-CUS46tsD.js'),
+      () => import('./Select.stories-C26KkCkd.js'),
       __vite__mapDeps([39, 1, 2, 3, 4, 12, 6, 10, 24, 25, 26, 29, 30, 31, 32, 33, 28, 21, 22, 9]),
+      import.meta.url,
+    ),
+  './src/components/Form/Switch/Switch.stories.tsx': async () =>
+    t(
+      () => import('./Switch.stories-CVZBkKpR.js'),
+      __vite__mapDeps([40, 1, 2, 3, 6]),
       import.meta.url,
     ),
   './src/components/Form/Textarea/Textarea.stories.tsx': async () =>
     t(
-      () => import('./Textarea.stories-DCR6jTDh.js'),
-      __vite__mapDeps([40, 1, 2, 3, 25, 31, 32, 33, 6]),
+      () => import('./Textarea.stories-Aea15KHz.js'),
+      __vite__mapDeps([41, 1, 2, 3, 25, 31, 32, 33, 6]),
       import.meta.url,
     ),
   './src/components/Pagination/Pagination.stories.tsx': async () =>
     t(
-      () => import('./Pagination.stories-D8jNashS.js'),
-      __vite__mapDeps([41, 1, 2, 3, 15, 17, 10, 6]),
+      () => import('./Pagination.stories-BMUwFQn9.js'),
+      __vite__mapDeps([42, 1, 2, 3, 15, 17, 10, 6]),
       import.meta.url,
     ),
   './src/components/Progress/Bar/ProgressBar.stories.tsx': async () =>
     t(
-      () => import('./ProgressBar.stories-C0BNkxtU.js'),
-      __vite__mapDeps([42, 1, 2, 3, 6]),
+      () => import('./ProgressBar.stories-BWdE6cPI.js'),
+      __vite__mapDeps([43, 1, 2, 3, 6]),
       import.meta.url,
     ),
   './src/components/Progress/Doughnut/ProgressDoughnut.stories.tsx': async () =>
     t(
       () => import('./ProgressDoughnut.stories-qTLTg8eT.js'),
-      __vite__mapDeps([43, 35, 1, 2, 3]),
+      __vite__mapDeps([44, 35, 1, 2, 3]),
       import.meta.url,
     ),
   './src/components/Slider/Slider.stories.tsx': async () =>
     t(
-      () => import('./Slider.stories-DdNBN41I.js'),
-      __vite__mapDeps([44, 1, 2, 3, 15, 17, 10, 6]),
+      () => import('./Slider.stories-Bs2yyDzG.js'),
+      __vite__mapDeps([45, 1, 2, 3, 15, 17, 10, 6]),
       import.meta.url,
     ),
   './src/components/Stepper/Horizontal/Stepper.stories.tsx': async () =>
     t(
       () => import('./Stepper.stories-BQslCWmB.js'),
-      __vite__mapDeps([45, 1, 2, 3, 8, 14]),
+      __vite__mapDeps([46, 1, 2, 3, 8, 14]),
       import.meta.url,
     ),
   './src/components/Tabs/Tabs.stories.tsx': async () =>
     t(
-      () => import('./Tabs.stories-BlHat1M-.js'),
-      __vite__mapDeps([46, 1, 2, 3, 12, 6]),
+      () => import('./Tabs.stories-ESbDuiXP.js'),
+      __vite__mapDeps([47, 1, 2, 3, 12, 6]),
       import.meta.url,
     ),
   './src/components/Tooltip/Tooltip.stories.tsx': async () =>
     t(
-      () => import('./Tooltip.stories-DWUF_a6J.js'),
-      __vite__mapDeps([47, 1, 2, 33, 3, 6]),
+      () => import('./Tooltip.stories-DOrqQ3Ec.js'),
+      __vite__mapDeps([48, 1, 2, 33, 3, 6]),
       import.meta.url,
     ),
 };
 async function I(e) {
   return D[e]();
 }
-const { composeConfigs: y, PreviewWeb: v, ClientApi: g } = __STORYBOOK_MODULE_PREVIEW_API__,
+const { composeConfigs: y, PreviewWeb: v, ClientApi: x } = __STORYBOOK_MODULE_PREVIEW_API__,
   V = async (e = []) => {
     const i = await Promise.all([
       e.at(0) ??
         t(
-          () => import('./entry-preview-CvtRaqXA.js'),
-          __vite__mapDeps([48, 49, 2, 22]),
+          () => import('./entry-preview-Dw6N2l2p.js'),
+          __vite__mapDeps([49, 50, 2, 22]),
           import.meta.url,
         ),
       e.at(1) ??
         t(
           () => import('./entry-preview-docs-CKpws5_G.js'),
-          __vite__mapDeps([50, 49, 51, 2, 52]),
+          __vite__mapDeps([51, 50, 52, 2, 53]),
           import.meta.url,
         ),
-      e.at(2) ?? t(() => import('./preview-DsTU7GAO.js'), [], import.meta.url),
+      e.at(2) ?? t(() => import('./preview-CGxCDFSx.js'), [], import.meta.url),
       e.at(3) ??
-        t(() => import('./preview-ncvtW_hb.js'), __vite__mapDeps([53, 52]), import.meta.url),
+        t(() => import('./preview-ncvtW_hb.js'), __vite__mapDeps([54, 53]), import.meta.url),
       e.at(4) ?? t(() => import('./preview-DYzi3Z2p.js'), [], import.meta.url),
       e.at(5) ?? t(() => import('./preview-CuLlOZat.js'), [], import.meta.url),
       e.at(6) ??
-        t(() => import('./preview-BWzBA1C2.js'), __vite__mapDeps([54, 52]), import.meta.url),
+        t(() => import('./preview-BWzBA1C2.js'), __vite__mapDeps([55, 53]), import.meta.url),
       e.at(7) ?? t(() => import('./preview-caVMbCIR.js'), [], import.meta.url),
       e.at(8) ?? t(() => import('./preview-DHPc-V4N.js'), [], import.meta.url),
       e.at(9) ??
-        t(() => import('./preview-CLz-cDls.js'), __vite__mapDeps([55, 1, 2]), import.meta.url),
+        t(() => import('./preview-CLz-cDls.js'), __vite__mapDeps([56, 1, 2]), import.meta.url),
     ]);
     return y(i);
   };

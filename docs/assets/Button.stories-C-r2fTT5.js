@@ -2,7 +2,7 @@ import { j as t } from './jsx-runtime-DEdD30eg.js';
 import './index-RYns6xqu.js';
 import { I as o } from './IconArrowLeft2-fPdVUTa8.js';
 import { I as e } from './IconArrowRight2-Cp_L8K-F.js';
-import { B as a } from './index-Cvf6grKF.js';
+import { B as a } from './index-C_dYOen0.js';
 import './clsx-B-dksMZM.js';
 /* empty css               */ const u = {
     title: 'Components/Button',

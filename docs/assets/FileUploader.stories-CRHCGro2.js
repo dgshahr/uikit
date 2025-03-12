@@ -2,7 +2,7 @@
 import { j as e } from './jsx-runtime-DEdD30eg.js';
 import { r as v } from './index-RYns6xqu.js';
 import { c as d } from './clsx-B-dksMZM.js';
-import { B as y } from './index-Cvf6grKF.js';
+import { B as y } from './index-C_dYOen0.js';
 import { F as j } from './FieldBottomInfo-CAJDJ2C4.js';
 import { P as V } from './index-HbNBLzHe.js';
 import { I as W } from './IconEye-B0QP_hKN.js';
@@ -518,13 +518,13 @@ const H = (t) => {
               color: 'gray',
               icon: e.jsx(W, {}),
               variant: 'text',
-              className: '!dgs-ui-kit-opacity-100 !dgs-ui-kit-p-0',
+              className: '!dgs-ui-kit-opacity-100',
             }),
             k(a, i, {
               color: 'error',
               icon: e.jsx(D, {}),
               variant: 'text',
-              className: '!dgs-ui-kit-opacity-100 !dgs-ui-kit-p-0',
+              className: '!dgs-ui-kit-opacity-100',
             }),
           ],
         }),

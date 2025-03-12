@@ -4,7 +4,7 @@ import { c as y } from './clsx-B-dksMZM.js';
 import { r as j } from './index-RYns6xqu.js';
 import { I } from './IconArrowLeft2-fPdVUTa8.js';
 import { I as S } from './IconArrowRight2-Cp_L8K-F.js';
-import { B as b } from './index-Cvf6grKF.js';
+import { B as b } from './index-C_dYOen0.js';
 /* empty css               */ const c = '...';
 function f(o, g) {
   const n = g - o + 1;
