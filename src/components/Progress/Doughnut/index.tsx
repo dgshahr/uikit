@@ -56,7 +56,7 @@ const ProgressDoughnut: FC<ProgressDoughnutProps> = (props) => {
         cx={size / 2}
         cy={size / 2}
         r={radius}
-        className={COLORS_CLASSES[color].filled}
+        className={clsx(COLORS_CLASSES[color].filled, 'dgs-ui-kit-transition-all')}
         strokeWidth={strokeSize}
         fill="none"
         strokeDasharray={circumference}
