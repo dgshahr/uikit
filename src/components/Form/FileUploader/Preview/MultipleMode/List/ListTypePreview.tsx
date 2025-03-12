@@ -68,13 +68,13 @@ const ListTypePreview: FC<PreviewProps<FileType>> = (props) => {
             color: 'gray',
             icon: <IconEye />,
             variant: 'text',
-            className: '!dgs-ui-kit-opacity-100 !dgs-ui-kit-p-0',
+            className: '!dgs-ui-kit-opacity-100',
           })}
           {renderPreviewDefaultAction(leftButton, file, {
             color: 'error',
             icon: <IconDelete />,
             variant: 'text',
-            className: '!dgs-ui-kit-opacity-100 !dgs-ui-kit-p-0',
+            className: '!dgs-ui-kit-opacity-100',
           })}
         </div>
       )}
