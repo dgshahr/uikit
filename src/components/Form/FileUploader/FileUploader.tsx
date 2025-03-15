@@ -19,7 +19,7 @@ const FileUploader: FC<FileUploaderProps> = (props) => {
   const WrapperElement = wrapperClassName ? 'div' : Fragment;
 
   return (
-    <WrapperElement className={wrapperClassName}>
+    <WrapperElement {...(WrapperElement === 'div' ? { className } : {})}>
       {((!haveFiles && mode === 'single') || mode !== 'single') && (
         <FileInput
           {...fileInputProps}
