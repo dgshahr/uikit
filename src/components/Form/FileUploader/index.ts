@@ -1,6 +1,5 @@
-import FileUploader from './FileUploader';
 import '@/src/styles.css';
 
-export default FileUploader;
+export { default } from './FileUploader';
 
 export * from './types';
