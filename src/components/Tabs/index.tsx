@@ -47,6 +47,7 @@ const Tabs: FC<TabsProps> = (props) => {
       {items.map((tab) => (
         <button
           key={tab.key}
+          type="button"
           onClick={() => onChange(tab.key)}
           disabled={tab.disabled}
           className={clsx('dgs-ui-kit-group', {
