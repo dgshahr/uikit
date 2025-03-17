@@ -27,19 +27,35 @@ function findComponents(dir) {
 const components = findComponents(componentsDir).filter((component) => Boolean(component));
 components.unshift('index.ts');
 
+const privatePaths = {
+  Form: ['Wrappers', 'Common'],
+};
+let exploredDirectories = [];
 const exports = components.reduce((exports, component) => {
+  const directoryDivider = /\\/g;
   const isMainIndex = component === 'index.ts';
-  const componentPath = `${distDir}${isMainIndex ? '' : `/${component.replace(/\\/g, '/')}`}`;
+  const componentPath = `${distDir}${isMainIndex ? '' : `/${component.replace(directoryDivider, '/')}`}`;
+  const isComponentInDirectory = component.includes('\\');
 
-  exports[isMainIndex ? '.' : `./${component.replace(/\\/g, '/')}`] = {
-    import: {
-      types: `${componentPath}/index.d.ts`,
-      default: `${componentPath}/index.js`,
-    },
-    require: {
-      types: `${componentPath}/index.d.ts`,
-      default: `${componentPath}/index.cjs`,
-    },
+  if (isComponentInDirectory) {
+    const directoryName = component.slice(0, component.search(directoryDivider));
+    if (!exploredDirectories.includes(directoryName)) {
+      exports[`./${directoryName}/`] = `${distDir}/${directoryName}/`;
+      exploredDirectories.push(directoryName);
+
+      if (Object.keys(privatePaths).includes(directoryName)) {
+        privatePaths[directoryName].forEach(
+          (directory) => (exports[`./${directoryName}/${directory}/*`] = null),
+        );
+      }
+    }
+    exports[`./${component.replace(directoryDivider, '/')}/*`] = null;
+  }
+
+  exports[isMainIndex ? '.' : `./${component.replace(directoryDivider, '/')}`] = {
+    import: `${componentPath}/index.mjs`,
+    require: `${componentPath}/index.cjs`,
+    types: `${componentPath}/index.d.ts`,
   };
   return exports;
 }, {});

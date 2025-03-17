@@ -52,7 +52,7 @@ export default defineConfig({
       entry: entries,
       name: '@dgshahr/ui-kit',
       fileName: (format, entryName) => {
-        const fileExt = format === 'es' || format === 'esm' || format === 'module' ? 'js' : format;
+        const fileExt = format === 'es' || format === 'esm' || format === 'module' ? 'mjs' : format;
         if (entryName === 'index') return `index.${fileExt}`;
         return `${entryName}/index.${fileExt}`;
       },
