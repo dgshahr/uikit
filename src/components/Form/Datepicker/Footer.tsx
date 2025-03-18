@@ -19,6 +19,7 @@ const Footer: FC = () => {
     >
       {showTodayButton && (
         <Button
+          type="button"
           variant="text"
           size="small"
           isFullWidth={showSubmitButton}
@@ -32,6 +33,7 @@ const Footer: FC = () => {
       )}
       {showSubmitButton && (
         <Button
+          type="button"
           size="small"
           isFullWidth={showTodayButton}
           onClick={() => {
