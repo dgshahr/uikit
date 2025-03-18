@@ -8,7 +8,7 @@ import { resolve } from 'node:path';
 
 import { peerDependencies } from './package.json';
 
-const componentDir = resolve(__dirname, 'src/components');
+const componentDir = resolve(__dirname, './src/components');
 
 const findEntries = (dir: string) => {
   const entries = {};
