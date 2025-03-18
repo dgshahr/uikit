@@ -36,6 +36,7 @@ const l = (s) => {
       t.jsxs(
         'button',
         {
+          type: 'button',
           onClick: () => u(e.key),
           disabled: e.disabled,
           className: a('dgs-ui-kit-group', { 'dgs-ui-kit-flex-1': n && d }),

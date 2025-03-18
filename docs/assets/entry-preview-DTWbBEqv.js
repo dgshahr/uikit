@@ -3,7 +3,7 @@ const __vite__mapDeps = (
   m = __vite__mapDeps,
   d = m.f || (m.f = ['./react-18-CJwW9gwZ.js', './index-RYns6xqu.js', './index-DYmNCwer.js']),
 ) => i.map((i) => d[i]);
-import { _ as bt } from './iframe-DI_ub4p_.js';
+import { _ as bt } from './iframe-BN7BdcuL.js';
 import { _ as Ut } from './chunk-H6MOWX77-DTQOW814.js';
 import { g as Ft, r as F, R as K } from './index-RYns6xqu.js';
 import { r as kt } from './index-DYmNCwer.js';

@@ -131,12 +131,12 @@ const A = (t) => {
       onChange: o,
       helperProps: u,
       previewtype: c,
-      ...g
+      ...f
     } = t,
-    [p, m] = v.useState(!1),
+    [p, g] = v.useState(!1),
     h = c === 'grid';
   function G(w) {
-    w.preventDefault(), m(!1), o(w.dataTransfer.files?.[0]);
+    w.preventDefault(), g(!1), o(w.dataTransfer.files?.[0]);
   }
   return e.jsxs('div', {
     className: 'dgs-ui-kit-space-y-2',
@@ -176,11 +176,11 @@ const A = (t) => {
             className:
               '!dgs-ui-kit-mt-0 dgs-ui-kit-absolute dgs-ui-kit-inset-0 dgs-ui-kit-size-full dgs-ui-kit-opacity-0 dgs-ui-kit-cursor-pointer disabled:dgs-ui-kit-cursor-not-allowed dgs-ui-kit-z-10',
             type: 'file',
-            onDragEnter: () => m(!0),
-            onDragLeave: () => m(!1),
+            onDragEnter: () => g(!0),
+            onDragLeave: () => g(!1),
             onDrop: G,
             onChange: (w) => o(w.currentTarget.files?.[0]),
-            ...g,
+            ...f,
           }),
         ],
       }),
@@ -476,9 +476,9 @@ const H = (t) => {
       rightButton: n = !0,
       exteraButton: s,
     } = t,
-    { status: l, errorMessage: o, hintMessage: u, loading: c, title: g } = i,
-    p = g ?? i.file?.name,
-    m = !!(o ?? u);
+    { status: l, errorMessage: o, hintMessage: u, loading: c, title: f } = i,
+    p = f ?? i.file?.name,
+    g = !!(o ?? u);
   return e.jsxs('div', {
     className: d(
       'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-space-x-2 dgs-ui-kit-space-x-reverse dgs-ui-kit-w-0 dgs-ui-kit-min-w-full',
@@ -488,7 +488,7 @@ const H = (t) => {
     ),
     children: [
       e.jsx(I, { file: i, className: '!dgs-ui-kit-size-[72px] dgs-ui-kit-shrink-0' }),
-      !!(p ?? m) &&
+      !!(p ?? g) &&
         e.jsxs('div', {
           className: 'dgs-ui-kit-space-y-1 dgs-ui-kit-overflow-hidden dgs-ui-kit-w-full',
           children: [
@@ -498,7 +498,7 @@ const H = (t) => {
                   'dgs-ui-kit-font-p2-medium dgs-ui-kit-text-gray-700 dgs-ui-kit-break-words dgs-ui-kit-line-clamp-1',
                 children: p,
               }),
-            m && e.jsx(j, { hintMessage: u, errorMessage: o }),
+            g && e.jsx(j, { hintMessage: u, errorMessage: o }),
           ],
         }),
       (a || n || s) &&
@@ -645,12 +645,12 @@ const z = (t) => {
       wrapperClassName: s,
       previewClassName: l,
     } = t,
-    { errorMessage: o, file: u, hintMessage: c, loading: g, status: p, title: m } = i;
+    { errorMessage: o, file: u, hintMessage: c, loading: f, status: p, title: g } = i;
   return e.jsxs('div', {
     className: 'dgs-ui-kit-space-y-2',
     children: [
       e.jsxs('div', {
-        className: d(T(g, o ? 'error' : p), s),
+        className: d(T(f, o ? 'error' : p), s),
         children: [
           e.jsxs(I, {
             file: i,
@@ -681,13 +681,13 @@ const z = (t) => {
                 : null,
             ],
           }),
-          !!(m ?? u?.name) &&
+          !!(g ?? u?.name) &&
             e.jsx('div', {
               className: d(
-                $(g, o, p),
+                $(f, o, p),
                 'dgs-ui-kit-px-3 dgs-ui-kit-py-1.5 dgs-ui-kit-rounded-lg dgs-ui-kit-font-p2-medium dgs-ui-kit-text-center dgs-ui-kit-line-clamp-1 dgs-ui-kit-mt-1 dgs-ui-kit-w-0 dgs-ui-kit-min-w-full',
               ),
-              children: m ?? u?.name,
+              children: g ?? u?.name,
             }),
         ],
       }),
@@ -752,15 +752,16 @@ const F = (t) => {
       className: u,
     } = t,
     c = Array.isArray(l) ? l.length > 0 : !!l,
-    g = d(
+    p = d(
       i === 'multiple' &&
         o?.type === 'grid' &&
         'dgs-ui-kit-flex dgs-ui-kit-space-x-2 dgs-ui-kit-space-x-reverse',
       u,
-    ),
-    p = g ? 'div' : v.Fragment;
+    )
+      ? 'div'
+      : v.Fragment;
   return e.jsxs(p, {
-    className: g,
+    ...(p === 'div' ? { className: u } : {}),
     children: [
       ((!c && i === 'single') || i !== 'single') &&
         e.jsx(A, { ...r, previewtype: o?.type, disabled: n, isError: a, onChange: s }),
@@ -903,7 +904,7 @@ const ue = {
       },
     },
   },
-  f = {
+  m = {
     onChange: () => {},
     fileInputProps: {
       title: 'عنوان',
@@ -949,14 +950,14 @@ const ue = {
   },
   x = {
     args: {
-      ...f,
+      ...m,
       fileInputProps: {
-        ...f.fileInputProps,
+        ...m.fileInputProps,
         description: `فرمت‌های قابل قبول JPG , PNG
 حداکثر حجم تا 5Mb`,
       },
       previewProps: {
-        ...f.previewProps,
+        ...m.previewProps,
         exteraButton: { variant: 'secondary', children: 'عنوان', size: 'small' },
       },
     },
@@ -979,19 +980,19 @@ const ue = {
     });
   },
   C = {
-    args: { ...f, mode: 'multiple', previewProps: { ...f.previewProps, type: 'grid' } },
+    args: { ...m, mode: 'multiple', previewProps: { ...m.previewProps, type: 'grid' } },
     render: (t) => e.jsx(U, { ...t }),
   },
   P = {
     args: {
-      ...f,
+      ...m,
       mode: 'multiple',
       fileInputProps: {
-        ...f.fileInputProps,
+        ...m.fileInputProps,
         description: `فرمت‌های قابل قبول JPG , PNG
 حداکثر حجم تا 5Mb`,
       },
-      previewProps: { ...f.previewProps, type: 'list' },
+      previewProps: { ...m.previewProps, type: 'list' },
     },
     render: (t) => e.jsx(U, { ...t }),
   };
