@@ -53,9 +53,9 @@ const exports = components.reduce((exports, component) => {
   }
 
   exports[isMainIndex ? '.' : `./${component.replace(directoryDivider, '/')}`] = {
+    types: `${componentPath}/index.d.ts`,
     import: `${componentPath}/index.mjs`,
     require: `${componentPath}/index.cjs`,
-    types: `${componentPath}/index.d.ts`,
   };
   return exports;
 }, {});
