@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { type ForwardedRef, type InputHTMLAttributes, forwardRef, useState } from 'react';
+import { type ForwardedRef, type InputHTMLAttributes, type JSX, forwardRef, useState } from 'react';
 import IconCloseSquare from '@/src/icons/IconCloseSquare';
 import IconEye from '@/src/icons/IconEye';
 import IconHide from '@/src/icons/IconHide';

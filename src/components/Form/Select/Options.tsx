@@ -75,7 +75,7 @@ const Options = <T,>(props: SelectProps<T>) => {
     if (!container) return;
 
     const scrollTop = container.scrollTop;
-    const optionsContainerOffsetTop = containerRef.current.offsetTop;
+    const optionsContainerOffsetTop = containerRef.current!.offsetTop;
     const visibleStart = Math.floor((scrollTop - optionsContainerOffsetTop) / itemHeight);
 
     setStartIndex(visibleStart >= 0 ? visibleStart : 0);

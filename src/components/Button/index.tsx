@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import type { FC, PropsWithChildren } from 'react';
+import type { FC, JSX, PropsWithChildren } from 'react';
 import { iconOnlyButtonSizeStyle, sizeStyle, variantStyle } from './variants';
 
 import '@/src/styles.css';

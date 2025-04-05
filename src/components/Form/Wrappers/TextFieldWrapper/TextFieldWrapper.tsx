@@ -1,6 +1,6 @@
 'use client';
 import clsx from 'clsx';
-import React, { type FC, type ReactNode } from 'react';
+import React, { type FC, type JSX, type ReactNode } from 'react';
 import FieldBottomInfo, {
   type FieldBottomInfoProps,
 } from '../../Common/FieldBottomInfo/FieldBottomInfo';
