@@ -47,7 +47,7 @@ const AccordionItem: FC<PropsWithChildren<AccordionItemProps>> = (props) => {
         </div>
         <IconArrowDown2
           className={clsx(
-            'dgs-ui-kit-transition dgs-ui-kit-duration-300 dgs-ui-kit-ease-in-out dgs-ui-kit-shrink-0 dgs-ui-kit-w-auto dgs-ui-kit-h-auto',
+            'dgs-ui-kit-transition-transform dgs-ui-kit-duration-300 dgs-ui-kit-shrink-0 dgs-ui-kit-w-auto dgs-ui-kit-h-auto',
             isItemActive && 'dgs-ui-kit-rotate-180',
           )}
           width={20}
