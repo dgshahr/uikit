@@ -1,5 +1,11 @@
 export default function focusAndOpenKeyboard(el: HTMLElement | null, timeout = 100) {
   if (!el) return;
+  // Focus on element if device was desktop
+  if (window.innerWidth > 768) {
+    el.focus();
+    el.click();
+    return;
+  }
   // Align temp input element approximately where the input element is
   // so the cursor doesn't jump around
   const tempEl = document.createElement('input');
