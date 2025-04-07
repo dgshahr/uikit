@@ -30,7 +30,7 @@ interface BadgePropsWithoutIcon extends Omit<BadgePropsBase, 'icon'> {
   valueType: 'number';
 }
 
-type BadgeProps = BadgePropsWithIcon | BadgePropsWithoutIcon;
+export type BadgeProps = BadgePropsWithIcon | BadgePropsWithoutIcon;
 
 function styleBadge(options: Omit<Required<BadgeProps>, 'value' | 'icon' | 'width'>) {
   const defaultClassName =
