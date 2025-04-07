@@ -12,17 +12,38 @@ interface AccordionItemProps {
   className?: string;
   contentClassName?: string;
   hideDivider?: boolean;
+  hideArrow?: boolean;
+  titleClassName?: string;
+  disable?: boolean;
 }
 
 const AccordionItem: FC<PropsWithChildren<AccordionItemProps>> = (props) => {
-  const { children, title, accordionKey, className, contentClassName, hideDivider = false } = props;
+  const {
+    children,
+    title,
+    accordionKey,
+    className,
+    contentClassName,
+    hideDivider = false,
+    hideArrow = false,
+    titleClassName,
+    disable,
+  } = props;
   const { activeKey, setActiveKey } = useAccordionContext();
   const reactUseId = useId();
   const accordionItemKey = accordionKey ?? reactUseId;
   const isAccordionDisable = Array.isArray(activeKey);
-  const isItemActive = isAccordionDisable
-    ? activeKey.includes(accordionItemKey)
-    : accordionItemKey === activeKey;
+
+  function checkIsItemActive() {
+    if (disable) return false;
+
+    if (isAccordionDisable) {
+      return activeKey.includes(accordionItemKey);
+    }
+    return accordionItemKey === activeKey;
+  }
+
+  const isItemActive = checkIsItemActive();
 
   function toggleItemVisibility() {
     if (isItemActive) {
@@ -39,20 +60,24 @@ const AccordionItem: FC<PropsWithChildren<AccordionItemProps>> = (props) => {
         className={clsx(
           'dgs-ui-kit-flex dgs-ui-kit-justify-between dgs-ui-kit-items-center dgs-ui-kit-w-full',
           isItemActive ? 'dgs-ui-kit-text-primary-500' : 'dgs-ui-kit-text-gray-600',
+          titleClassName,
         )}
         onClick={toggleItemVisibility}
+        disabled={disable}
       >
         <div className={isItemActive ? 'dgs-ui-kit-font-h5-bold' : 'dgs-ui-kit-font-p1-medium'}>
           {title}
         </div>
-        <IconArrowDown2
-          className={clsx(
-            'dgs-ui-kit-transition-transform dgs-ui-kit-duration-300 dgs-ui-kit-shrink-0 dgs-ui-kit-w-auto dgs-ui-kit-h-auto',
-            isItemActive && 'dgs-ui-kit-rotate-180',
-          )}
-          width={20}
-          height={20}
-        />
+        {!hideArrow && (
+          <IconArrowDown2
+            className={clsx(
+              'dgs-ui-kit-transition-transform dgs-ui-kit-duration-300 dgs-ui-kit-shrink-0 dgs-ui-kit-w-auto dgs-ui-kit-h-auto',
+              isItemActive && 'dgs-ui-kit-rotate-180',
+            )}
+            width={20}
+            height={20}
+          />
+        )}
       </button>
       <div
         className={clsx(
