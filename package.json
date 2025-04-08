@@ -1,6 +1,6 @@
 {
   "name": "@dgshahr/ui-kit",
-  "version": "0.0.85",
+  "version": "0.0.86",
   "description": "dgshahr ui-kit",
   "author": "dgshahr",
   "license": "MIT",
@@ -137,6 +137,11 @@
       "types": "./dist/Progress/Doughnut/index.d.ts",
       "import": "./dist/Progress/Doughnut/index.mjs",
       "require": "./dist/Progress/Doughnut/index.cjs"
+    },
+    "./Sidebar": {
+      "types": "./dist/Sidebar/index.d.ts",
+      "import": "./dist/Sidebar/index.mjs",
+      "require": "./dist/Sidebar/index.cjs"
     },
     "./Slider": {
       "types": "./dist/Slider/index.d.ts",
