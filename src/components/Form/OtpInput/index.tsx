@@ -40,6 +40,14 @@ const OtpInput: FC<OtpInputProps> = (props) => {
 
   function handleInputKeyUp(e: KeyboardEvent<HTMLInputElement>, index: number) {
     const key = [e.code, e.key];
+
+    // Move forward if current input and key have the same value
+    // because it doesn't tregger onChange in this situation
+    if (value[index] && key.includes(value[index])) {
+      focusOnInput(index + 1);
+      return;
+    }
+
     if (key.includes('Backspace') || key.includes('Delete')) {
       const newValues = value.split('');
       newValues[index] = '';
