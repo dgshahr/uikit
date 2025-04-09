@@ -111,6 +111,7 @@ const SidebarItems: FC = () => {
                             value={thirdLevelItem.badgeCount}
                             color="error"
                             type="twoTone"
+                            size="small"
                           />
                         )}
                       </a>

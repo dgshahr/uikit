@@ -44,6 +44,7 @@ export function getSecondLevelItemContent(
           value={item.badgeCount}
           valueType="number"
           color="error"
+          size="small"
         />
       )}
     </div>
