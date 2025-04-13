@@ -78,8 +78,7 @@ export const Default: Story = {
       loading: 'eager',
     },
     userProfile: {
-      image:
-        'https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?semt=ais_country_boost&w=740',
+      image: 'https://lend-front.s3.ir-thr-at1.arvanstorage.ir/images/Profile.png',
       name: 'نام و نام خانوادگی',
       description: 'سمت',
     },
