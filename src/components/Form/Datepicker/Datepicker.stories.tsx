@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { DatepickerProps } from './types';
+import { fullWidthStory } from '../../../utils/storybook/helpers';
+
 import Datepicker from '.';
 
 const meta = {
@@ -13,6 +15,7 @@ const meta = {
       },
     },
   },
+  beforeEach: () => fullWidthStory({ alignItems: 'flex-start', height: '550px' }),
   argTypes: {
     value: {
       table: {

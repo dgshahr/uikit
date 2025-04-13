@@ -4,9 +4,12 @@ import React, { useState } from 'react';
 import cities from './cities.json';
 import IconArrowDown2 from '../../../icons/IconArrowDown2';
 import IconRinging3Outline from '../../../icons/IconRinging3Outline';
+import { fullWidthStory } from '../../../utils/storybook/helpers';
 import Badge from '../../Badge';
 import Button from '../../Button';
+
 import Select from './index';
+
 const meta = {
   title: 'Components/Form/Select',
   component: Select,
@@ -17,6 +20,7 @@ const meta = {
       },
     },
   },
+  beforeEach: () => fullWidthStory({ alignItems: 'flex-start', height: '450px' }),
   argTypes: {
     options: {
       control: { type: 'object', disable: true },

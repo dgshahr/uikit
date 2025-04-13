@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import IconInfoCircleOutline from '../../icons/IconInfoCircleOutline';
+import { fullWidthStory } from '../../utils/storybook/helpers';
 
 import Tooltip from './index';
 
@@ -16,7 +17,7 @@ const meta = {
   },
   argTypes: {
     children: {
-      description: 'The element we hover on',
+      description: 'The element to hover on',
     },
     tailPosition: {
       table: {
@@ -36,6 +37,10 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  beforeEach: () =>
+    fullWidthStory({
+      height: '400px',
+    }),
   args: {
     children: <span>hover me</span>,
     title: 'عنوان پیام',

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import IconUserBold from '../../icons/IconUserBold';
+import { fullWidthStory } from '../../utils/storybook/helpers';
 
 import Tabs from './index';
 
@@ -13,6 +14,11 @@ const meta = {
         component: `### \n\`\`\`js\nimport Tabs from '@dgshahr/ui-kit/Tabs';\nOr\nimport { Tabs } from '@dgshahr/ui-kit';\n\`\`\``,
       },
     },
+  },
+  beforeEach: () => {
+    fullWidthStory({
+      notFlex: true,
+    });
   },
   argTypes: {
     items: {

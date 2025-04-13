@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import IconQuestionMarkCircle from '../../icons/IconQuestionMarkCircle';
+import { fullWidthStory } from '../../utils/storybook/helpers';
 
 import Breadcrumb from './index';
 
@@ -13,6 +14,11 @@ const meta = {
         component: `### \n\`\`\`js\nimport Breadcrumb from '@dgshahr/ui-kit/Breadcrumb';\nOr\nimport { Breadcrumb } from '@dgshahr/ui-kit';\n\`\`\``,
       },
     },
+  },
+  beforeEach: () => {
+    fullWidthStory({
+      notFlex: true,
+    });
   },
   argTypes: {
     items: {
