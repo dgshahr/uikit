@@ -99,12 +99,14 @@ const Header: FC = () => {
       </button>
       <div className="dgs-ui-kit-flex dgs-ui-kit-gap-2">
         <Button
+          type="button"
           variant="outline"
           rightIcon={<IconArrowRight2 />}
           disabled={startDate && isPrevNavigationDisabled(internalDate, dateType, startDate)}
           onClick={() => handleNavigate('prev')}
         />
         <Button
+          type="button"
           variant="outline"
           rightIcon={<IconArrowLeft2 />}
           disabled={endDate && isNextNavigationDisabled(internalDate, dateType, endDate)}
