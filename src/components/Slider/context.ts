@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import type { SliderProps } from './Slider';
+import type { SliderProps } from './types';
 
 interface ContextType extends SliderProps {
   childrenCount: number;

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import { useSliderContext } from './context';
-import type { SliderProps } from './Slider';
+import type { SliderProps } from './types';
 
 interface NavigationDotProps {
   active: boolean;
