@@ -12,3 +12,5 @@ export const persianToArabic = (s: string): string =>
   s.replace(/[۰-۹]/g, (d: string) => '٠١٢٣٤٥٦٧٨٩'['۰۱۲۳۴۵۶۷۸۹'.indexOf(d)] ?? '');
 export const arabicToPersian = (s: string): string =>
   s.replace(/[٠-٩]/g, (d: string) => '۰۱۲۳۴۵۶۷۸۹'['٠١٢٣٤٥٦٧٨٩'.indexOf(d)] ?? '');
+
+export const extractNumber = (s: string) => Number(s.replace(/[^0-9.]+/g, ''));
