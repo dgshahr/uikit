@@ -13,6 +13,39 @@ const meta = {
       },
     },
   },
+  argTypes: {
+    header: {
+      table: {
+        type: {
+          summary: 'Partial<CardHeaderProps>',
+          detail: `CardHeaderProps {
+          color: CardColor;
+          title: string;
+          icon: ReactNode;
+          variant: CardTitleVariant;
+          Element: ReactNode;
+          className?: string;
+        }`,
+        },
+      },
+    },
+    color: {
+      table: {
+        type: {
+          summary: `'primary' | 'warning' | 'error' | 'success' | 'gray' | 'white'`,
+        },
+        defaultValue: { summary: 'white' },
+      },
+    },
+    size: {
+      table: {
+        type: { summary: `'small' | 'medium'` },
+        defaultValue: {
+          summary: 'medium',
+        },
+      },
+    },
+  },
 } satisfies Meta<typeof Card>;
 
 export default meta;
@@ -29,7 +62,7 @@ export const Default: Story = {
       variant: 'primary',
     },
     color: 'white',
-    size: 'small',
+    size: 'medium',
     children: <div>بدنه</div>,
   },
 };
