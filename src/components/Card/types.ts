@@ -2,14 +2,14 @@ import type { ReactNode } from 'react';
 
 export type CardColor = 'primary' | 'warning' | 'error' | 'success' | 'gray' | 'white';
 export type CardSize = 'small' | 'medium';
-export type TitleVariant = 'primary' | 'default';
+export type CardTitleVariant = 'primary' | 'default';
 
 export interface CardHeaderProps {
   size: CardSize;
   color: CardColor;
   title: string;
   icon: ReactNode;
-  variant: TitleVariant;
+  variant: CardTitleVariant;
   Element: ReactNode;
   className?: string;
 }
@@ -17,6 +17,8 @@ export interface CardHeaderProps {
 export interface CardProps {
   size?: CardSize;
   color?: CardColor;
-  header?: Partial<CardHeaderProps>;
+  header?: Omit<Partial<CardHeaderProps>, 'size'>;
   className?: string;
+  children: ReactNode;
+  wrapperClassName?: string;
 }

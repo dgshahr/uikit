@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import type { FC } from 'react';
 import { cardBodyColorClassnameMap, cardBodySizeClassnameMap } from './constants';
-import type { CardHeaderProps, CardSize, TitleVariant } from './types';
+import type { CardHeaderProps, CardSize, CardTitleVariant } from './types';
 
-const titleVariantClassnameMap: Record<TitleVariant, string> = {
+const titleVariantClassnameMap: Record<CardTitleVariant, string> = {
   default: 'dgs-ui-kit-text-gray-700',
   primary: 'dgs-ui-kit-text-primary-500',
 };
