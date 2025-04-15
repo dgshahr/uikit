@@ -3,6 +3,7 @@
 import clsx from 'clsx';
 import { useState, type FC, type PropsWithChildren } from 'react';
 import Drawer from '@/src/components/Drawer';
+import { useFlipPosition, type PopperPosition } from '@/src/hooks/useFlipPosition';
 import { useOutsideClick } from '@/src/hooks/useOutsideClick';
 import IconArrowDown2 from '@/src/icons/IconArrowDown2';
 import { pickerWrapperContext } from './contexts';
@@ -29,7 +30,16 @@ const PickerWrapper: FC<PropsWithChildren<PickerWrapperProps>> = (props) => {
   } = props;
   const [isShowWrapper, setIsShowWrapper] = useState(false);
   const [isWrapperInDom, setIsWrapperInDom] = useState(false);
+  const [position, setPosition] = useState<PopperPosition>('bottom-left');
   let transitionTimeout: ReturnType<typeof setTimeout>;
+
+  const { anchorRef, popperRef } = useFlipPosition<HTMLButtonElement, HTMLDivElement>({
+    initialPosition: 'bottom-left',
+    minVisible: 180,
+    onPositionChange(newPosition) {
+      setPosition((prev) => (prev === newPosition ? prev : newPosition));
+    },
+  });
 
   const containerRef = useOutsideClick<HTMLDivElement>(() => {
     if (dropdownType === 'popover' && isShowWrapper) {
@@ -72,6 +82,7 @@ const PickerWrapper: FC<PropsWithChildren<PickerWrapperProps>> = (props) => {
       className={clsx('dgs-ui-kit-relative', wrapperClassName)}
     >
       <button
+        ref={anchorRef}
         type="button"
         className={clsx('dgs-ui-kit-w-full', cursorClass)}
         onClick={toggleWrapperVisibility}
@@ -111,12 +122,19 @@ const PickerWrapper: FC<PropsWithChildren<PickerWrapperProps>> = (props) => {
           <>
             {dropdownType === 'popover' ? (
               <div
+                ref={popperRef}
                 className={clsx(
-                  'dgs-ui-kit-absolute dgs-ui-kit-min-w-[300px] dgs-ui-kit-bottom-0 dgs-ui-kit-right-0 dgs-ui-kit-translate-y-[calc(100%+8px)] dgs-ui-kit-overflow-y-auto dgs-ui-kit-overflow-x-hidden dgs-ui-kit-shadow-lg dgs-ui-kit-w-full dgs-ui-kit-max-h-[360px] dgs-ui-kit-transition-all dgs-ui-kit-bg-white dgs-ui-kit-z-50 dgs-ui-kit-rounded-lg dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-border-gray-200 dgs-ui-kit-pb-3',
+                  'dgs-ui-kit-absolute dgs-ui-kit-min-w-[300px] dgs-ui-kit-right-0 dgs-ui-kit-overflow-y-auto dgs-ui-kit-overflow-x-hidden dgs-ui-kit-shadow-lg dgs-ui-kit-w-full dgs-ui-kit-max-h-[360px] dgs-ui-kit-transition-all dgs-ui-kit-bg-white dgs-ui-kit-z-50 dgs-ui-kit-rounded-lg dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-border-gray-200 dgs-ui-kit-pb-3',
                   DURATION_CLASS,
                   isShowWrapper
                     ? 'dgs-ui-kit-opacity-100'
                     : 'dgs-ui-kit-opacity-0 dgs-ui-kit-max-h-0 dgs-ui-kit-overflow-y-hidden',
+                  {
+                    'dgs-ui-kit-bottom-0 dgs-ui-kit-translate-y-[calc(100%+8px)]':
+                      position.includes('bottom'),
+                    'dgs-ui-kit-top-0 dgs-ui-kit-translate-y-[calc(-100%-8px)]':
+                      position.includes('top'),
+                  },
                   popoverClassName,
                 )}
               >
