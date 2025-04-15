@@ -1,6 +1,6 @@
 {
   "name": "@dgshahr/ui-kit",
-  "version": "0.0.87",
+  "version": "0.0.88",
   "description": "dgshahr ui-kit",
   "author": "dgshahr",
   "license": "MIT",
@@ -47,6 +47,11 @@
       "types": "./dist/Button/index.d.ts",
       "import": "./dist/Button/index.mjs",
       "require": "./dist/Button/index.cjs"
+    },
+    "./Card": {
+      "types": "./dist/Card/index.d.ts",
+      "import": "./dist/Card/index.mjs",
+      "require": "./dist/Card/index.cjs"
     },
     "./Chip": {
       "types": "./dist/Chip/index.d.ts",
