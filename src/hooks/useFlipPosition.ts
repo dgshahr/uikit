@@ -1,7 +1,7 @@
 import debounce from 'lodash.debounce';
 import { useRef, useEffect, useState, useCallback, useMemo } from 'react';
 
-type Position =
+export type PopperPosition =
   | 'top-left'
   | 'top-center'
   | 'top-right'
@@ -10,31 +10,33 @@ type Position =
   | 'bottom-right';
 
 interface UseFlipPositionOptions {
-  initialPosition: Position;
-  onPositionChange?: (newPosition: Position) => void;
+  initialPosition: PopperPosition;
+  onPositionChange?: (newPosition: PopperPosition) => void;
   padding?: number;
   debounceWait?: number;
+  minVisible?: number;
 }
 
-function getOppositeVertical(position: Position): Position {
+function getOppositeVertical(position: PopperPosition): PopperPosition {
   return position.startsWith('top')
-    ? (position.replace('top', 'bottom') as Position)
-    : (position.replace('bottom', 'top') as Position);
+    ? (position.replace('top', 'bottom') as PopperPosition)
+    : (position.replace('bottom', 'top') as PopperPosition);
 }
 
-function getOppositeHorizontal(position: Position): Position {
-  if (position.endsWith('left')) return position.replace('left', 'right') as Position;
-  if (position.endsWith('right')) return position.replace('right', 'left') as Position;
+function getOppositeHorizontal(position: PopperPosition): PopperPosition {
+  if (position.endsWith('left')) return position.replace('left', 'right') as PopperPosition;
+  if (position.endsWith('right')) return position.replace('right', 'left') as PopperPosition;
   return position;
 }
 
 function flipHorizontalFromCenter(
-  position: Position,
+  position: PopperPosition,
   overflow: { left: boolean; right: boolean },
-): Position {
+): PopperPosition {
   if (!position.endsWith('center')) return position;
-  if (overflow.left && !overflow.right) return position.replace('center', 'right') as Position;
-  if (overflow.right && !overflow.left) return position.replace('center', 'left') as Position;
+  if (overflow.left && !overflow.right)
+    return position.replace('center', 'right') as PopperPosition;
+  if (overflow.right && !overflow.left) return position.replace('center', 'left') as PopperPosition;
   return position;
 }
 
@@ -43,12 +45,12 @@ function setScaleInMatrixTransform(matrixStr: string, scaleValue: number): strin
   if (!match) return `scale(${scaleValue})`;
   const parts = match[1]!.split(',').map((s) => parseFloat(s.trim()));
   if (parts.length !== 6) return `scale(${scaleValue})`;
-  parts[0] = scaleValue; // scaleX
-  parts[3] = scaleValue; // scaleY
+  parts[0] = scaleValue;
+  parts[3] = scaleValue;
   return `matrix(${parts.join(', ')})`;
 }
 
-function calculateAnchorPoint(position: Position, anchorRect: DOMRect) {
+function calculateAnchorPoint(position: PopperPosition, anchorRect: DOMRect) {
   let anchorX: number;
   switch (position) {
     case 'top-left':
@@ -71,7 +73,7 @@ function calculateAnchorPoint(position: Position, anchorRect: DOMRect) {
 }
 
 function calculatePopperCoords(
-  position: Position,
+  position: PopperPosition,
   anchorX: number,
   anchorY: number,
   popperRect: DOMRect,
@@ -110,19 +112,73 @@ function calculatePopperCoords(
   return { top, left };
 }
 
-function checkOverflow(
+function calculateOverflow(
   top: number,
   left: number,
   popperRect: DOMRect,
   viewportWidth: number,
   viewportHeight: number,
   padding: number,
+  minVisible?: number,
 ) {
+  const overflowTop = top < padding;
+  const overflowBottom = top + popperRect.height > viewportHeight - padding;
+  const overflowLeft = left < padding;
+  const overflowRight = left + popperRect.width > viewportWidth - padding;
+
+  if (minVisible == null) {
+    return {
+      top: overflowTop,
+      bottom: overflowBottom,
+      left: overflowLeft,
+      right: overflowRight,
+    };
+  }
+
+  const visibleHeight = Math.min(popperRect.bottom, viewportHeight) - Math.max(top, 0);
+  const visibleWidth = Math.min(popperRect.right, viewportWidth) - Math.max(left, 0);
+
+  const verticalOverflow = (() => {
+    if (overflowTop && overflowBottom) {
+      if (visibleHeight >= minVisible) {
+        return { top: false, bottom: false };
+      }
+      return visibleHeight < popperRect.height / 2
+        ? { top: true, bottom: false }
+        : { top: false, bottom: true };
+    }
+    if (overflowTop) {
+      return { top: visibleHeight < minVisible, bottom: false };
+    }
+    if (overflowBottom) {
+      return { top: false, bottom: visibleHeight < minVisible };
+    }
+    return { top: false, bottom: false };
+  })();
+
+  const horizontalOverflow = (() => {
+    if (overflowLeft && overflowRight) {
+      if (visibleWidth >= minVisible) {
+        return { left: false, right: false };
+      }
+      return visibleWidth < popperRect.width / 2
+        ? { left: true, right: false }
+        : { left: false, right: true };
+    }
+    if (overflowLeft) {
+      return { left: visibleWidth < minVisible, right: false };
+    }
+    if (overflowRight) {
+      return { left: false, right: visibleWidth < minVisible };
+    }
+    return { left: false, right: false };
+  })();
+
   return {
-    top: top < padding,
-    bottom: top + popperRect.height > viewportHeight - padding,
-    left: left < padding,
-    right: left + popperRect.width > viewportWidth - padding,
+    top: verticalOverflow.top,
+    bottom: verticalOverflow.bottom,
+    left: horizontalOverflow.left,
+    right: horizontalOverflow.right,
   };
 }
 
@@ -131,17 +187,18 @@ export function useFlipPosition<T extends HTMLElement, K extends HTMLElement>({
   onPositionChange,
   padding = 8,
   debounceWait = 50,
+  minVisible,
 }: UseFlipPositionOptions) {
   const anchorRef = useRef<T>(null);
   const popperRef = useRef<K>(null);
-  const [position, setPosition] = useState<Position>(initialPosition);
+  const [position, setPosition] = useState<PopperPosition>(initialPosition);
 
-  const initialPositionRef = useRef<Position>(initialPosition);
+  const initialPositionRef = useRef<PopperPosition>(initialPosition);
   useEffect(() => {
     initialPositionRef.current = initialPosition;
   }, [initialPosition]);
 
-  const positionRef = useRef<Position>(position);
+  const positionRef = useRef<PopperPosition>(position);
   useEffect(() => {
     positionRef.current = position;
   }, [position]);
@@ -166,7 +223,7 @@ export function useFlipPosition<T extends HTMLElement, K extends HTMLElement>({
     popperEl.style.setProperty('transition', 'none', 'important');
 
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    popperEl.offsetHeight; // force reflow
+    popperEl.offsetHeight;
 
     const popperRect = popperEl.getBoundingClientRect();
     const viewportWidth = window.innerWidth;
@@ -174,7 +231,15 @@ export function useFlipPosition<T extends HTMLElement, K extends HTMLElement>({
 
     const { top, left } = calculatePopperCoords(basePosition, anchorX, anchorY, popperRect);
 
-    const overflow = checkOverflow(top, left, popperRect, viewportWidth, viewportHeight, padding);
+    const overflow = calculateOverflow(
+      top,
+      left,
+      popperRect,
+      viewportWidth,
+      viewportHeight,
+      padding,
+      minVisible,
+    );
 
     let newPosition = basePosition;
 
