@@ -1,9 +1,9 @@
 import { j as o } from './jsx-runtime-D_zvdyIk.js';
 import './index-CTzypqlY.js';
-import { A as e, a as t } from './AccordionItem-BkE3bYsC.js';
+import { A as e, a as t } from './AccordionItem-yV2DdM5t.js';
 import './clsx-B-dksMZM.js';
 import './IconArrowDown2-BBhufJ55.js';
-import './index-BRLxYIXq.js';
+import './index-CC403hZ7.js';
 /* empty css               */ const A = {
     title: 'Components/Accordion',
     component: t,

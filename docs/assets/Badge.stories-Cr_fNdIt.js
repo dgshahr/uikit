@@ -1,4 +1,4 @@
-import { B as t } from './index-C0hUw4E5.js';
+import { B as t } from './index-DWnM9FYV.js';
 import './jsx-runtime-D_zvdyIk.js';
 /* empty css               */ const s = {
     title: 'Components/Badge',

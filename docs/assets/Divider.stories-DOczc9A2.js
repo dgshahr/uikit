@@ -1,6 +1,6 @@
 import { j as r } from './jsx-runtime-D_zvdyIk.js';
 import './index-CTzypqlY.js';
-import { D as i } from './index-BRLxYIXq.js';
+import { D as i } from './index-CC403hZ7.js';
 /* empty css               */ const m = {
     title: 'Components/Divider',
     component: i,

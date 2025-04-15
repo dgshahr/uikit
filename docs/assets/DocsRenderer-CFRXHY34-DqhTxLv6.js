@@ -3,9 +3,9 @@ const __vite__mapDeps = (
   m = __vite__mapDeps,
   d = m.f ||
     (m.f = [
-      './Color-YHDXOIA2-CZ9tr4kx.js',
+      './Color-YHDXOIA2-DFYddr37.js',
       './index-CTzypqlY.js',
-      './iframe-SoTkJB6L.js',
+      './iframe-B57FUpQ-.js',
       './jsx-runtime-D_zvdyIk.js',
       './index-BRSOB10J.js',
       './index-X_f_OX5J.js',
@@ -15,7 +15,7 @@ const __vite__mapDeps = (
       './index-Syj0H2O1.js',
     ]),
 ) => i.map((i) => d[i]);
-import { D as Z4, _ as G1, z as u9 } from './iframe-SoTkJB6L.js';
+import { D as Z4, _ as G1, z as u9 } from './iframe-B57FUpQ-.js';
 import { r as l, R as v } from './index-CTzypqlY.js';
 import { j as O } from './jsx-runtime-D_zvdyIk.js';
 import { h as X4, r as K1 } from './index-BRSOB10J.js';
@@ -40140,7 +40140,7 @@ var FP = ({ onChange: e, name: t, accept: r = 'image/*', value: n, argType: a })
   },
   AP = l.lazy(() =>
     G1(
-      () => import('./Color-YHDXOIA2-CZ9tr4kx.js'),
+      () => import('./Color-YHDXOIA2-DFYddr37.js'),
       __vite__mapDeps([0, 1, 2, 3, 4, 5, 6, 7, 8]),
       import.meta.url,
     ),
