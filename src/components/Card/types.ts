@@ -18,5 +18,5 @@ export interface CardProps {
   size?: CardSize;
   color?: CardColor;
   header?: Partial<CardHeaderProps>;
-  className: string;
+  className?: string;
 }
