@@ -1,4 +1,5 @@
-import { useRef, useEffect, useState, useCallback } from 'react';
+import debounce from 'lodash.debounce';
+import { useRef, useEffect, useState, useCallback, useMemo } from 'react';
 
 type Position =
   | 'top-left'
@@ -12,23 +13,18 @@ interface UseFlipPositionOptions {
   initialPosition: Position;
   onPositionChange?: (newPosition: Position) => void;
   padding?: number;
+  debounceWait?: number;
 }
 
 function getOppositeVertical(position: Position): Position {
-  if (position.startsWith('top')) {
-    return position.replace('top', 'bottom') as Position;
-  } else {
-    return position.replace('bottom', 'top') as Position;
-  }
+  return position.startsWith('top')
+    ? (position.replace('top', 'bottom') as Position)
+    : (position.replace('bottom', 'top') as Position);
 }
 
 function getOppositeHorizontal(position: Position): Position {
-  if (position.endsWith('left')) {
-    return position.replace('left', 'right') as Position;
-  } else if (position.endsWith('right')) {
-    return position.replace('right', 'left') as Position;
-  }
-  // For center, handled separately
+  if (position.endsWith('left')) return position.replace('left', 'right') as Position;
+  if (position.endsWith('right')) return position.replace('right', 'left') as Position;
   return position;
 }
 
@@ -37,56 +33,114 @@ function flipHorizontalFromCenter(
   overflow: { left: boolean; right: boolean },
 ): Position {
   if (!position.endsWith('center')) return position;
-
-  if (overflow.left && !overflow.right) {
-    // Overflow on left only → flip center to right
-    return position.replace('center', 'right') as Position;
-  } else if (overflow.right && !overflow.left) {
-    // Overflow on right only → flip center to left
-    return position.replace('center', 'left') as Position;
-  }
-  // If both sides overflow or none, keep center
+  if (overflow.left && !overflow.right) return position.replace('center', 'right') as Position;
+  if (overflow.right && !overflow.left) return position.replace('center', 'left') as Position;
   return position;
 }
 
 function setScaleInMatrixTransform(matrixStr: string, scaleValue: number): string {
-  // matrixStr expected format: "matrix(a, b, c, d, tx, ty)"
-  const match = matrixStr.match(/matrix\(([^)]+)\)/);
-  if (!match) {
-    // If no matrix found, just return scale transform
-    return `scale(${scaleValue})`;
-  }
-
+  const match = RegExp(/matrix\(([^)]+)\)/).exec(matrixStr);
+  if (!match) return `scale(${scaleValue})`;
   const parts = match[1]!.split(',').map((s) => parseFloat(s.trim()));
-  if (parts.length !== 6) {
-    // Unexpected format, fallback
-    return `scale(${scaleValue})`;
+  if (parts.length !== 6) return `scale(${scaleValue})`;
+  parts[0] = scaleValue; // scaleX
+  parts[3] = scaleValue; // scaleY
+  return `matrix(${parts.join(', ')})`;
+}
+
+function calculateAnchorPoint(position: Position, anchorRect: DOMRect) {
+  let anchorX: number;
+  switch (position) {
+    case 'top-left':
+    case 'bottom-left':
+      anchorX = anchorRect.left;
+      break;
+    case 'top-center':
+    case 'bottom-center':
+      anchorX = anchorRect.left + anchorRect.width / 2;
+      break;
+    case 'top-right':
+    case 'bottom-right':
+      anchorX = anchorRect.right;
+      break;
+    default:
+      anchorX = anchorRect.left + anchorRect.width / 2;
+  }
+  const anchorY = position.startsWith('top') ? anchorRect.top : anchorRect.bottom;
+  return { anchorX, anchorY };
+}
+
+function calculatePopperCoords(
+  position: Position,
+  anchorX: number,
+  anchorY: number,
+  popperRect: DOMRect,
+) {
+  let left = 0;
+  let top = 0;
+
+  switch (position) {
+    case 'top-left':
+    case 'bottom-left':
+      left = anchorX;
+      break;
+    case 'top-center':
+    case 'bottom-center':
+      left = anchorX - popperRect.width / 2;
+      break;
+    case 'top-right':
+    case 'bottom-right':
+      left = anchorX - popperRect.width;
+      break;
   }
 
-  // parts = [a, b, c, d, tx, ty]
-  // Replace scaleX (a) and scaleY (d) with scaleValue
-  parts[0] = scaleValue; // a = scaleX
-  parts[3] = scaleValue; // d = scaleY
+  switch (position) {
+    case 'top-left':
+    case 'top-center':
+    case 'top-right':
+      top = anchorY - popperRect.height;
+      break;
+    case 'bottom-left':
+    case 'bottom-center':
+    case 'bottom-right':
+      top = anchorY;
+      break;
+  }
 
-  return `matrix(${parts.join(', ')})`;
+  return { top, left };
+}
+
+function checkOverflow(
+  top: number,
+  left: number,
+  popperRect: DOMRect,
+  viewportWidth: number,
+  viewportHeight: number,
+  padding: number,
+) {
+  return {
+    top: top < padding,
+    bottom: top + popperRect.height > viewportHeight - padding,
+    left: left < padding,
+    right: left + popperRect.width > viewportWidth - padding,
+  };
 }
 
 export function useFlipPosition<T extends HTMLElement, K extends HTMLElement>({
   initialPosition,
   onPositionChange,
   padding = 8,
+  debounceWait = 50,
 }: UseFlipPositionOptions) {
   const anchorRef = useRef<T>(null);
   const popperRef = useRef<K>(null);
   const [position, setPosition] = useState<Position>(initialPosition);
 
-  // Keep initialPosition in a ref to avoid stale closure
   const initialPositionRef = useRef<Position>(initialPosition);
   useEffect(() => {
     initialPositionRef.current = initialPosition;
   }, [initialPosition]);
 
-  // Track current position in a ref to avoid stale closure in updatePosition
   const positionRef = useRef<Position>(position);
   useEffect(() => {
     positionRef.current = position;
@@ -97,42 +151,14 @@ export function useFlipPosition<T extends HTMLElement, K extends HTMLElement>({
     const popperEl = popperRef.current;
     if (!anchorEl || !popperEl) return;
 
-    // Use initialPosition as base for calculations
     const basePosition = initialPositionRef.current;
-
     const anchorRect = anchorEl.getBoundingClientRect();
-
-    // Calculate anchorX and anchorY based on basePosition
-    let anchorX: number;
-    switch (basePosition) {
-      case 'top-left':
-      case 'bottom-left':
-        anchorX = anchorRect.left;
-        break;
-      case 'top-center':
-      case 'bottom-center':
-        anchorX = anchorRect.left + anchorRect.width / 2;
-        break;
-      case 'top-right':
-      case 'bottom-right':
-        anchorX = anchorRect.right;
-        break;
-      default:
-        anchorX = anchorRect.left + anchorRect.width / 2;
-    }
-
-    let anchorY: number;
-    if (basePosition.startsWith('top')) {
-      anchorY = anchorRect.top;
-    } else {
-      anchorY = anchorRect.bottom;
-    }
+    const { anchorX, anchorY } = calculateAnchorPoint(basePosition, anchorRect);
 
     const computedStyle = window.getComputedStyle(popperEl);
     const computedTransform = computedStyle.transform || 'none';
     const transformWithScaleOne = setScaleInMatrixTransform(computedTransform, 1);
 
-    // Temporarily override styles to measure
     popperEl.style.setProperty('opacity', '0', 'important');
     popperEl.style.setProperty('transform', transformWithScaleOne, 'important');
     popperEl.style.setProperty('visibility', 'hidden', 'important');
@@ -146,50 +172,12 @@ export function useFlipPosition<T extends HTMLElement, K extends HTMLElement>({
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
 
-    // Calculate popper top and left based on basePosition
-    let top = 0;
-    let left = 0;
+    const { top, left } = calculatePopperCoords(basePosition, anchorX, anchorY, popperRect);
 
-    switch (basePosition) {
-      case 'top-left':
-      case 'bottom-left':
-        left = anchorX;
-        break;
-      case 'top-center':
-      case 'bottom-center':
-        left = anchorX - popperRect.width / 2;
-        break;
-      case 'top-right':
-      case 'bottom-right':
-        left = anchorX - popperRect.width;
-        break;
-    }
+    const overflow = checkOverflow(top, left, popperRect, viewportWidth, viewportHeight, padding);
 
-    switch (basePosition) {
-      case 'top-left':
-      case 'top-center':
-      case 'top-right':
-        top = anchorY - popperRect.height;
-        break;
-      case 'bottom-left':
-      case 'bottom-center':
-      case 'bottom-right':
-        top = anchorY;
-        break;
-    }
-
-    // Check overflow
-    const overflow = {
-      top: top < padding,
-      bottom: top + popperRect.height > viewportHeight - padding,
-      left: left < padding,
-      right: left + popperRect.width > viewportWidth - padding,
-    };
-
-    // Start with basePosition as newPosition
     let newPosition = basePosition;
 
-    // Flip vertically if needed
     if (
       (basePosition.startsWith('top') && overflow.top) ||
       (basePosition.startsWith('bottom') && overflow.bottom)
@@ -197,7 +185,6 @@ export function useFlipPosition<T extends HTMLElement, K extends HTMLElement>({
       newPosition = getOppositeVertical(newPosition);
     }
 
-    // Flip horizontally if needed
     if (
       (newPosition.endsWith('left') && overflow.left) ||
       (newPosition.endsWith('right') && overflow.right)
@@ -205,39 +192,39 @@ export function useFlipPosition<T extends HTMLElement, K extends HTMLElement>({
       newPosition = getOppositeHorizontal(newPosition);
     }
 
-    // Horizontal flip for center positions based on overflow side
     if (newPosition.endsWith('center')) {
       newPosition = flipHorizontalFromCenter(newPosition, overflow);
     }
 
-    // Restore original inline styles
     popperEl.style.removeProperty('opacity');
     popperEl.style.removeProperty('transform');
     popperEl.style.removeProperty('visibility');
     popperEl.style.removeProperty('position');
     popperEl.style.removeProperty('transition');
 
-    // Update state only if changed
     if (newPosition !== positionRef.current) {
       setPosition(newPosition);
-      if (onPositionChange) {
-        onPositionChange(newPosition);
-      }
+      if (onPositionChange) onPositionChange(newPosition);
     }
-    // No else branch to reset position — it naturally stays at initialPosition if no flip
   }, [onPositionChange, padding]);
 
-  useEffect(() => {
-    updatePosition();
+  const debouncedUpdatePosition = useMemo(
+    () => debounce(updatePosition, debounceWait),
+    [updatePosition, debounceWait],
+  );
 
-    window.addEventListener('resize', updatePosition);
-    window.addEventListener('scroll', updatePosition);
+  useEffect(() => {
+    debouncedUpdatePosition();
+
+    window.addEventListener('resize', debouncedUpdatePosition);
+    window.addEventListener('scroll', debouncedUpdatePosition);
 
     return () => {
-      window.removeEventListener('resize', updatePosition);
-      window.removeEventListener('scroll', updatePosition);
+      window.removeEventListener('resize', debouncedUpdatePosition);
+      window.removeEventListener('scroll', debouncedUpdatePosition);
+      debouncedUpdatePosition.cancel();
     };
-  }, [updatePosition]);
+  }, [debouncedUpdatePosition]);
 
   return { anchorRef, popperRef, position };
 }
