@@ -19,13 +19,13 @@ const meta = {
     children: {
       description: 'The element to hover on',
     },
-    tailPosition: {
+    position: {
       table: {
         type: {
           summary: 'top-right, top-center, top-left, bottom-right, bottom-center, bottom-left',
         },
         defaultValue: {
-          summary: 'bottom-center',
+          summary: 'top-center',
         },
       },
     },
