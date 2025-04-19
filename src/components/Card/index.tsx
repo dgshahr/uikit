@@ -1,11 +1,10 @@
 import clsx from 'clsx';
 import type { FC } from 'react';
-import React from 'react';
 import { cardBodyColorClassnameMap, cardBodySizeClassnameMap } from './constants';
 import CardHeader from './Header';
 import type { CardProps } from './types';
 
-const trimTopClassnames = 'dgs-ui-kit-border-t-0 dgs-ui-kit-rounded-t-none';
+const TRIM_TOP_CLASS = 'dgs-ui-kit-border-t-0 dgs-ui-kit-rounded-t-none';
 
 const Card: FC<CardProps> = (props) => {
   const { header, children, size = 'medium', color = 'white', className, wrapperClassName } = props;
@@ -15,15 +14,13 @@ const Card: FC<CardProps> = (props) => {
 
   const bodyClassname = clsx(
     className,
-    hasHeader && trimTopClassnames,
+    hasHeader && TRIM_TOP_CLASS,
     cardBodyColorClassnameMap[color],
     cardBodySizeClassnameMap[size],
   );
 
-  const WrapperElement = wrapperClassName ? 'div' : React.Fragment;
-
   return (
-    <WrapperElement {...(wrapperClassName ? { className: wrapperClassName } : {})}>
+    <div {...(wrapperClassName ? { className: wrapperClassName } : {})}>
       {hasHeader && (
         <CardHeader
           {...header}
@@ -32,7 +29,7 @@ const Card: FC<CardProps> = (props) => {
         />
       )}
       <div className={bodyClassname}>{children}</div>
-    </WrapperElement>
+    </div>
   );
 };
 
