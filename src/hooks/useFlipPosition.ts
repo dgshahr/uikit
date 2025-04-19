@@ -213,19 +213,35 @@ export function useFlipPosition<T extends HTMLElement, K extends HTMLElement>({
     const { anchorX, anchorY } = calculateAnchorPoint(basePosition, anchorRect);
 
     const computedStyle = window.getComputedStyle(popperEl);
-    const computedTransform = computedStyle.transform || 'none';
-    const transformWithScaleOne = setScaleInMatrixTransform(computedTransform, 1);
+    const isVisible =
+      computedStyle.display !== 'none' &&
+      computedStyle.visibility !== 'hidden' &&
+      computedStyle.opacity !== '0';
 
-    popperEl.style.setProperty('opacity', '0', 'important');
-    popperEl.style.setProperty('transform', transformWithScaleOne, 'important');
-    popperEl.style.setProperty('visibility', 'hidden', 'important');
-    popperEl.style.setProperty('position', 'absolute', 'important');
-    popperEl.style.setProperty('transition', 'none', 'important');
+    let popperRect: DOMRect;
+    if (isVisible) {
+      popperRect = popperEl.getBoundingClientRect();
+    } else {
+      const computedTransform = computedStyle.transform || 'none';
+      const transformWithScaleOne = setScaleInMatrixTransform(computedTransform, 1);
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    popperEl.offsetHeight;
+      popperEl.style.setProperty('opacity', '0', 'important');
+      popperEl.style.setProperty('transform', transformWithScaleOne, 'important');
+      popperEl.style.setProperty('visibility', 'hidden', 'important');
+      popperEl.style.setProperty('position', 'absolute', 'important');
+      popperEl.style.setProperty('transition', 'none', 'important');
 
-    const popperRect = popperEl.getBoundingClientRect();
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      popperEl.offsetHeight;
+
+      popperRect = popperEl.getBoundingClientRect();
+
+      popperEl.style.removeProperty('opacity');
+      popperEl.style.removeProperty('transform');
+      popperEl.style.removeProperty('visibility');
+      popperEl.style.removeProperty('position');
+      popperEl.style.removeProperty('transition');
+    }
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
 
@@ -260,12 +276,6 @@ export function useFlipPosition<T extends HTMLElement, K extends HTMLElement>({
     if (newPosition.endsWith('center')) {
       newPosition = flipHorizontalFromCenter(newPosition, overflow);
     }
-
-    popperEl.style.removeProperty('opacity');
-    popperEl.style.removeProperty('transform');
-    popperEl.style.removeProperty('visibility');
-    popperEl.style.removeProperty('position');
-    popperEl.style.removeProperty('transition');
 
     if (newPosition !== positionRef.current) {
       setPosition(newPosition);
