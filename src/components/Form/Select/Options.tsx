@@ -45,6 +45,9 @@ const Options = <T,>(props: SelectProps<T>) => {
   }
 
   const filteredOptions = useMemo(() => {
+    if (!Array.isArray(options)) {
+      throw new Error('options should be array');
+    }
     if (search) {
       return options?.filter((option) => option.label.includes(search));
     }
