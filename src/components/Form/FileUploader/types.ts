@@ -54,10 +54,11 @@ interface FileUploaderSingleMode {
   previewProps?: Omit<FilePreviewProps, 'type'>;
 }
 
-interface FileUploaderMultipleMode {
+export interface FileUploaderMultipleMode {
   mode: 'multiple';
   files?: FileType[];
   previewProps?: FilePreviewProps;
+  hideFileInput?: boolean;
 }
 
 export type FileUploaderProps = FileUploaderPropsBase &

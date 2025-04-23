@@ -85,6 +85,15 @@ const meta = {
         },
       },
     },
+    hideFileInput: {
+      control: 'boolean',
+      table: {
+        type: {
+          summary: 'boolean',
+          detail: 'available in multiple mode',
+        },
+      },
+    },
   },
 } satisfies Meta<typeof FileUploader>;
 
@@ -225,6 +234,7 @@ export const MultipleList: Story = {
       ...defaultArgs.previewProps,
       type: 'list',
     },
+    hideFileInput: true,
   },
 
   render: (args) => <MultipleFileInputExample {...args} />,

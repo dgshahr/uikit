@@ -5,13 +5,19 @@ import { Fragment, type FC } from 'react';
 import FileInput from './Input/FileInput';
 import MultipleModePreveiw from './Preview/MultipleMode/MultipleModePreveiw';
 import SingleModePreview from './Preview/SingleMode/SingleModePreview';
-import type { FilePreviewProps, FileType, FileUploaderProps } from './types';
+import type {
+  FilePreviewProps,
+  FileType,
+  FileUploaderMultipleMode,
+  FileUploaderProps,
+} from './types';
 
 import '@/src/styles.css';
 
 const FileUploader: FC<FileUploaderProps> = (props) => {
   const { mode, fileInputProps, isError, disabled, onChange, files, previewProps, className } =
     props;
+  const hideFileInput = (props as FileUploaderMultipleMode).hideFileInput;
   const haveFiles = Array.isArray(files) ? files.length > 0 : Boolean(files);
 
   const wrapperClassName = clsx(
@@ -23,7 +29,7 @@ const FileUploader: FC<FileUploaderProps> = (props) => {
 
   return (
     <WrapperElement {...(WrapperElement === 'div' ? { className } : {})}>
-      {((!haveFiles && mode === 'single') || mode !== 'single') && (
+      {((!haveFiles && mode === 'single') || (mode === 'multiple' && !hideFileInput)) && (
         <FileInput
           {...fileInputProps}
           previewtype={(previewProps as FilePreviewProps)?.type}
