@@ -38,11 +38,21 @@ export interface TooltipProps {
   content: ReactNode;
   footer?: ReactNode;
   className?: string;
+  wrapperClassName?: string;
   children: ReactNode;
 }
 
 const Tooltip: FC<TooltipProps> = (props) => {
-  const { children, content, className, footer, icon, position = 'top-center', title } = props;
+  const {
+    children,
+    content,
+    className,
+    wrapperClassName,
+    footer,
+    icon,
+    position = 'top-center',
+    title,
+  } = props;
   const [open, setOpen] = useState(false);
   const [innerPosition, setInnerPosition] = useState(position);
   const { anchorRef, popperRef } = useFlipPosition<HTMLDivElement, HTMLDivElement>({
@@ -63,7 +73,7 @@ const Tooltip: FC<TooltipProps> = (props) => {
   return (
     <div
       ref={anchorRef}
-      className="dgs-ui-kit-relative"
+      className={clsx('dgs-ui-kit-relative', wrapperClassName)}
       onMouseEnter={showTooltip}
       onTouchStart={showTooltip}
       onMouseLeave={closeTooltip}
