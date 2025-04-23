@@ -5,6 +5,8 @@ import THead from './THead';
 import type { TableProps, UnknownRecord } from './types';
 import Pagination from '../Pagination';
 
+import '@/src/styles.css';
+
 function Table<T extends UnknownRecord>(props: Readonly<TableProps<T>>) {
   const { header, wrapperClassName, className, columns, rowSelection, data, rowKey, pagination } =
     props;
