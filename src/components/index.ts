@@ -21,5 +21,6 @@ export { default as ProgressDoughnut } from './Progress/Doughnut';
 export { default as Sidebar } from './Sidebar';
 export { Slider, Slide } from './Slider';
 export { HorizontalStepper, HorizontalStep } from './Stepper/Horizontal';
+export { default as Table } from './Table';
 export { default as Tabs } from './Tabs';
 export { default as Tooltip } from './Tooltip';
