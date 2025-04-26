@@ -42,7 +42,10 @@ const meta = {
         hideTooltip?: boolean;
       };
   render?: (record: T, index: number) => ReactNode;
-  onSort?: (sortOrder: 'ascend' | 'descend') => void;
+  sort?: {
+      active?: 'ascend' | 'descend';
+      onSort: (value: 'ascend' | 'descend') => void;
+    };
   key?: string; 
   dataIndex?: string | string[]; (you should pass one of key or dataIndex)
 }`,
@@ -155,7 +158,9 @@ const columns: ColumnsType<RowData>[] = [
     title: 'نام محصول',
     key: 'title',
     dataIndex: 'title',
-    onSort: () => {},
+    sort: {
+      onSort() {},
+    },
   },
   {
     title: 'قیمت',

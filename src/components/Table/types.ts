@@ -9,6 +9,7 @@ type DataIndexPath<T> = [keyof T] extends [never] ? NonTypeSafeDataIndex : TypeS
 
 export type UnknownRecord = Record<string, unknown>;
 
+export type SortValues = 'ascend' | 'descend';
 interface ColumnsTypeBase<T> {
   title?: string;
   align?: 'start' | 'center' | 'end';
@@ -23,7 +24,10 @@ interface ColumnsTypeBase<T> {
         hideTooltip?: boolean;
       };
   render?: (record: T, index: number) => ReactNode;
-  onSort?: (sortOrder: 'ascend' | 'descend') => void;
+  sort?: {
+    active?: SortValues;
+    onSort: (value: SortValues) => void;
+  };
 }
 
 interface ColumnsTypeWithKey<T> {

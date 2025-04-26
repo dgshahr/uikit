@@ -3,7 +3,7 @@ import IconArrowDown2 from '@/src/icons/IconArrowDown2';
 import IconArrowUp2 from '@/src/icons/IconArrowUp2';
 import IconInfoCircleOutline from '@/src/icons/IconInfoCircleOutline';
 import { isArraysEqual } from '@/src/utils/isArraysEqual';
-import type { ColumnsType, TableProps, UnknownRecord } from './types';
+import type { ColumnsType, SortValues, TableProps, UnknownRecord } from './types';
 import {
   getAlingmentClass,
   getColumnKey,
@@ -26,6 +26,22 @@ const ICON_SIZE = 16;
 const TH_CLASS =
   'dgs-ui-kit-p-4 dgs-ui-kit-pl-0 dgs-ui-kit-text-gray-500 dgs-ui-kit-bg-gray-50 dgs-ui-kit-border-b dgs-ui-kit-border-solid dgs-ui-kit-border-gray-200';
 const DIVIDER_CLASS = '!dgs-ui-kit-h-8 dgs-ui-kit-shrink-0';
+
+function renderSortButton(sortValue: SortValues, sort: Required<ColumnsType>['sort']) {
+  const SortIcon = sortValue === 'ascend' ? IconArrowUp2 : IconArrowDown2;
+
+  return (
+    <button onClick={() => sort.onSort(sortValue)}>
+      <SortIcon
+        width={ICON_SIZE}
+        height={ICON_SIZE}
+        className={
+          sort.active === sortValue ? 'dgs-ui-kit-text-primary-500' : 'dgs-ui-kit-text-gray-500'
+        }
+      />
+    </button>
+  );
+}
 
 function getThContent(title: ColumnsType['title'], tooltip?: ColumnsType['tooltip']) {
   return (
@@ -107,20 +123,10 @@ function THead<T extends UnknownRecord>(props: Readonly<THeadProps<T>>) {
                 ) : (
                   getThContent(column.title)
                 )}
-                {typeof column.onSort === 'function' && (
+                {typeof column.sort?.onSort === 'function' && (
                   <div className="dgs-ui-kit-flex dgs-ui-kit-flex-col">
-                    <button onClick={() => column.onSort!('ascend')}>
-                      <IconArrowUp2
-                        width={ICON_SIZE}
-                        height={ICON_SIZE}
-                      />
-                    </button>
-                    <button onClick={() => column.onSort!('descend')}>
-                      <IconArrowDown2
-                        width={ICON_SIZE}
-                        height={ICON_SIZE}
-                      />
-                    </button>
+                    {renderSortButton('ascend', column.sort)}
+                    {renderSortButton('descend', column.sort)}
                   </div>
                 )}
               </div>
