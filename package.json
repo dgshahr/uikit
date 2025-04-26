@@ -1,6 +1,6 @@
 {
   "name": "@dgshahr/ui-kit",
-  "version": "0.0.89",
+  "version": "0.0.90",
   "description": "dgshahr ui-kit",
   "author": "dgshahr",
   "license": "MIT",
@@ -159,6 +159,11 @@
       "types": "./dist/Stepper/Horizontal/index.d.ts",
       "import": "./dist/Stepper/Horizontal/index.mjs",
       "require": "./dist/Stepper/Horizontal/index.cjs"
+    },
+    "./Table": {
+      "types": "./dist/Table/index.d.ts",
+      "import": "./dist/Table/index.mjs",
+      "require": "./dist/Table/index.cjs"
     },
     "./Tabs": {
       "types": "./dist/Tabs/index.d.ts",
