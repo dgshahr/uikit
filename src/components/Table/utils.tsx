@@ -53,13 +53,13 @@ export function renderRowSelectCheckbox(
   );
 }
 
-export function getStickyClass(sticky: ColumnsType['sticky'], addAfterBorderBottom?: boolean) {
+export function getStickyClass(sticky: ColumnsType['sticky'], addBeforeBorderTop?: boolean) {
   if (!sticky) return;
 
-  return clsx('dgs-ui-kit-sticky dgs-ui-kit-translate-y-[1px] dgs-ui-kit-z-10', {
+  return clsx('dgs-ui-kit-sticky dgs-ui-kit-z-10', {
     'dgs-ui-kit-right-0': sticky === 'right',
     'dgs-ui-kit-left-0': sticky === 'left',
-    'after:dgs-ui-kit-content-[""] after:dgs-ui-kit-absolute after:dgs-ui-kit-bottom-0 after:dgs-ui-kit-right-0 after:dgs-ui-kit-w-full after:dgs-ui-kit-border-b after:dgs-ui-kit-border-solid after:dgs-ui-kit-border-gray-200':
-      addAfterBorderBottom,
+    'before:dgs-ui-kit-content-[""] before:dgs-ui-kit-absolute before:dgs-ui-kit-top-0 before:dgs-ui-kit-right-0 before:dgs-ui-kit-w-full before:dgs-ui-kit-border-t before:md:dgs-ui-kit-border-t-0 before:dgs-ui-kit-border-solid before:dgs-ui-kit-border-gray-200':
+      addBeforeBorderTop,
   });
 }

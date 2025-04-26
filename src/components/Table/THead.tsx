@@ -76,7 +76,7 @@ function THead<T extends UnknownRecord>(props: Readonly<THeadProps<T>>) {
             className={clsx(
               TH_CLASS,
               { 'dgs-ui-kit-rounded-tr-2xl': !haveHeader },
-              getStickyClass(rowSelection?.sticky, true),
+              getStickyClass(rowSelection?.sticky),
               rowSelection?.className,
             )}
           >
@@ -105,7 +105,7 @@ function THead<T extends UnknownRecord>(props: Readonly<THeadProps<T>>) {
               {
                 'first:dgs-ui-kit-rounded-tr-2xl last:dgs-ui-kit-rounded-tl-2xl': !haveHeader,
               },
-              getStickyClass(column?.sticky, true),
+              getStickyClass(column?.sticky),
               column.className,
             )}
           >

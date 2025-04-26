@@ -77,7 +77,7 @@ function TBody<T extends UnknownRecord>(props: Readonly<TBodyProps<T>>) {
                   'dgs-ui-kit-border-b-0 dgs-ui-kit-rounded-br-2xl':
                     !havePagination && rowIndex === data.length - 1,
                 },
-                getStickyClass(rowSelection?.sticky),
+                getStickyClass(rowSelection?.sticky, true),
                 rowSelection?.className,
               )}
             >
@@ -98,7 +98,7 @@ function TBody<T extends UnknownRecord>(props: Readonly<TBodyProps<T>>) {
                   'dgs-ui-kit-border-b-0 first:dgs-ui-kit-rounded-br-2xl last:dgs-ui-kit-rounded-bl-2xl':
                     !havePagination && rowIndex === data.length - 1,
                 },
-                getStickyClass(column?.sticky),
+                getStickyClass(column?.sticky, true),
                 column.className,
               )}
             >
