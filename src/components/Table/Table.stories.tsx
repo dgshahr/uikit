@@ -14,7 +14,89 @@ const meta = {
       },
     },
   },
-  argTypes: {},
+  argTypes: {
+    data: {
+      control: 'object',
+      table: {
+        type: {
+          summary: 'T[]',
+        },
+      },
+    },
+    columns: {
+      control: 'object',
+      table: {
+        type: {
+          summary: 'ColumnsType<T>',
+          detail: `{
+  title?: string;
+  align?: 'start' | 'center' | 'end';
+  className?: string;
+  tooltip?: Omit<TooltipProps, 'children'> & {
+    anchorIcon?: ReactNode;
+  };
+  sticky?: 'left' | 'right';
+  ellipsis?:
+    | boolean
+    | {
+        hideTooltip?: boolean;
+      };
+  render?: (record: T, index: number) => ReactNode;
+  onSort?: (sortOrder: 'ascend' | 'descend') => void;
+  key?: string; 
+  dataIndex?: string | string[]; (you should pass one of key or dataIndex)
+}`,
+        },
+      },
+    },
+    header: {
+      control: 'object',
+      table: {
+        type: {
+          summary: 'TableHeaderProps',
+          detail: `{
+            title?: string;
+            showTotal?: boolean;
+            actionButton?: ButtonProps;
+            className?: string;
+}`,
+        },
+      },
+    },
+    pagination: {
+      control: 'object',
+      table: {
+        type: {
+          summary: 'PaginationProps',
+        },
+      },
+    },
+    rowKey: {
+      table: {
+        type: {
+          summary: 'string',
+        },
+      },
+    },
+    rowSelection: {
+      control: 'object',
+      table: {
+        type: {
+          summary: 'RowSelectionProps<T>',
+          detail: `Pick<ColumnsType, 'align' | 'sticky' | 'className'> & {
+  onSelectRow: (e: React.ChangeEvent<HTMLInputElement>, key: string | string[], record?: T) => void;
+  selectedRowKeys: string[];
+}`,
+        },
+      },
+    },
+    wrapperClassName: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+  },
 } satisfies Meta<typeof Table>;
 
 export default meta;

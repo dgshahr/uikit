@@ -47,19 +47,17 @@ export interface TableHeaderProps {
   className?: string;
 }
 
+export interface RowSelectionProps<T> extends Pick<ColumnsType, 'align' | 'sticky' | 'className'> {
+  onSelectRow: (e: React.ChangeEvent<HTMLInputElement>, key: string | string[], record?: T) => void;
+  selectedRowKeys: string[];
+}
+
 export interface TableProps<T extends UnknownRecord = UnknownRecord> {
   data: T[];
   columns: ColumnsType<T>[];
   rowKey: [keyof T] extends [never] ? string : keyof T;
   header?: TableHeaderProps;
-  rowSelection?: Pick<ColumnsType, 'align' | 'sticky' | 'className'> & {
-    onSelectRow: (
-      e: React.ChangeEvent<HTMLInputElement>,
-      key: string | string[],
-      record?: T,
-    ) => void;
-    selectedRowKeys: string[];
-  };
+  rowSelection?: RowSelectionProps<T>;
   pagination?: PaginationProps;
   wrapperClassName?: string;
   className?: string;
