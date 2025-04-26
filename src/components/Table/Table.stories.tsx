@@ -75,6 +75,7 @@ const meta = {
       },
     },
     rowKey: {
+      description: "it's required if you want to use rowSelection",
       table: {
         type: {
           summary: 'string',
