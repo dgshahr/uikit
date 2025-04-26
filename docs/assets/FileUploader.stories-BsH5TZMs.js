@@ -2,7 +2,7 @@
 import { j as e } from './jsx-runtime-D_zvdyIk.js';
 import { r as v } from './index-CTzypqlY.js';
 import { c as d } from './clsx-B-dksMZM.js';
-import { B as y } from './index-YNr3mtyw.js';
+import { B as y } from './index-BJigavT-.js';
 import { F as j } from './FieldBottomInfo-COD-BNdl.js';
 import { P as V } from './index-abplzN06.js';
 import { I as W } from './IconEye-Cb9e2e14.js';
@@ -130,13 +130,13 @@ const A = (t) => {
       className: l,
       onChange: o,
       helperProps: u,
-      previewtype: c,
-      ...f
+      previewtype: m,
+      ...c
     } = t,
-    [p, g] = v.useState(!1),
-    h = c === 'grid';
+    [g, p] = v.useState(!1),
+    h = m === 'grid';
   function G(w) {
-    w.preventDefault(), g(!1), o(w.dataTransfer.files?.[0]);
+    w.preventDefault(), p(!1), o(w.dataTransfer.files?.[0]);
   }
   return e.jsxs('div', {
     className: 'dgs-ui-kit-space-y-2',
@@ -151,7 +151,7 @@ const A = (t) => {
           Z,
           Q,
           (s || u?.errorMessage) && J,
-          p && K,
+          g && K,
           h ? S : _,
           l,
         ),
@@ -176,11 +176,11 @@ const A = (t) => {
             className:
               '!dgs-ui-kit-mt-0 dgs-ui-kit-absolute dgs-ui-kit-inset-0 dgs-ui-kit-size-full dgs-ui-kit-opacity-0 dgs-ui-kit-cursor-pointer disabled:dgs-ui-kit-cursor-not-allowed dgs-ui-kit-z-10',
             type: 'file',
-            onDragEnter: () => g(!0),
-            onDragLeave: () => g(!1),
+            onDragEnter: () => p(!0),
+            onDragLeave: () => p(!1),
             onDrop: G,
             onChange: (w) => o(w.currentTarget.files?.[0]),
-            ...f,
+            ...c,
           }),
         ],
       }),
@@ -476,29 +476,29 @@ const H = (t) => {
       rightButton: n = !0,
       exteraButton: s,
     } = t,
-    { status: l, errorMessage: o, hintMessage: u, loading: c, title: f } = i,
-    p = f ?? i.file?.name,
-    g = !!(o ?? u);
+    { status: l, errorMessage: o, hintMessage: u, loading: m, title: c } = i,
+    g = c ?? i.file?.name,
+    p = !!(o ?? u);
   return e.jsxs('div', {
     className: d(
       'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-space-x-2 dgs-ui-kit-space-x-reverse dgs-ui-kit-w-0 dgs-ui-kit-min-w-full',
-      T(c, o ? 'error' : l),
+      T(m, o ? 'error' : l),
       (!l || l === 'default') && !o && 'dgs-ui-kit-p-1 !dgs-ui-kit-border-gray-200',
       r,
     ),
     children: [
       e.jsx(I, { file: i, className: '!dgs-ui-kit-size-[72px] dgs-ui-kit-shrink-0' }),
-      !!(p ?? g) &&
+      !!(g ?? p) &&
         e.jsxs('div', {
           className: 'dgs-ui-kit-space-y-1 dgs-ui-kit-overflow-hidden dgs-ui-kit-w-full',
           children: [
-            !!p &&
+            !!g &&
               e.jsx('span', {
                 className:
                   'dgs-ui-kit-font-p2-medium dgs-ui-kit-text-gray-700 dgs-ui-kit-break-words dgs-ui-kit-line-clamp-1',
-                children: p,
+                children: g,
               }),
-            g && e.jsx(j, { hintMessage: u, errorMessage: o }),
+            p && e.jsx(j, { hintMessage: u, errorMessage: o }),
           ],
         }),
       (a || n || s) &&
@@ -645,12 +645,12 @@ const z = (t) => {
       wrapperClassName: s,
       previewClassName: l,
     } = t,
-    { errorMessage: o, file: u, hintMessage: c, loading: f, status: p, title: g } = i;
+    { errorMessage: o, file: u, hintMessage: m, loading: c, status: g, title: p } = i;
   return e.jsxs('div', {
     className: 'dgs-ui-kit-space-y-2',
     children: [
       e.jsxs('div', {
-        className: d(T(f, o ? 'error' : p), s),
+        className: d(T(c, o ? 'error' : g), s),
         children: [
           e.jsxs(I, {
             file: i,
@@ -681,17 +681,17 @@ const z = (t) => {
                 : null,
             ],
           }),
-          !!(g ?? u?.name) &&
+          !!(p ?? u?.name) &&
             e.jsx('div', {
               className: d(
-                $(f, o, p),
+                $(c, o, g),
                 'dgs-ui-kit-px-3 dgs-ui-kit-py-1.5 dgs-ui-kit-rounded-lg dgs-ui-kit-font-p2-medium dgs-ui-kit-text-center dgs-ui-kit-line-clamp-1 dgs-ui-kit-mt-1 dgs-ui-kit-w-0 dgs-ui-kit-min-w-full',
               ),
-              children: g ?? u?.name,
+              children: p ?? u?.name,
             }),
         ],
       }),
-      (c ?? o) ? e.jsx(j, { errorMessage: o, hintMessage: c }) : null,
+      (m ?? o) ? e.jsx(j, { errorMessage: o, hintMessage: m }) : null,
     ],
   });
 };
@@ -751,6 +751,7 @@ const F = (t) => {
       previewProps: o,
       className: u,
     } = t,
+    m = t.hideFileInput,
     c = Array.isArray(l) ? l.length > 0 : !!l,
     p = d(
       i === 'multiple' &&
@@ -763,7 +764,7 @@ const F = (t) => {
   return e.jsxs(p, {
     ...(p === 'div' ? { className: u } : {}),
     children: [
-      ((!c && i === 'single') || i !== 'single') &&
+      ((!c && i === 'single') || (i === 'multiple' && !m)) &&
         e.jsx(A, { ...r, previewtype: o?.type, disabled: n, isError: a, onChange: s }),
       c &&
         e.jsx(e.Fragment, {
@@ -902,9 +903,13 @@ const ue = {
           },
         },
       },
+      hideFileInput: {
+        control: 'boolean',
+        table: { type: { summary: 'boolean', detail: 'available in multiple mode' } },
+      },
     },
   },
-  m = {
+  f = {
     onChange: () => {},
     fileInputProps: {
       title: 'عنوان',
@@ -950,14 +955,14 @@ const ue = {
   },
   x = {
     args: {
-      ...m,
+      ...f,
       fileInputProps: {
-        ...m.fileInputProps,
+        ...f.fileInputProps,
         description: `فرمت‌های قابل قبول JPG , PNG
 حداکثر حجم تا 5Mb`,
       },
       previewProps: {
-        ...m.previewProps,
+        ...f.previewProps,
         exteraButton: { variant: 'secondary', children: 'عنوان', size: 'small' },
       },
     },
@@ -980,19 +985,20 @@ const ue = {
     });
   },
   C = {
-    args: { ...m, mode: 'multiple', previewProps: { ...m.previewProps, type: 'grid' } },
+    args: { ...f, mode: 'multiple', previewProps: { ...f.previewProps, type: 'grid' } },
     render: (t) => e.jsx(U, { ...t }),
   },
   P = {
     args: {
-      ...m,
+      ...f,
       mode: 'multiple',
       fileInputProps: {
-        ...m.fileInputProps,
+        ...f.fileInputProps,
         description: `فرمت‌های قابل قبول JPG , PNG
 حداکثر حجم تا 5Mb`,
       },
-      previewProps: { ...m.previewProps, type: 'list' },
+      previewProps: { ...f.previewProps, type: 'list' },
+      hideFileInput: !0,
     },
     render: (t) => e.jsx(U, { ...t }),
   };
@@ -1063,7 +1069,8 @@ P.parameters = {
     previewProps: {
       ...defaultArgs.previewProps,
       type: 'list'
-    }
+    },
+    hideFileInput: true
   },
   render: args => <MultipleFileInputExample {...args} />
 }`,

@@ -3,19 +3,19 @@ import { c as p } from './clsx-B-dksMZM.js';
 import { r as a } from './index-CTzypqlY.js';
 import { I as U } from './IconArrowDown2-BBhufJ55.js';
 import { f as G } from './helpers-jvLsOI0h.js';
-import { B as J } from './index-BQpDB-dG.js';
-import { B as j } from './index-YNr3mtyw.js';
+import { B as J } from './index-qRQMl068.js';
+import { B as j } from './index-BJigavT-.js';
 import { I as Q } from './IconSearch-BpsoWpUw.js';
-import { C as X } from './index-DrzZ1fAw.js';
-import { I as Y } from './index-fbheJypL.js';
-import { u as Z, P as tt } from './PickerWrapper-ZjzTrD4N.js';
+import { C as X } from './index-C-3LqFTM.js';
+import { I as Y } from './index-qxRo2u-E.js';
+import { u as Z, P as tt } from './PickerWrapper-BLdRzqmN.js';
 /* empty css               */ import './omitObjects-DTdUR98j.js';
-import './RadioCheckboxWrapper-B8Ew6SYg.js';
+import './RadioCheckboxWrapper-BVspdQ78.js';
 import './IconEye-Cb9e2e14.js';
-import './TextFieldWrapper-DNkQ4CD6.js';
+import './TextFieldWrapper-BdG-j_JC.js';
 import './FieldBottomInfo-COD-BNdl.js';
 import './IconInfoCircleOutline-Dd1i2qLz.js';
-import './index-BeE8WScn.js';
+import './index-BM4Llf-D.js';
 import './index-BRSOB10J.js';
 import './index-X_f_OX5J.js';
 import './IconCloseRemove-B6m37iwz.js';
@@ -1337,27 +1337,30 @@ const dt = 20,
     let b;
     const T = o;
     typeof o == 'boolean' ? (b = o) : (b = Object.keys(o).length > 0);
-    const w = a.useMemo(() => (f ? d?.filter((l) => l.label.includes(f)) : d), [f, d]),
+    const w = a.useMemo(() => {
+        if (!Array.isArray(d)) throw new Error('options should be array');
+        return f ? d?.filter((l) => l.label.includes(f)) : d;
+      }, [f, d]),
       O = a.useMemo(
         () => (e === 'multiple' && u ? (d?.filter((l) => c.includes(l.value)) ?? []) : []),
         [d, c],
       ),
-      M = a.useMemo(() => {
+      A = a.useMemo(() => {
         let l = w;
         e === 'multiple' && u && (l = l?.filter((q) => !c.includes(q.value)));
         const n = Math.min(y + dt, l?.length ?? 0);
         return l?.slice(y, n);
       }, [w, y, c]),
-      k = g?.current?.children[0]?.clientHeight ?? 50,
-      K = (w?.length ?? 0) * k,
+      h = g?.current?.children[0]?.clientHeight ?? 50,
+      K = (w?.length ?? 0) * h,
       N = a.useCallback(() => {
         const l = g?.current?.parentElement;
         if (!l) return;
         const n = l.scrollTop,
           q = g.current.offsetTop,
-          A = Math.floor((n - q) / k);
-        W(A >= 0 ? A : 0);
-      }, [k]);
+          R = Math.floor((n - q) / h);
+        W(R >= 0 ? R : 0);
+      }, [h]);
     a.useEffect(() => {
       const l = g.current?.parentElement;
       if (l) return l.addEventListener('scroll', N), () => l.removeEventListener('scroll', N);
@@ -1365,7 +1368,7 @@ const dt = 20,
       a.useEffect(() => {
         b && et(document.getElementById('search-input'), 400);
       }, []);
-    const R = a.useCallback(
+    const M = a.useCallback(
       (l) => {
         if (typeof m == 'function')
           if (e === 'multiple') {
@@ -1405,7 +1408,7 @@ const dt = 20,
               O.map((l) =>
                 t.jsx(
                   _,
-                  { onClick: () => R(l.value), option: l, optionCellClassName: p(E, z), ...i },
+                  { onClick: () => M(l.value), option: l, optionCellClassName: p(E, z), ...i },
                   l.value,
                 ),
               ),
@@ -1424,19 +1427,19 @@ const dt = 20,
               ref: g,
               className: 'dgs-ui-kit-relative',
               style: { height: K },
-              children: M?.map((l, n) =>
+              children: A?.map((l, n) =>
                 t.jsx(
                   'div',
                   {
                     className: p('dgs-ui-kit-absolute dgs-ui-kit-w-full', E),
-                    style: { top: `${(y + n) * k}px` },
-                    children: t.jsx(_, { onClick: () => R(l.value), option: l, ...i }),
+                    style: { top: `${(y + n) * h}px` },
+                    children: t.jsx(_, { onClick: () => M(l.value), option: l, ...i }),
                   },
                   l.value,
                 ),
               ),
             }),
-            !M?.length &&
+            !A?.length &&
               !O.length &&
               t.jsxs('div', {
                 className:
@@ -1672,7 +1675,7 @@ C.__docgenInfo = {
     wrapperClassName: { required: !1, tsType: { name: 'string' }, description: '' },
   },
 };
-const Rt = {
+const Mt = {
     title: 'Components/Form/Select',
     component: C,
     parameters: {
@@ -1868,23 +1871,23 @@ const Rt = {
     const [d, e] = a.useState(0);
     return t.jsx(C, { ...i, value: d, onChange: (r) => e(r) });
   },
-  h = { args: rt, render: (i) => t.jsx($, { ...i }) },
+  k = { args: rt, render: (i) => t.jsx($, { ...i }) },
   v = { args: at, render: (i) => t.jsx($, { ...i }) },
   ot = (i) => {
     const [d, e] = a.useState([]);
     return t.jsx(C, { ...i, mode: 'multiple', value: d, onChange: (r) => e(r) });
   },
   x = { args: nt, render: (i) => t.jsx(ot, { ...i }) };
-h.parameters = {
-  ...h.parameters,
+k.parameters = {
+  ...k.parameters,
   docs: {
-    ...h.parameters?.docs,
+    ...k.parameters?.docs,
     source: {
       originalSource: `{
   args: defaultProps as Story['args'],
   render: args => <SelectExample {...args as typeof defaultProps} />
 }`,
-      ...h.parameters?.docs?.source,
+      ...k.parameters?.docs?.source,
     },
   },
 };
@@ -1914,11 +1917,11 @@ x.parameters = {
     },
   },
 };
-const At = ['Default', 'CustomOption', 'MultiSelect'];
+const Rt = ['Default', 'CustomOption', 'MultiSelect'];
 export {
   v as CustomOption,
-  h as Default,
+  k as Default,
   x as MultiSelect,
-  At as __namedExportsOrder,
-  Rt as default,
+  Rt as __namedExportsOrder,
+  Mt as default,
 };

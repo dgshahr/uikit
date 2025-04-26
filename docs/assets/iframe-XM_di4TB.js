@@ -3,65 +3,68 @@ const __vite__mapDeps = (
   m = __vite__mapDeps,
   d = m.f ||
     (m.f = [
-      './Accordion.stories-CWx5ID8m.js',
+      './Accordion.stories-CsioXrDD.js',
       './jsx-runtime-D_zvdyIk.js',
       './index-CTzypqlY.js',
-      './AccordionItem-mEah4s96.js',
+      './AccordionItem-D81wvPjd.js',
       './clsx-B-dksMZM.js',
       './IconArrowDown2-BBhufJ55.js',
-      './index-CxGRkKMn.js',
-      './styles-xPrrc1wx.css',
-      './Alert.stories-KlFA9loK.js',
+      './index-BJ3vqg7X.js',
+      './styles-DOGng8re.css',
+      './Alert.stories-CE9R_EF6.js',
       './IconCheckCircleBold-EXAR5RF5.js',
       './IconCloseRemove-B6m37iwz.js',
-      './index-YNr3mtyw.js',
-      './Badge.stories-DFne2UJl.js',
-      './index-BQpDB-dG.js',
-      './Breadcrumb.stories-BIGlOinI.js',
+      './index-BJigavT-.js',
+      './Badge.stories-BD515ObY.js',
+      './index-qRQMl068.js',
+      './Breadcrumb.stories-CMgeoO-1.js',
       './IconQuestionMarkCircle-BuJs7Hhg.js',
       './helpers-jvLsOI0h.js',
       './IconArrowLeft2-DI3fgQDw.js',
-      './Button.stories-CrvuFRJQ.js',
+      './Button.stories-DNGS-TtK.js',
       './IconArrowRight2-C2yC-io_.js',
       './Card.stories-CkQFf4Nt.js',
-      './Chip.stories-rn2Po3l5.js',
-      './Divider.stories-CHxpsmt0.js',
-      './Drawer.stories-B1m9t4-i.js',
-      './index-BeE8WScn.js',
+      './Chip.stories-CwTUGuAC.js',
+      './Divider.stories-DMCA_gf4.js',
+      './Drawer.stories-DyxLMsPp.js',
+      './index-BM4Llf-D.js',
       './index-BRSOB10J.js',
       './index-X_f_OX5J.js',
-      './Checkbox.stories-DAaB-Gnn.js',
-      './index-DrzZ1fAw.js',
+      './Checkbox.stories-ouvcU3NW.js',
+      './index-C-3LqFTM.js',
       './omitObjects-DTdUR98j.js',
-      './RadioCheckboxWrapper-B8Ew6SYg.js',
-      './Datepicker.stories-DhoMvWD4.js',
-      './PickerWrapper-ZjzTrD4N.js',
+      './RadioCheckboxWrapper-BVspdQ78.js',
+      './Datepicker.stories-Ck4CNmv1.js',
+      './PickerWrapper-BLdRzqmN.js',
       './useFlipPosition-Eiz29amO.js',
       './index-GdYbSsJO.js',
-      './index-fbheJypL.js',
+      './index-qxRo2u-E.js',
       './IconEye-Cb9e2e14.js',
-      './TextFieldWrapper-DNkQ4CD6.js',
+      './TextFieldWrapper-BdG-j_JC.js',
       './FieldBottomInfo-COD-BNdl.js',
       './IconInfoCircleOutline-Dd1i2qLz.js',
-      './FileUploader.stories-CZv7x7Cy.js',
+      './FileUploader.stories-BsH5TZMs.js',
       './index-abplzN06.js',
-      './Input.stories-E76mD9Rq.js',
-      './OtpInput.stories-DrCNURWp.js',
-      './RadioButton.stories-Ba7X4zCJ.js',
-      './Select.stories-Bb1xJzoZ.js',
+      './Input.stories-B4JO9axX.js',
+      './OtpInput.stories-BddRvJTp.js',
+      './RadioButton.stories-D7wWiigR.js',
+      './Select.stories-CtrPPmT7.js',
       './IconSearch-BpsoWpUw.js',
-      './Switch.stories-CyFkbDbs.js',
-      './Textarea.stories-Bx444tM2.js',
-      './Pagination.stories-5IAaiSCZ.js',
-      './ProgressBar.stories-DpGtxWcq.js',
+      './Switch.stories-1l_2NlyW.js',
+      './Textarea.stories-D4zvPLB6.js',
+      './Pagination.stories-QWCcIkaJ.js',
+      './index-BwOV1Ihi.js',
+      './ProgressBar.stories-9ZQ4Hj4K.js',
       './ProgressDoughnut.stories-CEtZGXiU.js',
-      './Sidebar.stories-Bf4vQJHB.js',
-      './Slider.stories-CcQYhm5o.js',
+      './Sidebar.stories-DwJ-jJQu.js',
+      './Slider.stories-B1K_JnWH.js',
       './Stepper.stories-CVY8UcH5.js',
-      './Tabs.stories-g2d26EUS.js',
-      './Tooltip.stories-C0SZvE8e.js',
+      './Table.stories-BuYf_qXb.js',
+      './index-Cqa0uTrI.js',
+      './Tabs.stories-Dy50LA1_.js',
+      './Tooltip.stories-DhgTCsJO.js',
       './preview-aK1-fH1o.js',
-      './entry-preview-Daz6q39A.js',
+      './entry-preview-CzNUkTK5.js',
       './chunk-XP5HYGXS-D5tuasO7.js',
       './entry-preview-docs-BoyI6TfX.js',
       './index-CFeRKNTJ.js',
@@ -10413,31 +10416,31 @@ s(te, 'isExportStory');
 const importers = {
   './src/components/Accordion/Accordion.stories.tsx': () =>
     __vitePreload(
-      () => import('./Accordion.stories-CWx5ID8m.js'),
+      () => import('./Accordion.stories-CsioXrDD.js'),
       __vite__mapDeps([0, 1, 2, 3, 4, 5, 6, 7]),
       import.meta.url,
     ),
   './src/components/Alert/Alert.stories.tsx': () =>
     __vitePreload(
-      () => import('./Alert.stories-KlFA9loK.js'),
+      () => import('./Alert.stories-CE9R_EF6.js'),
       __vite__mapDeps([8, 1, 4, 2, 9, 10, 11, 7]),
       import.meta.url,
     ),
   './src/components/Badge/Badge.stories.tsx': () =>
     __vitePreload(
-      () => import('./Badge.stories-DFne2UJl.js'),
+      () => import('./Badge.stories-BD515ObY.js'),
       __vite__mapDeps([12, 13, 1, 7]),
       import.meta.url,
     ),
   './src/components/Breadcrumb/Breadcrumb.stories.tsx': () =>
     __vitePreload(
-      () => import('./Breadcrumb.stories-BIGlOinI.js'),
+      () => import('./Breadcrumb.stories-CMgeoO-1.js'),
       __vite__mapDeps([14, 1, 2, 15, 16, 4, 17, 7]),
       import.meta.url,
     ),
   './src/components/Button/Button.stories.tsx': () =>
     __vitePreload(
-      () => import('./Button.stories-CrvuFRJQ.js'),
+      () => import('./Button.stories-DNGS-TtK.js'),
       __vite__mapDeps([18, 1, 2, 17, 19, 11, 4, 7]),
       import.meta.url,
     ),
@@ -10449,31 +10452,31 @@ const importers = {
     ),
   './src/components/Chip/Chip.stories.tsx': () =>
     __vitePreload(
-      () => import('./Chip.stories-rn2Po3l5.js'),
+      () => import('./Chip.stories-CwTUGuAC.js'),
       __vite__mapDeps([21, 1, 2, 5, 4, 13, 7]),
       import.meta.url,
     ),
   './src/components/Divider/Divider.stories.tsx': () =>
     __vitePreload(
-      () => import('./Divider.stories-CHxpsmt0.js'),
+      () => import('./Divider.stories-DMCA_gf4.js'),
       __vite__mapDeps([22, 1, 2, 6, 7]),
       import.meta.url,
     ),
   './src/components/Drawer/Drawer.stories.tsx': () =>
     __vitePreload(
-      () => import('./Drawer.stories-B1m9t4-i.js'),
+      () => import('./Drawer.stories-DyxLMsPp.js'),
       __vite__mapDeps([23, 1, 2, 11, 4, 7, 24, 25, 26, 10]),
       import.meta.url,
     ),
   './src/components/Form/Checkbox/Checkbox.stories.tsx': () =>
     __vitePreload(
-      () => import('./Checkbox.stories-DAaB-Gnn.js'),
+      () => import('./Checkbox.stories-ouvcU3NW.js'),
       __vite__mapDeps([27, 28, 1, 4, 29, 30, 7]),
       import.meta.url,
     ),
   './src/components/Form/Datepicker/Datepicker.stories.tsx': () =>
     __vitePreload(
-      () => import('./Datepicker.stories-DhoMvWD4.js'),
+      () => import('./Datepicker.stories-Ck4CNmv1.js'),
       __vite__mapDeps([
         31, 1, 2, 16, 4, 11, 7, 32, 24, 25, 26, 10, 33, 34, 5, 35, 36, 29, 37, 38, 39, 17, 19,
       ]),
@@ -10481,31 +10484,31 @@ const importers = {
     ),
   './src/components/Form/FileUploader/FileUploader.stories.tsx': () =>
     __vitePreload(
-      () => import('./FileUploader.stories-CZv7x7Cy.js'),
+      () => import('./FileUploader.stories-BsH5TZMs.js'),
       __vite__mapDeps([40, 1, 2, 4, 11, 7, 38, 39, 41, 36]),
       import.meta.url,
     ),
   './src/components/Form/Input/Input.stories.tsx': () =>
     __vitePreload(
-      () => import('./Input.stories-E76mD9Rq.js'),
+      () => import('./Input.stories-B4JO9axX.js'),
       __vite__mapDeps([42, 1, 2, 35, 4, 36, 29, 37, 38, 39, 7]),
       import.meta.url,
     ),
   './src/components/Form/OtpInput/OtpInput.stories.tsx': () =>
     __vitePreload(
-      () => import('./OtpInput.stories-DrCNURWp.js'),
+      () => import('./OtpInput.stories-BddRvJTp.js'),
       __vite__mapDeps([43, 1, 2, 4, 38, 39, 37, 7, 35, 36, 29]),
       import.meta.url,
     ),
   './src/components/Form/RadioButton/RadioButton.stories.tsx': () =>
     __vitePreload(
-      () => import('./RadioButton.stories-Ba7X4zCJ.js'),
+      () => import('./RadioButton.stories-D7wWiigR.js'),
       __vite__mapDeps([44, 1, 4, 29, 30, 7]),
       import.meta.url,
     ),
   './src/components/Form/Select/Select.stories.tsx': () =>
     __vitePreload(
-      () => import('./Select.stories-Bb1xJzoZ.js'),
+      () => import('./Select.stories-CtrPPmT7.js'),
       __vite__mapDeps([
         45, 1, 4, 2, 5, 16, 13, 7, 11, 46, 28, 29, 30, 35, 36, 37, 38, 39, 32, 24, 25, 26, 10, 33,
         34,
@@ -10514,62 +10517,68 @@ const importers = {
     ),
   './src/components/Form/Switch/Switch.stories.tsx': () =>
     __vitePreload(
-      () => import('./Switch.stories-CyFkbDbs.js'),
+      () => import('./Switch.stories-1l_2NlyW.js'),
       __vite__mapDeps([47, 1, 2, 4, 7]),
       import.meta.url,
     ),
   './src/components/Form/Textarea/Textarea.stories.tsx': () =>
     __vitePreload(
-      () => import('./Textarea.stories-Bx444tM2.js'),
+      () => import('./Textarea.stories-D4zvPLB6.js'),
       __vite__mapDeps([48, 1, 4, 2, 29, 37, 38, 39, 7]),
       import.meta.url,
     ),
   './src/components/Pagination/Pagination.stories.tsx': () =>
     __vitePreload(
-      () => import('./Pagination.stories-5IAaiSCZ.js'),
-      __vite__mapDeps([49, 1, 4, 2, 17, 19, 11, 7]),
+      () => import('./Pagination.stories-QWCcIkaJ.js'),
+      __vite__mapDeps([49, 50, 1, 4, 2, 17, 19, 11, 7]),
       import.meta.url,
     ),
   './src/components/Progress/Bar/ProgressBar.stories.tsx': () =>
     __vitePreload(
-      () => import('./ProgressBar.stories-DpGtxWcq.js'),
-      __vite__mapDeps([50, 1, 4, 2, 7]),
+      () => import('./ProgressBar.stories-9ZQ4Hj4K.js'),
+      __vite__mapDeps([51, 1, 4, 2, 7]),
       import.meta.url,
     ),
   './src/components/Progress/Doughnut/ProgressDoughnut.stories.tsx': () =>
     __vitePreload(
       () => import('./ProgressDoughnut.stories-CEtZGXiU.js'),
-      __vite__mapDeps([51, 41, 1, 4]),
+      __vite__mapDeps([52, 41, 1, 4]),
       import.meta.url,
     ),
   './src/components/Sidebar/Sidebar.stories.tsx': () =>
     __vitePreload(
-      () => import('./Sidebar.stories-Bf4vQJHB.js'),
-      __vite__mapDeps([52, 1, 2, 4, 34, 46, 13, 7, 35, 36, 29, 37, 38, 39, 6, 3, 5, 17, 11]),
+      () => import('./Sidebar.stories-DwJ-jJQu.js'),
+      __vite__mapDeps([53, 1, 2, 4, 34, 46, 13, 7, 35, 36, 29, 37, 38, 39, 6, 3, 5, 17, 11]),
       import.meta.url,
     ),
   './src/components/Slider/Slider.stories.tsx': () =>
     __vitePreload(
-      () => import('./Slider.stories-CcQYhm5o.js'),
-      __vite__mapDeps([53, 1, 2, 4, 17, 19, 11, 7]),
+      () => import('./Slider.stories-B1K_JnWH.js'),
+      __vite__mapDeps([54, 1, 2, 4, 17, 19, 11, 7]),
       import.meta.url,
     ),
   './src/components/Stepper/Horizontal/Stepper.stories.tsx': () =>
     __vitePreload(
       () => import('./Stepper.stories-CVY8UcH5.js'),
-      __vite__mapDeps([54, 1, 2, 4, 9, 15]),
+      __vite__mapDeps([55, 1, 2, 4, 9, 15]),
+      import.meta.url,
+    ),
+  './src/components/Table/Table.stories.tsx': () =>
+    __vitePreload(
+      () => import('./Table.stories-BuYf_qXb.js'),
+      __vite__mapDeps([56, 1, 2, 11, 4, 7, 13, 28, 29, 30, 57, 33, 34, 5, 39, 6, 50, 17, 19]),
       import.meta.url,
     ),
   './src/components/Tabs/Tabs.stories.tsx': () =>
     __vitePreload(
-      () => import('./Tabs.stories-g2d26EUS.js'),
-      __vite__mapDeps([55, 1, 2, 16, 4, 13, 7]),
+      () => import('./Tabs.stories-Dy50LA1_.js'),
+      __vite__mapDeps([58, 1, 2, 16, 4, 13, 7]),
       import.meta.url,
     ),
   './src/components/Tooltip/Tooltip.stories.tsx': () =>
     __vitePreload(
-      () => import('./Tooltip.stories-C0SZvE8e.js'),
-      __vite__mapDeps([56, 1, 2, 39, 16, 4, 33, 34, 7]),
+      () => import('./Tooltip.stories-DhgTCsJO.js'),
+      __vite__mapDeps([59, 1, 2, 39, 16, 57, 4, 33, 34, 7]),
       import.meta.url,
     ),
 };
@@ -10581,28 +10590,28 @@ const { composeConfigs, PreviewWeb } = __STORYBOOK_MODULE_PREVIEW_API__,
   getProjectAnnotations = async (t = []) => {
     const e = await __vitePreload(
       () => import('./preview-aK1-fH1o.js'),
-      __vite__mapDeps([57, 1, 2]),
+      __vite__mapDeps([60, 1, 2]),
       import.meta.url,
     );
     if (W(e.default)) return e.default.composed;
     const r = await Promise.all([
       t[0] ??
         __vitePreload(
-          () => import('./entry-preview-Daz6q39A.js'),
-          __vite__mapDeps([58, 59, 2]),
+          () => import('./entry-preview-CzNUkTK5.js'),
+          __vite__mapDeps([61, 62, 2]),
           import.meta.url,
         ),
       t[1] ??
         __vitePreload(
           () => import('./entry-preview-docs-BoyI6TfX.js'),
-          __vite__mapDeps([60, 59, 61, 2]),
+          __vite__mapDeps([63, 62, 64, 2]),
           import.meta.url,
         ),
-      t[2] ?? __vitePreload(() => import('./preview-D-fxvMnH.js'), [], import.meta.url),
+      t[2] ?? __vitePreload(() => import('./preview-uFl339FQ.js'), [], import.meta.url),
       t[3] ??
         __vitePreload(
           () => import('./preview-DGZ5Qq08.js'),
-          __vite__mapDeps([62, 63]),
+          __vite__mapDeps([65, 66]),
           import.meta.url,
         ),
       t[4] ?? __vitePreload(() => import('./preview-TqM3Oi8H.js'), [], import.meta.url),
@@ -10610,7 +10619,7 @@ const { composeConfigs, PreviewWeb } = __STORYBOOK_MODULE_PREVIEW_API__,
       t[6] ??
         __vitePreload(
           () => import('./preview-BWzBA1C2.js'),
-          __vite__mapDeps([64, 63]),
+          __vite__mapDeps([67, 66]),
           import.meta.url,
         ),
       t[7] ?? __vitePreload(() => import('./preview-caVMbCIR.js'), [], import.meta.url),
