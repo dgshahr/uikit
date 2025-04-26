@@ -57,7 +57,7 @@ const meta = {
           detail: `{
             title?: string;
             showTotal?: boolean;
-            actionButton?: ButtonProps;
+              extraElement?: ReactNode;
             className?: string;
 }`,
         },
@@ -205,11 +205,13 @@ export const WithHeaderAndPagination: Story = {
     header: {
       title: 'جدول محصولات',
       showTotal: true,
-      actionButton: {
-        size: 'small',
-        variant: 'text',
-        rightIcon: <IconRefreshLeft />,
-      },
+      extraElement: (
+        <Button
+          size="small"
+          variant="secondary"
+          rightIcon={<IconRefreshLeft />}
+        />
+      ),
     },
     pagination: {
       pageSize: 6,

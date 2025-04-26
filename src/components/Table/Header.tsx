@@ -2,10 +2,9 @@ import clsx from 'clsx';
 import type { FC } from 'react';
 import type { TableHeaderProps } from './types';
 import Badge from '../Badge';
-import Button from '../Button';
 
 const TableHeader: FC<TableHeaderProps & { total?: number }> = (props) => {
-  const { title, actionButton, showTotal, total, className } = props;
+  const { title, extraElement, showTotal, total, className } = props;
 
   return (
     <div
@@ -31,14 +30,7 @@ const TableHeader: FC<TableHeaderProps & { total?: number }> = (props) => {
           />
         </div>
       )}
-      {actionButton && (
-        <Button
-          className={clsx('dgs-ui-kit-shrink-0', actionButton.className)}
-          {...actionButton}
-        >
-          {actionButton.children ?? null}
-        </Button>
-      )}
+      {extraElement}
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 import type { DeepNamePath } from '@/src/utils/types/deepNamePath';
-import type { ButtonProps } from '../Button';
 import type { PaginationProps } from '../Pagination';
 import type { TooltipProps } from '../Tooltip';
 
@@ -43,7 +42,7 @@ export type ColumnsType<T extends UnknownRecord = UnknownRecord> = ColumnsTypeBa
 export interface TableHeaderProps {
   title?: string;
   showTotal?: boolean;
-  actionButton?: ButtonProps;
+  extraElement?: ReactNode;
   className?: string;
 }
 
