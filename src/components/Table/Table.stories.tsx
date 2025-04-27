@@ -66,6 +66,12 @@ const meta = {
         },
       },
     },
+    stickyTableHeader: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+      },
+    },
     pagination: {
       control: 'object',
       table: {
@@ -249,4 +255,18 @@ const TableWithSelectionExample: FC<Story['args']> = (props) => {
 export const WithSelection: Story = {
   args: defaultArgs,
   render: (args) => <TableWithSelectionExample {...args} />,
+};
+
+export const LongTable: Story = {
+  args: {
+    ...defaultArgs,
+    data: Array.from({ length: 100 }).map((_, index) => ({
+      id: index,
+      title: 'نام محصول',
+      price: 320000,
+      details:
+        'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است',
+    })),
+    stickyTableHeader: true,
+  },
 };
