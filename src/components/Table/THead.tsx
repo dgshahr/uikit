@@ -3,11 +3,11 @@ import IconArrowDown2 from '@/src/icons/IconArrowDown2';
 import IconArrowUp2 from '@/src/icons/IconArrowUp2';
 import IconInfoCircleOutline from '@/src/icons/IconInfoCircleOutline';
 import { isArraysEqual } from '@/src/utils/isArraysEqual';
+import TabelCell from './Cell';
 import type { ColumnsType, SortValues, TableProps, UnknownRecord } from './types';
 import {
   getAlingmentClass,
   getColumnKey,
-  getStickyClass,
   isSelectionAvailable,
   renderRowSelectCheckbox,
 } from './utils';
@@ -72,13 +72,14 @@ function THead<T extends UnknownRecord>(props: Readonly<THeadProps<T>>) {
     <thead>
       <tr>
         {isSelectionAvailable(rowSelection) && (
-          <th
+          <TabelCell
+            type="th"
             className={clsx(
               TH_CLASS,
               { 'dgs-ui-kit-rounded-tr-2xl': !haveHeader },
-              getStickyClass(rowSelection?.sticky),
               rowSelection?.className,
             )}
+            sticky={rowSelection?.sticky}
           >
             <div className="dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-justify-between">
               {renderRowSelectCheckbox(rowSelection?.align, {
@@ -95,17 +96,18 @@ function THead<T extends UnknownRecord>(props: Readonly<THeadProps<T>>) {
                 className={DIVIDER_CLASS}
               />
             </div>
-          </th>
+          </TabelCell>
         )}
         {columns.map((column, index) => (
-          <th
+          <TabelCell
+            type="th"
+            sticky={column.sticky}
             key={getColumnKey(column.key, column.dataIndex)}
             className={clsx(
               TH_CLASS,
               {
                 'first:dgs-ui-kit-rounded-tr-2xl last:dgs-ui-kit-rounded-tl-2xl': !haveHeader,
               },
-              getStickyClass(column?.sticky),
               column.className,
             )}
           >
@@ -137,7 +139,7 @@ function THead<T extends UnknownRecord>(props: Readonly<THeadProps<T>>) {
                 />
               )}
             </div>
-          </th>
+          </TabelCell>
         ))}
       </tr>
     </thead>

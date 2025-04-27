@@ -1,9 +1,9 @@
 import clsx from 'clsx';
+import TabelCell from './Cell';
 import type { ColumnsType, TableProps, UnknownRecord } from './types';
 import {
   getAlingmentClass,
   getColumnKey,
-  getStickyClass,
   isSelectionAvailable,
   renderRowSelectCheckbox,
 } from './utils';
@@ -69,7 +69,8 @@ function TBody<T extends UnknownRecord>(props: Readonly<TBodyProps<T>>) {
       {data.map((record, rowIndex) => (
         <tr key={record[rowKey] as string}>
           {isSelectionAvailable(rowSelection) && (
-            <td
+            <TabelCell
+              type="td"
               className={clsx(
                 CELL_CLASS,
                 rowSelection?.className,
@@ -77,9 +78,10 @@ function TBody<T extends UnknownRecord>(props: Readonly<TBodyProps<T>>) {
                   'dgs-ui-kit-border-b-0 dgs-ui-kit-rounded-br-2xl':
                     !havePagination && rowIndex === data.length - 1,
                 },
-                getStickyClass(rowSelection?.sticky, true),
                 rowSelection?.className,
               )}
+              sticky={rowSelection?.sticky}
+              addBorderToSticky
             >
               {renderRowSelectCheckbox(rowSelection?.align, {
                 onChange: (e) => rowSelection?.onSelectRow(e, record[rowKey] as string),
@@ -87,10 +89,11 @@ function TBody<T extends UnknownRecord>(props: Readonly<TBodyProps<T>>) {
                   rowSelection?.selectedRowKeys.find((key) => key === (record[rowKey] as string)),
                 ),
               })}
-            </td>
+            </TabelCell>
           )}
           {columns.map((column) => (
-            <td
+            <TabelCell
+              type="td"
               key={`${record[rowKey]}-${getColumnKey(column.key, column.dataIndex)}`}
               className={clsx(
                 CELL_CLASS,
@@ -98,9 +101,10 @@ function TBody<T extends UnknownRecord>(props: Readonly<TBodyProps<T>>) {
                   'dgs-ui-kit-border-b-0 first:dgs-ui-kit-rounded-br-2xl last:dgs-ui-kit-rounded-bl-2xl':
                     !havePagination && rowIndex === data.length - 1,
                 },
-                getStickyClass(column?.sticky, true),
                 column.className,
               )}
+              sticky={column.sticky}
+              addBorderToSticky
             >
               <div
                 className={clsx(
@@ -110,7 +114,7 @@ function TBody<T extends UnknownRecord>(props: Readonly<TBodyProps<T>>) {
               >
                 {getCellContent(column, record, rowIndex)}
               </div>
-            </td>
+            </TabelCell>
           ))}
         </tr>
       ))}

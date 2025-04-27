@@ -1,4 +1,7 @@
+'use client';
+
 import clsx from 'clsx';
+import { TableContextProvider } from './context';
 import TableHeader from './Header';
 import TBody from './TBody';
 import THead from './THead';
@@ -17,7 +20,7 @@ function Table<T extends UnknownRecord>(props: Readonly<TableProps<T>>) {
   return (
     <div
       className={clsx(
-        'dgs-ui-kit-relative dgs-ui-kit-bg-white dgs-ui-kit-border dgs-ui-kit-border-gray-200 dgs-ui-kit-border-solid dgs-ui-kit-rounded-2xl',
+        'dgs-ui-kit-relative dgs-ui-kit-bg-white dgs-ui-kit-border dgs-ui-kit-border-gray-200 dgs-ui-kit-border-solid dgs-ui-kit-rounded-2xl ',
         wrapperClassName,
       )}
     >
@@ -28,20 +31,25 @@ function Table<T extends UnknownRecord>(props: Readonly<TableProps<T>>) {
         />
       )}
       <table className={className}>
-        <THead<T>
+        <TableContextProvider
           columns={columns}
-          haveHeader={haveHeader}
-          rowKey={rowKey}
           rowSelection={rowSelection}
-          data={data}
-        />
-        <TBody<T>
-          columns={columns}
-          data={data}
-          rowKey={rowKey}
-          rowSelection={rowSelection}
-          havePagination={havePagination}
-        />
+        >
+          <THead<T>
+            columns={columns}
+            haveHeader={haveHeader}
+            rowKey={rowKey}
+            rowSelection={rowSelection}
+            data={data}
+          />
+          <TBody<T>
+            columns={columns}
+            data={data}
+            rowKey={rowKey}
+            rowSelection={rowSelection}
+            havePagination={havePagination}
+          />
+        </TableContextProvider>
       </table>
       {havePagination && (
         <Pagination
