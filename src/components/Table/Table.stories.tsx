@@ -220,7 +220,7 @@ export const WithHeaderAndPagination: Story = {
       extraElement: (
         <Button
           size="small"
-          variant="secondary"
+          variant="text"
           rightIcon={<IconRefreshLeft />}
         />
       ),
