@@ -15,6 +15,7 @@ interface TBodyProps<T extends UnknownRecord> {
   rowSelection: TableProps<T>['rowSelection'];
   rowKey: TableProps<T>['rowKey'];
   havePagination: boolean;
+  stickyTableHeader: TableProps<T>['stickyTableHeader'];
 }
 
 const CELL_CLASS =
@@ -62,7 +63,7 @@ function getCellContent<T extends UnknownRecord>(
 }
 
 function TBody<T extends UnknownRecord>(props: Readonly<TBodyProps<T>>) {
-  const { data, columns, rowKey, rowSelection, havePagination } = props;
+  const { data, columns, rowKey, rowSelection, havePagination, stickyTableHeader } = props;
 
   return (
     <tbody>
@@ -81,7 +82,7 @@ function TBody<T extends UnknownRecord>(props: Readonly<TBodyProps<T>>) {
                 rowSelection?.className,
               )}
               sticky={rowSelection?.sticky}
-              addBorderToSticky
+              addBorderToSticky={stickyTableHeader ? rowIndex !== 0 : true}
             >
               {renderRowSelectCheckbox(rowSelection?.align, {
                 onChange: (e) => rowSelection?.onSelectRow(e, record[rowKey] as string),
@@ -104,7 +105,7 @@ function TBody<T extends UnknownRecord>(props: Readonly<TBodyProps<T>>) {
                 column.className,
               )}
               sticky={column.sticky}
-              addBorderToSticky
+              addBorderToSticky={stickyTableHeader ? rowIndex !== 0 : true}
             >
               <div
                 className={clsx(

@@ -20,6 +20,7 @@ interface THeadProps<T extends UnknownRecord> {
   data: T[];
   rowSelection: TableProps<T>['rowSelection'];
   rowKey: TableProps<T>['rowKey'];
+  stickyTableHeader: TableProps<T>['stickyTableHeader'];
 }
 
 const ICON_SIZE = 16;
@@ -66,7 +67,7 @@ function getAllDataKey<T extends UnknownRecord>(
 }
 
 function THead<T extends UnknownRecord>(props: Readonly<THeadProps<T>>) {
-  const { columns, haveHeader, rowSelection, rowKey, data } = props;
+  const { columns, haveHeader, rowSelection, rowKey, data, stickyTableHeader } = props;
 
   return (
     <thead>
@@ -80,6 +81,7 @@ function THead<T extends UnknownRecord>(props: Readonly<THeadProps<T>>) {
               rowSelection?.className,
             )}
             sticky={rowSelection?.sticky}
+            stuckToTop={stickyTableHeader}
           >
             <div className="dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-justify-between">
               {renderRowSelectCheckbox(rowSelection?.align, {
@@ -110,6 +112,7 @@ function THead<T extends UnknownRecord>(props: Readonly<THeadProps<T>>) {
               },
               column.className,
             )}
+            stuckToTop={stickyTableHeader}
           >
             <div className="dgs-ui-kit-flex dgs-ui-kit-justify-between dgs-ui-kit-items-center">
               <div

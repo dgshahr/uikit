@@ -11,8 +11,17 @@ import Pagination from '../Pagination';
 import '@/src/styles.css';
 
 function Table<T extends UnknownRecord>(props: Readonly<TableProps<T>>) {
-  const { header, wrapperClassName, className, columns, rowSelection, data, rowKey, pagination } =
-    props;
+  const {
+    header,
+    wrapperClassName,
+    className,
+    columns,
+    rowSelection,
+    data,
+    rowKey,
+    pagination,
+    stickyTableHeader,
+  } = props;
 
   const haveHeader = (header && Object.values(header).length > 0) ?? false;
   const havePagination = Boolean(pagination?.totalCount && pagination?.pageSize);
@@ -41,6 +50,7 @@ function Table<T extends UnknownRecord>(props: Readonly<TableProps<T>>) {
             rowKey={rowKey}
             rowSelection={rowSelection}
             data={data}
+            stickyTableHeader={stickyTableHeader}
           />
           <TBody<T>
             columns={columns}
@@ -48,6 +58,7 @@ function Table<T extends UnknownRecord>(props: Readonly<TableProps<T>>) {
             rowKey={rowKey}
             rowSelection={rowSelection}
             havePagination={havePagination}
+            stickyTableHeader={stickyTableHeader}
           />
         </TableContextProvider>
       </table>

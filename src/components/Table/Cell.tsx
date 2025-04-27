@@ -10,10 +10,11 @@ interface TabelCellProps {
   type: 'td' | 'th';
   sticky?: ColumnsType['sticky'];
   addBorderToSticky?: boolean;
+  stuckToTop?: boolean;
 }
 
 const TabelCell: FC<TabelCellProps> = (props) => {
-  const { children, className, type, sticky, addBorderToSticky } = props;
+  const { children, className, type, sticky, addBorderToSticky, stuckToTop } = props;
   const cellRef = useRef<HTMLTableCellElement>(null);
   const Element = type;
   const { observer } = useTableContext();
@@ -33,7 +34,12 @@ const TabelCell: FC<TabelCellProps> = (props) => {
   return (
     <Element
       ref={cellRef}
-      className={clsx(className, getStickyClass(sticky, addBorderToSticky))}
+      className={clsx(className, getStickyClass(sticky, addBorderToSticky), {
+        'dgs-ui-kit-border-b-0 before:dgs-ui-kit-content[""] before:dgs-ui-kit-absolute before:dgs-ui-kit-bottom-0 before:dgs-ui-kit-left-0 before:dgs-ui-kit-w-full before:dgs-ui-kit-border-b before:dgs-ui-kit-border-solid before:dgs-ui-kit-border-gray-200':
+          stuckToTop,
+        'dgs-ui-kit-top-0 dgs-ui-kit-z-20': stuckToTop && sticky,
+        'dgs-ui-kit-sticky dgs-ui-kit-top-0 dgs-ui-kit-z-10': stuckToTop && !sticky,
+      })}
       id={sticky && `sticky-cell-${sticky}`}
     >
       {children}

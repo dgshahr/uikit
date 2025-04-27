@@ -60,6 +60,7 @@ export interface TableProps<T extends UnknownRecord = UnknownRecord> {
   columns: ColumnsType<T>[];
   rowKey: [keyof T] extends [never] ? string : keyof T;
   header?: TableHeaderProps;
+  stickyTableHeader?: boolean;
   rowSelection?: RowSelectionProps<T>;
   pagination?: PaginationProps;
   wrapperClassName?: string;
