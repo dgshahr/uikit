@@ -23,7 +23,7 @@ export type ChipProps = ChipPropsBase &
 
 function styleChip({ size = 'small', filled, className, disabled, isActive }: ChipProps) {
   const defaultClass =
-    'dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-rounded-full dgs-ui-kit-transition hover:dgs-ui-kit-ring-4 dgs-ui-kit-ring-gray-100 dgs-ui-kit-flex dgs-ui-kit-items-center';
+    'dgs-ui-kit-bg-white dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-rounded-full dgs-ui-kit-transition hover:dgs-ui-kit-ring-4 dgs-ui-kit-ring-gray-100 dgs-ui-kit-flex dgs-ui-kit-items-center';
 
   const sizeClass: Record<Required<ChipPropsBase>['size'], string> = {
     small:
