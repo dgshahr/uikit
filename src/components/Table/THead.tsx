@@ -1,9 +1,11 @@
 import clsx from 'clsx';
+import type { FC } from 'react';
 import IconArrowDown2 from '@/src/icons/IconArrowDown2';
 import IconArrowUp2 from '@/src/icons/IconArrowUp2';
 import IconInfoCircleOutline from '@/src/icons/IconInfoCircleOutline';
 import { isArraysEqual } from '@/src/utils/isArraysEqual';
 import TabelCell from './Cell';
+import { useTableContext } from './context';
 import type { ColumnsType, SortValues, TableProps, UnknownRecord } from './types';
 import {
   getAlingmentClass,
@@ -14,13 +16,8 @@ import {
 import Divider from '../Divider';
 import Tooltip from '../Tooltip';
 
-interface THeadProps<T extends UnknownRecord> {
-  columns: ColumnsType<T>[];
+interface THeadProps {
   haveHeader: boolean;
-  data: T[];
-  rowSelection: TableProps<T>['rowSelection'];
-  rowKey: TableProps<T>['rowKey'];
-  stickyTableHeader: TableProps<T>['stickyTableHeader'];
 }
 
 const ICON_SIZE = 16;
@@ -66,8 +63,9 @@ function getAllDataKey<T extends UnknownRecord>(
   return data.map((record) => record[rowKey] as string);
 }
 
-function THead<T extends UnknownRecord>(props: Readonly<THeadProps<T>>) {
-  const { columns, haveHeader, rowSelection, rowKey, data, stickyTableHeader } = props;
+const THead: FC<THeadProps> = (props) => {
+  const { haveHeader } = props;
+  const { columns, rowKey, rowSelection, data, stickyTableHeader } = useTableContext();
 
   return (
     <thead>
@@ -147,6 +145,6 @@ function THead<T extends UnknownRecord>(props: Readonly<THeadProps<T>>) {
       </tr>
     </thead>
   );
-}
+};
 
 export default THead;

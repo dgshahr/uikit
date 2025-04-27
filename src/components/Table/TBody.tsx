@@ -1,6 +1,8 @@
 import clsx from 'clsx';
+import type { FC } from 'react';
 import TabelCell from './Cell';
-import type { ColumnsType, TableProps, UnknownRecord } from './types';
+import { useTableContext } from './context';
+import type { ColumnsType, UnknownRecord } from './types';
 import {
   getAlingmentClass,
   getColumnKey,
@@ -9,13 +11,8 @@ import {
 } from './utils';
 import Tooltip from '../Tooltip';
 
-interface TBodyProps<T extends UnknownRecord> {
-  columns: ColumnsType<T>[];
-  data: T[];
-  rowSelection: TableProps<T>['rowSelection'];
-  rowKey: TableProps<T>['rowKey'];
+interface TBodyProps {
   havePagination: boolean;
-  stickyTableHeader: TableProps<T>['stickyTableHeader'];
 }
 
 const CELL_CLASS =
@@ -62,8 +59,9 @@ function getCellContent<T extends UnknownRecord>(
   return content;
 }
 
-function TBody<T extends UnknownRecord>(props: Readonly<TBodyProps<T>>) {
-  const { data, columns, rowKey, rowSelection, havePagination, stickyTableHeader } = props;
+const TBody: FC<TBodyProps> = (props) => {
+  const { havePagination } = props;
+  const { columns, data, rowKey, rowSelection, stickyTableHeader } = useTableContext();
 
   return (
     <tbody>
@@ -121,6 +119,6 @@ function TBody<T extends UnknownRecord>(props: Readonly<TBodyProps<T>>) {
       ))}
     </tbody>
   );
-}
+};
 
 export default TBody;

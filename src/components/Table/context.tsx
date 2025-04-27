@@ -1,16 +1,18 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import type { TableProps, UnknownRecord } from './types';
 
-interface ContextType {
+interface ContextType<T extends UnknownRecord> extends TableProps<T> {
   observer: IntersectionObserver | null;
 }
 
-export const tableContext = createContext<ContextType>({
+export const tableContext = createContext<ContextType<UnknownRecord>>({
   observer: null,
+  columns: [],
+  data: [],
+  rowKey: '',
 });
 
-interface ProviderProps<T extends UnknownRecord>
-  extends Pick<TableProps<T>, 'columns' | 'rowSelection'> {
+interface ProviderProps<T extends UnknownRecord> extends TableProps<T> {
   children: ReactNode;
 }
 
@@ -25,7 +27,9 @@ function removeShadowFromElement(element: Element) {
 }
 
 export function TableContextProvider<T extends UnknownRecord>(props: Readonly<ProviderProps<T>>) {
-  const { columns, rowSelection, children } = props;
+  const { children, ...rest } = props;
+  const { columns, rowSelection } = rest;
+
   const [observer, setObserver] = useState<IntersectionObserver | null>(null);
 
   useEffect(() => {
@@ -64,7 +68,8 @@ export function TableContextProvider<T extends UnknownRecord>(props: Readonly<Pr
     };
   }, []);
 
-  return <tableContext.Provider value={{ observer }}>{children}</tableContext.Provider>;
+  //@ts-expect-error I couldn't pass generic type <T extends UnknownRecord> to createContext so value have type error.
+  return <tableContext.Provider value={{ observer, ...rest }}>{children}</tableContext.Provider>;
 }
 
 export const useTableContext = () => useContext(tableContext);

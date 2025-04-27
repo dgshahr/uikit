@@ -11,17 +11,7 @@ import Pagination from '../Pagination';
 import '@/src/styles.css';
 
 function Table<T extends UnknownRecord>(props: Readonly<TableProps<T>>) {
-  const {
-    header,
-    wrapperClassName,
-    className,
-    columns,
-    rowSelection,
-    data,
-    rowKey,
-    pagination,
-    stickyTableHeader,
-  } = props;
+  const { header, wrapperClassName, className, data, pagination } = props;
 
   const haveHeader = (header && Object.values(header).length > 0) ?? false;
   const havePagination = Boolean(pagination?.totalCount && pagination?.pageSize);
@@ -40,26 +30,9 @@ function Table<T extends UnknownRecord>(props: Readonly<TableProps<T>>) {
         />
       )}
       <table className={className}>
-        <TableContextProvider
-          columns={columns}
-          rowSelection={rowSelection}
-        >
-          <THead<T>
-            columns={columns}
-            haveHeader={haveHeader}
-            rowKey={rowKey}
-            rowSelection={rowSelection}
-            data={data}
-            stickyTableHeader={stickyTableHeader}
-          />
-          <TBody<T>
-            columns={columns}
-            data={data}
-            rowKey={rowKey}
-            rowSelection={rowSelection}
-            havePagination={havePagination}
-            stickyTableHeader={stickyTableHeader}
-          />
+        <TableContextProvider {...props}>
+          <THead haveHeader={haveHeader} />
+          <TBody havePagination={havePagination} />
         </TableContextProvider>
       </table>
       {havePagination && (
