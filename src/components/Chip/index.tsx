@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import type { ButtonHTMLAttributes, FC, HTMLAttributes, ReactNode } from 'react';
+import Badge from '../Badge';
 
 import '@/src/styles.css';
-import Badge from '../Badge';
 
 interface ChipPropsBase {
   label: string | ReactNode;
@@ -58,8 +58,8 @@ const Chip: FC<ChipProps> = (props) => {
 
   return (
     <Wrapper
-      className={styleChip(props)}
       {...(rest as HTMLAttributes<HTMLDivElement>)}
+      className={styleChip(props)}
     >
       {rightIcon}
       {label}
