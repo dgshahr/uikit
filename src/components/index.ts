@@ -12,6 +12,7 @@ export { default as FileUploader } from './Form/FileUploader';
 export { default as Input } from './Form/Input';
 export { default as OtpInput } from './Form/OtpInput';
 export { default as RadioButton } from './Form/RadioButton';
+export { default as RangeInput } from './Form/RangeInput';
 export { default as Select } from './Form/Select';
 export { default as Switch } from './Form/Switch';
 export { default as Textarea } from './Form/Textarea';

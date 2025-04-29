@@ -107,6 +107,12 @@
       "import": "./dist/Form/RadioButton/index.mjs",
       "require": "./dist/Form/RadioButton/index.cjs"
     },
+    "./Form/RangeInput/*": null,
+    "./Form/RangeInput": {
+      "types": "./dist/Form/RangeInput/index.d.ts",
+      "import": "./dist/Form/RangeInput/index.mjs",
+      "require": "./dist/Form/RangeInput/index.cjs"
+    },
     "./Form/Select/*": null,
     "./Form/Select": {
       "types": "./dist/Form/Select/index.d.ts",
