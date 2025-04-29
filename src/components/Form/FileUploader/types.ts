@@ -44,7 +44,7 @@ interface FileUploaderPropsBase {
   fileInputProps?: Omit<FileInputProps, 'isError' | 'disabled' | 'onChange'>;
   isError?: boolean;
   disabled?: boolean;
-  onChange: (file: File | undefined) => void;
+  onChange: (file: File | undefined, files: FileList | null) => void;
   className?: string;
 }
 

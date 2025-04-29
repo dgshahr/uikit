@@ -59,7 +59,7 @@ const FileInput: FC<Props> = (props) => {
   function handleDrop(e: DragEvent<HTMLInputElement>) {
     e.preventDefault();
     setIsOnDrag(false);
-    onChange(e.dataTransfer.files?.[0]);
+    onChange(e.dataTransfer.files?.[0], e.dataTransfer.files);
   }
 
   return (
@@ -97,7 +97,7 @@ const FileInput: FC<Props> = (props) => {
           onDragEnter={() => setIsOnDrag(true)}
           onDragLeave={() => setIsOnDrag(false)}
           onDrop={handleDrop}
-          onChange={(e) => onChange(e.currentTarget.files?.[0])}
+          onChange={(e) => onChange(e.currentTarget.files?.[0], e.currentTarget.files)}
           {...rest}
         />
       </div>
