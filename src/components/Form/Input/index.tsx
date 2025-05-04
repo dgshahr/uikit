@@ -1,5 +1,12 @@
 import clsx from 'clsx';
-import { type ForwardedRef, type InputHTMLAttributes, type JSX, forwardRef, useState } from 'react';
+import {
+  type ForwardedRef,
+  type InputHTMLAttributes,
+  type JSX,
+  type ReactNode,
+  forwardRef,
+  useState,
+} from 'react';
 import IconCloseSquare from '@/src/icons/IconCloseSquare';
 import IconEye from '@/src/icons/IconEye';
 import IconHide from '@/src/icons/IconHide';
@@ -8,11 +15,13 @@ import TextFieldWrapper from '../Wrappers/TextFieldWrapper/TextFieldWrapper';
 import type { TextFieldBaseProps } from '../Wrappers/TextFieldWrapper/TextFieldWrapper';
 
 export interface InputProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'dir'>,
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'dir' | 'prefix'>,
     TextFieldBaseProps {
   leftIcon?: JSX.Element;
-  prefix?: string;
-  postfix?: string;
+  prefix?: ReactNode;
+  prefixClassName?: string;
+  postfix?: ReactNode;
+  postfixClassName?: string;
   onClear?: () => void;
   // return true in onInput to stop rest of the function from execution
   onInput?: (event: React.FormEvent<HTMLInputElement>) => void | boolean;
@@ -25,7 +34,9 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
     containerClassName,
     leftIcon,
     prefix,
+    prefixClassName,
     postfix,
+    postfixClassName,
     onClear,
     value,
     ...restProps
@@ -67,7 +78,11 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
       value={value}
     >
       {prefix && (
-        <span className="dgs-ui-kit-font-p1-regular dgs-ui-kit-text-gray-500">{prefix}</span>
+        <div
+          className={clsx('dgs-ui-kit-font-p1-regular dgs-ui-kit-text-gray-500', prefixClassName)}
+        >
+          {prefix}
+        </div>
       )}
       {typeof onClear === 'function' && value && dir === 'ltr' && renderClearButton()}
       <input
@@ -100,7 +115,11 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
       />
       {typeof onClear === 'function' && value && dir === 'rtl' && renderClearButton()}
       {postfix && (
-        <span className="dgs-ui-kit-font-p1-regular dgs-ui-kit-text-gray-500">{postfix}</span>
+        <div
+          className={clsx('dgs-ui-kit-font-p1-regular dgs-ui-kit-text-gray-500', postfixClassName)}
+        >
+          {postfix}
+        </div>
       )}
       {leftIcon && <div className="dgs-ui-kit-text-gray-600">{leftIcon}</div>}
       {restProps.type === 'password' && (
