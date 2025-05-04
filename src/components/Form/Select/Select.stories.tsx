@@ -185,27 +185,10 @@ const customOptionProps = {
 
 const multiSelectProps = {
   options: options,
-  customInput(isShowOptions) {
-    return (
-      <div
-        className={clsx(
-          'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-x-2 dgs-ui-kit-bg-gray-100 dgs-ui-kit-py-3 dgs-ui-kit-px-4 dgs-ui-kit-rounded-lg dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-transition',
-          isShowOptions
-            ? 'dgs-ui-kit-border-primary-500 dgs-ui-kit-text-primary-500'
-            : 'dgs-ui-kit-border-transparent dgs-ui-kit-text-gray-700',
-        )}
-      >
-        <span>شهر</span>
-        <Badge
-          value="۳"
-          valueType="number"
-        />
-        <IconArrowDown2
-          width={16}
-          height={16}
-        />
-      </div>
-    );
+  inputProps: {
+    placeholder: 'متن نما',
+    postfix: 'پسوند',
+    containerClassName: 'dgs-ui-kit-min-w-[300px] dgs-ui-kit-max-w-[400px]',
   },
   beforOptions: (
     <div className="dgs-ui-kit-flex dgs-ui-kit-gap-3 dgs-ui-kit-px-3 dgs-ui-kit-justify-end dgs-ui-kit-items-center">
@@ -270,5 +253,34 @@ const MultiSelectExample = (props: typeof multiSelectProps) => {
 
 export const MultiSelect: Story = {
   args: multiSelectProps as Story['args'],
+  render: (args) => <MultiSelectExample {...(args as typeof multiSelectProps)} />,
+};
+
+export const MultiSelectCustomInput: Story = {
+  args: {
+    ...multiSelectProps,
+    customInput(isShowOptions) {
+      return (
+        <div
+          className={clsx(
+            'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-x-2 dgs-ui-kit-bg-gray-100 dgs-ui-kit-py-3 dgs-ui-kit-px-4 dgs-ui-kit-rounded-lg dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-transition',
+            isShowOptions
+              ? 'dgs-ui-kit-border-primary-500 dgs-ui-kit-text-primary-500'
+              : 'dgs-ui-kit-border-transparent dgs-ui-kit-text-gray-700',
+          )}
+        >
+          <span>شهر</span>
+          <Badge
+            value="۳"
+            valueType="number"
+          />
+          <IconArrowDown2
+            width={16}
+            height={16}
+          />
+        </div>
+      );
+    },
+  } as never,
   render: (args) => <MultiSelectExample {...(args as typeof multiSelectProps)} />,
 };

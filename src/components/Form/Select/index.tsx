@@ -1,23 +1,41 @@
 import clsx from 'clsx';
+import IconCloseSquare from '@/src/icons/IconCloseSquare';
 import Options from './Options';
-import type { SelectProps } from './types';
+import type { SelectProps, SelectWithMultipleMode } from './types';
+import Chip from '../../Chip';
 import PickerWrapper from '../Wrappers/PickerWrapper/PickerWrapper';
 import type { PickerWrapperProps } from '../Wrappers/PickerWrapper/type';
 
 import '@/src/styles.css';
 
 function findValue<T>(value: T | T[], options: SelectProps<T>['options']) {
-  if (Array.isArray(value))
-    return options
-      .filter((option) => value.includes(option.value))
-      .map((option) => option.label)
-      .join(', ');
+  if (Array.isArray(value)) return;
 
   return options.find((option) => option.value === value)?.label ?? '';
 }
 
 const Select = <T,>(props: SelectProps<T>) => {
   const { searchable = true, value, options } = props;
+  const hasMultipleValues = Array.isArray(value) && value.length > 0;
+
+  function getInputPrefix() {
+    if (props.inputProps?.prefix) return props.inputProps.prefix;
+    else if (hasMultipleValues)
+      return value.map((valueItem) => (
+        <Chip
+          key={valueItem as string}
+          label={options.find((option) => option.value === valueItem)?.label}
+          clickable
+          leftIcon={<IconCloseSquare />}
+          onClick={(e) => {
+            e.stopPropagation();
+            const newValue = value.filter((item) => item !== valueItem);
+            (props.onChange as SelectWithMultipleMode<T>['onChange'])?.(newValue);
+          }}
+        />
+      ));
+    return null;
+  }
 
   const wrapperProps: Omit<PickerWrapperProps, 'children'> = { ...props };
   if (wrapperProps.dropdownType === 'popover' && !searchable)
@@ -31,7 +49,21 @@ const Select = <T,>(props: SelectProps<T>) => {
       ),
     };
   if (!wrapperProps.customInput)
-    wrapperProps.inputProps = { ...wrapperProps.inputProps, value: findValue(value, options) };
+    wrapperProps.inputProps = {
+      ...wrapperProps.inputProps,
+      value: findValue(value, options),
+      prefix: getInputPrefix(),
+      prefixClassName: hasMultipleValues
+        ? clsx(
+            'dgs-ui-kit-flex dgs-ui-kit-items-center flex dgs-ui-kit-flex-wrap dgs-ui-kit-gap-2 dgs-ui-kit-w-full',
+            wrapperProps.inputProps?.prefixClassName,
+          )
+        : wrapperProps.inputProps?.prefixClassName,
+      className: hasMultipleValues ? 'dgs-ui-kit-hidden' : wrapperProps.inputProps?.className,
+      containerClassName: hasMultipleValues
+        ? clsx('dgs-ui-kit-items-baseline', wrapperProps.inputProps?.containerClassName)
+        : wrapperProps.inputProps?.containerClassName,
+    };
 
   return (
     <PickerWrapper {...(wrapperProps as PickerWrapperProps)}>
