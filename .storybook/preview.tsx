@@ -3,6 +3,11 @@ import React from 'react';
 
 const preview: Preview = {
   parameters: {
+    options: {
+      storySort: {
+        order: ['Getting Started', 'Components'],
+      },
+    },
     actions: { argTypesRegex: '^on[A-Z].*' },
     layout: 'centered',
     controls: {

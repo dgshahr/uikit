@@ -70,6 +70,6 @@
       "@/src/*": ["./src/*"]
     }
   },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx"],
+  "include": ["./src/**/*.ts", "./src/**/*.tsx", "src/documents/**/*.mdx"],
   "exclude": ["./src/**/*.stories.*"]
 }
