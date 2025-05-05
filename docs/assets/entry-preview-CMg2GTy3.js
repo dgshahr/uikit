@@ -9,7 +9,7 @@ const __vite__mapDeps = (
       './index-X_f_OX5J.js',
     ]),
 ) => i.map((i) => d[i]);
-import { _ as pe } from './iframe-tooUBxLJ.js';
+import { _ as pe } from './iframe-Bcq47eKC.js';
 import { _ as Te, a as O, d as Ae } from './chunk-XP5HYGXS-D5tuasO7.js';
 import { r as M, R as Y, b as ge } from './index-CTzypqlY.js';
 var ne = {};

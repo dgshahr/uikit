@@ -1,8 +1,8 @@
 import { j as a } from './jsx-runtime-D_zvdyIk.js';
 import { useMDXComponents as c } from './index-Syj0H2O1.js';
-import { g as u } from './index-CTzypqlY.js';
-import { e as v, f as t } from './index-W_a1H87B.js';
-import './iframe-tooUBxLJ.js';
+import { g as t } from './index-CTzypqlY.js';
+import { e as u, f as v } from './index-gwSNOLQo.js';
+/* empty css               */ import './iframe-Bcq47eKC.js';
 import './index-BRSOB10J.js';
 import './index-X_f_OX5J.js';
 import './index-CFeRKNTJ.js';
@@ -126,7 +126,7 @@ function n() {
   );
 }
 var p = n();
-const o = u(p);
+const o = t(p);
 function g(r) {
   const l = RegExp(/var\(--dgs-color-[^)]+\)/).exec(r);
   return l ? `rgb(${l[0]})` : '';
@@ -134,7 +134,6 @@ function g(r) {
 const d = () =>
   a.jsxs(a.Fragment, {
     children: [
-      a.jsx(v, { title: 'Getting Started/Colors' }),
       a.jsx('h1', { className: 'dgs-ui-kit-font-h1-bold', children: '🎨 Colors' }),
       a.jsx('p', {
         className: 'dgs-ui-kit-font-p1-regular',
@@ -245,7 +244,7 @@ const d = () =>
           a.jsx('br', {}),
           'For example, to change the primary-100 color to a custom value, you can add the following CSS to your global CSS file:',
           a.jsx('br', {}),
-          a.jsx(t, {
+          a.jsx(u, {
             language: 'css',
             code: `:root {
         --dgs-color-primary-100: 16 185 143;
@@ -263,10 +262,17 @@ const d = () =>
   });
 d.__docgenInfo = { description: '', methods: [], displayName: 'ColorDocument' };
 function i(r) {
-  return a.jsx(d, {});
+  return a.jsxs(a.Fragment, {
+    children: [
+      a.jsx(v, { title: 'Getting Started/Colors' }),
+      `
+`,
+      a.jsx(d, {}),
+    ],
+  });
 }
-function C(r = {}) {
+function N(r = {}) {
   const { wrapper: l } = { ...c(), ...r.components };
   return l ? a.jsx(l, { ...r, children: a.jsx(i, { ...r }) }) : i();
 }
-export { C as default };
+export { N as default };
