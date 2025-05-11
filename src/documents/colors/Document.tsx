@@ -1,6 +1,6 @@
 // @ts-expect-error no types for colors object
 import DgThemeColors from '@dgshahr/dg-theme-tailwind-plugin/src/constants/colors';
-import { Source, Meta } from '@storybook/blocks';
+import { Source, Title, Meta, Subheading, Unstyled } from '@storybook/blocks';
 import type { FC } from 'react';
 
 function getRgbValue(color: string) {
@@ -13,9 +13,9 @@ const ColorDocument: FC = () => {
     <>
       <Meta title="Getting Started/Colors" />
 
-      <h1 className="dgs-ui-kit-font-h1-bold">🎨 Colors</h1>
+      <Title>🎨 Colors</Title>
 
-      <p className="dgs-ui-kit-font-p1-regular">
+      <p className="!dgs-ui-kit-font-p1-medium">
         DGS UI Kit includes a well-defined set of default colors that represent the brand&apos;s
         design language, including primary, secondary, gray and ... palettes. These colors are used
         consistently across all components to ensure visual harmony and accessibility. The color
@@ -23,74 +23,74 @@ const ColorDocument: FC = () => {
         variables, allowing you to adapt the UI kit to match your project&apos;s unique branding
         requirements.
       </p>
-      <h2 className="dgs-ui-kit-font-h2-bold dgs-ui-kit-border-none">Default Colors</h2>
-      <div className="dgs-ui-kit-flex dgs-ui-kit-gap-4">
-        <div className="dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-shrink-0 dgs-ui-kit-gap-4">
-          <div className="dgs-ui-kit-flex-1 dgs-ui-kit-font-p1-medium dgs-ui-kit-font-bold">
-            Colors/Shades
-          </div>
-          {Object.keys(DgThemeColors).map((colorName) => (
-            <div
-              key={colorName}
-              className="dgs-ui-kit-flex-1 dgs-ui-kit-font-p1-medium dgs-ui-kit-font-bold"
-            >
-              {colorName}
+      <Subheading>Default Colors</Subheading>
+      <Unstyled>
+        <div className="dgs-ui-kit-flex dgs-ui-kit-gap-4">
+          <div className="dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-shrink-0 dgs-ui-kit-gap-4">
+            <div className="dgs-ui-kit-flex-1 dgs-ui-kit-font-p1-medium dgs-ui-kit-font-bold">
+              Colors/Shades
             </div>
-          ))}
-        </div>
-        <div className="dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-gap-4">
-          <div className="dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-4">
-            {Object.keys(DgThemeColors.primary).map((colorShade) => (
+            {Object.keys(DgThemeColors).map((colorName) => (
               <div
-                key={colorShade}
-                className="dgs-ui-kit-flex-1 dgs-ui-kit-font-p1-medium dgs-ui-kit-text-center"
+                key={colorName}
+                className="dgs-ui-kit-flex-1 dgs-ui-kit-font-p1-medium dgs-ui-kit-font-bold"
               >
-                {colorShade}
+                {colorName}
               </div>
             ))}
           </div>
-          {Object.keys(DgThemeColors).map((colorName) => (
-            <div
-              key={colorName}
-              className=" dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-4"
-            >
-              {Object.keys(DgThemeColors[colorName]).map((colorShade) => (
+          <div className="dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-gap-4">
+            <div className="dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-4">
+              {Object.keys(DgThemeColors.primary).map((colorShade) => (
                 <div
-                  key={DgThemeColors[colorName][colorShade]}
-                  className="dgs-ui-kit-flex-1 dgs-ui-kit-size-7 dgs-ui-kit-rounded-lg"
-                  style={{
-                    backgroundColor: getRgbValue(DgThemeColors[colorName][colorShade]),
-                  }}
-                />
+                  key={colorShade}
+                  className="dgs-ui-kit-flex-1 dgs-ui-kit-font-p1-medium dgs-ui-kit-text-center"
+                >
+                  {colorShade}
+                </div>
               ))}
+            </div>
+            {Object.keys(DgThemeColors).map((colorName) => (
+              <div
+                key={colorName}
+                className=" dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-4"
+              >
+                {Object.keys(DgThemeColors[colorName]).map((colorShade) => (
+                  <div
+                    key={DgThemeColors[colorName][colorShade]}
+                    className="dgs-ui-kit-flex-1 dgs-ui-kit-size-7 dgs-ui-kit-rounded-lg"
+                    style={{
+                      backgroundColor: getRgbValue(DgThemeColors[colorName][colorShade]),
+                    }}
+                  />
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+        <p className="!dgs-ui-kit-font-p1-medium dgs-ui-kit-mt-10">
+          Every color in the palette includes 10 shades, with 50 being the lightest, and 900 being
+          the darkest:
+        </p>
+        <div className="dgs-ui-kit-flex dgs-ui-kit-gap-4 dgs-ui-kit-justify-center dgs-ui-kit-my-5">
+          {Object.keys(DgThemeColors.primary).map((colorShade) => (
+            <div
+              key={colorShade}
+              className="dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-items-center dgs-ui-kit-font-p2-medium"
+            >
+              <div
+                className="dgs-ui-kit-size-7 dgs-ui-kit-rounded-lg"
+                style={{
+                  backgroundColor: getRgbValue(DgThemeColors.primary[colorShade]),
+                }}
+              />
+              {colorShade}
             </div>
           ))}
         </div>
-      </div>
-      <p className="dgs-ui-kit-font-p1-medium dgs-ui-kit-mt-10">
-        Every color in the palette includes 10 shades, with 50 being the lightest, and 900 being the
-        darkest:
-      </p>
-      <div className="dgs-ui-kit-flex dgs-ui-kit-gap-4 dgs-ui-kit-justify-center">
-        {Object.keys(DgThemeColors.primary).map((colorShade) => (
-          <div
-            key={colorShade}
-            className="dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-items-center dgs-ui-kit-font-p2-medium"
-          >
-            <div
-              className="dgs-ui-kit-size-7 dgs-ui-kit-rounded-lg"
-              style={{
-                backgroundColor: getRgbValue(DgThemeColors.primary[colorShade]),
-              }}
-            />
-            {colorShade}
-          </div>
-        ))}
-      </div>
-      <h2 className="dgs-ui-kit-font-h2-bold dgs-ui-kit-border-none dgs-ui-kit-mt-8">
-        How to override colors
-      </h2>
-      <p className="dgs-ui-kit-font-p1-medium">
+      </Unstyled>
+      <Subheading>How to override colors</Subheading>
+      <p className="!dgs-ui-kit-font-p1-medium">
         To override the default colors, you can redefine the CSS variables in your global CSS file.
         this will allow you to customize the colors used in the DGS UI Kit components. The color
         variables template is:{' '}
