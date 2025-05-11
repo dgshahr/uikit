@@ -44,7 +44,7 @@ const __vite__mapDeps = (
       './TextFieldWrapper-_SkQ6SWF.js',
       './FieldBottomInfo-COD-BNdl.js',
       './IconInfoCircleOutline-Dd1i2qLz.js',
-      './FileUploader.stories-DrM5RlsV.js',
+      './FileUploader.stories-UptvF5ga.js',
       './index-abplzN06.js',
       './Input.stories-BlTJZ3Aq.js',
       './OtpInput.stories-Zr6YvLFz.js',
@@ -59,19 +59,19 @@ const __vite__mapDeps = (
       './ProgressBar.stories-CYqQR3eU.js',
       './ProgressDoughnut.stories-CEtZGXiU.js',
       './Sidebar.stories-Cp9-WqGz.js',
-      './Slider.stories-DWkXqfv-.js',
+      './Slider.stories-Dmi6zlx6.js',
       './Stepper.stories-CVY8UcH5.js',
       './Table.stories-efb5sCH9.js',
       './index-Cxy3zM4y.js',
       './Tabs.stories-CAkw0ihZ.js',
       './Tooltip.stories-BLZUPnpO.js',
-      './colors-fZ7pLH_8.js',
+      './colors-BBRAxmI1.js',
       './index-Syj0H2O1.js',
-      './index-W_a1H87B.js',
+      './index-Cr_9cYJ8.js',
       './index-CFeRKNTJ.js',
       './index-DrFu-skq.js',
       './preview-C5qkBiAH.js',
-      './entry-preview-keMhmtdK.js',
+      './entry-preview-WrX7Gfuh.js',
       './chunk-XP5HYGXS-D5tuasO7.js',
       './entry-preview-docs-BoyI6TfX.js',
       './preview-DGZ5Qq08.js',
@@ -10489,7 +10489,7 @@ const importers = {
     ),
   './src/components/Form/FileUploader/FileUploader.stories.tsx': () =>
     __vitePreload(
-      () => import('./FileUploader.stories-DrM5RlsV.js'),
+      () => import('./FileUploader.stories-UptvF5ga.js'),
       __vite__mapDeps([41, 1, 2, 4, 11, 7, 39, 40, 42, 37]),
       import.meta.url,
     ),
@@ -10564,7 +10564,7 @@ const importers = {
     ),
   './src/components/Slider/Slider.stories.tsx': () =>
     __vitePreload(
-      () => import('./Slider.stories-DWkXqfv-.js'),
+      () => import('./Slider.stories-Dmi6zlx6.js'),
       __vite__mapDeps([56, 1, 2, 4, 17, 19, 11, 7]),
       import.meta.url,
     ),
@@ -10594,8 +10594,8 @@ const importers = {
     ),
   './src/documents/colors/colors.mdx': () =>
     __vitePreload(
-      () => import('./colors-fZ7pLH_8.js'),
-      __vite__mapDeps([62, 1, 63, 2, 64, 26, 27, 65, 66]),
+      () => import('./colors-BBRAxmI1.js'),
+      __vite__mapDeps([62, 1, 63, 2, 64, 26, 27, 65, 66, 7]),
       import.meta.url,
     ),
 };
@@ -10614,7 +10614,7 @@ const { composeConfigs, PreviewWeb } = __STORYBOOK_MODULE_PREVIEW_API__,
     const r = await Promise.all([
       t[0] ??
         __vitePreload(
-          () => import('./entry-preview-keMhmtdK.js'),
+          () => import('./entry-preview-WrX7Gfuh.js'),
           __vite__mapDeps([68, 69, 2]),
           import.meta.url,
         ),
@@ -10640,7 +10640,7 @@ const { composeConfigs, PreviewWeb } = __STORYBOOK_MODULE_PREVIEW_API__,
         ),
       t[6] ?? __vitePreload(() => import('./preview-caVMbCIR.js'), [], import.meta.url),
       t[7] ?? __vitePreload(() => import('./preview-WIE65ICp.js'), [], import.meta.url),
-      t[8] ?? __vitePreload(() => import('./preview-BNipcYDv.js'), [], import.meta.url),
+      t[8] ?? __vitePreload(() => import('./preview-BsP6nJn8.js'), [], import.meta.url),
     ]);
     return composeConfigs([...r, e]);
   };

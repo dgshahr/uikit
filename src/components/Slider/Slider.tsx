@@ -82,7 +82,9 @@ const Slider = forwardRef<SliderRef, PropsWithChildren<SliderProps>>((props, ref
   }
 
   function detectResponsiveProps() {
-    const sortedResponsiveKeys = Object.keys(props.responsive!).sort();
+    const sortedResponsiveKeys = Object.keys(props.responsive!).sort(
+      (a, b) => Number(a) - Number(b),
+    );
 
     const foundedPropsKey = sortedResponsiveKeys.findLast(
       (key) => Number(key) <= window.innerWidth,
