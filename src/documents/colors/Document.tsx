@@ -1,7 +1,9 @@
 // @ts-expect-error no types for colors object
 import DgThemeColors from '@dgshahr/dg-theme-tailwind-plugin/src/constants/colors';
 import { Source, Title, Meta, Subheading, Unstyled } from '@storybook/blocks';
+import clsx from 'clsx';
 import type { FC } from 'react';
+import { DESCRIPTION_CLASS } from '../constants';
 
 function getRgbValue(color: string) {
   const match = RegExp(/var\(--dgs-color-[^)]+\)/).exec(color);
@@ -15,7 +17,7 @@ const ColorDocument: FC = () => {
 
       <Title>🎨 Colors</Title>
 
-      <p className="!dgs-ui-kit-font-p1-medium">
+      <p className={DESCRIPTION_CLASS}>
         DGS UI Kit includes a well-defined set of default colors that represent the brand&apos;s
         design language, including primary, secondary, gray and ... palettes. These colors are used
         consistently across all components to ensure visual harmony and accessibility. The color
@@ -68,7 +70,7 @@ const ColorDocument: FC = () => {
             ))}
           </div>
         </div>
-        <p className="!dgs-ui-kit-font-p1-medium dgs-ui-kit-mt-10">
+        <p className={clsx('dgs-ui-kit-mt-10', DESCRIPTION_CLASS)}>
           Every color in the palette includes 10 shades, with 50 being the lightest, and 900 being
           the darkest:
         </p>
@@ -90,7 +92,7 @@ const ColorDocument: FC = () => {
         </div>
       </Unstyled>
       <Subheading>How to override colors</Subheading>
-      <p className="!dgs-ui-kit-font-p1-medium">
+      <p className={DESCRIPTION_CLASS}>
         To override the default colors, you can redefine the CSS variables in your global CSS file.
         this will allow you to customize the colors used in the DGS UI Kit components. The color
         variables template is:{' '}
