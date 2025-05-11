@@ -927,7 +927,7 @@ const ue = {
   },
   ee = (t) => {
     const [i, r] = y.useState(),
-      a = y.useRef();
+      a = y.useRef(void 0);
     function n(s) {
       if (((a.current = void 0), !s)) {
         r(void 0);
@@ -1006,7 +1006,6 @@ const ue = {
 حداکثر حجم تا 5Mb`,
       },
       previewProps: { ...f.previewProps, type: 'list' },
-      hideFileInput: !0,
     },
     render: (t) => e.jsx(U, { ...t }),
   };
@@ -1077,8 +1076,7 @@ P.parameters = {
     previewProps: {
       ...defaultArgs.previewProps,
       type: 'list'
-    },
-    hideFileInput: true
+    }
   },
   render: args => <MultipleFileInputExample {...args} />
 }`,

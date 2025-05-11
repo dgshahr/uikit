@@ -4,8 +4,8 @@ import { r as n } from './index-CTzypqlY.js';
 import { c as k } from './clsx-B-dksMZM.js';
 import { I as O } from './IconArrowLeft2-DI3fgQDw.js';
 import { I as F } from './IconArrowRight2-C2yC-io_.js';
-import { B } from './index-DyKRU9KZ.js';
-/* empty css               */ const E = n.createContext({
+import { B as E } from './index-DyKRU9KZ.js';
+/* empty css               */ const A = n.createContext({
     slidesPerView: 1,
     spaceBetween: 0,
     navigationVariant: 'outside',
@@ -14,7 +14,7 @@ import { B } from './index-DyKRU9KZ.js';
     childrenCount: 0,
     sliderId: '',
   }),
-  P = () => n.useContext(E);
+  T = () => n.useContext(A);
 function $({ active: s, autoplay: t, variant: r = 'outside' }) {
   return [
     {
@@ -25,9 +25,9 @@ function $({ active: s, autoplay: t, variant: r = 'outside' }) {
     t ? 'dgs-ui-kit-p-[1px]' : '',
   ];
 }
-const A = (s) => {
+const D = (s) => {
   const { active: t, onClick: r, onNavigateToNext: o, index: i } = s,
-    { autoplay: d, navigationVariant: y = 'outside' } = P(),
+    { autoplay: d, navigationVariant: y = 'outside' } = T(),
     [l, u] = n.useState(0);
   return (
     n.useEffect(() => {
@@ -62,7 +62,7 @@ const A = (s) => {
     })
   );
 };
-A.__docgenInfo = {
+D.__docgenInfo = {
   description: '',
   methods: [],
   displayName: 'NavigationDot',
@@ -91,7 +91,7 @@ A.__docgenInfo = {
     },
   },
 };
-const D = (s) => {
+const R = (s) => {
   const { onNavigate: t, slideIndex: r, slidesCount: o } = s,
     {
       navigationButtonsShowType: i = 'hide',
@@ -100,7 +100,7 @@ const D = (s) => {
       navigationVariant: l = 'outside',
       showNavigationDots: u = !0,
       showPaginationText: f,
-    } = P(),
+    } = T(),
     h = e.jsxs('div', {
       className: k('dgs-ui-kit-flex dgs-ui-kit-gap-2', {
         'dgs-ui-kit-absolute dgs-ui-kit-bottom-0 dgs-ui-kit-left-[5.5%]':
@@ -111,14 +111,14 @@ const D = (s) => {
           i === 'hover' || i === 'onSides',
       }),
       children: [
-        e.jsx(B, {
+        e.jsx(E, {
           type: 'button',
           variant: 'secondary',
           onClick: () => t(r - 1),
           rightIcon: e.jsx(F, {}),
           'aria-label': 'slider-previous-button',
         }),
-        e.jsx(B, {
+        e.jsx(E, {
           type: 'button',
           variant: 'secondary',
           onClick: () => t(r + 1),
@@ -172,7 +172,7 @@ const D = (s) => {
                     ),
                     children: Array.from(Array(o).keys()).map((c, m) =>
                       e.jsx(
-                        A,
+                        D,
                         {
                           active: r === m,
                           index: m,
@@ -190,7 +190,7 @@ const D = (s) => {
     ],
   });
 };
-D.__docgenInfo = {
+R.__docgenInfo = {
   description: '',
   methods: [],
   displayName: 'Navigation',
@@ -212,7 +212,7 @@ D.__docgenInfo = {
     slidesCount: { required: !0, tsType: { name: 'number' }, description: '' },
   },
 };
-const T = n.forwardRef((s, t) => {
+const V = n.forwardRef((s, t) => {
   const [r, o] = n.useState(s),
     {
       className: i = '',
@@ -227,12 +227,12 @@ const T = n.forwardRef((s, t) => {
       containerXPadding: g = 0,
     } = r,
     [N, C] = n.useState(0),
-    [V, _] = n.useState(0),
-    L = Object.fromEntries(Object.entries(r).filter(([a]) => a !== 'children')),
+    [B, L] = n.useState(0),
+    M = Object.fromEntries(Object.entries(r).filter(([a]) => a !== 'children')),
     p = n.useRef(null),
-    v = Math.ceil(V / Math.floor(l)),
-    M = (y || (u && u !== 'hide') || h) && v > 1;
-  function W(a) {
+    v = Math.ceil(B / Math.floor(l)),
+    W = (y || (u && u !== 'hide') || h) && v > 1;
+  function q(a) {
     if (
       Math.ceil(Math.abs(a.currentTarget.scrollLeft)) + a.currentTarget.clientWidth + 1 + g >=
       a.currentTarget.scrollWidth
@@ -240,33 +240,33 @@ const T = n.forwardRef((s, t) => {
       C(v - 1);
       return;
     }
-    const b = a.currentTarget.scrollWidth - g * 2,
-      x = b / v,
-      w = (b - a.currentTarget.scrollLeft - g) / x;
-    if (w <= v) {
+    const x = a.currentTarget.scrollWidth - g * 2,
+      w = x / v,
+      b = (x - a.currentTarget.scrollLeft - g) / w;
+    if (b <= v) {
       C(0);
       return;
     }
-    C(Math.round(w % v));
+    C(Math.round(b % v));
   }
   function j(a) {
     if (!p.current) return;
-    const b = p.current.offsetWidth,
-      x = N - a,
-      w = p.current.scrollWidth / v,
-      q = x * w;
+    const x = p.current.offsetWidth,
+      w = N - a,
+      b = p.current.scrollWidth / v,
+      P = w * b;
     a < 0
-      ? p.current.scrollTo({ behavior: 'smooth', left: -(b * v) })
+      ? p.current.scrollTo({ behavior: 'smooth', left: -(x * v) })
       : a >= v
         ? p.current.scrollTo({ behavior: 'smooth', left: 0 })
-        : p.current.scrollBy({ behavior: 'smooth', left: q });
+        : p.current.scrollBy({ behavior: 'smooth', left: P });
   }
   function I() {
-    const b = Object.keys(s.responsive)
-        .sort()
-        .findLast((w) => Number(w) <= window.innerWidth),
-      x = b ? s.responsive[Number(b)] : null;
-    o(x ? { ...r, ...x } : s);
+    const x = Object.keys(s.responsive)
+        .sort((b, P) => Number(b) - Number(P))
+        .findLast((b) => Number(b) <= window.innerWidth),
+      w = x ? s.responsive[Number(x)] : null;
+    o(w ? { ...r, ...w } : s);
   }
   return (
     n.useImperativeHandle(t, () => ({
@@ -276,7 +276,7 @@ const T = n.forwardRef((s, t) => {
     n.useEffect(() => {
       if (!p.current) return;
       let a = p.current.childElementCount;
-      g > 0 && (a -= 2), _(a);
+      g > 0 && (a -= 2), L(a);
     }, [s.children, p, g]),
     n.useEffect(() => {
       if (!(!s.responsive || Object.keys(s.responsive).length <= 0))
@@ -294,8 +294,8 @@ const T = n.forwardRef((s, t) => {
     n.useEffect(() => {
       typeof m == 'number' && p.current && j(Math.max(0, m - 1));
     }, [m, p.current]),
-    e.jsx(E.Provider, {
-      value: { ...L, childrenCount: V, sliderId: n.useId() },
+    e.jsx(A.Provider, {
+      value: { ...M, childrenCount: B, sliderId: n.useId() },
       children: e.jsxs('div', {
         className: k('dgs-ui-kit-overflow-hidden dgs-ui-kit-relative dgs-ui-kit-group', i),
         style: { direction: 'rtl' },
@@ -306,7 +306,7 @@ const T = n.forwardRef((s, t) => {
               d,
             ),
             style: { marginLeft: -f },
-            onScroll: W,
+            onScroll: q,
             ref: p,
             children: [
               g > 0 &&
@@ -322,14 +322,14 @@ const T = n.forwardRef((s, t) => {
                 }),
             ],
           }),
-          M && e.jsx(D, { onNavigate: j, slideIndex: N, slidesCount: v }),
+          W && e.jsx(R, { onNavigate: j, slideIndex: N, slidesCount: v }),
         ],
       }),
     })
   );
 });
-T.displayName = 'Slider';
-T.__docgenInfo = {
+V.displayName = 'Slider';
+V.__docgenInfo = {
   description: '',
   methods: [
     {
@@ -363,7 +363,7 @@ function K({
   }
   return 'start';
 }
-const R = (s) => {
+const _ = (s) => {
   const { children: t, className: r, style: o, ...i } = s,
     {
       slidesPerView: d = 1,
@@ -372,7 +372,7 @@ const R = (s) => {
       containerXPadding: u = 0,
       childrenCount: f = 0,
       sliderId: h,
-    } = P(),
+    } = T(),
     c = n.useRef(null),
     [m, g] = n.useState(0);
   return (
@@ -406,10 +406,10 @@ const R = (s) => {
     })
   );
 };
-R.__docgenInfo = { description: '', methods: [], displayName: 'Slide' };
+_.__docgenInfo = { description: '', methods: [], displayName: 'Slide' };
 const Y = {
     title: 'Components/Slider',
-    component: T,
+    component: V,
     parameters: {
       docs: {
         description: {
@@ -515,7 +515,7 @@ const Y = {
         .fill(null)
         .map((s, t) =>
           e.jsx(
-            R,
+            _,
             {
               children: e.jsx('div', {
                 className:
