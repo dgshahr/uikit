@@ -114,7 +114,7 @@ const defaultArgs: Story['args'] = {
 
 const SingleFileInputExample: FC<Story['args']> = (props) => {
   const [file, setFile] = useState<FileType>();
-  const intervalId = useRef<NodeJS.Timeout>();
+  const intervalId = useRef<NodeJS.Timeout>(undefined);
 
   function handleFileSelect(newFile: File | undefined) {
     intervalId.current = undefined;
@@ -234,7 +234,6 @@ export const MultipleList: Story = {
       ...defaultArgs.previewProps,
       type: 'list',
     },
-    hideFileInput: true,
   },
 
   render: (args) => <MultipleFileInputExample {...args} />,
