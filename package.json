@@ -1,12 +1,35 @@
 {
   "name": "@dgshahr/ui-kit",
   "version": "0.0.93",
-  "description": "dgshahr ui-kit",
+  "description": "A modern, accessible, and customizable React component library",
   "author": "dgshahr",
+  "contributes": [
+    {
+      "name": "Mohammad Nazari",
+      "email": "mohammadnazary2000@gmail.com",
+      "url": "https://github.com/nazari2079"
+    }
+  ],
   "license": "MIT",
   "type": "module",
+  "homepage": "https://dgshahr.github.io/uikit/",
+  "keywords": [
+    "ui-kit",
+    "component",
+    "components",
+    "design",
+    "framework",
+    "frontend",
+    "react",
+    "react-component",
+    "ui"
+  ],
   "repository": {
+    "type": "git",
     "url": "https://github.com/dgshahr/uikit"
+  },
+  "bugs": {
+    "url": "https://github.com/dgshahr/uikit/issues"
   },
   "files": [
     "dist"
@@ -248,6 +271,9 @@
   "peerDependencies": {
     "react": ">=18.2.0",
     "react-dom": ">=18.2.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
   "lint-staged": {
     "*.+(js|jsx|ts|tsx)": [
