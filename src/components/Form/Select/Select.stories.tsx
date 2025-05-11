@@ -117,8 +117,8 @@ const meta = {
         },
       },
     },
-    beforOptions: {
-      description: 'befor options in options container',
+    beforeOptions: {
+      description: 'before options in options container',
     },
     afterOptions: {
       description: 'after options in options container',
@@ -190,7 +190,7 @@ const multiSelectProps = {
     postfix: 'پسوند',
     containerClassName: 'dgs-ui-kit-min-w-[300px] dgs-ui-kit-max-w-[400px]',
   },
-  beforOptions: (
+  beforeOptions: (
     <div className="dgs-ui-kit-flex dgs-ui-kit-gap-3 dgs-ui-kit-px-3 dgs-ui-kit-justify-end dgs-ui-kit-items-center">
       <Button
         variant="text"

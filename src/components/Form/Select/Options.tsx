@@ -15,7 +15,7 @@ const Options = <T,>(props: SelectProps<T>) => {
     options,
     mode = 'single' as 'single' | 'multiple',
     afterOptions,
-    beforOptions,
+    beforeOptions,
     onChange,
     searchable = true,
     separateSelectedOptions = true,
@@ -32,7 +32,7 @@ const Options = <T,>(props: SelectProps<T>) => {
 
   const itemClassName = clsx(
     'dgs-ui-kit-border-t dgs-ui-kit-border-solid dgs-ui-kit-border-gray-100',
-    ((!searchable && !beforOptions) || (mode === 'multiple' && separateSelectedOptions)) &&
+    ((!searchable && !beforeOptions) || (mode === 'multiple' && separateSelectedOptions)) &&
       'first-of-type:dgs-ui-kit-border-t-0',
     Boolean(afterOptions) && 'last-of-type:dgs-ui-kit-border-b',
   );
@@ -120,7 +120,7 @@ const Options = <T,>(props: SelectProps<T>) => {
           id="search-input"
           wrapperClassName={clsx(
             'dgs-ui-kit-sticky dgs-ui-kit-top-0 dgs-ui-kit-pt-3 dgs-ui-kit-right-0 dgs-ui-kit-bg-white dgs-ui-kit-z-10 dgs-ui-kit-px-3',
-            beforOptions ? 'dgs-ui-kit-pb-2' : 'dgs-ui-kit-pb-3',
+            beforeOptions ? 'dgs-ui-kit-pb-2' : 'dgs-ui-kit-pb-3',
             inputSearchable?.wrapperClassName,
           )}
           placeholder={inputSearchable?.placeholder ?? 'جستجوی عنوان'}
@@ -137,7 +137,7 @@ const Options = <T,>(props: SelectProps<T>) => {
           {...(typeof searchable === 'object' ? searchable : {})}
         />
       )}
-      {beforOptions}
+      {beforeOptions}
       {mode === 'multiple' && separateSelectedOptions && selectedOptions.length > 0 && (
         <>
           <p className="dgs-ui-kit-font-p2-regular dgs-ui-kit-text-gray-400 dgs-ui-kit-px-3 dgs-ui-kit-py-2">{`${optionsTitle}‌ی انتخاب شده`}</p>

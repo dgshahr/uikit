@@ -12,7 +12,7 @@ type SelectPropsBase<T> = {
   searchable?: boolean | Omit<InputProps, 'onChange'>;
   optionCell?: (option: Option<T>, isActive: boolean) => ReactNode;
   optionCellClassName?: string;
-  beforOptions?: ReactNode;
+  beforeOptions?: ReactNode;
   afterOptions?: ReactNode;
   emptyContent?: ReactNode;
   showClearButtonOnEmpty?: boolean;
