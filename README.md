@@ -46,7 +46,7 @@ The root `index.ts` file serves as the main entry point for bundling the entire 
 
 ## 🛠️ Contributing
 
-We welcome contributions! See the [Contributing Guide](https://dgshahr.github.io/uikit/?path=/docs/getting-started-contributing--docs) to learn how to get started.
+We welcome contributions! See the [Contributing Guide](https://dgshahr.github.io/uikit/?path=/docs/getting-started-contributing--documentation) to learn how to get started.
 
 ## 📄 License
 
