@@ -1,12 +1,10 @@
-import { Title, Source, Meta, Subheading } from '@storybook/blocks';
+import { Title, Source, Subheading } from '@storybook/blocks';
 import type { FC } from 'react';
 import { DESCRIPTION_CLASS } from '../constants';
 
 const ContributingDocument: FC = () => {
   return (
     <>
-      <Meta title="Getting Started/Contributing" />
-
       <Title>🤝 Contributing</Title>
       <p className={DESCRIPTION_CLASS}>
         Thank you for your interest in contributing! This UI Kit is an open and growing library of

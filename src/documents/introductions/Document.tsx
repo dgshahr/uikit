@@ -1,12 +1,10 @@
-import { Meta, Title, Subheading, Source } from '@storybook/blocks';
+import { Title, Subheading, Source } from '@storybook/blocks';
 import type { FC } from 'react';
 import { DESCRIPTION_CLASS } from '../constants';
 
 const IntroductionsDocument: FC = () => {
   return (
     <>
-      <Meta title="Getting Started/Introductions" />
-
       <Title>🚀 Introductions</Title>
       <p className={DESCRIPTION_CLASS}>
         The <strong>DGS UI Kit</strong> is a modern, accessible, and themeable component library

@@ -1,6 +1,6 @@
 // @ts-expect-error no types for colors object
 import DgThemeColors from '@dgshahr/dg-theme-tailwind-plugin/src/constants/colors';
-import { Source, Title, Meta, Subheading, Unstyled } from '@storybook/blocks';
+import { Source, Title, Subheading, Unstyled } from '@storybook/blocks';
 import clsx from 'clsx';
 import type { FC } from 'react';
 import { DESCRIPTION_CLASS } from '../constants';
@@ -13,8 +13,6 @@ function getRgbValue(color: string) {
 const ColorDocument: FC = () => {
   return (
     <>
-      <Meta title="Getting Started/Colors" />
-
       <Title>🎨 Colors</Title>
 
       <p className={DESCRIPTION_CLASS}>
