@@ -5,6 +5,8 @@ import clsx from 'clsx';
 import type { FC } from 'react';
 import { DESCRIPTION_CLASS } from '../constants';
 
+import '@/src/styles.css';
+
 function getRgbValue(color: string) {
   const match = RegExp(/var\(--dgs-color-[^)]+\)/).exec(color);
   return match ? `rgb(${match[0]})` : '';

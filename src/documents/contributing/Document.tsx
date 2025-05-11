@@ -2,6 +2,8 @@ import { Title, Source, Subheading } from '@storybook/blocks';
 import type { FC } from 'react';
 import { DESCRIPTION_CLASS } from '../constants';
 
+import '@/src/styles.css';
+
 const ContributingDocument: FC = () => {
   return (
     <>
