@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import type { FC } from 'react';
+import SpinnerLoading from '@/src/common/SpinnerLoading';
 import TabelCell from './Cell';
 import { useTableContext } from './context';
 import type { ColumnsType, UnknownRecord } from './types';
@@ -61,7 +62,24 @@ function getCellContent<T extends UnknownRecord>(
 
 const TBody: FC<TBodyProps> = (props) => {
   const { havePagination } = props;
-  const { columns, data, rowKey, rowSelection, stickyTableHeader } = useTableContext();
+  const { columns, data, rowKey, rowSelection, stickyTableHeader, loading } = useTableContext();
+
+  if (loading)
+    return (
+      <tbody>
+        <tr>
+          <td
+            className="dgs-ui-kit-p-10"
+            colSpan={columns.length}
+          >
+            <SpinnerLoading
+              width={typeof loading !== 'boolean' ? loading.size : 100}
+              height={typeof loading !== 'boolean' ? loading.size : 100}
+            />
+          </td>
+        </tr>
+      </tbody>
+    );
 
   return (
     <tbody>

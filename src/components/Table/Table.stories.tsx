@@ -106,6 +106,12 @@ const meta = {
         type: { summary: 'string' },
       },
     },
+    loading: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean | {size: number}' },
+      },
+    },
   },
 } satisfies Meta<typeof Table>;
 

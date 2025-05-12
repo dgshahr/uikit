@@ -65,4 +65,9 @@ export interface TableProps<T extends UnknownRecord = UnknownRecord> {
   pagination?: PaginationProps;
   wrapperClassName?: string;
   className?: string;
+  loading?:
+    | boolean
+    | {
+        size: number;
+      };
 }
