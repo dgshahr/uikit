@@ -1,8 +1,9 @@
 import clsx from 'clsx';
 import type { FC } from 'react';
-import SpinnerLoading from '@/src/common/SpinnerLoading';
 import TabelCell from './Cell';
 import { useTableContext } from './context';
+import TBodyEmpty from './TBodyEmpty';
+import TBodyLoading from './TBodyLoading';
 import type { ColumnsType, UnknownRecord } from './types';
 import {
   getAlingmentClass,
@@ -62,24 +63,12 @@ function getCellContent<T extends UnknownRecord>(
 
 const TBody: FC<TBodyProps> = (props) => {
   const { havePagination } = props;
-  const { columns, data, rowKey, rowSelection, stickyTableHeader, loading } = useTableContext();
+  const { columns, data, rowKey, rowSelection, stickyTableHeader, loading, emptyContent } =
+    useTableContext();
 
-  if (loading)
-    return (
-      <tbody>
-        <tr>
-          <td
-            className="dgs-ui-kit-p-10"
-            colSpan={columns.length}
-          >
-            <SpinnerLoading
-              width={typeof loading !== 'boolean' ? loading.size : 100}
-              height={typeof loading !== 'boolean' ? loading.size : 100}
-            />
-          </td>
-        </tr>
-      </tbody>
-    );
+  if (loading) return <TBodyLoading />;
+
+  if (data.length < 1 && emptyContent) return <TBodyEmpty />;
 
   return (
     <tbody>

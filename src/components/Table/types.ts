@@ -70,4 +70,6 @@ export interface TableProps<T extends UnknownRecord = UnknownRecord> {
     | {
         size: number;
       };
+
+  emptyContent?: ReactNode;
 }

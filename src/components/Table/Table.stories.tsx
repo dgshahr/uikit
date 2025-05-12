@@ -112,6 +112,12 @@ const meta = {
         type: { summary: 'boolean | {size: number}' },
       },
     },
+    emptyContent: {
+      control: 'object',
+      table: {
+        type: { summary: 'ReactNode' },
+      },
+    },
   },
 } satisfies Meta<typeof Table>;
 
