@@ -64,6 +64,7 @@ export interface TableProps<T extends UnknownRecord = UnknownRecord> {
   rowSelection?: RowSelectionProps<T>;
   pagination?: PaginationProps;
   wrapperClassName?: string;
+  containerClassName?: string;
   className?: string;
   loading?:
     | boolean
@@ -72,4 +73,5 @@ export interface TableProps<T extends UnknownRecord = UnknownRecord> {
       };
 
   emptyContent?: ReactNode;
+  layout?: 'fixed' | 'auto';
 }
