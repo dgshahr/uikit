@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx';
 import type { FC } from 'react';
 import TabelCell from './Cell';

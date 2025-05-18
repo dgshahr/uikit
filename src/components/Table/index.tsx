@@ -1,5 +1,3 @@
-'use client';
-
 import clsx from 'clsx';
 import React from 'react';
 import { TableContextProvider } from './context';
@@ -24,7 +22,6 @@ function Table<T extends UnknownRecord>(props: Readonly<TableProps<T>>) {
 
   const haveHeader = (header && Object.values(header).length > 0) ?? false;
   const havePagination = Boolean(pagination?.totalCount && pagination?.pageSize);
-
   const ContainerElement = layout !== 'fixed' ? 'div' : React.Fragment;
 
   return (
