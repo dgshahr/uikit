@@ -71,6 +71,7 @@ const meta = {
       table: {
         type: { summary: 'boolean' },
       },
+      description: "It only works if the wrapper element has height and the layout isn't fixed.",
     },
     pagination: {
       control: 'object',
@@ -105,6 +106,25 @@ const meta = {
       table: {
         type: { summary: 'string' },
       },
+    },
+    containerClassName: {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    layout: {
+      control: 'select',
+      options: ['auto', 'fixed'],
+      table: {
+        type: {
+          summary: 'auto, fixed',
+        },
+        defaultValue: {
+          summary: 'auto',
+        },
+      },
+      description: 'The table should have a width for the layout to work.',
     },
     loading: {
       control: 'boolean',
@@ -215,7 +235,8 @@ const defaultArgs: Story['args'] = {
   data: dataSource,
   // @ts-expect-error: Column type (DeepPathName) doesn't work in storybook
   columns,
-  className: 'dgs-ui-kit-w-[800px] dgs-ui-kit-table-fixed',
+  className: 'dgs-ui-kit-w-[800px]',
+  layout: 'fixed',
   rowKey: 'id',
 };
 
