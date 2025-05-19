@@ -50,6 +50,24 @@ const meta = {
         },
       },
     },
+    showMask: {
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+      },
+    },
+    onMaskClick: {
+      control: 'object',
+      if: {
+        arg: 'showMask',
+        eq: true,
+      },
+      table: {
+        type: {
+          summary: '() => void',
+        },
+      },
+    },
   },
 } satisfies Meta<typeof Sidebar>;
 
@@ -64,13 +82,15 @@ const SidebarExample: FC<Story['args']> = (props) => {
       {...props}
       isOpen={open}
       setIsOpen={(open) => setOpen(open)}
+      showMask
+      onMaskClick={() => setOpen(false)}
     />
   );
 };
 
 export const Default: Story = {
   args: {
-    isOpen: true,
+    isOpen: false,
     setIsOpen: () => {},
     logo: {
       open: 'https://dgshahr.com/assets/svg/logotype.svg',
