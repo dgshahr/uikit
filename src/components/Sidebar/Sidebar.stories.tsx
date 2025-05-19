@@ -62,6 +62,7 @@ const meta = {
         arg: 'showMask',
         eq: true,
       },
+      description: 'only avaiable when showMaks is true',
       table: {
         type: {
           summary: '() => void',
@@ -78,11 +79,13 @@ type Story = StoryObj<typeof meta>;
 const SidebarExample: FC<Story['args']> = (props) => {
   const [open, setOpen] = useState(true);
   return (
+    // @ts-expect-error showMask should be true to accept onMaskClick
+    // but for demo we give contorl of showMask to user and type is unpredictable
     <Sidebar
       {...props}
       isOpen={open}
       setIsOpen={(open) => setOpen(open)}
-      showMask
+      showMask={props.showMask ?? false}
       onMaskClick={() => setOpen(false)}
     />
   );
@@ -90,7 +93,7 @@ const SidebarExample: FC<Story['args']> = (props) => {
 
 export const Default: Story = {
   args: {
-    isOpen: false,
+    isOpen: true,
     setIsOpen: () => {},
     logo: {
       open: 'https://dgshahr.com/assets/svg/logotype.svg',
