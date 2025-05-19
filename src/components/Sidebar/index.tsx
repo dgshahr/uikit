@@ -1,5 +1,7 @@
+'use client';
+
 import clsx from 'clsx';
-import type { FC } from 'react';
+import { Fragment, useEffect, type FC } from 'react';
 import IconLogout from '@/src/icons/IconLogout';
 import { DURATION_CLASS } from './constants';
 import { sidebarContext } from './context';
@@ -21,42 +23,78 @@ const Sidebar: FC<SidebarProps> = (props) => {
     userProfile,
     logOutButtonProps,
     onLogout,
+    showMask,
+    onMaskClick,
   } = props;
+
+  const MaskElement = showMask ? 'div' : Fragment;
+
+  useEffect(() => {
+    if (!showMask) return;
+
+    const documentElement = document.documentElement;
+    const overflowClass = 'dgs-ui-kit-overflow-hidden';
+
+    if (isOpen) documentElement.classList.add(overflowClass);
+    else documentElement.classList.remove(overflowClass);
+
+    return () => {
+      documentElement.classList.remove(overflowClass);
+    };
+  }, [showMask, isOpen]);
 
   return (
     <sidebarContext.Provider value={props}>
-      <div
-        className={clsx(
-          className,
-          'dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-fixed dgs-ui-kit-top-0 dgs-ui-kit-right-0 dgs-ui-kit-bg-white dgs-ui-kit-shadow-md dgs-ui-kit-h-full dgs-ui-kit-p-4 dgs-ui-kit-pt-6 dgs-ui-kit-transition-[width,max-width]',
-          isOpen
-            ? 'dgs-ui-kit-w-[280px] dgs-ui-kit-max-w-full'
-            : 'dgs-ui-kit-w-[80px] dgs-ui-kit-max-w-[80px]',
-          DURATION_CLASS,
-        )}
+      <MaskElement
+        {...(MaskElement === 'div'
+          ? {
+              className: clsx(
+                'dgs-ui-kit-fixed dgs-ui-kit-top-0 dgs-ui-kit-left-0 dgs-ui-kit-z-50 dgs-ui-kit-overflow-hidden dgs-ui-kit-transition-[background-color] dgs-ui-kit-ease-linear',
+                isOpen
+                  ? 'dgs-ui-kit-size-full dgs-ui-kit-bg-black/40'
+                  : 'dgs-ui-kit-size-0 dgs-ui-kit-bg-transparent',
+                DURATION_CLASS,
+              ),
+              onClick: (e) => {
+                if (typeof onMaskClick === 'function' && e.target === e.currentTarget)
+                  onMaskClick();
+              },
+            }
+          : {})}
       >
-        <SidebarToggleButton />
-        {Boolean(logo?.open ?? logo?.close) && <SidebarLogoImage />}
-        {items && items.length > 0 && <SidebarItems />}
-        <div className="dgs-ui-kit-shrink-0 dgs-ui-kit-flex-1">
-          {extraComponent}
-          <Divider
-            className="dgs-ui-kit-mt-6 dgs-ui-kit-mb-4"
-            type="horizontal"
-          />
-          {Boolean(userProfile?.image) && <SidebarProfile />}
-          <Button
-            color="error"
-            variant="secondary"
-            rightIcon={<IconLogout />}
-            isFullWidth
-            onClick={onLogout}
-            {...logOutButtonProps}
-          >
-            {isOpen ? 'خروج' : ''}
-          </Button>
+        <div
+          className={clsx(
+            className,
+            'dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-fixed dgs-ui-kit-top-0 dgs-ui-kit-right-0 dgs-ui-kit-bg-white dgs-ui-kit-shadow-md dgs-ui-kit-h-full dgs-ui-kit-p-4 dgs-ui-kit-pt-6 dgs-ui-kit-transition-[width,max-width]',
+            isOpen
+              ? 'dgs-ui-kit-w-[280px] dgs-ui-kit-max-w-full'
+              : 'dgs-ui-kit-w-[80px] dgs-ui-kit-max-w-[80px]',
+            DURATION_CLASS,
+          )}
+        >
+          <SidebarToggleButton />
+          {Boolean(logo?.open ?? logo?.close) && <SidebarLogoImage />}
+          {items && items.length > 0 && <SidebarItems />}
+          <div className="dgs-ui-kit-shrink-0 dgs-ui-kit-flex-1">
+            {extraComponent}
+            <Divider
+              className="dgs-ui-kit-mt-6 dgs-ui-kit-mb-4"
+              type="horizontal"
+            />
+            {Boolean(userProfile?.image) && <SidebarProfile />}
+            <Button
+              color="error"
+              variant="secondary"
+              rightIcon={<IconLogout />}
+              isFullWidth
+              onClick={onLogout}
+              {...logOutButtonProps}
+            >
+              {isOpen ? 'خروج' : ''}
+            </Button>
+          </div>
         </div>
-      </div>
+      </MaskElement>
     </sidebarContext.Provider>
   );
 };
