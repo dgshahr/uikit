@@ -28,11 +28,20 @@ const Sidebar: FC<SidebarProps> = (props) => {
   } = props;
 
   const MaskElement = showMask ? 'div' : Fragment;
+  const documentElement = document.documentElement;
+
+  useEffect(() => {
+    const paddingRightClass = 'dgs-ui-kit-pr-[80px]';
+    documentElement.classList.add(paddingRightClass);
+
+    return () => {
+      documentElement.classList.remove(paddingRightClass);
+    };
+  }, []);
 
   useEffect(() => {
     if (!showMask) return;
 
-    const documentElement = document.documentElement;
     const overflowClass = 'dgs-ui-kit-overflow-hidden';
 
     if (isOpen) documentElement.classList.add(overflowClass);
