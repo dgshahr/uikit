@@ -6,6 +6,7 @@ import IconFlashDisable from '../../icons/IconFlashDisable';
 import IconMoneyBag from '../../icons/IconMoneyBag';
 import IconSetting from '../../icons/IconSetting';
 
+import Button from '../Button';
 import Sidebar from './index';
 
 const meta = {
@@ -79,15 +80,17 @@ type Story = StoryObj<typeof meta>;
 const SidebarExample: FC<Story['args']> = (props) => {
   const [open, setOpen] = useState(true);
   return (
-    // @ts-expect-error showMask should be true to accept onMaskClick
-    // but for demo we give contorl of showMask to user and type is unpredictable
-    <Sidebar
-      {...props}
-      isOpen={open}
-      setIsOpen={(open) => setOpen(open)}
-      showMask={props.showMask ?? false}
-      onMaskClick={() => setOpen(false)}
-    />
+    <>
+      <Button onClick={() => setOpen(!open)}>toggle sidebar</Button>
+      {/*  @ts-expect-error showMask should be true to accept onMaskClick but for demo we give contorl of showMask to user and type is unpredictable*/}
+      <Sidebar
+        {...props}
+        isOpen={open}
+        setIsOpen={(open) => setOpen(open)}
+        showMask={props.showMask ?? false}
+        onMaskClick={() => setOpen(false)}
+      />
+    </>
   );
 };
 

@@ -25,6 +25,7 @@ const Sidebar: FC<SidebarProps> = (props) => {
     onLogout,
     showMask,
     onMaskClick,
+    hideOnClose,
   } = props;
 
   const MaskElement = showMask ? 'div' : Fragment;
@@ -74,10 +75,12 @@ const Sidebar: FC<SidebarProps> = (props) => {
         <div
           className={clsx(
             className,
-            'dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-fixed dgs-ui-kit-top-0 dgs-ui-kit-right-0 dgs-ui-kit-bg-white dgs-ui-kit-shadow-md dgs-ui-kit-h-full dgs-ui-kit-p-4 dgs-ui-kit-pt-6 dgs-ui-kit-transition-[width,max-width]',
-            isOpen
-              ? 'dgs-ui-kit-w-[280px] dgs-ui-kit-max-w-full'
-              : 'dgs-ui-kit-w-[80px] dgs-ui-kit-max-w-[80px]',
+            'dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-fixed dgs-ui-kit-top-0 dgs-ui-kit-right-0 dgs-ui-kit-bg-white dgs-ui-kit-shadow-md dgs-ui-kit-h-full dgs-ui-kit-p-4 dgs-ui-kit-pt-6 dgs-ui-kit-transition-[width,max-width,opacity]',
+            {
+              'dgs-ui-kit-w-[280px] dgs-ui-kit-max-w-full': isOpen,
+              'dgs-ui-kit-w-[80px] dgs-ui-kit-max-w-[80px]': !isOpen && !hideOnClose,
+              'dgs-ui-kit-w-0 dgs-ui-kit-opacity-0': !isOpen && hideOnClose,
+            },
             DURATION_CLASS,
           )}
         >

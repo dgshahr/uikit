@@ -47,6 +47,7 @@ interface SidebarPropsBase {
   onLogout?: () => void;
   logOutButtonProps?: Omit<ButtonProps, 'onClick'>;
   className?: string;
+  hideOnClose?: boolean;
 }
 
 interface SidebarPropsWithMask {
