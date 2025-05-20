@@ -65,12 +65,22 @@ function getCellContent<T extends UnknownRecord>(
 
 const TBody: FC<TBodyProps> = (props) => {
   const { havePagination } = props;
-  const { columns, data, rowKey, rowSelection, stickyTableHeader, loading, emptyContent } =
-    useTableContext();
+  const {
+    columns,
+    data,
+    rowKey,
+    rowSelection,
+    stickyTableHeader,
+    loading,
+    emptyContent,
+    getRowClassName,
+  } = useTableContext();
 
   if (loading) return <TBodyLoading />;
 
   if (data.length < 1 && emptyContent) return <TBodyEmpty />;
+
+  const haveRowClassName = typeof getRowClassName === 'function';
 
   return (
     <tbody>
@@ -87,6 +97,7 @@ const TBody: FC<TBodyProps> = (props) => {
                     !havePagination && rowIndex === data.length - 1,
                 },
                 rowSelection?.className,
+                haveRowClassName ? getRowClassName(record) : '',
               )}
               sticky={rowSelection?.sticky}
               addBorderToSticky={stickyTableHeader ? rowIndex !== 0 : true}
@@ -110,6 +121,7 @@ const TBody: FC<TBodyProps> = (props) => {
                     !havePagination && rowIndex === data.length - 1,
                 },
                 column.className,
+                haveRowClassName ? getRowClassName(record) : '',
               )}
               sticky={column.sticky}
               addBorderToSticky={stickyTableHeader ? rowIndex !== 0 : true}

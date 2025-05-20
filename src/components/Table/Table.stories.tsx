@@ -138,6 +138,14 @@ const meta = {
         type: { summary: 'ReactNode' },
       },
     },
+    getRowClassName: {
+      control: 'object',
+      table: {
+        type: {
+          summary: '(record: T) => string | undefined',
+        },
+      },
+    },
   },
 } satisfies Meta<typeof Table>;
 

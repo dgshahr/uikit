@@ -59,6 +59,7 @@ export interface TableProps<T extends UnknownRecord = UnknownRecord> {
   data: T[];
   columns: ColumnsType<T>[];
   rowKey: [keyof T] extends [never] ? string : keyof T;
+  getRowClassName?: (record: T) => string | undefined;
   header?: TableHeaderProps;
   stickyTableHeader?: boolean;
   rowSelection?: RowSelectionProps<T>;
