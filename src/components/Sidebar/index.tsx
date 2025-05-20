@@ -32,13 +32,15 @@ const Sidebar: FC<SidebarProps> = (props) => {
   const documentElement = document.documentElement;
 
   useEffect(() => {
+    if (hideOnClose) return;
+
     const paddingRightClass = 'dgs-ui-kit-pr-[80px]';
     documentElement.classList.add(paddingRightClass);
 
     return () => {
       documentElement.classList.remove(paddingRightClass);
     };
-  }, []);
+  }, [hideOnClose, isOpen]);
 
   useEffect(() => {
     if (!showMask) return;
