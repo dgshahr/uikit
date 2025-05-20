@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import type { ButtonHTMLAttributes, FC, HTMLAttributes, ReactNode } from 'react';
+import omitObject from '@/src/utils/omitObjects';
 import Badge from '../Badge';
 
 import '@/src/styles.css';
@@ -55,10 +56,11 @@ const Chip: FC<ChipProps> = (props) => {
   const { label, rightIcon = null, leftIcon = null, badgeNumber, clickable, ...rest } = props;
 
   const Wrapper = clickable ? ('button' as 'div') : 'div';
+  const containerRestProps = omitObject(rest, ['filled', 'size', 'isActive']);
 
   return (
     <Wrapper
-      {...(rest as HTMLAttributes<HTMLDivElement>)}
+      {...(containerRestProps as HTMLAttributes<HTMLDivElement | HTMLButtonElement>)}
       className={styleChip(props)}
     >
       {rightIcon}
