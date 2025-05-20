@@ -259,8 +259,8 @@ const D = () => {
       [],
     );
   function y(u) {
-    const g = u.target.value;
-    d(g), v(g);
+    const c = u.target.value;
+    d(c), v(c);
   }
   function p() {
     d(''), f(s ?? []);
@@ -276,7 +276,7 @@ const D = () => {
         !!t && e.jsx(P, { value: o, onChange: y }),
         e.jsx('div', {
           className: 'dgs-ui-kit-space-y-6 dgs-ui-kit-px-4',
-          children: m.map((u, g) =>
+          children: m.map((u, c) =>
             e.jsxs(
               l.Fragment,
               {
@@ -349,7 +349,7 @@ const D = () => {
                           ),
                     ),
                   }),
-                  g !== m.length - 1 && e.jsx(N, { type: 'horizontal' }),
+                  c !== m.length - 1 && e.jsx(N, { type: 'horizontal' }),
                 ],
               },
               u.title,
@@ -436,27 +436,28 @@ const I = (i) => {
       onLogout: y,
       showMask: p,
       onMaskClick: u,
-      hideOnClose: g,
+      hideOnClose: c,
     } = i,
     n = p ? 'div' : l.Fragment,
     r = document.documentElement;
   return (
     l.useEffect(() => {
-      const c = 'dgs-ui-kit-pr-[80px]';
+      if (c) return;
+      const g = 'dgs-ui-kit-pr-[80px]';
       return (
-        r.classList.add(c),
+        r.classList.add(g),
         () => {
-          r.classList.remove(c);
+          r.classList.remove(g);
         }
       );
-    }, []),
+    }, [c, t]),
     l.useEffect(() => {
       if (!p) return;
-      const c = 'dgs-ui-kit-overflow-hidden';
+      const g = 'dgs-ui-kit-overflow-hidden';
       return (
-        t ? r.classList.add(c) : r.classList.remove(c),
+        t ? r.classList.add(g) : r.classList.remove(g),
         () => {
-          r.classList.remove(c);
+          r.classList.remove(g);
         }
       );
     }, [p, t]),
@@ -472,8 +473,8 @@ const I = (i) => {
                   : 'dgs-ui-kit-size-0 dgs-ui-kit-bg-transparent',
                 h,
               ),
-              onClick: (c) => {
-                typeof u == 'function' && c.target === c.currentTarget && u();
+              onClick: (g) => {
+                typeof u == 'function' && g.target === g.currentTarget && u();
               },
             }
           : {}),
@@ -483,8 +484,8 @@ const I = (i) => {
             'dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-fixed dgs-ui-kit-top-0 dgs-ui-kit-right-0 dgs-ui-kit-bg-white dgs-ui-kit-shadow-md dgs-ui-kit-h-full dgs-ui-kit-p-4 dgs-ui-kit-pt-6 dgs-ui-kit-transition-[width,max-width,opacity]',
             {
               'dgs-ui-kit-w-[280px] dgs-ui-kit-max-w-full': t,
-              'dgs-ui-kit-w-[80px] dgs-ui-kit-max-w-[80px]': !t && !g,
-              'dgs-ui-kit-w-0 dgs-ui-kit-opacity-0': !t && g,
+              'dgs-ui-kit-w-[80px] dgs-ui-kit-max-w-[80px]': !t && !c,
+              'dgs-ui-kit-w-0 dgs-ui-kit-opacity-0': !t && c,
             },
             h,
           ),

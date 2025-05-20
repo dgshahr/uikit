@@ -1,22 +1,22 @@
 'use client';
 import { j as e } from './jsx-runtime-D_zvdyIk.js';
-import { r as p, R as G } from './index-CTzypqlY.js';
-import { B as L } from './index-BQiqmBN2.js';
+import { r as f, R as Q } from './index-CTzypqlY.js';
+import { B as H } from './index-BQiqmBN2.js';
 import { c } from './clsx-B-dksMZM.js';
-import { B as J } from './index-Hns_H_aV.js';
-import { C as Q } from './index-O5ykqROR.js';
-import { T as q } from './index-DIhYQusJ.js';
-import { I as V } from './IconArrowDown2-BBhufJ55.js';
-import { I as X } from './IconInfoCircleOutline-Dd1i2qLz.js';
-import { D as C } from './index-C0ebrB-X.js';
-import { P as ee } from './index-hSAnFV4o.js';
+import { B as V } from './index-Hns_H_aV.js';
+import { C as X } from './index-O5ykqROR.js';
+import { T as O } from './index-DIhYQusJ.js';
+import { I as ee } from './IconArrowDown2-BBhufJ55.js';
+import { I as te } from './IconInfoCircleOutline-Dd1i2qLz.js';
+import { D as R } from './index-C0ebrB-X.js';
+import { P as ie } from './index-hSAnFV4o.js';
 /* empty css               */ import './omitObjects-DTdUR98j.js';
 import './RadioCheckboxWrapper-D-BsO4GR.js';
 import './useFlipPosition-Eiz29amO.js';
 import './index-GdYbSsJO.js';
 import './IconArrowLeft2-DI3fgQDw.js';
 import './IconArrowRight2-C2yC-io_.js';
-const H = (t) =>
+const P = (t) =>
   e.jsxs('svg', {
     xmlns: 'http://www.w3.org/2000/svg',
     width: '1em',
@@ -39,21 +39,21 @@ const H = (t) =>
       }),
     ],
   });
-H.__docgenInfo = { description: '', methods: [], displayName: 'IconRefreshLeft' };
-const O = p.createContext({ observer: null, columns: [], data: [], rowKey: '' }),
-  P = 'after:!dgs-ui-kit-shadow-[rgba(0,0,0,0.06)]';
-function S(t) {
-  t.classList.add(P);
+P.__docgenInfo = { description: '', methods: [], displayName: 'IconRefreshLeft' };
+const K = f.createContext({ observer: null, columns: [], data: [], rowKey: '' }),
+  z = 'after:!dgs-ui-kit-shadow-[rgba(0,0,0,0.06)]';
+function _(t) {
+  t.classList.add(z);
 }
-function te(t) {
-  t.classList.remove(P);
+function se(t) {
+  t.classList.remove(z);
 }
-function K(t) {
+function D(t) {
   const { children: i, ...r } = t,
     { columns: o, rowSelection: s } = r,
-    [n, l] = p.useState(null);
+    [n, l] = f.useState(null);
   return (
-    p.useEffect(() => {
+    f.useEffect(() => {
       let a = o.some((u) => !!u.sticky);
       return (
         a || (a = !!s?.sticky),
@@ -62,15 +62,15 @@ function K(t) {
             new IntersectionObserver(
               (u) => {
                 let d = !1;
-                for (const g of u)
-                  if (g.boundingClientRect.right > g.intersectionRect.right) {
-                    document.querySelectorAll('#sticky-cell-right').forEach(S), (d = !0);
+                for (const m of u)
+                  if (m.boundingClientRect.right > m.intersectionRect.right) {
+                    document.querySelectorAll('#sticky-cell-right').forEach(_), (d = !0);
                     break;
-                  } else if (g.boundingClientRect.left < g.intersectionRect.left) {
-                    document.querySelectorAll('#sticky-cell-left').forEach(S), (d = !0);
+                  } else if (m.boundingClientRect.left < m.intersectionRect.left) {
+                    document.querySelectorAll('#sticky-cell-left').forEach(_), (d = !0);
                     break;
                   }
-                d || document.querySelectorAll('[id^="sticky-cell-"]').forEach(te);
+                d || document.querySelectorAll('[id^="sticky-cell-"]').forEach(se);
               },
               { threshold: 1, rootMargin: '0% 100% 0% 100%' },
             ),
@@ -80,12 +80,12 @@ function K(t) {
         }
       );
     }, []),
-    e.jsx(O.Provider, { value: { observer: n, ...r }, children: i })
+    e.jsx(K.Provider, { value: { observer: n, ...r }, children: i })
   );
 }
-const y = () => p.useContext(O);
-K.__docgenInfo = { description: '', methods: [], displayName: 'TableContextProvider' };
-const z = (t) => {
+const k = () => f.useContext(K);
+D.__docgenInfo = { description: '', methods: [], displayName: 'TableContextProvider' };
+const M = (t) => {
   const { title: i, extraElement: r, showTotal: o, total: s, className: n } = t;
   return e.jsxs('div', {
     className: c(
@@ -105,7 +105,7 @@ const z = (t) => {
               className: 'dgs-ui-kit-font-p2-regular dgs-ui-kit-text-gray-700 dgs-ui-kit-ml-1',
               children: 'تعداد نتایج:',
             }),
-            e.jsx(J, {
+            e.jsx(V, {
               value: s ?? 0,
               valueType: 'number',
               size: 'large',
@@ -118,7 +118,7 @@ const z = (t) => {
     ],
   });
 };
-z.__docgenInfo = {
+M.__docgenInfo = {
   description: '',
   methods: [],
   displayName: 'TableHeader',
@@ -130,7 +130,7 @@ z.__docgenInfo = {
     total: { required: !1, tsType: { name: 'number' }, description: '' },
   },
 };
-function v(t) {
+function N(t) {
   switch (t) {
     case 'center':
       return 'dgs-ui-kit-justify-center';
@@ -142,19 +142,19 @@ function v(t) {
       return;
   }
 }
-function D(t, i) {
+function W(t, i) {
   return t || (Array.isArray(i) ? i[i.length - 1] : i);
 }
-function M(t) {
+function $(t) {
   return !!((t && t.selectedRowKeys.length > 1) || typeof t?.onSelectRow == 'function');
 }
-function w(t, i) {
+function C(t, i) {
   return e.jsx('div', {
-    className: c('dgs-ui-kit-w-full dgs-ui-kit-flex dgs-ui-kit-items-centerd', v(t ?? 'center')),
-    children: e.jsx(Q, { ...i }),
+    className: c('dgs-ui-kit-w-full dgs-ui-kit-flex dgs-ui-kit-items-centerd', N(t ?? 'center')),
+    children: e.jsx(X, { ...i }),
   });
 }
-function ie(t, i) {
+function re(t, i) {
   if (t)
     return c(
       'dgs-ui-kit-sticky dgs-ui-kit-z-10',
@@ -169,14 +169,14 @@ function ie(t, i) {
       },
     );
 }
-w.__docgenInfo = { description: '', methods: [], displayName: 'renderRowSelectCheckbox' };
-const f = (t) => {
+C.__docgenInfo = { description: '', methods: [], displayName: 'renderRowSelectCheckbox' };
+const h = (t) => {
   const { children: i, className: r, type: o, sticky: s, addBorderToSticky: n, stuckToTop: l } = t,
-    a = p.useRef(null),
+    a = f.useRef(null),
     u = o,
-    { observer: d } = y();
+    { observer: d } = k();
   return (
-    p.useEffect(() => {
+    f.useEffect(() => {
       if (!(!a.current || !d))
         return (
           s && d.observe(a.current),
@@ -187,7 +187,7 @@ const f = (t) => {
     }, [a, d]),
     e.jsx(u, {
       ref: a,
-      className: c(r, ie(s, n), {
+      className: c(r, re(s, n), {
         'dgs-ui-kit-border-b-0 before:dgs-ui-kit-content[""] before:dgs-ui-kit-absolute before:dgs-ui-kit-bottom-0 before:dgs-ui-kit-left-0 before:dgs-ui-kit-w-full before:dgs-ui-kit-border-b before:dgs-ui-kit-border-solid before:dgs-ui-kit-border-gray-200':
           l,
         'dgs-ui-kit-top-0 dgs-ui-kit-z-20': l && s,
@@ -198,7 +198,7 @@ const f = (t) => {
     })
   );
 };
-f.__docgenInfo = {
+h.__docgenInfo = {
   description: '',
   methods: [],
   displayName: 'TabelCell',
@@ -226,14 +226,14 @@ f.__docgenInfo = {
     stuckToTop: { required: !1, tsType: { name: 'boolean' }, description: '' },
   },
 };
-const W = () => {
-  const { columns: t, emptyContent: i } = y();
+const F = () => {
+  const { columns: t, emptyContent: i } = k();
   return e.jsx('tbody', {
     children: e.jsx('tr', { children: e.jsx('td', { colSpan: t.length, children: i }) }),
   });
 };
-W.__docgenInfo = { description: '', methods: [], displayName: 'TBodyEmpty' };
-const $ = (t) => {
+F.__docgenInfo = { description: '', methods: [], displayName: 'TBodyEmpty' };
+const U = (t) => {
   const { className: i, ...r } = t;
   return e.jsxs('svg', {
     xmlns: 'http://www.w3.org/2000/svg',
@@ -506,15 +506,15 @@ const $ = (t) => {
     ],
   });
 };
-$.__docgenInfo = { description: '', methods: [], displayName: 'SpinnerLoading' };
-const F = () => {
-  const { columns: t, loading: i } = y();
+U.__docgenInfo = { description: '', methods: [], displayName: 'SpinnerLoading' };
+const Y = () => {
+  const { columns: t, loading: i } = k();
   return e.jsx('tbody', {
     children: e.jsx('tr', {
       children: e.jsx('td', {
         className: 'dgs-ui-kit-p-10',
         colSpan: t.length,
-        children: e.jsx($, {
+        children: e.jsx(U, {
           width: typeof i != 'boolean' ? i.size : 100,
           height: typeof i != 'boolean' ? i.size : 100,
         }),
@@ -522,24 +522,24 @@ const F = () => {
     }),
   });
 };
-F.__docgenInfo = { description: '', methods: [], displayName: 'TBodyLoading' };
-const _ =
+Y.__docgenInfo = { description: '', methods: [], displayName: 'TBodyLoading' };
+const A =
   'dgs-ui-kit-p-4 dgs-ui-kit-pl-0 dgs-ui-kit-bg-white dgs-ui-kit-border-b dgs-ui-kit-border-solid dgs-ui-kit-border-gray-200';
-function se(t, i) {
+function ae(t, i) {
   return t ? (Array.isArray(t) ? t.reduce((r, o) => r?.[o] ?? null, i) : i[t]) : null;
 }
-function re(t, i, r) {
+function ne(t, i, r) {
   if (typeof t.render == 'function') return t.render(i, r);
-  const o = se(t.dataIndex, i);
+  const o = ae(t.dataIndex, i);
   if (t.ellipsis) {
     const s = e.jsx('div', { className: '!dgs-ui-kit-truncate', children: o });
     return typeof t.ellipsis != 'boolean' && t.ellipsis.hideTooltip
       ? s
-      : e.jsx(q, { wrapperClassName: 'dgs-ui-kit-w-full', content: o, children: s });
+      : e.jsx(O, { wrapperClassName: 'dgs-ui-kit-w-full', content: o, children: s });
   }
   return o;
 }
-const U = (t) => {
+const Z = (t) => {
   const { havePagination: i } = t,
     {
       columns: r,
@@ -549,76 +549,75 @@ const U = (t) => {
       stickyTableHeader: l,
       loading: a,
       emptyContent: u,
-    } = y();
-  return a
-    ? e.jsx(F, {})
-    : o.length < 1 && u
-      ? e.jsx(W, {})
-      : e.jsx('tbody', {
-          children: o.map((d, g) =>
-            e.jsxs(
-              'tr',
-              {
-                children: [
-                  M(n) &&
-                    e.jsx(f, {
-                      type: 'td',
-                      className: c(
-                        _,
-                        n?.className,
-                        {
-                          'dgs-ui-kit-border-b-0 dgs-ui-kit-rounded-br-2xl':
-                            !i && g === o.length - 1,
-                        },
-                        n?.className,
-                      ),
-                      sticky: n?.sticky,
-                      addBorderToSticky: l ? g !== 0 : !0,
-                      children: w(n?.align, {
-                        onChange: (m) => n?.onSelectRow(m, d[s]),
-                        checked: !!n?.selectedRowKeys.find((m) => m === d[s]),
-                      }),
-                    }),
-                  r.map((m) =>
-                    e.jsx(
-                      f,
-                      {
-                        type: 'td',
-                        className: c(
-                          _,
-                          {
-                            'dgs-ui-kit-border-b-0 first:dgs-ui-kit-rounded-br-2xl last:dgs-ui-kit-rounded-bl-2xl':
-                              !i && g === o.length - 1,
-                          },
-                          m.className,
-                        ),
-                        sticky: m.sticky,
-                        addBorderToSticky: l ? g !== 0 : !0,
-                        children: e.jsx('div', {
-                          className: c(
-                            'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-ml-2',
-                            v(m.align),
-                          ),
-                          children: re(m, d, g),
-                        }),
-                      },
-                      `${d[s]}-${D(m.key, m.dataIndex)}`,
-                    ),
+      getRowClassName: d,
+    } = k();
+  if (a) return e.jsx(Y, {});
+  if (o.length < 1 && u) return e.jsx(F, {});
+  const m = typeof d == 'function';
+  return e.jsx('tbody', {
+    children: o.map((p, y) =>
+      e.jsxs(
+        'tr',
+        {
+          children: [
+            $(n) &&
+              e.jsx(h, {
+                type: 'td',
+                className: c(
+                  A,
+                  n?.className,
+                  { 'dgs-ui-kit-border-b-0 dgs-ui-kit-rounded-br-2xl': !i && y === o.length - 1 },
+                  n?.className,
+                  m ? d(p) : '',
+                ),
+                sticky: n?.sticky,
+                addBorderToSticky: l ? y !== 0 : !0,
+                children: C(n?.align, {
+                  onChange: (g) => n?.onSelectRow(g, p[s]),
+                  checked: !!n?.selectedRowKeys.find((g) => g === p[s]),
+                }),
+              }),
+            r.map((g) =>
+              e.jsx(
+                h,
+                {
+                  type: 'td',
+                  className: c(
+                    A,
+                    {
+                      'dgs-ui-kit-border-b-0 first:dgs-ui-kit-rounded-br-2xl last:dgs-ui-kit-rounded-bl-2xl':
+                        !i && y === o.length - 1,
+                    },
+                    g.className,
+                    m ? d(p) : '',
                   ),
-                ],
-              },
-              d[s],
+                  sticky: g.sticky,
+                  addBorderToSticky: l ? y !== 0 : !0,
+                  children: e.jsx('div', {
+                    className: c(
+                      'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-ml-2',
+                      N(g.align),
+                    ),
+                    children: ne(g, p, y),
+                  }),
+                },
+                `${p[s]}-${W(g.key, g.dataIndex)}`,
+              ),
             ),
-          ),
-        });
+          ],
+        },
+        p[s],
+      ),
+    ),
+  });
 };
-U.__docgenInfo = {
+Z.__docgenInfo = {
   description: '',
   methods: [],
   displayName: 'TBody',
   props: { havePagination: { required: !0, tsType: { name: 'boolean' }, description: '' } },
 };
-const Y = (t) =>
+const G = (t) =>
   e.jsx('svg', {
     xmlns: 'http://www.w3.org/2000/svg',
     width: '1em',
@@ -631,73 +630,73 @@ const Y = (t) =>
       d: 'M19.53 16.03a.75.75 0 0 1-.976.073l-.084-.073L12 9.561l-6.47 6.47a.75.75 0 0 1-.976.072l-.084-.073a.75.75 0 0 1-.073-.976l.073-.084 7-7a.75.75 0 0 1 .976-.073l.084.073 7 7a.75.75 0 0 1 0 1.06',
     }),
   });
-Y.__docgenInfo = { description: '', methods: [], displayName: 'IconArrowUp2' };
-function ae(t, i) {
+G.__docgenInfo = { description: '', methods: [], displayName: 'IconArrowUp2' };
+function oe(t, i) {
   if (t.length !== i.length) return !1;
   t.sort(), i.sort();
   for (let r = 0; r < t.length; r++) if (t[r] !== i[r]) return !1;
   return !0;
 }
-const j = 16,
-  R =
+const v = 16,
+  I =
     'dgs-ui-kit-p-4 dgs-ui-kit-pl-0 dgs-ui-kit-text-gray-500 dgs-ui-kit-bg-gray-50 dgs-ui-kit-border-b dgs-ui-kit-border-solid dgs-ui-kit-border-gray-200',
-  A = '!dgs-ui-kit-h-8 dgs-ui-kit-shrink-0';
-function I(t, i) {
-  const r = t === 'ascend' ? Y : V;
+  E = '!dgs-ui-kit-h-8 dgs-ui-kit-shrink-0';
+function B(t, i) {
+  const r = t === 'ascend' ? G : ee;
   return e.jsx('button', {
     onClick: () => i.onSort(t),
     children: e.jsx(r, {
-      width: j,
-      height: j,
+      width: v,
+      height: v,
       className: i.active === t ? 'dgs-ui-kit-text-primary-500' : 'dgs-ui-kit-text-gray-500',
     }),
   });
 }
-function E(t, i) {
+function L(t, i) {
   return e.jsxs('div', {
     className:
       'dgs-ui-kit-font-p1-medium dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-space-x-1 dgs-ui-kit-space-x-reverse',
     children: [
       e.jsx('span', { children: t }),
-      i && (i.anchorIcon ?? e.jsx(X, { width: j, height: j })),
+      i && (i.anchorIcon ?? e.jsx(te, { width: v, height: v })),
     ],
   });
 }
-function B(t, i) {
+function q(t, i) {
   return t.map((r) => r[i]);
 }
-const Z = (t) => {
+const J = (t) => {
   const { haveHeader: i } = t,
-    { columns: r, rowKey: o, rowSelection: s, data: n, stickyTableHeader: l } = y();
+    { columns: r, rowKey: o, rowSelection: s, data: n, stickyTableHeader: l } = k();
   return e.jsx('thead', {
     children: e.jsxs('tr', {
       children: [
-        M(s) &&
-          e.jsx(f, {
+        $(s) &&
+          e.jsx(h, {
             type: 'th',
-            className: c(R, { 'dgs-ui-kit-rounded-tr-2xl': !i }, s?.className),
+            className: c(I, { 'dgs-ui-kit-rounded-tr-2xl': !i }, s?.className),
             sticky: s?.sticky,
             stuckToTop: l,
             children: e.jsxs('div', {
               className: 'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-justify-between',
               children: [
-                w(s?.align, {
+                C(s?.align, {
                   checked: s.selectedRowKeys.length > 0,
-                  isIndeterminate: !ae(B(n, o), s.selectedRowKeys),
-                  onChange: (a) => s?.onSelectRow(a, a.target.checked ? B(n, o) : []),
+                  isIndeterminate: !oe(q(n, o), s.selectedRowKeys),
+                  onChange: (a) => s?.onSelectRow(a, a.target.checked ? q(n, o) : []),
                 }),
-                e.jsx(C, { type: 'vertical', className: A }),
+                e.jsx(R, { type: 'vertical', className: E }),
               ],
             }),
           }),
         r.map((a, u) =>
           e.jsx(
-            f,
+            h,
             {
               type: 'th',
               sticky: a.sticky,
               className: c(
-                R,
+                I,
                 { 'first:dgs-ui-kit-rounded-tr-2xl last:dgs-ui-kit-rounded-tl-2xl': !i },
                 a.className,
               ),
@@ -708,37 +707,37 @@ const Z = (t) => {
                   e.jsxs('div', {
                     className: c(
                       'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-space-x-2 dgs-ui-kit-space-x-reverse dgs-ui-kit-w-full dgs-ui-kit-ml-2',
-                      v(a.align),
+                      N(a.align),
                     ),
                     children: [
                       a.tooltip?.content
-                        ? e.jsx(q, { ...a.tooltip, children: E(a.title, a.tooltip) })
-                        : E(a.title),
+                        ? e.jsx(O, { ...a.tooltip, children: L(a.title, a.tooltip) })
+                        : L(a.title),
                       typeof a.sort?.onSort == 'function' &&
                         e.jsxs('div', {
                           className: 'dgs-ui-kit-flex dgs-ui-kit-flex-col',
-                          children: [I('ascend', a.sort), I('descend', a.sort)],
+                          children: [B('ascend', a.sort), B('descend', a.sort)],
                         }),
                     ],
                   }),
-                  u !== r.length - 1 && e.jsx(C, { type: 'vertical', className: A }),
+                  u !== r.length - 1 && e.jsx(R, { type: 'vertical', className: E }),
                 ],
               }),
             },
-            D(a.key, a.dataIndex),
+            W(a.key, a.dataIndex),
           ),
         ),
       ],
     }),
   });
 };
-Z.__docgenInfo = {
+J.__docgenInfo = {
   description: '',
   methods: [],
   displayName: 'THead',
   props: { haveHeader: { required: !0, tsType: { name: 'boolean' }, description: '' } },
 };
-function N(t) {
+function S(t) {
   const {
       header: i,
       wrapperClassName: r,
@@ -750,35 +749,35 @@ function N(t) {
     } = t,
     u = (i && Object.values(i).length > 0) ?? !1,
     d = !!(n?.totalCount && n?.pageSize),
-    g = l !== 'fixed' ? 'div' : G.Fragment;
+    m = l !== 'fixed' ? 'div' : Q.Fragment;
   return e.jsxs('div', {
     className: c(
       'dgs-ui-kit-relative dgs-ui-kit-bg-white dgs-ui-kit-border dgs-ui-kit-border-gray-200 dgs-ui-kit-border-solid dgs-ui-kit-rounded-2xl',
       r,
     ),
     children: [
-      u && e.jsx(z, { ...i, total: n?.totalCount ?? s.length }),
-      e.jsx(g, {
+      u && e.jsx(M, { ...i, total: n?.totalCount ?? s.length }),
+      e.jsx(m, {
         ...(l !== 'fixed'
           ? { className: c('dgs-ui-kit-overflow-x-auto dgs-ui-kit-h-full', a) }
           : {}),
-        children: e.jsx(K, {
+        children: e.jsx(D, {
           ...t,
           children: e.jsxs('table', {
             className: o,
             style: { tableLayout: l },
-            children: [e.jsx(Z, { haveHeader: u }), e.jsx(U, { havePagination: d })],
+            children: [e.jsx(J, { haveHeader: u }), e.jsx(Z, { havePagination: d })],
           }),
         }),
       }),
-      d && e.jsx(ee, { className: c('dgs-ui-kit-py-4 !dgs-ui-kit-px-0', n?.className), ...n }),
+      d && e.jsx(ie, { className: c('dgs-ui-kit-py-4 !dgs-ui-kit-px-0', n?.className), ...n }),
     ],
   });
 }
-N.__docgenInfo = { description: '', methods: [], displayName: 'Table' };
-const Se = {
+S.__docgenInfo = { description: '', methods: [], displayName: 'Table' };
+const _e = {
     title: 'Components/Table',
-    component: N,
+    component: S,
     parameters: {
       docs: {
         description: {
@@ -864,9 +863,13 @@ const Se = {
       },
       loading: { control: 'boolean', table: { type: { summary: 'boolean | {size: number}' } } },
       emptyContent: { control: 'object', table: { type: { summary: 'ReactNode' } } },
+      getRowClassName: {
+        control: 'object',
+        table: { type: { summary: '(record: T) => string | undefined' } },
+      },
     },
   },
-  ne = [
+  le = [
     {
       id: '1',
       title: 'نام محصول',
@@ -910,7 +913,7 @@ const Se = {
         'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است',
     },
   ],
-  oe = [
+  de = [
     { title: 'نام محصول', key: 'title', dataIndex: 'title', sort: { onSort() {} } },
     { title: 'قیمت', dataIndex: 'price', key: 'price', tooltip: { content: 'قیمت به تومان است.' } },
     { title: 'جزئیات', dataIndex: 'details', key: 'details', ellipsis: !0 },
@@ -919,25 +922,25 @@ const Se = {
       key: 'actions',
       align: 'center',
       render: () =>
-        e.jsx(L, { color: 'error', variant: 'outline', size: 'small', children: 'حذف محصول' }),
+        e.jsx(H, { color: 'error', variant: 'outline', size: 'small', children: 'حذف محصول' }),
     },
   ],
-  T = { data: ne, columns: oe, className: 'dgs-ui-kit-w-[800px]', layout: 'fixed', rowKey: 'id' },
-  h = { args: T },
-  k = {
+  w = { data: le, columns: de, className: 'dgs-ui-kit-w-[800px]', layout: 'fixed', rowKey: 'id' },
+  x = { args: w },
+  b = {
     args: {
-      ...T,
+      ...w,
       header: {
         title: 'جدول محصولات',
         showTotal: !0,
-        extraElement: e.jsx(L, { size: 'small', variant: 'text', rightIcon: e.jsx(H, {}) }),
+        extraElement: e.jsx(H, { size: 'small', variant: 'text', rightIcon: e.jsx(P, {}) }),
       },
       pagination: { pageSize: 6, totalCount: 120 },
     },
   },
-  le = (t) => {
-    const [i, r] = p.useState([]);
-    return e.jsx(N, {
+  ce = (t) => {
+    const [i, r] = f.useState([]);
+    return e.jsx(S, {
       rowSelection: {
         selectedRowKeys: i,
         sticky: 'right',
@@ -952,10 +955,10 @@ const Se = {
       ...t,
     });
   },
-  x = { args: T, render: (t) => e.jsx(le, { ...t }) },
-  b = {
+  j = { args: w, render: (t) => e.jsx(ce, { ...t }) },
+  T = {
     args: {
-      ...T,
+      ...w,
       data: Array.from({ length: 100 }).map((t, i) => ({
         id: i,
         title: 'نام محصول',
@@ -966,22 +969,22 @@ const Se = {
       stickyTableHeader: !0,
     },
   };
-h.parameters = {
-  ...h.parameters,
+x.parameters = {
+  ...x.parameters,
   docs: {
-    ...h.parameters?.docs,
+    ...x.parameters?.docs,
     source: {
       originalSource: `{
   args: defaultArgs
 }`,
-      ...h.parameters?.docs?.source,
+      ...x.parameters?.docs?.source,
     },
   },
 };
-k.parameters = {
-  ...k.parameters,
+b.parameters = {
+  ...b.parameters,
   docs: {
-    ...k.parameters?.docs,
+    ...b.parameters?.docs,
     source: {
       originalSource: `{
   args: {
@@ -997,27 +1000,27 @@ k.parameters = {
     }
   }
 }`,
-      ...k.parameters?.docs?.source,
+      ...b.parameters?.docs?.source,
     },
   },
 };
-x.parameters = {
-  ...x.parameters,
+j.parameters = {
+  ...j.parameters,
   docs: {
-    ...x.parameters?.docs,
+    ...j.parameters?.docs,
     source: {
       originalSource: `{
   args: defaultArgs,
   render: args => <TableWithSelectionExample {...args} />
 }`,
-      ...x.parameters?.docs?.source,
+      ...j.parameters?.docs?.source,
     },
   },
 };
-b.parameters = {
-  ...b.parameters,
+T.parameters = {
+  ...T.parameters,
   docs: {
-    ...b.parameters?.docs,
+    ...T.parameters?.docs,
     source: {
       originalSource: `{
   args: {
@@ -1033,16 +1036,16 @@ b.parameters = {
     stickyTableHeader: true
   }
 }`,
-      ...b.parameters?.docs?.source,
+      ...T.parameters?.docs?.source,
     },
   },
 };
-const _e = ['Default', 'WithHeaderAndPagination', 'WithSelection', 'LongTable'];
+const Ae = ['Default', 'WithHeaderAndPagination', 'WithSelection', 'LongTable'];
 export {
-  h as Default,
-  b as LongTable,
-  k as WithHeaderAndPagination,
-  x as WithSelection,
-  _e as __namedExportsOrder,
-  Se as default,
+  x as Default,
+  T as LongTable,
+  b as WithHeaderAndPagination,
+  j as WithSelection,
+  Ae as __namedExportsOrder,
+  _e as default,
 };
