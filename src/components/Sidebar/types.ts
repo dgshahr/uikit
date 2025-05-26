@@ -25,7 +25,7 @@ export interface FirstLevelSidebarItem {
   children?: SecondLevelSidebarItem[];
 }
 
-interface SidebarPropsBase {
+export interface SidebarProps {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
   logo?: {
@@ -48,16 +48,5 @@ interface SidebarPropsBase {
   logOutButtonProps?: Omit<ButtonProps, 'onClick'>;
   className?: string;
   hideOnClose?: boolean;
+  showMask?: boolean;
 }
-
-interface SidebarPropsWithMask {
-  showMask: true;
-  onMaskClick?: () => void;
-}
-
-interface SidebarPropsWithoutMask {
-  showMask?: false;
-  onMaskClick?: () => never;
-}
-
-export type SidebarProps = SidebarPropsBase & (SidebarPropsWithMask | SidebarPropsWithoutMask);

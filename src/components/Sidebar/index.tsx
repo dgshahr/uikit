@@ -16,6 +16,7 @@ import Divider from '../Divider';
 const Sidebar: FC<SidebarProps> = (props) => {
   const {
     isOpen,
+    setIsOpen,
     className,
     logo,
     items,
@@ -24,7 +25,6 @@ const Sidebar: FC<SidebarProps> = (props) => {
     logOutButtonProps,
     onLogout,
     showMask,
-    onMaskClick,
     hideOnClose,
   } = props;
 
@@ -40,7 +40,7 @@ const Sidebar: FC<SidebarProps> = (props) => {
     return () => {
       documentElement.classList.remove(paddingRightClass);
     };
-  }, [hideOnClose, isOpen]);
+  }, [hideOnClose]);
 
   useEffect(() => {
     if (!showMask) return;
@@ -68,8 +68,7 @@ const Sidebar: FC<SidebarProps> = (props) => {
                 DURATION_CLASS,
               ),
               onClick: (e) => {
-                if (typeof onMaskClick === 'function' && e.target === e.currentTarget)
-                  onMaskClick();
+                if (e.target === e.currentTarget) setIsOpen(false);
               },
             }
           : {})}
