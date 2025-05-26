@@ -25,7 +25,7 @@ export interface FirstLevelSidebarItem {
   children?: SecondLevelSidebarItem[];
 }
 
-export interface SidebarProps {
+interface SidebarPropsBase {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
   logo?: {
@@ -50,3 +50,16 @@ export interface SidebarProps {
   hideOnClose?: boolean;
   showMask?: boolean;
 }
+
+interface SidebarPropsWithHideOnClose {
+  hideOnClose: true;
+  openOnHover?: never;
+}
+
+interface SidebarPropsWithoutHideOnClose {
+  hideOnClose?: false;
+  openOnHover?: boolean;
+}
+
+export type SidebarProps = SidebarPropsBase &
+  (SidebarPropsWithHideOnClose | SidebarPropsWithoutHideOnClose);

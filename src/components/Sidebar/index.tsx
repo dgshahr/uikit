@@ -26,6 +26,7 @@ const Sidebar: FC<SidebarProps> = (props) => {
     onLogout,
     showMask,
     hideOnClose,
+    openOnHover,
   } = props;
 
   const MaskElement = showMask ? 'div' : Fragment;
@@ -84,6 +85,9 @@ const Sidebar: FC<SidebarProps> = (props) => {
             },
             DURATION_CLASS,
           )}
+          onMouseEnter={() => {
+            if (openOnHover && !isOpen) setIsOpen(true);
+          }}
         >
           <SidebarToggleButton />
           {Boolean(logo?.open ?? logo?.close) && <SidebarLogoImage />}
