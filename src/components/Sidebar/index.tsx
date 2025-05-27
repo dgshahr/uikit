@@ -9,7 +9,7 @@ import SidebarItems from './Items';
 import SidebarLogoImage from './LogoImage';
 import SidebarProfile from './Profile';
 import SidebarToggleButton from './ToggleButton';
-import type { SidebarProps } from './types';
+import type { SidebarProps, SidebarPropsWithoutHideOnClose } from './types';
 import Button from '../Button';
 import Divider from '../Divider';
 
@@ -26,8 +26,9 @@ const Sidebar: FC<SidebarProps> = (props) => {
     onLogout,
     showMask,
     hideOnClose,
-    openOnHover,
   } = props;
+
+  const openOnHover = (props as SidebarPropsWithoutHideOnClose).openOnHover;
 
   const MaskElement = showMask ? 'div' : Fragment;
   const documentElement = document.documentElement;

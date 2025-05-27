@@ -51,11 +51,11 @@ interface SidebarPropsBase {
   showMask?: boolean;
 }
 
-interface SidebarPropsWithHideOnClose {
+export interface SidebarPropsWithHideOnClose {
   hideOnClose: true;
 }
 
-interface SidebarPropsWithoutHideOnClose {
+export interface SidebarPropsWithoutHideOnClose {
   hideOnClose?: false;
   openOnHover?: boolean;
 }
