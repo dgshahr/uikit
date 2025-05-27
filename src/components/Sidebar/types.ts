@@ -53,7 +53,6 @@ interface SidebarPropsBase {
 
 interface SidebarPropsWithHideOnClose {
   hideOnClose: true;
-  openOnHover?: never;
 }
 
 interface SidebarPropsWithoutHideOnClose {

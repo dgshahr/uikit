@@ -186,7 +186,6 @@ const SidebarHideOnCloseExample: FC<Story['args']> = (props) => {
 };
 
 export const HideOnClose: Story = {
-  // @ts-expect-error openOnHover is not predictable on defaultArgs, so on hideOnClose = true there will be error
   args: { ...(defaultArgs as Story['args']), hideOnClose: true },
   render: (args) => <SidebarHideOnCloseExample {...args} />,
 };
