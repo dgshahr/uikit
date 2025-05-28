@@ -89,6 +89,9 @@ const Sidebar: FC<SidebarProps> = (props) => {
           onMouseEnter={() => {
             if (openOnHover && !isOpen) setIsOpen(true);
           }}
+          onMouseLeave={() => {
+            if (openOnHover && isOpen) setIsOpen(false);
+          }}
         >
           <SidebarToggleButton />
           {Boolean(logo?.open ?? logo?.close) && <SidebarLogoImage />}
