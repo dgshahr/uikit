@@ -13,18 +13,6 @@ const meta = {
     },
   },
   argTypes: {
-    title: {
-      control: { type: 'text' },
-      table: {
-        type: { summary: 'string' },
-      },
-    },
-    progress: {
-      control: { type: 'number' },
-      table: {
-        type: { summary: 'number' },
-      },
-    },
     color: {
       options: ['primary', 'secondary'],
       control: { type: 'select' },
@@ -32,6 +20,16 @@ const meta = {
         type: { summary: 'primary, secondary' },
         defaultValue: {
           summary: 'primary',
+        },
+      },
+    },
+    currentShowType: {
+      options: ['percentage', 'value'],
+      control: { type: 'select' },
+      table: {
+        type: { summary: 'percentage, value' },
+        defaultValue: {
+          summary: 'percentage',
         },
       },
     },
@@ -45,8 +43,10 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     title: 'عنوان',
-    progress: 50,
+    current: 50,
+    total: 100,
     color: 'primary',
+    currentShowType: 'percentage',
     className: 'dgs-ui-kit-w-[400px]',
   },
 };

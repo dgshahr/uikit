@@ -1,15 +1,27 @@
 import clsx from 'clsx';
 import { type FC } from 'react';
+
 import '@/src/styles.css';
 
-interface ProgressBarProps {
+export interface ProgressBarProps {
   title: string;
   color?: 'primary' | 'secondary';
-  progress: number;
+  current: number;
+  total: number;
+  currentShowType?: 'percentage' | 'value';
   className?: string;
 }
 const ProgressBar: FC<ProgressBarProps> = (props) => {
-  const { title, progress, color = 'primary', className } = props;
+  const {
+    title,
+    current,
+    total = 100,
+    color = 'primary',
+    currentShowType = 'percentage',
+    className,
+  } = props;
+
+  const percentage = (current / total) * 100;
 
   return (
     <div className={clsx('dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-gap-2', className)}>
@@ -23,7 +35,11 @@ const ProgressBar: FC<ProgressBarProps> = (props) => {
         )}
       >
         <span>{title}</span>
-        <span className="ss02">{progress} %</span>
+        <span className="ss02">
+          {currentShowType === 'percentage'
+            ? `${Math.floor(percentage)}%`
+            : `${current} از ${total}`}
+        </span>
       </div>
       <div
         className={clsx('dgs-ui-kit-h-1 dgs-ui-kit-rounded-sm dgs-ui-kit-relative', {
@@ -40,7 +56,7 @@ const ProgressBar: FC<ProgressBarProps> = (props) => {
             },
           )}
           style={{
-            width: progress > 100 ? '100%' : `${progress}%`,
+            width: current > total ? '100%' : `${percentage}%`,
           }}
         />
       </div>
