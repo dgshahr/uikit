@@ -109,6 +109,7 @@ const Days: FC = () => {
 
   function handleChange(date: Date) {
     if (acceptRange) {
+      if (value.start && !value.end && isBefore(date, value.start)) return;
       if (!value.start || value.end) onChange({ start: date, end: null });
       else
         onChange({
