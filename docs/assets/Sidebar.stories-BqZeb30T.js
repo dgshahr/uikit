@@ -1,6 +1,6 @@
 'use client';
 import { j as e } from './jsx-runtime-D_zvdyIk.js';
-import { r as l } from './index-CTzypqlY.js';
+import { r as d } from './index-CTzypqlY.js';
 import { B as E } from './index-BQiqmBN2.js';
 import { c as r } from './clsx-B-dksMZM.js';
 import { d as Q } from './index-GdYbSsJO.js';
@@ -16,7 +16,7 @@ import './TextFieldWrapper-DVnS2sr-.js';
 import './FieldBottomInfo-COD-BNdl.js';
 import './IconInfoCircleOutline-Dd1i2qLz.js';
 import './IconArrowDown2-BBhufJ55.js';
-const A = (i) =>
+const q = (i) =>
   e.jsx('svg', {
     xmlns: 'http://www.w3.org/2000/svg',
     width: '1em',
@@ -33,8 +33,8 @@ const A = (i) =>
       clipRule: 'evenodd',
     }),
   });
-A.__docgenInfo = { description: '', methods: [], displayName: 'IconCategory2' };
-const q = (i) =>
+q.__docgenInfo = { description: '', methods: [], displayName: 'IconCategory2' };
+const A = (i) =>
   e.jsx('svg', {
     xmlns: 'http://www.w3.org/2000/svg',
     width: '1em',
@@ -49,7 +49,7 @@ const q = (i) =>
       clipRule: 'evenodd',
     }),
   });
-q.__docgenInfo = { description: '', methods: [], displayName: 'IconChart' };
+A.__docgenInfo = { description: '', methods: [], displayName: 'IconChart' };
 const B = (i) =>
   e.jsxs('svg', {
     xmlns: 'http://www.w3.org/2000/svg',
@@ -144,8 +144,8 @@ const h = 'dgs-ui-kit-duration-300',
   M = 'dgs-ui-kit-opacity-40 dgs-ui-kit-pointer-events-none',
   F = '!dgs-ui-kit-bg-primary-50 dgs-ui-kit-text-primary-600',
   _ = `${F} before:dgs-ui-kit-content-[""] before:dgs-ui-kit-absolute before:dgs-ui-kit-w-1 before:dgs-ui-kit-h-[22px] before:dgs-ui-kit-rounded-l-md before:dgs-ui-kit-bg-primary-500 before:dgs-ui-kit-top-1/2 before:-dgs-ui-kit-translate-y-1/2 before:-dgs-ui-kit-right-4`,
-  V = l.createContext({ isOpen: !1, setIsOpen: () => {} }),
-  k = () => l.useContext(V),
+  V = d.createContext({ isOpen: !1, setIsOpen: () => {} }),
+  k = () => d.useContext(V),
   C = (i) =>
     r(
       'dgs-ui-kit-transition-opacity dgs-ui-kit-whitespace-pre dgs-ui-kit-overflow-hidden',
@@ -250,23 +250,23 @@ G.__docgenInfo = {
 };
 const U = () => {
   const { isOpen: i, searchInput: t = !0, items: s } = k(),
-    [a, u] = l.useState(''),
-    [p, f] = l.useState(s ?? []),
-    I = l.useCallback(
-      Q((d) => {
-        f(W(p, d));
+    [a, u] = d.useState(''),
+    [m, f] = d.useState(s ?? []),
+    I = d.useCallback(
+      Q((l) => {
+        f(W(m, l));
       }, 800),
       [],
     );
-  function S(d) {
-    const c = d.target.value;
+  function S(l) {
+    const c = l.target.value;
     u(c), I(c);
   }
   function O() {
     u(''), f(s ?? []);
   }
   return (
-    l.useEffect(() => {
+    d.useEffect(() => {
       a && O();
     }, [i]),
     e.jsxs('div', {
@@ -276,18 +276,18 @@ const U = () => {
         !!t && e.jsx(G, { value: a, onChange: S }),
         e.jsx('div', {
           className: 'dgs-ui-kit-space-y-6 dgs-ui-kit-px-4',
-          children: p.map((d, c) =>
+          children: m.map((l, c) =>
             e.jsxs(
-              l.Fragment,
+              d.Fragment,
               {
                 children: [
                   e.jsx('div', {
                     className: r('dgs-ui-kit-font-p2-regular dgs-ui-kit-text-gray-400', C(i)),
-                    children: d.title,
+                    children: l.title,
                   }),
                   e.jsx(Z, {
                     className: 'dgs-ui-kit-mt-4 dgs-ui-kit-space-y-2',
-                    children: d.children?.map((n) =>
+                    children: l.children?.map((n) =>
                       n.link
                         ? e.jsx(
                             'a',
@@ -349,10 +349,10 @@ const U = () => {
                           ),
                     ),
                   }),
-                  c !== p.length - 1 && e.jsx(R, { type: 'horizontal' }),
+                  c !== m.length - 1 && e.jsx(R, { type: 'horizontal' }),
                 ],
               },
-              d.title,
+              l.title,
             ),
           ),
         }),
@@ -430,38 +430,38 @@ const w = (i) => {
       setIsOpen: s,
       className: a,
       logo: u,
-      items: p,
+      items: m,
       extraComponent: f,
       userProfile: I,
       logOutButtonProps: S,
       onLogout: O,
-      showMask: d,
+      showMask: l,
       hideOnClose: c,
-      openOnHover: n,
     } = i,
-    o = d ? 'div' : l.Fragment,
-    m = document.documentElement;
+    n = i.openOnHover,
+    o = l ? 'div' : d.Fragment,
+    p = document.documentElement;
   return (
-    l.useEffect(() => {
+    d.useEffect(() => {
       if (c) return;
       const g = 'dgs-ui-kit-pr-[80px]';
       return (
-        m.classList.add(g),
+        p.classList.add(g),
         () => {
-          m.classList.remove(g);
+          p.classList.remove(g);
         }
       );
     }, [c]),
-    l.useEffect(() => {
-      if (!d) return;
+    d.useEffect(() => {
+      if (!l) return;
       const g = 'dgs-ui-kit-overflow-hidden';
       return (
-        t ? m.classList.add(g) : m.classList.remove(g),
+        t ? p.classList.add(g) : p.classList.remove(g),
         () => {
-          m.classList.remove(g);
+          p.classList.remove(g);
         }
       );
-    }, [d, t]),
+    }, [l, t]),
     e.jsx(V.Provider, {
       value: i,
       children: e.jsx(o, {
@@ -493,10 +493,13 @@ const w = (i) => {
           onMouseEnter: () => {
             n && !t && s(!0);
           },
+          onMouseLeave: () => {
+            n && t && s(!1);
+          },
           children: [
             e.jsx(K, {}),
             !!(u?.open ?? u?.close) && e.jsx($, {}),
-            p && p.length > 0 && e.jsx(U, {}),
+            m && m.length > 0 && e.jsx(U, {}),
             e.jsxs('div', {
               className: 'dgs-ui-kit-shrink-0 dgs-ui-kit-flex-1',
               children: [
@@ -732,7 +735,7 @@ const ye = {
       {
         title: 'منوی اصلی',
         children: [
-          { title: 'داشبورد', icon: e.jsx(A, {}), link: '/dashboard', badgeCount: 1 },
+          { title: 'داشبورد', icon: e.jsx(q, {}), link: '/dashboard', badgeCount: 1 },
           {
             title: 'تنظیمات',
             icon: e.jsx(D, {}),
@@ -742,7 +745,7 @@ const ye = {
               { title: 'تنظیمات دو', link: '/settings/2', active: !0, badgeCount: 3 },
             ],
           },
-          { title: 'گزارشات', icon: e.jsx(q, {}), link: '/reports', badgeCount: 2 },
+          { title: 'گزارشات', icon: e.jsx(A, {}), link: '/reports', badgeCount: 2 },
           { title: 'منوی غیرفعال', icon: e.jsx(B, {}), disabled: !0 },
         ],
       },
@@ -755,7 +758,7 @@ const ye = {
     ],
   },
   H = (i) => {
-    const [t, s] = l.useState(i.isOpen ?? !0);
+    const [t, s] = d.useState(i.isOpen ?? !0);
     return e.jsx(w, { ...i, isOpen: t, setIsOpen: (a) => s(a) });
   },
   x = { args: j, render: (i) => e.jsx(H, { ...i }) },
@@ -765,7 +768,7 @@ const ye = {
     render: (i) => e.jsx(H, { ...i }),
   },
   te = (i) => {
-    const [t, s] = l.useState(!0);
+    const [t, s] = d.useState(!0);
     return e.jsxs(e.Fragment, {
       children: [
         e.jsx(E, { onClick: () => s(!t), children: 'toggle sidebar' }),
@@ -827,7 +830,6 @@ y.parameters = {
     ...y.parameters?.docs,
     source: {
       originalSource: `{
-  // @ts-expect-error openOnHover is not predictable on defaultArgs, so on hideOnClose = true there will be error
   args: {
     ...(defaultArgs as Story['args']),
     hideOnClose: true

@@ -3,10 +3,10 @@ const __vite__mapDeps = (
   m = __vite__mapDeps,
   d = m.f ||
     (m.f = [
-      './DocsRenderer-CFRXHY34-CaqYTDnz.js',
-      './iframe-B4NAuQSd.js',
+      './DocsRenderer-CFRXHY34-fhKw6Inf.js',
+      './iframe-BSeUaL5T.js',
       './index-CTzypqlY.js',
-      './index-aLmoH05X.js',
+      './index-BcdLWnOy.js',
       './jsx-runtime-D_zvdyIk.js',
       './index-BRSOB10J.js',
       './index-X_f_OX5J.js',
@@ -15,7 +15,7 @@ const __vite__mapDeps = (
       './react-18-C7NcDMCS.js',
     ]),
 ) => i.map((i) => d[i]);
-import { _ as a } from './iframe-B4NAuQSd.js';
+import { _ as a } from './iframe-BSeUaL5T.js';
 var i = Object.defineProperty,
   s = (e, r) => {
     for (var t in r) i(e, t, { get: r[t], enumerable: !0 });
@@ -30,7 +30,7 @@ var p = Object.entries(globalThis.TAGS_OPTIONS ?? {}).reduce((e, r) => {
     docs: {
       renderer: async () => {
         let { DocsRenderer: e } = await a(
-          () => import('./DocsRenderer-CFRXHY34-CaqYTDnz.js'),
+          () => import('./DocsRenderer-CFRXHY34-fhKw6Inf.js'),
           __vite__mapDeps([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]),
           import.meta.url,
         );

@@ -1,9 +1,9 @@
 import { j as e } from './jsx-runtime-D_zvdyIk.js';
 import { useMDXComponents as l } from './index-Syj0H2O1.js';
-import { T as c, e as n, f as i, h as d } from './index-aLmoH05X.js';
+import { T as c, e as n, f as i, h as d } from './index-BcdLWnOy.js';
 import { D as s } from './constants-BybbdXaH.js';
 /* empty css               */ import './index-CTzypqlY.js';
-import './iframe-B4NAuQSd.js';
+import './iframe-BSeUaL5T.js';
 import './index-BRSOB10J.js';
 import './index-X_f_OX5J.js';
 import './index-CFeRKNTJ.js';
@@ -33,13 +33,13 @@ const a = () =>
       }),
       e.jsx(i, {
         language: 'bash',
-        code: `npm install @dgshahr/uikit
+        code: `npm install @dgshahr/ui-kit
 
 # or with yarn
-yarn add @dgshahr/uikit
+yarn add @dgshahr/ui-kit
 
 # or with pnpm
-pnpm add @dgshahr/uikit`,
+pnpm add @dgshahr/ui-kit`,
       }),
       e.jsx(n, { children: 'Peer Dependencies' }),
       e.jsxs('p', {
@@ -64,10 +64,10 @@ pnpm add @dgshahr/uikit`,
       e.jsx(i, {
         language: 'tsx',
         code: `// Named import
-import { Button } from '@dgshahr/uikit';
+import { Button } from '@dgshahr/ui-kit';
 
 // OR direct module import
-import Button from '@dgshahr/uikit/Button';`,
+import Button from '@dgshahr/ui-kit/Button';`,
       }),
       e.jsx('p', {
         className: s,

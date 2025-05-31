@@ -1,9 +1,9 @@
 import { j as e } from './jsx-runtime-D_zvdyIk.js';
 import { useMDXComponents as c } from './index-Syj0H2O1.js';
-import { T as l, e as o, f as t, h as d } from './index-aLmoH05X.js';
+import { T as l, e as o, f as t, h as d } from './index-BcdLWnOy.js';
 import { D as n } from './constants-BybbdXaH.js';
 /* empty css               */ import './index-CTzypqlY.js';
-import './iframe-B4NAuQSd.js';
+import './iframe-BSeUaL5T.js';
 import './index-BRSOB10J.js';
 import './index-X_f_OX5J.js';
 import './index-CFeRKNTJ.js';
@@ -97,7 +97,10 @@ export { default as Button } from './Button';
         children:
           'This allows users to import components directly from the library without needing to specify the full path to each component.',
       }),
-      e.jsx(t, { language: 'typescript', code: "import { Button, Alert } from '@dgshahr/uikit';" }),
+      e.jsx(t, {
+        language: 'typescript',
+        code: "import { Button, Alert } from '@dgshahr/ui-kit';",
+      }),
       e.jsx('p', { className: n, children: 'Example component folder:' }),
       e.jsx(t, {
         language: 'text',

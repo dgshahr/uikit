@@ -10,7 +10,7 @@ import { B as m } from './index-Hns_H_aV.js';
   isActive: i,
 }) {
   const a =
-      'dgs-ui-kit-bg-white dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-rounded-full dgs-ui-kit-transition hover:dgs-ui-kit-ring-4 dgs-ui-kit-ring-gray-100 dgs-ui-kit-flex dgs-ui-kit-items-center',
+      'dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-rounded-full dgs-ui-kit-transition hover:dgs-ui-kit-ring-4 dgs-ui-kit-ring-gray-100 dgs-ui-kit-flex dgs-ui-kit-items-center',
     d = {
       small:
         'dgs-ui-kit-gap-1 dgs-ui-kit-py-1 dgs-ui-kit-px-3 dgs-ui-kit-font-p2-medium [&_svg]:dgs-ui-kit-size-4',
@@ -19,7 +19,7 @@ import { B as m } from './index-Hns_H_aV.js';
     },
     l = {
       default:
-        'dgs-ui-kit-text-gray-700 hover:dgs-ui-kit-text-primary-500 dgs-ui-kit-border-gray-200 hover:dgs-ui-kit-border-gray-300',
+        'dgs-ui-kit-bg-white dgs-ui-kit-text-gray-700 hover:dgs-ui-kit-text-primary-500 dgs-ui-kit-border-gray-200 hover:dgs-ui-kit-border-gray-300',
       filled: 'dgs-ui-kit-bg-primary-50 dgs-ui-kit-text-primary-500 dgs-ui-kit-border-primary-100',
     };
   return u(
