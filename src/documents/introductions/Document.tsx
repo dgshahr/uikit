@@ -25,13 +25,13 @@ const IntroductionsDocument: FC = () => {
       </p>
       <Source
         language="bash"
-        code={`npm install @dgshahr/uikit
+        code={`npm install @dgshahr/ui-kit
 
 # or with yarn
-yarn add @dgshahr/uikit
+yarn add @dgshahr/ui-kit
 
 # or with pnpm
-pnpm add @dgshahr/uikit`}
+pnpm add @dgshahr/ui-kit`}
       />
 
       <Subheading>Peer Dependencies</Subheading>
@@ -53,10 +53,10 @@ pnpm add @dgshahr/uikit`}
       <Source
         language="tsx"
         code={`// Named import
-import { Button } from '@dgshahr/uikit';
+import { Button } from '@dgshahr/ui-kit';
 
 // OR direct module import
-import Button from '@dgshahr/uikit/Button';`}
+import Button from '@dgshahr/ui-kit/Button';`}
       />
       <p className={DESCRIPTION_CLASS}>
         Direct module imports are useful for optimizing bundle size in large-scale apps or when

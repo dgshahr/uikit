@@ -15,13 +15,13 @@ A modern, accessible, and customizable React component library built with TypeSc
 Before using this library, make sure you have `react` installed in your project, as it's a peer dependency.
 
 ```bash
-npm install @dgshahr/uikit
+npm install @dgshahr/ui-kit
 ```
 
 or
 
 ```bash
-yarn add @dgshahr/uikit
+yarn add @dgshahr/ui-kit
 ```
 
 > No need to set up Tailwind or any additional configuration. All styles are already bundled and scoped.

@@ -73,7 +73,7 @@ export { default as Button } from './Button';
       </p>
       <Source
         language="typescript"
-        code={`import { Button, Alert } from '@dgshahr/uikit';`}
+        code={`import { Button, Alert } from '@dgshahr/ui-kit';`}
       />
       <p className={DESCRIPTION_CLASS}>Example component folder:</p>
       <Source
