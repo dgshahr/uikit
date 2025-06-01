@@ -5,6 +5,7 @@ import { libInjectCss } from 'vite-plugin-lib-inject-css';
 import preserveDirectives from 'rollup-preserve-directives';
 import { readdirSync, existsSync, statSync } from 'fs';
 import { resolve } from 'node:path';
+import tailwindcss from '@tailwindcss/vite';
 
 import { peerDependencies } from './package.json';
 
@@ -36,6 +37,7 @@ if (existsSync(componentsIndexRoute)) {
 
 export default defineConfig({
   plugins: [
+    tailwindcss(),
     react(),
     libInjectCss(),
     dts({ entryRoot: 'src/components', exclude: ['src/icons'] }),

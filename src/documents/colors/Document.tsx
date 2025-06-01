@@ -1,5 +1,5 @@
 // @ts-expect-error no types for colors object
-import DgThemeColors from '@dgshahr/dg-theme-tailwind-plugin/src/constants/colors';
+import DgThemeColors from '@dgshahr/dg-theme-tailwind-plugin/dist/constants/colors';
 import { Source, Title, Subheading, Unstyled } from '@storybook/blocks';
 import clsx from 'clsx';
 import type { FC } from 'react';

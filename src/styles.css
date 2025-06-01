@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss' prefix(dgsuikit);
+@plugin '@dgshahr/dg-theme-tailwind-plugin';
 
 @layer base {
   /* Chrome, Safari, Edge, Opera */
