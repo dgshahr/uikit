@@ -43,7 +43,7 @@ const SidebarItems: FC = () => {
   }, [isOpen]);
 
   return (
-    <div className="dgsuikit:overflow-y-auto dgsuikit:overflow-x-hidden dgsuikit:-mx-4 dgsuikit:h-3/4 no-scrollbar">
+    <div className="dgsuikit:overflow-y-auto dgsuikit:overflow-x-hidden dgsuikit:-mx-4 dgsuikit:h-3/4 dgsuikit:no-scrollbar">
       {Boolean(searchInput) && (
         <SidebarSearchInput
           value={search}

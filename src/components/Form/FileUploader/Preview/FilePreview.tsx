@@ -58,7 +58,7 @@ const FilePreview: FC<FilePreviewProps> = (props) => {
               size={30}
               strokeSize={4}
             />
-            <div className="dgsuikit:font-oveline-regular dgsuikit:text-gray-50 ss02 dgsuikit:mt-1">
+            <div className="dgsuikit:font-oveline-regular dgsuikit:text-gray-50 dgsuikit:ss02 dgsuikit:mt-1">
               {file.loading} %
             </div>
           </div>

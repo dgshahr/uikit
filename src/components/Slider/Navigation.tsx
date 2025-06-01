@@ -83,7 +83,7 @@ const Navigation: FC<NavigationProps> = (props) => {
         {(showNavigationDots || showPaginationText) && (
           <div className="dgsuikit:flex dgsuikit:items-center dgsuikit:gap-3">
             {showPaginationText && (
-              <div className="dgsuikit:flex dgsuikit:items-center dgsuikit:gap-1 dgsuikit:font-caption-regular dgsuikit:text-gray-400 ss02">
+              <div className="dgsuikit:flex dgsuikit:items-center dgsuikit:gap-1 dgsuikit:font-caption-regular dgsuikit:text-gray-400 dgsuikit:ss02">
                 <span
                   className={clsx('dgsuikit:font-bold', {
                     'dgsuikit:text-gray-600': navigationVariant === 'outside',

@@ -88,7 +88,7 @@ const Header: FC = () => {
         disabled={dateType === DateTypes.Year}
         onClick={() => dateType !== DateTypes.Year && setDateType(dateType + 1)}
       >
-        <span className="dgsuikit:font-button-large dgsuikit:text-gray-700 ss02">
+        <span className="dgsuikit:font-button-large dgsuikit:text-gray-700 dgsuikit:ss02">
           {getButtonTitle(dateType, internalDate)}
         </span>
         <IconArrowDown2

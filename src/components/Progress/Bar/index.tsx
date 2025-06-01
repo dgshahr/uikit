@@ -35,7 +35,7 @@ const ProgressBar: FC<ProgressBarProps> = (props) => {
         )}
       >
         <span>{title}</span>
-        <span className="ss02">
+        <span className="dgsuikit:ss02">
           {currentShowType === 'percentage'
             ? `${Math.floor(percentage)}%`
             : `${current} از ${total}`}

@@ -71,7 +71,7 @@ const ProgressDoughnut: FC<ProgressDoughnutProps> = (props) => {
           dominantBaseline="middle"
           textAnchor="middle"
           className={clsx(
-            'dgsuikit:font-caption-regular dgsuikit:text-gray-600 ss02',
+            'dgsuikit:font-caption-regular dgsuikit:text-gray-600 dgsuikit:ss02',
             textClassName,
           )}
         >

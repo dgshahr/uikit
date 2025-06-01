@@ -93,7 +93,7 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
             ? 'dgsuikit:placeholder:text-right'
             : 'dgsuikit:placeholder:text-left',
           {
-            ss02: restProps.type != 'password',
+            'dgsuikit:ss02': restProps.type != 'password',
           },
           props.className,
         )}

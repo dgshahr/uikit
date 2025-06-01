@@ -73,7 +73,7 @@ const Pagination = (props: PaginationProps) => {
             <button
               key={pageNumber}
               className={clsx(
-                'ss02 dgsuikit:w-9 dgsuikit:h-9 dgsuikit:md:w-11 dgsuikit:md:h-11 dgsuikit:flex dgsuikit:justify-center dgsuikit:items-center dgsuikit:font-h6-bold dgsuikit:md:font-h5-bold dgsuikit:transition dgsuikit:border dgsuikit:border-solid dgsuikit:border-transparent dgsuikit:rounded-lg',
+                'dgsuikit:ss02 dgsuikit:w-9 dgsuikit:h-9 dgsuikit:md:w-11 dgsuikit:md:h-11 dgsuikit:flex dgsuikit:justify-center dgsuikit:items-center dgsuikit:font-h6-bold dgsuikit:md:font-h5-bold dgsuikit:transition dgsuikit:border dgsuikit:border-solid dgsuikit:border-transparent dgsuikit:rounded-lg',
                 pageNumber === currentPage
                   ? 'dgsuikit:bg-primary-500 dgsuikit:text-white'
                   : 'dgsuikit:hover:text-primary-500 dgsuikit:hover:border-primary-200',

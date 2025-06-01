@@ -136,7 +136,7 @@ const Slider = forwardRef<SliderRef, PropsWithChildren<SliderProps>>((props, ref
       >
         <div
           className={clsx(
-            'dgsuikit:flex dgsuikit:snap-x dgsuikit:snap-mandatory dgsuikit:overflow-x-auto no-scrollbar',
+            'dgsuikit:flex dgsuikit:snap-x dgsuikit:snap-mandatory dgsuikit:overflow-x-auto dgsuikit:no-scrollbar',
             containerClassName,
           )}
           style={{ marginLeft: -spaceBetween }}

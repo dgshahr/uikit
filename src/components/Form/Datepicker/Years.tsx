@@ -36,7 +36,7 @@ const Years: FC = () => {
     setDateType(DateTypes.Month);
   }
   return (
-    <div className="dgsuikit:p-3 dgsuikit:grid dgsuikit:grid-cols-3 dgsuikit:text-center dgsuikit:gap-y-3 dgsuikit:font-p3-medium dgsuikit:text-gray-600 ss02">
+    <div className="dgsuikit:p-3 dgsuikit:grid dgsuikit:grid-cols-3 dgsuikit:text-center dgsuikit:gap-y-3 dgsuikit:font-p3-medium dgsuikit:text-gray-600 dgsuikit:ss02">
       {eachYearOfInterval({
         start: internalDate,
         end: subYears(internalDate, 11),

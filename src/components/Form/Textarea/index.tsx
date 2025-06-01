@@ -40,7 +40,7 @@ const Textarea = forwardRef(function Textarea(
         {...inputProps}
         ref={ref}
         className={clsx(
-          'dgsuikit:bg-transparent dgsuikit:leading-normal dgsuikit:w-full dgsuikit:h-full dgsuikit:focus:outline-none ss02 dgsuikit:flex-1 dgsuikit:resize-none',
+          'dgsuikit:bg-transparent dgsuikit:leading-normal dgsuikit:w-full dgsuikit:h-full dgsuikit:focus:outline-none dgsuikit:ss02 dgsuikit:flex-1 dgsuikit:resize-none',
           dir === 'rtl' ? 'dgsuikit:text-right' : 'dgsuikit:!text-left',
           placeholderDir === 'rtl'
             ? 'dgsuikit:placeholder:text-right'

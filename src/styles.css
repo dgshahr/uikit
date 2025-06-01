@@ -19,24 +19,6 @@
   }
 }
 
-@layer utilities {
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  /* Hide scrollbar for IE, Edge and Firefox */
-  .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-
-  .ss02 {
-    -moz-font-feature-settings: 'ss02';
-    -webkit-font-feature-settings: 'ss02';
-    font-feature-settings: 'ss02';
-  }
-}
-
 .button-large-icon .icon-button {
   width: 20px;
   height: 20px;

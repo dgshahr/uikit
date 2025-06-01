@@ -48,7 +48,7 @@ export const Default: Story = {
     content:
       'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.',
     footer: (
-      <div className="dgsuikit:flex dgsuikit:gap-1 dgsuikit:justify-end dgsuikit:font-p3-medium dgsuikit:text-gray-300 ss02">
+      <div className="dgsuikit:flex dgsuikit:gap-1 dgsuikit:justify-end dgsuikit:font-p3-medium dgsuikit:text-gray-300 dgsuikit:ss02">
         <span>۱۴:۳۴</span>
         <span>.</span>
         <span className="dgsuikit:[direction:ltr]">۱۴۰۲ \ ۰۹ \ ۲۲</span>

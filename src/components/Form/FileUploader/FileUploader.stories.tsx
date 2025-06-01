@@ -105,7 +105,7 @@ const defaultArgs: Story['args'] = {
   onChange: () => {},
   fileInputProps: {
     title: 'عنوان',
-    className: 'ss02',
+    className: 'dgsuikit:ss02',
     helperProps: {
       hintMessage: 'پیام راهنما',
     },

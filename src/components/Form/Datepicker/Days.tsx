@@ -124,7 +124,7 @@ const Days: FC = () => {
           <span key={weekDay}>{weekDay}</span>
         ))}
       </div>
-      <div className="dgsuikit:grid dgsuikit:grid-cols-7 dgsuikit:text-center dgsuikit:font-p3-medium ss02 dgsuikit:p-3 dgsuikit:gap-y-2">
+      <div className="dgsuikit:grid dgsuikit:grid-cols-7 dgsuikit:text-center dgsuikit:font-p3-medium dgsuikit:ss02 dgsuikit:p-3 dgsuikit:gap-y-2">
         {daysOfCalendar.map((dayItem) => (
           <button
             type="button"
