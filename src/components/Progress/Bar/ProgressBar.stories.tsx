@@ -47,6 +47,6 @@ export const Default: Story = {
     total: 100,
     color: 'primary',
     currentShowType: 'percentage',
-    className: 'dgs-ui-kit-w-[400px]',
+    className: 'dgsuikit:w-[400px]',
   },
 };

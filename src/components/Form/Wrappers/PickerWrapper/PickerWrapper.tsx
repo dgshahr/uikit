@@ -12,7 +12,7 @@ import Input from '../../Input';
 
 import '@/src/styles.css';
 
-const DURATION_CLASS = 'dgs-ui-kit-duration-300';
+const DURATION_CLASS = 'dgsuikit:duration-300';
 // it should be bigger than duration class to show transition fully
 const REMOVE_CONTAINER_TIMEOUT = 400;
 
@@ -71,20 +71,20 @@ const PickerWrapper: FC<PropsWithChildren<PickerWrapperProps>> = (props) => {
   }
 
   const cursorClass = clsx({
-    '!dgs-ui-kit-cursor-not-allowed': disabled,
-    '!dgs-ui-kit-cursor-wait': isLoading,
-    '!dgs-ui-kit-cursor-pointer': !isLoading && !disabled,
+    'dgsuikit:!cursor-not-allowed': disabled,
+    'dgsuikit:!cursor-wait': isLoading,
+    'dgsuikit:!cursor-pointer': !isLoading && !disabled,
   });
 
   return (
     <div
       ref={containerRef}
-      className={clsx('dgs-ui-kit-relative', wrapperClassName)}
+      className={clsx('dgsuikit:relative', wrapperClassName)}
     >
       <button
         ref={anchorRef}
         type="button"
-        className={clsx('dgs-ui-kit-w-full', cursorClass)}
+        className={clsx('dgsuikit:w-full', cursorClass)}
         onClick={toggleWrapperVisibility}
       >
         {customInput ? (
@@ -93,21 +93,21 @@ const PickerWrapper: FC<PropsWithChildren<PickerWrapperProps>> = (props) => {
           <Input
             leftIcon={
               isLoading ? (
-                <div className="dot-flashing dgs-ui-kit-mr-2" />
+                <div className="dot-flashing dgsuikit:mr-2" />
               ) : (
                 <IconArrowDown2
                   width={20}
                   height={20}
-                  className={clsx('dgs-ui-kit-transition', DURATION_CLASS, {
-                    'dgs-ui-kit-rotate-180': isShowWrapper,
+                  className={clsx('dgsuikit:transition', DURATION_CLASS, {
+                    'dgsuikit:rotate-180': isShowWrapper,
                   })}
                 />
               )
             }
             containerClassName={clsx(cursorClass, {
-              'dgs-ui-kit-items-baseline': isLoading,
+              'dgsuikit:items-baseline': isLoading,
             })}
-            className={clsx('dgs-ui-kit-caret-transparent', cursorClass)}
+            className={clsx('dgsuikit:caret-transparent', cursorClass)}
             disabled={disabled}
             {...inputProps}
           />
@@ -124,15 +124,15 @@ const PickerWrapper: FC<PropsWithChildren<PickerWrapperProps>> = (props) => {
               <div
                 ref={popperRef}
                 className={clsx(
-                  'dgs-ui-kit-absolute dgs-ui-kit-min-w-[300px] dgs-ui-kit-right-0 dgs-ui-kit-overflow-y-auto dgs-ui-kit-overflow-x-hidden dgs-ui-kit-shadow-lg dgs-ui-kit-w-full dgs-ui-kit-max-h-[360px] dgs-ui-kit-transition-all dgs-ui-kit-bg-white dgs-ui-kit-z-50 dgs-ui-kit-rounded-lg dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-border-gray-200 dgs-ui-kit-pb-3',
+                  'dgsuikit:absolute dgsuikit:min-w-[300px] dgsuikit:right-0 dgsuikit:overflow-y-auto dgsuikit:overflow-x-hidden dgsuikit:shadow-lg dgsuikit:w-full dgsuikit:max-h-[360px] dgsuikit:transition-all dgsuikit:bg-white dgsuikit:z-50 dgsuikit:rounded-lg dgsuikit:border dgsuikit:border-solid dgsuikit:border-gray-200 dgsuikit:pb-3',
                   DURATION_CLASS,
                   isShowWrapper
-                    ? 'dgs-ui-kit-opacity-100'
-                    : 'dgs-ui-kit-opacity-0 dgs-ui-kit-max-h-0 dgs-ui-kit-overflow-y-hidden',
+                    ? 'dgsuikit:opacity-100'
+                    : 'dgsuikit:opacity-0 dgsuikit:max-h-0 dgsuikit:overflow-y-hidden',
                   {
-                    'dgs-ui-kit-bottom-0 dgs-ui-kit-translate-y-[calc(100%+8px)]':
+                    'dgsuikit:bottom-0 dgsuikit:translate-y-[calc(100%+8px)]':
                       position.includes('bottom'),
-                    'dgs-ui-kit-top-0 dgs-ui-kit-translate-y-[calc(-100%-8px)]':
+                    'dgsuikit:top-0 dgsuikit:translate-y-[calc(-100%-8px)]':
                       position.includes('top'),
                   },
                   popoverClassName,
@@ -146,7 +146,7 @@ const PickerWrapper: FC<PropsWithChildren<PickerWrapperProps>> = (props) => {
                 open={isShowWrapper}
                 onClose={() => setIsShowWrapper(false)}
                 containerClassName={clsx(
-                  '!dgs-ui-kit-pb-3 !dgs-ui-kit-px-0',
+                  'dgsuikit:!pb-3 dgsuikit:!px-0',
                   drawerProps?.containerClassName,
                 )}
               >

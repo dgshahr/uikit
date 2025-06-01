@@ -61,17 +61,17 @@ function getRadius({
   position: DrawerProps['position'];
   padding: DrawerProps['padding'];
 }) {
-  const defaultRadius = 'dgs-ui-kit-rounded-2xl';
+  const defaultRadius = 'dgsuikit:rounded-2xl';
   if (padding > 0 || position === 'center') return defaultRadius;
   switch (position) {
     case 'bottom':
-      return `${defaultRadius} dgs-ui-kit-rounded-b-none`;
+      return `${defaultRadius} dgsuikit:rounded-b-none`;
     case 'left':
-      return `${defaultRadius} dgs-ui-kit-rounded-l-none`;
+      return `${defaultRadius} dgsuikit:rounded-l-none`;
     case 'right':
-      return `${defaultRadius} dgs-ui-kit-rounded-r-none`;
+      return `${defaultRadius} dgsuikit:rounded-r-none`;
     case 'top':
-      return `${defaultRadius} dgs-ui-kit-rounded-t-none`;
+      return `${defaultRadius} dgsuikit:rounded-t-none`;
     default:
       return defaultRadius;
   }
@@ -101,9 +101,9 @@ const Drawer: FC<DrawerProps> = (props) => {
 
     updateOpenDrawerCountTimeout = setTimeout(() => {
       if (openDrawerCount > 0) {
-        container.classList.add('dgs-ui-kit-overflow-hidden', 'dgs-ui-kit-relative');
+        container.classList.add('dgsuikit:overflow-hidden', 'dgsuikit:relative');
       } else {
-        container.classList.remove('dgs-ui-kit-overflow-hidden', 'dgs-ui-kit-relative');
+        container.classList.remove('dgsuikit:overflow-hidden', 'dgsuikit:relative');
       }
     }, ANIMATION_DURATION);
   }
@@ -156,22 +156,22 @@ const Drawer: FC<DrawerProps> = (props) => {
   return createPortal(
     <div
       className={clsx(
-        'dgs-ui-kit-bg-black/40 dgs-ui-kit-top-0 dgs-ui-kit-left-0 dgs-ui-kit-z-50 dgs-ui-kit-opacity-0 dgs-ui-kit-overflow-hidden dgs-ui-kit-cursor-default dgs-ui-kit-transition dgs-ui-kit-ease-linear',
-        { 'dgs-ui-kit-opacity-100': show, 'dgs-ui-kit-w-full dgs-ui-kit-h-full': open },
-        containerElement ? 'dgs-ui-kit-absolute' : 'dgs-ui-kit-fixed',
+        'dgsuikit:bg-black/40 dgsuikit:top-0 dgsuikit:left-0 dgsuikit:z-50 dgsuikit:opacity-0 dgsuikit:overflow-hidden dgsuikit:cursor-default dgsuikit:transition dgsuikit:ease-linear',
+        { 'dgsuikit:opacity-100': show, 'dgsuikit:w-full dgsuikit:h-full': open },
+        containerElement ? 'dgsuikit:absolute' : 'dgsuikit:fixed',
         maskClassName,
       )}
       onClick={() => (persist ? null : closeDrawer())}
     >
       <div
         className={clsx(
-          'dgs-ui-kit-absolute dgs-ui-kit-z-10 dgs-ui-kit-opacity-0 dgs-ui-kit-transition dgs-ui-kit-duration-100 dgs-ui-kit-flex dgs-ui-kit-justify-center',
+          'dgsuikit:absolute dgsuikit:z-10 dgsuikit:opacity-0 dgsuikit:transition dgsuikit:duration-100 dgsuikit:flex dgsuikit:justify-center',
           {
-            'dgs-ui-kit-opacity-100': show,
-            'dgs-ui-kit-translate-y-full': !show && position === 'bottom',
-            '-dgs-ui-kit-translate-y-full': !show && position === 'top',
-            'dgs-ui-kit-translate-x-full': !show && position === 'right',
-            '-dgs-ui-kit-translate-x-full': !show && position === 'left',
+            'dgsuikit:opacity-100': show,
+            'dgsuikit:translate-y-full': !show && position === 'bottom',
+            'dgsuikit:-translate-y-full': !show && position === 'top',
+            'dgsuikit:translate-x-full': !show && position === 'right',
+            'dgsuikit:-translate-x-full': !show && position === 'left',
           },
           className,
         )}
@@ -185,7 +185,7 @@ const Drawer: FC<DrawerProps> = (props) => {
       >
         <div
           className={clsx(
-            'dgs-ui-kit-overflow-x-hidden dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-bg-white dgs-ui-kit-divide-y dgs-ui-kit-divide-gray-200 dgs-ui-kit-divide-solid',
+            'dgsuikit:overflow-x-hidden dgsuikit:flex dgsuikit:flex-col dgsuikit:bg-white dgsuikit:divide-y dgsuikit:divide-gray-200 dgsuikit:divide-solid',
             getRadius({ position, padding }),
           )}
           style={{ width: width ?? '100%' }}
@@ -194,22 +194,22 @@ const Drawer: FC<DrawerProps> = (props) => {
           {header && haveHeader && (
             <div
               className={clsx(
-                'dgs-ui-kit-h-16 dgs-ui-kit-relative dgs-ui-kit-shrink-0',
+                'dgsuikit:h-16 dgsuikit:relative dgsuikit:shrink-0',
                 header?.containerClassName,
               )}
             >
               {header.actionElement ? (
-                <div className="dgs-ui-kit-absolute dgs-ui-kit-top-1/2 -dgs-ui-kit-translate-y-1/2 dgs-ui-kit-right-4 [&>svg]:dgs-ui-kit-w-6 [&_svg]:dgs-ui-kit-h-6 dgs-ui-kit-text-gray-600">
+                <div className="dgsuikit:absolute dgsuikit:top-1/2 dgsuikit:-translate-y-1/2 dgsuikit:right-4 dgsuikit:[&>svg]:w-6 dgsuikit:[&_svg]:h-6 dgsuikit:text-gray-600">
                   {header.actionElement}
                 </div>
               ) : null}
               {header.title ? (
-                <div className="dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-absolute dgs-ui-kit-top-1/2 dgs-ui-kit-right-1/2 -dgs-ui-kit-translate-y-1/2 dgs-ui-kit-translate-x-1/2 dgs-ui-kit-text-center">
-                  <span className="dgs-ui-kit-font-h6-bold dgs-ui-kit-text-gray-800">
+                <div className="dgsuikit:flex dgsuikit:flex-col dgsuikit:absolute dgsuikit:top-1/2 dgsuikit:right-1/2 dgsuikit:-translate-y-1/2 dgsuikit:translate-x-1/2 dgsuikit:text-center">
+                  <span className="dgsuikit:font-h6-bold dgsuikit:text-gray-800">
                     {header.title}
                   </span>
                   {header.description ? (
-                    <span className="dgs-ui-kit-font-caption-regular dgs-ui-kit-text-gray-500">
+                    <span className="dgsuikit:font-caption-regular dgsuikit:text-gray-500">
                       {header.description}
                     </span>
                   ) : null}
@@ -218,22 +218,22 @@ const Drawer: FC<DrawerProps> = (props) => {
               {header.haveCloseIcon && (
                 <button
                   onClick={() => closeDrawer()}
-                  className="dgs-ui-kit-absolute dgs-ui-kit-top-1/2 -dgs-ui-kit-translate-y-1/2 dgs-ui-kit-left-4"
+                  className="dgsuikit:absolute dgsuikit:top-1/2 dgsuikit:-translate-y-1/2 dgsuikit:left-4"
                 >
                   <IconCloseRemove
                     width={24}
                     height={24}
-                    className="dgs-ui-kit-text-gray-600"
+                    className="dgsuikit:text-gray-600"
                   />
                 </button>
               )}
             </div>
           )}
-          <div className={clsx('dgs-ui-kit-p-4 dgs-ui-kit-overflow-y-auto', containerClassName)}>
+          <div className={clsx('dgsuikit:p-4 dgsuikit:overflow-y-auto', containerClassName)}>
             {children}
           </div>
           {footer?.element ? (
-            <div className={clsx('dgs-ui-kit-p-4 dgs-ui-kit-mt-auto', footer.containerClassName)}>
+            <div className={clsx('dgsuikit:p-4 dgsuikit:mt-auto', footer.containerClassName)}>
               {footer.element}
             </div>
           ) : null}

@@ -11,14 +11,14 @@ interface StepIconProps {
 }
 
 const stepIconSizeClassNameMap: Record<HorizontalStepperStepStatus, string> = {
-  complete: 'dgs-ui-kit-text-secondary-400 dgs-ui-kit-rounded-lg',
-  current: 'dgs-ui-kit-bg-primary-50 dgs-ui-kit-text-primary-400 dgs-ui-kit-rounded-lg',
-  incomplete: 'dgs-ui-kit-bg-gray-50 dgs-ui-kit-text-gray-400 dgs-ui-kit-rounded-lg',
+  complete: 'dgsuikit:text-secondary-400 dgsuikit:rounded-lg',
+  current: 'dgsuikit:bg-primary-50 dgsuikit:text-primary-400 dgsuikit:rounded-lg',
+  incomplete: 'dgsuikit:bg-gray-50 dgsuikit:text-gray-400 dgsuikit:rounded-lg',
 };
 
 const stepIconStatusClassNameMap: Record<HorizontalStepperSize, string> = {
-  medium: 'dgs-ui-kit-w-10 dgs-ui-kit-h-10 dgs-ui-kit-text-xl',
-  small: 'dgs-ui-kit-w-10 dgs-ui-kit-h-10 dgs-ui-kit-text-lg',
+  medium: 'dgsuikit:w-10 dgsuikit:h-10 dgsuikit:text-xl',
+  small: 'dgsuikit:w-10 dgsuikit:h-10 dgsuikit:text-lg',
 };
 
 const StepIcon: FC<StepIconProps> = (props) => {
@@ -37,7 +37,7 @@ const StepIcon: FC<StepIconProps> = (props) => {
   const classnames = clsx(
     stepIconSizeClassNameMap[status],
     stepIconStatusClassNameMap[size],
-    'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-justify-center dgs-ui-kit-min-w-10',
+    'dgsuikit:flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:min-w-10',
   );
 
   return <div className={classnames}>{IconComponent}</div>;

@@ -10,8 +10,8 @@ import Badge from '../Badge';
 
 export const showItemsClass = (isOpen: SidebarProps['isOpen']) =>
   clsx(
-    'dgs-ui-kit-transition-opacity dgs-ui-kit-whitespace-pre dgs-ui-kit-overflow-hidden',
-    isOpen ? 'dgs-ui-kit-opacity-100' : 'dgs-ui-kit-opacity-0',
+    'dgsuikit:transition-opacity dgsuikit:whitespace-pre dgsuikit:overflow-hidden',
+    isOpen ? 'dgsuikit:opacity-100' : 'dgsuikit:opacity-0',
     DURATION_CLASS,
   );
 
@@ -22,15 +22,15 @@ export function getSecondLevelItemContent(
   return (
     <div
       className={clsx(
-        'dgs-ui-kit-flex dgs-ui-kit-items-center [&_svg]:dgs-ui-kit-size-6 [&_svg]:dgs-ui-kit-shrink-0 dgs-ui-kit-min-h-12 dgs-ui-kit-text-start',
-        isOpen ? 'dgs-ui-kit-space-x-2 dgs-ui-kit-space-x-reverse' : 'dgs-ui-kit-justify-center',
+        'dgsuikit:flex dgsuikit:items-center dgsuikit:[&_svg]:size-6 dgsuikit:[&_svg]:shrink-0 dgsuikit:min-h-12 dgsuikit:text-start',
+        isOpen ? 'dgsuikit:space-x-2' : 'dgsuikit:justify-center',
       )}
     >
       {item.icon}
       <div
         className={clsx(
-          'dgs-ui-kit-font-p2-regular dgs-ui-kit-line-clamp-1 !dgs-ui-kit-transition-[width,opacity]',
-          isOpen ? 'dgs-ui-kit-w-full' : 'dgs-ui-kit-w-0',
+          'dgsuikit:font-p2-regular dgsuikit:line-clamp-1 dgsuikit:!transition-[width,opacity]',
+          isOpen ? 'dgsuikit:w-full' : 'dgsuikit:w-0',
           showItemsClass,
         )}
       >
@@ -38,8 +38,8 @@ export function getSecondLevelItemContent(
       </div>
       {item.badgeCount && (
         <Badge
-          className={clsx('dgs-ui-kit-shrink-0', {
-            '!dgs-ui-kit-absolute dgs-ui-kit-top-0 dgs-ui-kit-left-0': !isOpen,
+          className={clsx('dgsuikit:shrink-0', {
+            'dgsuikit:!absolute dgsuikit:top-0 dgsuikit:left-0': !isOpen,
           })}
           value={item.badgeCount}
           valueType="number"

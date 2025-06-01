@@ -6,11 +6,11 @@ import Checkbox from '../Form/Checkbox';
 export function getAlingmentClass(align: ColumnsType['align']) {
   switch (align) {
     case 'center':
-      return 'dgs-ui-kit-justify-center';
+      return 'dgsuikit:justify-center';
     case 'start':
-      return 'dgs-ui-kit-justify-start';
+      return 'dgsuikit:justify-start';
     case 'end':
-      return 'dgs-ui-kit-justify-end';
+      return 'dgsuikit:justify-end';
     default:
       return undefined;
   }
@@ -44,7 +44,7 @@ export function renderRowSelectCheckbox(
   return (
     <div
       className={clsx(
-        'dgs-ui-kit-w-full dgs-ui-kit-flex dgs-ui-kit-items-centerd',
+        'dgsuikit:w-full dgsuikit:flex dgsuikit:items-center',
         getAlingmentClass(alingment ?? 'center'),
       )}
     >
@@ -57,14 +57,14 @@ export function getStickyClass(sticky: ColumnsType['sticky'], addBeforeBorderTop
   if (!sticky) return;
 
   return clsx(
-    'dgs-ui-kit-sticky dgs-ui-kit-z-10',
-    'after:dgs-ui-kit-content[""] after:dgs-ui-kit-absolute after:dgs-ui-kit-top-0 after:dgs-ui-kit-h-full after:dgs-ui-kit-w-[30px] after:dgs-ui-kit-transition-shadow', // sticky shadow class
+    'dgsuikit:sticky dgsuikit:z-10',
+    'dgsuikit:after:content[""] dgsuikit:after:absolute dgsuikit:after:top-0 dgsuikit:after:h-full dgsuikit:after:w-[30px] dgsuikit:after:transition-shadow', // sticky shadow class
     {
-      ' dgs-ui-kit-right-[-1px] dgs-ui-kit-pr-[calc(1em+1px)] after:dgs-ui-kit-left-0 after:-dgs-ui-kit-translate-x-full after:dgs-ui-kit-shadow-[inset_-10px_0_8px_-8px] after:dgs-ui-kit-shadow-transparent':
+      'dgsuikit:right-[-1px] dgsuikit:pr-[calc(1em+1px)] dgsuikit:after:left-0 dgsuikit:after:-translate-x-full dgsuikit:after:shadow-[inset_-10px_0_8px_-8px] dgsuikit:after:shadow-transparent':
         sticky === 'right',
-      ' dgs-ui-kit-left-[-1px] dgs-ui-kit-pl-[calc(1em+1px)] after:dgs-ui-kit-right-0 after:dgs-ui-kit-translate-x-full after:dgs-ui-kit-shadow-[inset_10px_0_8px_-8px] after:dgs-ui-kit-shadow-transparent':
+      'dgsuikit:left-[-1px] dgsuikit:pl-[calc(1em+1px)] dgsuikit:after:right-0 dgsuikit:after:translate-x-full dgsuikit:after:shadow-[inset_10px_0_8px_-8px] dgsuikit:after:shadow-transparent':
         sticky === 'left',
-      'before:dgs-ui-kit-content-[""] before:dgs-ui-kit-absolute before:dgs-ui-kit-top-0 before:dgs-ui-kit-right-0 before:dgs-ui-kit-w-full before:dgs-ui-kit-border-t before:md:dgs-ui-kit-border-t-0 before:dgs-ui-kit-border-solid before:dgs-ui-kit-border-gray-200':
+      'dgsuikit:before:content-[""] dgsuikit:before:absolute dgsuikit:before:top-0 dgsuikit:before:right-0 dgsuikit:before:w-full dgsuikit:before:border-t dgsuikit:before:md:border-t-0 dgsuikit:before:border-solid dgsuikit:before:border-gray-200':
         addBeforeBorderTop,
     },
   );

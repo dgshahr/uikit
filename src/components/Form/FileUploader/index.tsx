@@ -22,13 +22,13 @@ const FileUploader: FC<FileUploaderProps> = (props) => {
 
   const wrapperClassName = clsx(
     Boolean(mode === 'multiple' && previewProps?.type === 'grid') &&
-      'dgs-ui-kit-flex dgs-ui-kit-space-x-2 dgs-ui-kit-space-x-reverse',
+      'dgsuikit:flex dgsuikit:space-x-2',
     className,
   );
   const WrapperElement = wrapperClassName ? 'div' : Fragment;
 
   return (
-    <WrapperElement {...(WrapperElement === 'div' ? { className } : {})}>
+    <WrapperElement {...(WrapperElement === 'div' ? { className: wrapperClassName } : {})}>
       {((!haveFiles && mode === 'single') || (mode === 'multiple' && !hideFileInput)) && (
         <FileInput
           {...fileInputProps}

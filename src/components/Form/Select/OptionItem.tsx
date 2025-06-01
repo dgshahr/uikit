@@ -44,10 +44,10 @@ const OptionItem = <T,>(props: OptionItemProps<T>) => {
       type="button"
       onClick={onClick}
       className={clsx(
-        'dgs-ui-kit-w-full dgs-ui-kit-text-start dgs-ui-kit-px-3 disabled:dgs-ui-kit-cursor-not-allowed dgs-ui-kit-py-3 dgs-ui-kit-font-p1-regular disabled:dgs-ui-kit-bg-gray-50 dgs-ui-kit-transition',
+        'dgsuikit:w-full dgsuikit:text-start dgsuikit:px-3 dgsuikit:disabled:cursor-not-allowed dgsuikit:py-3 dgsuikit:font-p1-regular dgsuikit:disabled:bg-gray-50 dgsuikit:transition',
         isOptionActive()
-          ? 'dgs-ui-kit-bg-primary-50 dgs-ui-kit-text-primary-500'
-          : 'dgs-ui-kit-text-gray-700 disabled:dgs-ui-kit-text-gray-400',
+          ? 'dgsuikit:bg-primary-50 dgsuikit:text-primary-500'
+          : 'dgsuikit:text-gray-700 dgsuikit:disabled:text-gray-400',
         optionCellClassName,
       )}
       disabled={option.disabled}

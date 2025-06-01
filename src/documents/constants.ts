@@ -1,1 +1,1 @@
-export const DESCRIPTION_CLASS = '!dgs-ui-kit-font-p1-medium';
+export const DESCRIPTION_CLASS = 'dgsuikit:!font-p1-medium';

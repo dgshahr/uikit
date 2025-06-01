@@ -13,8 +13,8 @@ const Footer: FC = () => {
   return (
     <div
       className={clsx(
-        'dgs-ui-kit-flex dgs-ui-kit-p-3 dgs-ui-kit-items-center dgs-ui-kit-border-t dgs-ui-kit-border-gray-200 dgs-ui-kit-gap-4',
-        showTodayButton ? 'dgs-ui-kit-justify-between' : 'dgs-ui-kit-justify-end',
+        'dgsuikit:flex dgsuikit:p-3 dgsuikit:items-center dgsuikit:border-t dgsuikit:border-gray-200 dgsuikit:gap-4',
+        showTodayButton ? 'dgsuikit:justify-between' : 'dgsuikit:justify-end',
       )}
     >
       {showTodayButton && (

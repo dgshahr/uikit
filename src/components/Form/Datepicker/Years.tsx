@@ -12,8 +12,8 @@ import { DateTypes, type DatepickerProps } from './types';
 
 function getYearClassName({ year, value, startDate, endDate }: { year: Date } & DatepickerProps) {
   let className =
-    'dgs-ui-kit-rounded-full dgs-ui-kit-py-1 dgs-ui-kit-transition hover:dgs-ui-kit-bg-primary-50 hover:dgs-ui-kit-text-primary-500';
-  const activeClassName = '!dgs-ui-kit-bg-primary-500 !dgs-ui-kit-text-white';
+    'dgsuikit:rounded-full dgsuikit:py-1 dgsuikit:transition dgsuikit:hover:bg-primary-50 dgsuikit:hover:text-primary-500';
+  const activeClassName = 'dgsuikit:!bg-primary-500 dgsuikit:!text-white';
   const isSelectable =
     (startDate ? isAfter(endOfYear(year), startDate) : true) &&
     (endDate ? isBefore(year, endOfYear(endDate)) : true);
@@ -23,8 +23,7 @@ function getYearClassName({ year, value, startDate, endDate }: { year: Date } & 
   } else if (value.start && isSameYear(year, value.start))
     className = `${className} ${activeClassName}`;
 
-  if (!isSelectable)
-    className = `${className} dgs-ui-kit-line-through dgs-ui-kit-pointer-events-none`;
+  if (!isSelectable) className = `${className} dgsuikit:line-through dgsuikit:pointer-events-none`;
 
   return className;
 }
@@ -37,7 +36,7 @@ const Years: FC = () => {
     setDateType(DateTypes.Month);
   }
   return (
-    <div className="dgs-ui-kit-p-3 dgs-ui-kit-grid dgs-ui-kit-grid-cols-3 dgs-ui-kit-text-center dgs-ui-kit-gap-y-3 dgs-ui-kit-font-p3-medium dgs-ui-kit-text-gray-600 ss02">
+    <div className="dgsuikit:p-3 dgsuikit:grid dgsuikit:grid-cols-3 dgsuikit:text-center dgsuikit:gap-y-3 dgsuikit:font-p3-medium dgsuikit:text-gray-600 ss02">
       {eachYearOfInterval({
         start: internalDate,
         end: subYears(internalDate, 11),

@@ -3,7 +3,7 @@ import type { FC } from 'react';
 const FileInputIcon: FC = () => {
   return (
     <svg
-      className="!dgs-ui-kit-mt-0 dgs-ui-kit-absolute dgs-ui-kit-bottom-0 dgs-ui-kit-left-1/2 -dgs-ui-kit-translate-x-1/2"
+      className="dgsuikit:!mb-0 dgsuikit:absolute dgsuikit:bottom-0 dgsuikit:left-1/2 dgsuikit:-translate-x-1/2"
       width="81"
       height="27"
       viewBox="0 0 81 27"

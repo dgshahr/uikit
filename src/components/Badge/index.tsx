@@ -34,48 +34,46 @@ export type BadgeProps = BadgePropsWithIcon | BadgePropsWithoutIcon;
 
 function styleBadge(options: Omit<Required<BadgeProps>, 'value' | 'icon' | 'width'>) {
   const defaultClassName =
-    'dgs-ui-kit-inline-flex dgs-ui-kit-items-center dgs-ui-kit-justify-center dgs-ui-kit-rounded-[20px]';
+    'dgsuikit:inline-flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:rounded-[20px]';
 
   const typeClassName: Record<
     Required<BadgeProps>['type'],
     Record<Required<BadgeProps>['color'], string>
   > = {
     twoTone: {
-      primary: 'dgs-ui-kit-bg-primary-50 dgs-ui-kit-text-primary-600',
-      secondary: 'dgs-ui-kit-bg-secondary-100 dgs-ui-kit-text-secondary-700',
-      gray: 'dgs-ui-kit-bg-gray-100 dgs-ui-kit-text-gray-600',
-      success: 'dgs-ui-kit-bg-success-50 dgs-ui-kit-text-success-800',
-      error: 'dgs-ui-kit-bg-error-50 dgs-ui-kit-text-error-600',
-      warning: 'dgs-ui-kit-bg-warning-50 dgs-ui-kit-text-warning-700',
-      sky: 'dgs-ui-kit-bg-sky-50 dgs-ui-kit-text-sky-700',
-      violet: 'dgs-ui-kit-bg-violet-50 dgs-ui-kit-text-violet-800',
-      flamingo: 'dgs-ui-kit-bg-flamingo-50 dgs-ui-kit-text-flamingo-700',
+      primary: 'dgsuikit:bg-primary-50 dgsuikit:text-primary-600',
+      secondary: 'dgsuikit:bg-secondary-100 dgsuikit:text-secondary-700',
+      gray: 'dgsuikit:bg-gray-100 dgsuikit:text-gray-600',
+      success: 'dgsuikit:bg-success-50 dgsuikit:text-success-800',
+      error: 'dgsuikit:bg-error-50 dgsuikit:text-error-600',
+      warning: 'dgsuikit:bg-warning-50 dgsuikit:text-warning-700',
+      sky: 'dgsuikit:bg-sky-50 dgsuikit:text-sky-700',
+      violet: 'dgsuikit:bg-violet-50 dgsuikit:text-violet-800',
+      flamingo: 'dgsuikit:bg-flamingo-50 dgsuikit:text-flamingo-700',
     },
     solid: {
-      primary: 'dgs-ui-kit-bg-primary-500 dgs-ui-kit-text-white',
-      secondary: 'dgs-ui-kit-bg-secondary-600 dgs-ui-kit-text-white',
-      gray: 'dgs-ui-kit-bg-gray-600 dgs-ui-kit-text-white',
-      success: 'dgs-ui-kit-bg-success-600 dgs-ui-kit-text-white',
-      error: 'dgs-ui-kit-bg-error-500 dgs-ui-kit-text-white',
-      warning: 'dgs-ui-kit-bg-warning-500 dgs-ui-kit-text-black',
-      sky: 'dgs-ui-kit-bg-sky-600 dgs-ui-kit-text-white',
-      violet: 'dgs-ui-kit-bg-violet-500 dgs-ui-kit-text-white',
-      flamingo: 'dgs-ui-kit-bg-flamingo-500 dgs-ui-kit-text-white',
+      primary: 'dgsuikit:bg-primary-500 dgsuikit:text-white',
+      secondary: 'dgsuikit:bg-secondary-600 dgsuikit:text-white',
+      gray: 'dgsuikit:bg-gray-600 dgsuikit:text-white',
+      success: 'dgsuikit:bg-success-600 dgsuikit:text-white',
+      error: 'dgsuikit:bg-error-500 dgsuikit:text-white',
+      warning: 'dgsuikit:bg-warning-500 dgsuikit:text-black',
+      sky: 'dgsuikit:bg-sky-600 dgsuikit:text-white',
+      violet: 'dgsuikit:bg-violet-500 dgsuikit:text-white',
+      flamingo: 'dgsuikit:bg-flamingo-500 dgsuikit:text-white',
     },
   };
 
   const textSizeClassName: Record<Required<BadgeProps>['size'], string> = {
-    small: 'dgs-ui-kit-font-oveline-demibold dgs-ui-kit-py-1 dgs-ui-kit-px-2 dgs-ui-kit-gap-[2px]',
-    medium:
-      'dgs-ui-kit-font-caption-demibold dgs-ui-kit-py-1 dgs-ui-kit-px-[10px] dgs-ui-kit-gap-1',
-    large: 'dgs-ui-kit-font-button-small dgs-ui-kit-py-2 dgs-ui-kit-px-4 dgs-ui-kit-gap-[6px]',
+    small: 'dgsuikit:font-oveline-demibold dgsuikit:py-1 dgsuikit:px-2 dgsuikit:gap-[2px]',
+    medium: 'dgsuikit:font-caption-demibold dgsuikit:py-1 dgsuikit:px-[10px] dgsuikit:gap-1',
+    large: 'dgsuikit:font-button-small dgsuikit:py-2 dgsuikit:px-4 dgsuikit:gap-[6px]',
   };
 
   const numberSizeClassName: Record<Required<BadgeProps>['size'], string> = {
-    small:
-      'dgs-ui-kit-font-caption-demibold dgs-ui-kit-py-[2px] dgs-ui-kit-px-[6px] dgs-ui-kit-min-w-5',
-    medium: 'dgs-ui-kit-font-p3-medium dgs-ui-kit-px-[6px] dgs-ui-kit-min-w-6',
-    large: 'dgs-ui-kit-font-h5-bold dgs-ui-kit-py-[2px] dgs-ui-kit-px-2 dgs-ui-kit-min-w-8',
+    small: 'dgsuikit:font-caption-demibold dgsuikit:py-[2px] dgsuikit:px-[6px] dgsuikit:min-w-5',
+    medium: 'dgsuikit:font-p3-medium dgsuikit:px-[6px] dgsuikit:min-w-6',
+    large: 'dgsuikit:font-h5-bold dgsuikit:py-[2px] dgsuikit:px-2 dgsuikit:min-w-8',
   };
 
   return [
@@ -91,9 +89,9 @@ function styleBadge(options: Omit<Required<BadgeProps>, 'value' | 'icon' | 'widt
 }
 
 function getIconSize(badgSize: Required<BadgeProps>['size']) {
-  if (badgSize === 'small') return 'dgs-ui-kit-w-3 dgs-ui-kit-h-3';
-  if (badgSize === 'medium') return 'dgs-ui-kit-w-[14px] dgs-ui-kit-h-[14px]';
-  return 'dgs-ui-kit-w-4 dgs-ui-kit-h-4';
+  if (badgSize === 'small') return 'dgsuikit:w-3 dgsuikit:h-3';
+  if (badgSize === 'medium') return 'dgsuikit:w-[14px] dgsuikit:h-[14px]';
+  return 'dgsuikit:w-4 dgsuikit:h-4';
 }
 
 const Badge = (props: BadgeProps) => {

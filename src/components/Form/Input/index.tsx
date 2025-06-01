@@ -63,7 +63,7 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
         }}
       >
         <IconCloseSquare
-          className="dgs-ui-kit-text-gray-600"
+          className="dgsuikit:text-gray-600"
           width={20}
           height={20}
         />
@@ -74,13 +74,11 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
   return (
     <TextFieldWrapper
       {...props}
-      containerClassName={clsx('dgs-ui-kit-items-center', containerClassName)}
+      containerClassName={clsx('dgsuikit:items-center', containerClassName)}
       value={value}
     >
       {prefix && (
-        <div
-          className={clsx('dgs-ui-kit-font-p1-regular dgs-ui-kit-text-gray-500', prefixClassName)}
-        >
+        <div className={clsx('dgsuikit:font-p1-regular dgsuikit:text-gray-500', prefixClassName)}>
           {prefix}
         </div>
       )}
@@ -89,11 +87,11 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
         {...inputProps}
         ref={ref}
         className={clsx(
-          'dgs-ui-kit-bg-transparent focus:dgs-ui-kit-outline-none dgs-ui-kit-flex-1',
-          dir === 'rtl' ? 'dgs-ui-kit-text-right' : '!dgs-ui-kit-text-left',
+          'dgsuikit:bg-transparent dgsuikit:focus:outline-none dgsuikit:flex-1',
+          dir === 'rtl' ? 'dgsuikit:text-right' : 'dgsuikit:!text-left',
           placeholderDir === 'rtl'
-            ? 'placeholder:dgs-ui-kit-text-right'
-            : 'placeholder:dgs-ui-kit-text-left',
+            ? 'dgsuikit:placeholder:text-right'
+            : 'dgsuikit:placeholder:text-left',
           {
             ss02: restProps.type != 'password',
           },
@@ -115,18 +113,16 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
       />
       {typeof onClear === 'function' && value && dir === 'rtl' && renderClearButton()}
       {postfix && (
-        <div
-          className={clsx('dgs-ui-kit-font-p1-regular dgs-ui-kit-text-gray-500', postfixClassName)}
-        >
+        <div className={clsx('dgsuikit:font-p1-regular dgsuikit:text-gray-500', postfixClassName)}>
           {postfix}
         </div>
       )}
-      {leftIcon && <div className="dgs-ui-kit-text-gray-600">{leftIcon}</div>}
+      {leftIcon && <div className="dgsuikit:text-gray-600">{leftIcon}</div>}
       {restProps.type === 'password' && (
         <button
           type="button"
           onClick={() => setType((prv) => (prv === 'text' ? 'password' : 'text'))}
-          className="dgs-ui-kit-text-gray-600"
+          className="dgsuikit:text-gray-600"
         >
           {type === 'password' ? (
             <IconEye

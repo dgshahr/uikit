@@ -51,7 +51,7 @@ const Pagination = (props: PaginationProps) => {
   return (
     <div
       className={clsx(
-        'dgs-ui-kit-flex dgs-ui-kit-justify-between dgs-ui-kit-w-full dgs-ui-kit-px-4 dgs-ui-kit-text-gray-600',
+        'dgsuikit:flex dgsuikit:justify-between dgsuikit:w-full dgsuikit:px-4 dgsuikit:text-gray-600',
         className,
       )}
     >
@@ -64,7 +64,7 @@ const Pagination = (props: PaginationProps) => {
       >
         {navigationButtonsWithText && 'صفحه قبل'}
       </Button>
-      <div className="dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-x-1 md:dgs-ui-kit-gap-x-4">
+      <div className="dgsuikit:flex dgsuikit:items-center dgsuikit:gap-x-1 dgsuikit:md:gap-x-4">
         {paginationRange.map((pageNumber, index) => {
           if (typeof pageNumber === 'string') {
             return <div key={`${pageNumber}-${index}`}>{DOTS}</div>;
@@ -73,10 +73,10 @@ const Pagination = (props: PaginationProps) => {
             <button
               key={pageNumber}
               className={clsx(
-                'ss02 dgs-ui-kit-w-9 dgs-ui-kit-h-9 md:dgs-ui-kit-w-11 md:dgs-ui-kit-h-11 dgs-ui-kit-flex dgs-ui-kit-justify-center dgs-ui-kit-items-center dgs-ui-kit-font-h6-bold md:dgs-ui-kit-font-h5-bold dgs-ui-kit-transition dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-border-transparent dgs-ui-kit-rounded-lg',
+                'ss02 dgsuikit:w-9 dgsuikit:h-9 dgsuikit:md:w-11 dgsuikit:md:h-11 dgsuikit:flex dgsuikit:justify-center dgsuikit:items-center dgsuikit:font-h6-bold dgsuikit:md:font-h5-bold dgsuikit:transition dgsuikit:border dgsuikit:border-solid dgsuikit:border-transparent dgsuikit:rounded-lg',
                 pageNumber === currentPage
-                  ? 'dgs-ui-kit-bg-primary-500 dgs-ui-kit-text-white'
-                  : 'hover:dgs-ui-kit-text-primary-500 hover:dgs-ui-kit-border-primary-200',
+                  ? 'dgsuikit:bg-primary-500 dgsuikit:text-white'
+                  : 'dgsuikit:hover:text-primary-500 dgsuikit:hover:border-primary-200',
                 className,
               )}
               onClick={() => handlePageChange(pageNumber)}

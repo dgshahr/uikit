@@ -15,10 +15,10 @@ const RangeThumb: FC<RangeThumbProps> = (props) => {
   return (
     <div
       className={clsx(
-        'dgs-ui-kit-bg-primary-500 dgs-ui-kit-rounded-full dgs-ui-kit-absolute dgs-ui-kit-top-1/2 -dgs-ui-kit-translate-y-1/2 dgs-ui-kit-text-white dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-justify-center',
+        'dgsuikit:bg-primary-500 dgsuikit:rounded-full dgsuikit:absolute dgsuikit:top-1/2 dgsuikit:-translate-y-1/2 dgsuikit:text-white dgsuikit:flex dgsuikit:items-center dgsuikit:justify-center',
         disabled
-          ? '!dgs-ui-kit-bg-gray-300'
-          : 'group-hover:dgs-ui-kit-bg-primary-400 group-hover:dgs-ui-kit-ring-4 dgs-ui-kit-ring-gray-300 group-active:dgs-ui-kit-ring-0 group-active:dgs-ui-kit-bg-primary-600 dgs-ui-kit-transition-[background-color,box-shadow]', // state classes
+          ? 'dgsuikit:!bg-gray-300'
+          : 'dgsuikit:group-hover:bg-primary-400 dgsuikit:group-hover:ring-4 dgsuikit:ring-gray-300 dgsuikit:group-active:ring-0 dgsuikit:group-active:bg-primary-600 dgsuikit:transition-[background-color,box-shadow]', // state classes
       )}
       style={{
         right: `${percent}%`,
@@ -29,11 +29,11 @@ const RangeThumb: FC<RangeThumbProps> = (props) => {
       {icon}
 
       {showTooltip && (
-        <div className="dgs-ui-kit-absolute dgs-ui-kit-bottom-full dgs-ui-kit-left-1/2 -dgs-ui-kit-translate-x-1/2 dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-items-center dgs-ui-kit-opacity-0 group-hover:dgs-ui-kit-opacity-100 dgs-ui-kit-transition-opacity dgs-ui-kit-z-10 dgs-ui-kit-mb-2.5">
-          <div className="dgs-ui-kit-flex dgs-ui-kit-py-3 dgs-ui-kit-px-4 dgs-ui-kit-rounded-lg dgs-ui-kit-bg-gray-700 dgs-ui-kit-shadow-md dgs-ui-kit-text-white dgs-ui-kit-font-p2-regular dgs-ui-kit-border dgs-ui-kit-border-gray-300 ss02">
+        <div className="dgsuikit:absolute dgsuikit:bottom-full dgsuikit:left-1/2 dgsuikit:-translate-x-1/2 dgsuikit:flex dgsuikit:flex-col dgsuikit:items-center dgsuikit:opacity-0 dgsuikit:group-hover:opacity-100 dgsuikit:transition-opacity dgsuikit:z-10 dgsuikit:mb-2.5">
+          <div className="dgsuikit:flex dgsuikit:py-3 dgsuikit:px-4 dgsuikit:rounded-lg dgsuikit:bg-gray-700 dgsuikit:shadow-md dgsuikit:text-white dgsuikit:font-p2-regular dgsuikit:border dgsuikit:border-gray-300 ss02">
             {humanize(value)}
           </div>
-          <div className="dgs-ui-kit-w-4 dgs-ui-kit-h-4 dgs-ui-kit-bg-gray-700 dgs-ui-kit-border-gray-300 dgs-ui-kit-absolute dgs-ui-kit-rotate-45 dgs-ui-kit-left-1/2 -dgs-ui-kit-translate-x-1/2 dgs-ui-kit-bottom-0 dgs-ui-kit-translate-y-1/2 dgs-ui-kit-border-b dgs-ui-kit-border-r dgs-ui-kit-rounded-br" />
+          <div className="dgsuikit:w-4 dgsuikit:h-4 dgsuikit:bg-gray-700 dgsuikit:border-gray-300 dgsuikit:absolute dgsuikit:rotate-45 dgsuikit:left-1/2 dgsuikit:-translate-x-1/2 dgsuikit:bottom-0 dgsuikit:translate-y-1/2 dgsuikit:border-b dgsuikit:border-r dgsuikit:rounded-br" />
         </div>
       )}
     </div>

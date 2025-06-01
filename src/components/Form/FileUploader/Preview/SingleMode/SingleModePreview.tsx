@@ -34,7 +34,7 @@ const SingleModePreview: FC<PreviewProps<FileType>> = (props) => {
   const { errorMessage, file, hintMessage, loading, status, title } = files;
 
   return (
-    <div className="dgs-ui-kit-space-y-2">
+    <div className="dgsuikit:space-y-2">
       <div
         className={clsx(
           getPreviewBorder(loading, errorMessage ? 'error' : status),
@@ -48,18 +48,18 @@ const SingleModePreview: FC<PreviewProps<FileType>> = (props) => {
           {renderPreviewDefaultAction(leftButton, files, {
             color: 'error',
             icon: <IconDelete1 />,
-            className: '!dgs-ui-kit-absolute dgs-ui-kit-left-2 dgs-ui-kit-top-2',
+            className: 'dgsuikit:!absolute dgsuikit:left-2 dgsuikit:top-2',
           })}
           {renderPreviewDefaultAction(rightButton, files, {
             color: 'gray',
             icon: <IconMinimize />,
-            className: '!dgs-ui-kit-absolute dgs-ui-kit-right-2 dgs-ui-kit-bottom-2',
+            className: 'dgsuikit:!absolute dgsuikit:right-2 dgsuikit:bottom-2',
           })}
           {exteraButton ? (
             <Button
               className={clsx(
                 exteraButton.className,
-                '!dgs-ui-kit-absolute dgs-ui-kit-top-1/2 dgs-ui-kit-left-1/2 -dgs-ui-kit-translate-y-1/2 -dgs-ui-kit-translate-x-1/2',
+                'dgsuikit:!absolute dgsuikit:top-1/2 dgsuikit:left-1/2 dgsuikit:-translate-y-1/2 dgsuikit:-translate-x-1/2',
               )}
               {...exteraButton}
               onClick={(e) => {
@@ -74,7 +74,7 @@ const SingleModePreview: FC<PreviewProps<FileType>> = (props) => {
           <div
             className={clsx(
               getTitleClass(loading, errorMessage, status),
-              'dgs-ui-kit-px-3 dgs-ui-kit-py-1.5 dgs-ui-kit-rounded-lg dgs-ui-kit-font-p2-medium dgs-ui-kit-text-center dgs-ui-kit-line-clamp-1 dgs-ui-kit-mt-1 dgs-ui-kit-w-0 dgs-ui-kit-min-w-full',
+              'dgsuikit:px-3 dgsuikit:py-1.5 dgsuikit:rounded-lg dgsuikit:font-p2-medium dgsuikit:text-center dgsuikit:line-clamp-1 dgsuikit:mt-1 dgsuikit:w-0 dgsuikit:min-w-full',
             )}
           >
             {title ?? file?.name}

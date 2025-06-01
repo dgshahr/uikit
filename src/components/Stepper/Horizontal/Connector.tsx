@@ -9,9 +9,9 @@ interface ConnectorProps {
 }
 
 const connectorStatusClassnameMap: Record<HorizontalStepperStepStatus, string> = {
-  complete: 'dgs-ui-kit-bg-teal-500 dgs-ui-kit-opacity-100',
-  current: 'dgs-ui-kit-bg-gray-300 dgs-ui-kit-opacity-75',
-  incomplete: 'dgs-ui-kit-bg-gray-200 dgs-ui-kit-opacity-50',
+  complete: 'dgsuikit:bg-teal-500 dgsuikit:opacity-100',
+  current: 'dgsuikit:bg-gray-300 dgsuikit:opacity-75',
+  incomplete: 'dgsuikit:bg-gray-200 dgsuikit:opacity-50',
 };
 
 const Connector: FC<ConnectorProps> = ({ index }) => {
@@ -21,13 +21,13 @@ const Connector: FC<ConnectorProps> = ({ index }) => {
   return (
     <div
       className={clsx(
-        'dgs-ui-kit-flex dgs-ui-kit-min-w-5 dgs-ui-kit-items-center dgs-ui-kit-w-full',
-        stepOrientation === 'vertical' ? 'dgs-ui-kit-h-10' : 'dgs-ui-kit-h-15',
+        'dgsuikit:flex dgsuikit:min-w-5 dgsuikit:items-center dgsuikit:w-full',
+        stepOrientation === 'vertical' ? 'dgsuikit:h-10' : 'dgsuikit:h-15',
       )}
     >
       <div
         className={clsx(
-          'dgs-ui-kit-h-0.5 dgs-ui-kit-w-full dgs-ui-kit-rounded-md',
+          'dgsuikit:h-0.5 dgsuikit:w-full dgsuikit:rounded-md',
           connectorStatusClassnameMap[status],
         )}
       />

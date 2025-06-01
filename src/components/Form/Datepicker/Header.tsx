@@ -81,23 +81,23 @@ const Header: FC = () => {
   }
 
   return (
-    <div className="dgs-ui-kit-p-3 dgs-ui-kit-flex dgs-ui-kit-justify-between dgs-ui-kit-items-center dgs-ui-kit-border-b dgs-ui-kit-border-gray-200">
+    <div className="dgsuikit:p-3 dgsuikit:flex dgsuikit:justify-between dgsuikit:items-center dgsuikit:border-b dgsuikit:border-gray-200">
       <button
         type="button"
-        className="dgs-ui-kit-bg-gray-100 dgs-ui-kit-rounded-lg dgs-ui-kit-p-3 dgs-ui-kit-min-w-[50%] dgs-ui-kit-flex dgs-ui-kit-justify-between dgs-ui-kit-items-center disabled:dgs-ui-kit-cursor-not-allowed"
+        className="dgsuikit:bg-gray-100 dgsuikit:rounded-lg dgsuikit:p-3 dgsuikit:min-w-[50%] dgsuikit:flex dgsuikit:justify-between dgsuikit:items-center dgsuikit:disabled:cursor-not-allowed"
         disabled={dateType === DateTypes.Year}
         onClick={() => dateType !== DateTypes.Year && setDateType(dateType + 1)}
       >
-        <span className="dgs-ui-kit-font-button-large dgs-ui-kit-text-gray-700 ss02">
+        <span className="dgsuikit:font-button-large dgsuikit:text-gray-700 ss02">
           {getButtonTitle(dateType, internalDate)}
         </span>
         <IconArrowDown2
           width={20}
           height={20}
-          className="dgs-ui-kit-text-gray-600"
+          className="dgsuikit:text-gray-600"
         />
       </button>
-      <div className="dgs-ui-kit-flex dgs-ui-kit-gap-2">
+      <div className="dgsuikit:flex dgsuikit:gap-2">
         <Button
           type="button"
           variant="outline"

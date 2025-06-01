@@ -162,20 +162,20 @@ const customOptionProps = {
   },
   optionCell(option, isActive) {
     return (
-      <div className="dgs-ui-kit-flex dgs-ui-kit-justify-between dgs-ui-kit-items-center">
-        <div className="dgs-ui-kit-flex dgs-ui-kit-items-center">
-          <div className="dgs-ui-kit-bg-gray-600 dgs-ui-kit-w-5 dgs-ui-kit-h-5 dgs-ui-kit-rounded dgs-ui-kit-ml-3" />
-          <span className="dgs-ui-kit-font-p1-regular dgs-ui-kit-text-gray-700">
+      <div className="dgsuikit:flex dgsuikit:justify-between dgsuikit:items-center">
+        <div className="dgsuikit:flex dgsuikit:items-center">
+          <div className="dgsuikit:bg-gray-600 dgsuikit:w-5 dgsuikit:h-5 dgsuikit:rounded dgsuikit:ml-3" />
+          <span className="dgsuikit:font-p1-regular dgsuikit:text-gray-700">
             {option.label} {isActive && 'انتخاب شده'}
           </span>
         </div>
         {option.disabled && (
-          <div className="dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-justify-center dgs-ui-kit-items-center">
+          <div className="dgsuikit:flex dgsuikit:flex-col dgsuikit:justify-center dgsuikit:items-center">
             <IconRinging3Outline
               width={16}
               height={16}
             />
-            <span className="dgs-ui-kit-mt-1 dgs-ui-kit-font-oveline-demibold">ناموجود</span>
+            <span className="dgsuikit:mt-1 dgsuikit:font-oveline-demibold">ناموجود</span>
           </div>
         )}
       </div>
@@ -188,21 +188,21 @@ const multiSelectProps = {
   inputProps: {
     placeholder: 'متن نما',
     postfix: 'پسوند',
-    containerClassName: 'dgs-ui-kit-min-w-[300px] dgs-ui-kit-max-w-[400px]',
+    containerClassName: 'dgsuikit:min-w-[300px] dgsuikit:max-w-[400px]',
   },
   beforeOptions: (
-    <div className="dgs-ui-kit-flex dgs-ui-kit-gap-3 dgs-ui-kit-px-3 dgs-ui-kit-justify-end dgs-ui-kit-items-center">
+    <div className="dgsuikit:flex dgsuikit:gap-3 dgsuikit:px-3 dgsuikit:justify-end dgsuikit:items-center">
       <Button
         variant="text"
         size="small"
-        className="!dgs-ui-kit-px-0"
+        className="dgsuikit:!px-0"
       >
         انتخاب همه
       </Button>
       <Button
         variant="text"
         size="small"
-        className="!dgs-ui-kit-px-0"
+        className="dgsuikit:!px-0"
         color="error"
       >
         حذف انتخاب‌ها
@@ -210,7 +210,7 @@ const multiSelectProps = {
     </div>
   ),
   afterOptions: (
-    <div className="dgs-ui-kit-pt-3 dgs-ui-kit-px-3 dgs-ui-kit-flex dgs-ui-kit-justify-end">
+    <div className="dgsuikit:pt-3 dgsuikit:px-3 dgsuikit:flex dgsuikit:justify-end">
       <Button>اعمال</Button>
     </div>
   ),
@@ -263,10 +263,10 @@ export const MultiSelectCustomInput: Story = {
       return (
         <div
           className={clsx(
-            'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-x-2 dgs-ui-kit-bg-gray-100 dgs-ui-kit-py-3 dgs-ui-kit-px-4 dgs-ui-kit-rounded-lg dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-transition',
+            'dgsuikit:flex dgsuikit:items-center dgsuikit:gap-x-2 dgsuikit:bg-gray-100 dgsuikit:py-3 dgsuikit:px-4 dgsuikit:rounded-lg dgsuikit:border dgsuikit:border-solid dgsuikit:transition',
             isShowOptions
-              ? 'dgs-ui-kit-border-primary-500 dgs-ui-kit-text-primary-500'
-              : 'dgs-ui-kit-border-transparent dgs-ui-kit-text-gray-700',
+              ? 'dgsuikit:border-primary-500 dgsuikit:text-primary-500'
+              : 'dgsuikit:border-transparent dgsuikit:text-gray-700',
           )}
         >
           <span>شهر</span>

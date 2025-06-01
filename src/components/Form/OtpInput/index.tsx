@@ -34,7 +34,7 @@ const OtpInput: FC<OtpInputProps> = (props) => {
   const canTriggerOnEnd = useRef(false);
 
   function focusOnInput(index: number) {
-    const input = document.getElementById(`dgs-ui-kit-otp-input-${index}`) as HTMLInputElement;
+    const input = document.getElementById(`dgsuikit:otp-input-${index}`) as HTMLInputElement;
     input?.focus();
   }
 
@@ -95,25 +95,25 @@ const OtpInput: FC<OtpInputProps> = (props) => {
   }, [value]);
 
   return (
-    <div className={clsx('dgs-ui-kit-space-y-2', className)}>
+    <div className={clsx('dgsuikit:space-y-2', className)}>
       {labelContent ? <FieldLabel labelContent={labelContent} /> : null}
       <div
         className={clsx(
-          'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-2 [direction:ltr]',
+          'dgsuikit:flex dgsuikit:items-center dgsuikit:gap-2 dgsuikit:[direction:ltr]',
           inputsContainerClassName,
         )}
       >
         {Array.from(Array(inputsNumber).keys()).map((item, index) => (
           <Input
             key={item}
-            containerClassName="dgs-ui-kit-w-12 dgs-ui-kit-h-12 dgs-ui-kit-p-0"
-            className="dgs-ui-kit-w-full dgs-ui-kit-h-full !dgs-ui-kit-text-center placeholder:!dgs-ui-kit-text-center"
+            containerClassName="dgsuikit:w-12 dgsuikit:h-12 dgsuikit:p-0"
+            className="dgsuikit:w-full dgsuikit:h-full dgsuikit:!text-center dgsuikit:placeholder:!text-center"
             placeholder="-"
             autoFocus={index === 0}
             onChange={(e) => handleInputChange(e, index)}
             onKeyUp={(e) => handleInputKeyUp(e, index)}
             onFocus={(e) => e.currentTarget.select()}
-            id={`dgs-ui-kit-otp-input-${index}`}
+            id={`dgsuikit:otp-input-${index}`}
             value={value[index] || ''}
             showMaxLength={false}
             isError={Boolean(errorMessage) || isError}

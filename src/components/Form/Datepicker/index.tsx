@@ -27,11 +27,11 @@ const DatePicker: FC<DatepickerProps> = (props) => {
   if (wrapperProps.dropdownType === 'drawer') {
     wrapperProps.drawerProps = {
       ...wrapperProps.drawerProps,
-      containerClassName: clsx('!dgs-ui-kit-p-0', wrapperProps.drawerProps?.containerClassName),
+      containerClassName: clsx('dgsuikit:!p-0', wrapperProps.drawerProps?.containerClassName),
     };
   } else
     wrapperProps.popoverClassName = clsx(
-      '!dgs-ui-kit-p-0 dgs-ui-kit-max-h-max',
+      'dgsuikit:!p-0 dgsuikit:max-h-max',
       wrapperProps.popoverClassName,
     );
 

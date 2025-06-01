@@ -27,7 +27,7 @@ function Table<T extends UnknownRecord>(props: Readonly<TableProps<T>>) {
   return (
     <div
       className={clsx(
-        'dgs-ui-kit-relative dgs-ui-kit-bg-white dgs-ui-kit-border dgs-ui-kit-border-gray-200 dgs-ui-kit-border-solid dgs-ui-kit-rounded-2xl',
+        'dgsuikit:relative dgsuikit:bg-white dgsuikit:border dgsuikit:border-gray-200 dgsuikit:border-solid dgsuikit:rounded-2xl',
         wrapperClassName,
       )}
     >
@@ -39,7 +39,7 @@ function Table<T extends UnknownRecord>(props: Readonly<TableProps<T>>) {
       )}
       <ContainerElement
         {...(layout !== 'fixed'
-          ? { className: clsx('dgs-ui-kit-overflow-x-auto dgs-ui-kit-h-full', containerClassName) }
+          ? { className: clsx('dgsuikit:overflow-x-auto dgsuikit:h-full', containerClassName) }
           : {})}
       >
         <TableContextProvider {...props}>
@@ -54,7 +54,7 @@ function Table<T extends UnknownRecord>(props: Readonly<TableProps<T>>) {
       </ContainerElement>
       {havePagination && (
         <Pagination
-          className={clsx('dgs-ui-kit-py-4 !dgs-ui-kit-px-0', pagination?.className)}
+          className={clsx('dgsuikit:py-4 dgsuikit:!px-0', pagination?.className)}
           {...pagination!}
         />
       )}

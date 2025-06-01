@@ -4,37 +4,37 @@ import { cardBodyColorClassnameMap, cardBodySizeClassnameMap } from './constants
 import type { CardHeaderProps, CardSize, CardTitleVariant } from './types';
 
 const titleVariantClassnameMap: Record<CardTitleVariant, string> = {
-  default: 'dgs-ui-kit-text-gray-700',
-  primary: 'dgs-ui-kit-text-primary-500',
+  default: 'dgsuikit:text-gray-700',
+  primary: 'dgsuikit:text-primary-500',
 };
 
 const sizeClassnameMap: Record<CardSize, string> = {
-  small: 'dgs-ui-kit-font-h5-bold',
-  medium: 'dgs-ui-kit-font-h3-bold',
+  small: 'dgsuikit:font-h5-bold',
+  medium: 'dgsuikit:font-h3-bold',
 };
 
 const CardHeader: FC<Partial<CardHeaderProps>> = (props) => {
   const { variant = 'default', size = 'medium', color = 'white', title, icon, Element } = props;
 
   const headerClassName = clsx(
-    'dgs-ui-kit-rounded-b-none dgs-ui-kit-flex dgs-ui-kit-gap-3 dgs-ui-kit-items-center',
+    'dgsuikit:rounded-b-none dgsuikit:flex dgsuikit:gap-3 dgsuikit:items-center',
     cardBodyColorClassnameMap[color],
     cardBodySizeClassnameMap[size],
   );
 
   const titleClassname = clsx(
-    'dgs-ui-kit-font-bold',
+    'dgsuikit:font-bold',
     titleVariantClassnameMap[variant],
     sizeClassnameMap[size],
   );
 
   return (
     <div className={headerClassName}>
-      <div className="dgs-ui-kit-flex dgs-ui-kit-gap-2 dgs-ui-kit-items-center">
+      <div className="dgsuikit:flex dgsuikit:gap-2 dgsuikit:items-center">
         {icon}
         <p className={titleClassname}>{title}</p>
       </div>
-      <div className="dgs-ui-kit-w-full">{Element}</div>
+      <div className="dgsuikit:w-full">{Element}</div>
     </div>
   );
 };

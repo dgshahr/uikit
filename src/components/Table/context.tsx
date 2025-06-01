@@ -18,7 +18,7 @@ interface ProviderProps<T extends UnknownRecord> extends TableProps<T> {
   children: ReactNode;
 }
 
-const SHADOW_CLASS = 'after:!dgs-ui-kit-shadow-[rgba(0,0,0,0.06)]';
+const SHADOW_CLASS = 'dgsuikit:after:!shadow-[rgba(0,0,0,0.06)]';
 
 function addShadowToElement(element: Element) {
   element.classList.add(SHADOW_CLASS);

@@ -24,23 +24,23 @@ export type ChipProps = ChipPropsBase &
 
 function styleChip({ size = 'small', filled, className, disabled, isActive }: ChipProps) {
   const defaultClass =
-    'dgs-ui-kit-border dgs-ui-kit-border-solid dgs-ui-kit-rounded-full dgs-ui-kit-transition hover:dgs-ui-kit-ring-4 dgs-ui-kit-ring-gray-100 dgs-ui-kit-flex dgs-ui-kit-items-center';
+    'dgsuikit:border dgsuikit:border-solid dgsuikit:rounded-full dgsuikit:transition dgsuikit:hover:ring-4 dgsuikit:ring-gray-100 dgsuikit:flex dgsuikit:items-center';
 
   const sizeClass: Record<Required<ChipPropsBase>['size'], string> = {
     small:
-      'dgs-ui-kit-gap-1 dgs-ui-kit-py-1 dgs-ui-kit-px-3 dgs-ui-kit-font-p2-medium [&_svg]:dgs-ui-kit-size-4',
+      'dgsuikit:gap-1 dgsuikit:py-1 dgsuikit:px-3 dgsuikit:font-p2-medium dgsuikit:[&_svg]:size-4',
     large:
-      'dgs-ui-kit-gap-2 dgs-ui-kit-py-2.5 dgs-ui-kit-px-5 dgs-ui-kit-font-p1-medium [&_svg]:dgs-ui-kit-size-5',
+      'dgsuikit:gap-2 dgsuikit:py-2.5 dgsuikit:px-5 dgsuikit:font-p1-medium dgsuikit:[&_svg]:size-5',
   };
 
   const variantClass: Record<'filled' | 'default', string> = {
     default:
-      'dgs-ui-kit-bg-white dgs-ui-kit-text-gray-700 hover:dgs-ui-kit-text-primary-500 dgs-ui-kit-border-gray-200 hover:dgs-ui-kit-border-gray-300',
-    filled: 'dgs-ui-kit-bg-primary-50 dgs-ui-kit-text-primary-500 dgs-ui-kit-border-primary-100',
+      'dgsuikit:bg-white dgsuikit:text-gray-700 dgsuikit:hover:text-primary-500 dgsuikit:border-gray-200 dgsuikit:hover:border-gray-300',
+    filled: 'dgsuikit:bg-primary-50 dgsuikit:text-primary-500 dgsuikit:border-primary-100',
   };
 
-  const disabledClass = 'dgs-ui-kit-opacity-40 dgs-ui-kit-cursor-not-allowed';
-  const activeClass = '!dgs-ui-kit-border-primary-500 !dgs-ui-kit-text-primary-500';
+  const disabledClass = 'dgsuikit:opacity-40 dgsuikit:cursor-not-allowed';
+  const activeClass = 'dgsuikit:!border-primary-500 dgsuikit:!text-primary-500';
 
   return clsx(
     defaultClass,

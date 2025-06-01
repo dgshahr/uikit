@@ -15,7 +15,7 @@ import {
 import type { FileInputProps, FilePreviewProps } from '../types';
 
 function renderUploadButton(button: FileInputProps['button']) {
-  const zIndexClass = 'dgs-ui-kit-relative dgs-ui-kit-z-10';
+  const zIndexClass = 'dgsuikit:relative dgsuikit:z-10';
   if (typeof button === 'boolean') {
     return (
       <Button
@@ -63,14 +63,14 @@ const FileInput: FC<Props> = (props) => {
   }
 
   return (
-    <div className="dgs-ui-kit-space-y-2">
+    <div className="dgsuikit:space-y-2">
       <div
         className={clsx(
-          'dgs-ui-kit-relative dgs-ui-kit-text-center dgs-ui-kit-bg-white dgs-ui-kit-transition-all',
-          'dgs-ui-kit-space-y-4 dgs-ui-kit-p-4',
-          'dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-justify-center dgs-ui-kit-items-center',
-          'dgs-ui-kit-border dgs-ui-kit-border-gray-300 dgs-ui-kit-border-dashed dgs-ui-kit-rounded-lg',
-          'hover:dgs-ui-kit-ring-4 hover:dgs-ui-kit-ring-gray-100',
+          'dgsuikit:relative dgsuikit:text-center dgsuikit:bg-white dgsuikit:transition-all',
+          'dgsuikit:space-y-4 dgsuikit:p-4',
+          'dgsuikit:flex dgsuikit:flex-col dgsuikit:justify-center dgsuikit:items-center',
+          'dgsuikit:border dgsuikit:border-gray-300 dgsuikit:border-dashed dgsuikit:rounded-lg',
+          'dgsuikit:hover:ring-4 dgsuikit:hover:ring-gray-100',
           FOCUS_CLASS,
           DISABLED_CLASS,
           (isError || helperProps?.errorMessage) && ERROR_CLASS,
@@ -80,19 +80,19 @@ const FileInput: FC<Props> = (props) => {
         )}
       >
         {title ? (
-          <p className="dgs-ui-kit-font-p1-medium dgs-ui-kit-text-primary-500 [font-feature-settings:inherit]">
+          <p className="dgsuikit:font-p1-medium dgsuikit:text-primary-500 [font-feature-settings:inherit]">
             {title}
           </p>
         ) : null}
         {description ? (
-          <pre className="dgs-ui-kit-font-caption-demibold dgs-ui-kit-text-primary-200 [font-feature-settings:inherit]">
+          <pre className="dgsuikit:font-caption-demibold dgsuikit:text-primary-200 [font-feature-settings:inherit]">
             {description}
           </pre>
         ) : null}
         {button ? renderUploadButton(button) : null}
         {!hideIcon && <FileInputIcon />}
         <input
-          className="!dgs-ui-kit-mt-0 dgs-ui-kit-absolute dgs-ui-kit-inset-0 dgs-ui-kit-size-full dgs-ui-kit-opacity-0 dgs-ui-kit-cursor-pointer disabled:dgs-ui-kit-cursor-not-allowed dgs-ui-kit-z-10"
+          className="dgsuikit:!mb-0 dgsuikit:absolute dgsuikit:inset-0 dgsuikit:size-full dgsuikit:opacity-0 dgsuikit:cursor-pointer dgsuikit:disabled:cursor-not-allowed dgsuikit:z-10"
           type="file"
           onDragEnter={() => setIsOnDrag(true)}
           onDragLeave={() => setIsOnDrag(false)}

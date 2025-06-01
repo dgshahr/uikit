@@ -173,7 +173,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    containerClassName: 'dgs-ui-kit-w-[400px]',
+    containerClassName: 'dgsuikit:w-[400px]',
     responsive: { 768: { slidesPerView: 2, spaceBetween: 8 } },
     slidesPerView: 1,
     spaceBetween: 0,
@@ -182,7 +182,7 @@ export const Default: Story = {
       .fill(null)
       .map((_, index) => (
         <Slide key={index}>
-          <div className="dgs-ui-kit-h-[200px] dgs-ui-kit-bg-gray-600 dgs-ui-kit-rounded dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-justify-center dgs-ui-kit-text-white">
+          <div className="dgsuikit:h-[200px] dgsuikit:bg-gray-600 dgsuikit:rounded dgsuikit:flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:text-white">
             {index + 1}
           </div>
         </Slide>

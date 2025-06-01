@@ -120,7 +120,7 @@ export const Multiple: Story = {
     min: 0,
     onChange() {},
     value: [2000, 8000],
-    wrapperClassName: 'dgs-ui-kit-w-[200px]',
+    wrapperClassName: 'dgsuikit:w-[200px]',
     startTitle: 'عنوان',
     endTitle: 'عنوان',
   },

@@ -43,35 +43,35 @@ const SidebarItems: FC = () => {
   }, [isOpen]);
 
   return (
-    <div className="dgs-ui-kit-overflow-y-auto dgs-ui-kit-overflow-x-hidden -dgs-ui-kit-mx-4 dgs-ui-kit-h-3/4 no-scrollbar">
+    <div className="dgsuikit:overflow-y-auto dgsuikit:overflow-x-hidden dgsuikit:-mx-4 dgsuikit:h-3/4 no-scrollbar">
       {Boolean(searchInput) && (
         <SidebarSearchInput
           value={search}
           onChange={handleSearchChange}
         />
       )}
-      <div className="dgs-ui-kit-space-y-6 dgs-ui-kit-px-4">
+      <div className="dgsuikit:space-y-6 dgsuikit:px-4">
         {innerItems.map((item, index) => (
           <Fragment key={item.title}>
             <div
               className={clsx(
-                'dgs-ui-kit-font-p2-regular dgs-ui-kit-text-gray-400',
+                'dgsuikit:font-p2-regular dgsuikit:text-gray-400',
                 showItemsClass(isOpen),
               )}
             >
               {item.title}
             </div>
-            <AccordionGroup className="dgs-ui-kit-mt-4 dgs-ui-kit-space-y-2">
+            <AccordionGroup className="dgsuikit:mt-4 dgsuikit:space-y-2">
               {item.children?.map((secondLevelItem) =>
                 secondLevelItem.link ? (
                   <a
                     key={secondLevelItem.link}
                     href={secondLevelItem.link}
                     className={clsx(
-                      'dgs-ui-kit-pr-3',
+                      'dgsuikit:pr-3',
                       secondLevelItem.disabled && DISABLED_CLASS,
                       secondLevelItem.active && SECOND_LEVEL_ACTIVE_CLASS,
-                      isOpen ? 'dgs-ui-kit-pl-9' : 'dgs-ui-kit-pl-3',
+                      isOpen ? 'dgsuikit:pl-9' : 'dgsuikit:pl-3',
                       ITEMS_SHARED_CLASS,
                     )}
                   >
@@ -80,14 +80,14 @@ const SidebarItems: FC = () => {
                 ) : (
                   <AccordionItem
                     key={secondLevelItem.link ?? secondLevelItem.title}
-                    className={clsx('!dgs-ui-kit-p-0', secondLevelItem.disabled && DISABLED_CLASS)}
+                    className={clsx('dgsuikit:!p-0', secondLevelItem.disabled && DISABLED_CLASS)}
                     title={getSecondLevelItemContent(secondLevelItem, isOpen)}
                     hideDivider
                     hideArrow={!isOpen || secondLevelItem.disabled}
                     disable={!isOpen || secondLevelItem.disabled}
                     titleClassName={clsx(
-                      '[&_>div:first-child]:dgs-ui-kit-flex-1 [&_>div:first-child]:dgs-ui-kit-pl-1',
-                      isOpen ? 'dgs-ui-kit-px-3' : '!dgs-ui-kit-justify-center',
+                      'dgsuikit:[&_>div:first-child]:flex-1 dgsuikit:[&_>div:first-child]:pl-1',
+                      isOpen ? 'dgsuikit:px-3' : 'dgsuikit:!justify-center',
                       secondLevelItem.children?.find((thirdLevelItem) => thirdLevelItem.active) &&
                         SECOND_LEVEL_ACTIVE_CLASS,
                       ITEMS_SHARED_CLASS,
@@ -98,7 +98,7 @@ const SidebarItems: FC = () => {
                         key={thirdLevelItem.link}
                         href={thirdLevelItem.link}
                         className={clsx(
-                          'dgs-ui-kit-flex dgs-ui-kit-justify-between dgs-ui-kit-h-10 dgs-ui-kit-pl-9 dgs-ui-kit-pr-11 dgs-ui-kit-py-2 dgs-ui-kit-mt-1 first:dgs-ui-kit-mt-0',
+                          'dgsuikit:flex dgsuikit:justify-between dgsuikit:h-10 dgsuikit:pl-9 dgsuikit:pr-11 dgsuikit:py-2 dgsuikit:mt-1 dgsuikit:first:mt-0',
                           thirdLevelItem.disabled && DISABLED_CLASS,
                           thirdLevelItem.active && ACTIVE_CLASS,
                           ITEMS_SHARED_CLASS,

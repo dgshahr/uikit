@@ -27,26 +27,26 @@ const ColorDocument: FC = () => {
       </p>
       <Subheading>Default Colors</Subheading>
       <Unstyled>
-        <div className="dgs-ui-kit-flex dgs-ui-kit-gap-4">
-          <div className="dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-shrink-0 dgs-ui-kit-gap-4">
-            <div className="dgs-ui-kit-flex-1 dgs-ui-kit-font-p1-medium dgs-ui-kit-font-bold">
+        <div className="dgsuikit:flex dgsuikit:gap-4">
+          <div className="dgsuikit:flex dgsuikit:flex-col dgsuikit:shrink-0 dgsuikit:gap-4">
+            <div className="dgsuikit:flex-1 dgsuikit:font-p1-medium dgsuikit:font-bold">
               Colors/Shades
             </div>
             {Object.keys(DgThemeColors).map((colorName) => (
               <div
                 key={colorName}
-                className="dgs-ui-kit-flex-1 dgs-ui-kit-font-p1-medium dgs-ui-kit-font-bold"
+                className="dgsuikit:flex-1 dgsuikit:font-p1-medium dgsuikit:font-bold"
               >
                 {colorName}
               </div>
             ))}
           </div>
-          <div className="dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-gap-4">
-            <div className="dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-4">
+          <div className="dgsuikit:flex dgsuikit:flex-col dgsuikit:gap-4">
+            <div className="dgsuikit:flex dgsuikit:items-center dgsuikit:gap-4">
               {Object.keys(DgThemeColors.primary).map((colorShade) => (
                 <div
                   key={colorShade}
-                  className="dgs-ui-kit-flex-1 dgs-ui-kit-font-p1-medium dgs-ui-kit-text-center"
+                  className="dgsuikit:flex-1 dgsuikit:font-p1-medium dgsuikit:text-center"
                 >
                   {colorShade}
                 </div>
@@ -55,12 +55,12 @@ const ColorDocument: FC = () => {
             {Object.keys(DgThemeColors).map((colorName) => (
               <div
                 key={colorName}
-                className=" dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-4"
+                className="dgsuikit:flex dgsuikit:items-center dgsuikit:gap-4"
               >
                 {Object.keys(DgThemeColors[colorName]).map((colorShade) => (
                   <div
                     key={DgThemeColors[colorName][colorShade]}
-                    className="dgs-ui-kit-flex-1 dgs-ui-kit-size-7 dgs-ui-kit-rounded-lg"
+                    className="dgsuikit:flex-1 dgsuikit:size-7 dgsuikit:rounded-lg"
                     style={{
                       backgroundColor: getRgbValue(DgThemeColors[colorName][colorShade]),
                     }}
@@ -70,18 +70,18 @@ const ColorDocument: FC = () => {
             ))}
           </div>
         </div>
-        <p className={clsx('dgs-ui-kit-mt-10', DESCRIPTION_CLASS)}>
+        <p className={clsx('dgsuikit:mt-10', DESCRIPTION_CLASS)}>
           Every color in the palette includes 10 shades, with 50 being the lightest, and 900 being
           the darkest:
         </p>
-        <div className="dgs-ui-kit-flex dgs-ui-kit-gap-4 dgs-ui-kit-justify-center dgs-ui-kit-my-5">
+        <div className="dgsuikit:flex dgsuikit:gap-4 dgsuikit:justify-center dgsuikit:my-5">
           {Object.keys(DgThemeColors.primary).map((colorShade) => (
             <div
               key={colorShade}
-              className="dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-items-center dgs-ui-kit-font-p2-medium"
+              className="dgsuikit:flex dgsuikit:flex-col dgsuikit:items-center dgsuikit:font-p2-medium"
             >
               <div
-                className="dgs-ui-kit-size-7 dgs-ui-kit-rounded-lg"
+                className="dgsuikit:size-7 dgsuikit:rounded-lg"
                 style={{
                   backgroundColor: getRgbValue(DgThemeColors.primary[colorShade]),
                 }}

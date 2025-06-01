@@ -4,7 +4,7 @@ import { cardBodyColorClassnameMap, cardBodySizeClassnameMap } from './constants
 import CardHeader from './Header';
 import type { CardProps } from './types';
 
-const TRIM_TOP_CLASS = 'dgs-ui-kit-border-t-0 dgs-ui-kit-rounded-t-none';
+const TRIM_TOP_CLASS = 'dgsuikit:border-t-0 dgsuikit:rounded-t-none';
 
 const Card: FC<CardProps> = (props) => {
   const { header, children, size = 'medium', color = 'white', className, wrapperClassName } = props;

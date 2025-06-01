@@ -67,28 +67,26 @@ function getDayClassName({
   endDate,
 }: DayItem[0] & DatepickerProps) {
   const isDateVisible = isInMonth || showExtraDays;
-  if (!isDateVisible) return 'dgs-ui-kit-pointer-events-none';
+  if (!isDateVisible) return 'dgsuikit:pointer-events-none';
 
   const isToday = isSameDay(new Date(), date);
   const isSelectable =
     (startDate ? isAfter(date, startDate) : true) && (endDate ? isBefore(date, endDate) : true);
-  const activeItemClass =
-    '!dgs-ui-kit-bg-primary-500 !dgs-ui-kit-text-white dgs-ui-kit-border-none';
+  const activeItemClass = 'dgsuikit:!bg-primary-500 dgsuikit:!text-white dgsuikit:border-none';
   let className =
-    'dgs-ui-kit-py-1 dgs-ui-kit-rounded-2xl dgs-ui-kit-transition hover:dgs-ui-kit-bg-primary-50 hover:dgs-ui-kit-text-primary-500';
+    'dgsuikit:py-1 dgsuikit:rounded-2xl dgsuikit:transition dgsuikit:hover:bg-primary-50 dgsuikit:hover:text-primary-500';
 
-  if (isToday) className = `${className} dgs-ui-kit-border dgs-ui-kit-border-primary-300`;
-  if (!isInMonth && isDateVisible) className = `${className} dgs-ui-kit-text-gray-400`;
-  else className = `${className} dgs-ui-kit-text-gray-600`;
-  if (!isSelectable)
-    className = `${className} dgs-ui-kit-line-through dgs-ui-kit-pointer-events-none`;
+  if (isToday) className = `${className} dgsuikit:border dgsuikit:border-primary-300`;
+  if (!isInMonth && isDateVisible) className = `${className} dgsuikit:text-gray-400`;
+  else className = `${className} dgsuikit:text-gray-600`;
+  if (!isSelectable) className = `${className} dgsuikit:line-through dgsuikit:pointer-events-none`;
 
   if (value instanceof Date) {
     if (isSameDay(value, date)) className = `${className} ${activeItemClass}`;
   } else if (value.start && isSameDay(value.start, date))
-    className = `${className} dgs-ui-kit-rounded-l-none ${activeItemClass}`;
+    className = `${className} dgsuikit:rounded-l-none ${activeItemClass}`;
   else if (value.end && isSameDay(value.end, date))
-    className = `${className} dgs-ui-kit-rounded-r-none ${activeItemClass}`;
+    className = `${className} dgsuikit:rounded-r-none ${activeItemClass}`;
   else if (
     value.start &&
     value.end &&
@@ -97,7 +95,7 @@ function getDayClassName({
       end: value.end,
     })
   )
-    className = `${className} dgs-ui-kit-rounded-none dgs-ui-kit-border-none dgs-ui-kit-bg-primary-50 dgs-ui-kit-text-primary-500`;
+    className = `${className} dgsuikit:rounded-none dgsuikit:border-none dgsuikit:bg-primary-50 dgsuikit:text-primary-500`;
 
   return className;
 }
@@ -121,12 +119,12 @@ const Days: FC = () => {
 
   return (
     <>
-      <div className="dgs-ui-kit-bg-gray-50 dgs-ui-kit-p-3 dgs-ui-kit-font-button-small dgs-ui-kit-text-gray-600 dgs-ui-kit-text-center dgs-ui-kit-grid dgs-ui-kit-grid-rows-1 dgs-ui-kit-grid-cols-7">
+      <div className="dgsuikit:bg-gray-50 dgsuikit:p-3 dgsuikit:font-button-small dgsuikit:text-gray-600 dgsuikit:text-center dgsuikit:grid dgsuikit:grid-rows-1 dgsuikit:grid-cols-7">
         {SHORT_WEEK_DAYS.map((weekDay) => (
           <span key={weekDay}>{weekDay}</span>
         ))}
       </div>
-      <div className="dgs-ui-kit-grid dgs-ui-kit-grid-cols-7 dgs-ui-kit-text-center dgs-ui-kit-font-p3-medium ss02 dgs-ui-kit-p-3 dgs-ui-kit-gap-y-2">
+      <div className="dgsuikit:grid dgsuikit:grid-cols-7 dgsuikit:text-center dgsuikit:font-p3-medium ss02 dgsuikit:p-3 dgsuikit:gap-y-2">
         {daysOfCalendar.map((dayItem) => (
           <button
             type="button"

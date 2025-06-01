@@ -12,7 +12,7 @@ const SpinnerLoading: FC<SVGProps<SVGSVGElement>> = (props) => {
       viewBox="0 0 100 100"
       preserveAspectRatio="xMidYMid"
       className={clsx(
-        'dgs-ui-kit-m-auto dgs-ui-kit-bg-none dgs-ui-kit-block dgs-ui-kit-text-primary-500',
+        'dgsuikit:m-auto dgsuikit:bg-none dgsuikit:block dgsuikit:text-primary-500',
         className,
       )}
       {...rest}

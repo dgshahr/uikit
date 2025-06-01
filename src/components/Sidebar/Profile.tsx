@@ -8,19 +8,18 @@ const SidebarProfile = () => {
   return (
     <a
       href={userProfile?.link ?? '#'}
-      className={clsx(
-        'dgs-ui-kit-mb-4 dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-space-x-2 dgs-ui-kit-space-x-reverse',
-        { 'dgs-ui-kit-pointer-events-none': !userProfile?.link },
-      )}
+      className={clsx('dgsuikit:mb-4 dgsuikit:flex dgsuikit:items-center dgsuikit:space-x-2', {
+        'dgsuikit:pointer-events-none': !userProfile?.link,
+      })}
     >
       <img
         src={userProfile?.image}
         alt={userProfile?.name ?? 'user_avatar'}
-        className="dgs-ui-kit-size-12 dgs-ui-kit-rounded-full dgs-ui-kit-shrink-0"
+        className="dgsuikit:size-12 dgsuikit:rounded-full dgsuikit:shrink-0"
       />
-      <div className={clsx('dgs-ui-kit-flex dgs-ui-kit-flex-col', showItemsClass(isOpen))}>
-        <p className="dgs-ui-kit-font-p3-medium dgs-ui-kit-text-gray-700">{userProfile?.name}</p>
-        <p className="dgs-ui-kit-font-p3-regular dgs-ui-kit-text-gray-400">
+      <div className={clsx('dgsuikit:flex dgsuikit:flex-col', showItemsClass(isOpen))}>
+        <p className="dgsuikit:font-p3-medium dgsuikit:text-gray-700">{userProfile?.name}</p>
+        <p className="dgsuikit:font-p3-regular dgsuikit:text-gray-400">
           {userProfile?.description}
         </p>
       </div>

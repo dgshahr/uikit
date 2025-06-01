@@ -38,7 +38,7 @@ export const Default: Story = {
     color: 'gray',
   },
   render: (args) => (
-    <div className="dgs-ui-kit-w-[100px] dgs-ui-kit-h-[100px] dgs-ui-kit-flex dgs-ui-kit-justify-center dgs-ui-kit-items-center">
+    <div className="dgsuikit:w-[100px] dgsuikit:h-[100px] dgsuikit:flex dgsuikit:justify-center dgsuikit:items-center">
       <Divider {...args} />
     </div>
   ),

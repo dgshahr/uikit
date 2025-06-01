@@ -9,16 +9,14 @@ const TableHeader: FC<TableHeaderProps & { total?: number }> = (props) => {
   return (
     <div
       className={clsx(
-        'dgs-ui-kit-p-4 dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-space-x-1 dgs-ui-kit-space-x-reverse dgs-ui-kit-border-b dgs-ui-kit-border-solid dgs-ui-kit-border-gray-200',
+        'dgsuikit:p-4 dgsuikit:flex dgsuikit:items-center dgsuikit:space-x-1 dgsuikit:border-b dgsuikit:border-solid dgsuikit:border-gray-200',
         className,
       )}
     >
-      <div className="dgs-ui-kit-font-h4-bold dgs-ui-kit-text-gray-700 dgs-ui-kit-w-full">
-        {title}
-      </div>
+      <div className="dgsuikit:font-h4-bold dgsuikit:text-gray-700 dgsuikit:w-full">{title}</div>
       {showTotal && (
-        <div className="dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-shrink-0">
-          <span className="dgs-ui-kit-font-p2-regular dgs-ui-kit-text-gray-700 dgs-ui-kit-ml-1">
+        <div className="dgsuikit:flex dgsuikit:items-center dgsuikit:shrink-0">
+          <span className="dgsuikit:font-p2-regular dgsuikit:text-gray-700 dgsuikit:ml-1">
             تعداد نتایج:
           </span>
           <Badge

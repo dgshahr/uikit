@@ -20,14 +20,14 @@ function styleNavigationDot({
   variant: SliderProps['navigationVariant'];
 }) {
   const variantClassName: Record<Required<SliderProps>['navigationVariant'], string> = {
-    inside: 'dgs-ui-kit-bg-gray-500/50 hover:dgs-ui-kit-bg-gray-500/80',
-    outside: 'dgs-ui-kit-bg-gray-200 hover:dgs-ui-kit-bg-gray-300',
+    inside: 'dgsuikit:bg-gray-500/50 dgsuikit:hover:bg-gray-500/80',
+    outside: 'dgsuikit:bg-gray-200 dgsuikit:hover:bg-gray-300',
   };
 
   return [
     variantClassName[variant],
-    active ? 'dgs-ui-kit-w-[22px]' : 'dgs-ui-kit-w-[6px]',
-    autoplay ? 'dgs-ui-kit-p-[1px]' : '',
+    active ? 'dgsuikit:w-[22px]' : 'dgsuikit:w-[6px]',
+    autoplay ? 'dgsuikit:p-[1px]' : '',
   ];
 }
 
@@ -63,7 +63,7 @@ const NavigationDot = (props: NavigationDotProps) => {
   return (
     <button
       className={clsx(
-        'dgs-ui-kit-rounded-full dgs-ui-kit-overflow-hidden dgs-ui-kit-transition-all dgs-ui-kit-h-[6px]',
+        'dgsuikit:rounded-full dgsuikit:overflow-hidden dgsuikit:transition-all dgsuikit:h-[6px]',
         styleNavigationDot({ active, autoplay, variant: navigationVariant }),
       )}
       onClick={onClick}
@@ -71,9 +71,9 @@ const NavigationDot = (props: NavigationDotProps) => {
     >
       {active && (
         <div
-          className={clsx('dgs-ui-kit-h-full dgs-ui-kit-rounded-full', {
-            'dgs-ui-kit-bg-white': navigationVariant === 'inside',
-            'dgs-ui-kit-bg-gray-700': navigationVariant === 'outside',
+          className={clsx('dgsuikit:h-full dgsuikit:rounded-full', {
+            'dgsuikit:bg-white': navigationVariant === 'inside',
+            'dgsuikit:bg-gray-700': navigationVariant === 'outside',
           })}
           style={{ width: autoplay ? `${fillPercentage}%` : '100%' }}
         />

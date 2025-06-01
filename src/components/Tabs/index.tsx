@@ -39,8 +39,8 @@ const Tabs: FC<TabsProps> = (props) => {
   return (
     <div
       className={clsx(
-        'dgs-ui-kit-flex dgs-ui-kit-border-b dgs-ui-kit-border-gray-200 dgs-ui-kit-border-solid',
-        fullWidth ? 'dgs-ui-kit-w-full' : 'dgs-ui-kit-w-fit',
+        'dgsuikit:flex dgsuikit:border-b dgsuikit:border-gray-200 dgsuikit:border-solid',
+        fullWidth ? 'dgsuikit:w-full' : 'dgsuikit:w-fit',
         className,
       )}
     >
@@ -50,27 +50,26 @@ const Tabs: FC<TabsProps> = (props) => {
           type="button"
           onClick={() => onChange(tab.key)}
           disabled={tab.disabled}
-          className={clsx('dgs-ui-kit-group', {
-            'dgs-ui-kit-flex-1': fullWidth && fullWidthButtons,
+          className={clsx('dgsuikit:group', {
+            'dgsuikit:flex-1': fullWidth && fullWidthButtons,
           })}
         >
           <div
             className={clsx(
-              'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-space-x-2 dgs-ui-kit-space-x-reverse dgs-ui-kit-px-3 dgs-ui-kit-py-4 dgs-ui-kit-transition',
+              'dgsuikit:flex dgsuikit:items-center dgsuikit:space-x-2 dgsuikit:px-3 dgsuikit:py-4 dgsuikit:transition',
               {
-                'dgs-ui-kit-text-primary-500': activeKey === tab.key,
-                'dgs-ui-kit-text-gray-500 group-hover:dgs-ui-kit-text-gray-600':
-                  activeKey !== tab.key,
-                'dgs-ui-kit-cursor-not-allowed dgs-ui-kit-opacity-40': tab.disabled,
-                'dgs-ui-kit-justify-center': fullWidth && fullWidthButtons,
+                'dgsuikit:text-primary-500': activeKey === tab.key,
+                'dgsuikit:text-gray-500 dgsuikit:group-hover:text-gray-600': activeKey !== tab.key,
+                'dgsuikit:cursor-not-allowed dgsuikit:opacity-40': tab.disabled,
+                'dgsuikit:justify-center': fullWidth && fullWidthButtons,
               },
               tabItemClassName,
             )}
           >
             {tab.icon ? (
               <div
-                className={clsx('dgs-ui-kit-transition', {
-                  'dgs-ui-kit-text-gray-400 group-hover:dgs-ui-kit-text-gray-500':
+                className={clsx('dgsuikit:transition', {
+                  'dgsuikit:text-gray-400 dgsuikit:group-hover:text-gray-500':
                     tab.key !== activeKey,
                 })}
               >
@@ -84,22 +83,19 @@ const Tabs: FC<TabsProps> = (props) => {
                 value={tab.badgeNumber}
                 size="small"
                 className={clsx({
-                  'dgs-ui-kit-opacity-60': activeKey !== tab.key,
-                  '!dgs-ui-kit-opacity-100': tab.disabled,
+                  'dgsuikit:opacity-60': activeKey !== tab.key,
+                  'dgsuikit:!opacity-100': tab.disabled,
                 })}
                 color={activeKey === tab.key ? 'primary' : 'gray'}
               />
             )}
           </div>
           <div
-            className={clsx(
-              'dgs-ui-kit-w-full dgs-ui-kit-h-1 dgs-ui-kit-rounded-t dgs-ui-kit-transition',
-              {
-                'dgs-ui-kit-bg-gray-300 dgs-ui-kit-opacity-0 group-hover:dgs-ui-kit-opacity-100':
-                  tab.key !== activeKey && !tab.disabled,
-                'dgs-ui-kit-bg-primary-500': tab.key === activeKey,
-              },
-            )}
+            className={clsx('dgsuikit:w-full dgsuikit:h-1 dgsuikit:rounded-t dgsuikit:transition', {
+              'dgsuikit:bg-gray-300 dgsuikit:opacity-0 dgsuikit:group-hover:opacity-100':
+                tab.key !== activeKey && !tab.disabled,
+              'dgsuikit:bg-primary-500': tab.key === activeKey,
+            })}
           />
         </button>
       ))}

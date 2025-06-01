@@ -35,10 +35,10 @@ const TabelCell: FC<TabelCellProps> = (props) => {
     <Element
       ref={cellRef}
       className={clsx(className, getStickyClass(sticky, addBorderToSticky), {
-        'dgs-ui-kit-border-b-0 before:dgs-ui-kit-content[""] before:dgs-ui-kit-absolute before:dgs-ui-kit-bottom-0 before:dgs-ui-kit-left-0 before:dgs-ui-kit-w-full before:dgs-ui-kit-border-b before:dgs-ui-kit-border-solid before:dgs-ui-kit-border-gray-200':
+        'dgsuikit:border-b-0 dgsuikit:before:content[""] dgsuikit:before:absolute dgsuikit:before:bottom-0 dgsuikit:before:left-0 dgsuikit:before:w-full dgsuikit:before:border-b dgsuikit:before:border-solid dgsuikit:before:border-gray-200':
           stuckToTop,
-        'dgs-ui-kit-top-0 dgs-ui-kit-z-20': stuckToTop && sticky,
-        'dgs-ui-kit-sticky dgs-ui-kit-top-0 dgs-ui-kit-z-10': stuckToTop && !sticky,
+        'dgsuikit:top-0 dgsuikit:z-20': stuckToTop && sticky,
+        'dgsuikit:sticky dgsuikit:top-0 dgsuikit:z-10': stuckToTop && !sticky,
       })}
       id={sticky && `sticky-cell-${sticky}`}
     >

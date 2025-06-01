@@ -18,24 +18,24 @@ const FieldLabel: FC<FieldLabelProps> = (props) => {
   return (
     <>
       <div
-        className={clsx('dgs-ui-kit-flex', {
-          'dgs-ui-kit-justify-between': labelContent && link?.href,
-          'dgs-ui-kit-mb-2': !labelAddon,
-          'dgs-ui-kit-justify-start': labelContent && !link?.href,
-          'dgs-ui-kit-justify-end': !labelContent && link?.href,
-          'dgs-ui-kit-text-gray-400': disabled,
+        className={clsx('dgsuikit:flex', {
+          'dgsuikit:justify-between': labelContent && link?.href,
+          'dgsuikit:mb-2': !labelAddon,
+          'dgsuikit:justify-start': labelContent && !link?.href,
+          'dgsuikit:justify-end': !labelContent && link?.href,
+          'dgsuikit:text-gray-400': disabled,
         })}
       >
         {labelContent && (
-          <label className="dgs-ui-kit-px-0 dgs-ui-kit-font-p2-medium md:dgs-ui-kit-mx-0">
+          <label className="dgsuikit:px-0 dgsuikit:font-p2-medium dgsuikit:md:mx-0">
             {labelContent}
-            {required && <span className="dgs-ui-kit-ms-2 dgs-ui-kit-text-error-500">*</span>}
+            {required && <span className="dgsuikit:ms-2 dgsuikit:text-error-500">*</span>}
           </label>
         )}
         {link?.href && (
           <a
             href={link.href}
-            className="dgs-ui-kit-font-button-small dgs-ui-kit-text-primary-400"
+            className="dgsuikit:font-button-small dgsuikit:text-primary-400"
           >
             {link.cnotent}
           </a>

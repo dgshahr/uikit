@@ -22,7 +22,7 @@ const MultipleModePreveiw: FC<PreviewProps<FileType[]>> = (props) => {
     ));
 
   return (
-    <div className={clsx('dgs-ui-kit-mt-4 dgs-ui-kit-space-y-2', wrapperClassName)}>
+    <div className={clsx('dgsuikit:mt-4 dgsuikit:space-y-2', wrapperClassName)}>
       {files.map((file) => (
         <ListTypePreview
           key={getFileKey(file)}

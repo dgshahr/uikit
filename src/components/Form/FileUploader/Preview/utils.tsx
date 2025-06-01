@@ -15,7 +15,7 @@ export function renderPreviewDefaultAction(
   return (
     <Button
       className={clsx(
-        'dgs-ui-kit-opacity-50 dgs-ui-kit-z-10',
+        'dgsuikit:opacity-50 dgsuikit:z-10',
         defaults?.className,
         (button as ButtonProps)?.className,
       )}
@@ -36,11 +36,11 @@ export function renderPreviewDefaultAction(
 
 export function getPreviewBorder(loading: FileType['loading'], status: FileType['status']) {
   return clsx(
-    'dgs-ui-kit-border dgs-ui-kit-border-transparent dgs-ui-kit-rounded-lg',
-    status && status !== 'default' && 'dgs-ui-kit-p-1',
+    'dgsuikit:border dgsuikit:border-transparent dgsuikit:rounded-lg',
+    status && status !== 'default' && 'dgsuikit:p-1',
     {
-      '!dgs-ui-kit-border-error-500': !loading && status === 'error',
-      '!dgs-ui-kit-border-warning-600': !loading && status === 'warning',
+      'dgsuikit:!border-error-500': !loading && status === 'error',
+      'dgsuikit:!border-warning-600': !loading && status === 'warning',
     },
   );
 }

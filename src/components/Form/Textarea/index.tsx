@@ -40,11 +40,11 @@ const Textarea = forwardRef(function Textarea(
         {...inputProps}
         ref={ref}
         className={clsx(
-          'dgs-ui-kit-bg-transparent dgs-ui-kit-leading-normal dgs-ui-kit-w-full dgs-ui-kit-h-full focus:dgs-ui-kit-outline-none ss02 dgs-ui-kit-flex-1 dgs-ui-kit-resize-none',
-          dir === 'rtl' ? 'dgs-ui-kit-text-right' : '!dgs-ui-kit-text-left',
+          'dgsuikit:bg-transparent dgsuikit:leading-normal dgsuikit:w-full dgsuikit:h-full dgsuikit:focus:outline-none ss02 dgsuikit:flex-1 dgsuikit:resize-none',
+          dir === 'rtl' ? 'dgsuikit:text-right' : 'dgsuikit:!text-left',
           placeholderDir === 'rtl'
-            ? 'placeholder:dgs-ui-kit-text-right'
-            : 'placeholder:dgs-ui-kit-text-left',
+            ? 'dgsuikit:placeholder:text-right'
+            : 'dgsuikit:placeholder:text-left',
           className,
         )}
         rows={restProps.rows ?? 5}

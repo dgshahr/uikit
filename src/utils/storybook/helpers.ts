@@ -32,7 +32,7 @@ export function fullWidthStory(
 
   setTimeout(() => {
     document.querySelectorAll('[scale="1"]').forEach((element) => {
-      element.classList.add('!dgs-ui-kit-w-full');
+      element.classList.add('dgsuikit:!w-full');
     });
   }, 300);
 }

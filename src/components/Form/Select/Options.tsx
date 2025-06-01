@@ -31,10 +31,10 @@ const Options = <T,>(props: SelectProps<T>) => {
   const { toggleWrapperVisibility } = usePickerWrapperContext();
 
   const itemClassName = clsx(
-    'dgs-ui-kit-border-t dgs-ui-kit-border-solid dgs-ui-kit-border-gray-100',
+    'dgsuikit:border-t dgsuikit:border-solid dgsuikit:border-gray-100',
     ((!searchable && !beforeOptions) || (mode === 'multiple' && separateSelectedOptions)) &&
-      'first-of-type:dgs-ui-kit-border-t-0',
-    Boolean(afterOptions) && 'last-of-type:dgs-ui-kit-border-b',
+      'dgsuikit:first-of-type:border-t-0',
+    Boolean(afterOptions) && 'dgsuikit:last-of-type:border-b',
   );
   let isSearchable: boolean;
   const inputSearchable = searchable as InputProps;
@@ -119,8 +119,8 @@ const Options = <T,>(props: SelectProps<T>) => {
         <Input
           id="search-input"
           wrapperClassName={clsx(
-            'dgs-ui-kit-sticky dgs-ui-kit-top-0 dgs-ui-kit-pt-3 dgs-ui-kit-right-0 dgs-ui-kit-bg-white dgs-ui-kit-z-10 dgs-ui-kit-px-3',
-            beforeOptions ? 'dgs-ui-kit-pb-2' : 'dgs-ui-kit-pb-3',
+            'dgsuikit:sticky dgsuikit:top-0 dgsuikit:pt-3 dgsuikit:right-0 dgsuikit:bg-white dgsuikit:z-10 dgsuikit:px-3',
+            beforeOptions ? 'dgsuikit:pb-2' : 'dgsuikit:pb-3',
             inputSearchable?.wrapperClassName,
           )}
           placeholder={inputSearchable?.placeholder ?? 'جستجوی عنوان'}
@@ -140,7 +140,7 @@ const Options = <T,>(props: SelectProps<T>) => {
       {beforeOptions}
       {mode === 'multiple' && separateSelectedOptions && selectedOptions.length > 0 && (
         <>
-          <p className="dgs-ui-kit-font-p2-regular dgs-ui-kit-text-gray-400 dgs-ui-kit-px-3 dgs-ui-kit-py-2">{`${optionsTitle}‌ی انتخاب شده`}</p>
+          <p className="dgsuikit:font-p2-regular dgsuikit:text-gray-400 dgsuikit:px-3 dgsuikit:py-2">{`${optionsTitle}‌ی انتخاب شده`}</p>
           {selectedOptions.map((option) => (
             <OptionItem
               key={option.value as number | string}
@@ -154,19 +154,19 @@ const Options = <T,>(props: SelectProps<T>) => {
       )}
       <>
         {mode === 'multiple' && separateSelectedOptions && (
-          <p className="dgs-ui-kit-font-p2-regular dgs-ui-kit-text-gray-400 dgs-ui-kit-px-3 dgs-ui-kit-py-2">
+          <p className="dgsuikit:font-p2-regular dgsuikit:text-gray-400 dgsuikit:px-3 dgsuikit:py-2">
             {optionsTitle}
           </p>
         )}
         <div
           ref={containerRef}
-          className="dgs-ui-kit-relative"
+          className="dgsuikit:relative"
           style={{ height: totalHeight }}
         >
           {visibleOptions?.map((option, index) => (
             <div
               key={option.value as number | string}
-              className={clsx('dgs-ui-kit-absolute dgs-ui-kit-w-full', itemClassName)}
+              className={clsx('dgsuikit:absolute dgsuikit:w-full', itemClassName)}
               style={{ top: `${(startIndex + index) * itemHeight}px` }}
             >
               <OptionItem
@@ -178,12 +178,12 @@ const Options = <T,>(props: SelectProps<T>) => {
           ))}
         </div>
         {!visibleOptions?.length && !selectedOptions.length && (
-          <div className="dgs-ui-kit-text-center dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-items-center dgs-ui-kit-mt-2">
-            <p className="dgs-ui-kit-text-gray-500 dgs-ui-kit-font-p3-medium">{emptyContent}</p>
+          <div className="dgsuikit:text-center dgsuikit:flex dgsuikit:flex-col dgsuikit:items-center dgsuikit:mt-2">
+            <p className="dgsuikit:text-gray-500 dgsuikit:font-p3-medium">{emptyContent}</p>
             {showClearButtonOnEmpty && (
               <Button
                 type="button"
-                className="dgs-ui-kit-mt-1"
+                className="dgsuikit:mt-1"
                 variant="text"
                 size="small"
                 onClick={() => setSearch('')}

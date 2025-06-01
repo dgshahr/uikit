@@ -49,12 +49,12 @@ function RangeInput<T extends RangeValueType>(props: Readonly<RangeInputProps<T>
 
   return (
     <div {...(wrapperClassName ? { className: wrapperClassName } : {})}>
-      <div className="dgs-ui-kit-relative dgs-ui-kit-group">
-        <div className="dgs-ui-kit-w-full dgs-ui-kit-relative dgs-ui-kit-bg-primary-50 dgs-ui-kit-h-1 dgs-ui-kit-rounded-sm dgs-ui-kit-flex dgs-ui-kit-items-center">
+      <div className="dgsuikit:relative dgsuikit:group">
+        <div className="dgsuikit:w-full dgsuikit:relative dgsuikit:bg-primary-50 dgsuikit:h-1 dgsuikit:rounded-sm dgsuikit:flex dgsuikit:items-center">
           <div
             className={clsx(
-              'dgs-ui-kit-h-full dgs-ui-kit-absolute dgs-ui-kit-top-0 dgs-ui-kit-rounded-sm',
-              disabled ? 'dgs-ui-kit-bg-gray-300' : 'dgs-ui-kit-bg-primary-500',
+              'dgsuikit:h-full dgsuikit:absolute dgsuikit:top-0 dgsuikit:rounded-sm',
+              disabled ? 'dgsuikit:bg-gray-300' : 'dgsuikit:bg-primary-500',
             )}
             style={{
               right: isMultipleRange ? `${getPercent(start)}%` : '0%',
@@ -73,7 +73,7 @@ function RangeInput<T extends RangeValueType>(props: Readonly<RangeInputProps<T>
             disabled={disabled}
             className={clsx(
               INPUT_DEFAULT_CLASS,
-              isMultipleRange && `${MULTIPLE_INPUT_CLASS} dgs-ui-kit-right-0`,
+              isMultipleRange && `${MULTIPLE_INPUT_CLASS} dgsuikit:right-0`,
             )}
             style={{
               width: isMultipleRange ? `calc(${endPercent}% - ${THUMB_SIZE}px)` : '100%',
@@ -88,7 +88,7 @@ function RangeInput<T extends RangeValueType>(props: Readonly<RangeInputProps<T>
               value={end}
               onChange={handleEndChange}
               disabled={disabled}
-              className={`${INPUT_DEFAULT_CLASS} ${MULTIPLE_INPUT_CLASS} dgs-ui-kit-left-0`}
+              className={`${INPUT_DEFAULT_CLASS} ${MULTIPLE_INPUT_CLASS} dgsuikit:left-0`}
               style={{
                 width: `calc(${100 - startPercent}% - ${THUMB_SIZE}px)`,
               }}
@@ -96,7 +96,7 @@ function RangeInput<T extends RangeValueType>(props: Readonly<RangeInputProps<T>
           )}
         </div>
         <div
-          className="dgs-ui-kit-absolute dgs-ui-kit-inset-0"
+          className="dgsuikit:absolute dgsuikit:inset-0"
           style={{
             width: `calc(100% - ${THUMB_SIZE}px)`,
           }}
@@ -134,11 +134,11 @@ function RangeInput<T extends RangeValueType>(props: Readonly<RangeInputProps<T>
       {Boolean(startTitle ?? endTitle) && (
         <div
           className={clsx(
-            'dgs-ui-kit-mt-4 dgs-ui-kit-w-full dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-font-p2-medium',
-            disabled ? 'dgs-ui-kit-text-gray-300' : 'dgs-ui-kit-text-gray-500',
-            { 'dgs-ui-kit-justify-between': startTitle && endTitle },
-            { 'dgs-ui-kit-justify-start': startTitle && !endTitle },
-            { 'dgs-ui-kit-justify-end': !startTitle && endTitle },
+            'dgsuikit:mt-4 dgsuikit:w-full dgsuikit:flex dgsuikit:items-center dgsuikit:font-p2-medium',
+            disabled ? 'dgsuikit:text-gray-300' : 'dgsuikit:text-gray-500',
+            { 'dgsuikit:justify-between': startTitle && endTitle },
+            { 'dgsuikit:justify-start': startTitle && !endTitle },
+            { 'dgsuikit:justify-end': !startTitle && endTitle },
           )}
         >
           <span>{startTitle}</span>

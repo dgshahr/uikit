@@ -54,7 +54,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    className: 'dgs-ui-kit-w-[400px]',
+    className: 'dgsuikit:w-[400px]',
     header: {
       icon: <IconHome />,
       title: 'عنوان',

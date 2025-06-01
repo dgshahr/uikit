@@ -22,7 +22,7 @@ const SidebarSearchInput: FC<SidebarSearchInputProps> = (props) => {
       placeholder="جستجو"
       {...(typeof searchInput === 'boolean' ? {} : searchInput)}
       wrapperClassName={clsx(
-        'dgs-ui-kit-mb-8 dgs-ui-kit-sticky dgs-ui-kit-top-0 dgs-ui-kit-bg-white dgs-ui-kit-z-10 dgs-ui-kit-px-4',
+        'dgsuikit:mb-8 dgsuikit:sticky dgsuikit:top-0 dgsuikit:bg-white dgsuikit:z-10 dgsuikit:px-4',
         showItemsClass(isOpen),
         typeof searchInput === 'object' && searchInput.wrapperClassName,
         DURATION_CLASS,

@@ -29,7 +29,7 @@ const AccordionGroup: FC<PropsWithChildren<AccordionGroupProps>> = (props) => {
   );
 
   return (
-    <div className={clsx('dgs-ui-kit-flex dgs-ui-kit-flex-col', className)}>
+    <div className={clsx('dgsuikit:flex dgsuikit:flex-col', className)}>
       <accordionContext.Provider
         value={{
           activeKey,

@@ -18,27 +18,27 @@ const FilePreview: FC<FilePreviewProps> = (props) => {
   function handleImageError(e: SyntheticEvent<HTMLImageElement, Event>) {
     const target = e.currentTarget;
     target.src = fallbackImage;
-    target.classList.add('dgs-ui-kit-bg-gray-100');
+    target.classList.add('dgsuikit:bg-gray-100');
   }
 
   return (
     <div
       className={clsx(
-        'dgs-ui-kit-relative dgs-ui-kit-rounded-lg dgs-ui-kit-overflow-hidden',
+        'dgsuikit:relative dgsuikit:rounded-lg dgsuikit:overflow-hidden',
         DEFAULT_SIZE_CLASS,
         className,
       )}
     >
       <img
-        className="dgs-ui-kit-w-full dgs-ui-kit-h-full"
+        className="dgsuikit:w-full dgsuikit:h-full"
         src={fileSrc}
         alt="image-preview"
         onError={handleImageError}
       />
       <div
         className={clsx(
-          'dgs-ui-kit-bg-black dgs-ui-kit-transition-colors dgs-ui-kit-absolute dgs-ui-kit-w-full dgs-ui-kit-h-full dgs-ui-kit-top-0 dgs-ui-kit-left-0',
-          file.loading ? 'dgs-ui-kit-bg-opacity-70' : 'dgs-ui-kit-bg-opacity-50',
+          'dgsuikit:bg-black dgsuikit:transition-colors dgsuikit:absolute dgsuikit:w-full dgsuikit:h-full dgsuikit:top-0 dgsuikit:left-0',
+          file.loading ? 'dgsuikit:bg-opacity-70' : 'dgsuikit:bg-opacity-50',
         )}
       >
         {typeof file.loading === 'boolean' && file.loading && (
@@ -47,7 +47,7 @@ const FilePreview: FC<FilePreviewProps> = (props) => {
         {typeof file.loading === 'number' && (
           <div
             className={clsx(
-              'dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-items-center dgs-ui-kit-justify-center',
+              'dgsuikit:flex dgsuikit:flex-col dgsuikit:items-center dgsuikit:justify-center',
               ABSOLUTE_CENTER,
             )}
           >
@@ -58,7 +58,7 @@ const FilePreview: FC<FilePreviewProps> = (props) => {
               size={30}
               strokeSize={4}
             />
-            <div className="dgs-ui-kit-font-oveline-regular dgs-ui-kit-text-gray-50 ss02 dgs-ui-kit-mt-1">
+            <div className="dgsuikit:font-oveline-regular dgsuikit:text-gray-50 ss02 dgsuikit:mt-1">
               {file.loading} %
             </div>
           </div>

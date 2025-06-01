@@ -37,7 +37,7 @@ const HorizontalStepper: FC<PropsWithChildren<HorizontalStepperProps>> = (props)
       <div
         className={clsx(
           classname,
-          'dgs-ui-kit-flex dgs-ui-kit-flex-row dgs-ui-kit-gap-5 no-scrollbar dgs-ui-kit-overflow-x-auto',
+          'dgsuikit:flex dgsuikit:flex-row dgsuikit:gap-5 no-scrollbar dgsuikit:overflow-x-auto',
         )}
       >
         {steps}

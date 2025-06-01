@@ -131,15 +131,12 @@ const Slider = forwardRef<SliderRef, PropsWithChildren<SliderProps>>((props, ref
   return (
     <sliderContext.Provider value={{ ...propsWithoutChildren, childrenCount, sliderId: useId() }}>
       <div
-        className={clsx(
-          'dgs-ui-kit-overflow-hidden dgs-ui-kit-relative dgs-ui-kit-group',
-          className,
-        )}
+        className={clsx('dgsuikit:overflow-hidden dgsuikit:relative dgsuikit:group', className)}
         style={{ direction: 'rtl' }}
       >
         <div
           className={clsx(
-            'dgs-ui-kit-flex dgs-ui-kit-snap-x dgs-ui-kit-snap-mandatory dgs-ui-kit-overflow-x-auto no-scrollbar',
+            'dgsuikit:flex dgsuikit:snap-x dgsuikit:snap-mandatory dgsuikit:overflow-x-auto no-scrollbar',
             containerClassName,
           )}
           style={{ marginLeft: -spaceBetween }}
@@ -148,7 +145,7 @@ const Slider = forwardRef<SliderRef, PropsWithChildren<SliderProps>>((props, ref
         >
           {containerXPadding > 0 && (
             <div
-              className="dgs-ui-kit-shrink-0"
+              className="dgsuikit:shrink-0"
               style={{
                 width: containerXPadding,
                 paddingLeft: spaceBetween,
@@ -158,7 +155,7 @@ const Slider = forwardRef<SliderRef, PropsWithChildren<SliderProps>>((props, ref
           {props.children}
           {containerXPadding > 0 && (
             <div
-              className="dgs-ui-kit-shrink-0"
+              className="dgsuikit:shrink-0"
               style={{
                 width: containerXPadding,
                 paddingLeft: spaceBetween,

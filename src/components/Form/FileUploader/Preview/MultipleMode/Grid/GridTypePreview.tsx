@@ -26,17 +26,17 @@ const GridTypePreview: FC<PreviewProps<FileType>> = (props) => {
     >
       <FilePreview
         file={file}
-        className={clsx('!dgs-ui-kit-size-full', previewClassName)}
+        className={clsx('dgsuikit:!size-full', previewClassName)}
       >
         {renderPreviewDefaultAction(leftButton, file, {
           color: 'error',
           icon: <IconDelete1 />,
-          className: '!dgs-ui-kit-absolute dgs-ui-kit-left-2 dgs-ui-kit-top-2',
+          className: 'dgsuikit:!absolute dgsuikit:left-2 dgsuikit:top-2',
         })}
         {renderPreviewDefaultAction(rightButton, file, {
           color: 'gray',
           icon: <IconMinimize />,
-          className: '!dgs-ui-kit-absolute dgs-ui-kit-right-2 dgs-ui-kit-bottom-2',
+          className: 'dgsuikit:!absolute dgsuikit:right-2 dgsuikit:bottom-2',
         })}
       </FilePreview>
     </div>

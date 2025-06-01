@@ -36,7 +36,7 @@ const Sidebar: FC<SidebarProps> = (props) => {
   useEffect(() => {
     if (hideOnClose) return;
 
-    const paddingRightClass = 'dgs-ui-kit-pr-[80px]';
+    const paddingRightClass = 'dgsuikit:pr-[80px]';
     documentElement.classList.add(paddingRightClass);
 
     return () => {
@@ -47,7 +47,7 @@ const Sidebar: FC<SidebarProps> = (props) => {
   useEffect(() => {
     if (!showMask) return;
 
-    const overflowClass = 'dgs-ui-kit-overflow-hidden';
+    const overflowClass = 'dgsuikit:overflow-hidden';
 
     if (isOpen) documentElement.classList.add(overflowClass);
     else documentElement.classList.remove(overflowClass);
@@ -63,10 +63,10 @@ const Sidebar: FC<SidebarProps> = (props) => {
         {...(MaskElement === 'div'
           ? {
               className: clsx(
-                'dgs-ui-kit-fixed dgs-ui-kit-top-0 dgs-ui-kit-left-0 dgs-ui-kit-z-50 dgs-ui-kit-overflow-hidden dgs-ui-kit-transition-[background-color] dgs-ui-kit-ease-linear',
+                'dgsuikit:fixed dgsuikit:top-0 dgsuikit:left-0 dgsuikit:z-50 dgsuikit:overflow-hidden dgsuikit:transition-[background-color] dgsuikit:ease-linear',
                 isOpen
-                  ? 'dgs-ui-kit-size-full dgs-ui-kit-bg-black/40'
-                  : 'dgs-ui-kit-size-0 dgs-ui-kit-bg-transparent',
+                  ? 'dgsuikit:size-full dgsuikit:bg-black/40'
+                  : 'dgsuikit:size-0 dgsuikit:bg-transparent',
                 DURATION_CLASS,
               ),
               onClick: (e) => {
@@ -78,11 +78,11 @@ const Sidebar: FC<SidebarProps> = (props) => {
         <div
           className={clsx(
             className,
-            'dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-fixed dgs-ui-kit-top-0 dgs-ui-kit-right-0 dgs-ui-kit-bg-white dgs-ui-kit-shadow-md dgs-ui-kit-h-full dgs-ui-kit-p-4 dgs-ui-kit-pt-6 dgs-ui-kit-transition-[width,max-width,opacity]',
+            'dgsuikit:flex dgsuikit:flex-col dgsuikit:fixed dgsuikit:top-0 dgsuikit:right-0 dgsuikit:bg-white dgsuikit:shadow-md dgsuikit:h-full dgsuikit:p-4 dgsuikit:pt-6 dgsuikit:transition-[width,max-width,opacity]',
             {
-              'dgs-ui-kit-w-[280px] dgs-ui-kit-max-w-full': isOpen,
-              'dgs-ui-kit-w-[80px] dgs-ui-kit-max-w-[80px]': !isOpen && !hideOnClose,
-              'dgs-ui-kit-w-0 dgs-ui-kit-opacity-0': !isOpen && hideOnClose,
+              'dgsuikit:w-[280px] dgsuikit:max-w-full': isOpen,
+              'dgsuikit:w-[80px] dgsuikit:max-w-[80px]': !isOpen && !hideOnClose,
+              'dgsuikit:w-0 dgsuikit:opacity-0': !isOpen && hideOnClose,
             },
             DURATION_CLASS,
           )}
@@ -96,10 +96,10 @@ const Sidebar: FC<SidebarProps> = (props) => {
           <SidebarToggleButton />
           {Boolean(logo?.open ?? logo?.close) && <SidebarLogoImage />}
           {items && items.length > 0 && <SidebarItems />}
-          <div className="dgs-ui-kit-shrink-0 dgs-ui-kit-flex-1">
+          <div className="dgsuikit:shrink-0 dgsuikit:flex-1">
             {extraComponent}
             <Divider
-              className="dgs-ui-kit-mt-6 dgs-ui-kit-mb-4"
+              className="dgsuikit:mt-6 dgsuikit:mb-4"
               type="horizontal"
             />
             {Boolean(userProfile?.image) && <SidebarProfile />}

@@ -8,7 +8,7 @@ const TBodyLoading: FC = () => {
     <tbody>
       <tr>
         <td
-          className="dgs-ui-kit-p-10"
+          className="dgsuikit:p-10"
           colSpan={columns.length}
         >
           <SpinnerLoading

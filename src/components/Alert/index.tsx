@@ -36,10 +36,7 @@ function getAlertIcon(
 
   return (
     <IconComponent
-      className={clsx(
-        'dgs-ui-kit-shrink-0 dgs-ui-kit-my-[2px]',
-        alertVariantClassNames.icon[variant],
-      )}
+      className={clsx('dgsuikit:shrink-0 dgsuikit:my-[2px]', alertVariantClassNames.icon[variant])}
       width={alertSizeClassNames.icon[size]}
       height={alertSizeClassNames.icon[size]}
     />
@@ -64,14 +61,14 @@ const Alert = (props: AlertProps) => {
     return (
       <div
         className={clsx(
-          'dgs-ui-kit-w-full dgs-ui-kit-flex dgs-ui-kit-gap-x-3 dgs-ui-kit-rounded-xl dgs-ui-kit-border dgs-ui-kit-border-solid',
+          'dgsuikit:w-full dgsuikit:flex dgsuikit:gap-x-3 dgsuikit:rounded-xl dgsuikit:border dgsuikit:border-solid',
           alertVariantClassNames.container[variant],
           alertSizeClassNames.container[size],
           className,
         )}
       >
         {showTitleIcon && getAlertIcon(variant, size)}
-        <div className="dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-flex-1">
+        <div className="dgsuikit:flex dgsuikit:flex-col dgsuikit:flex-1">
           {Boolean(title) && (
             <div
               className={clsx(
@@ -88,8 +85,8 @@ const Alert = (props: AlertProps) => {
           {(Boolean(primaryButton?.text) || Boolean(outlineButton?.text)) && (
             <div
               className={clsx(
-                'dgs-ui-kit-flex dgs-ui-kit-gap-x-2 dgs-ui-kit-items-center',
-                size === 'large' ? 'dgs-ui-kit-mt-4' : 'dgs-ui-kit-mt-3',
+                'dgsuikit:flex dgsuikit:gap-x-2 dgsuikit:items-center',
+                size === 'large' ? 'dgsuikit:mt-4' : 'dgsuikit:mt-3',
               )}
             >
               {Boolean(primaryButton?.text) && (
@@ -117,7 +114,7 @@ const Alert = (props: AlertProps) => {
         </div>
         {closable && (
           <button
-            className="dgs-ui-kit-shrink-0 dgs-ui-kit-my-[2px] dgs-ui-kit-h-fit"
+            className="dgsuikit:shrink-0 dgsuikit:my-[2px] dgsuikit:h-fit"
             onClick={() => setShow(false)}
           >
             <IconCloseRemove

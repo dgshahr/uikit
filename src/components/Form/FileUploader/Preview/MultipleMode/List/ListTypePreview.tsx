@@ -25,22 +25,22 @@ const ListTypePreview: FC<PreviewProps<FileType>> = (props) => {
   return (
     <div
       className={clsx(
-        'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-space-x-2 dgs-ui-kit-space-x-reverse dgs-ui-kit-w-0 dgs-ui-kit-min-w-full',
+        'dgsuikit:flex dgsuikit:items-center dgsuikit:space-x-2 dgsuikit:w-0 dgsuikit:min-w-full',
         getPreviewBorder(loading, errorMessage ? 'error' : status),
         (!status || status === 'default') &&
           !errorMessage &&
-          'dgs-ui-kit-p-1 !dgs-ui-kit-border-gray-200',
+          'dgsuikit:p-1 dgsuikit:!border-gray-200',
         previewClassName,
       )}
     >
       <FilePreview
         file={file}
-        className="!dgs-ui-kit-size-[72px] dgs-ui-kit-shrink-0"
+        className="dgsuikit:!size-[72px] dgsuikit:shrink-0"
       />
       {Boolean(fileName ?? haveFieldBottomInfo) && (
-        <div className="dgs-ui-kit-space-y-1 dgs-ui-kit-overflow-hidden dgs-ui-kit-w-full">
+        <div className="dgsuikit:space-y-1 dgsuikit:overflow-hidden dgsuikit:w-full">
           {Boolean(fileName) && (
-            <span className="dgs-ui-kit-font-p2-medium dgs-ui-kit-text-gray-700 dgs-ui-kit-break-words dgs-ui-kit-line-clamp-1">
+            <span className="dgsuikit:font-p2-medium dgsuikit:text-gray-700 dgsuikit:break-words dgsuikit:line-clamp-1">
               {fileName}
             </span>
           )}
@@ -53,7 +53,7 @@ const ListTypePreview: FC<PreviewProps<FileType>> = (props) => {
         </div>
       )}
       {(leftButton || rightButton || exteraButton) && (
-        <div className="dgs-ui-kit-flex dgs-ui-kit-space-x-1 dgs-ui-kit-space-x-reverse dgs-ui-kit-shrink-0">
+        <div className="dgsuikit:flex dgsuikit:space-x-1 dgsuikit:shrink-0">
           {exteraButton && (
             <Button
               {...exteraButton}
@@ -68,13 +68,13 @@ const ListTypePreview: FC<PreviewProps<FileType>> = (props) => {
             color: 'gray',
             icon: <IconEye />,
             variant: 'text',
-            className: '!dgs-ui-kit-opacity-100',
+            className: 'dgsuikit:!opacity-100',
           })}
           {renderPreviewDefaultAction(leftButton, file, {
             color: 'error',
             icon: <IconDelete />,
             variant: 'text',
-            className: '!dgs-ui-kit-opacity-100',
+            className: 'dgsuikit:!opacity-100',
           })}
         </div>
       )}

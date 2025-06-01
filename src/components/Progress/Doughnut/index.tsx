@@ -7,16 +7,16 @@ const COLORS_CLASSES: Record<
   { empty: string; filled: string }
 > = {
   primary: {
-    empty: 'dgs-ui-kit-stroke-primary-100',
-    filled: 'dgs-ui-kit-stroke-primary-500',
+    empty: 'dgsuikit:stroke-primary-100',
+    filled: 'dgsuikit:stroke-primary-500',
   },
   secondary: {
-    empty: 'dgs-ui-kit-stroke-secondary-100',
-    filled: 'dgs-ui-kit-stroke-secondary-600',
+    empty: 'dgsuikit:stroke-secondary-100',
+    filled: 'dgsuikit:stroke-secondary-600',
   },
   gray: {
-    empty: 'dgs-ui-kit-stroke-gray-400',
-    filled: 'dgs-ui-kit-stroke-gray-50',
+    empty: 'dgsuikit:stroke-gray-400',
+    filled: 'dgsuikit:stroke-gray-50',
   },
 };
 
@@ -56,7 +56,7 @@ const ProgressDoughnut: FC<ProgressDoughnutProps> = (props) => {
         cx={size / 2}
         cy={size / 2}
         r={radius}
-        className={clsx(COLORS_CLASSES[color].filled, 'dgs-ui-kit-transition-all')}
+        className={clsx(COLORS_CLASSES[color].filled, 'dgsuikit:transition-all')}
         strokeWidth={strokeSize}
         fill="none"
         strokeDasharray={circumference}
@@ -71,7 +71,7 @@ const ProgressDoughnut: FC<ProgressDoughnutProps> = (props) => {
           dominantBaseline="middle"
           textAnchor="middle"
           className={clsx(
-            'dgs-ui-kit-font-caption-regular dgs-ui-kit-text-gray-600 ss02',
+            'dgsuikit:font-caption-regular dgsuikit:text-gray-600 ss02',
             textClassName,
           )}
         >

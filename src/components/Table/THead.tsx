@@ -24,8 +24,8 @@ interface THeadProps {
 
 const ICON_SIZE = 16;
 const TH_CLASS =
-  'dgs-ui-kit-p-4 dgs-ui-kit-pl-0 dgs-ui-kit-text-gray-500 dgs-ui-kit-bg-gray-50 dgs-ui-kit-border-b dgs-ui-kit-border-solid dgs-ui-kit-border-gray-200';
-const DIVIDER_CLASS = '!dgs-ui-kit-h-8 dgs-ui-kit-shrink-0';
+  'dgsuikit:p-4 dgsuikit:pl-0 dgsuikit:text-gray-500 dgsuikit:bg-gray-50 dgsuikit:border-b dgsuikit:border-solid dgsuikit:border-gray-200';
+const DIVIDER_CLASS = 'dgsuikit:!h-8 dgsuikit:shrink-0';
 
 function renderSortButton(sortValue: SortValues, sort: Required<ColumnsType>['sort']) {
   const SortIcon = sortValue === 'ascend' ? IconArrowUp2 : IconArrowDown2;
@@ -36,7 +36,7 @@ function renderSortButton(sortValue: SortValues, sort: Required<ColumnsType>['so
         width={ICON_SIZE}
         height={ICON_SIZE}
         className={
-          sort.active === sortValue ? 'dgs-ui-kit-text-primary-500' : 'dgs-ui-kit-text-gray-500'
+          sort.active === sortValue ? 'dgsuikit:text-primary-500' : 'dgsuikit:text-gray-500'
         }
       />
     </button>
@@ -45,7 +45,7 @@ function renderSortButton(sortValue: SortValues, sort: Required<ColumnsType>['so
 
 function getThContent(title: ColumnsType['title'], tooltip?: ColumnsType['tooltip']) {
   return (
-    <div className="dgs-ui-kit-font-p1-medium dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-space-x-1 dgs-ui-kit-space-x-reverse">
+    <div className="dgsuikit:font-p1-medium dgsuikit:flex dgsuikit:items-center dgsuikit:space-x-1">
       <span>{title}</span>
       {tooltip &&
         (tooltip.anchorIcon ?? (
@@ -77,13 +77,13 @@ const THead: FC<THeadProps> = (props) => {
             type="th"
             className={clsx(
               TH_CLASS,
-              { 'dgs-ui-kit-rounded-tr-2xl': !haveHeader },
+              { 'dgsuikit:rounded-tr-2xl': !haveHeader },
               rowSelection?.className,
             )}
             sticky={rowSelection?.sticky}
             stuckToTop={stickyTableHeader}
           >
-            <div className="dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-justify-between">
+            <div className="dgsuikit:flex dgsuikit:items-center dgsuikit:justify-between">
               {renderRowSelectCheckbox(rowSelection?.align, {
                 checked: rowSelection!.selectedRowKeys.length > 0,
                 isIndeterminate: !isArraysEqual(
@@ -108,16 +108,16 @@ const THead: FC<THeadProps> = (props) => {
             className={clsx(
               TH_CLASS,
               {
-                'first:dgs-ui-kit-rounded-tr-2xl last:dgs-ui-kit-rounded-tl-2xl': !haveHeader,
+                'dgsuikit:first:rounded-tr-2xl dgsuikit:last:rounded-tl-2xl': !haveHeader,
               },
               column.className,
             )}
             stuckToTop={stickyTableHeader}
           >
-            <div className="dgs-ui-kit-flex dgs-ui-kit-justify-between dgs-ui-kit-items-center">
+            <div className="dgsuikit:flex dgsuikit:justify-between dgsuikit:items-center">
               <div
                 className={clsx(
-                  'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-space-x-2 dgs-ui-kit-space-x-reverse dgs-ui-kit-w-full dgs-ui-kit-ml-2',
+                  'dgsuikit:flex dgsuikit:items-center dgsuikit:space-x-2 dgsuikit:w-full dgsuikit:ml-2',
                   getAlingmentClass(column.align),
                 )}
               >
@@ -129,7 +129,7 @@ const THead: FC<THeadProps> = (props) => {
                   getThContent(column.title)
                 )}
                 {typeof column.sort?.onSort === 'function' && (
-                  <div className="dgs-ui-kit-flex dgs-ui-kit-flex-col">
+                  <div className="dgsuikit:flex dgsuikit:flex-col">
                     {renderSortButton('ascend', column.sort)}
                     {renderSortButton('descend', column.sort)}
                   </div>

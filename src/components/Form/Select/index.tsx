@@ -39,12 +39,12 @@ const Select = <T,>(props: SelectProps<T>) => {
 
   const wrapperProps: Omit<PickerWrapperProps, 'children'> = { ...props };
   if (wrapperProps.dropdownType === 'popover' && !searchable)
-    wrapperProps.popoverClassName = clsx('dgs-ui-kit-pt-3', wrapperProps.popoverClassName);
+    wrapperProps.popoverClassName = clsx('dgsuikit:pt-3', wrapperProps.popoverClassName);
   if (wrapperProps.dropdownType === 'drawer')
     wrapperProps.drawerProps = {
       ...wrapperProps.drawerProps,
       containerClassName: clsx(
-        searchable ? '!dgs-ui-kit-pt-0' : '!dgs-ui-kit-pt-3',
+        searchable ? 'dgsuikit:!pt-0' : 'dgsuikit:!pt-3',
         wrapperProps.drawerProps?.containerClassName,
       ),
     };
@@ -55,13 +55,13 @@ const Select = <T,>(props: SelectProps<T>) => {
       prefix: getInputPrefix(),
       prefixClassName: hasMultipleValues
         ? clsx(
-            'dgs-ui-kit-flex dgs-ui-kit-items-center flex dgs-ui-kit-flex-wrap dgs-ui-kit-gap-2 dgs-ui-kit-w-full',
+            'dgsuikit:flex dgsuikit:items-center flex dgsuikit:flex-wrap dgsuikit:gap-2 dgsuikit:w-full',
             wrapperProps.inputProps?.prefixClassName,
           )
         : wrapperProps.inputProps?.prefixClassName,
-      className: hasMultipleValues ? 'dgs-ui-kit-hidden' : wrapperProps.inputProps?.className,
+      className: hasMultipleValues ? 'dgsuikit:hidden' : wrapperProps.inputProps?.className,
       containerClassName: hasMultipleValues
-        ? clsx('dgs-ui-kit-items-baseline', wrapperProps.inputProps?.containerClassName)
+        ? clsx('dgsuikit:items-baseline', wrapperProps.inputProps?.containerClassName)
         : wrapperProps.inputProps?.containerClassName,
     };
 

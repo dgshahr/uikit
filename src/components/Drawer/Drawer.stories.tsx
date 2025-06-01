@@ -117,7 +117,7 @@ const DrawerExample: FC<DrawerProps> = (props) => {
         open={open}
         onClose={() => setOpen(false)}
       >
-        <div className="dgs-ui-kit-border dgs-ui-kit-border-primary-500 dgs-ui-kit-border-dashed dgs-ui-kit-bg-gray-50 dgs-ui-kit-text-gray-500 dgs-ui-kit-rounded-lg dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-justify-center dgs-ui-kit-h-[200px] dgs-ui-kit-w-[500px]">
+        <div className="dgsuikit:border dgsuikit:border-primary-500 dgsuikit:border-dashed dgsuikit:bg-gray-50 dgsuikit:text-gray-500 dgsuikit:rounded-lg dgsuikit:flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:h-[200px] dgsuikit:w-[500px]">
           Component
         </div>
       </Drawer>
@@ -141,7 +141,7 @@ export const Default: Story = {
     },
     footer: {
       element: (
-        <div className="dgs-ui-kit-flex dgs-ui-kit-justify-end dgs-ui-kit-gap-2">
+        <div className="dgsuikit:flex dgsuikit:justify-end dgsuikit:gap-2">
           <Button variant="secondary">اولویت دوم</Button>
           <Button>اولویت اول</Button>
         </div>

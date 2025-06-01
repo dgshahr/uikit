@@ -243,7 +243,7 @@ const defaultArgs: Story['args'] = {
   data: dataSource,
   // @ts-expect-error: Column type (DeepPathName) doesn't work in storybook
   columns,
-  className: 'dgs-ui-kit-w-[800px]',
+  className: 'dgsuikit:w-[800px]',
   layout: 'fixed',
   rowKey: 'id',
 };

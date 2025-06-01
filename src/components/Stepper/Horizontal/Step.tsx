@@ -24,19 +24,19 @@ export interface HorizontalStepProps {
 }
 
 const stepStatusClassnameMap: Record<HorizontalStepperStepStatus, string> = {
-  complete: 'dgs-ui-kit-text-secondary-500',
-  current: 'dgs-ui-kit-text-primary-500 dgs-ui-kit-font-medium dgs-ui-kit-font-semibold',
-  incomplete: 'dgs-ui-kit-text-gray-400',
+  complete: 'dgsuikit:text-secondary-500',
+  current: 'dgsuikit:text-primary-500 dgsuikit:font-medium dgsuikit:font-semibold',
+  incomplete: 'dgsuikit:text-gray-400',
 };
 
 const stepSizeClassnameMap: Record<HorizontalStepperSize, string> = {
-  small: 'dgs-ui-kit-text-sm',
-  medium: 'dgs-ui-kit-text-base',
+  small: 'dgsuikit:text-sm',
+  medium: 'dgsuikit:text-base',
 };
 
 const stepOrientationClassnameMap: Record<HorizontalStepperStepOrientation, string> = {
-  horizontal: 'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-2',
-  vertical: 'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-2 dgs-ui-kit-flex-col',
+  horizontal: 'dgsuikit:flex dgsuikit:items-center dgsuikit:gap-2',
+  vertical: 'dgsuikit:flex dgsuikit:items-center dgsuikit:gap-2 dgsuikit:flex-col',
 };
 
 const HorizontalStep: FC<HorizontalStepProps> = (props) => {
@@ -72,7 +72,7 @@ const HorizontalStep: FC<HorizontalStepProps> = (props) => {
   const stepTitle = titleMap[status] ?? title;
 
   const containerClassname = clsx(
-    'dgs-ui-kit-flex dgs-ui-kit-flex-grow dgs-ui-kit-min-w-max',
+    'dgsuikit:flex dgsuikit:flex-grow dgsuikit:min-w-max',
     classname,
     stepStatusClassnameMap[status],
     stepSizeClassnameMap[size],
@@ -105,14 +105,14 @@ const HorizontalStep: FC<HorizontalStepProps> = (props) => {
 
         <div
           className={clsx(
-            'dgs-ui-kit-flex dgs-ui-kit-flex-col dgs-ui-kit-gap-1 dgs-ui-kit-mt-0',
-            stepOrientation === 'vertical' && 'dgs-ui-kit-items-center',
+            'dgsuikit:flex dgsuikit:flex-col dgsuikit:gap-1 dgsuikit:mt-0',
+            stepOrientation === 'vertical' && 'dgsuikit:items-center',
           )}
         >
           {index === activeStep && (
-            <p className="dgs-ui-kit-font-normal dgs-ui-kit-text-gray-400">{subTitle}</p>
+            <p className="dgsuikit:font-normal dgsuikit:text-gray-400">{subTitle}</p>
           )}
-          <p className="dgs-ui-kit-text-center">{stepTitle}</p>
+          <p className="dgsuikit:text-center">{stepTitle}</p>
         </div>
       </div>
     </>

@@ -15,23 +15,23 @@ const FieldBottomInfo = (props: FieldBottomInfoProps) => {
   return (
     <div
       className={clsx(
-        'dgs-ui-kit-flex dgs-ui-kit-font-p3-regular',
+        'dgsuikit:flex dgsuikit:font-p3-regular',
         {
-          'dgs-ui-kit-justify-between': (errorMessage ?? hintMessage) && extraHelper,
-          'dgs-ui-kit-justify-start': (errorMessage ?? hintMessage) && !extraHelper,
-          'dgs-ui-kit-justify-end': !(errorMessage ?? hintMessage) && extraHelper,
-          'dgs-ui-kit-text-gray-400': disabled,
+          'dgsuikit:justify-between': (errorMessage ?? hintMessage) && extraHelper,
+          'dgsuikit:justify-start': (errorMessage ?? hintMessage) && !extraHelper,
+          'dgsuikit:justify-end': !(errorMessage ?? hintMessage) && extraHelper,
+          'dgsuikit:text-gray-400': disabled,
         },
-        errorMessage ? 'dgs-ui-kit-text-error-500' : 'dgs-ui-kit-text-gray-500',
+        errorMessage ? 'dgsuikit:text-error-500' : 'dgsuikit:text-gray-500',
         className,
       )}
     >
       {(errorMessage || hintMessage) && (
         <div
           className={clsx(
-            'dgs-ui-kit-flex dgs-ui-kit-items-center dgs-ui-kit-gap-2 dgs-ui-kit-font-light',
+            'dgsuikit:flex dgsuikit:items-center dgsuikit:gap-2 dgsuikit:font-light',
             {
-              'dgs-ui-kit-text-gray-400': disabled,
+              'dgsuikit:text-gray-400': disabled,
             },
           )}
         >
