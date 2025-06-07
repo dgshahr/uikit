@@ -2,7 +2,7 @@
 import { j as t } from './jsx-runtime-D_zvdyIk.js';
 import { c as i } from './clsx-B-dksMZM.js';
 import { r as l } from './index-CTzypqlY.js';
-import { u as T } from './useFlipPosition-Eiz29amO.js';
+import { u as T } from './useFlipPosition-D78LAv0q.js';
 /* empty css               */ const v = {
     'bottom-right':
       'dgsuikit:left-4 dgsuikit:top-0 dgsuikit:-translate-y-1/2 dgsuikit:border-t dgsuikit:border-l dgsuikit:rounded-tl',
