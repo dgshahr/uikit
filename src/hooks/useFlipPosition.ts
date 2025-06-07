@@ -57,16 +57,15 @@ function calculateAnchorPoint(position: PopperPosition, anchorRect: DOMRect) {
     case 'bottom-left':
       anchorX = anchorRect.left;
       break;
-    case 'top-center':
-    case 'bottom-center':
-      anchorX = anchorRect.left + anchorRect.width / 2;
-      break;
     case 'top-right':
     case 'bottom-right':
       anchorX = anchorRect.right;
       break;
+    case 'top-center':
+    case 'bottom-center':
     default:
       anchorX = anchorRect.left + anchorRect.width / 2;
+      break;
   }
   const anchorY = position.startsWith('top') ? anchorRect.top : anchorRect.bottom;
   return { anchorX, anchorY };
@@ -126,7 +125,7 @@ function calculateOverflow(
   const overflowLeft = left < padding;
   const overflowRight = left + popperRect.width > viewportWidth - padding;
 
-  if (minVisible == null) {
+  if (!minVisible) {
     return {
       top: overflowTop,
       bottom: overflowBottom,
@@ -193,24 +192,13 @@ export function useFlipPosition<T extends HTMLElement, K extends HTMLElement>({
   const popperRef = useRef<K>(null);
   const [position, setPosition] = useState<PopperPosition>(initialPosition);
 
-  const initialPositionRef = useRef<PopperPosition>(initialPosition);
-  useEffect(() => {
-    initialPositionRef.current = initialPosition;
-  }, [initialPosition]);
-
-  const positionRef = useRef<PopperPosition>(position);
-  useEffect(() => {
-    positionRef.current = position;
-  }, [position]);
-
   const updatePosition = useCallback(() => {
     const anchorEl = anchorRef.current;
     const popperEl = popperRef.current;
     if (!anchorEl || !popperEl) return;
 
-    const basePosition = initialPositionRef.current;
     const anchorRect = anchorEl.getBoundingClientRect();
-    const { anchorX, anchorY } = calculateAnchorPoint(basePosition, anchorRect);
+    const { anchorX, anchorY } = calculateAnchorPoint(initialPosition, anchorRect);
 
     const computedStyle = window.getComputedStyle(popperEl);
     const isVisible =
@@ -245,7 +233,7 @@ export function useFlipPosition<T extends HTMLElement, K extends HTMLElement>({
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
 
-    const { top, left } = calculatePopperCoords(basePosition, anchorX, anchorY, popperRect);
+    const { top, left } = calculatePopperCoords(initialPosition, anchorX, anchorY, popperRect);
 
     const overflow = calculateOverflow(
       top,
@@ -257,18 +245,18 @@ export function useFlipPosition<T extends HTMLElement, K extends HTMLElement>({
       minVisible,
     );
 
-    let newPosition = basePosition;
+    let newPosition = initialPosition;
 
     if (
-      (basePosition.startsWith('top') && overflow.top) ||
-      (basePosition.startsWith('bottom') && overflow.bottom)
+      (initialPosition.startsWith('top') && overflow.top) ||
+      (initialPosition.startsWith('bottom') && overflow.bottom)
     ) {
       newPosition = getOppositeVertical(newPosition);
     }
 
     if (
-      (newPosition.endsWith('left') && overflow.left) ||
-      (newPosition.endsWith('right') && overflow.right)
+      (initialPosition.endsWith('left') && overflow.left) ||
+      (initialPosition.endsWith('right') && overflow.right)
     ) {
       newPosition = getOppositeHorizontal(newPosition);
     }
@@ -277,7 +265,7 @@ export function useFlipPosition<T extends HTMLElement, K extends HTMLElement>({
       newPosition = flipHorizontalFromCenter(newPosition, overflow);
     }
 
-    if (newPosition !== positionRef.current) {
+    if (newPosition !== position) {
       setPosition(newPosition);
       if (onPositionChange) onPositionChange(newPosition);
     }
