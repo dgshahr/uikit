@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import IconSearch from '@/src/icons/IconSearch';
-import focusAndOpenKeyboard from '@/src/utils/focusAndOpenKeyboard';
 import OptionItem from './OptionItem';
 import type { SelectProps, SelectWithMultipleMode, SelectWithSingleMode } from './types';
 import Button from '../../Button';
@@ -92,10 +91,6 @@ const Options = <T,>(props: SelectProps<T>) => {
     return () => container.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
 
-  useEffect(() => {
-    if (isSearchable) focusAndOpenKeyboard(document.getElementById('search-input'), 400);
-  }, []);
-
   const handleChange = useCallback(
     (optionValue: T) => {
       if (typeof onChange !== 'function') return;
@@ -125,6 +120,7 @@ const Options = <T,>(props: SelectProps<T>) => {
           )}
           placeholder={inputSearchable?.placeholder ?? 'جستجوی عنوان'}
           value={search}
+          autoFocus={inputSearchable?.autoFocus ?? true}
           onChange={(e) => setSearch(e.currentTarget.value)}
           rightIcon={
             inputSearchable?.rightIcon ?? (
