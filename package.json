@@ -172,6 +172,11 @@
       "import": "./dist/Progress/Doughnut/index.mjs",
       "require": "./dist/Progress/Doughnut/index.cjs"
     },
+    "./Rate": {
+      "types": "./dist/Rate/index.d.ts",
+      "import": "./dist/Rate/index.mjs",
+      "require": "./dist/Rate/index.cjs"
+    },
     "./Sidebar": {
       "types": "./dist/Sidebar/index.d.ts",
       "import": "./dist/Sidebar/index.mjs",
