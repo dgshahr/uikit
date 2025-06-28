@@ -79,7 +79,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const DefaultRateExample = (props: Story['args']) => {
-  const [value, setValue] = useState(3);
+  const [value, setValue] = useState(props.value);
 
   return (
     <Rate
