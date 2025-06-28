@@ -26,7 +26,13 @@ const Rate: FC<RateProps> = (props) => {
   } = props;
 
   return (
-    <div className={clsx('dgsuikit:flex dgsuikit:items-center dgsuikit:gap-2', className)}>
+    <div
+      className={clsx(
+        'dgsuikit:flex dgsuikit:gap-2',
+        showTotalStars && showStarsNumber ? 'dgsuikit:items-start' : 'dgsuikit:items-center',
+        className,
+      )}
+    >
       {showTotalStars ? (
         <div className="dgsuikit:flex dgsuikit:flex-row-reverse dgsuikit:items-center dgsuikit:gap-1">
           {Array(total)
@@ -42,7 +48,7 @@ const Rate: FC<RateProps> = (props) => {
                   onClick={() => onChange && onChange(starItem + 1)}
                 />
                 {showStarsNumber && (
-                  <span className="dgsuikit:mt-1 dgsuikit:font-caption-demibold dgsuikit:ss02 dgsuikit:text-gray-500">
+                  <span className="dgsuikit:mt-0.5 dgsuikit:font-caption-regular dgsuikit:ss02 dgsuikit:text-gray-500">
                     {starItem + 1}
                   </span>
                 )}
@@ -59,8 +65,8 @@ const Rate: FC<RateProps> = (props) => {
         <div className="dgsuikit:flex dgsuikit:items-center dgsuikit:ss02">
           <span
             className={clsx('dgsuikit:text-primary-400 dgsuikit:ml-1', {
-              'dgsuikit:font-h2-bold': size === 'large',
-              'dgsuikit:font-h5-bold': size === 'small',
+              'dgsuikit:font-h2-bold dgsuikit:leading-7': size === 'large',
+              'dgsuikit:font-h5-bold dgsuikit:leading-6': size === 'small',
             })}
           >
             {value <= total ? value : total}
