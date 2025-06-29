@@ -27,6 +27,7 @@ const Options = <T,>(props: SelectProps<T>) => {
   const [search, setSearch] = useState('');
   const [startIndex, setStartIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
   const { toggleWrapperVisibility } = usePickerWrapperContext();
 
   const itemClassName = clsx(
@@ -91,6 +92,14 @@ const Options = <T,>(props: SelectProps<T>) => {
     return () => container.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
 
+  useEffect(() => {
+    if (!isSearchable || inputSearchable.autoFocus === false || !searchRef.current) return;
+
+    setTimeout(() => {
+      searchRef.current?.focus();
+    }, 300);
+  }, []);
+
   const handleChange = useCallback(
     (optionValue: T) => {
       if (typeof onChange !== 'function') return;
@@ -112,6 +121,7 @@ const Options = <T,>(props: SelectProps<T>) => {
     <>
       {isSearchable && (
         <Input
+          ref={searchRef}
           id="search-input"
           wrapperClassName={clsx(
             'dgsuikit:sticky dgsuikit:top-0 dgsuikit:pt-3 dgsuikit:right-0 dgsuikit:bg-white dgsuikit:z-10 dgsuikit:px-3',
@@ -120,7 +130,6 @@ const Options = <T,>(props: SelectProps<T>) => {
           )}
           placeholder={inputSearchable?.placeholder ?? 'جستجوی عنوان'}
           value={search}
-          autoFocus={inputSearchable?.autoFocus ?? true}
           onChange={(e) => setSearch(e.currentTarget.value)}
           rightIcon={
             inputSearchable?.rightIcon ?? (
