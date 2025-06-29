@@ -22,12 +22,14 @@ interface PickerWrapperWithDrawerContainer {
   dropdownType: 'drawer';
   drawerProps?: Omit<DrawerProps, 'children' | 'onClose' | 'open'>;
   popoverClassName?: never;
+  popoverPosition?: never;
 }
 
 interface PickerWrapperWithPopoverContainer {
   dropdownType?: 'popover';
   popoverClassName?: string;
   drawerProps?: never;
+  popoverPosition?: 'top' | 'bottom';
 }
 
 export type PickerWrapperProps = PickerWrapperPropsBase &

@@ -27,14 +27,16 @@ const PickerWrapper: FC<PropsWithChildren<PickerWrapperProps>> = (props) => {
     drawerProps,
     inputProps,
     popoverClassName,
+    popoverPosition,
   } = props;
+  const popoverInitialPosition = popoverPosition === 'top' ? 'top-left' : 'bottom-left';
   const [isShowWrapper, setIsShowWrapper] = useState(false);
   const [isWrapperInDom, setIsWrapperInDom] = useState(false);
-  const [position, setPosition] = useState<PopperPosition>('bottom-left');
+  const [position, setPosition] = useState<PopperPosition>(popoverInitialPosition);
   let transitionTimeout: ReturnType<typeof setTimeout>;
 
   const { anchorRef, popperRef } = useFlipPosition<HTMLButtonElement, HTMLDivElement>({
-    initialPosition: 'bottom-left',
+    initialPosition: popoverInitialPosition,
     minVisible: 180,
     onPositionChange(newPosition) {
       setPosition((prev) => (prev === newPosition ? prev : newPosition));
