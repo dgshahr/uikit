@@ -37,8 +37,8 @@ const FilePreview: FC<FilePreviewProps> = (props) => {
       />
       <div
         className={clsx(
-          'dgsuikit:bg-black dgsuikit:transition-colors dgsuikit:absolute dgsuikit:w-full dgsuikit:h-full dgsuikit:top-0 dgsuikit:left-0',
-          file.loading ? 'dgsuikit:bg-opacity-70' : 'dgsuikit:bg-opacity-50',
+          'dgsuikit:transition-colors dgsuikit:absolute dgsuikit:w-full dgsuikit:h-full dgsuikit:top-0 dgsuikit:left-0',
+          file.loading ? 'dgsuikit:bg-black/70' : 'dgsuikit:bg-black/50',
         )}
       >
         {typeof file.loading === 'boolean' && file.loading && (
