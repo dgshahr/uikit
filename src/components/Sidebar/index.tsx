@@ -63,7 +63,7 @@ const Sidebar: FC<SidebarProps> = (props) => {
         {...(MaskElement === 'div'
           ? {
               className: clsx(
-                'dgsuikit:fixed dgsuikit:top-0 dgsuikit:left-0 dgsuikit:z-20 dgsuikit:overflow-hidden dgsuikit:transition-[background-color] dgsuikit:ease-linear',
+                'dgsuikit:fixed dgsuikit:top-0 dgsuikit:left-0 dgsuikit:z-40 dgsuikit:overflow-hidden dgsuikit:transition-[background-color] dgsuikit:ease-linear',
                 isOpen
                   ? 'dgsuikit:size-full dgsuikit:bg-black/40'
                   : 'dgsuikit:size-0 dgsuikit:bg-transparent',
