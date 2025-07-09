@@ -119,7 +119,7 @@ const OtpInput: FC<OtpInputProps> = (props) => {
             isError={Boolean(errorMessage) || isError}
             autoComplete="off"
             //remove maxLength for first input at first (because of chrome autofill)
-            maxLength={index === 0 && !Number(value.split('')[0]) ? undefined : 1}
+            maxLength={index === 0 && !Number(value.split('')[0]) ? inputsNumber : 1}
             onPaste={(e) => {
               const pastedText = e.clipboardData.getData('text');
               if (Number(pastedText)) onChange(pastedText);
