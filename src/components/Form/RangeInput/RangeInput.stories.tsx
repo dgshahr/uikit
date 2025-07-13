@@ -40,6 +40,18 @@ const meta = {
         },
       },
     },
+    color: {
+      control: 'select',
+      options: ['primary', 'secondary'],
+      table: {
+        type: {
+          summary: "'primary' | 'secondary'",
+        },
+        defaultValue: {
+          summary: 'primary',
+        },
+      },
+    },
     disabled: {
       control: 'boolean',
       table: {
@@ -114,6 +126,14 @@ export const Default: Story = {
   render: (args) => <RangeInputExample {...args} />,
 };
 
+export const Secondary: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    color: 'secondary',
+  },
+};
+
 export const Multiple: Story = {
   args: {
     max: 10000,
@@ -123,6 +143,7 @@ export const Multiple: Story = {
     wrapperClassName: 'dgsuikit:w-[200px]',
     startTitle: 'عنوان',
     endTitle: 'عنوان',
+    color: 'primary',
   },
 
   render: (args) => <RangeInputExample {...args} />,

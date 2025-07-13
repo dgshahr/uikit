@@ -4,21 +4,33 @@ import { humanize } from '@/src/utils/humanize';
 import { THUMB_SIZE } from './constants';
 import type { RangeInputProps, RangeValueType } from './types';
 
-interface RangeThumbProps extends Pick<RangeInputProps<RangeValueType>, 'showTooltip'> {
+interface RangeThumbProps extends Pick<RangeInputProps<RangeValueType>, 'showTooltip' | 'color'> {
   percent: number;
   disabled?: boolean;
   icon?: React.ReactNode;
   value: number;
 }
+function getThumbColor(
+  color: RangeInputProps<RangeValueType>['color'],
+  disabled: RangeThumbProps['disabled'],
+) {
+  if (disabled) {
+    return 'dgsuikit:bg-gray-300';
+  }
+  return color === 'primary'
+    ? 'dgsuikit:bg-primary-500 dgsuikit:group-hover:bg-primary-400 dgsuikit:group-active:bg-primary-600'
+    : 'dgsuikit:bg-secondary-600 dgsuikit:group-hover:bg-secondary-500 dgsuikit:group-active:bg-secondary-700';
+}
 const RangeThumb: FC<RangeThumbProps> = (props) => {
-  const { percent, disabled, icon, showTooltip, value } = props;
+  const { percent, disabled, icon, showTooltip, value, color } = props;
+
   return (
     <div
       className={clsx(
-        'dgsuikit:bg-primary-500 dgsuikit:rounded-full dgsuikit:absolute dgsuikit:top-1/2 dgsuikit:-translate-y-1/2 dgsuikit:text-white dgsuikit:flex dgsuikit:items-center dgsuikit:justify-center',
-        disabled
-          ? 'dgsuikit:!bg-gray-300'
-          : 'dgsuikit:group-hover:bg-primary-400 dgsuikit:group-hover:ring-4 dgsuikit:ring-gray-300 dgsuikit:group-active:ring-0 dgsuikit:group-active:bg-primary-600 dgsuikit:transition-[background-color,box-shadow]', // state classes
+        'dgsuikit:rounded-full dgsuikit:absolute dgsuikit:top-1/2 dgsuikit:-translate-y-1/2 dgsuikit:text-white dgsuikit:flex dgsuikit:items-center dgsuikit:justify-center',
+        getThumbColor(color, disabled),
+        disabled &&
+          'dgsuikit:group-hover:ring-4 dgsuikit:ring-gray-300 dgsuikit:group-active:ring-0 dgsuikit:transition-[background-color,box-shadow]', // state classes
       )}
       style={{
         right: `${percent}%`,

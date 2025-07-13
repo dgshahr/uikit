@@ -17,6 +17,7 @@ function RangeInput<T extends RangeValueType>(props: Readonly<RangeInputProps<T>
     wrapperClassName,
     min,
     max,
+    color = 'primary',
     step = 1,
     onChange,
     disabled,
@@ -54,7 +55,9 @@ function RangeInput<T extends RangeValueType>(props: Readonly<RangeInputProps<T>
           <div
             className={clsx(
               'dgsuikit:h-full dgsuikit:absolute dgsuikit:top-0 dgsuikit:rounded-sm',
-              disabled ? 'dgsuikit:bg-gray-300' : 'dgsuikit:bg-primary-500',
+              { 'dgsuikit:bg-gray-300': disabled },
+              { 'dgsuikit:bg-primary-500': color === 'primary' && !disabled },
+              { 'dgsuikit:bg-secondary-600': color === 'secondary' && !disabled },
             )}
             style={{
               right: isMultipleRange ? `${getPercent(start)}%` : '0%',
@@ -102,6 +105,7 @@ function RangeInput<T extends RangeValueType>(props: Readonly<RangeInputProps<T>
           }}
         >
           <RangeThumb
+            color={color}
             percent={startPercent}
             disabled={disabled}
             showTooltip={showTooltip}
@@ -117,6 +121,7 @@ function RangeInput<T extends RangeValueType>(props: Readonly<RangeInputProps<T>
           />
           {isMultipleRange && (
             <RangeThumb
+              color={color}
               percent={endPercent}
               disabled={disabled}
               showTooltip={showTooltip}

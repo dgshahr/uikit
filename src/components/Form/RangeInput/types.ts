@@ -5,6 +5,7 @@ export interface RangeInputProps<T extends RangeValueType> {
   onChange: (value: T) => void;
   min: number;
   max: number;
+  color?: 'primary' | 'secondary';
   step?: number;
   disabled?: boolean;
   showTooltip?: boolean;
