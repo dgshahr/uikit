@@ -40,6 +40,7 @@ export interface TooltipProps {
   className?: string;
   wrapperClassName?: string;
   children: ReactNode;
+  disabled?: boolean;
 }
 
 const Tooltip: FC<TooltipProps> = (props) => {
@@ -52,6 +53,7 @@ const Tooltip: FC<TooltipProps> = (props) => {
     icon,
     position = 'top-center',
     title,
+    disabled,
   } = props;
   const [open, setOpen] = useState(false);
   const [innerPosition, setInnerPosition] = useState(position);
@@ -63,6 +65,7 @@ const Tooltip: FC<TooltipProps> = (props) => {
   });
 
   function showTooltip() {
+    if (disabled) return;
     setOpen(true);
   }
 
