@@ -54,6 +54,7 @@ function getCellContent<T extends UnknownRecord>(
         <Tooltip
           wrapperClassName="dgsuikit:w-full"
           content={content}
+          attachToBody
         >
           {truncatedElement}
         </Tooltip>

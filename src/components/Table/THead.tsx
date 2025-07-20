@@ -122,7 +122,10 @@ const THead: FC<THeadProps> = (props) => {
                 )}
               >
                 {column.tooltip?.content ? (
-                  <Tooltip {...column.tooltip}>
+                  <Tooltip
+                    {...column.tooltip}
+                    attachToBody
+                  >
                     {getThContent(column.title, column.tooltip)}
                   </Tooltip>
                 ) : (
