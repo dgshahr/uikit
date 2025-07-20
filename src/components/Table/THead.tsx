@@ -25,7 +25,7 @@ interface THeadProps {
 const ICON_SIZE = 16;
 const TH_CLASS =
   'dgsuikit:p-4 dgsuikit:pl-0 dgsuikit:text-gray-500 dgsuikit:bg-gray-50 dgsuikit:border-b dgsuikit:border-solid dgsuikit:border-gray-200';
-const DIVIDER_CLASS = 'dgsuikit:!h-8 dgsuikit:shrink-0';
+const DIVIDER_CLASS = 'dgsuikit:!h-8 dgsuikit:shrink-0 dgsuikit:mr-2';
 
 function renderSortButton(sortValue: SortValues, sort: Required<ColumnsType>['sort']) {
   const SortIcon = sortValue === 'ascend' ? IconArrowUp2 : IconArrowDown2;
@@ -117,7 +117,7 @@ const THead: FC<THeadProps> = (props) => {
             <div className="dgsuikit:flex dgsuikit:justify-between dgsuikit:items-center">
               <div
                 className={clsx(
-                  'dgsuikit:flex dgsuikit:items-center dgsuikit:space-x-2 dgsuikit:w-full dgsuikit:ml-2',
+                  'dgsuikit:flex dgsuikit:items-center dgsuikit:space-x-2 dgsuikit:w-full',
                   getAlingmentClass(column.align),
                 )}
               >
