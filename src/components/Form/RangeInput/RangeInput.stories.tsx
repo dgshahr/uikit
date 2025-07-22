@@ -78,6 +78,7 @@ const meta = {
     },
     tooltip: {
       control: 'boolean',
+      description: 'If true, the tooltip content will be input value.',
       table: {
         type: {
           summary: 'boolean | ReactNode',
