@@ -23,10 +23,12 @@ const meta = {
   argTypes: {
     items: {
       control: 'object',
+      description: 'Each item can be a link or a button with an onClick handler.',
       table: {
         type: {
           summary: 'Breadcrumb Item Array',
-          detail: '{\n link: string;\n title: string;\n icon?: ReactNode;\n}[]',
+          detail:
+            '{\n link: string;\n onClick: () => void\n title: string;\n icon?: ReactNode;\n}[]',
         },
       },
     },
@@ -54,6 +56,10 @@ export const Default: Story = {
       {
         link: 'https://www.google.com',
         title: 'لینک گوگل',
+      },
+      {
+        onClick: () => alert('Clicked!'),
+        title: 'دکمه کلیک شونده',
       },
     ],
   },
