@@ -4,7 +4,7 @@ import type { ReactNode } from 'react';
 import '@/src/styles.css';
 import IconArrowLeft2 from '@/src/icons/IconArrowLeft2';
 
-interface BreadcrumbProps {
+export interface BreadcrumbProps {
   items: {
     link: string;
     title: string;
