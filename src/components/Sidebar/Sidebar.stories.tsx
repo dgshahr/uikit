@@ -5,9 +5,8 @@ import IconChart from '../../icons/IconChart';
 import IconFlashDisable from '../../icons/IconFlashDisable';
 import IconMoneyBag from '../../icons/IconMoneyBag';
 import IconSetting from '../../icons/IconSetting';
-
 import Button from '../Button';
-import Sidebar from './index';
+import Sidebar, { SidebarProps } from './index';
 
 const meta = {
   title: 'Components/Sidebar',
@@ -81,7 +80,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const defaultArgs = {
+const defaultArgs: SidebarProps = {
   isOpen: true,
   setIsOpen: () => {},
   logo: {
