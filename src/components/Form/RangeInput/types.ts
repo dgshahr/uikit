@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 export type RangeValueType = number | number[];
 
 export interface RangeInputProps<T extends RangeValueType> {
@@ -8,7 +10,7 @@ export interface RangeInputProps<T extends RangeValueType> {
   color?: 'primary' | 'secondary';
   step?: number;
   disabled?: boolean;
-  showTooltip?: boolean;
+  tooltip?: boolean | ReactNode;
   startTitle?: string;
   endTitle?: string;
   wrapperClassName?: string;

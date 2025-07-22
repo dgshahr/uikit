@@ -23,7 +23,7 @@ function RangeInput<T extends RangeValueType>(props: Readonly<RangeInputProps<T>
     disabled,
     endTitle,
     startTitle,
-    showTooltip = true,
+    tooltip = true,
   } = props;
 
   const isMultipleRange = Array.isArray(value);
@@ -47,6 +47,12 @@ function RangeInput<T extends RangeValueType>(props: Readonly<RangeInputProps<T>
 
   const startPercent = getPercent(isMultipleRange ? start : value);
   const endPercent = getPercent(end);
+
+  const commonThumbProps = {
+    color,
+    tooltip,
+    disabled,
+  };
 
   return (
     <div {...(wrapperClassName ? { className: wrapperClassName } : {})}>
@@ -105,10 +111,8 @@ function RangeInput<T extends RangeValueType>(props: Readonly<RangeInputProps<T>
           }}
         >
           <RangeThumb
-            color={color}
+            {...commonThumbProps}
             percent={startPercent}
-            disabled={disabled}
-            showTooltip={showTooltip}
             value={isMultipleRange ? start : value}
             icon={
               isMultipleRange && (
@@ -121,10 +125,8 @@ function RangeInput<T extends RangeValueType>(props: Readonly<RangeInputProps<T>
           />
           {isMultipleRange && (
             <RangeThumb
-              color={color}
+              {...commonThumbProps}
               percent={endPercent}
-              disabled={disabled}
-              showTooltip={showTooltip}
               value={end}
               icon={
                 <IconArrowRight2

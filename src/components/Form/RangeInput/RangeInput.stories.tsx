@@ -76,11 +76,11 @@ const meta = {
         },
       },
     },
-    showTooltip: {
+    tooltip: {
       control: 'boolean',
       table: {
         type: {
-          summary: 'boolean',
+          summary: 'boolean | ReactNode',
         },
         defaultValue: {
           summary: 'true',
