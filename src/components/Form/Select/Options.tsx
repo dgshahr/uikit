@@ -71,7 +71,9 @@ const Options = <T,>(props: SelectProps<T>) => {
   }, [filteredOptions, startIndex, value]);
 
   const itemHeight = containerRef?.current?.children[0]?.clientHeight ?? 50;
-  const totalHeight = (filteredOptions?.length ?? 0) * itemHeight;
+  const totalHeight =
+    ((filteredOptions?.length ?? 0) - (mode === 'multiple' ? (selectedOptions.length ?? 0) : 0)) *
+    itemHeight;
 
   const handleScroll = useCallback(() => {
     const container = containerRef?.current?.parentElement;
