@@ -107,8 +107,9 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
           }
           if (type !== 'number') return;
           const element = e.currentTarget;
-          if (element.value.length > element.maxLength)
-            element.value = element.value.slice(0, element.maxLength);
+          if (restProps.maxLength && element.value.length > restProps.maxLength) {
+            element.value = element.value.slice(0, restProps.maxLength);
+          }
         }}
       />
       {typeof onClear === 'function' && value && dir === 'rtl' && renderClearButton()}
