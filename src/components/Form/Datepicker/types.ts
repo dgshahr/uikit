@@ -15,6 +15,7 @@ type DatepickerPropsBase = PickerWrapperProps & {
   acceptRange?: boolean;
   highlightWeekends?: boolean;
   holidays?: Date[];
+  disableDates?: Date[];
 };
 
 interface DatepickerWithSubmitButton {

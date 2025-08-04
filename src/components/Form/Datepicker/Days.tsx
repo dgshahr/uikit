@@ -67,6 +67,7 @@ function getDayClassName({
   endDate,
   highlightWeekends,
   holidays,
+  disableDates,
 }: DayItem[0] & DatepickerProps) {
   const isDateVisible = isInMonth || showExtraDays;
   if (!isDateVisible) return 'dgsuikit:pointer-events-none';
@@ -76,18 +77,20 @@ function getDayClassName({
   const isSelectable =
     (startDate ? isAfter(date, startDate) : true) && (endDate ? isBefore(date, endDate) : true);
   const isHoliday = holidays?.length && holidays.some((hDate) => isSameDay(hDate, date));
+  const isDisabled = disableDates?.length && disableDates.some((dDate) => isSameDay(dDate, date));
 
   const activeItemClass = 'dgsuikit:!bg-primary-500 dgsuikit:!text-white dgsuikit:border-none';
-  const holidayClass = 'dgsuikit:!text-error-500';
+
   let className =
     'dgsuikit:py-1 dgsuikit:rounded-2xl dgsuikit:transition dgsuikit:hover:bg-primary-50 dgsuikit:hover:text-primary-500';
 
   if (isToday) className = `${className} dgsuikit:border dgsuikit:border-primary-300`;
   if (!isInMonth && isDateVisible) className = `${className} dgsuikit:text-gray-400`;
   else if ((isWeekend && highlightWeekends) || isHoliday)
-    className = `${className} ${holidayClass}`;
+    className = `${className} dgsuikit:!text-error-500`;
   else className = `${className} dgsuikit:text-gray-600`;
   if (!isSelectable) className = `${className} dgsuikit:line-through dgsuikit:pointer-events-none`;
+  if (isDisabled) className = `${className} dgsuikit:bg-gray-200 dgsuikit:pointer-events-none`;
 
   if (value instanceof Date) {
     if (isSameDay(value, date)) className = `${className} ${activeItemClass}`;
