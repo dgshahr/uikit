@@ -138,7 +138,7 @@ export function getDayClassName({
   const activeItemClass = 'dgsuikit:!bg-primary-500 dgsuikit:!text-white dgsuikit:border-none';
 
   let className =
-    'dgsuikit:w-full dgsuikit:py-1 dgsuikit:rounded-2xl dgsuikit:transition dgsuikit:group-hover:bg-primary-50 dgsuikit:not-disabled:group-hover:text-primary-500 dgsuikit:disabled:bg-gray-200';
+    'dgsuikit:w-full dgsuikit:py-1 dgsuikit:rounded-2xl dgsuikit:transition dgsuikit:disabled:bg-gray-200';
 
   if (isToday) className = `${className} dgsuikit:border dgsuikit:border-primary-300`;
   if (!isInMonth && isDateVisible) className = `${className} dgsuikit:text-gray-400`;
@@ -146,7 +146,10 @@ export function getDayClassName({
     className = `${className} dgsuikit:!text-error-500`;
   else className = `${className} dgsuikit:text-gray-600`;
   if (!isSelectable) className = `${className} dgsuikit:line-through dgsuikit:pointer-events-none`;
-  if (!dayHoverAction?.element) className = `${className} dgsuikit:disabled:cursor-not-allowed`;
+  if (!dayHoverAction?.element)
+    className = `${className} dgsuikit:disabled:cursor-not-allowed dgsuikit:hover:bg-primary-50 dgsuikit:not-disabled:hover:text-primary-500`;
+  else
+    className = `${className} dgsuikit:group-hover:bg-primary-50 dgsuikit:not-disabled:group-hover:text-primary-500`;
 
   if (value instanceof Date) {
     if (isSameDay(value, date)) className = `${className} ${activeItemClass}`;
