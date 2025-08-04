@@ -28,6 +28,7 @@ export function getYearClassName({
   let className =
     'dgsuikit:rounded-full dgsuikit:py-1 dgsuikit:transition dgsuikit:hover:bg-primary-50 dgsuikit:hover:text-primary-500';
   const activeClassName = 'dgsuikit:!bg-primary-500 dgsuikit:!text-white';
+
   const isSelectable =
     (startDate ? isAfter(endOfYear(year), startDate) : true) &&
     (endDate ? isBefore(year, endOfYear(endDate)) : true);
@@ -53,6 +54,7 @@ export function getMonthClassName({
   let className =
     'dgsuikit:rounded-full dgsuikit:py-1 dgsuikit:transition dgsuikit:hover:bg-primary-50 dgsuikit:hover:text-primary-500';
   const activeClassName = 'dgsuikit:!bg-primary-500 dgsuikit:!text-white';
+
   const isSelectable =
     (startDate ? isAfter(endOfMonth(month), startDate) : true) &&
     (endDate ? isBefore(month, endOfMonth(endDate)) : true);
@@ -87,6 +89,7 @@ export function getDaysOfCalendar(
   const startOfMonthWeekday = getDay(startOfCurrentMonth);
   const endOfMonthWeekday = getDay(endOfCurrentMonth);
 
+  // in jalali calendar, the week starts on Saturday (6) and ends on Friday (5)
   if (startOfMonthWeekday !== 6) {
     const daysTillStartOfWeek = eachDayOfInterval({
       start: startOfWeek(startOfCurrentMonth),
@@ -136,16 +139,18 @@ export function getDayClassName({
     (startDate ? isAfter(date, startDate) : true) && (endDate ? isBefore(date, endDate) : true);
 
   const activeItemClass = 'dgsuikit:!bg-primary-500 dgsuikit:!text-white dgsuikit:border-none';
-
   let className =
     'dgsuikit:w-full dgsuikit:py-1 dgsuikit:rounded-2xl dgsuikit:transition dgsuikit:disabled:bg-gray-200';
 
   if (isToday) className = `${className} dgsuikit:border dgsuikit:border-primary-300`;
+
   if (!isInMonth && isDateVisible) className = `${className} dgsuikit:text-gray-400`;
   else if ((isWeekend && highlightWeekends) || isHoliday)
     className = `${className} dgsuikit:!text-error-500`;
   else className = `${className} dgsuikit:text-gray-600`;
+
   if (!isSelectable) className = `${className} dgsuikit:line-through dgsuikit:pointer-events-none`;
+
   if (!dayHoverAction?.element)
     className = `${className} dgsuikit:disabled:cursor-not-allowed dgsuikit:hover:bg-primary-50 dgsuikit:not-disabled:hover:text-primary-500`;
   else
