@@ -6,6 +6,8 @@ export enum DateTypes {
   Year,
 }
 
+export type DayItem = { date: Date; isInMonth: boolean; isDisabled: boolean; isHoliday: boolean };
+
 type DatepickerPropsBase = PickerWrapperProps & {
   startDate?: Date;
   endDate?: Date;
@@ -16,6 +18,10 @@ type DatepickerPropsBase = PickerWrapperProps & {
   highlightWeekends?: boolean;
   holidays?: Date[];
   disableDates?: Date[];
+  dayHoverAction?: {
+    onClick: (dayItem: DayItem) => void;
+    element: (dayItem: DayItem) => React.ReactNode;
+  };
 };
 
 interface DatepickerWithSubmitButton {
@@ -36,7 +42,7 @@ export interface DatepickerWithRange {
 
 export interface DatepickerWithoutRange {
   acceptRange?: false;
-  value: Date;
+  value: Date | null;
   onChange: (value: DatepickerWithoutRange['value']) => void;
 }
 

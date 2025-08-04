@@ -1,7 +1,7 @@
 import { format } from 'date-fns-jalali/format';
 import { isBefore } from 'date-fns-jalali/isBefore';
 import { isSameDay } from 'date-fns-jalali/isSameDay';
-import type { FC } from 'react';
+import { Fragment, type FC } from 'react';
 import { useDatepickerContext } from './context';
 import { getDayClassName, getDaysOfCalendar } from './utils';
 
@@ -9,8 +9,12 @@ const SHORT_WEEK_DAYS = ['ش', 'ی', 'د', 'س', 'چ', 'پ', 'ج'];
 
 const Days: FC = () => {
   const { internalDate, datepickerProps } = useDatepickerContext();
-  const { showExtraDays, onChange, acceptRange, value, disableDates, holidays } = datepickerProps;
+  const { showExtraDays, onChange, acceptRange, value, disableDates, holidays, dayHoverAction } =
+    datepickerProps;
   const daysOfCalendar = getDaysOfCalendar(internalDate, disableDates, holidays);
+  const haveAction = Boolean(dayHoverAction?.onClick && dayHoverAction?.element);
+
+  const DayWrapper = haveAction ? 'div' : Fragment;
 
   function handleChange(date: Date) {
     if (acceptRange) {
@@ -34,15 +38,31 @@ const Days: FC = () => {
       </div>
       <div className="dgsuikit:grid dgsuikit:grid-cols-7 dgsuikit:text-center dgsuikit:font-p3-medium dgsuikit:ss02 dgsuikit:p-3 dgsuikit:gap-y-2">
         {daysOfCalendar.map((dayItem) => (
-          <button
-            type="button"
+          <DayWrapper
             key={dayItem.date.toString()}
-            className={getDayClassName({ ...dayItem, ...datepickerProps })}
-            onClick={() => handleChange(dayItem.date)}
-            disabled={dayItem.isDisabled}
+            {...(haveAction ? { className: 'dgsuikit:group dgsuikit:relative' } : {})}
           >
-            {dayItem.isInMonth || showExtraDays ? format(dayItem.date, 'd') : ''}
-          </button>
+            {haveAction && (dayItem.isInMonth || showExtraDays) && (
+              <button
+                type="button"
+                className="dgsuikit:absolute dgsuikit:top-0 dgsuikit:right-0 dgsuikit:-translate-y-1/2 dgsuikit:opacity-0 dgsuikit:group-hover:opacity-100 dgsuikit:transition-opacity"
+                onClickCapture={(e) => {
+                  e.stopPropagation();
+                  dayHoverAction!.onClick(dayItem);
+                }}
+              >
+                {dayHoverAction!.element(dayItem)}
+              </button>
+            )}
+            <button
+              type="button"
+              className={getDayClassName({ ...dayItem, ...datepickerProps })}
+              onClick={() => handleChange(dayItem.date)}
+              disabled={dayItem.isDisabled}
+            >
+              {dayItem.isInMonth || showExtraDays ? format(dayItem.date, 'd') : ''}
+            </button>
+          </DayWrapper>
         ))}
       </div>
     </>

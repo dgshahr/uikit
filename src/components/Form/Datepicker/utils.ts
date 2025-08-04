@@ -10,9 +10,7 @@ import { isWithinInterval } from 'date-fns-jalali/isWithinInterval';
 import { startOfMonth } from 'date-fns-jalali/startOfMonth';
 import { startOfWeek } from 'date-fns-jalali/startOfWeek';
 import { subDays } from 'date-fns-jalali/subDays';
-import type { DatepickerProps } from './types';
-
-type DayItem = { date: Date; isInMonth: boolean; isDisabled: boolean; isHoliday: boolean }[];
+import type { DatepickerProps, DayItem } from './types';
 
 function isDateInDateArray(datesArray: Date[], date: Date) {
   return datesArray.some((disabledDate) => isSameDay(disabledDate, date));
@@ -22,8 +20,8 @@ export function getDaysOfCalendar(
   internalDate: Date,
   disableDates: DatepickerProps['disableDates'] = [],
   holidays: DatepickerProps['holidays'] = [],
-): DayItem {
-  let tempDays: DayItem = [];
+) {
+  let tempDays: DayItem[] = [];
   const endOfCurrentMonth = endOfMonth(internalDate);
   const startOfCurrentMonth = startOfMonth(internalDate);
   const daysOfMonth = eachDayOfInterval({
@@ -76,7 +74,8 @@ export function getDayClassName({
   startDate,
   endDate,
   highlightWeekends,
-}: DayItem[0] & DatepickerProps) {
+  dayHoverAction,
+}: DayItem & DatepickerProps) {
   const isDateVisible = isInMonth || showExtraDays;
   if (!isDateVisible) return 'dgsuikit:pointer-events-none';
 
@@ -88,7 +87,7 @@ export function getDayClassName({
   const activeItemClass = 'dgsuikit:!bg-primary-500 dgsuikit:!text-white dgsuikit:border-none';
 
   let className =
-    'dgsuikit:py-1 dgsuikit:rounded-2xl dgsuikit:transition dgsuikit:hover:bg-primary-50 dgsuikit:not-disabled:hover:text-primary-500 dgsuikit:disabled:bg-gray-200';
+    'dgsuikit:w-full dgsuikit:py-1 dgsuikit:rounded-2xl dgsuikit:transition dgsuikit:group-hover:bg-primary-50 dgsuikit:not-disabled:group-hover:text-primary-500 dgsuikit:disabled:bg-gray-200';
 
   if (isToday) className = `${className} dgsuikit:border dgsuikit:border-primary-300`;
   if (!isInMonth && isDateVisible) className = `${className} dgsuikit:text-gray-400`;
@@ -96,6 +95,7 @@ export function getDayClassName({
     className = `${className} dgsuikit:!text-error-500`;
   else className = `${className} dgsuikit:text-gray-600`;
   if (!isSelectable) className = `${className} dgsuikit:line-through dgsuikit:pointer-events-none`;
+  if (!dayHoverAction?.element) className = `${className} dgsuikit:disabled:cursor-not-allowed`;
 
   if (value instanceof Date) {
     if (isSameDay(value, date)) className = `${className} ${activeItemClass}`;
