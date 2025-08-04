@@ -116,7 +116,7 @@ export const Range: Story = {
 };
 
 const DayHoverDatepickerExample = (props: DatepickerProps) => {
-  const [value, setValue] = useState(new Date());
+  const [value, setValue] = useState<Date | null>(null);
   const [disabledDates, setDisabledDates] = useState<Date[]>([]);
 
   return (
@@ -157,7 +157,7 @@ const DayHoverDatepickerExample = (props: DatepickerProps) => {
 
 export const DayHoverAction: Story = {
   args: {
-    value: new Date(),
+    value: null,
     onChange: () => {},
     dayHoverAction: {
       onClick: () => {},
