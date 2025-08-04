@@ -43,7 +43,7 @@ export interface DatepickerWithRange {
 export interface DatepickerWithoutRange {
   acceptRange?: false;
   value: Date | null;
-  onChange: (value: DatepickerWithoutRange['value']) => void;
+  onChange: (value: Date) => void;
 }
 
 export type DatepickerProps = DatepickerPropsBase &

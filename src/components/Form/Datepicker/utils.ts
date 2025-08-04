@@ -99,13 +99,13 @@ export function getDayClassName({
 
   if (value instanceof Date) {
     if (isSameDay(value, date)) className = `${className} ${activeItemClass}`;
-  } else if (value.start && isSameDay(value.start, date))
+  } else if (value?.start && isSameDay(value.start, date))
     className = `${className} dgsuikit:rounded-l-none ${activeItemClass}`;
-  else if (value.end && isSameDay(value.end, date))
+  else if (value?.end && isSameDay(value.end, date))
     className = `${className} dgsuikit:rounded-r-none ${activeItemClass}`;
   else if (
-    value.start &&
-    value.end &&
+    value?.start &&
+    value?.end &&
     isWithinInterval(date, {
       start: value.start,
       end: value.end,

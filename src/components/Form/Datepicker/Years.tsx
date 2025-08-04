@@ -18,10 +18,12 @@ function getYearClassName({ year, value, startDate, endDate }: { year: Date } & 
     (startDate ? isAfter(endOfYear(year), startDate) : true) &&
     (endDate ? isBefore(year, endOfYear(endDate)) : true);
 
-  if (value instanceof Date) {
-    if (isSameYear(value, year)) className = `${className} ${activeClassName}`;
-  } else if (value.start && isSameYear(year, value.start))
-    className = `${className} ${activeClassName}`;
+  {
+    if (value instanceof Date) {
+      if (isSameYear(value, year)) className = `${className} ${activeClassName}`;
+    } else if (value?.start && isSameYear(year, value.start))
+      className = `${className} ${activeClassName}`;
+  }
 
   if (!isSelectable) className = `${className} dgsuikit:line-through dgsuikit:pointer-events-none`;
 
