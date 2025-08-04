@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { isSameDay } from 'date-fns-jalali/isSameDay';
 import React, { useState } from 'react';
 import { DatepickerProps } from './types';
+import IconMinus4 from '../../../icons/IconMinus4';
+import IconPlus4 from '../../../icons/IconPlus4';
 import { fullWidthStory } from '../../../utils/storybook/helpers';
 
 import Datepicker from '.';
@@ -94,4 +97,59 @@ export const Range: Story = {
     },
   },
   render: (args) => <RangeDatepickerExample {...args} />,
+};
+
+const DayHoverDatepickerExample = (props: DatepickerProps) => {
+  const [value, setValue] = useState(new Date());
+  const [disabledDates, setDisabledDates] = useState<Date[]>([]);
+
+  return (
+    <Datepicker
+      {...props}
+      acceptRange={false}
+      value={value}
+      onChange={setValue}
+      disableDates={disabledDates}
+      dayHoverAction={{
+        onClick: (dayItem) => {
+          setDisabledDates((prev) => {
+            if (dayItem.isDisabled) {
+              return prev.filter((date) => !isSameDay(date, dayItem.date));
+            }
+            return [...prev, dayItem.date];
+          });
+        },
+        element: (dayItem) => (
+          <span className="dgsuikit:bg-primary-500 dgsuikit:text-white dgsuikit:size-4 dgsuikit:rounded-full dgsuikit:flex dgsuikit:justify-center dgsuikit:items-center">
+            {dayItem.isDisabled ? (
+              <IconMinus4
+                width={12}
+                height={12}
+              />
+            ) : (
+              <IconPlus4
+                width={12}
+                height={12}
+              />
+            )}
+          </span>
+        ),
+      }}
+    />
+  );
+};
+
+export const DayHoverAction: Story = {
+  args: {
+    value: new Date(),
+    onChange: () => {},
+    dayHoverAction: {
+      onClick: () => {},
+      element: () => null, // This will be overridden in the component
+    },
+    inputProps: {
+      placeholder: 'تاریخ موردنظر خود را انتخاب کنید',
+    },
+  },
+  render: (args) => <DayHoverDatepickerExample {...args} />,
 };
