@@ -23,7 +23,7 @@ const meta = {
     value: {
       table: {
         type: {
-          summary: 'Date | {start: Date | null, end: Date | null}',
+          summary: 'Date | null | {start: Date | null, end: Date | null}',
           detail: "'start' and 'end' only available if acceptRange='true'",
         },
       },
@@ -70,6 +70,22 @@ export const Default: Story = {
     onChange: () => {},
   },
   render: (args) => <DefaulutDatepickerExample {...args} />,
+};
+
+export const DisableAndHoliday: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    highlightWeekends: true,
+    disableDates: [
+      new Date(new Date(Date.now() + 24 * 60 * 60 * 1000)), // Tomorrow
+      new Date(new Date(Date.now() + 2 * 24 * 60 * 60 * 1000)), // Day after tomorrow
+    ],
+    holidays: [
+      new Date(new Date(Date.now() - 24 * 60 * 60 * 1000)), // Yesterday
+      new Date(new Date(Date.now() - 2 * 24 * 60 * 60 * 1000)), // Day before yesterday
+    ],
+  },
 };
 
 const RangeDatepickerExample = (props: DatepickerProps) => {
