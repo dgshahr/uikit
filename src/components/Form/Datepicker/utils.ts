@@ -2,10 +2,13 @@ import { addDays } from 'date-fns-jalali/addDays';
 import { eachDayOfInterval } from 'date-fns-jalali/eachDayOfInterval';
 import { endOfMonth } from 'date-fns-jalali/endOfMonth';
 import { endOfWeek } from 'date-fns-jalali/endOfWeek';
+import { endOfYear } from 'date-fns-jalali/endOfYear';
 import { getDay } from 'date-fns-jalali/getDay';
 import { isAfter } from 'date-fns-jalali/isAfter';
 import { isBefore } from 'date-fns-jalali/isBefore';
 import { isSameDay } from 'date-fns-jalali/isSameDay';
+import { isSameMonth } from 'date-fns-jalali/isSameMonth';
+import { isSameYear } from 'date-fns-jalali/isSameYear';
 import { isWithinInterval } from 'date-fns-jalali/isWithinInterval';
 import { startOfMonth } from 'date-fns-jalali/startOfMonth';
 import { startOfWeek } from 'date-fns-jalali/startOfWeek';
@@ -14,6 +17,54 @@ import type { DatepickerProps, DayItem } from './types';
 
 function isDateInDateArray(datesArray: Date[], date: Date) {
   return datesArray.some((disabledDate) => isSameDay(disabledDate, date));
+}
+
+export function getYearClassName({
+  year,
+  value,
+  startDate,
+  endDate,
+}: { year: Date } & DatepickerProps) {
+  let className =
+    'dgsuikit:rounded-full dgsuikit:py-1 dgsuikit:transition dgsuikit:hover:bg-primary-50 dgsuikit:hover:text-primary-500';
+  const activeClassName = 'dgsuikit:!bg-primary-500 dgsuikit:!text-white';
+  const isSelectable =
+    (startDate ? isAfter(endOfYear(year), startDate) : true) &&
+    (endDate ? isBefore(year, endOfYear(endDate)) : true);
+
+  {
+    if (value instanceof Date) {
+      if (isSameYear(value, year)) className = `${className} ${activeClassName}`;
+    } else if (value?.start && isSameYear(year, value.start))
+      className = `${className} ${activeClassName}`;
+  }
+
+  if (!isSelectable) className = `${className} dgsuikit:line-through dgsuikit:pointer-events-none`;
+
+  return className;
+}
+
+export function getMonthClassName({
+  month,
+  value,
+  startDate,
+  endDate,
+}: { month: Date } & DatepickerProps) {
+  let className =
+    'dgsuikit:rounded-full dgsuikit:py-1 dgsuikit:transition dgsuikit:hover:bg-primary-50 dgsuikit:hover:text-primary-500';
+  const activeClassName = 'dgsuikit:!bg-primary-500 dgsuikit:!text-white';
+  const isSelectable =
+    (startDate ? isAfter(endOfMonth(month), startDate) : true) &&
+    (endDate ? isBefore(month, endOfMonth(endDate)) : true);
+
+  if (value instanceof Date) {
+    if (isSameMonth(value, month)) className = `${className} ${activeClassName}`;
+  } else if (value?.start && isSameMonth(month, value.start))
+    className = `${className} ${activeClassName}`;
+
+  if (!isSelectable) className = `${className} dgsuikit:line-through dgsuikit:pointer-events-none`;
+
+  return className;
 }
 
 export function getDaysOfCalendar(
