@@ -31,15 +31,13 @@ function styleButton({
   const defaultClassName =
     'dgsuikit:border dgsuikit:border-solid dgsuikit:relative dgsuikit:rounded-lg dgsuikit:min-w-max dgsuikit:h-fit dgsuikit:disabled:cursor-not-allowed dgsuikit:transition-all duration-300 dgsuikit:flex dgsuikit:items-center dgsuikit:disabled:opacity-40';
 
-  return [
+  return clsx(
     defaultClassName,
     isFullWidth ? 'dgsuikit:w-full dgsuikit:justify-center' : 'dgsuikit:w-fit',
     variantStyle[variant][color],
     children ? sizeStyle[size] : iconOnlyButtonSizeStyle[size],
-    Number(className?.length) > 0 && className,
-  ]
-    .slice()
-    .join(' ');
+    className,
+  );
 }
 
 const Button: FC<PropsWithChildren<ButtonProps>> = ({
