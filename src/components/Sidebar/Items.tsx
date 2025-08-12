@@ -9,16 +9,35 @@ import {
 } from './constants';
 import { useSidebarContext } from './context';
 import SidebarSearchInput from './SearchInput';
-import type { FirstLevelSidebarItem } from './types';
+import type { FirstLevelSidebarItem, SecondLevelSidebarItem } from './types';
 import { getSecondLevelItemContent, searchItems, showItemsClass } from './utils';
 import { AccordionGroup, AccordionItem } from '../Accordion';
 import Badge from '../Badge';
 import Divider from '../Divider';
 
+function findSecondLevelItemWithActiveChild(
+  items: FirstLevelSidebarItem[],
+): SecondLevelSidebarItem | null {
+  let foundedItem: SecondLevelSidebarItem | null = null;
+
+  items.some((FLevel) => {
+    return FLevel.children?.some((SLevel) => {
+      if (SLevel.children?.some((TLevel) => TLevel.active)) {
+        foundedItem = SLevel;
+        return true;
+      }
+      return false;
+    });
+  });
+
+  return foundedItem;
+}
+
 const SidebarItems: FC = () => {
   const { isOpen, searchInput = true, items } = useSidebarContext();
   const [search, setSearch] = useState('');
   const [innerItems, setInnerItems] = useState(items ?? []);
+  const secondLevelItemWithActiveChild = findSecondLevelItemWithActiveChild(innerItems);
 
   const debouncedSearch = useCallback(
     debounce((searchValue: string) => {
@@ -61,7 +80,14 @@ const SidebarItems: FC = () => {
             >
               {item.title}
             </div>
-            <AccordionGroup className="dgsuikit:mt-4 dgsuikit:space-y-2">
+            <AccordionGroup
+              defaultActiveKey={
+                secondLevelItemWithActiveChild
+                  ? secondLevelItemWithActiveChild.link || secondLevelItemWithActiveChild.title
+                  : undefined
+              }
+              className="dgsuikit:mt-4 dgsuikit:space-y-2"
+            >
               {item.children?.map((secondLevelItem) =>
                 secondLevelItem.link ? (
                   <a
@@ -80,6 +106,7 @@ const SidebarItems: FC = () => {
                 ) : (
                   <AccordionItem
                     key={secondLevelItem.link ?? secondLevelItem.title}
+                    accordionKey={secondLevelItem.link ?? secondLevelItem.title}
                     className={clsx('dgsuikit:!p-0', secondLevelItem.disabled && DISABLED_CLASS)}
                     title={getSecondLevelItemContent(secondLevelItem, isOpen)}
                     hideDivider
@@ -88,7 +115,8 @@ const SidebarItems: FC = () => {
                     titleClassName={clsx(
                       'dgsuikit:[&_>div:first-child]:flex-1 dgsuikit:[&_>div:first-child]:pl-1',
                       isOpen ? 'dgsuikit:px-3' : 'dgsuikit:!justify-center',
-                      secondLevelItem.children?.find((thirdLevelItem) => thirdLevelItem.active) &&
+                      (secondLevelItemWithActiveChild?.link === secondLevelItem.link ||
+                        secondLevelItemWithActiveChild?.title === secondLevelItem.title) &&
                         SECOND_LEVEL_ACTIVE_CLASS,
                       ITEMS_SHARED_CLASS,
                     )}
