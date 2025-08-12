@@ -12,6 +12,9 @@ interface NavigationProps {
   slidesCount: number;
 }
 
+const SHOW_ON_HOVER_CLASS =
+  'dgsuikit:opacity-0 dgsuikit:group-hover:opacity-100 dgsuikit:transition-opacity';
+
 const Navigation: FC<NavigationProps> = (props) => {
   const { onNavigate, slideIndex, slidesCount } = props;
 
@@ -24,40 +27,47 @@ const Navigation: FC<NavigationProps> = (props) => {
     showPaginationText,
   } = useSliderContext();
 
-  const NavigationButtons = (
-    <div
-      className={clsx('dgsuikit:flex dgsuikit:gap-2', {
-        'dgsuikit:absolute dgsuikit:bottom-0 dgsuikit:left-[5.5%]':
-          navigationVariant === 'inside' && navigationButtonsShowType !== 'onSides',
-        'dgsuikit:absolute dgsuikit:justify-between dgsuikit:top-1/2 dgsuikit:-translate-y-1/2 dgsuikit:w-full dgsuikit:px-[5.5%]':
-          navigationButtonsShowType === 'onSides',
-        'dgsuikit:opacity-0 dgsuikit:group-hover:opacity-100 dgsuikit:transition':
-          navigationButtonsShowType === 'hover' || navigationButtonsShowType === 'onSides',
-      })}
-    >
-      <Button
-        type="button"
-        variant="secondary"
-        onClick={() => onNavigate(slideIndex - 1)}
-        rightIcon={<IconArrowRight2 />}
-        aria-label="slider-previous-button"
-      />
-      <Button
-        type="button"
-        variant="secondary"
-        onClick={() => onNavigate(slideIndex + 1)}
-        rightIcon={<IconArrowLeft2 />}
-        aria-label="slider-next-button"
-      />
-    </div>
-  );
+  const getNavigationButtons = () => {
+    const buttonsBaseClassForOnSides = clsx(
+      'dgsuikit:!absolute dgsuikit:top-1/2 dgsuikit:-translate-y-1/2',
+      SHOW_ON_HOVER_CLASS,
+    );
+    return (
+      <>
+        <Button
+          type="button"
+          variant="secondary"
+          onClick={() => onNavigate(slideIndex - 1)}
+          rightIcon={<IconArrowRight2 />}
+          aria-label="slider-previous-button"
+          className={
+            navigationButtonsShowType === 'onSides'
+              ? clsx(buttonsBaseClassForOnSides, 'dgsuikit:right-[5.5%]')
+              : undefined
+          }
+        />
+        <Button
+          type="button"
+          variant="secondary"
+          onClick={() => onNavigate(slideIndex + 1)}
+          rightIcon={<IconArrowLeft2 />}
+          aria-label="slider-next-button"
+          className={
+            navigationButtonsShowType === 'onSides'
+              ? clsx(buttonsBaseClassForOnSides, 'dgsuikit:left-[5.5%]')
+              : undefined
+          }
+        />
+      </>
+    );
+  };
 
   return (
     <>
       {navigationButtonsShowType &&
         navigationButtonsShowType !== 'hide' &&
         navigationButtonsShowType === 'onSides' &&
-        NavigationButtons}
+        getNavigationButtons}
       <div
         className={clsx(
           'dgsuikit:flex',
@@ -78,8 +88,18 @@ const Navigation: FC<NavigationProps> = (props) => {
       >
         {navigationButtonsShowType &&
           navigationButtonsShowType !== 'hide' &&
-          navigationButtonsShowType !== 'onSides' &&
-          NavigationButtons}
+          navigationButtonsShowType !== 'onSides' && (
+            <div
+              className={clsx(
+                'dgsuikit:flex dgsuikit:gap-2',
+                navigationButtonsShowType === 'hover' && SHOW_ON_HOVER_CLASS,
+                navigationVariant === 'inside' &&
+                  'dgsuikit:absolute dgsuikit:bottom-0 dgsuikit:left-[5.5%]',
+              )}
+            >
+              {getNavigationButtons()}
+            </div>
+          )}
         {(showNavigationDots || showPaginationText) && (
           <div className="dgsuikit:flex dgsuikit:items-center dgsuikit:gap-3">
             {showPaginationText && (
