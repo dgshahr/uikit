@@ -115,7 +115,8 @@ const SidebarItems: FC = () => {
                     titleClassName={clsx(
                       'dgsuikit:[&_>div:first-child]:flex-1 dgsuikit:[&_>div:first-child]:pl-1',
                       isOpen ? 'dgsuikit:px-3' : 'dgsuikit:!justify-center',
-                      (secondLevelItemWithActiveChild?.link === secondLevelItem.link ||
+                      ((secondLevelItemWithActiveChild?.link &&
+                        secondLevelItemWithActiveChild?.link === secondLevelItem.link) ||
                         secondLevelItemWithActiveChild?.title === secondLevelItem.title) &&
                         SECOND_LEVEL_ACTIVE_CLASS,
                       ITEMS_SHARED_CLASS,
