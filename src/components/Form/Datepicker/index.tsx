@@ -24,31 +24,39 @@ const DatePicker: FC<DatepickerProps> = (props) => {
   const { showSubmitButton = true, showTodayButton = true, value } = props;
 
   const wrapperProps: Omit<PickerWrapperProps, 'children'> = { ...props };
-  if (wrapperProps.dropdownType === 'drawer') {
-    wrapperProps.drawerProps = {
-      ...wrapperProps.drawerProps,
-      containerClassName: clsx('dgsuikit:!p-0', wrapperProps.drawerProps?.containerClassName),
-    };
-  } else
-    wrapperProps.popoverClassName = clsx(
-      'dgsuikit:!p-0 dgsuikit:max-h-max',
-      wrapperProps.popoverClassName,
-    );
+  if (props.mode !== 'calendar') {
+    if (wrapperProps.dropdownType === 'drawer') {
+      wrapperProps.drawerProps = {
+        ...wrapperProps.drawerProps,
+        containerClassName: clsx('dgsuikit:!p-0', wrapperProps.drawerProps?.containerClassName),
+      };
+    } else
+      wrapperProps.popoverClassName = clsx(
+        'dgsuikit:!p-0 dgsuikit:max-h-max',
+        wrapperProps.popoverClassName,
+      );
 
-  if (!wrapperProps.customInput)
-    wrapperProps.inputProps = {
-      ...wrapperProps.inputProps,
-      value: wrapperProps.inputProps?.value ?? formatValue(value),
-    };
+    if (!wrapperProps.customInput)
+      wrapperProps.inputProps = {
+        ...wrapperProps.inputProps,
+        value: wrapperProps.inputProps?.value ?? formatValue(value),
+      };
+  }
+
+  const Wrapper = props.mode === 'calendar' ? 'div' : PickerWrapper;
 
   return (
-    <PickerWrapper {...(wrapperProps as PickerWrapperProps)}>
+    <Wrapper
+      {...(props.mode !== 'calendar'
+        ? (wrapperProps as PickerWrapperProps)
+        : { className: props.wrapperClassName })}
+    >
       <DatePickerProvider datepickerProps={props}>
         <Header />
         <Body />
         {(showSubmitButton || showTodayButton) && <Footer />}
       </DatePickerProvider>
-    </PickerWrapper>
+    </Wrapper>
   );
 };
 

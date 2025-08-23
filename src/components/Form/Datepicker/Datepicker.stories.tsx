@@ -44,6 +44,15 @@ const meta = {
         },
       },
     },
+    mode: {
+      control: { type: 'select' },
+      options: ['input', 'calendar'],
+      table: {
+        type: {
+          summary: 'input | calendar',
+        },
+      },
+    },
   },
 } satisfies Meta<typeof Datepicker>;
 
@@ -85,6 +94,15 @@ export const DisableAndHoliday: Story = {
       new Date(new Date(Date.now() - 24 * 60 * 60 * 1000)), // Yesterday
       new Date(new Date(Date.now() - 2 * 24 * 60 * 60 * 1000)), // Day before yesterday
     ],
+  },
+};
+
+export const Calendar: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    mode: 'calendar',
+    wrapperClassName: 'dgsuikit:w-[350px] dgsuikit:shadow-2xl dgsuikit:rounded-lg',
   },
 };
 

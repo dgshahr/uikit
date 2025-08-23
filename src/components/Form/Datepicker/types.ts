@@ -18,6 +18,7 @@ type DatepickerPropsBase = PickerWrapperProps & {
   highlightWeekends?: boolean;
   holidays?: Date[];
   disableDates?: Date[];
+  mode?: 'input' | 'calendar';
   dayHoverAction?: {
     onClick: (dayItem: DayItem) => void;
     element: (dayItem: DayItem) => React.ReactNode;
