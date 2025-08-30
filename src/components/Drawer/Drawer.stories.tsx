@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React, { FC, useState } from 'react';
 import IconArrowLeftMd from '../../icons/IconArrowLeftMd';
 import Button from '../Button';
+import Select from '../Form/Select';
+import cities from '../Form/Select/cities.json';
 import Drawer, { DrawerProps } from './index';
 
 const meta = {
@@ -100,6 +102,14 @@ const meta = {
         defaultValue: { summary: 'document.body' },
       },
     },
+    havePopover: {
+      control: { type: 'boolean' },
+      table: {
+        type: { summary: 'boolean' },
+      },
+      description:
+        'If your drawer content has a popover, set this to true to avoid overflow hidden on the drawer body.',
+    },
   },
 } satisfies Meta<typeof Drawer>;
 
@@ -117,9 +127,7 @@ const DrawerExample: FC<DrawerProps> = (props) => {
         open={open}
         onClose={() => setOpen(false)}
       >
-        <div className="dgsuikit:border dgsuikit:border-primary-500 dgsuikit:border-dashed dgsuikit:bg-gray-50 dgsuikit:text-gray-500 dgsuikit:rounded-lg dgsuikit:flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:h-[200px] dgsuikit:w-[500px]">
-          Component
-        </div>
+        {props.children}
       </Drawer>
     </>
   );
@@ -147,6 +155,46 @@ export const Default: Story = {
         </div>
       ),
     },
+    children: (
+      <div className="dgsuikit:border dgsuikit:border-primary-500 dgsuikit:border-dashed dgsuikit:bg-gray-50 dgsuikit:text-gray-500 dgsuikit:rounded-lg dgsuikit:flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:h-[200px] dgsuikit:w-[500px]">
+        Component
+      </div>
+    ),
+  },
+  render: (args) => <DrawerExample {...args} />,
+};
+
+const selectOptions = Object.values(cities ?? {})
+  .flat()
+  .map((item) => ({
+    label: item.title,
+    value: item.id,
+  }));
+
+export const WithPopover: Story = {
+  args: {
+    open: false,
+    onClose: () => {},
+    header: {
+      title: 'عنوان',
+      description: 'متن توضیحات',
+      haveCloseIcon: true,
+      actionElement: (
+        <button>
+          <IconArrowLeftMd />
+        </button>
+      ),
+    },
+    position: 'center',
+    havePopover: true,
+    children: (
+      <Select
+        optionCellClassName="dgsuikit:[direction:rtl]"
+        options={selectOptions}
+        value={301}
+        onChange={() => {}}
+      />
+    ),
   },
   render: (args) => <DrawerExample {...args} />,
 };
