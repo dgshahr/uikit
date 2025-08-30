@@ -33,6 +33,7 @@ export interface DrawerProps {
   };
   children?: ReactNode | undefined;
   containerElement?: Element | null;
+  havePopover?: boolean;
 }
 
 function getSize({
@@ -92,6 +93,7 @@ const Drawer: FC<DrawerProps> = (props) => {
     header,
     footer,
     containerElement,
+    havePopover,
   } = props;
   const [show, setShow] = useState(false);
   const container = containerElement ?? document?.body;
@@ -185,7 +187,8 @@ const Drawer: FC<DrawerProps> = (props) => {
       >
         <div
           className={clsx(
-            'dgsuikit:overflow-x-hidden dgsuikit:flex dgsuikit:flex-col dgsuikit:bg-white dgsuikit:divide-y dgsuikit:divide-gray-200 dgsuikit:divide-solid',
+            'dgsuikit:flex dgsuikit:flex-col dgsuikit:bg-white dgsuikit:divide-y dgsuikit:divide-gray-200 dgsuikit:divide-solid',
+            !havePopover && 'dgsuikit:overflow-x-hidden',
             getRadius({ position, padding }),
           )}
           style={{ width: width ?? '100%' }}
@@ -229,7 +232,13 @@ const Drawer: FC<DrawerProps> = (props) => {
               )}
             </div>
           )}
-          <div className={clsx('dgsuikit:p-4 dgsuikit:overflow-y-auto', containerClassName)}>
+          <div
+            className={clsx(
+              'dgsuikit:p-4',
+              !havePopover && 'dgsuikit:overflow-y-auto',
+              containerClassName,
+            )}
+          >
             {children}
           </div>
           {footer?.element ? (
