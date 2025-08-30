@@ -4,8 +4,8 @@ import IconInfoCircleOutline from '@/src/icons/IconInfoCircleOutline';
 
 export interface FieldBottomInfoProps {
   disabled?: boolean;
-  errorMessage?: string;
-  hintMessage?: string;
+  errorMessage?: ReactNode;
+  hintMessage?: ReactNode;
   extraHelper?: ReactNode;
   className?: string;
 }
