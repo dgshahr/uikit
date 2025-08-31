@@ -61,7 +61,6 @@ const meta: Meta<typeof Menu> = {
 export default meta;
 type Story = StoryObj<typeof Menu>;
 
-// Basic Menu Story
 export const Default: Story = {
   args: {
     trigger: (toggle) => (
@@ -245,7 +244,6 @@ export const WithEndElements: Story = {
   },
 };
 
-// Menu with Custom Styling Story
 export const CustomStyling: Story = {
   args: {
     className: 'dgsuikit:w-full dgsuikit:max-w-sm',
