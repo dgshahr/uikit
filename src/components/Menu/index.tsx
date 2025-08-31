@@ -3,21 +3,15 @@ import React, { useState, type FC } from 'react';
 
 import { useFlipPosition, type PopperPosition } from '@/src/hooks/useFlipPosition';
 import { useOutsideClick } from '@/src/hooks/useOutsideClick';
-import IconArrowLeft2 from '@/src/icons/IconArrowLeft2';
 
-import { MenuContext, useMenu } from './context';
-import type { MenuContextType, MenuItemProps, MenuProps, MenuTitleProps } from './type';
+import { POSITION_CLASS_NAMES } from './constants';
+import { MenuContext } from './context';
+import MenuItem from './MenuItem';
+import MenuTitle from './MenuTitle';
+import type { MenuContextType, MenuProps } from './type';
 
-const POSITION_CLASS_NAMES: Record<PopperPosition, string> = {
-  'bottom-right': 'dgsuikit:bottom-0 dgsuikit:translate-y-[calc(100%+8px)] dgsuikit:left-0',
-  'bottom-center':
-    'dgsuikit:bottom-0 dgsuikit:translate-y-[calc(100%+8px)] dgsuikit:left-1/2 dgsuikit:-translate-x-1/2',
-  'bottom-left': 'dgsuikit:bottom-0 dgsuikit:translate-y-[calc(100%+8px)] dgsuikit:right-0',
-  'top-right': 'dgsuikit:top-0 dgsuikit:-translate-y-[calc(100%+8px)] dgsuikit:left-0',
-  'top-center':
-    'dgsuikit:top-0 dgsuikit:-translate-y-[calc(100%+8px)] dgsuikit:left-1/2 dgsuikit:-translate-x-1/2',
-  'top-left': 'dgsuikit:top-0 dgsuikit:-translate-y-[calc(100%+8px)] dgsuikit:right-0',
-};
+const DURATION_CLASS = 'dgsuikit:duration-300';
+const REMOVE_CONTAINER_TIMEOUT = 400;
 
 const MenuComponent: React.FC<MenuProps> = ({
   trigger,
@@ -28,8 +22,10 @@ const MenuComponent: React.FC<MenuProps> = ({
   minVisible = 180,
   padding = 8,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isShowMenu, setIsShowMenu] = useState(false);
+  const [isMenuInDom, setIsMenuInDom] = useState(false);
   const [currentPosition, setCurrentPosition] = useState<PopperPosition>(position);
+  let transitionTimeout: ReturnType<typeof setTimeout>;
 
   const { anchorRef, popperRef } = useFlipPosition<HTMLDivElement, HTMLDivElement>({
     initialPosition: position,
@@ -40,17 +36,35 @@ const MenuComponent: React.FC<MenuProps> = ({
     },
   });
 
-  // Use outside click hook for better UX
   const containerRef = useOutsideClick<HTMLDivElement>(() => {
-    if (isOpen) {
-      setIsOpen(false);
+    if (isShowMenu) {
+      setIsShowMenu(false);
+      if (transitionTimeout) clearTimeout(transitionTimeout);
+      transitionTimeout = setTimeout(() => {
+        setIsMenuInDom(false);
+      }, REMOVE_CONTAINER_TIMEOUT);
     }
   });
 
-  const toggle = () => setIsOpen(!isOpen);
-  const close = () => setIsOpen(false);
+  function toggleMenuVisibility() {
+    const newState = !isMenuInDom;
 
-  const value: MenuContextType = { close };
+    if (transitionTimeout) clearTimeout(transitionTimeout);
+
+    if (newState) {
+      setIsMenuInDom(true);
+      transitionTimeout = setTimeout(() => {
+        setIsShowMenu(true);
+      }, 0);
+    } else {
+      setIsShowMenu(false);
+      transitionTimeout = setTimeout(() => {
+        setIsMenuInDom(false);
+      }, REMOVE_CONTAINER_TIMEOUT);
+    }
+  }
+
+  const value: MenuContextType = { close: toggleMenuVisibility };
 
   return (
     <MenuContext.Provider value={value}>
@@ -59,12 +73,17 @@ const MenuComponent: React.FC<MenuProps> = ({
         dir="rtl"
         className={clsx('dgsuikit:relative dgsuikit:inline-block dgsuikit:text-right', className)}
       >
-        <div ref={anchorRef}>{trigger(toggle)}</div>
-        {isOpen && (
+        <div ref={anchorRef}>{trigger(toggleMenuVisibility)}</div>
+        {isMenuInDom && (
           <div
             ref={popperRef}
             className={clsx(
-              'dgsuikit:absolute dgsuikit:z-50 dgsuikit:min-w-[256px] dgsuikit:px-4 dgsuikit:pb-4 dgsuikit:rounded-2xl dgsuikit:bg-white dgsuikit:shadow-lg dgsuikit:ring-1 dgsuikit:ring-gray-200 dgsuikit:focus:outline-none dgsuikit:transition-all dgsuikit:duration-200',
+              'dgsuikit:absolute dgsuikit:z-50 dgsuikit:min-w-[256px] dgsuikit:px-4 dgsuikit:pb-4 dgsuikit:rounded-2xl dgsuikit:bg-white dgsuikit:shadow-lg dgsuikit:ring-1 dgsuikit:ring-gray-200 dgsuikit:focus:outline-none',
+              'dgsuikit:transition-all',
+              DURATION_CLASS,
+              isShowMenu
+                ? 'dgsuikit:opacity-100 dgsuikit:scale-100'
+                : 'dgsuikit:opacity-0 dgsuikit:scale-95',
               POSITION_CLASS_NAMES[currentPosition],
               popoverClassName,
             )}
@@ -74,64 +93,6 @@ const MenuComponent: React.FC<MenuProps> = ({
         )}
       </div>
     </MenuContext.Provider>
-  );
-};
-
-const MenuTitle: React.FC<MenuTitleProps> = ({ children, className = '' }) => {
-  return (
-    <div
-      className={clsx('dgsuikit:py-4 dgsuikit:font-p2-regular dgsuikit:text-gray-400', className)}
-    >
-      {children}
-    </div>
-  );
-};
-
-const MenuItem: React.FC<MenuItemProps> = ({
-  children,
-  onClick,
-  className = '',
-  disabled = false,
-  icon,
-  endElement,
-}) => {
-  const { close } = useMenu();
-
-  const handleClick = () => {
-    if (!disabled && onClick) {
-      onClick();
-      close();
-    }
-  };
-
-  return (
-    <button
-      className={clsx(
-        'dgsuikit:flex dgsuikit:w-full dgsuikit:items-center dgsuikit:p-3 dgsuikit:my-0.5 dgsuikit:text-right dgsuikit:text-sm dgsuikit:rounded-lg dgsuikit:transition-colors dgsuikit:duration-150 dgsuikit:min-h-12',
-        disabled
-          ? 'dgsuikit:opacity-50 dgsuikit:cursor-not-allowed dgsuikit:text-gray-400'
-          : 'dgsuikit:text-gray-600 dgsuikit:hover:bg-gray-50 dgsuikit:hover:text-gray-900 dgsuikit:cursor-pointer dgsuikit:focus:bg-gray-100 dgsuikit:focus:outline-none',
-        className,
-      )}
-      onClick={handleClick}
-      disabled={disabled}
-    >
-      {icon && (
-        <span className="dgsuikit:ml-3 dgsuikit:flex dgsuikit:justify-center dgsuikit:items-center dgsuikit:flex-shrink-0 dgsuikit:w-6 dgsuikit:h-6">
-          {icon}
-        </span>
-      )}
-
-      <div className="dgsuikit:font-medium dgsuikit:text-ellipsis dgsuikit:w-full dgsuikit:h-full">
-        {children}
-      </div>
-
-      {endElement ? (
-        <div className="dgsuikit:h-4 dgsuikit:shrink-0">{endElement}</div>
-      ) : (
-        <IconArrowLeft2 className="dgsuikit:h-4 dgsuikit:w-4 dgsuikit:shrink-0" />
-      )}
-    </button>
   );
 };
 
