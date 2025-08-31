@@ -9,6 +9,8 @@ import IconSetting from '../../icons/IconSetting';
 import IconShare from '../../icons/IconShare';
 import IconUser from '../../icons/IconUser';
 import { fullWidthStory } from '../../utils/storybook/helpers';
+import Divider from '../Divider';
+
 import Menu from './index';
 
 const meta: Meta<typeof Menu> = {
@@ -23,8 +25,7 @@ const meta: Meta<typeof Menu> = {
       },
     },
   },
-  beforeEach: () => fullWidthStory({ alignItems: 'flex-start', height: '350px' }),
-  tags: ['autodocs'],
+  beforeEach: () => fullWidthStory({ alignItems: '!flex-start', height: '400px' }),
   argTypes: {
     className: {
       control: 'text',
@@ -66,160 +67,170 @@ export const Default: Story = {
     trigger: (toggle) => (
       <button
         onClick={toggle}
-        className="dgsuikit:inline-flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:gap-2 dgsuikit:px-4 dgsuikit:py-2 dgsuikit:text-sm dgsuikit:font-medium dgsuikit:text-gray-700 dgsuikit:bg-white dgsuikit:border dgsuikit:border-gray-300 dgsuikit:rounded-md dgsuikit:shadow-sm dgsuikit:hover:bg-gray-50 dgsuikit:focus:outline-none dgsuikit:focus:ring-2 dgsuikit:focus:ring-blue-500 dgsuikit:focus:ring-offset-2 dgsuikit:transition-colors dgsuikit:duration-200"
+        className="dgsuikit:inline-flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:gap-2 dgsuikit:px-4 dgsuikit:py-2 dgsuikit:text-sm dgsuikit:font-medium dgsuikit:text-gray-700 dgsuikit:bg-white dgsuikit:border dgsuikit:border-gray-300 dgsuikit:rounded-md dgsuikit:shadow-sm dgsuikit:hover:bg-gray-50"
       >
-        Menu Options
-        <IconArrowDownMd className="dgsuikit:w-4 dgsuikit:h-4" />
+        گزینه‌های منو
+        <IconArrowDownMd className="dgsuikit:w-6 dgsuikit:h-6" />
       </button>
     ),
     children: (
       <>
-        <Menu.Title>Account Settings</Menu.Title>
+        <Menu.Title>تنظیمات حساب کاربری</Menu.Title>
         <Menu.Item
-          icon={<IconUser className="dgsuikit:w-4 dgsuikit:h-4" />}
+          icon={<IconUser className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}
         >
-          Profile
+          پروفایل
         </Menu.Item>
         <Menu.Item
-          icon={<IconSetting className="dgsuikit:w-4 dgsuikit:h-4" />}
+          icon={<IconSetting className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}
         >
-          Settings
+          تنظیمات
         </Menu.Item>
         <Menu.Item
-          icon={<IconLogout className="dgsuikit:w-4 dgsuikit:h-4" />}
+          icon={<IconLogout className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}
+          className="dgsuikit:text-red-500 dgsuikit:bg-red-50 dgsuikit:hover:bg-red-100 dgsuikit:hover:text-red-500"
         >
-          Logout
+          خروج
         </Menu.Item>
       </>
     ),
   },
 };
 
-// Menu with Actions Story
-export const WithActions: Story = {
+export const WithSections: Story = {
   args: {
     trigger: (toggle) => (
       <button
         onClick={toggle}
-        className="dgsuikit:inline-flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:gap-2 dgsuikit:px-4 dgsuikit:py-2 dgsuikit:text-sm dgsuikit:font-medium dgsuikit:text-gray-700 dgsuikit:bg-white dgsuikit:border dgsuikit:border-gray-300 dgsuikit:rounded-md dgsuikit:shadow-sm dgsuikit:hover:bg-gray-50 dgsuikit:focus:outline-none dgsuikit:focus:ring-2 dgsuikit:focus:ring-blue-500 dgsuikit:focus:ring-offset-2 dgsuikit:transition-colors dgsuikit:duration-200"
+        className="dgsuikit:inline-flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:gap-2 dgsuikit:px-4 dgsuikit:py-2 dgsuikit:text-sm dgsuikit:font-medium dgsuikit:text-gray-700 dgsuikit:bg-white dgsuikit:border dgsuikit:border-gray-300 dgsuikit:rounded-md dgsuikit:shadow-sm dgsuikit:hover:bg-gray-50"
       >
-        Actions
-        <IconArrowDownMd className="dgsuikit:w-4 dgsuikit:h-4" />
+        گزینه‌ها
+        <IconArrowDownMd className="dgsuikit:w-6 dgsuikit:h-6" />
       </button>
     ),
     children: (
       <>
-        <Menu.Title>File Actions</Menu.Title>
+        <Menu.Title>مجوزهای کاربری</Menu.Title>
         <Menu.Item
-          icon={<IconEditProfile className="dgsuikit:w-4 dgsuikit:h-4" />}
+          icon={<IconUser className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}
         >
-          Edit
+          مشاهده پروفایل
         </Menu.Item>
         <Menu.Item
-          icon={<IconDownload className="dgsuikit:w-4 dgsuikit:h-4" />}
+          icon={<IconSetting className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}
         >
-          Download
+          تنظیمات ادمین
+        </Menu.Item>
+        <Divider
+          type="horizontal"
+          className="dgsuikit:-mx-4 dgsuikit:!w-auto"
+        />
+        <Menu.Title>مجوزهای کاربری</Menu.Title>
+        <Menu.Item
+          icon={<IconUser className="dgsuikit:w-6 dgsuikit:h-6" />}
+          onClick={() => {}}
+        >
+          مشاهده پروفایل
         </Menu.Item>
         <Menu.Item
-          icon={<IconShare className="dgsuikit:w-4 dgsuikit:h-4" />}
+          icon={<IconSetting className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}
         >
-          Share
+          تنظیمات ادمین
         </Menu.Item>
         <Menu.Item
-          icon={<IconLogout className="dgsuikit:w-4 dgsuikit:h-4" />}
+          icon={<IconLogout className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}
-          className="dgsuikit:text-red-600 dgsuikit:hover:bg-red-50 dgsuikit:hover:text-red-700"
+          className="dgsuikit:text-red-500 dgsuikit:bg-red-50 dgsuikit:hover:bg-red-100 dgsuikit:hover:text-red-500"
         >
-          Delete
+          خروج
         </Menu.Item>
       </>
     ),
   },
 };
 
-// Menu with Disabled Items Story
 export const WithDisabledItems: Story = {
   args: {
     trigger: (toggle) => (
       <button
         onClick={toggle}
-        className="dgsuikit:inline-flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:gap-2 dgsuikit:px-4 dgsuikit:py-2 dgsuikit:text-sm dgsuikit:font-medium dgsuikit:text-gray-700 dgsuikit:bg-white dgsuikit:border dgsuikit:border-gray-300 dgsuikit:rounded-md dgsuikit:shadow-sm dgsuikit:hover:bg-gray-50 dgsuikit:focus:outline-none dgsuikit:focus:ring-2 dgsuikit:focus:ring-blue-500 dgsuikit:focus:ring-offset-2 dgsuikit:transition-colors dgsuikit:duration-200"
+        className="dgsuikit:inline-flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:gap-2 dgsuikit:px-4 dgsuikit:py-2 dgsuikit:text-sm dgsuikit:font-medium dgsuikit:text-gray-700 dgsuikit:bg-white dgsuikit:border dgsuikit:border-gray-300 dgsuikit:rounded-md dgsuikit:shadow-sm dgsuikit:hover:bg-gray-50"
       >
-        Options
-        <IconArrowDownMd className="dgsuikit:w-4 dgsuikit:h-4" />
+        گزینه‌ها
+        <IconArrowDownMd className="dgsuikit:w-6 dgsuikit:h-6" />
       </button>
     ),
     children: (
       <>
-        <Menu.Title>User Permissions</Menu.Title>
+        <Menu.Title>مجوزهای کاربری</Menu.Title>
         <Menu.Item
-          icon={<IconUser className="dgsuikit:w-4 dgsuikit:h-4" />}
+          icon={<IconUser className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}
         >
-          View Profile
+          مشاهده پروفایل
         </Menu.Item>
         <Menu.Item
-          icon={<IconEditProfile className="dgsuikit:w-4 dgsuikit:h-4" />}
+          icon={<IconEditProfile className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}
           disabled
         >
-          Edit Profile
+          ویرایش پروفایل
         </Menu.Item>
         <Menu.Item
-          icon={<IconSetting className="dgsuikit:w-4 dgsuikit:h-4" />}
+          icon={<IconSetting className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}
           disabled
         >
-          Admin Settings
+          تنظیمات ادمین
         </Menu.Item>
         <Menu.Item
-          icon={<IconLogout className="dgsuikit:w-4 dgsuikit:h-4" />}
+          icon={<IconLogout className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}
+          className="dgsuikit:text-red-500 dgsuikit:bg-red-50 dgsuikit:hover:bg-red-100 dgsuikit:hover:text-red-500"
         >
-          Logout
+          خروج
         </Menu.Item>
       </>
     ),
   },
 };
 
-// Menu with End Elements Story
 export const WithEndElements: Story = {
   args: {
     trigger: (toggle) => (
       <button
         onClick={toggle}
-        className="dgsuikit:inline-flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:gap-2 dgsuikit:px-4 dgsuikit:py-2 dgsuikit:text-sm dgsuikit:font-medium dgsuikit:text-gray-700 dgsuikit:bg-white dgsuikit:border dgsuikit:border-gray-300 dgsuikit:rounded-md dgsuikit:shadow-sm dgsuikit:hover:bg-gray-50 dgsuikit:focus:outline-none dgsuikit:focus:ring-2 dgsuikit:focus:ring-blue-500 dgsuikit:focus:ring-offset-2 dgsuikit:transition-colors dgsuikit:duration-200"
+        className="dgsuikit:inline-flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:gap-2 dgsuikit:px-4 dgsuikit:py-2 dgsuikit:text-sm dgsuikit:font-medium dgsuikit:text-gray-700 dgsuikit:bg-white dgsuikit:border dgsuikit:border-gray-300 dgsuikit:rounded-md dgsuikit:shadow-sm dgsuikit:hover:bg-gray-50"
       >
-        Notifications
-        <IconArrowDownMd className="dgsuikit:w-4 dgsuikit:h-4" />
+        اعلانات
+        <IconArrowDownMd className="dgsuikit:w-6 dgsuikit:h-6" />
       </button>
     ),
     children: (
       <>
-        <Menu.Title>Notification Settings</Menu.Title>
+        <Menu.Title>تنظیمات اعلان‌ها</Menu.Title>
         <Menu.Item
-          icon={<IconSetting className="dgsuikit:w-4 dgsuikit:h-4" />}
+          icon={<IconSetting className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}
           endElement={<span className="dgsuikit:text-xs dgsuikit:text-gray-400">ON</span>}
         >
-          Email Notifications
+          اعلان‌های ایمیلی
         </Menu.Item>
         <Menu.Item
-          icon={<IconSetting className="dgsuikit:w-4 dgsuikit:h-4" />}
+          icon={<IconSetting className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}
           endElement={<span className="dgsuikit:text-xs dgsuikit:text-gray-400">OFF</span>}
         >
-          Push Notifications
+          اعلان‌های پوش
         </Menu.Item>
         <Menu.Item
-          icon={<IconSetting className="dgsuikit:w-4 dgsuikit:h-4" />}
+          icon={<IconSetting className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}
           endElement={
             <span className="dgsuikit:text-xs dgsuikit:bg-blue-100 dgsuikit:text-blue-600 dgsuikit:px-2 dgsuikit:py-1 dgsuikit:rounded">
@@ -227,7 +238,7 @@ export const WithEndElements: Story = {
             </span>
           }
         >
-          SMS Notifications
+          اعلان‌های پیامکی
         </Menu.Item>
       </>
     ),
@@ -242,171 +253,91 @@ export const CustomStyling: Story = {
     trigger: (toggle) => (
       <button
         onClick={toggle}
-        className="dgsuikit:w-full dgsuikit:inline-flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:gap-2 dgsuikit:px-4 dgsuikit:py-3 dgsuikit:text-sm dgsuikit:font-medium dgsuikit:text-white dgsuikit:bg-blue-600 dgsuikit:border dgsuikit:border-blue-600 dgsuikit:rounded-lg dgsuikit:shadow-sm dgsuikit:hover:bg-blue-700 dgsuikit:focus:outline-none dgsuikit:focus:ring-2 dgsuikit:focus:ring-blue-500 dgsuikit:focus:ring-offset-2 dgsuikit:transition-colors dgsuikit:duration-200"
+        className="dgsuikit:inline-flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:gap-2 dgsuikit:px-4 dgsuikit:py-2 dgsuikit:text-sm dgsuikit:font-medium dgsuikit:text-gray-700 dgsuikit:bg-white dgsuikit:border dgsuikit:border-gray-300 dgsuikit:rounded-md dgsuikit:shadow-sm dgsuikit:hover:bg-gray-50"
       >
-        Custom Styled Menu
-        <IconArrowDownMd className="dgsuikit:w-4 dgsuikit:h-4" />
+        منوی با استایل سفارشی
+        <IconArrowDownMd className="dgsuikit:w-6 dgsuikit:h-6" />
       </button>
     ),
     children: (
       <>
-        <Menu.Title className="dgsuikit:text-blue-600 dgsuikit:font-semibold">
-          Custom Theme
-        </Menu.Title>
+        <Menu.Title className="dgsuikit:text-blue-600 dgsuikit:font-semibold">تم سفارشی</Menu.Title>
         <Menu.Item
-          icon={<IconUser className="dgsuikit:w-4 dgsuikit:h-4 dgsuikit:text-blue-500" />}
+          icon={<IconUser className="dgsuikit:w-6 dgsuikit:h-6 dgsuikit:text-blue-500" />}
           onClick={() => {}}
           className="dgsuikit:hover:bg-blue-50 dgsuikit:hover:text-blue-700"
         >
-          Profile
+          پروفایل
         </Menu.Item>
         <Menu.Item
-          icon={<IconSetting className="dgsuikit:w-4 dgsuikit:h-4 dgsuikit:text-blue-500" />}
+          icon={<IconSetting className="dgsuikit:w-6 dgsuikit:h-6 dgsuikit:text-blue-500" />}
           onClick={() => {}}
           className="dgsuikit:hover:bg-blue-50 dgsuikit:hover:text-blue-700"
         >
-          Settings
+          تنظیمات
         </Menu.Item>
         <Menu.Item
-          icon={<IconLogout className="dgsuikit:w-4 dgsuikit:h-4 dgsuikit:text-red-500" />}
+          icon={<IconLogout className="dgsuikit:w-6 dgsuikit:h-6 dgsuikit:text-red-500" />}
           onClick={() => {}}
           className="dgsuikit:hover:bg-red-50 dgsuikit:hover:text-red-700"
         >
-          Logout
+          خروج
         </Menu.Item>
       </>
     ),
   },
 };
 
-// Menu with Long Content Story
 export const LongContent: Story = {
   args: {
     trigger: (toggle) => (
       <button
         onClick={toggle}
-        className="dgsuikit:inline-flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:gap-2 dgsuikit:px-4 dgsuikit:py-2 dgsuikit:text-sm dgsuikit:font-medium dgsuikit:text-gray-700 dgsuikit:bg-white dgsuikit:border dgsuikit:border-gray-300 dgsuikit:rounded-md dgsuikit:shadow-sm dgsuikit:hover:bg-gray-50 dgsuikit:focus:outline-none dgsuikit:focus:ring-2 dgsuikit:focus:ring-blue-500 dgsuikit:focus:ring-offset-2 dgsuikit:transition-colors dgsuikit:duration-200"
+        className="dgsuikit:inline-flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:gap-2 dgsuikit:px-4 dgsuikit:py-2 dgsuikit:text-sm dgsuikit:font-medium dgsuikit:text-gray-700 dgsuikit:bg-white dgsuikit:border dgsuikit:border-gray-300 dgsuikit:rounded-md dgsuikit:shadow-sm dgsuikit:hover:bg-gray-50"
       >
-        Long Menu
-        <IconArrowDownMd className="dgsuikit:w-4 dgsuikit:h-4" />
+        منوی طولانی
+        <IconArrowDownMd className="dgsuikit:w-6 dgsuikit:h-6" />
       </button>
     ),
+    popoverClassName: 'dgsuikit:w-98',
     children: (
       <>
-        <Menu.Title>Extended Options</Menu.Title>
+        <Menu.Title>گزینه‌های گسترش‌یافته</Menu.Title>
         <Menu.Item
-          icon={<IconUser className="dgsuikit:w-4 dgsuikit:h-4" />}
+          icon={<IconUser className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}
         >
-          User Management and Administration
+          مدیریت کاربران و اداری
         </Menu.Item>
         <Menu.Item
-          icon={<IconSetting className="dgsuikit:w-4 dgsuikit:h-4" />}
+          icon={<IconSetting className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}
         >
-          System Settings and Configuration
+          تنظیمات سیستم و پیکربندی
         </Menu.Item>
         <Menu.Item
-          icon={<IconEditProfile className="dgsuikit:w-4 dgsuikit:h-4" />}
+          icon={<IconEditProfile className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}
         >
-          Content Editing and Publishing Tools
+          ابزارهای ویرایش و انتشار محتوا
         </Menu.Item>
         <Menu.Item
-          icon={<IconDownload className="dgsuikit:w-4 dgsuikit:h-4" />}
+          icon={<IconDownload className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}
         >
-          Data Export and Backup Management
+          مدیریت صادرات داده و پشتیبان‌گیری
         </Menu.Item>
         <Menu.Item
-          icon={<IconShare className="dgsuikit:w-4 dgsuikit:h-4" />}
+          icon={<IconShare className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}
         >
-          Sharing Options and Collaboration Features
+          گزینه‌های اشتراک‌گذاری و ویژگی‌های همکاری
         </Menu.Item>
         <Menu.Item
-          icon={<IconLogout className="dgsuikit:w-4 dgsuikit:h-4" />}
+          icon={<IconLogout className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}
         >
-          Cleanup and Maintenance Operations
-        </Menu.Item>
-      </>
-    ),
-  },
-};
-
-// Menu with Top Position Story
-export const TopPosition: Story = {
-  args: {
-    position: 'top-left',
-    trigger: (toggle) => (
-      <button
-        onClick={toggle}
-        className="dgsuikit:inline-flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:gap-2 dgsuikit:px-4 dgsuikit:py-2 dgsuikit:text-sm dgsuikit:font-medium dgsuikit:text-gray-700 dgsuikit:bg-white dgsuikit:border dgsuikit:border-gray-300 dgsuikit:rounded-md dgsuikit:shadow-sm dgsuikit:hover:bg-gray-50 dgsuikit:focus:outline-none dgsuikit:focus:ring-2 dgsuikit:focus:ring-blue-500 dgsuikit:focus:ring-offset-2 dgsuikit:transition-colors dgsuikit:duration-200"
-      >
-        Top Position Menu
-        <IconArrowDownMd className="dgsuikit:w-4 dgsuikit:h-4" />
-      </button>
-    ),
-    children: (
-      <>
-        <Menu.Title>Top Position Example</Menu.Title>
-        <Menu.Item
-          icon={<IconUser className="dgsuikit:w-4 dgsuikit:h-4" />}
-          onClick={() => {}}
-        >
-          Profile
-        </Menu.Item>
-        <Menu.Item
-          icon={<IconSetting className="dgsuikit:w-4 dgsuikit:h-4" />}
-          onClick={() => {}}
-        >
-          Settings
-        </Menu.Item>
-        <Menu.Item
-          icon={<IconLogout className="dgsuikit:w-4 dgsuikit:h-4" />}
-          onClick={() => {}}
-        >
-          Logout
-        </Menu.Item>
-      </>
-    ),
-  },
-};
-
-// Menu with Center Position Story
-export const CenterPosition: Story = {
-  args: {
-    position: 'bottom-center',
-    trigger: (toggle) => (
-      <button
-        onClick={toggle}
-        className="dgsuikit:inline-flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:gap-2 dgsuikit:px-4 dgsuikit:py-2 dgsuikit:text-sm dgsuikit:font-medium dgsuikit:text-gray-700 dgsuikit:bg-white dgsuikit:border dgsuikit:border-gray-300 dgsuikit:rounded-md dgsuikit:shadow-sm dgsuikit:hover:bg-gray-50 dgsuikit:focus:outline-none dgsuikit:focus:ring-2 dgsuikit:focus:ring-blue-500 dgsuikit:focus:ring-offset-2 dgsuikit:transition-colors dgsuikit:duration-200"
-      >
-        Center Position Menu
-        <IconArrowDownMd className="dgsuikit:w-4 dgsuikit:h-4" />
-      </button>
-    ),
-    children: (
-      <>
-        <Menu.Title>Center Position Example</Menu.Title>
-        <Menu.Item
-          icon={<IconUser className="dgsuikit:w-4 dgsuikit:h-4" />}
-          onClick={() => {}}
-        >
-          Profile
-        </Menu.Item>
-        <Menu.Item
-          icon={<IconSetting className="dgsuikit:w-4 dgsuikit:h-4" />}
-          onClick={() => {}}
-        >
-          Settings
-        </Menu.Item>
-        <Menu.Item
-          icon={<IconLogout className="dgsuikit:w-4 dgsuikit:h-4" />}
-          onClick={() => {}}
-        >
-          Logout
+          عملیات پاکسازی و نگهداری
         </Menu.Item>
       </>
     ),

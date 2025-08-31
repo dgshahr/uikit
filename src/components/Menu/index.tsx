@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { useState, useEffect, type FC } from 'react';
+import React, { useState, type FC } from 'react';
 
 import { useFlipPosition, type PopperPosition } from '@/src/hooks/useFlipPosition';
 import { useOutsideClick } from '@/src/hooks/useOutsideClick';
@@ -31,7 +31,6 @@ const MenuComponent: React.FC<MenuProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [currentPosition, setCurrentPosition] = useState<PopperPosition>(position);
 
-  // Use the positioning hook
   const { anchorRef, popperRef } = useFlipPosition<HTMLDivElement, HTMLDivElement>({
     initialPosition: position,
     minVisible,
@@ -51,31 +50,7 @@ const MenuComponent: React.FC<MenuProps> = ({
   const toggle = () => setIsOpen(!isOpen);
   const close = () => setIsOpen(false);
 
-  // Close menu on escape key
-  useEffect(() => {
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && isOpen) {
-        close();
-        anchorRef.current?.focus();
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
-    }
-
-    return () => {
-      document.removeEventListener('keydown', handleEscape);
-    };
-  }, [isOpen]);
-
-  const value: MenuContextType = {
-    isOpen,
-    toggle,
-    close,
-    buttonRef: anchorRef,
-    menuRef: popperRef,
-  };
+  const value: MenuContextType = { close };
 
   return (
     <MenuContext.Provider value={value}>
@@ -104,7 +79,9 @@ const MenuComponent: React.FC<MenuProps> = ({
 
 const MenuTitle: React.FC<MenuTitleProps> = ({ children, className = '' }) => {
   return (
-    <div className={clsx('dgsuikit:py-4 dgsuikit:text-sm dgsuikit:font-normal', className)}>
+    <div
+      className={clsx('dgsuikit:py-4 dgsuikit:font-p2-regular dgsuikit:text-gray-400', className)}
+    >
       {children}
     </div>
   );
@@ -140,7 +117,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
       disabled={disabled}
     >
       {icon && (
-        <span className="dgsuikit:ml-3 dgsuikit:flex-shrink-0 dgsuikit:w-6 dgsuikit:h-6">
+        <span className="dgsuikit:ml-3 dgsuikit:flex dgsuikit:justify-center dgsuikit:items-center dgsuikit:flex-shrink-0 dgsuikit:w-6 dgsuikit:h-6">
           {icon}
         </span>
       )}

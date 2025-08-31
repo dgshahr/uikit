@@ -1,11 +1,7 @@
 import type { PopperPosition } from '@/src/hooks/useFlipPosition';
 
 export interface MenuContextType {
-  isOpen: boolean;
-  toggle: () => void;
   close: () => void;
-  buttonRef: React.RefObject<HTMLDivElement | null>;
-  menuRef: React.RefObject<HTMLDivElement | null>;
 }
 
 export interface MenuProps {
@@ -28,6 +24,6 @@ export interface MenuItemProps {
   onClick?: () => void;
   className?: string;
   disabled?: boolean;
-  icon?: React.ReactNode;
-  endElement?: React.ReactNode;
+  icon?: React.ReactElement;
+  endElement?: React.ReactElement;
 }
