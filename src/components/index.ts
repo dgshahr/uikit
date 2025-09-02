@@ -22,6 +22,7 @@ export { default as ProgressBar } from './Progress/Bar';
 export { default as ProgressDoughnut } from './Progress/Doughnut';
 export { default as Rate } from './Rate';
 export { default as Sidebar } from './Sidebar';
+export { default as Menu } from './Menu';
 export { Slider, Slide } from './Slider';
 export { HorizontalStepper, HorizontalStep } from './Stepper/Horizontal';
 export { default as Table } from './Table';

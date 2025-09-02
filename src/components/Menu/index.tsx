@@ -1,36 +1,31 @@
 import clsx from 'clsx';
-import React, { useState, type FC } from 'react';
+import { useState, type FC } from 'react';
 
 import { useFlipPosition, type PopperPosition } from '@/src/hooks/useFlipPosition';
 import { useOutsideClick } from '@/src/hooks/useOutsideClick';
 
-import { POSITION_CLASS_NAMES } from './constants';
+import { DURATION_CLASS, POSITION_CLASS_NAMES, REMOVE_CONTAINER_TIMEOUT } from './constants';
 import { MenuContext } from './context';
 import MenuItem from './MenuItem';
-import MenuTitle from './MenuTitle';
-import type { MenuContextType, MenuProps } from './type';
+import type { MenuContextType, MenuProps } from './types';
 
-const DURATION_CLASS = 'dgsuikit:duration-300';
-const REMOVE_CONTAINER_TIMEOUT = 400;
-
-const MenuComponent: React.FC<MenuProps> = ({
-  trigger,
-  children,
-  className = '',
-  popoverClassName = '',
-  position = 'bottom-left',
-  minVisible = 180,
-  padding = 8,
-}) => {
+const MenuComponent: FC<MenuProps> = (props) => {
+  const {
+    trigger,
+    children,
+    className = '',
+    popoverClassName = '',
+    position = 'bottom-left',
+  } = props;
   const [isShowMenu, setIsShowMenu] = useState(false);
   const [isMenuInDom, setIsMenuInDom] = useState(false);
   const [currentPosition, setCurrentPosition] = useState<PopperPosition>(position);
   let transitionTimeout: ReturnType<typeof setTimeout>;
 
-  const { anchorRef, popperRef } = useFlipPosition<HTMLDivElement, HTMLDivElement>({
+  const { anchorRef, popperRef } = useFlipPosition<HTMLElement, HTMLDivElement>({
     initialPosition: position,
-    minVisible,
-    padding,
+    minVisible: 180,
+    padding: 8,
     onPositionChange(newPosition) {
       setCurrentPosition(newPosition);
     },
@@ -70,10 +65,9 @@ const MenuComponent: React.FC<MenuProps> = ({
     <MenuContext.Provider value={value}>
       <div
         ref={containerRef}
-        dir="rtl"
         className={clsx('dgsuikit:relative dgsuikit:inline-block dgsuikit:text-right', className)}
       >
-        <div ref={anchorRef}>{trigger(toggleMenuVisibility)}</div>
+        {trigger(toggleMenuVisibility, anchorRef)}
         {isMenuInDom && (
           <div
             ref={popperRef}
@@ -97,12 +91,11 @@ const MenuComponent: React.FC<MenuProps> = ({
 };
 
 interface IMenuComponent extends FC<MenuProps> {
-  Title: typeof MenuTitle;
   Item: typeof MenuItem;
 }
 
 const Menu = MenuComponent as IMenuComponent;
-Menu.Title = MenuTitle;
 Menu.Item = MenuItem;
 
 export default Menu;
+export * from './types';

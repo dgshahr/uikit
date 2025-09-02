@@ -47,37 +47,41 @@ const meta: Meta<typeof Menu> = {
       ],
       description: 'Initial position of the menu (will auto-flip if needed)',
     },
-    minVisible: {
-      control: 'number',
-      description: 'Minimum visible pixels required before flipping position',
-    },
-    padding: {
-      control: 'number',
-      description: 'Padding from viewport edges before flipping position',
-    },
   },
 };
+
+const renderTrigger = (
+  label: string,
+  toggle: () => void,
+  ref: React.Ref<HTMLElement>,
+): React.ReactElement => (
+  <button
+    ref={ref as React.Ref<HTMLButtonElement>}
+    onClick={toggle}
+    className="dgsuikit:inline-flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:gap-2 dgsuikit:px-4 dgsuikit:py-2 dgsuikit:text-sm dgsuikit:font-medium dgsuikit:text-gray-700 dgsuikit:bg-white dgsuikit:border dgsuikit:border-gray-300 dgsuikit:rounded-md dgsuikit:shadow-sm dgsuikit:hover:bg-gray-50"
+  >
+    {label}
+    <IconArrowDownMd className="dgsuikit:w-6 dgsuikit:h-6" />
+  </button>
+);
+
+const renderTitle = (label: string): React.ReactElement => (
+  <p className="dgsuikit:py-4 dgsuikit:font-p2-regular dgsuikit:text-gray-400">{label}</p>
+);
 
 export default meta;
 type Story = StoryObj<typeof Menu>;
 
 export const Default: Story = {
   args: {
-    trigger: (toggle) => (
-      <button
-        onClick={toggle}
-        className="dgsuikit:inline-flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:gap-2 dgsuikit:px-4 dgsuikit:py-2 dgsuikit:text-sm dgsuikit:font-medium dgsuikit:text-gray-700 dgsuikit:bg-white dgsuikit:border dgsuikit:border-gray-300 dgsuikit:rounded-md dgsuikit:shadow-sm dgsuikit:hover:bg-gray-50"
-      >
-        گزینه‌های منو
-        <IconArrowDownMd className="dgsuikit:w-6 dgsuikit:h-6" />
-      </button>
-    ),
+    trigger: (toggle, ref) => renderTrigger('گزینه‌های منو', toggle, ref),
     children: (
       <>
-        <Menu.Title>تنظیمات حساب کاربری</Menu.Title>
+        {renderTitle('تنظیمات حساب کاربری')}
         <Menu.Item
-          icon={<IconUser className="dgsuikit:w-6 dgsuikit:h-6" />}
+          icon={<IconUser className="dgsuikit:w-4 dgsuikit:h-4" />}
           onClick={() => {}}
+          endElement={null}
         >
           پروفایل
         </Menu.Item>
@@ -101,18 +105,10 @@ export const Default: Story = {
 
 export const WithSections: Story = {
   args: {
-    trigger: (toggle) => (
-      <button
-        onClick={toggle}
-        className="dgsuikit:inline-flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:gap-2 dgsuikit:px-4 dgsuikit:py-2 dgsuikit:text-sm dgsuikit:font-medium dgsuikit:text-gray-700 dgsuikit:bg-white dgsuikit:border dgsuikit:border-gray-300 dgsuikit:rounded-md dgsuikit:shadow-sm dgsuikit:hover:bg-gray-50"
-      >
-        گزینه‌ها
-        <IconArrowDownMd className="dgsuikit:w-6 dgsuikit:h-6" />
-      </button>
-    ),
+    trigger: (toggle, ref) => renderTrigger('گزینه‌ها', toggle, ref),
     children: (
       <>
-        <Menu.Title>مجوزهای کاربری</Menu.Title>
+        {renderTitle('مجوزهای کاربری')}
         <Menu.Item
           icon={<IconUser className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}
@@ -129,7 +125,7 @@ export const WithSections: Story = {
           type="horizontal"
           className="dgsuikit:-mx-4 dgsuikit:!w-auto"
         />
-        <Menu.Title>مجوزهای کاربری</Menu.Title>
+        {renderTitle('مجوزهای کاربری')}
         <Menu.Item
           icon={<IconUser className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}
@@ -156,18 +152,10 @@ export const WithSections: Story = {
 
 export const WithDisabledItems: Story = {
   args: {
-    trigger: (toggle) => (
-      <button
-        onClick={toggle}
-        className="dgsuikit:inline-flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:gap-2 dgsuikit:px-4 dgsuikit:py-2 dgsuikit:text-sm dgsuikit:font-medium dgsuikit:text-gray-700 dgsuikit:bg-white dgsuikit:border dgsuikit:border-gray-300 dgsuikit:rounded-md dgsuikit:shadow-sm dgsuikit:hover:bg-gray-50"
-      >
-        گزینه‌ها
-        <IconArrowDownMd className="dgsuikit:w-6 dgsuikit:h-6" />
-      </button>
-    ),
+    trigger: (toggle, ref) => renderTrigger('گزینه‌های غیر فعال', toggle, ref),
     children: (
       <>
-        <Menu.Title>مجوزهای کاربری</Menu.Title>
+        {renderTitle('مجوزهای کاربری')}
         <Menu.Item
           icon={<IconUser className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}
@@ -202,18 +190,10 @@ export const WithDisabledItems: Story = {
 
 export const WithEndElements: Story = {
   args: {
-    trigger: (toggle) => (
-      <button
-        onClick={toggle}
-        className="dgsuikit:inline-flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:gap-2 dgsuikit:px-4 dgsuikit:py-2 dgsuikit:text-sm dgsuikit:font-medium dgsuikit:text-gray-700 dgsuikit:bg-white dgsuikit:border dgsuikit:border-gray-300 dgsuikit:rounded-md dgsuikit:shadow-sm dgsuikit:hover:bg-gray-50"
-      >
-        اعلانات
-        <IconArrowDownMd className="dgsuikit:w-6 dgsuikit:h-6" />
-      </button>
-    ),
+    trigger: (toggle, ref) => renderTrigger('اعلانات', toggle, ref),
     children: (
       <>
-        <Menu.Title>تنظیمات اعلان‌ها</Menu.Title>
+        {renderTitle('تنظیمات اعلان‌ها')}
         <Menu.Item
           icon={<IconSetting className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}
@@ -248,18 +228,10 @@ export const CustomStyling: Story = {
   args: {
     className: 'dgsuikit:w-full dgsuikit:max-w-sm',
     popoverClassName: 'dgsuikit:w-full',
-    trigger: (toggle) => (
-      <button
-        onClick={toggle}
-        className="dgsuikit:inline-flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:gap-2 dgsuikit:px-4 dgsuikit:py-2 dgsuikit:text-sm dgsuikit:font-medium dgsuikit:text-gray-700 dgsuikit:bg-white dgsuikit:border dgsuikit:border-gray-300 dgsuikit:rounded-md dgsuikit:shadow-sm dgsuikit:hover:bg-gray-50"
-      >
-        منوی با استایل سفارشی
-        <IconArrowDownMd className="dgsuikit:w-6 dgsuikit:h-6" />
-      </button>
-    ),
+    trigger: (toggle, ref) => renderTrigger('منوی با استایل سفارشی', toggle, ref),
     children: (
       <>
-        <Menu.Title className="dgsuikit:text-blue-600 dgsuikit:font-semibold">تم سفارشی</Menu.Title>
+        {renderTitle('تم سفارشی')}
         <Menu.Item
           icon={<IconUser className="dgsuikit:w-6 dgsuikit:h-6 dgsuikit:text-blue-500" />}
           onClick={() => {}}
@@ -288,19 +260,11 @@ export const CustomStyling: Story = {
 
 export const LongContent: Story = {
   args: {
-    trigger: (toggle) => (
-      <button
-        onClick={toggle}
-        className="dgsuikit:inline-flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:gap-2 dgsuikit:px-4 dgsuikit:py-2 dgsuikit:text-sm dgsuikit:font-medium dgsuikit:text-gray-700 dgsuikit:bg-white dgsuikit:border dgsuikit:border-gray-300 dgsuikit:rounded-md dgsuikit:shadow-sm dgsuikit:hover:bg-gray-50"
-      >
-        منوی طولانی
-        <IconArrowDownMd className="dgsuikit:w-6 dgsuikit:h-6" />
-      </button>
-    ),
+    trigger: (toggle, ref) => renderTrigger('منوی طولانی', toggle, ref),
     popoverClassName: 'dgsuikit:w-98',
     children: (
       <>
-        <Menu.Title>گزینه‌های گسترش‌یافته</Menu.Title>
+        {renderTitle('گزینه‌های گسترش‌یافته')}
         <Menu.Item
           icon={<IconUser className="dgsuikit:w-6 dgsuikit:h-6" />}
           onClick={() => {}}

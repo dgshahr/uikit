@@ -4,7 +4,7 @@ import React from 'react';
 import IconArrowLeft2 from '@/src/icons/IconArrowLeft2';
 
 import { useMenu } from './context';
-import type { MenuItemProps } from './type';
+import type { MenuItemProps } from './types';
 
 const MenuItem: React.FC<MenuItemProps> = ({
   children,
@@ -15,9 +15,8 @@ const MenuItem: React.FC<MenuItemProps> = ({
   endElement,
 }) => {
   const { close } = useMenu();
-
   const handleClick = () => {
-    if (!disabled && onClick) {
+    if (!disabled && onClick && typeof onClick === 'function') {
       onClick();
       close();
     }
@@ -45,10 +44,10 @@ const MenuItem: React.FC<MenuItemProps> = ({
         {children}
       </div>
 
-      {endElement ? (
-        <div className="dgsuikit:h-4 dgsuikit:shrink-0">{endElement}</div>
-      ) : (
+      {endElement === undefined ? (
         <IconArrowLeft2 className="dgsuikit:h-4 dgsuikit:w-4 dgsuikit:shrink-0" />
+      ) : (
+        endElement
       )}
     </button>
   );

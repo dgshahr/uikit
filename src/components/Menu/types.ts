@@ -5,13 +5,11 @@ export interface MenuContextType {
 }
 
 export interface MenuProps {
-  trigger: (toggle: () => void) => React.ReactNode;
+  trigger: (toggle: () => void, ref: React.Ref<HTMLElement>) => React.ReactNode;
   children: React.ReactNode;
   className?: string;
   popoverClassName?: string;
   position?: PopperPosition;
-  minVisible?: number;
-  padding?: number;
 }
 
 export interface MenuTitleProps {
@@ -24,6 +22,6 @@ export interface MenuItemProps {
   onClick?: () => void;
   className?: string;
   disabled?: boolean;
-  icon?: React.ReactElement;
-  endElement?: React.ReactElement;
+  icon?: React.ReactNode;
+  endElement?: React.ReactNode;
 }

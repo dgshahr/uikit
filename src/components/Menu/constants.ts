@@ -1,5 +1,8 @@
 import type { PopperPosition } from '@/src/hooks/useFlipPosition';
 
+export const DURATION_CLASS = 'dgsuikit:duration-300';
+export const REMOVE_CONTAINER_TIMEOUT = 400;
+
 export const POSITION_CLASS_NAMES: Record<PopperPosition, string> = {
   'bottom-right': 'dgsuikit:bottom-0 dgsuikit:translate-y-[calc(100%+8px)] dgsuikit:left-0',
   'bottom-center':

@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import type { MenuContextType } from './type';
+import type { MenuContextType } from './types';
 
 export const MenuContext = createContext<MenuContextType | null>(null);
 
