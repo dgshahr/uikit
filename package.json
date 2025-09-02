@@ -1,6 +1,6 @@
 {
   "name": "@dgshahr/ui-kit",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "description": "A modern, accessible, and customizable React component library",
   "author": "dgshahr",
   "contributes": [
@@ -153,6 +153,11 @@
       "types": "./dist/Form/Textarea/index.d.ts",
       "import": "./dist/Form/Textarea/index.mjs",
       "require": "./dist/Form/Textarea/index.cjs"
+    },
+    "./Menu": {
+      "types": "./dist/Menu/index.d.ts",
+      "import": "./dist/Menu/index.mjs",
+      "require": "./dist/Menu/index.cjs"
     },
     "./Pagination": {
       "types": "./dist/Pagination/index.d.ts",
