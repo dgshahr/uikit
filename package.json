@@ -91,51 +91,64 @@
       "import": "./dist/Drawer/index.mjs",
       "require": "./dist/Drawer/index.cjs"
     },
+    "./Form/": "./dist/Form/",
+    "./Form/Wrappers/*": null,
+    "./Form/Common/*": null,
+    "./Form/Checkbox/*": null,
     "./Form/Checkbox": {
       "types": "./dist/Form/Checkbox/index.d.ts",
       "import": "./dist/Form/Checkbox/index.mjs",
       "require": "./dist/Form/Checkbox/index.cjs"
     },
+    "./Form/Datepicker/*": null,
     "./Form/Datepicker": {
       "types": "./dist/Form/Datepicker/index.d.ts",
       "import": "./dist/Form/Datepicker/index.mjs",
       "require": "./dist/Form/Datepicker/index.cjs"
     },
+    "./Form/FileUploader/*": null,
     "./Form/FileUploader": {
       "types": "./dist/Form/FileUploader/index.d.ts",
       "import": "./dist/Form/FileUploader/index.mjs",
       "require": "./dist/Form/FileUploader/index.cjs"
     },
+    "./Form/Input/*": null,
     "./Form/Input": {
       "types": "./dist/Form/Input/index.d.ts",
       "import": "./dist/Form/Input/index.mjs",
       "require": "./dist/Form/Input/index.cjs"
     },
+    "./Form/OtpInput/*": null,
     "./Form/OtpInput": {
       "types": "./dist/Form/OtpInput/index.d.ts",
       "import": "./dist/Form/OtpInput/index.mjs",
       "require": "./dist/Form/OtpInput/index.cjs"
     },
+    "./Form/RadioButton/*": null,
     "./Form/RadioButton": {
       "types": "./dist/Form/RadioButton/index.d.ts",
       "import": "./dist/Form/RadioButton/index.mjs",
       "require": "./dist/Form/RadioButton/index.cjs"
     },
+    "./Form/RangeInput/*": null,
     "./Form/RangeInput": {
       "types": "./dist/Form/RangeInput/index.d.ts",
       "import": "./dist/Form/RangeInput/index.mjs",
       "require": "./dist/Form/RangeInput/index.cjs"
     },
+    "./Form/Select/*": null,
     "./Form/Select": {
       "types": "./dist/Form/Select/index.d.ts",
       "import": "./dist/Form/Select/index.mjs",
       "require": "./dist/Form/Select/index.cjs"
     },
+    "./Form/Switch/*": null,
     "./Form/Switch": {
       "types": "./dist/Form/Switch/index.d.ts",
       "import": "./dist/Form/Switch/index.mjs",
       "require": "./dist/Form/Switch/index.cjs"
     },
+    "./Form/Textarea/*": null,
     "./Form/Textarea": {
       "types": "./dist/Form/Textarea/index.d.ts",
       "import": "./dist/Form/Textarea/index.mjs",
@@ -151,11 +164,14 @@
       "import": "./dist/Pagination/index.mjs",
       "require": "./dist/Pagination/index.cjs"
     },
+    "./Progress/": "./dist/Progress/",
+    "./Progress/Bar/*": null,
     "./Progress/Bar": {
       "types": "./dist/Progress/Bar/index.d.ts",
       "import": "./dist/Progress/Bar/index.mjs",
       "require": "./dist/Progress/Bar/index.cjs"
     },
+    "./Progress/Doughnut/*": null,
     "./Progress/Doughnut": {
       "types": "./dist/Progress/Doughnut/index.d.ts",
       "import": "./dist/Progress/Doughnut/index.mjs",
@@ -176,6 +192,8 @@
       "import": "./dist/Slider/index.mjs",
       "require": "./dist/Slider/index.cjs"
     },
+    "./Stepper/": "./dist/Stepper/",
+    "./Stepper/Horizontal/*": null,
     "./Stepper/Horizontal": {
       "types": "./dist/Stepper/Horizontal/index.d.ts",
       "import": "./dist/Stepper/Horizontal/index.mjs",

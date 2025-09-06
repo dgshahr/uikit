@@ -2,9 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const packageJson = JSON.parse(
-  fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8'),
-);
+import packageJson from '../package.json' with { type: 'json' };
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const componentsDir = path.resolve(__dirname, '../src/components');
@@ -35,10 +33,10 @@ const privatePaths = {
 };
 let exploredDirectories = [];
 const exports = components.reduce((exports, component) => {
-  const directoryDivider = /\\/g;
+  const directoryDivider = new RegExp(path.sep, 'g');
   const isMainIndex = component === 'index.ts';
   const componentPath = `${distDir}${isMainIndex ? '' : `/${component.replace(directoryDivider, '/')}`}`;
-  const isComponentInDirectory = component.includes('\\');
+  const isComponentInDirectory = component.includes(path.sep);
 
   if (isComponentInDirectory) {
     const directoryName = component.slice(0, component.search(directoryDivider));
