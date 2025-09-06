@@ -15,7 +15,7 @@ const MenuComponent: FC<MenuProps> = (props) => {
     children,
     className = '',
     popoverClassName = '',
-    position = 'bottom-left',
+    position = 'bottom-right',
   } = props;
   const [isShowMenu, setIsShowMenu] = useState(false);
   const [isMenuInDom, setIsMenuInDom] = useState(false);
