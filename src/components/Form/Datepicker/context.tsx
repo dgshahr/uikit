@@ -1,4 +1,11 @@
-import { createContext, useContext, useState, type FC, type PropsWithChildren } from 'react';
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  type FC,
+  type PropsWithChildren,
+} from 'react';
 import {
   DateTypes,
   type ContextProviderProps,
@@ -29,6 +36,14 @@ export const DatePickerProvider: FC<PropsWithChildren<ContextProviderProps>> = (
   const { children, datepickerProps } = props;
   const [dateType, setDateType] = useState(DateTypes.Day);
   const [internalDate, setInternalDate] = useState(initiateInternalDate(datepickerProps.value));
+
+  const { onInternalDateChange } = datepickerProps;
+
+  useEffect(() => {
+    if (typeof onInternalDateChange === 'function') {
+      onInternalDateChange(internalDate);
+    }
+  }, [internalDate, onInternalDateChange]);
 
   return (
     <datepickerContext.Provider
