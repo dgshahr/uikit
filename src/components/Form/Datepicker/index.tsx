@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { format } from 'date-fns-jalali/format';
-import { type FC, useEffect } from 'react';
+import { type FC } from 'react';
 import Body from './Body';
-import { DatePickerProvider, useDatepickerContext } from './context';
+import { DatePickerProvider } from './context';
 import Footer from './Footer';
 import Header from './Header';
 import type { DatepickerProps } from './types';
@@ -20,28 +20,8 @@ function formatValue(value: DatepickerProps['value']) {
     : '';
 }
 
-const DatePickerInner: FC<{ onInternalDateChange?: (date: Date) => void; showFooter: boolean }> = ({
-  onInternalDateChange,
-  showFooter,
-}) => {
-  const { internalDate } = useDatepickerContext();
-
-  useEffect(() => {
-    if (onInternalDateChange) onInternalDateChange(internalDate);
-  }, [internalDate, onInternalDateChange]);
-
-  return (
-    <>
-      <Header />
-      <Body />
-      {showFooter && <Footer />}
-    </>
-  );
-};
-
 const DatePicker: FC<DatepickerProps> = (props) => {
   const { showSubmitButton = true, showTodayButton = true, value } = props;
-  const showFooter = showSubmitButton || showTodayButton;
 
   const wrapperProps: Omit<PickerWrapperProps, 'children'> = { ...props };
   if (props.mode !== 'calendar') {
@@ -50,19 +30,17 @@ const DatePicker: FC<DatepickerProps> = (props) => {
         ...wrapperProps.drawerProps,
         containerClassName: clsx('dgsuikit:!p-0', wrapperProps.drawerProps?.containerClassName),
       };
-    } else {
+    } else
       wrapperProps.popoverClassName = clsx(
         'dgsuikit:!p-0 dgsuikit:max-h-max',
         wrapperProps.popoverClassName,
       );
-    }
 
-    if (!wrapperProps.customInput) {
+    if (!wrapperProps.customInput)
       wrapperProps.inputProps = {
         ...wrapperProps.inputProps,
         value: wrapperProps.inputProps?.value ?? formatValue(value),
       };
-    }
   }
 
   const Wrapper = props.mode === 'calendar' ? 'div' : PickerWrapper;
@@ -74,10 +52,9 @@ const DatePicker: FC<DatepickerProps> = (props) => {
         : { className: props.wrapperClassName })}
     >
       <DatePickerProvider datepickerProps={props}>
-        <DatePickerInner
-          onInternalDateChange={props.onInternalDateChange}
-          showFooter={showFooter}
-        />
+        <Header />
+        <Body />
+        {(showSubmitButton || showTodayButton) && <Footer />}
       </DatePickerProvider>
     </Wrapper>
   );
