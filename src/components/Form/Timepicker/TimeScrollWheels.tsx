@@ -3,17 +3,15 @@ import ScrollWheel from './ScrollWheel';
 import type { TimeScrollWheelsProps } from './types';
 
 const TimeScrollWheels: FC<TimeScrollWheelsProps> = (props) => {
-  const {
-    timePickerProps,
-    activePart,
-    handleTimeChange,
-    handleRangeTimeChange,
-    hours,
-    minutes,
-    formatHour,
-    formatMinute,
-  } = props;
-  const { acceptRange, value } = timePickerProps;
+  const { timePickerProps, activePart, handleTimeChange, handleRangeTimeChange } = props;
+  const { minuteStep = 1, acceptRange, value } = timePickerProps;
+  const hours = Array.from({ length: 24 }, (_, i) => i);
+  const minutes = Array.from({ length: 60 }, (_, i) => i).filter(
+    (minute) => minute % minuteStep === 0,
+  );
+
+  const formatHour = (hour: number) => hour.toString().padStart(2, '0');
+  const formatMinute = (minute: number) => minute.toString().padStart(2, '0');
 
   const defaultMinute = acceptRange
     ? activePart === 'start'

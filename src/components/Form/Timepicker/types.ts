@@ -62,10 +62,6 @@ export interface TimeScrollWheelsProps {
   activePart: 'start' | 'end';
   handleTimeChange: (hour: number, minute: number) => void;
   handleRangeTimeChange: (part: 'start' | 'end', hour: number, minute: number) => void;
-  hours: number[];
-  minutes: number[];
-  formatHour: (hour: number) => string;
-  formatMinute: (minute: number) => string;
 }
 
 export interface TimeInputsProps {
