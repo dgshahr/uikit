@@ -1,21 +1,15 @@
 import type { PickerWrapperProps } from '../Wrappers/PickerWrapper/type';
 
-interface IRangeDate {
+export interface IRangeDate {
   start: Date | null;
   end: Date | null;
 }
-
-export type TimeItem = {
-  value: number;
-  label: string;
-  isDisabled: boolean;
-};
 
 type TimepickerPropsBase = PickerWrapperProps & {
   showSubmitButton?: boolean;
   showNowButton?: boolean;
   mode?: 'input' | 'time';
-  onInternalTimeChange?: (time: Date) => void;
+  acceptRange?: boolean;
   minuteStep?: number;
 };
 
@@ -61,4 +55,22 @@ export interface TimeInputProps {
   className?: string;
   isRange?: boolean;
   isStartTime?: boolean;
+}
+
+export interface TimeScrollWheelsProps {
+  timePickerProps: TimepickerProps;
+  activePart: 'start' | 'end';
+  handleTimeChange: (hour: number, minute: number) => void;
+  handleRangeTimeChange: (part: 'start' | 'end', hour: number, minute: number) => void;
+  hours: number[];
+  minutes: number[];
+  formatHour: (hour: number) => string;
+  formatMinute: (minute: number) => string;
+}
+
+export interface TimeInputsProps {
+  timePickerProps: TimepickerProps;
+  setActivePart: (part: 'start' | 'end') => void;
+  handleTimeChange: (hour: number, minute: number) => void;
+  handleRangeTimeChange: (part: 'start' | 'end', hour: number, minute: number) => void;
 }

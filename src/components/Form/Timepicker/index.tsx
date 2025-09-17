@@ -1,5 +1,3 @@
-'use client';
-
 import clsx from 'clsx';
 import { type FC } from 'react';
 import Body from './Body';

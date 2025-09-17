@@ -20,13 +20,14 @@ export interface ControlledTimeInputProps extends Omit<InputProps, 'onChange' | 
   onChange: (value: TimeValue) => void;
 }
 
-const ControlledTimeInput: FC<ControlledTimeInputProps> = ({
-  value = { hour: null, minute: null },
-  onChange,
-  disabled = false,
-  className = '',
-  ...rest
-}) => {
+const ControlledTimeInput: FC<ControlledTimeInputProps> = (props) => {
+  const {
+    value = { hour: null, minute: null },
+    onChange,
+    disabled = false,
+    className = '',
+    ...rest
+  } = props;
   const { inputRef, setCaretToEditable } = useCaret();
   const [mask, setMask] = useState<string[]>(() => formatToMask(value));
   const lastExternalRef = React.useRef<TimeValue>(value);
@@ -54,7 +55,6 @@ const ControlledTimeInput: FC<ControlledTimeInputProps> = ({
     if (!input) return;
     const selStart = input.selectionStart ?? 0;
 
-    // navigation
     if (['ArrowLeft', 'ArrowRight'].includes(e.key)) {
       e.preventDefault();
       setCaretToEditable(
@@ -66,7 +66,6 @@ const ControlledTimeInput: FC<ControlledTimeInputProps> = ({
       return;
     }
 
-    // backspace/delete
     if (['Backspace', 'Delete'].includes(e.key)) {
       e.preventDefault();
       const curIndex = editableIndices.includes(selStart)
@@ -84,7 +83,6 @@ const ControlledTimeInput: FC<ControlledTimeInputProps> = ({
       return;
     }
 
-    // digits only
     if (!/^[0-9]$/.test(e.key)) {
       e.preventDefault();
       return;
@@ -97,7 +95,6 @@ const ControlledTimeInput: FC<ControlledTimeInputProps> = ({
     const newMask = [...mask];
     newMask[writePos] = e.key;
 
-    // validations
     if (writePos === 0 && !/[0-2]/.test(e.key)) return;
     if (writePos === 1) {
       const h0 = newMask[0] === '-' ? '0' : newMask[0];

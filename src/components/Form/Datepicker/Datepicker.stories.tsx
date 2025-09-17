@@ -60,7 +60,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const DefaulutDatepickerExample = (props: DatepickerProps) => {
+const DefaultDatepickerExample = (props: DatepickerProps) => {
   const [value, setValue] = useState(new Date());
 
   return (
@@ -78,7 +78,7 @@ export const Default: Story = {
     value: new Date(),
     onChange: () => {},
   },
-  render: (args) => <DefaulutDatepickerExample {...args} />,
+  render: (args) => <DefaultDatepickerExample {...args} />,
 };
 
 export const DisableAndHoliday: Story = {

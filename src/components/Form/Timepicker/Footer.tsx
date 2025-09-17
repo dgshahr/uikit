@@ -7,7 +7,8 @@ interface Props {
   timePickerProps: TimepickerProps;
 }
 
-const Footer: FC<Props> = ({ timePickerProps }) => {
+const Footer: FC<Props> = (props) => {
+  const { timePickerProps } = props;
   const { toggleWrapperVisibility } = usePickerWrapperContext();
 
   const {
