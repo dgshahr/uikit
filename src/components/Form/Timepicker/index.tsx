@@ -1,10 +1,9 @@
-import clsx from 'clsx';
 import { type FC } from 'react';
 import Body from './Body';
 import Footer from './Footer';
 import type { TimepickerProps } from './types';
+import { usePickerWrapper } from '../../../hooks/usePickerWrapper';
 import PickerWrapper from '../Wrappers/PickerWrapper/PickerWrapper';
-import type { PickerWrapperProps } from '../Wrappers/PickerWrapper/type';
 
 function formatValue(value: TimepickerProps['value']) {
   if (!value) return '';
@@ -26,41 +25,24 @@ function formatValue(value: TimepickerProps['value']) {
 }
 
 const TimePicker: FC<TimepickerProps> = (props) => {
-  const { showSubmitButton = true, showNowButton = true, value } = props;
+  const { showSubmitButton = true, showNowButton = true } = props;
 
-  const wrapperProps: Omit<PickerWrapperProps, 'children'> = { ...props };
-  if (props.mode !== 'time') {
-    if (wrapperProps.dropdownType === 'drawer') {
-      wrapperProps.drawerProps = {
-        ...wrapperProps.drawerProps,
-        containerClassName: clsx('dgsuikit:!p-0', wrapperProps.drawerProps?.containerClassName),
-      };
-    } else {
-      wrapperProps.popoverClassName = clsx(
-        'dgsuikit:!p-0 dgsuikit:max-h-max',
-        wrapperProps.popoverClassName,
-      );
-    }
+  const { Wrapper, wrapperProps } = usePickerWrapper<TimepickerProps, TimepickerProps['value']>({
+    props,
+    mode: props.mode,
+    standaloneMode: 'time',
+    formatValue,
+  });
 
-    if (!wrapperProps.customInput) {
-      wrapperProps.inputProps = {
-        ...wrapperProps.inputProps,
-        value: wrapperProps.inputProps?.value ?? formatValue(value),
-      };
-    }
-  }
-
-  const Wrapper = props.mode === 'time' ? 'div' : PickerWrapper;
+  const WrapperComponent = Wrapper === 'div' ? 'div' : PickerWrapper;
 
   return (
-    <Wrapper
-      {...(props.mode !== 'time'
-        ? (wrapperProps as PickerWrapperProps)
-        : { className: props.wrapperClassName })}
+    <WrapperComponent
+      {...(Wrapper === 'div' ? wrapperProps : { ...wrapperProps, children: undefined })}
     >
       <Body timePickerProps={props} />
       {(showSubmitButton || showNowButton) && <Footer timePickerProps={props} />}
-    </Wrapper>
+    </WrapperComponent>
   );
 };
 

@@ -13,11 +13,16 @@ const TimeScrollWheels: FC<TimeScrollWheelsProps> = (props) => {
   const formatHour = (hour: number) => hour.toString().padStart(2, '0');
   const formatMinute = (minute: number) => minute.toString().padStart(2, '0');
 
-  const defaultMinute = acceptRange
-    ? activePart === 'start'
-      ? (value?.start?.getMinutes() ?? 0)
-      : (value?.end?.getMinutes() ?? 0)
-    : (value?.getMinutes() ?? 0);
+  const getDefaultTimePart = (part: 'getHours' | 'getMinutes') => {
+    if (acceptRange) {
+      const time = activePart === 'start' ? value?.start : value?.end;
+      return time ? time[part]() : 0;
+    }
+    return value ? value[part]() : 0;
+  };
+
+  const defaultHour = getDefaultTimePart('getHours');
+  const defaultMinute = getDefaultTimePart('getMinutes');
 
   const handleMinuteChange = (minute: number) => {
     if (acceptRange) {
@@ -30,12 +35,6 @@ const TimeScrollWheels: FC<TimeScrollWheelsProps> = (props) => {
       handleTimeChange(value?.getHours() ?? 0, minute);
     }
   };
-
-  const defaultHour = acceptRange
-    ? activePart === 'start'
-      ? (value?.start?.getHours() ?? 0)
-      : (value?.end?.getHours() ?? 0)
-    : (value?.getHours() ?? 0);
 
   const handleHourChange = (hour: number) => {
     if (acceptRange) {

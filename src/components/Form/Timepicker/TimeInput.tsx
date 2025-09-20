@@ -50,13 +50,13 @@ const ControlledTimeInput: FC<ControlledTimeInputProps> = (props) => {
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
+    e.preventDefault();
     if (disabled) return;
     const input = inputRef.current;
     if (!input) return;
     const selStart = input.selectionStart ?? 0;
 
     if (['ArrowLeft', 'ArrowRight'].includes(e.key)) {
-      e.preventDefault();
       setCaretToEditable(
         e.key === 'ArrowLeft'
           ? nextEditableIndex(selStart, false)
@@ -67,7 +67,6 @@ const ControlledTimeInput: FC<ControlledTimeInputProps> = (props) => {
     }
 
     if (['Backspace', 'Delete'].includes(e.key)) {
-      e.preventDefault();
       const curIndex = editableIndices.includes(selStart)
         ? selStart
         : nextEditableIndex(selStart, false);
@@ -84,11 +83,9 @@ const ControlledTimeInput: FC<ControlledTimeInputProps> = (props) => {
     }
 
     if (!/^[0-9]$/.test(e.key)) {
-      e.preventDefault();
       return;
     }
 
-    e.preventDefault();
     const writePos = editableIndices.includes(selStart)
       ? selStart
       : nextEditableIndex(selStart, true);

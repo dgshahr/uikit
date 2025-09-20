@@ -1,7 +1,6 @@
 import { type FC } from 'react';
 import type { TimepickerProps } from './types';
-import Button from '../../Button';
-import { usePickerWrapperContext } from '../Wrappers/PickerWrapper/contexts';
+import PickerFooter from '../Common/PickerFooter';
 
 interface Props {
   timePickerProps: TimepickerProps;
@@ -9,7 +8,6 @@ interface Props {
 
 const Footer: FC<Props> = (props) => {
   const { timePickerProps } = props;
-  const { toggleWrapperVisibility } = usePickerWrapperContext();
 
   const {
     showSubmitButton = true,
@@ -19,38 +17,26 @@ const Footer: FC<Props> = (props) => {
     acceptRange,
   } = timePickerProps;
 
+  const handleNowClick = () => {
+    if (acceptRange) {
+      const endDate = new Date();
+      endDate.setHours(endDate.getHours() + 1);
+      onChange({ start: new Date(), end: endDate });
+    } else {
+      onChange(new Date());
+    }
+  };
+
   return (
-    <div className="dgsuikit:flex dgsuikit:items-center dgsuikit:justify-between dgsuikit:p-4 dgsuikit:border-t dgsuikit:border-gray-200">
-      {showNowButton && (
-        <Button
-          type="button"
-          variant="text"
-          size="small"
-          isFullWidth={showSubmitButton}
-          onClick={() => {
-            const endDate = new Date();
-            endDate.setHours(endDate.getHours() + 1);
-            if (acceptRange) onChange({ start: new Date(), end: endDate });
-            else onChange(new Date());
-          }}
-        >
-          رفتن به اکنون
-        </Button>
-      )}
-      {showSubmitButton && (
-        <Button
-          type="button"
-          size="small"
-          isFullWidth={showNowButton}
-          onClick={() => {
-            if (typeof onSubmit === 'function') onSubmit();
-            toggleWrapperVisibility();
-          }}
-        >
-          اعمال
-        </Button>
-      )}
-    </div>
+    <PickerFooter
+      showSubmitButton={showSubmitButton}
+      showActionButton={showNowButton}
+      actionButtonText="رفتن به اکنون"
+      submitButtonText="اعمال"
+      onActionClick={handleNowClick}
+      onSubmit={onSubmit}
+      className="dgsuikit:p-4"
+    />
   );
 };
 

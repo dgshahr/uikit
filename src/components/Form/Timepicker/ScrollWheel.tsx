@@ -36,19 +36,16 @@ const ScrollWheel: FC<ScrollWheelProps> = (props) => {
       </div>
 
       <div
-        className="dgsuikit:absolute dgsuikit:bottom-0 dgsuikit:left-0 dgsuikit:right-0 dgsuikit:h-12 dgsuikit:pointer-events-none"
-        style={{
-          background:
-            'linear-gradient(180deg, rgba(255, 255, 255, 0.54) 0%, rgba(255, 255, 255, 0.90) 70.29%)',
-        }}
+        className={clsx(
+          'dgsuikit:absolute dgsuikit:bottom-0 dgsuikit:left-0 dgsuikit:right-0 dgsuikit:h-12 dgsuikit:pointer-events-none',
+          'dgsuikit:bg-gradient-to-b dgsuikit:from-[rgba(255,255,255,0.54)] dgsuikit:to-[rgba(255,255,255,0.90)] dgsuikit:to-[70.29%]',
+        )}
       />
-
       <div
-        className="dgsuikit:absolute dgsuikit:top-0 dgsuikit:left-0 dgsuikit:right-0 dgsuikit:h-12 dgsuikit:pointer-events-none"
-        style={{
-          background:
-            'linear-gradient(0deg, rgba(255, 255, 255, 0.54) 0%, rgba(255, 255, 255, 0.90) 70.29%)',
-        }}
+        className={clsx(
+          'dgsuikit:absolute dgsuikit:top-0 dgsuikit:left-0 dgsuikit:right-0 dgsuikit:h-12 dgsuikit:pointer-events-none',
+          'dgsuikit:bg-gradient-to-t dgsuikit:from-[rgba(255,255,255,0.54)] dgsuikit:to-[rgba(255,255,255,0.90)] dgsuikit:to-[70.29%]',
+        )}
       />
     </div>
   );

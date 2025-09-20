@@ -40,7 +40,7 @@ export const formatToMask = (value?: TimeValue): string[] => {
   if (!value) return ['-', '-', ':', '-', '-'];
   const hh = value.hour == null ? '--' : String(value.hour).padStart(2, '0');
   const mm = value.minute == null ? '--' : String(value.minute).padStart(2, '0');
-  return [hh.charAt(0) || '-', hh.charAt(1) || '-', ':', mm.charAt(0) || '-', mm.charAt(1) || '-'];
+  return [hh.charAt(0) ?? '-', hh.charAt(1) ?? '-', ':', mm.charAt(0) ?? '-', mm.charAt(1) ?? '-'];
 };
 
 export const maskToValue = (maskChars: string[]): TimeValue => {
@@ -55,10 +55,10 @@ export const maskToValue = (maskChars: string[]): TimeValue => {
 export const nextEditableIndex = (index: number, forward = true): number => {
   const cur = editableIndices.indexOf(index);
   if (cur === -1) {
-    return forward ? editableIndices[0]! : editableIndices[editableIndices.length - 1]!;
+    return forward ? (editableIndices[0] ?? 0) : (editableIndices[editableIndices.length - 1] ?? 0);
   }
   const next = forward ? cur + 1 : cur - 1;
   if (next < 0) return editableIndices[0] ?? 0;
-  if (next >= editableIndices.length) return editableIndices[editableIndices.length - 1]!;
-  return editableIndices[next]!;
+  if (next >= editableIndices.length) return editableIndices[editableIndices.length - 1] ?? 0;
+  return editableIndices[next] ?? 0;
 };

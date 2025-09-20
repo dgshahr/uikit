@@ -1,10 +1,10 @@
 import type { Meta } from '@storybook/react';
-import { useState } from 'react';
-import { TimepickerWithRange } from './types';
+import React, { useState } from 'react';
+import { TimepickerWithRange, TimepickerProps } from './types';
 import { fullWidthStory } from '../../../utils/storybook/helpers';
 import TimePicker from './index';
 
-const meta: Meta<typeof TimePicker> = {
+const meta = {
   title: 'Components/Form/TimePicker',
   component: TimePicker,
   parameters: {
@@ -17,98 +17,136 @@ const meta: Meta<typeof TimePicker> = {
   },
   beforeEach: () => fullWidthStory({ alignItems: '!flex-start', height: '400px' }),
   argTypes: {
+    value: {
+      table: {
+        type: {
+          summary: 'Date | null | {start: Date | null, end: Date | null}',
+          detail: "'start' and 'end' only available if acceptRange='true'",
+        },
+      },
+    },
+    onChange: {
+      table: {
+        type: {
+          summary: '(value: Date | IRangeDate) => void',
+        },
+      },
+    },
     mode: {
       control: { type: 'select' },
       options: ['input', 'time'],
+      table: {
+        type: { summary: 'input | time' },
+      },
     },
     dropdownType: {
       control: { type: 'select' },
       options: ['popover', 'drawer'],
+      table: {
+        type: { summary: 'popover | drawer' },
+      },
     },
     minuteStep: {
       control: { type: 'number', min: 1, max: 30 },
+      table: {
+        type: { summary: 'number' },
+      },
     },
     showSubmitButton: {
       control: { type: 'boolean' },
+      table: {
+        type: { summary: 'boolean' },
+      },
     },
     showNowButton: {
       control: { type: 'boolean' },
+      table: {
+        type: { summary: 'boolean' },
+      },
     },
     acceptRange: {
       control: { type: 'boolean' },
+      table: {
+        type: { summary: 'boolean' },
+      },
     },
   },
-};
+} satisfies Meta<typeof TimePicker>;
 
 export default meta;
 
-export const Single = {
-  render: () => {
-    const [value, setValue] = useState<Date | null>(new Date());
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Story = any;
 
-    return (
-      <div className="dgsuikit:w-80">
-        <TimePicker
-          value={value}
-          onChange={(val) => {
-            setValue(val);
-          }}
-        />
-      </div>
-    );
-  },
+const DefaultTimePickerExample = (props: TimepickerProps) => {
+  const [value, setValue] = useState<Date | null>(new Date());
+
+  return (
+    <div className="dgsuikit:w-80">
+      <TimePicker
+        {...props}
+        acceptRange={false}
+        value={value}
+        onChange={setValue}
+      />
+    </div>
+  );
 };
 
-export const Range = {
-  render: () => {
-    const endDate = new Date();
-    endDate.setHours(endDate.getHours() + 1);
-    const [value, setValue] = useState<TimepickerWithRange['value']>({
-      start: new Date(),
-      end: endDate,
-    });
-
-    return (
-      <div className="dgsuikit:w-80">
-        <TimePicker
-          value={value}
-          acceptRange
-          onChange={(val: TimepickerWithRange['value']) => {
-            setValue(val);
-          }}
-        />
-      </div>
-    );
+export const Default: Story = {
+  args: {
+    value: new Date(),
+    onChange: () => {},
   },
+  render: (args) => <DefaultTimePickerExample {...args} />,
 };
 
-export const CalendarMode = {
-  render: () => {
-    const [value, setValue] = useState<Date | null>(new Date());
-    return (
-      <div className="dgsuikit:w-80 dgsuikit:border dgsuikit:border-gray-300 dgsuikit:rounded-lg">
-        <TimePicker
-          mode="time"
-          value={value}
-          onChange={setValue}
-        />
-      </div>
-    );
-  },
+const RangeTimePickerExample = (props: TimepickerProps) => {
+  const [value, setValue] = useState<TimepickerWithRange['value']>({
+    start: new Date(),
+    end: (() => {
+      const endDate = new Date();
+      endDate.setHours(endDate.getHours() + 1);
+      return endDate;
+    })(),
+  });
+
+  return (
+    <div className="dgsuikit:w-80">
+      <TimePicker
+        {...props}
+        acceptRange={true}
+        value={value}
+        onChange={setValue}
+      />
+    </div>
+  );
 };
 
-export const DrawerMode = {
-  render: () => {
-    const [value, setValue] = useState<Date | null>(new Date());
-    return (
-      <div className="dgsuikit:w-80">
-        <TimePicker
-          acceptRange={false}
-          value={value}
-          onChange={setValue}
-          dropdownType="drawer"
-        />
-      </div>
-    );
+export const Range: Story = {
+  args: {
+    value: new Date(),
+    onChange: () => {},
+    acceptRange: true,
   },
+  render: (args) => <RangeTimePickerExample {...args} />,
+};
+
+export const CalendarMode: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    mode: 'time',
+    wrapperClassName: 'dgsuikit:w-[350px] dgsuikit:shadow-2xl dgsuikit:rounded-lg',
+  },
+  render: (args) => <DefaultTimePickerExample {...args} />,
+};
+
+export const DrawerMode: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    dropdownType: 'drawer',
+  },
+  render: (args) => <DefaultTimePickerExample {...args} />,
 };

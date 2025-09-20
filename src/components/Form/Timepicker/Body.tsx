@@ -40,10 +40,7 @@ const Body: FC<Props> = (props) => {
   };
 
   return (
-    <div
-      dir="rtl"
-      className="dgsuikit:p-4 dgsuikit:ss02"
-    >
+    <div className="dgsuikit:p-4 dgsuikit:ss02">
       <TimeInputs
         timePickerProps={timePickerProps}
         setActivePart={setActivePart}

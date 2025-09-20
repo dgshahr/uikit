@@ -101,6 +101,7 @@ export const Calendar: Story = {
   ...Default,
   args: {
     ...Default.args,
+    onInternalDateChange: () => {},
     mode: 'calendar',
     wrapperClassName: 'dgsuikit:w-[350px] dgsuikit:shadow-2xl dgsuikit:rounded-lg',
   },
