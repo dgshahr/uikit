@@ -4,7 +4,7 @@ import dts from 'vite-plugin-dts';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
 import preserveDirectives from 'rollup-preserve-directives';
 import { readdirSync, existsSync, statSync } from 'fs';
-import { resolve } from 'node:path';
+import { resolve, sep } from 'node:path';
 import tailwindcss from '@tailwindcss/vite';
 
 import { peerDependencies } from './package.json';
@@ -18,7 +18,7 @@ const findEntries = (dir: string) => {
     if (statSync(itemPath).isDirectory()) {
       const indexPath = resolve(itemPath, 'index.tsx');
       if (existsSync(indexPath)) {
-        const componentsName = itemPath.replace(`${componentDir}\\`, '');
+        const componentsName = itemPath.replace(`${componentDir}${sep}`, '');
         entries[componentsName] = indexPath;
       }
       Object.assign(entries, findEntries(itemPath));
