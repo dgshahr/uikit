@@ -1,7 +1,7 @@
 import type { SVGProps } from 'react';
 
 interface ProgressDoughnutPropsBase {
-  color?: 'primary' | 'secondary' | 'gray';
+  color?: 'primary' | 'secondary' | 'gray' | 'warning';
   current: number;
   total: number;
   size?: number;

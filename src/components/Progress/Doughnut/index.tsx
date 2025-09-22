@@ -18,6 +18,10 @@ const COLORS_CLASSES: Record<
     empty: 'dgsuikit:stroke-gray-400',
     filled: 'dgsuikit:stroke-gray-50',
   },
+  warning: {
+    empty: 'dgsuikit:stroke-warning-100',
+    filled: 'dgsuikit:stroke-warning-500',
+  },
 };
 
 const ProgressDoughnut: FC<ProgressDoughnutProps> = (props) => {
