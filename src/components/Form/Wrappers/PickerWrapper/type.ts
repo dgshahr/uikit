@@ -2,6 +2,16 @@ import type { ReactNode } from 'react';
 import type { DrawerProps } from '@/src/components/Drawer';
 import type { InputProps } from '../../Input';
 
+export type PopperPosition =
+  | 'top'
+  | 'bottom'
+  | 'top-left'
+  | 'top-center'
+  | 'top-right'
+  | 'bottom-left'
+  | 'bottom-center'
+  | 'bottom-right';
+
 interface PickerWrapperPropsBase {
   isLoading?: boolean;
   disabled?: boolean;
@@ -29,7 +39,7 @@ interface PickerWrapperWithPopoverContainer {
   dropdownType?: 'popover';
   popoverClassName?: string;
   drawerProps?: never;
-  popoverPosition?: 'top' | 'bottom';
+  popoverPosition?: PopperPosition;
 }
 
 export type PickerWrapperProps = PickerWrapperPropsBase &

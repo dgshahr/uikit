@@ -53,6 +53,20 @@ const meta = {
         },
       },
     },
+    popoverPosition: {
+      control: 'select',
+      options: [
+        'top',
+        'bottom',
+        'top-left',
+        'top-center',
+        'top-right',
+        'bottom-left',
+        'bottom-center',
+        'bottom-right',
+      ],
+      description: 'Initial position of the Datepicker',
+    },
   },
 } satisfies Meta<typeof Datepicker>;
 
@@ -60,7 +74,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const DefaulutDatepickerExample = (props: DatepickerProps) => {
+const DefaultDatepickerExample = (props: DatepickerProps) => {
   const [value, setValue] = useState(new Date());
 
   return (
@@ -77,8 +91,9 @@ export const Default: Story = {
   args: {
     value: new Date(),
     onChange: () => {},
+    popoverPosition: 'bottom',
   },
-  render: (args) => <DefaulutDatepickerExample {...args} />,
+  render: (args) => <DefaultDatepickerExample {...args} />,
 };
 
 export const DisableAndHoliday: Story = {

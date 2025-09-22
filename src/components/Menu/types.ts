@@ -1,4 +1,4 @@
-import type { PopperPosition } from '@/src/hooks/useFlipPosition';
+import type { PopperPosition } from '../Form/Wrappers/PickerWrapper/type';
 
 export interface MenuContextType {
   close: () => void;

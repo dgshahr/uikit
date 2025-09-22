@@ -133,6 +133,20 @@ const meta = {
         defaultValue: { summary: 'true' },
       },
     },
+    popoverPosition: {
+      control: 'select',
+      options: [
+        'top',
+        'bottom',
+        'top-left',
+        'top-center',
+        'top-right',
+        'bottom-left',
+        'bottom-center',
+        'bottom-right',
+      ],
+      description: 'Initial position of the Select',
+    },
   },
 } satisfies Meta<typeof Select>;
 

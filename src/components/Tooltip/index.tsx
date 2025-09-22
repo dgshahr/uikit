@@ -2,10 +2,11 @@
 import clsx from 'clsx';
 import { useMemo, useState, type FC, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
-import { useFlipPosition, type PopperPosition } from '@/src/hooks/useFlipPosition';
+import { useFlipPosition } from '@/src/hooks/useFlipPosition';
 import TooltipContent from './Content';
 
 import '@/src/styles.css';
+import type { PopperPosition } from '../Form/Wrappers/PickerWrapper/type';
 
 export interface TooltipProps {
   position?: PopperPosition;

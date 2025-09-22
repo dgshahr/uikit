@@ -1,13 +1,14 @@
 import clsx from 'clsx';
 import { useState, type FC } from 'react';
 
-import { useFlipPosition, type PopperPosition } from '@/src/hooks/useFlipPosition';
+import { useFlipPosition } from '@/src/hooks/useFlipPosition';
 import { useOutsideClick } from '@/src/hooks/useOutsideClick';
 
 import { DURATION_CLASS, POSITION_CLASS_NAMES, REMOVE_CONTAINER_TIMEOUT } from './constants';
 import { MenuContext } from './context';
 import MenuItem from './MenuItem';
 import type { MenuContextType, MenuProps } from './types';
+import type { PopperPosition } from '../Form/Wrappers/PickerWrapper/type';
 
 const MenuComponent: FC<MenuProps> = (props) => {
   const {

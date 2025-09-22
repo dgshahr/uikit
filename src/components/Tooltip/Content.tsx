@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { type FC, type RefObject } from 'react';
-import type { PopperPosition } from '@/src/hooks/useFlipPosition';
+import type { PopperPosition } from '../Form/Wrappers/PickerWrapper/type';
 import type { TooltipProps } from '.';
 
 interface TooltipContentProps
@@ -10,12 +10,15 @@ interface TooltipContentProps
 }
 
 const TAIL_POSITION_CLASS_NAME: Record<PopperPosition, string> = {
+  bottom:
+    'dgsuikit:right-4 dgsuikit:top-0 dgsuikit:-translate-y-1/2 dgsuikit:border-t dgsuikit:border-l dgsuikit:rounded-tl',
   'bottom-right':
     'dgsuikit:left-4 dgsuikit:top-0 dgsuikit:-translate-y-1/2 dgsuikit:border-t dgsuikit:border-l dgsuikit:rounded-tl',
   'bottom-center':
     'dgsuikit:left-1/2 dgsuikit:-translate-x-1/2 dgsuikit:top-0 dgsuikit:-translate-y-1/2 dgsuikit:border-t dgsuikit:border-l dgsuikit:rounded-tl',
   'bottom-left':
     'dgsuikit:right-4 dgsuikit:top-0 dgsuikit:-translate-y-1/2 dgsuikit:border-t dgsuikit:border-l dgsuikit:rounded-tl',
+  top: 'dgsuikit:right-4 dgsuikit:bottom-0 dgsuikit:translate-y-1/2 dgsuikit:border-b dgsuikit:border-r dgsuikit:rounded-br',
   'top-right':
     'dgsuikit:left-4 dgsuikit:bottom-0 dgsuikit:translate-y-1/2 dgsuikit:border-b dgsuikit:border-r dgsuikit:rounded-br',
   'top-center':
@@ -25,10 +28,12 @@ const TAIL_POSITION_CLASS_NAME: Record<PopperPosition, string> = {
 };
 
 const POSITION_CLASS_NAMES: Record<PopperPosition, string> = {
+  bottom: 'dgsuikit:bottom-0 dgsuikit:translate-y-[calc(100%+8px)] dgsuikit:right-0',
   'bottom-right': 'dgsuikit:bottom-0 dgsuikit:translate-y-[calc(100%+8px)] dgsuikit:left-0',
   'bottom-center':
     'dgsuikit:bottom-0 dgsuikit:translate-y-[calc(100%+8px)] dgsuikit:left-1/2 dgsuikit:-translate-x-1/2',
   'bottom-left': 'dgsuikit:bottom-0 dgsuikit:translate-y-[calc(100%+8px)] dgsuikit:right-0',
+  top: 'dgsuikit:top-0 dgsuikit:-translate-y-[calc(100%+8px)] dgsuikit:right-0',
   'top-right': 'dgsuikit:top-0 dgsuikit:-translate-y-[calc(100%+8px)] dgsuikit:left-0',
   'top-center':
     'dgsuikit:top-0 dgsuikit:-translate-y-[calc(100%+8px)] dgsuikit:left-1/2 dgsuikit:-translate-x-1/2',

@@ -3,11 +3,11 @@
 import clsx from 'clsx';
 import { useState, type FC, type PropsWithChildren } from 'react';
 import Drawer from '@/src/components/Drawer';
-import { useFlipPosition, type PopperPosition } from '@/src/hooks/useFlipPosition';
+import { useFlipPosition } from '@/src/hooks/useFlipPosition';
 import { useOutsideClick } from '@/src/hooks/useOutsideClick';
 import IconArrowDown2 from '@/src/icons/IconArrowDown2';
 import { pickerWrapperContext } from './contexts';
-import type { PickerWrapperProps } from './type';
+import type { PickerWrapperProps, PopperPosition } from './type';
 import Input from '../../Input';
 
 import '@/src/styles.css';
@@ -29,7 +29,7 @@ const PickerWrapper: FC<PropsWithChildren<PickerWrapperProps>> = (props) => {
     popoverClassName,
     popoverPosition,
   } = props;
-  const popoverInitialPosition = popoverPosition === 'top' ? 'top-left' : 'bottom-left';
+  const popoverInitialPosition = popoverPosition ?? 'bottom-left';
   const [isShowWrapper, setIsShowWrapper] = useState(false);
   const [isWrapperInDom, setIsWrapperInDom] = useState(false);
   const [position, setPosition] = useState<PopperPosition>(popoverInitialPosition);
@@ -126,7 +126,7 @@ const PickerWrapper: FC<PropsWithChildren<PickerWrapperProps>> = (props) => {
               <div
                 ref={popperRef}
                 className={clsx(
-                  'dgsuikit:absolute dgsuikit:min-w-[300px] dgsuikit:right-0 dgsuikit:overflow-y-auto dgsuikit:overflow-x-hidden dgsuikit:shadow-lg dgsuikit:w-full dgsuikit:max-h-[360px] dgsuikit:transition-all dgsuikit:bg-white dgsuikit:z-50 dgsuikit:rounded-lg dgsuikit:border dgsuikit:border-solid dgsuikit:border-gray-200 dgsuikit:pb-3',
+                  'dgsuikit:absolute dgsuikit:min-w-[300px] dgsuikit:overflow-y-auto dgsuikit:overflow-x-hidden dgsuikit:shadow-lg dgsuikit:w-full dgsuikit:max-h-[360px] dgsuikit:transition-all dgsuikit:bg-white dgsuikit:z-50 dgsuikit:rounded-lg dgsuikit:border dgsuikit:border-solid dgsuikit:border-gray-200 dgsuikit:pb-3',
                   DURATION_CLASS,
                   isShowWrapper
                     ? 'dgsuikit:opacity-100'
@@ -136,6 +136,11 @@ const PickerWrapper: FC<PropsWithChildren<PickerWrapperProps>> = (props) => {
                       position.includes('bottom'),
                     'dgsuikit:top-0 dgsuikit:translate-y-[calc(-100%-8px)]':
                       position.includes('top'),
+                  },
+                  {
+                    'dgsuikit:right-0': position.endsWith('left'),
+                    'dgsuikit:left-0': position.endsWith('right'),
+                    'dgsuikit:left-1/2 dgsuikit:-translate-x-1/2': position.endsWith('center'),
                   },
                   popoverClassName,
                 )}

@@ -1,13 +1,6 @@
 import debounce from 'lodash.debounce';
 import { useRef, useEffect, useState, useCallback, useMemo } from 'react';
-
-export type PopperPosition =
-  | 'top-left'
-  | 'top-center'
-  | 'top-right'
-  | 'bottom-left'
-  | 'bottom-center'
-  | 'bottom-right';
+import type { PopperPosition } from '../components/Form/Wrappers/PickerWrapper/type';
 
 interface UseFlipPositionOptions {
   initialPosition: PopperPosition;
