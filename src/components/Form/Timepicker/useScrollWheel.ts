@@ -1,5 +1,5 @@
+import debounce from 'lodash.debounce';
 import { useEffect, useRef, useCallback } from 'react';
-import { useDebounce } from '@/src/hooks/useDebounce';
 import { getItemHeight, scrollToValue } from './utils';
 
 export function useScrollWheel(
@@ -21,7 +21,7 @@ export function useScrollWheel(
     [items, getHeight],
   );
 
-  const debouncedOnValueChange = useDebounce((value: number) => {
+  const debouncedOnValueChange = debounce((value: number) => {
     if (value !== lastValueRef.current) {
       lastValueRef.current = value;
       onValueChange(value);

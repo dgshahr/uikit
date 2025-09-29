@@ -3,7 +3,6 @@ import Body from './Body';
 import Footer from './Footer';
 import type { TimepickerProps } from './types';
 import { usePickerWrapper } from '../../../hooks/usePickerWrapper';
-import PickerWrapper from '../Wrappers/PickerWrapper/PickerWrapper';
 
 function formatValue(value: TimepickerProps['value']) {
   if (!value) return '';
@@ -27,22 +26,17 @@ function formatValue(value: TimepickerProps['value']) {
 const TimePicker: FC<TimepickerProps> = (props) => {
   const { showSubmitButton = true, showNowButton = true } = props;
 
-  const { Wrapper, wrapperProps } = usePickerWrapper<TimepickerProps, TimepickerProps['value']>({
+  const { Wrapper, wrapperProps } = usePickerWrapper({
     props,
-    mode: props.mode,
     standaloneMode: 'time',
     formatValue,
   });
 
-  const WrapperComponent = Wrapper === 'div' ? 'div' : PickerWrapper;
-
   return (
-    <WrapperComponent
-      {...(Wrapper === 'div' ? wrapperProps : { ...wrapperProps, children: undefined })}
-    >
+    <Wrapper {...wrapperProps}>
       <Body timePickerProps={props} />
       {(showSubmitButton || showNowButton) && <Footer timePickerProps={props} />}
-    </WrapperComponent>
+    </Wrapper>
   );
 };
 

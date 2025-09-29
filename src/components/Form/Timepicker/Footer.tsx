@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 import type { TimepickerProps } from './types';
-import PickerFooter from '../Common/PickerFooter';
+import PickerFooter from '../Common/PickerFooter/PickerFooter';
 
 interface Props {
   timePickerProps: TimepickerProps;
@@ -29,12 +29,19 @@ const Footer: FC<Props> = (props) => {
 
   return (
     <PickerFooter
-      showSubmitButton={showSubmitButton}
-      showActionButton={showNowButton}
-      actionButtonText="رفتن به اکنون"
-      submitButtonText="اعمال"
-      onActionClick={handleNowClick}
-      onSubmit={onSubmit}
+      {...(showSubmitButton && {
+        primaryButton: {
+          onClick: onSubmit,
+          children: 'اعمال',
+        },
+      })}
+      {...(showNowButton && {
+        secondaryButton: {
+          variant: 'text',
+          onClick: handleNowClick,
+          children: 'رفتن به اکنون',
+        },
+      })}
       className="dgsuikit:p-4"
     />
   );

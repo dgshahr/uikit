@@ -1,65 +1,62 @@
 import clsx from 'clsx';
 import type { FC } from 'react';
-import Button from '../../../Button';
+import Button, { type ButtonProps } from '../../../Button';
 import { usePickerWrapperContext } from '../../Wrappers/PickerWrapper/contexts';
 
 interface PickerFooterProps {
-  showSubmitButton?: boolean;
-  showActionButton?: boolean;
-  actionButtonText?: string;
-  submitButtonText?: string;
-  onActionClick?: () => void;
-  onSubmit?: () => void;
+  primaryButton?: ButtonProps;
+  secondaryButton?: ButtonProps;
   className?: string;
 }
 
-const PickerFooter: FC<PickerFooterProps> = ({
-  showSubmitButton = true,
-  showActionButton = true,
-  actionButtonText = 'اعمال',
-  submitButtonText = 'اعمال',
-  onActionClick,
-  onSubmit,
-  className,
-}) => {
+const PickerFooter: FC<PickerFooterProps> = ({ primaryButton, secondaryButton, className }) => {
   const { toggleWrapperVisibility } = usePickerWrapperContext();
 
-  const handleSubmit = () => {
-    if (typeof onSubmit === 'function') onSubmit();
+  const hasPrimary = Boolean(primaryButton);
+  const hasSecondary = Boolean(secondaryButton);
+
+  const handlePrimaryClick: ButtonProps['onClick'] = (e) => {
+    if (primaryButton && typeof primaryButton.onClick === 'function') {
+      primaryButton.onClick(e);
+    }
     toggleWrapperVisibility();
   };
 
-  const handleAction = () => {
-    if (typeof onActionClick === 'function') onActionClick();
+  const handleSecondaryClick: ButtonProps['onClick'] = (e) => {
+    if (secondaryButton && typeof secondaryButton.onClick === 'function') {
+      secondaryButton.onClick(e);
+    }
   };
 
   return (
     <div
       className={clsx(
         'dgsuikit:flex dgsuikit:items-center dgsuikit:border-t dgsuikit:border-gray-200 dgsuikit:gap-4',
-        showActionButton ? 'dgsuikit:justify-between' : 'dgsuikit:justify-end',
+        hasSecondary ? 'dgsuikit:justify-between' : 'dgsuikit:justify-end',
         className,
       )}
     >
-      {showActionButton && (
+      {hasSecondary && (
         <Button
           type="button"
           variant="text"
           size="small"
-          isFullWidth={showSubmitButton}
-          onClick={handleAction}
+          isFullWidth={hasPrimary}
+          onClick={handleSecondaryClick}
+          {...secondaryButton}
         >
-          {actionButtonText}
+          {secondaryButton?.children ?? 'اعمال'}
         </Button>
       )}
-      {showSubmitButton && (
+      {hasPrimary && (
         <Button
           type="button"
           size="small"
-          isFullWidth={showActionButton}
-          onClick={handleSubmit}
+          isFullWidth={hasSecondary}
+          onClick={handlePrimaryClick}
+          {...primaryButton}
         >
-          {submitButtonText}
+          {primaryButton?.children ?? 'اعمال'}
         </Button>
       )}
     </div>

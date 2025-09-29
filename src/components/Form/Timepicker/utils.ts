@@ -1,3 +1,6 @@
+import { editableIndices } from './constants';
+import type { TimeValue } from './types';
+
 export const getItemHeight = (itemRefs: (HTMLDivElement | null)[]): number => {
   return itemRefs[0]?.getBoundingClientRect().height ?? 64;
 };
@@ -20,8 +23,6 @@ export const scrollToValue = (
   });
 };
 
-export type TimeValue = { hour: number | null; minute: number | null };
-
 export const isValidHour = (h: string): boolean => {
   if (h.length !== 2) return false;
   const n = Number(h);
@@ -33,8 +34,6 @@ export const isValidMinute = (m: string): boolean => {
   const n = Number(m);
   return !Number.isNaN(n) && n >= 0 && n <= 59;
 };
-
-export const editableIndices = [0, 1, 3, 4];
 
 export const formatToMask = (value?: TimeValue): string[] => {
   if (!value) return ['-', '-', ':', '-', '-'];
@@ -61,4 +60,14 @@ export const nextEditableIndex = (index: number, forward = true): number => {
   if (next < 0) return editableIndices[0] ?? 0;
   if (next >= editableIndices.length) return editableIndices[editableIndices.length - 1] ?? 0;
   return editableIndices[next] ?? 0;
+};
+
+export const isValidDigit = (key: string, pos: number, newMask: string[]): boolean => {
+  if (pos === 0) return /[0-2]/.test(key);
+  if (pos === 1) {
+    const h0 = newMask[0] === '-' ? '0' : newMask[0];
+    return Number(`${h0}${key}`) <= 23;
+  }
+  if (pos === 3) return /[0-5]/.test(key);
+  return true;
 };

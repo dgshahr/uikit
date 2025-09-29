@@ -6,7 +6,6 @@ import Footer from './Footer';
 import Header from './Header';
 import type { DatepickerProps } from './types';
 import { usePickerWrapper } from '../../../hooks/usePickerWrapper';
-import PickerWrapper from '../Wrappers/PickerWrapper/PickerWrapper';
 
 import '@/src/styles.css';
 
@@ -22,25 +21,20 @@ function formatValue(value: DatepickerProps['value']) {
 const DatePicker: FC<DatepickerProps> = (props) => {
   const { showSubmitButton = true, showTodayButton = true } = props;
 
-  const { Wrapper, wrapperProps } = usePickerWrapper<DatepickerProps, DatepickerProps['value']>({
+  const { Wrapper, wrapperProps } = usePickerWrapper({
     props,
-    mode: props.mode,
     standaloneMode: 'calendar',
     formatValue,
   });
 
-  const WrapperComponent = Wrapper === 'div' ? 'div' : PickerWrapper;
-
   return (
-    <WrapperComponent
-      {...(Wrapper === 'div' ? wrapperProps : { ...wrapperProps, children: undefined })}
-    >
+    <Wrapper {...wrapperProps}>
       <DatePickerProvider datepickerProps={props}>
         <Header />
         <Body />
         {(showSubmitButton || showTodayButton) && <Footer />}
       </DatePickerProvider>
-    </WrapperComponent>
+    </Wrapper>
   );
 };
 

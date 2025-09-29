@@ -1,7 +1,8 @@
 import type { Meta } from '@storybook/react';
 import React, { useState } from 'react';
-import { TimepickerWithRange, TimepickerProps } from './types';
+import { TimepickerProps } from './types';
 import { fullWidthStory } from '../../../utils/storybook/helpers';
+import { WithRange } from '../../../utils/types/DateAndTimePicker';
 import TimePicker from './index';
 
 const meta = {
@@ -102,7 +103,7 @@ export const Default: Story = {
 };
 
 const RangeTimePickerExample = (props: TimepickerProps) => {
-  const [value, setValue] = useState<TimepickerWithRange['value']>({
+  const [value, setValue] = useState<WithRange['value']>({
     start: new Date(),
     end: (() => {
       const endDate = new Date();
@@ -132,7 +133,7 @@ export const Range: Story = {
   render: (args) => <RangeTimePickerExample {...args} />,
 };
 
-export const CalendarMode: Story = {
+export const OpenMode: Story = {
   ...Default,
   args: {
     ...Default.args,

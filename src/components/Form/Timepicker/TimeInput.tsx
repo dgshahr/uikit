@@ -1,18 +1,8 @@
-import React, {
-  useState,
-  useEffect,
-  type FC,
-  type KeyboardEvent,
-  type ClipboardEvent,
-} from 'react';
+import React, { useState, useEffect, type FC, type KeyboardEvent } from 'react';
+import { editableIndices } from './constants';
+import type { TimeValue } from './types';
 import { useCaret } from './useCaret';
-import {
-  type TimeValue,
-  editableIndices,
-  formatToMask,
-  maskToValue,
-  nextEditableIndex,
-} from './utils';
+import { formatToMask, isValidDigit, maskToValue, nextEditableIndex } from './utils';
 import Input, { type InputProps } from '../Input';
 
 export interface ControlledTimeInputProps extends Omit<InputProps, 'onChange' | 'value'> {
@@ -25,7 +15,7 @@ const ControlledTimeInput: FC<ControlledTimeInputProps> = (props) => {
     value = { hour: null, minute: null },
     onChange,
     disabled = false,
-    className = '',
+    className,
     ...rest
   } = props;
   const { inputRef, setCaretToEditable } = useCaret();
@@ -45,80 +35,69 @@ const ControlledTimeInput: FC<ControlledTimeInputProps> = (props) => {
   const handleFocus = (): void => {
     const input = inputRef.current;
     if (!input) return;
-    const selStart = input.selectionStart ?? 0;
-    if (!editableIndices.includes(selStart)) setCaretToEditable(selStart, true);
+    const selectionStart = input.selectionStart ?? 0;
+    if (!editableIndices.includes(selectionStart)) setCaretToEditable(selectionStart, true);
+  };
+
+  const handleArrowKeys = (key: string, selectionStart: number) => {
+    const moveRight = key === 'ArrowRight';
+    setCaretToEditable(nextEditableIndex(selectionStart, moveRight), moveRight);
+  };
+
+  const handleDeleteKeys = (key: string, selectionStart: number) => {
+    const currantIndex = editableIndices.includes(selectionStart)
+      ? selectionStart
+      : nextEditableIndex(selectionStart, false);
+
+    const newMask = [...mask];
+    newMask[currantIndex] = '-';
+
+    setMask(newMask);
+    onChange(maskToValue(newMask));
+
+    const nextPos =
+      key === 'Backspace'
+        ? nextEditableIndex(currantIndex, false)
+        : nextEditableIndex(currantIndex, true);
+
+    setTimeout(() => setCaretToEditable(nextPos, key !== 'Backspace'), 0);
+  };
+
+  const handleDigitInput = (key: string, selectionStart: number) => {
+    const writePos = editableIndices.includes(selectionStart)
+      ? selectionStart
+      : nextEditableIndex(selectionStart, true);
+
+    const newMask = [...mask];
+    if (!isValidDigit(key, writePos, newMask)) return;
+
+    newMask[writePos] = key;
+    setMask(newMask);
+    onChange(maskToValue(newMask));
+
+    setTimeout(() => setCaretToEditable(nextEditableIndex(writePos, true), true), 0);
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
     e.preventDefault();
     if (disabled) return;
+
     const input = inputRef.current;
     if (!input) return;
-    const selStart = input.selectionStart ?? 0;
+    const selectionStart = input.selectionStart ?? 0;
 
     if (['ArrowLeft', 'ArrowRight'].includes(e.key)) {
-      setCaretToEditable(
-        e.key === 'ArrowLeft'
-          ? nextEditableIndex(selStart, false)
-          : nextEditableIndex(selStart, true),
-        e.key === 'ArrowRight',
-      );
+      handleArrowKeys(e.key, selectionStart);
       return;
     }
 
     if (['Backspace', 'Delete'].includes(e.key)) {
-      const curIndex = editableIndices.includes(selStart)
-        ? selStart
-        : nextEditableIndex(selStart, false);
-      const newMask = [...mask];
-      newMask[curIndex] = '-';
-      setMask(newMask);
-      onChange?.(maskToValue(newMask));
-      const nextPos =
-        e.key === 'Backspace'
-          ? nextEditableIndex(curIndex, false)
-          : nextEditableIndex(curIndex, true);
-      window.setTimeout(() => setCaretToEditable(nextPos, e.key !== 'Backspace'), 0);
+      handleDeleteKeys(e.key, selectionStart);
       return;
     }
 
-    if (!/^[0-9]$/.test(e.key)) {
-      return;
-    }
-
-    const writePos = editableIndices.includes(selStart)
-      ? selStart
-      : nextEditableIndex(selStart, true);
-    const newMask = [...mask];
-    newMask[writePos] = e.key;
-
-    if (writePos === 0 && !/[0-2]/.test(e.key)) return;
-    if (writePos === 1) {
-      const h0 = newMask[0] === '-' ? '0' : newMask[0];
-      if (Number(`${h0}${newMask[1]}`) > 23) return;
-    }
-    if (writePos === 3 && !/[0-5]/.test(e.key)) return;
-
-    setMask(newMask);
-    onChange?.(maskToValue(newMask));
-    window.setTimeout(() => setCaretToEditable(nextEditableIndex(writePos, true), true), 0);
-  };
-
-  const handlePaste = (e: ClipboardEvent<HTMLInputElement>): void => {
-    if (disabled) return;
-    e.preventDefault();
-    const txt = e.clipboardData.getData('text').trim();
-    const m = /^([0-2]?\d)[:.]?([0-5]?\d)$/.exec(txt);
-    if (!m) return;
-    const hh = (m[1] ?? '').padStart(2, '0');
-    const mm = (m[2] ?? '').padStart(2, '0');
-    if (hh.length !== 2 || mm.length !== 2) return;
-    const newMask: string[] = [hh.charAt(0), hh.charAt(1), ':', mm.charAt(0), mm.charAt(1)];
-    setMask(newMask);
-    onChange?.(maskToValue(newMask));
-    const lastEditableIndex = editableIndices[editableIndices.length - 1];
-    if (typeof lastEditableIndex === 'number') {
-      window.setTimeout(() => setCaretToEditable(lastEditableIndex, false), 0);
+    if (/^\d$/.test(e.key)) {
+      handleDigitInput(e.key, selectionStart);
     }
   };
 
@@ -130,7 +109,6 @@ const ControlledTimeInput: FC<ControlledTimeInputProps> = (props) => {
       value={mask.join('')}
       onKeyDown={handleKeyDown}
       onFocus={handleFocus}
-      onPaste={handlePaste}
       disabled={disabled}
       inputMode="numeric"
       pattern="[0-9:]*"

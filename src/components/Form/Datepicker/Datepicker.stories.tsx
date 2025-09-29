@@ -97,7 +97,7 @@ export const DisableAndHoliday: Story = {
   },
 };
 
-export const Calendar: Story = {
+export const OpenMode: Story = {
   ...Default,
   args: {
     ...Default.args,

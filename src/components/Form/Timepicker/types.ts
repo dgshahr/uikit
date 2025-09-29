@@ -1,9 +1,5 @@
+import type { HasOrNotRange, HasOrNotSubmitButton } from '@/src/utils/types/DateAndTimePicker';
 import type { PickerWrapperProps } from '../Wrappers/PickerWrapper/type';
-
-export interface IRangeDate {
-  start: Date | null;
-  end: Date | null;
-}
 
 type TimepickerPropsBase = PickerWrapperProps & {
   showSubmitButton?: boolean;
@@ -13,31 +9,7 @@ type TimepickerPropsBase = PickerWrapperProps & {
   minuteStep?: number;
 };
 
-interface TimepickerWithSubmitButton {
-  showSubmitButton?: true;
-  onSubmit?: () => void;
-}
-
-interface TimepickerWithoutSubmitButton {
-  showSubmitButton?: false;
-  onSubmit?: never;
-}
-
-export interface TimepickerWithRange {
-  acceptRange: true;
-  value: IRangeDate;
-  onChange: (value: TimepickerWithRange['value']) => void;
-}
-
-export interface TimepickerWithoutRange {
-  acceptRange?: false;
-  value: Date | null;
-  onChange: (value: Date) => void;
-}
-
-export type TimepickerProps = TimepickerPropsBase &
-  (TimepickerWithSubmitButton | TimepickerWithoutSubmitButton) &
-  (TimepickerWithRange | TimepickerWithoutRange);
+export type TimepickerProps = TimepickerPropsBase & HasOrNotSubmitButton & HasOrNotRange;
 
 export interface ScrollWheelProps {
   items: number[];
@@ -57,16 +29,20 @@ export interface TimeInputProps {
   isStartTime?: boolean;
 }
 
-export interface TimeScrollWheelsProps {
+type RangePart = 'start' | 'end';
+
+interface WithTimeHandlers {
   timePickerProps: TimepickerProps;
-  activePart: 'start' | 'end';
-  handleTimeChange: (hour: number, minute: number) => void;
-  handleRangeTimeChange: (part: 'start' | 'end', hour: number, minute: number) => void;
+  handleSingleTimeChange: (hour: number, minute: number) => void;
+  handleRangeTimeChange: (part: RangePart, hour: number, minute: number) => void;
 }
 
-export interface TimeInputsProps {
-  timePickerProps: TimepickerProps;
-  setActivePart: (part: 'start' | 'end') => void;
-  handleTimeChange: (hour: number, minute: number) => void;
-  handleRangeTimeChange: (part: 'start' | 'end', hour: number, minute: number) => void;
+export interface TimeScrollWheelsProps extends WithTimeHandlers {
+  activePart: RangePart;
 }
+
+export interface TimeInputsProps extends WithTimeHandlers {
+  setActivePart: (part: RangePart) => void;
+}
+
+export type TimeValue = { hour: number | null; minute: number | null };

@@ -1,31 +1,35 @@
 import clsx from 'clsx';
+import type { ElementType } from 'react';
+import type { DatepickerProps } from '../components/Form/Datepicker/types';
+import type { TimepickerProps } from '../components/Form/Timepicker/types';
+import PickerWrapper from '../components/Form/Wrappers/PickerWrapper/PickerWrapper';
 import type { PickerWrapperProps } from '../components/Form/Wrappers/PickerWrapper/type';
 
-interface UsePickerWrapperOptions<T, V> {
-  props: T;
-  mode: string | undefined;
+export type WithValue = { value?: unknown };
+
+interface UsePickerWrapperOptions {
+  props: TimepickerProps | DatepickerProps;
   standaloneMode: string;
-  formatValue: (value: V) => string;
+  formatValue: (value: (TimepickerProps | DatepickerProps)['value']) => string;
 }
 
 interface UsePickerWrapperReturn {
-  Wrapper: 'div' | 'PickerWrapper';
-  wrapperProps: PickerWrapperProps | { className?: string | undefined };
+  Wrapper: ElementType;
+  wrapperProps: PickerWrapperProps | { className?: string };
 }
 
-export function usePickerWrapper<T, V>({
+export function usePickerWrapper({
   props,
-  mode,
   standaloneMode,
   formatValue,
-}: UsePickerWrapperOptions<T, V>): UsePickerWrapperReturn {
-  const { value, wrapperClassName } = props as Record<string, unknown>;
+}: UsePickerWrapperOptions): UsePickerWrapperReturn {
+  const { value, wrapperClassName } = props;
 
   const wrapperProps: Omit<PickerWrapperProps, 'children'> = {
-    ...(props as Record<string, unknown>),
+    ...props,
   };
 
-  if (mode !== standaloneMode) {
+  if (props?.mode !== standaloneMode) {
     if (wrapperProps.dropdownType === 'drawer') {
       wrapperProps.drawerProps = {
         ...wrapperProps.drawerProps,
@@ -41,16 +45,16 @@ export function usePickerWrapper<T, V>({
     if (!wrapperProps.customInput) {
       wrapperProps.inputProps = {
         ...wrapperProps.inputProps,
-        value: wrapperProps.inputProps?.value ?? formatValue(value as V),
+        value: wrapperProps.inputProps?.value ?? formatValue(value),
       };
     }
   }
 
-  const Wrapper = mode === standaloneMode ? 'div' : 'PickerWrapper';
+  const Wrapper = props?.mode === standaloneMode ? 'div' : PickerWrapper;
   const wrapperPropsToPass =
-    mode !== standaloneMode
+    props?.mode !== standaloneMode
       ? (wrapperProps as PickerWrapperProps)
-      : { className: wrapperClassName as string | undefined };
+      : { className: wrapperClassName };
 
   return {
     Wrapper,

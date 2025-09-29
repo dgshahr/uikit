@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { useDatepickerContext } from './context';
 import { DateTypes } from './types';
-import PickerFooter from '../Common/PickerFooter';
+import PickerFooter from '../Common/PickerFooter/PickerFooter';
 
 const Footer: FC = () => {
   const { datepickerProps, setDateType, setInternalDate } = useDatepickerContext();
@@ -14,12 +14,19 @@ const Footer: FC = () => {
 
   return (
     <PickerFooter
-      showSubmitButton={showSubmitButton}
-      showActionButton={showTodayButton}
-      actionButtonText="رفتن به امروز"
-      submitButtonText="اعمال"
-      onActionClick={handleTodayClick}
-      onSubmit={onSubmit}
+      {...(showSubmitButton && {
+        primaryButton: {
+          onClick: onSubmit,
+          children: 'اعمال',
+        },
+      })}
+      {...(showTodayButton && {
+        secondaryButton: {
+          variant: 'text',
+          onClick: handleTodayClick,
+          children: 'رفتن به امروز',
+        },
+      })}
       className="dgsuikit:p-3"
     />
   );

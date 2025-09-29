@@ -12,16 +12,20 @@ const Body: FC<Props> = (props) => {
   const { acceptRange, value, onChange } = timePickerProps;
   const [activePart, setActivePart] = useState<'start' | 'end'>('start');
 
-  const handleTimeChange = (hour: number, minute: number) => {
+  const setTime = (date: Date, hour: number, minute: number): Date => {
+    const newDate = new Date(date);
+    newDate.setHours(hour);
+    newDate.setMinutes(minute);
+    newDate.setSeconds(0);
+    newDate.setMilliseconds(0);
+    return newDate;
+  };
+
+  const handleSingleTimeChange = (hour: number, minute: number) => {
     if (!value || acceptRange) return;
     if (value.getHours() === hour && value.getMinutes() === minute) return;
 
-    const newTime = new Date(value);
-    newTime.setHours(hour);
-    newTime.setMinutes(minute);
-    newTime.setSeconds(0);
-    newTime.setMilliseconds(0);
-    onChange(newTime);
+    onChange(setTime(value, hour, minute));
   };
 
   const handleRangeTimeChange = (part: 'start' | 'end', hour: number, minute: number) => {
@@ -29,30 +33,24 @@ const Body: FC<Props> = (props) => {
     const current = new Date(value[part] ?? new Date());
     if (current.getHours() === hour && current.getMinutes() === minute) return;
 
-    current.setHours(hour);
-    current.setMinutes(minute);
-    current.setSeconds(0);
-    current.setMilliseconds(0);
     onChange({
       ...value,
-      [part]: current,
+      [part]: setTime(current, hour, minute),
     });
   };
+
+  const componentsCommonProps = { timePickerProps, handleSingleTimeChange, handleRangeTimeChange };
 
   return (
     <div className="dgsuikit:p-4 dgsuikit:ss02">
       <TimeInputs
-        timePickerProps={timePickerProps}
         setActivePart={setActivePart}
-        handleTimeChange={handleTimeChange}
-        handleRangeTimeChange={handleRangeTimeChange}
+        {...componentsCommonProps}
       />
 
       <TimeScrollWheels
-        timePickerProps={timePickerProps}
         activePart={activePart}
-        handleTimeChange={handleTimeChange}
-        handleRangeTimeChange={handleRangeTimeChange}
+        {...componentsCommonProps}
       />
     </div>
   );

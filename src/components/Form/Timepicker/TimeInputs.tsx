@@ -1,60 +1,78 @@
+import clsx from 'clsx';
 import { type FC } from 'react';
 import ControlledTimeInput from './TimeInput';
 import type { TimeInputsProps } from './types';
 
-const TimeInputs: FC<TimeInputsProps> = (props) => {
-  const { timePickerProps, setActivePart, handleTimeChange, handleRangeTimeChange } = props;
+const TimeInputs: FC<TimeInputsProps> = ({
+  timePickerProps,
+  setActivePart,
+  handleSingleTimeChange,
+  handleRangeTimeChange,
+}) => {
   const { acceptRange, value } = timePickerProps;
 
-  if (acceptRange) {
-    return (
-      <div className="dgsuikit:flex dgsuikit:justify-between dgsuikit:gap-4 dgsuikit:mb-4">
-        <ControlledTimeInput
-          value={{
-            hour: value?.start?.getHours() ?? 0,
-            minute: value?.start?.getMinutes() ?? 0,
-          }}
-          className="dgsuikit:w-1/2"
-          id="from-time"
-          labelContent="از ساعت"
-          onFocus={() => setActivePart('start')}
-          onChange={(selected) => {
-            if (typeof selected.hour === 'number' && typeof selected.minute === 'number') {
-              handleRangeTimeChange('start', selected.hour, selected.minute);
-            }
-          }}
-        />
+  const buildValue = (date?: Date) => ({
+    hour: date?.getHours() ?? 0,
+    minute: date?.getMinutes() ?? 0,
+  });
 
-        <ControlledTimeInput
-          value={{
-            hour: value?.end?.getHours() ?? 0,
-            minute: value?.end?.getMinutes() ?? 0,
-          }}
-          id="to-time"
-          labelContent="تا ساعت"
-          className="dgsuikit:w-1/2"
-          onFocus={() => setActivePart('end')}
-          onChange={(selected) => {
-            if (typeof selected.hour === 'number' && typeof selected.minute === 'number') {
-              handleRangeTimeChange('end', selected.hour, selected.minute);
-            }
-          }}
-        />
-      </div>
-    );
-  }
+  const inputs = acceptRange
+    ? [
+        {
+          key: 'start',
+          id: 'from-time',
+          label: 'از ساعت',
+          value: buildValue(value?.start ?? undefined),
+          className: 'dgsuikit:w-1/2',
+        },
+        {
+          key: 'end',
+          id: 'to-time',
+          label: 'تا ساعت',
+          value: buildValue(value?.end ?? undefined),
+          className: 'dgsuikit:w-1/2',
+        },
+      ]
+    : [
+        {
+          key: 'single',
+          id: 'time',
+          label: 'ساعت',
+          value: buildValue(value ?? undefined),
+          className: undefined,
+        },
+      ];
 
   return (
-    <ControlledTimeInput
-      value={{ hour: value?.getHours() ?? 0, minute: value?.getMinutes() ?? 0 }}
-      id="time"
-      labelContent="ساعت"
-      onChange={(selected) => {
-        if (typeof selected.hour === 'number' && typeof selected.minute === 'number') {
-          handleTimeChange(selected.hour, selected.minute);
-        }
-      }}
-    />
+    <div
+      className={clsx(
+        acceptRange && 'dgsuikit:flex dgsuikit:justify-between dgsuikit:gap-4 dgsuikit:mb-4',
+      )}
+    >
+      {inputs.map(({ key, id, label, value, className }) => (
+        <ControlledTimeInput
+          key={id}
+          id={id}
+          value={value}
+          labelContent={label}
+          className={className}
+          onFocus={() => {
+            if (acceptRange && key !== 'single') {
+              setActivePart(key as 'start' | 'end');
+            }
+          }}
+          onChange={(selected) => {
+            if (typeof selected.hour === 'number' && typeof selected.minute === 'number') {
+              if (acceptRange && key !== 'single') {
+                handleRangeTimeChange(key as 'start' | 'end', selected.hour, selected.minute);
+              } else {
+                handleSingleTimeChange(selected.hour, selected.minute);
+              }
+            }
+          }}
+        />
+      ))}
+    </div>
   );
 };
 

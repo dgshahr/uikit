@@ -154,6 +154,12 @@
       "import": "./dist/Form/Textarea/index.mjs",
       "require": "./dist/Form/Textarea/index.cjs"
     },
+    "./Form/Timepicker/*": null,
+    "./Form/Timepicker": {
+      "types": "./dist/Form/Timepicker/index.d.ts",
+      "import": "./dist/Form/Timepicker/index.mjs",
+      "require": "./dist/Form/Timepicker/index.cjs"
+    },
     "./Menu": {
       "types": "./dist/Menu/index.d.ts",
       "import": "./dist/Menu/index.mjs",
