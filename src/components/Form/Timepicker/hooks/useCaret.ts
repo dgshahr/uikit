@@ -1,6 +1,6 @@
 import { useRef } from 'react';
-import { editableIndices } from './constants';
-import { nextEditableIndex } from './utils';
+import { editableIndices } from '../constants';
+import { nextEditableIndex } from '../utils';
 
 export const useCaret = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);

@@ -1,5 +1,5 @@
-import type { Meta } from '@storybook/react';
-import React, { useState } from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 import { TimepickerProps } from './types';
 import { fullWidthStory } from '../../../utils/storybook/helpers';
 import { WithRange } from '../../../utils/types/DateAndTimePicker';
@@ -76,9 +76,6 @@ const meta = {
 
 export default meta;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type Story = any;
-
 const DefaultTimePickerExample = (props: TimepickerProps) => {
   const [value, setValue] = useState<Date | null>(new Date());
 
@@ -94,7 +91,7 @@ const DefaultTimePickerExample = (props: TimepickerProps) => {
   );
 };
 
-export const Default: Story = {
+export const Default: StoryObj<typeof meta> = {
   args: {
     value: new Date(),
     onChange: () => {},
@@ -124,7 +121,7 @@ const RangeTimePickerExample = (props: TimepickerProps) => {
   );
 };
 
-export const Range: Story = {
+export const Range: StoryObj<typeof meta> = {
   args: {
     value: new Date(),
     onChange: () => {},
@@ -133,7 +130,7 @@ export const Range: Story = {
   render: (args) => <RangeTimePickerExample {...args} />,
 };
 
-export const OpenMode: Story = {
+export const OpenMode: StoryObj<typeof meta> = {
   ...Default,
   args: {
     ...Default.args,
@@ -143,7 +140,7 @@ export const OpenMode: Story = {
   render: (args) => <DefaultTimePickerExample {...args} />,
 };
 
-export const DrawerMode: Story = {
+export const DrawerMode: StoryObj<typeof meta> = {
   ...Default,
   args: {
     ...Default.args,

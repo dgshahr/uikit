@@ -1,13 +1,9 @@
 import { type FC } from 'react';
-import type { TimepickerProps } from './types';
-import PickerFooter from '../Common/PickerFooter/PickerFooter';
+import { useTimePickerContext } from './context';
+import PickerFooter from '../Common/DateAndTimePickerFooter/DateAndTimePickerFooter';
 
-interface Props {
-  timePickerProps: TimepickerProps;
-}
-
-const Footer: FC<Props> = (props) => {
-  const { timePickerProps } = props;
+const Footer: FC = () => {
+  const { timePickerProps } = useTimePickerContext();
 
   const {
     showSubmitButton = true,

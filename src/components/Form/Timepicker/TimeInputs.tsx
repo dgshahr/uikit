@@ -11,7 +11,7 @@ const TimeInputs: FC<TimeInputsProps> = ({
 }) => {
   const { acceptRange, value } = timePickerProps;
 
-  const buildValue = (date?: Date) => ({
+  const buildValue = (date?: Date | null) => ({
     hour: date?.getHours() ?? 0,
     minute: date?.getMinutes() ?? 0,
   });
@@ -22,14 +22,14 @@ const TimeInputs: FC<TimeInputsProps> = ({
           key: 'start',
           id: 'from-time',
           label: 'از ساعت',
-          value: buildValue(value?.start ?? undefined),
+          value: buildValue(value?.start),
           className: 'dgsuikit:w-1/2',
         },
         {
           key: 'end',
           id: 'to-time',
           label: 'تا ساعت',
-          value: buildValue(value?.end ?? undefined),
+          value: buildValue(value?.end),
           className: 'dgsuikit:w-1/2',
         },
       ]
@@ -38,7 +38,7 @@ const TimeInputs: FC<TimeInputsProps> = ({
           key: 'single',
           id: 'time',
           label: 'ساعت',
-          value: buildValue(value ?? undefined),
+          value: buildValue(value),
           className: undefined,
         },
       ];

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, type FC, type KeyboardEvent } from 'react';
 import { editableIndices } from './constants';
+import { useCaret } from './hooks/useCaret';
 import type { TimeValue } from './types';
-import { useCaret } from './useCaret';
 import { formatToMask, isValidDigit, maskToValue, nextEditableIndex } from './utils';
 import Input, { type InputProps } from '../Input';
 

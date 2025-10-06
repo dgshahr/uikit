@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import { type FC } from 'react';
+import GradientOverlay from './GradientOverlay';
+import { useScrollWheel } from './hooks/useScrollWheel';
 import type { ScrollWheelProps } from './types';
-import { useScrollWheel } from './useScrollWheel';
 
 const ScrollWheel: FC<ScrollWheelProps> = (props) => {
   const {
@@ -34,19 +35,8 @@ const ScrollWheel: FC<ScrollWheelProps> = (props) => {
           </div>
         ))}
       </div>
-
-      <div
-        className={clsx(
-          'dgsuikit:absolute dgsuikit:bottom-0 dgsuikit:left-0 dgsuikit:right-0 dgsuikit:h-12 dgsuikit:pointer-events-none',
-          'dgsuikit:bg-gradient-to-b dgsuikit:from-[rgba(255,255,255,0.54)] dgsuikit:to-[rgba(255,255,255,0.90)] dgsuikit:to-[70.29%]',
-        )}
-      />
-      <div
-        className={clsx(
-          'dgsuikit:absolute dgsuikit:top-0 dgsuikit:left-0 dgsuikit:right-0 dgsuikit:h-12 dgsuikit:pointer-events-none',
-          'dgsuikit:bg-gradient-to-t dgsuikit:from-[rgba(255,255,255,0.54)] dgsuikit:to-[rgba(255,255,255,0.90)] dgsuikit:to-[70.29%]',
-        )}
-      />
+      <GradientOverlay position="top" />
+      <GradientOverlay position="bottom" />
     </div>
   );
 };

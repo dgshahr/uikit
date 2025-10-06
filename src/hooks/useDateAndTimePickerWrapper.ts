@@ -7,22 +7,22 @@ import type { PickerWrapperProps } from '../components/Form/Wrappers/PickerWrapp
 
 export type WithValue = { value?: unknown };
 
-interface UsePickerWrapperOptions {
+interface UseDateAndTimePickerWrapperOptions {
   props: TimepickerProps | DatepickerProps;
   standaloneMode: string;
   formatValue: (value: (TimepickerProps | DatepickerProps)['value']) => string;
 }
 
-interface UsePickerWrapperReturn {
+interface UseDateAndTimePickerWrapperReturn {
   Wrapper: ElementType;
   wrapperProps: PickerWrapperProps | { className?: string };
 }
 
-export function usePickerWrapper({
+export function useDateAndTimePickerWrapper({
   props,
   standaloneMode,
   formatValue,
-}: UsePickerWrapperOptions): UsePickerWrapperReturn {
+}: UseDateAndTimePickerWrapperOptions): UseDateAndTimePickerWrapperReturn {
   const { value, wrapperClassName } = props;
 
   const wrapperProps: Omit<PickerWrapperProps, 'children'> = {

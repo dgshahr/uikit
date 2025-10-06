@@ -1,8 +1,9 @@
 import { type FC } from 'react';
 import Body from './Body';
+import { TimePickerProvider } from './context';
 import Footer from './Footer';
 import type { TimepickerProps } from './types';
-import { usePickerWrapper } from '../../../hooks/usePickerWrapper';
+import { useDateAndTimePickerWrapper } from '../../../hooks/useDateAndTimePickerWrapper';
 
 function formatValue(value: TimepickerProps['value']) {
   if (!value) return '';
@@ -26,7 +27,7 @@ function formatValue(value: TimepickerProps['value']) {
 const TimePicker: FC<TimepickerProps> = (props) => {
   const { showSubmitButton = true, showNowButton = true } = props;
 
-  const { Wrapper, wrapperProps } = usePickerWrapper({
+  const { Wrapper, wrapperProps } = useDateAndTimePickerWrapper({
     props,
     standaloneMode: 'time',
     formatValue,
@@ -34,8 +35,10 @@ const TimePicker: FC<TimepickerProps> = (props) => {
 
   return (
     <Wrapper {...wrapperProps}>
-      <Body timePickerProps={props} />
-      {(showSubmitButton || showNowButton) && <Footer timePickerProps={props} />}
+      <TimePickerProvider timePickerProps={props}>
+        <Body />
+        {(showSubmitButton || showNowButton) && <Footer />}
+      </TimePickerProvider>
     </Wrapper>
   );
 };

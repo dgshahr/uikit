@@ -5,7 +5,7 @@ import { DatePickerProvider } from './context';
 import Footer from './Footer';
 import Header from './Header';
 import type { DatepickerProps } from './types';
-import { usePickerWrapper } from '../../../hooks/usePickerWrapper';
+import { useDateAndTimePickerWrapper } from '../../../hooks/useDateAndTimePickerWrapper';
 
 import '@/src/styles.css';
 
@@ -21,7 +21,7 @@ function formatValue(value: DatepickerProps['value']) {
 const DatePicker: FC<DatepickerProps> = (props) => {
   const { showSubmitButton = true, showTodayButton = true } = props;
 
-  const { Wrapper, wrapperProps } = usePickerWrapper({
+  const { Wrapper, wrapperProps } = useDateAndTimePickerWrapper({
     props,
     standaloneMode: 'calendar',
     formatValue,

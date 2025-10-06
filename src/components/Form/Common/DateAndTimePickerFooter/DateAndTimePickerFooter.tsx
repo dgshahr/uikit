@@ -3,13 +3,14 @@ import type { FC } from 'react';
 import Button, { type ButtonProps } from '../../../Button';
 import { usePickerWrapperContext } from '../../Wrappers/PickerWrapper/contexts';
 
-interface PickerFooterProps {
+interface DateAndTimePickerFooterProps {
   primaryButton?: ButtonProps;
   secondaryButton?: ButtonProps;
   className?: string;
 }
 
-const PickerFooter: FC<PickerFooterProps> = ({ primaryButton, secondaryButton, className }) => {
+const DateAndTimePickerFooter: FC<DateAndTimePickerFooterProps> = (props) => {
+  const { primaryButton, secondaryButton, className } = props;
   const { toggleWrapperVisibility } = usePickerWrapperContext();
 
   const hasPrimary = Boolean(primaryButton);
@@ -42,8 +43,8 @@ const PickerFooter: FC<PickerFooterProps> = ({ primaryButton, secondaryButton, c
           variant="text"
           size="small"
           isFullWidth={hasPrimary}
-          onClick={handleSecondaryClick}
           {...secondaryButton}
+          onClick={handleSecondaryClick}
         >
           {secondaryButton?.children ?? 'اعمال'}
         </Button>
@@ -53,8 +54,8 @@ const PickerFooter: FC<PickerFooterProps> = ({ primaryButton, secondaryButton, c
           type="button"
           size="small"
           isFullWidth={hasSecondary}
-          onClick={handlePrimaryClick}
           {...primaryButton}
+          onClick={handlePrimaryClick}
         >
           {primaryButton?.children ?? 'اعمال'}
         </Button>
@@ -63,4 +64,4 @@ const PickerFooter: FC<PickerFooterProps> = ({ primaryButton, secondaryButton, c
   );
 };
 
-export default PickerFooter;
+export default DateAndTimePickerFooter;

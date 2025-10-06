@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { useDatepickerContext } from './context';
 import { DateTypes } from './types';
-import PickerFooter from '../Common/PickerFooter/PickerFooter';
+import PickerFooter from '../Common/DateAndTimePickerFooter/DateAndTimePickerFooter';
 
 const Footer: FC = () => {
   const { datepickerProps, setDateType, setInternalDate } = useDatepickerContext();

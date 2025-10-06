@@ -1,14 +1,10 @@
 import { type FC, useState } from 'react';
+import { useTimePickerContext } from './context';
 import TimeInputs from './TimeInputs';
 import TimeScrollWheels from './TimeScrollWheels';
-import type { TimepickerProps } from './types';
 
-interface Props {
-  timePickerProps: TimepickerProps;
-}
-
-const Body: FC<Props> = (props) => {
-  const { timePickerProps } = props;
+const Body: FC = () => {
+  const { timePickerProps } = useTimePickerContext();
   const { acceptRange, value, onChange } = timePickerProps;
   const [activePart, setActivePart] = useState<'start' | 'end'>('start');
 
