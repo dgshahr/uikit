@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import type { ElementType } from 'react';
-import type { DatepickerProps } from '../components/Form/Datepicker/types';
-import type { TimepickerProps } from '../components/Form/Timepicker/types';
-import PickerWrapper from '../components/Form/Wrappers/PickerWrapper/PickerWrapper';
-import type { PickerWrapperProps } from '../components/Form/Wrappers/PickerWrapper/type';
+import type { DatepickerProps } from '@/src/components/Form/Datepicker/types';
+import type { TimepickerProps } from '@/src/components/Form/Timepicker/types';
+import PickerWrapper from '@/src/components/Form/Wrappers/PickerWrapper/PickerWrapper';
+import type { PickerWrapperProps } from '@/src/components/Form/Wrappers/PickerWrapper/type';
 
 export type WithValue = { value?: unknown };
 

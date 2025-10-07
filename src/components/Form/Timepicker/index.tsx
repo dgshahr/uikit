@@ -1,9 +1,9 @@
 import { type FC } from 'react';
+import { useDateAndTimePickerWrapper } from '@/src/hooks/form/useDateAndTimePickerWrapper';
 import Body from './Body';
 import { TimePickerProvider } from './context';
 import Footer from './Footer';
 import type { TimepickerProps } from './types';
-import { useDateAndTimePickerWrapper } from '../../../hooks/useDateAndTimePickerWrapper';
 
 function formatValue(value: TimepickerProps['value']) {
   if (!value) return '';
