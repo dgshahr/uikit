@@ -1,3 +1,4 @@
+import type { HasOrNotRange, HasOrNotSubmitButton } from '@/src/utils/types/DateAndTimePicker';
 import type { PickerWrapperProps } from '../Wrappers/PickerWrapper/type';
 
 export enum DateTypes {
@@ -26,31 +27,7 @@ type DatepickerPropsBase = PickerWrapperProps & {
   };
 };
 
-interface DatepickerWithSubmitButton {
-  showSubmitButton?: true;
-  onSubmit?: () => void;
-}
-
-interface DatepickerWithoutSubmitButton {
-  showSubmitButton?: false;
-  onSubmit?: never;
-}
-
-export interface DatepickerWithRange {
-  acceptRange: true;
-  value: { start: Date | null; end: Date | null };
-  onChange: (value: DatepickerWithRange['value']) => void;
-}
-
-export interface DatepickerWithoutRange {
-  acceptRange?: false;
-  value: Date | null;
-  onChange: (value: Date) => void;
-}
-
-export type DatepickerProps = DatepickerPropsBase &
-  (DatepickerWithSubmitButton | DatepickerWithoutSubmitButton) &
-  (DatepickerWithRange | DatepickerWithoutRange);
+export type DatepickerProps = DatepickerPropsBase & HasOrNotSubmitButton & HasOrNotRange;
 
 export interface IDatepickerContext {
   dateType: DateTypes;

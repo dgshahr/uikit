@@ -1,15 +1,13 @@
-import clsx from 'clsx';
 import { format } from 'date-fns-jalali/format';
 import { type FC } from 'react';
+import { useDateAndTimePickerWrapper } from '@/src/hooks/form/useDateAndTimePickerWrapper';
 import Body from './Body';
 import { DatePickerProvider } from './context';
 import Footer from './Footer';
 import Header from './Header';
 import type { DatepickerProps } from './types';
-import PickerWrapper from '../Wrappers/PickerWrapper/PickerWrapper';
 
 import '@/src/styles.css';
-import type { PickerWrapperProps } from '../Wrappers/PickerWrapper/type';
 
 function formatValue(value: DatepickerProps['value']) {
   if (!value) return '';
@@ -21,36 +19,16 @@ function formatValue(value: DatepickerProps['value']) {
 }
 
 const DatePicker: FC<DatepickerProps> = (props) => {
-  const { showSubmitButton = true, showTodayButton = true, value } = props;
+  const { showSubmitButton = true, showTodayButton = true } = props;
 
-  const wrapperProps: Omit<PickerWrapperProps, 'children'> = { ...props };
-  if (props.mode !== 'calendar') {
-    if (wrapperProps.dropdownType === 'drawer') {
-      wrapperProps.drawerProps = {
-        ...wrapperProps.drawerProps,
-        containerClassName: clsx('dgsuikit:!p-0', wrapperProps.drawerProps?.containerClassName),
-      };
-    } else
-      wrapperProps.popoverClassName = clsx(
-        'dgsuikit:!p-0 dgsuikit:max-h-max',
-        wrapperProps.popoverClassName,
-      );
-
-    if (!wrapperProps.customInput)
-      wrapperProps.inputProps = {
-        ...wrapperProps.inputProps,
-        value: wrapperProps.inputProps?.value ?? formatValue(value),
-      };
-  }
-
-  const Wrapper = props.mode === 'calendar' ? 'div' : PickerWrapper;
+  const { Wrapper, wrapperProps } = useDateAndTimePickerWrapper({
+    props,
+    standaloneMode: 'calendar',
+    formatValue,
+  });
 
   return (
-    <Wrapper
-      {...(props.mode !== 'calendar'
-        ? (wrapperProps as PickerWrapperProps)
-        : { className: props.wrapperClassName })}
-    >
+    <Wrapper {...wrapperProps}>
       <DatePickerProvider datepickerProps={props}>
         <Header />
         <Body />
