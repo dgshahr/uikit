@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import { useEffect, useState, type FC } from 'react';
 import ScrollWheel from './ScrollWheel';
 import type { TimeScrollWheelsProps } from './types';
 
@@ -24,44 +24,29 @@ const TimeScrollWheels: FC<TimeScrollWheelsProps> = (props) => {
   const defaultHour = getDefaultTimePart('getHours');
   const defaultMinute = getDefaultTimePart('getMinutes');
 
-  const handleMinuteChange = (minute: number) => {
-    if (acceptRange) {
-      handleRangeTimeChange(
-        activePart,
-        activePart === 'start' ? (value?.start?.getHours() ?? 0) : (value?.end?.getHours() ?? 0),
-        minute,
-      );
-    } else {
-      handleSingleTimeChange(value?.getHours() ?? 0, minute);
-    }
-  };
+  const [temporaryMinute, setTemporaryMinute] = useState(defaultMinute);
+  const [temporaryHour, setTemporaryHour] = useState(defaultHour);
 
-  const handleHourChange = (hour: number) => {
+  useEffect(() => {
     if (acceptRange) {
-      handleRangeTimeChange(
-        activePart,
-        hour,
-        activePart === 'start'
-          ? (value?.start?.getMinutes() ?? 0)
-          : (value?.end?.getMinutes() ?? 0),
-      );
+      handleRangeTimeChange(activePart, temporaryHour, temporaryMinute);
     } else {
-      handleSingleTimeChange(hour, value?.getMinutes() ?? 0);
+      handleSingleTimeChange(temporaryHour, temporaryMinute);
     }
-  };
+  }, [temporaryHour, temporaryMinute]);
 
   return (
     <div className="dgsuikit:flex dgsuikit:mt-2 dgsuikit:w-full dgsuikit:justify-center">
       <ScrollWheel
         items={minutes}
         defaultValue={defaultMinute}
-        onValueChange={handleMinuteChange}
+        onValueChange={(minute: number) => setTemporaryMinute(minute)}
         formatValue={formatMinute}
       />
       <ScrollWheel
         items={hours}
         defaultValue={defaultHour}
-        onValueChange={handleHourChange}
+        onValueChange={(hour: number) => setTemporaryHour(hour)}
         formatValue={formatHour}
       />
     </div>

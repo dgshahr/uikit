@@ -1,3 +1,4 @@
+import debounce from 'lodash.debounce';
 import { type FC, useState } from 'react';
 import { useTimePickerContext } from './context';
 import TimeInputs from './TimeInputs';
@@ -17,28 +18,29 @@ const Body: FC = () => {
     return newDate;
   };
 
-  const handleSingleTimeChange = (hour: number, minute: number) => {
+  const handleSingleTimeChange = debounce((hour: number, minute: number) => {
     if (!value || acceptRange) return;
     if (value.getHours() === hour && value.getMinutes() === minute) return;
-
     onChange(setTime(value, hour, minute));
-  };
+  }, 200);
 
-  const handleRangeTimeChange = (part: 'start' | 'end', hour: number, minute: number) => {
+  const handleRangeTimeChange = debounce((part: 'start' | 'end', hour: number, minute: number) => {
     if (!value || !acceptRange) return;
     const current = new Date(value[part] ?? new Date());
     if (current.getHours() === hour && current.getMinutes() === minute) return;
-
     onChange({
       ...value,
       [part]: setTime(current, hour, minute),
     });
-  };
+  }, 200);
 
   const componentsCommonProps = { timePickerProps, handleSingleTimeChange, handleRangeTimeChange };
 
   return (
-    <div className="dgsuikit:p-4 dgsuikit:ss02">
+    <div
+      dir="rtl"
+      className="dgsuikit:p-4 dgsuikit:ss02"
+    >
       <TimeInputs
         setActivePart={setActivePart}
         {...componentsCommonProps}
