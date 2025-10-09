@@ -1,4 +1,3 @@
-import debounce from 'lodash.debounce';
 import { useEffect, useRef } from 'react';
 import { getItemHeight, scrollToValue } from '../utils';
 
@@ -18,18 +17,12 @@ export function useScrollWheel(
     lastValueRef.current = value;
   };
 
-  const debouncedOnValueChange = debounce((value: number) => {
-    if (value !== lastValueRef.current) {
-      lastValueRef.current = value;
-      onValueChange(value);
-    }
-  }, 200);
-
   const handleScroll = (container: HTMLDivElement) => {
     const index = Math.round(container.scrollTop / getHeight());
     const newValue = items[Math.max(0, Math.min(index, items.length - 1))];
-    if (newValue != null) {
-      debouncedOnValueChange(newValue);
+    if (newValue != null && newValue !== lastValueRef.current) {
+      lastValueRef.current = newValue;
+      onValueChange(newValue);
     }
   };
 
@@ -40,7 +33,7 @@ export function useScrollWheel(
     const listener = () => handleScroll(container);
     container.addEventListener('scroll', listener);
     return () => container.removeEventListener('scroll', listener);
-  }, [items, debouncedOnValueChange]);
+  }, [items]);
 
   useEffect(() => {
     if (defaultValue != null) {
