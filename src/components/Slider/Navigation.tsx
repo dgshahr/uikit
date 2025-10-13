@@ -67,7 +67,7 @@ const Navigation: FC<NavigationProps> = (props) => {
       {navigationButtonsShowType &&
         navigationButtonsShowType !== 'hide' &&
         navigationButtonsShowType === 'onSides' &&
-        getNavigationButtons}
+        getNavigationButtons()}
       <div
         className={clsx(
           'dgsuikit:flex',
