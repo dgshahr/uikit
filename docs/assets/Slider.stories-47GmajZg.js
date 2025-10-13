@@ -127,7 +127,7 @@ const E = 'dgsuikit:opacity-0 dgsuikit:group-hover:opacity-100 dgsuikit:transiti
       };
     return e.jsxs(e.Fragment, {
       children: [
-        s && s !== 'hide' && s === 'onSides' && v,
+        s && s !== 'hide' && s === 'onSides' && v(),
         e.jsxs('div', {
           className: y(
             'dgsuikit:flex',
