@@ -53,6 +53,7 @@ const Switch: FC<SwitchProps> = (props) => {
         containerClassName,
       )}
       onClick={() => onChange(!checked)}
+      disabled={disabled}
     >
       <div
         className={clsx(
