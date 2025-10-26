@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-
 import '@/src/styles.css';
 
 interface BadgePropsBase {
@@ -23,16 +22,21 @@ interface BadgePropsBase {
 
 interface BadgePropsWithIcon extends BadgePropsBase {
   valueType?: 'text';
+  /** @deprecated Use leftIcon or rightIcon instead */
   icon?: ReactNode;
+  leftIcon?: ReactNode;
+  rightIcon?: ReactNode;
 }
 
-interface BadgePropsWithoutIcon extends Omit<BadgePropsBase, 'icon'> {
+interface BadgePropsWithoutIcon extends Omit<BadgePropsBase, 'icon' | 'leftIcon' | 'rightIcon'> {
   valueType: 'number';
 }
 
 export type BadgeProps = BadgePropsWithIcon | BadgePropsWithoutIcon;
 
-function styleBadge(options: Omit<Required<BadgeProps>, 'value' | 'icon' | 'width'>) {
+function styleBadge(
+  options: Omit<Required<BadgeProps>, 'value' | 'icon' | 'width' | 'leftIcon' | 'rightIcon'>,
+) {
   const defaultClassName =
     'dgsuikit:inline-flex dgsuikit:items-center dgsuikit:justify-center dgsuikit:rounded-[20px]';
 
@@ -105,15 +109,23 @@ const Badge = (props: BadgeProps) => {
     className = '',
   } = props;
 
-  const icon = (props as BadgePropsWithIcon).icon;
+  const { icon, leftIcon, rightIcon } = props as BadgePropsWithIcon;
+
+  if (icon) {
+    console.error(
+      '[Deprecated Prop Warning] ❗ The "icon" prop in <Badge /> is deprecated and will be removed in a future update. Please use "leftIcon" or "rightIcon" instead.',
+    );
+  }
 
   return (
     <div
       className={styleBadge({ type, color, size, valueType, className })}
       style={{ width: width ?? 'auto' }}
     >
+      {leftIcon && valueType === 'text' && <span className={getIconSize(size)}>{leftIcon}</span>}
       {icon && valueType === 'text' && <span className={getIconSize(size)}>{icon}</span>}
       {value}
+      {rightIcon && valueType === 'text' && <span className={getIconSize(size)}>{rightIcon}</span>}
     </div>
   );
 };
