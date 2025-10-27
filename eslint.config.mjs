@@ -100,6 +100,14 @@ export default [
           },
         },
       ],
+      'no-restricted-syntax': [
+        'warn',
+        {
+          selector: "JSXAttribute[name.name='icon'][parent.name.name='Badge']",
+          message:
+            'The "icon" prop in <Badge /> is deprecated. Please use "leftIcon" or "rightIcon" instead.',
+        },
+      ],
     },
   },
 ];
