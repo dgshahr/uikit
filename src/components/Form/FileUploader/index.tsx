@@ -3,14 +3,9 @@
 import clsx from 'clsx';
 import { Fragment, type FC } from 'react';
 import FileInput from './Input/FileInput';
-import MultipleModePreveiw from './Preview/MultipleMode/MultipleModePreveiw';
+import MultipleModePreview from './Preview/MultipleMode/MultipleModePreview';
 import SingleModePreview from './Preview/SingleMode/SingleModePreview';
-import type {
-  FilePreviewProps,
-  FileType,
-  FileUploaderMultipleMode,
-  FileUploaderProps,
-} from './types';
+import type { FileType, FileUploaderMultipleMode, FileUploaderProps } from './types';
 
 import '@/src/styles.css';
 
@@ -32,7 +27,7 @@ const FileUploader: FC<FileUploaderProps> = (props) => {
       {((!haveFiles && mode === 'single') || (mode === 'multiple' && !hideFileInput)) && (
         <FileInput
           {...fileInputProps}
-          previewtype={(previewProps as FilePreviewProps)?.type}
+          previewType={previewProps?.type}
           disabled={disabled}
           isError={isError}
           onChange={onChange}
@@ -46,7 +41,7 @@ const FileUploader: FC<FileUploaderProps> = (props) => {
               files={files as FileType}
             />
           ) : (
-            <MultipleModePreveiw
+            <MultipleModePreview
               {...previewProps}
               files={files as FileType[]}
             />

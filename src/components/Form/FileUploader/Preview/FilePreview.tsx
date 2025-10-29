@@ -2,17 +2,18 @@ import clsx from 'clsx';
 import type { FC, ReactNode, SyntheticEvent } from 'react';
 import fallbackImage from './preveiwFallback.svg';
 import ProgressDoughnut from '../../../Progress/Doughnut';
-import { ABSOLUTE_CENTER, DEFAULT_SIZE_CLASS } from '../constants';
+import { ABSOLUTE_CENTER, DEFAULT_COMPACT_SIZE_CLASS, DEFAULT_SIZE_CLASS } from '../constants';
 import type { FileType } from '../types';
 
 interface FilePreviewProps {
   children?: ReactNode;
   file: FileType;
   className?: string;
+  isCompact?: boolean;
 }
 
 const FilePreview: FC<FilePreviewProps> = (props) => {
-  const { file, children, className } = props;
+  const { file, children, className, isCompact } = props;
   const fileSrc = file.file ? URL.createObjectURL(file.file) : (file.src ?? '');
 
   function handleImageError(e: SyntheticEvent<HTMLImageElement, Event>) {
@@ -25,7 +26,7 @@ const FilePreview: FC<FilePreviewProps> = (props) => {
     <div
       className={clsx(
         'dgsuikit:relative dgsuikit:rounded-lg dgsuikit:overflow-hidden',
-        DEFAULT_SIZE_CLASS,
+        isCompact ? DEFAULT_COMPACT_SIZE_CLASS : DEFAULT_SIZE_CLASS,
         className,
       )}
     >

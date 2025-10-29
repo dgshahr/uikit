@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { FC, useEffect, useRef, useState } from 'react';
-import { FileType } from './types';
+import { FileType, MultipleFilePreviewProps, SingleFilePreviewProps } from './types';
 import FileUploader from './index';
 
 const meta = {
@@ -107,7 +107,7 @@ const defaultArgs: Story['args'] = {
     title: 'عنوان',
     className: 'dgsuikit:ss02',
     helperProps: {
-      hintMessage: 'پیام راهنما',
+      hintMessage: 'مشاهده راهنما',
     },
   },
 };
@@ -147,12 +147,14 @@ const SingleFileInputExample: FC<Story['args']> = (props) => {
       mode="single"
       files={file}
       onChange={handleFileSelect}
-      previewProps={{
-        ...props.previewProps,
-        leftButton: {
-          onClick: () => handleFileSelect(undefined),
-        },
-      }}
+      previewProps={
+        {
+          ...props.previewProps,
+          leftButton: {
+            onClick: () => handleFileSelect(undefined),
+          },
+        } as SingleFilePreviewProps
+      }
     />
   );
 };
@@ -167,6 +169,27 @@ export const Default: Story = {
     },
     previewProps: {
       ...defaultArgs.previewProps,
+      exteraButton: {
+        variant: 'secondary',
+        children: 'عنوان',
+        size: 'small',
+      },
+    },
+  },
+  render: (args) => <SingleFileInputExample {...args} />,
+};
+
+export const SingleCompact: Story = {
+  args: {
+    ...defaultArgs,
+    fileInputProps: {
+      ...defaultArgs.fileInputProps,
+      description: `فرمت‌های قابل قبول JPG , PNG
+حداکثر حجم تا 5Mb`,
+    },
+    previewProps: {
+      ...defaultArgs.previewProps,
+      type: 'compact',
       exteraButton: {
         variant: 'secondary',
         children: 'عنوان',
@@ -196,12 +219,14 @@ const MultipleFileInputExample: FC<Story['args']> = (props) => {
       mode="multiple"
       files={files}
       onChange={handleFileSelect}
-      previewProps={{
-        ...props.previewProps,
-        leftButton: {
-          onClick: handleRemoveFile,
-        },
-      }}
+      previewProps={
+        {
+          ...props.previewProps,
+          leftButton: {
+            onClick: handleRemoveFile,
+          },
+        } as MultipleFilePreviewProps
+      }
     />
   );
 };

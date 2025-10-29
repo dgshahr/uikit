@@ -1,14 +1,12 @@
 import clsx from 'clsx';
 import type { ButtonProps } from '../../../Button';
 import Button from '../../../Button';
-import type { FilePreviewProps, FileType } from '../types';
+import type { ActionConfig, FilePreviewProps, FileType } from '../types';
 
 export function renderPreviewDefaultAction(
   button: FilePreviewProps['leftButton'],
   file: FileType,
-  defaults?: Omit<ButtonProps, 'rightIcon' | 'leftIcon'> & {
-    icon?: ButtonProps['rightIcon'];
-  },
+  defaults?: ActionConfig,
 ) {
   if (!button) return null;
 
