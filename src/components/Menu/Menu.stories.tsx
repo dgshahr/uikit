@@ -13,6 +13,11 @@ import Divider from '../Divider';
 
 import Menu from './index';
 
+Menu.displayName = 'Menu';
+if (Menu.Item) {
+  Menu.Item.displayName = 'Menu.Item';
+}
+
 const meta: Meta<typeof Menu> = {
   title: 'Components/Menu',
   component: Menu,
@@ -20,8 +25,7 @@ const meta: Meta<typeof Menu> = {
     layout: 'centered',
     docs: {
       description: {
-        component:
-          'A dropdown menu component with customizable trigger and menu items. Supports icons, disabled states, custom styling, and dynamic positioning based on viewport space.',
+        component: `### \n\`\`\`js\nimport Menu from '@dgshahr/ui-kit/Menu';\nOr\nimport { Menu } from '@dgshahr/ui-kit';\n\`\`\``,
       },
     },
   },
@@ -50,6 +54,9 @@ const meta: Meta<typeof Menu> = {
   },
 };
 
+export default meta;
+type Story = StoryObj<typeof Menu>;
+
 const renderTrigger = (
   label: string,
   toggle: () => void,
@@ -68,9 +75,6 @@ const renderTrigger = (
 const renderTitle = (label: string): React.ReactElement => (
   <p className="dgsuikit:py-4 dgsuikit:font-p2-regular dgsuikit:text-gray-400">{label}</p>
 );
-
-export default meta;
-type Story = StoryObj<typeof Menu>;
 
 export const Default: Story = {
   args: {

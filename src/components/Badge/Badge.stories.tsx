@@ -36,6 +36,27 @@ const meta = {
     icon: {
       if: { arg: 'valueType', eq: 'text' },
       control: { type: 'text' },
+      description:
+        "available only when valueType = 'text'  \n(will be deprecated in future updates)",
+      table: {
+        type: {
+          summary: 'ReactNode',
+        },
+      },
+    },
+    leftIcon: {
+      if: { arg: 'valueType', eq: 'text' },
+      control: { type: 'text' },
+      description: "available only when valueType = 'text'",
+      table: {
+        type: {
+          summary: 'ReactNode',
+        },
+      },
+    },
+    rightIcon: {
+      if: { arg: 'valueType', eq: 'text' },
+      control: { type: 'text' },
       description: "available only when valueType = 'text'",
       table: {
         type: {

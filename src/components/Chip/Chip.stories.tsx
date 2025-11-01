@@ -24,12 +24,22 @@ const meta = {
     },
     size: {
       control: 'select',
-      options: ['small', 'large'],
+      options: ['xsmall', 'small', 'large'],
       table: {
         type: {
           summary: 'small, large',
         },
         defaultValue: { summary: 'small' },
+      },
+    },
+    color: {
+      control: 'select',
+      options: ['primary', 'gray'],
+      table: {
+        type: {
+          summary: 'primary, gray',
+        },
+        defaultValue: { summary: 'primary' },
       },
     },
     clickable: {
