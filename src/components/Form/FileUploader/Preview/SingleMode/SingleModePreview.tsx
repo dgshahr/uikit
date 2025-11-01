@@ -1,26 +1,17 @@
 import clsx from 'clsx';
 import type { FC } from 'react';
 import Button from '@/src/components/Button';
+import IconDelete from '@/src/icons/IconDelete';
 import IconDelete1 from '@/src/icons/IconDelete1';
+import IconEye from '@/src/icons/IconEye';
 import IconMinimize from '@/src/icons/IconMinimize';
+import PreviewTitle from './PreviewTitle';
 import FieldBottomInfo from '../../../Common/FieldBottomInfo/FieldBottomInfo';
-import { TITLE_CLASS } from '../../constants';
-import type { FileType } from '../../types';
+import { DEFAULT_COMPACT_SIZE_CLASS } from '../../constants';
+import type { ActionConfig, FileType } from '../../types';
 import FilePreview from '../FilePreview';
 import type { PreviewProps } from '../types';
 import { getPreviewBorder, renderPreviewDefaultAction } from '../utils';
-
-export function getTitleClass(
-  loading: FileType['loading'],
-  errorMessage: FileType['errorMessage'],
-  status: FileType['status'] = 'default',
-) {
-  if (loading) return TITLE_CLASS.loading;
-
-  if (errorMessage) return TITLE_CLASS.error;
-
-  return TITLE_CLASS[status];
-}
 
 const SingleModePreview: FC<PreviewProps<FileType>> = (props) => {
   const {
@@ -30,8 +21,36 @@ const SingleModePreview: FC<PreviewProps<FileType>> = (props) => {
     exteraButton,
     wrapperClassName,
     previewClassName,
+    type = 'default',
   } = props;
   const { errorMessage, file, hintMessage, loading, status, title } = files;
+
+  const isCompact = type === 'compact';
+
+  const leftButtonConfig: ActionConfig = isCompact
+    ? {
+        icon: <IconDelete />,
+        className:
+          'dgsuikit:!absolute dgsuikit:left-2 dgsuikit:top-2 dgsuikit:!p-1.5 dgsuikit:bg-red-500/60 dgsuikit:hover:bg-red-400/50 dgsuikit:backdrop-blur-[1px]',
+      }
+    : {
+        color: 'error',
+        icon: <IconDelete1 />,
+        className: 'dgsuikit:!absolute dgsuikit:left-2 dgsuikit:top-2',
+      };
+
+  const rightButtonConfig: ActionConfig = isCompact
+    ? {
+        icon: <IconEye className="dgsuikit:text-white" />,
+        variant: 'text',
+        className:
+          'dgsuikit:!absolute dgsuikit:right-2 dgsuikit:top-2 dgsuikit:!p-1.5 dgsuikit:bg-gray-800/60 dgsuikit:hover:bg-gray-700/50 dgsuikit:backdrop-blur-[1px]',
+      }
+    : {
+        color: 'gray',
+        icon: <IconMinimize />,
+        className: 'dgsuikit:!absolute dgsuikit:right-2 dgsuikit:bottom-2',
+      };
 
   return (
     <div className="dgsuikit:space-y-2">
@@ -43,19 +62,13 @@ const SingleModePreview: FC<PreviewProps<FileType>> = (props) => {
       >
         <FilePreview
           file={files}
-          className={previewClassName}
+          className={clsx(isCompact && DEFAULT_COMPACT_SIZE_CLASS, previewClassName)}
+          isCompact={isCompact}
         >
-          {renderPreviewDefaultAction(leftButton, files, {
-            color: 'error',
-            icon: <IconDelete1 />,
-            className: 'dgsuikit:!absolute dgsuikit:left-2 dgsuikit:top-2',
-          })}
-          {renderPreviewDefaultAction(rightButton, files, {
-            color: 'gray',
-            icon: <IconMinimize />,
-            className: 'dgsuikit:!absolute dgsuikit:right-2 dgsuikit:bottom-2',
-          })}
-          {exteraButton ? (
+          {renderPreviewDefaultAction(leftButton, files, leftButtonConfig)}
+          {renderPreviewDefaultAction(rightButton, files, rightButtonConfig)}
+
+          {!isCompact && exteraButton ? (
             <Button
               className={clsx(
                 exteraButton.className,
@@ -69,18 +82,30 @@ const SingleModePreview: FC<PreviewProps<FileType>> = (props) => {
               {exteraButton.children}
             </Button>
           ) : null}
+
+          {isCompact && (
+            <PreviewTitle
+              type="compact"
+              title={title}
+              fileName={file?.name}
+              loading={loading}
+              errorMessage={errorMessage}
+              status={status}
+            />
+          )}
         </FilePreview>
-        {Boolean(title ?? file?.name) && (
-          <div
-            className={clsx(
-              getTitleClass(loading, errorMessage, status),
-              'dgsuikit:px-3 dgsuikit:py-1.5 dgsuikit:rounded-lg dgsuikit:font-p2-medium dgsuikit:text-center dgsuikit:line-clamp-1 dgsuikit:mt-1 dgsuikit:w-0 dgsuikit:min-w-full',
-            )}
-          >
-            {title ?? file?.name}
-          </div>
+        {!isCompact && (
+          <PreviewTitle
+            type="default"
+            title={title}
+            fileName={file?.name}
+            loading={loading}
+            errorMessage={errorMessage}
+            status={status}
+          />
         )}
       </div>
+
       {(hintMessage ?? errorMessage) ? (
         <FieldBottomInfo
           errorMessage={errorMessage}

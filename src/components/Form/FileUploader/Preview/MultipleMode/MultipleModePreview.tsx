@@ -9,7 +9,7 @@ function getFileKey(file: FileType) {
   return file.file ? URL.createObjectURL(file.file) : (file.src ?? '');
 }
 
-const MultipleModePreveiw: FC<PreviewProps<FileType[]>> = (props) => {
+const MultipleModePreview: FC<PreviewProps<FileType[]>> = (props) => {
   const { files, type = 'list', wrapperClassName } = props;
 
   if (type === 'grid')
@@ -34,4 +34,4 @@ const MultipleModePreveiw: FC<PreviewProps<FileType[]>> = (props) => {
   );
 };
 
-export default MultipleModePreveiw;
+export default MultipleModePreview;

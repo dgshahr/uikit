@@ -18,12 +18,18 @@ interface PreviewCustomButtonInterface extends Omit<ButtonProps, 'onClick'> {
 }
 
 export interface FilePreviewProps {
-  type?: 'list' | 'grid';
+  type?: 'default' | 'compact' | 'list' | 'grid';
   leftButton?: boolean | PreviewCustomButtonInterface;
   rightButton?: boolean | PreviewCustomButtonInterface;
   exteraButton?: PreviewCustomButtonInterface;
   wrapperClassName?: string;
   previewClassName?: string;
+}
+export interface SingleFilePreviewProps extends Omit<FilePreviewProps, 'type'> {
+  type?: 'default' | 'compact';
+}
+export interface MultipleFilePreviewProps extends Omit<FilePreviewProps, 'type'> {
+  type?: 'list' | 'grid';
 }
 
 export interface FileInputProps
@@ -48,18 +54,22 @@ interface FileUploaderPropsBase {
   className?: string;
 }
 
-interface FileUploaderSingleMode {
+export interface FileUploaderSingleMode {
   mode?: 'single';
   files?: FileType;
-  previewProps?: Omit<FilePreviewProps, 'type'>;
+  previewProps?: SingleFilePreviewProps;
 }
 
 export interface FileUploaderMultipleMode {
   mode: 'multiple';
   files?: FileType[];
-  previewProps?: FilePreviewProps;
+  previewProps?: MultipleFilePreviewProps;
   hideFileInput?: boolean;
 }
 
 export type FileUploaderProps = FileUploaderPropsBase &
   (FileUploaderSingleMode | FileUploaderMultipleMode);
+
+export type ActionConfig = Omit<ButtonProps, 'rightIcon' | 'leftIcon'> & {
+  icon?: ButtonProps['rightIcon'];
+};
