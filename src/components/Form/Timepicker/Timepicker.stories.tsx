@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { TimepickerProps } from './types';
 import { fullWidthStory } from '../../../utils/storybook/helpers';
-import { WithRange } from '../../../utils/types/DateAndTimePicker';
+import { WithRange } from '../types/DateAndTimePicker';
 import TimePicker from './index';
 
 const meta = {
@@ -123,7 +123,7 @@ const RangeTimePickerExample = (props: TimepickerProps) => {
 
 export const Range: StoryObj<typeof meta> = {
   args: {
-    value: new Date(),
+    value: { start: new Date(), end: new Date() },
     onChange: () => {},
     acceptRange: true,
   },
@@ -143,7 +143,8 @@ export const OpenMode: StoryObj<typeof meta> = {
 export const DrawerMode: StoryObj<typeof meta> = {
   ...Default,
   args: {
-    ...Default.args,
+    value: new Date(),
+    onChange: () => {},
     dropdownType: 'drawer',
   },
   render: (args) => <DefaultTimePickerExample {...args} />,

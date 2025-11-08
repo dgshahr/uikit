@@ -27,15 +27,18 @@ function formatValue(value: TimepickerProps['value']) {
 const TimePicker: FC<TimepickerProps> = (props) => {
   const { showSubmitButton = true, showNowButton = true } = props;
 
+  const propsWithDefaults: TimepickerProps =
+    props.acceptRange === undefined ? { ...props, acceptRange: false } : props;
+
   const { Wrapper, wrapperProps } = useDateAndTimePickerWrapper({
-    props,
+    props: propsWithDefaults,
     standaloneMode: 'time',
     formatValue,
   });
 
   return (
     <Wrapper {...wrapperProps}>
-      <TimePickerProvider timePickerProps={props}>
+      <TimePickerProvider timePickerProps={propsWithDefaults}>
         <Body />
         {(showSubmitButton || showNowButton) && <Footer />}
       </TimePickerProvider>

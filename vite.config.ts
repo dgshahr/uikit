@@ -40,7 +40,7 @@ export default defineConfig({
     tailwindcss(),
     react(),
     libInjectCss(),
-    dts({ entryRoot: 'src/components', exclude: ['src/icons'], include: ['src/utils/types'] }),
+    dts({ entryRoot: 'src/components', exclude: ['src/icons'] }),
     preserveDirectives(),
   ],
   resolve: {
