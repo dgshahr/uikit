@@ -11,8 +11,8 @@ import { peerDependencies } from './package.json';
 
 const componentDir = resolve(__dirname, './src/components');
 
-const findEntries = (dir: string) => {
-  const entries = {};
+const findEntries = (dir: string): Record<string, string> => {
+  const entries: Record<string, string> = {};
   readdirSync(dir).forEach((item) => {
     const itemPath = resolve(dir, item);
     if (statSync(itemPath).isDirectory()) {
