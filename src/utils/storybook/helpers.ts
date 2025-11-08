@@ -12,14 +12,16 @@ export function fullWidthStory(
     alignItems?: CSSProperties['alignItems'];
   },
 ) {
-  const mainElement = document.getElementsByClassName('sb-show-main').item(0) as HTMLElement | null;
+  const mainElement = document
+    ?.getElementsByClassName('sb-show-main')
+    .item(0) as HTMLElement | null;
   if (mainElement) {
     mainElement.style.justifyContent = mainOptions?.justifyContent ?? 'center';
     mainElement.style.alignItems = mainOptions?.alignItems ?? 'center';
   }
   setTimeout(() => {
     Array.from(
-      document.getElementsByClassName('innerZoomElementWrapper') as HTMLCollectionOf<HTMLElement>,
+      document?.getElementsByClassName('innerZoomElementWrapper') as HTMLCollectionOf<HTMLElement>,
     ).forEach((element) => {
       if (element) {
         element.style.display = docOptions?.notFlex ? 'block' : 'flex';
@@ -31,7 +33,7 @@ export function fullWidthStory(
   }, 200);
 
   setTimeout(() => {
-    document.querySelectorAll('[scale="1"]').forEach((element) => {
+    document?.querySelectorAll('[scale="1"]').forEach((element) => {
       element.classList.add('dgsuikit:!w-full');
     });
   }, 300);

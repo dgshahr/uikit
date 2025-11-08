@@ -10,6 +10,7 @@ import {
   type UIEvent,
   useId,
 } from 'react';
+import { isBrowser } from '@/src/utils/isBrowser';
 import { sliderContext } from './context';
 import Navigation from './Navigation';
 import type { SliderProps, SliderRef } from './types';
@@ -82,12 +83,13 @@ const Slider = forwardRef<SliderRef, PropsWithChildren<SliderProps>>((props, ref
   }
 
   function detectResponsiveProps() {
+    if (!isBrowser()) return;
     const sortedResponsiveKeys = Object.keys(props.responsive!).sort(
       (a, b) => Number(a) - Number(b),
     );
 
     const foundedPropsKey = sortedResponsiveKeys.findLast(
-      (key) => Number(key) <= window.innerWidth,
+      (key) => Number(key) <= window?.innerWidth,
     );
     const foundedCurrentProps = foundedPropsKey ? props.responsive![Number(foundedPropsKey)] : null;
     if (foundedCurrentProps) setCurrentProps({ ...currentProps, ...foundedCurrentProps });
@@ -108,13 +110,13 @@ const Slider = forwardRef<SliderRef, PropsWithChildren<SliderProps>>((props, ref
   }, [props.children, containerRef, containerXPadding]);
 
   useEffect(() => {
-    if (!props.responsive || Object.keys(props.responsive).length <= 0) return;
+    if (!props.responsive || Object.keys(props.responsive).length <= 0 || !isBrowser()) return;
 
     detectResponsiveProps();
-    window.addEventListener('resize', detectResponsiveProps);
+    window?.addEventListener('resize', detectResponsiveProps);
 
     return () => {
-      window.removeEventListener('resize', detectResponsiveProps);
+      window?.removeEventListener('resize', detectResponsiveProps);
     };
   }, [props.responsive]);
 

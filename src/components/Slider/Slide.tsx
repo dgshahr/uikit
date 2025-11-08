@@ -9,6 +9,7 @@ import {
   type HTMLAttributes,
   type PropsWithChildren,
 } from 'react';
+import { isBrowser } from '@/src/utils/isBrowser';
 import { useSliderContext } from './context';
 
 function getScrollSnapAlign({
@@ -56,14 +57,14 @@ const Slide: FC<
   const [childIndex, setChildIndex] = useState(0);
 
   useEffect(() => {
-    if (!ref.current) return;
+    if (!ref.current || !isBrowser()) return;
     setChildIndex(
       Array.prototype.indexOf.call(
-        document.querySelectorAll(`[id='slide-item-${sliderId}']`),
+        document?.querySelectorAll(`[id='slide-item-${sliderId}']`),
         ref.current,
       ),
     );
-  }, [ref, childrenCount, containerXPadding]);
+  }, [ref, childrenCount, containerXPadding, sliderId]);
 
   return (
     <div

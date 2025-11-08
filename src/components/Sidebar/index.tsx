@@ -3,6 +3,7 @@
 import clsx from 'clsx';
 import { Fragment, useEffect, type FC } from 'react';
 import IconLogout from '@/src/icons/IconLogout';
+import { isBrowser } from '@/src/utils/isBrowser';
 import { DURATION_CLASS } from './constants';
 import { sidebarContext } from './context';
 import SidebarItems from './Items';
@@ -31,11 +32,11 @@ const Sidebar: FC<SidebarProps> = (props) => {
   const openOnHover = (props as SidebarPropsWithoutHideOnClose).openOnHover;
 
   const MaskElement = showMask ? 'div' : Fragment;
-  const documentElement = document.documentElement;
 
   useEffect(() => {
-    if (hideOnClose) return;
+    if (hideOnClose || !isBrowser()) return;
 
+    const documentElement = document?.documentElement;
     const paddingRightClass = 'dgsuikit:pr-[80px]';
     documentElement.classList.add(paddingRightClass);
 
@@ -45,8 +46,9 @@ const Sidebar: FC<SidebarProps> = (props) => {
   }, [hideOnClose]);
 
   useEffect(() => {
-    if (!showMask) return;
+    if (!showMask || !isBrowser()) return;
 
+    const documentElement = document?.documentElement;
     const overflowClass = 'dgsuikit:overflow-hidden';
 
     if (isOpen) documentElement.classList.add(overflowClass);

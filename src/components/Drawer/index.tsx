@@ -5,6 +5,7 @@ import { useEffect, useState, type CSSProperties, type FC, type ReactNode } from
 import '@/src/styles.css';
 import { createPortal } from 'react-dom';
 import IconCloseRemove from '@/src/icons/IconCloseRemove';
+import { isBrowser } from '@/src/utils/isBrowser';
 
 const ANIMATION_DURATION = 150;
 let openDrawerCount = 0;
@@ -96,9 +97,10 @@ const Drawer: FC<DrawerProps> = (props) => {
     havePopover,
   } = props;
   const [show, setShow] = useState(false);
-  const container = containerElement ?? document?.body;
+  const container = containerElement ?? (isBrowser() ? document?.body : null);
 
   function updateBodyClasses() {
+    if (!container) return;
     if (updateOpenDrawerCountTimeout) clearTimeout(updateOpenDrawerCountTimeout);
 
     updateOpenDrawerCountTimeout = setTimeout(() => {
@@ -139,7 +141,7 @@ const Drawer: FC<DrawerProps> = (props) => {
     };
   }, []);
 
-  if (!open) return;
+  if (!open || !container) return;
 
   const haveHeader = header
     ? Object.values(header).some((headerItem) => Boolean(headerItem))
