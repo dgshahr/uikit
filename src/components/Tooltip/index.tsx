@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { useMemo, useState, type FC, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { useFlipPosition } from '@/src/hooks/useFlipPosition';
+import { isBrowser } from '@/src/utils/isBrowser';
 import TooltipContent from './Content';
 
 import '@/src/styles.css';
@@ -66,16 +67,16 @@ const Tooltip: FC<TooltipProps> = (props) => {
   );
 
   const anchorPositionStyles = useMemo(() => {
-    if (!anchorRef.current || !attachToBody) return {};
+    if (!anchorRef.current || !attachToBody || !isBrowser()) return {};
     const { top, left, width, height } = anchorRef.current.getBoundingClientRect();
 
     return {
-      top: `${top + window.scrollY}px`,
-      left: `${left + window.scrollX}px`,
+      top: `${top + window?.scrollY}px`,
+      left: `${left + window?.scrollX}px`,
       width: `${width}px`,
       height: `${height}px`,
     };
-  }, [open]);
+  }, [open, attachToBody]);
 
   return (
     <div
@@ -87,7 +88,7 @@ const Tooltip: FC<TooltipProps> = (props) => {
       onTouchEnd={closeTooltip}
     >
       {children}
-      {attachToBody
+      {attachToBody && isBrowser()
         ? createPortal(
             <div
               className="dgsuikit:absolute"
@@ -97,7 +98,7 @@ const Tooltip: FC<TooltipProps> = (props) => {
             >
               {contentComponent}
             </div>,
-            document.body,
+            document?.body,
           )
         : contentComponent}
     </div>

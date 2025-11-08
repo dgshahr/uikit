@@ -1,5 +1,6 @@
 import debounce from 'lodash.debounce';
 import { useRef, useEffect, useState, useCallback, useMemo } from 'react';
+import { isBrowser } from '@/src/utils/isBrowser';
 import type { PopperPosition } from '../components/Form/Wrappers/PickerWrapper/type';
 
 interface UseFlipPositionOptions {
@@ -186,6 +187,7 @@ export function useFlipPosition<T extends HTMLElement, K extends HTMLElement>({
   const [position, setPosition] = useState<PopperPosition>(initialPosition);
 
   const updatePosition = useCallback(() => {
+    if (!isBrowser()) return;
     const anchorEl = anchorRef.current;
     const popperEl = popperRef.current;
     if (!anchorEl || !popperEl) return;
@@ -193,7 +195,7 @@ export function useFlipPosition<T extends HTMLElement, K extends HTMLElement>({
     const anchorRect = anchorEl.getBoundingClientRect();
     const { anchorX, anchorY } = calculateAnchorPoint(initialPosition, anchorRect);
 
-    const computedStyle = window.getComputedStyle(popperEl);
+    const computedStyle = window?.getComputedStyle(popperEl);
     const isVisible =
       computedStyle.display !== 'none' &&
       computedStyle.visibility !== 'hidden' &&
@@ -223,8 +225,8 @@ export function useFlipPosition<T extends HTMLElement, K extends HTMLElement>({
       popperEl.style.removeProperty('position');
       popperEl.style.removeProperty('transition');
     }
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
+    const viewportWidth = window?.innerWidth;
+    const viewportHeight = window?.innerHeight;
 
     const { top, left } = calculatePopperCoords(initialPosition, anchorX, anchorY, popperRect);
 
@@ -270,14 +272,16 @@ export function useFlipPosition<T extends HTMLElement, K extends HTMLElement>({
   );
 
   useEffect(() => {
+    if (!isBrowser()) return;
+
     debouncedUpdatePosition();
 
-    window.addEventListener('resize', debouncedUpdatePosition);
-    window.addEventListener('scroll', debouncedUpdatePosition);
+    window?.addEventListener('resize', debouncedUpdatePosition);
+    window?.addEventListener('scroll', debouncedUpdatePosition);
 
     return () => {
-      window.removeEventListener('resize', debouncedUpdatePosition);
-      window.removeEventListener('scroll', debouncedUpdatePosition);
+      window?.removeEventListener('resize', debouncedUpdatePosition);
+      window?.removeEventListener('scroll', debouncedUpdatePosition);
       debouncedUpdatePosition.cancel();
     };
   }, [debouncedUpdatePosition]);

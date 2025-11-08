@@ -3,87 +3,88 @@ const __vite__mapDeps = (
   m = __vite__mapDeps,
   d = m.f ||
     (m.f = [
-      './Accordion.stories-Br8TGRvi.js',
+      './Accordion.stories-BoUeWVFF.js',
       './jsx-runtime-D_zvdyIk.js',
       './index-CTzypqlY.js',
-      './AccordionItem-CARUqHEJ.js',
+      './AccordionItem-BDBBJBp9.js',
       './clsx-B-dksMZM.js',
       './IconArrowDown2-BBhufJ55.js',
-      './index-CS2e05IR.js',
-      './styles-D66pVxzJ.css',
-      './Alert.stories-iamtACew.js',
+      './index-vjak5aSN.js',
+      './styles-B_bTOHLh.css',
+      './Alert.stories-BwRpXavX.js',
       './IconCheckCircleBold-EXAR5RF5.js',
       './IconCloseRemove-B6m37iwz.js',
-      './index-ba2HXqsI.js',
-      './Badge.stories-prOasavL.js',
-      './index-DxrGzylW.js',
-      './Breadcrumb.stories-eBlepGOb.js',
+      './index-CK5dQjob.js',
+      './Badge.stories-_8R75C8Q.js',
+      './index--PMV3f1E.js',
+      './Breadcrumb.stories-Br3KmSFp.js',
       './IconQuestionMarkCircle-BuJs7Hhg.js',
-      './helpers-BLnSDN_K.js',
+      './helpers-BL3Yl0VC.js',
       './IconArrowLeft2-DI3fgQDw.js',
-      './Button.stories-ByMU88ne.js',
+      './Button.stories-DXH2Hjli.js',
       './IconArrowRight2-C2yC-io_.js',
       './Card.stories-BBDCylLb.js',
-      './Chip.stories-CuLhJiRP.js',
+      './Chip.stories-BlKWDCRk.js',
       './IconUser-GH1SR0Q5.js',
-      './index-BHAe_UaK.js',
+      './index-BxS0lAi1.js',
       './omitObjects-DTdUR98j.js',
-      './Divider.stories-Bt8laFQO.js',
-      './Drawer.stories-CW5lD5JZ.js',
-      './cities-C2l6--HD.js',
-      './index-BNhZK-ju.js',
+      './Divider.stories-BEbggfVI.js',
+      './Drawer.stories-gHubK9tu.js',
+      './cities-CBtTQfvC.js',
+      './index-725Xjxr6.js',
       './IconEye-Cb9e2e14.js',
-      './TextFieldWrapper-D4s2v85O.js',
-      './FieldBottomInfo-Dl0xKUm9.js',
+      './TextFieldWrapper-2qx4DqcM.js',
+      './FieldBottomInfo-DcydcAx7.js',
       './IconInfoCircleOutline-Dd1i2qLz.js',
       './IconSearch-BpsoWpUw.js',
-      './index-BUlzlrTU.js',
+      './index-BuYsO2Xg.js',
       './IconMinus4-BhTKwdYo.js',
-      './RadioCheckboxWrapper-ByQOqZb4.js',
-      './PickerWrapper-DDK3pSI2.js',
+      './RadioCheckboxWrapper-BkBBJRW1.js',
+      './PickerWrapper-lGkRsg09.js',
       './index-BRSOB10J.js',
       './index-X_f_OX5J.js',
-      './useFlipPosition-D78LAv0q.js',
+      './isBrowser-CEYOmsdG.js',
+      './useFlipPosition-Cg5sZ8Du.js',
       './index-GdYbSsJO.js',
-      './useOutsideClick-OW2A_t1-.js',
-      './Checkbox.stories-aMia96t_.js',
-      './Datepicker.stories-CBf5RDLd.js',
+      './useOutsideClick-BZ98SsGu.js',
+      './Checkbox.stories-BHdpXJrZ.js',
+      './Datepicker.stories-CVb88NJ5.js',
       './IconPlus4-BNix8Omv.js',
-      './DateAndTimePickerFooter-DT0uknJP.js',
-      './FileUploader.stories-BSE2sNSX.js',
+      './DateAndTimePickerFooter-BT391n9D.js',
+      './FileUploader.stories-CZumvxxv.js',
       './index-BkgHcS84.js',
-      './Input.stories-D2azQNtz.js',
-      './OtpInput.stories-BqDFVhDE.js',
-      './RadioButton.stories-ufecbFdM.js',
-      './RangeInput.stories-C696ayqL.js',
-      './Select.stories-D1I5LCI1.js',
-      './Switch.stories-Dwwv72Ei.js',
-      './Textarea.stories-Dw530uLq.js',
-      './Timepicker.stories-DdzsftE2.js',
-      './Menu.stories-BW_krnr2.js',
+      './Input.stories-D-zvnSoN.js',
+      './OtpInput.stories-Dyq7J41w.js',
+      './RadioButton.stories-duv08typ.js',
+      './RangeInput.stories-DWK6pJw4.js',
+      './Select.stories-t-T64LmR.js',
+      './Switch.stories-Cily9Yck.js',
+      './Textarea.stories-DQdZVXNe.js',
+      './Timepicker.stories-GKpMxIgv.js',
+      './Menu.stories-DQeCQ9om.js',
       './IconSetting-DvmZJ3cO.js',
-      './Pagination.stories-0r21G7Wy.js',
-      './index-BvpHmH6W.js',
-      './ProgressBar.stories-BMpRz8A5.js',
+      './Pagination.stories-CooyasJZ.js',
+      './index-CSU41_2E.js',
+      './ProgressBar.stories-C9-cAkh2.js',
       './ProgressDoughnut.stories-CtwcZ3tS.js',
-      './Rate.stories-B40DRaTA.js',
-      './Sidebar.stories-F1qZVrOc.js',
-      './Slider.stories-47GmajZg.js',
+      './Rate.stories-DAzhZGYQ.js',
+      './Sidebar.stories-C9t_GPim.js',
+      './Slider.stories-DlNe9RNl.js',
       './Stepper.stories-BEOslhVN.js',
-      './Table.stories-wZWgRk1D.js',
-      './index-D2b6d0TM.js',
-      './Tabs.stories-sXjvZmm9.js',
-      './Tooltip.stories-BX4OCV9x.js',
-      './colors-C9-7M-Tl.js',
+      './Table.stories-CD0NGXXn.js',
+      './index-kh85Mhac.js',
+      './Tabs.stories-DuENWojf.js',
+      './Tooltip.stories-CbZPFAw8.js',
+      './colors-D9DCeguf.js',
       './index-Syj0H2O1.js',
-      './index-DIDvul1B.js',
+      './index-DBa517sS.js',
       './index-CFeRKNTJ.js',
       './index-DrFu-skq.js',
       './constants-DXQArO81.js',
-      './contributing-BhS_YwUm.js',
-      './introductions-D85UPzBs.js',
+      './contributing-CpyW92xT.js',
+      './introductions-B8nYxd0v.js',
       './preview-Dj_l7GHp.js',
-      './entry-preview-BRteV1n7.js',
+      './entry-preview-siCNZPIq.js',
       './chunk-XP5HYGXS-D5tuasO7.js',
       './entry-preview-docs-BoyI6TfX.js',
       './preview-DGZ5Qq08.js',
@@ -10443,31 +10444,31 @@ s(te, 'isExportStory');
 const importers = {
   './src/components/Accordion/Accordion.stories.tsx': () =>
     __vitePreload(
-      () => import('./Accordion.stories-Br8TGRvi.js'),
+      () => import('./Accordion.stories-BoUeWVFF.js'),
       __vite__mapDeps([0, 1, 2, 3, 4, 5, 6, 7]),
       import.meta.url,
     ),
   './src/components/Alert/Alert.stories.tsx': () =>
     __vitePreload(
-      () => import('./Alert.stories-iamtACew.js'),
+      () => import('./Alert.stories-BwRpXavX.js'),
       __vite__mapDeps([8, 1, 4, 2, 9, 10, 11, 7]),
       import.meta.url,
     ),
   './src/components/Badge/Badge.stories.tsx': () =>
     __vitePreload(
-      () => import('./Badge.stories-prOasavL.js'),
+      () => import('./Badge.stories-_8R75C8Q.js'),
       __vite__mapDeps([12, 13, 1, 7]),
       import.meta.url,
     ),
   './src/components/Breadcrumb/Breadcrumb.stories.tsx': () =>
     __vitePreload(
-      () => import('./Breadcrumb.stories-eBlepGOb.js'),
+      () => import('./Breadcrumb.stories-Br3KmSFp.js'),
       __vite__mapDeps([14, 1, 2, 15, 16, 4, 17, 7]),
       import.meta.url,
     ),
   './src/components/Button/Button.stories.tsx': () =>
     __vitePreload(
-      () => import('./Button.stories-ByMU88ne.js'),
+      () => import('./Button.stories-DXH2Hjli.js'),
       __vite__mapDeps([18, 1, 2, 17, 19, 11, 4, 7]),
       import.meta.url,
     ),
@@ -10479,183 +10480,185 @@ const importers = {
     ),
   './src/components/Chip/Chip.stories.tsx': () =>
     __vitePreload(
-      () => import('./Chip.stories-CuLhJiRP.js'),
+      () => import('./Chip.stories-BlKWDCRk.js'),
       __vite__mapDeps([21, 1, 2, 5, 22, 23, 4, 24, 13, 7]),
       import.meta.url,
     ),
   './src/components/Divider/Divider.stories.tsx': () =>
     __vitePreload(
-      () => import('./Divider.stories-Bt8laFQO.js'),
+      () => import('./Divider.stories-BEbggfVI.js'),
       __vite__mapDeps([25, 1, 2, 6, 7]),
       import.meta.url,
     ),
   './src/components/Drawer/Drawer.stories.tsx': () =>
     __vitePreload(
-      () => import('./Drawer.stories-CW5lD5JZ.js'),
+      () => import('./Drawer.stories-gHubK9tu.js'),
       __vite__mapDeps([
         26, 1, 2, 11, 4, 7, 27, 28, 29, 24, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 10, 40, 41, 42,
-        5, 23, 13,
+        43, 5, 23, 13,
       ]),
       import.meta.url,
     ),
   './src/components/Form/Checkbox/Checkbox.stories.tsx': () =>
     __vitePreload(
-      () => import('./Checkbox.stories-aMia96t_.js'),
-      __vite__mapDeps([43, 34, 1, 4, 35, 24, 36, 7]),
+      () => import('./Checkbox.stories-BHdpXJrZ.js'),
+      __vite__mapDeps([44, 34, 1, 4, 35, 24, 36, 7]),
       import.meta.url,
     ),
   './src/components/Form/Datepicker/Datepicker.stories.tsx': () =>
     __vitePreload(
-      () => import('./Datepicker.stories-CBf5RDLd.js'),
+      () => import('./Datepicker.stories-CVb88NJ5.js'),
       __vite__mapDeps([
-        44, 1, 2, 35, 45, 16, 46, 4, 37, 38, 39, 10, 40, 41, 42, 5, 28, 29, 24, 30, 31, 32, 7, 11,
-        17, 19,
+        45, 1, 2, 35, 46, 16, 47, 4, 37, 38, 39, 10, 40, 41, 42, 43, 5, 28, 29, 24, 30, 31, 32, 7,
+        11, 17, 19,
       ]),
       import.meta.url,
     ),
   './src/components/Form/FileUploader/FileUploader.stories.tsx': () =>
     __vitePreload(
-      () => import('./FileUploader.stories-BSE2sNSX.js'),
-      __vite__mapDeps([47, 1, 2, 4, 45, 11, 7, 31, 32, 48, 29]),
+      () => import('./FileUploader.stories-CZumvxxv.js'),
+      __vite__mapDeps([48, 1, 2, 4, 46, 11, 7, 31, 32, 49, 29]),
       import.meta.url,
     ),
   './src/components/Form/Input/Input.stories.tsx': () =>
     __vitePreload(
-      () => import('./Input.stories-D2azQNtz.js'),
-      __vite__mapDeps([49, 1, 2, 28, 4, 29, 24, 30, 31, 32, 7]),
+      () => import('./Input.stories-D-zvnSoN.js'),
+      __vite__mapDeps([50, 1, 2, 28, 4, 29, 24, 30, 31, 32, 7]),
       import.meta.url,
     ),
   './src/components/Form/OtpInput/OtpInput.stories.tsx': () =>
     __vitePreload(
-      () => import('./OtpInput.stories-BqDFVhDE.js'),
-      __vite__mapDeps([50, 1, 2, 4, 31, 32, 30, 7, 28, 29, 24]),
+      () => import('./OtpInput.stories-Dyq7J41w.js'),
+      __vite__mapDeps([51, 1, 2, 4, 40, 31, 32, 30, 7, 28, 29, 24]),
       import.meta.url,
     ),
   './src/components/Form/RadioButton/RadioButton.stories.tsx': () =>
     __vitePreload(
-      () => import('./RadioButton.stories-ufecbFdM.js'),
-      __vite__mapDeps([51, 1, 4, 24, 36, 7]),
+      () => import('./RadioButton.stories-duv08typ.js'),
+      __vite__mapDeps([52, 1, 4, 24, 36, 7]),
       import.meta.url,
     ),
   './src/components/Form/RangeInput/RangeInput.stories.tsx': () =>
     __vitePreload(
-      () => import('./RangeInput.stories-C696ayqL.js'),
-      __vite__mapDeps([52, 1, 2, 16, 4, 17, 19]),
+      () => import('./RangeInput.stories-DWK6pJw4.js'),
+      __vite__mapDeps([53, 1, 2, 16, 4, 17, 19]),
       import.meta.url,
     ),
   './src/components/Form/Select/Select.stories.tsx': () =>
     __vitePreload(
-      () => import('./Select.stories-D1I5LCI1.js'),
+      () => import('./Select.stories-t-T64LmR.js'),
       __vite__mapDeps([
-        53, 1, 4, 2, 27, 28, 29, 24, 30, 31, 32, 7, 33, 34, 35, 36, 11, 37, 38, 39, 10, 40, 41, 42,
-        5, 23, 13, 16,
+        54, 1, 4, 2, 27, 28, 29, 24, 30, 31, 32, 7, 33, 34, 35, 36, 11, 37, 38, 39, 10, 40, 41, 42,
+        43, 5, 23, 13, 16,
       ]),
       import.meta.url,
     ),
   './src/components/Form/Switch/Switch.stories.tsx': () =>
     __vitePreload(
-      () => import('./Switch.stories-Dwwv72Ei.js'),
-      __vite__mapDeps([54, 1, 2, 4, 7]),
+      () => import('./Switch.stories-Cily9Yck.js'),
+      __vite__mapDeps([55, 1, 2, 4, 7]),
       import.meta.url,
     ),
   './src/components/Form/Textarea/Textarea.stories.tsx': () =>
     __vitePreload(
-      () => import('./Textarea.stories-Dw530uLq.js'),
-      __vite__mapDeps([55, 1, 4, 2, 24, 30, 31, 32, 7]),
+      () => import('./Textarea.stories-DQdZVXNe.js'),
+      __vite__mapDeps([56, 1, 4, 2, 24, 30, 31, 32, 7]),
       import.meta.url,
     ),
   './src/components/Form/Timepicker/Timepicker.stories.tsx': () =>
     __vitePreload(
-      () => import('./Timepicker.stories-DdzsftE2.js'),
+      () => import('./Timepicker.stories-GKpMxIgv.js'),
       __vite__mapDeps([
-        56, 1, 2, 16, 46, 4, 37, 38, 39, 10, 40, 41, 42, 5, 28, 29, 24, 30, 31, 32, 7, 11,
+        57, 1, 2, 16, 47, 4, 37, 38, 39, 10, 40, 41, 42, 43, 5, 28, 29, 24, 30, 31, 32, 7, 11,
       ]),
       import.meta.url,
     ),
   './src/components/Menu/Menu.stories.tsx': () =>
     __vitePreload(
-      () => import('./Menu.stories-BW_krnr2.js'),
-      __vite__mapDeps([57, 1, 2, 58, 22, 16, 6, 7, 4, 40, 41, 42, 17]),
+      () => import('./Menu.stories-DQeCQ9om.js'),
+      __vite__mapDeps([58, 1, 2, 59, 22, 16, 6, 7, 4, 41, 42, 40, 43, 17]),
       import.meta.url,
     ),
   './src/components/Pagination/Pagination.stories.tsx': () =>
     __vitePreload(
-      () => import('./Pagination.stories-0r21G7Wy.js'),
-      __vite__mapDeps([59, 60, 1, 4, 2, 17, 19, 11, 7]),
+      () => import('./Pagination.stories-CooyasJZ.js'),
+      __vite__mapDeps([60, 61, 1, 4, 2, 17, 19, 11, 7]),
       import.meta.url,
     ),
   './src/components/Progress/Bar/ProgressBar.stories.tsx': () =>
     __vitePreload(
-      () => import('./ProgressBar.stories-BMpRz8A5.js'),
-      __vite__mapDeps([61, 1, 4, 2, 7]),
+      () => import('./ProgressBar.stories-C9-cAkh2.js'),
+      __vite__mapDeps([62, 1, 4, 2, 7]),
       import.meta.url,
     ),
   './src/components/Progress/Doughnut/ProgressDoughnut.stories.tsx': () =>
     __vitePreload(
       () => import('./ProgressDoughnut.stories-CtwcZ3tS.js'),
-      __vite__mapDeps([62, 48, 1, 4]),
+      __vite__mapDeps([63, 49, 1, 4]),
       import.meta.url,
     ),
   './src/components/Rate/Rate.stories.tsx': () =>
     __vitePreload(
-      () => import('./Rate.stories-B40DRaTA.js'),
-      __vite__mapDeps([63, 1, 2, 4, 7]),
+      () => import('./Rate.stories-DAzhZGYQ.js'),
+      __vite__mapDeps([64, 1, 2, 4, 7]),
       import.meta.url,
     ),
   './src/components/Sidebar/Sidebar.stories.tsx': () =>
     __vitePreload(
-      () => import('./Sidebar.stories-F1qZVrOc.js'),
-      __vite__mapDeps([64, 1, 2, 58, 11, 4, 7, 41, 33, 13, 28, 29, 24, 30, 31, 32, 6, 3, 5, 17]),
+      () => import('./Sidebar.stories-C9t_GPim.js'),
+      __vite__mapDeps([
+        65, 1, 2, 59, 11, 4, 7, 40, 42, 33, 13, 28, 29, 24, 30, 31, 32, 6, 3, 5, 17,
+      ]),
       import.meta.url,
     ),
   './src/components/Slider/Slider.stories.tsx': () =>
     __vitePreload(
-      () => import('./Slider.stories-47GmajZg.js'),
-      __vite__mapDeps([65, 1, 2, 4, 17, 19, 11, 7]),
+      () => import('./Slider.stories-DlNe9RNl.js'),
+      __vite__mapDeps([66, 1, 2, 4, 40, 17, 19, 11, 7]),
       import.meta.url,
     ),
   './src/components/Stepper/Horizontal/Stepper.stories.tsx': () =>
     __vitePreload(
       () => import('./Stepper.stories-BEOslhVN.js'),
-      __vite__mapDeps([66, 1, 2, 4, 9, 15]),
+      __vite__mapDeps([67, 1, 2, 4, 9, 15]),
       import.meta.url,
     ),
   './src/components/Table/Table.stories.tsx': () =>
     __vitePreload(
-      () => import('./Table.stories-wZWgRk1D.js'),
+      () => import('./Table.stories-CD0NGXXn.js'),
       __vite__mapDeps([
-        67, 1, 2, 11, 4, 7, 13, 34, 35, 24, 36, 68, 38, 39, 40, 41, 5, 32, 6, 60, 17, 19,
+        68, 1, 2, 11, 4, 7, 40, 13, 34, 35, 24, 36, 69, 38, 39, 41, 42, 5, 32, 6, 61, 17, 19,
       ]),
       import.meta.url,
     ),
   './src/components/Tabs/Tabs.stories.tsx': () =>
     __vitePreload(
-      () => import('./Tabs.stories-sXjvZmm9.js'),
-      __vite__mapDeps([69, 1, 2, 16, 4, 13, 7]),
+      () => import('./Tabs.stories-DuENWojf.js'),
+      __vite__mapDeps([70, 1, 2, 16, 4, 13, 7]),
       import.meta.url,
     ),
   './src/components/Tooltip/Tooltip.stories.tsx': () =>
     __vitePreload(
-      () => import('./Tooltip.stories-BX4OCV9x.js'),
-      __vite__mapDeps([70, 1, 2, 32, 16, 68, 4, 38, 39, 40, 41, 7]),
+      () => import('./Tooltip.stories-CbZPFAw8.js'),
+      __vite__mapDeps([71, 1, 2, 32, 16, 69, 4, 38, 39, 41, 42, 40, 7]),
       import.meta.url,
     ),
   './src/documents/colors/colors.mdx': () =>
     __vitePreload(
-      () => import('./colors-C9-7M-Tl.js'),
-      __vite__mapDeps([71, 1, 72, 2, 73, 38, 39, 74, 75, 4, 76, 7]),
+      () => import('./colors-D9DCeguf.js'),
+      __vite__mapDeps([72, 1, 73, 2, 74, 38, 39, 75, 76, 4, 77, 7]),
       import.meta.url,
     ),
   './src/documents/contributing/contributing.mdx': () =>
     __vitePreload(
-      () => import('./contributing-BhS_YwUm.js'),
-      __vite__mapDeps([77, 1, 72, 2, 73, 38, 39, 74, 75, 76, 7]),
+      () => import('./contributing-CpyW92xT.js'),
+      __vite__mapDeps([78, 1, 73, 2, 74, 38, 39, 75, 76, 77, 7]),
       import.meta.url,
     ),
   './src/documents/introductions/introductions.mdx': () =>
     __vitePreload(
-      () => import('./introductions-D85UPzBs.js'),
-      __vite__mapDeps([78, 1, 72, 2, 73, 38, 39, 74, 75, 76, 7]),
+      () => import('./introductions-B8nYxd0v.js'),
+      __vite__mapDeps([79, 1, 73, 2, 74, 38, 39, 75, 76, 77, 7]),
       import.meta.url,
     ),
 };
@@ -10667,27 +10670,27 @@ const { composeConfigs, PreviewWeb } = __STORYBOOK_MODULE_PREVIEW_API__,
   getProjectAnnotations = async (t = []) => {
     const e = await __vitePreload(
       () => import('./preview-Dj_l7GHp.js'),
-      __vite__mapDeps([79, 1, 2]),
+      __vite__mapDeps([80, 1, 2]),
       import.meta.url,
     );
     if (W(e.default)) return e.default.composed;
     const r = await Promise.all([
       t[0] ??
         __vitePreload(
-          () => import('./entry-preview-BRteV1n7.js'),
-          __vite__mapDeps([80, 81, 2]),
+          () => import('./entry-preview-siCNZPIq.js'),
+          __vite__mapDeps([81, 82, 2]),
           import.meta.url,
         ),
       t[1] ??
         __vitePreload(
           () => import('./entry-preview-docs-BoyI6TfX.js'),
-          __vite__mapDeps([82, 81, 74, 2]),
+          __vite__mapDeps([83, 82, 75, 2]),
           import.meta.url,
         ),
       t[2] ??
         __vitePreload(
           () => import('./preview-DGZ5Qq08.js'),
-          __vite__mapDeps([83, 75]),
+          __vite__mapDeps([84, 76]),
           import.meta.url,
         ),
       t[3] ?? __vitePreload(() => import('./preview-TqM3Oi8H.js'), [], import.meta.url),
@@ -10695,12 +10698,12 @@ const { composeConfigs, PreviewWeb } = __STORYBOOK_MODULE_PREVIEW_API__,
       t[5] ??
         __vitePreload(
           () => import('./preview-BWzBA1C2.js'),
-          __vite__mapDeps([84, 75]),
+          __vite__mapDeps([85, 76]),
           import.meta.url,
         ),
       t[6] ?? __vitePreload(() => import('./preview-caVMbCIR.js'), [], import.meta.url),
       t[7] ?? __vitePreload(() => import('./preview-WIE65ICp.js'), [], import.meta.url),
-      t[8] ?? __vitePreload(() => import('./preview-BoVqp6Fn.js'), [], import.meta.url),
+      t[8] ?? __vitePreload(() => import('./preview-D9og_0oh.js'), [], import.meta.url),
     ]);
     return composeConfigs([...r, e]);
   };

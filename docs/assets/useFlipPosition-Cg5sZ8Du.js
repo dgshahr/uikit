@@ -1,5 +1,6 @@
-import { d as z } from './index-GdYbSsJO.js';
+import { d as B } from './index-GdYbSsJO.js';
 import { r as m } from './index-CTzypqlY.js';
+import { i as v } from './isBrowser-CEYOmsdG.js';
 function C(t) {
   return t.startsWith('top') ? t.replace('top', 'bottom') : t.replace('bottom', 'top');
 }
@@ -25,7 +26,7 @@ function S(t, e) {
   const n = r[1].split(',').map((s) => parseFloat(s.trim()));
   return n.length !== 6 ? `scale(${e})` : ((n[0] = e), (n[3] = e), `matrix(${n.join(', ')})`);
 }
-function B(t, e) {
+function F(t, e) {
   let r;
   switch (t) {
     case 'top-left':
@@ -45,7 +46,7 @@ function B(t, e) {
   const n = t.startsWith('top') ? e.top : e.bottom;
   return { anchorX: r, anchorY: n };
 }
-function F(t, e, r, n) {
+function T(t, e, r, n) {
   let s = 0,
     f = 0;
   switch (t) {
@@ -76,41 +77,41 @@ function F(t, e, r, n) {
   }
   return { top: f, left: s };
 }
-function T(t, e, r, n, s, f, c) {
-  const h = t < f,
+function $(t, e, r, n, s, f, i) {
+  const u = t < f,
     p = t + r.height > s - f,
-    u = e < f,
+    h = e < f,
     l = e + r.width > n - f;
-  if (!c) return { top: h, bottom: p, left: u, right: l };
-  const i = Math.min(r.bottom, s) - Math.max(t, 0),
+  if (!i) return { top: u, bottom: p, left: h, right: l };
+  const c = Math.min(r.bottom, s) - Math.max(t, 0),
     o = Math.min(r.right, n) - Math.max(e, 0),
     b =
-      h && p
-        ? i >= c
+      u && p
+        ? c >= i
           ? { top: !1, bottom: !1 }
-          : i < r.height / 2
+          : c < r.height / 2
             ? { top: !0, bottom: !1 }
             : { top: !1, bottom: !0 }
-        : h
-          ? { top: i < c, bottom: !1 }
+        : u
+          ? { top: c < i, bottom: !1 }
           : p
-            ? { top: !1, bottom: i < c }
+            ? { top: !1, bottom: c < i }
             : { top: !1, bottom: !1 },
     d =
-      u && l
-        ? o >= c
+      h && l
+        ? o >= i
           ? { left: !1, right: !1 }
           : o < r.width / 2
             ? { left: !0, right: !1 }
             : { left: !1, right: !0 }
-        : u
-          ? { left: o < c, right: !1 }
+        : h
+          ? { left: o < i, right: !1 }
           : l
-            ? { left: !1, right: o < c }
+            ? { left: !1, right: o < i }
             : { left: !1, right: !1 };
   return { top: b.top, bottom: b.bottom, left: d.left, right: d.right };
 }
-function A({
+function U({
   initialPosition: t,
   onPositionChange: e,
   padding: r = 8,
@@ -118,60 +119,61 @@ function A({
   minVisible: s,
 }) {
   const f = m.useRef(null),
-    c = m.useRef(null),
-    [h, p] = m.useState(t),
-    u = m.useCallback(() => {
-      const i = f.current,
-        o = c.current;
-      if (!i || !o) return;
-      const b = i.getBoundingClientRect(),
-        { anchorX: d, anchorY: v } = B(t, b),
-        y = window.getComputedStyle(o),
-        W = y.display !== 'none' && y.visibility !== 'hidden' && y.opacity !== '0';
-      let w;
-      if (W) w = o.getBoundingClientRect();
+    i = m.useRef(null),
+    [u, p] = m.useState(t),
+    h = m.useCallback(() => {
+      if (!v()) return;
+      const c = f.current,
+        o = i.current;
+      if (!c || !o) return;
+      const b = c.getBoundingClientRect(),
+        { anchorX: d, anchorY: W } = F(t, b),
+        w = window?.getComputedStyle(o),
+        k = w.display !== 'none' && w.visibility !== 'hidden' && w.opacity !== '0';
+      let y;
+      if (k) y = o.getBoundingClientRect();
       else {
-        const M = y.transform || 'none',
-          O = S(M, 1);
+        const O = w.transform || 'none',
+          z = S(O, 1);
         o.style.setProperty('opacity', '0', 'important'),
-          o.style.setProperty('transform', O, 'important'),
+          o.style.setProperty('transform', z, 'important'),
           o.style.setProperty('visibility', 'hidden', 'important'),
           o.style.setProperty('position', 'absolute', 'important'),
           o.style.setProperty('transition', 'none', 'important'),
           o.offsetHeight,
-          (w = o.getBoundingClientRect()),
+          (y = o.getBoundingClientRect()),
           o.style.removeProperty('opacity'),
           o.style.removeProperty('transform'),
           o.style.removeProperty('visibility'),
           o.style.removeProperty('position'),
           o.style.removeProperty('transition');
       }
-      const k = window.innerWidth,
-        x = window.innerHeight,
-        { top: E, left: P } = F(t, d, v, w),
-        g = T(E, P, w, k, x, r, s);
+      const x = window?.innerWidth,
+        E = window?.innerHeight,
+        { top: P, left: M } = T(t, d, W, y),
+        g = $(P, M, y, x, E, r, s);
       let a = t;
       ((t.startsWith('top') && g.top) || (t.startsWith('bottom') && g.bottom)) && (a = C(a)),
         ((t.endsWith('left') && g.left) || (t.endsWith('right') && g.right)) && (a = H(a)),
         a.endsWith('center') && (a = L(a, g)),
-        a !== h && (p(a), e && e(a));
+        a !== u && (p(a), e && e(a));
     }, [e, r]),
-    l = m.useMemo(() => z(u, n), [u, n]);
+    l = m.useMemo(() => B(h, n), [h, n]);
   return (
-    m.useEffect(
-      () => (
-        l(),
-        window.addEventListener('resize', l),
-        window.addEventListener('scroll', l),
-        () => {
-          window.removeEventListener('resize', l),
-            window.removeEventListener('scroll', l),
-            l.cancel();
-        }
-      ),
-      [l],
-    ),
-    { anchorRef: f, popperRef: c, position: h }
+    m.useEffect(() => {
+      if (v())
+        return (
+          l(),
+          window?.addEventListener('resize', l),
+          window?.addEventListener('scroll', l),
+          () => {
+            window?.removeEventListener('resize', l),
+              window?.removeEventListener('scroll', l),
+              l.cancel();
+          }
+        );
+    }, [l]),
+    { anchorRef: f, popperRef: i, position: u }
   );
 }
-export { A as u };
+export { U as u };

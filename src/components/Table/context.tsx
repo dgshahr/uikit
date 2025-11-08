@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
+import { isBrowser } from '@/src/utils/isBrowser';
 import type { TableProps, UnknownRecord } from './types';
 
 interface ContextType<T extends UnknownRecord> extends TableProps<T> {
@@ -35,6 +36,8 @@ export function TableContextProvider<T extends UnknownRecord>(props: Readonly<Pr
   const [observer, setObserver] = useState<IntersectionObserver | null>(null);
 
   useEffect(() => {
+    if (!isBrowser()) return;
+
     let haveStickyColumn = columns.some((col) => Boolean(col.sticky));
     if (!haveStickyColumn) haveStickyColumn = Boolean(rowSelection?.sticky);
 
@@ -45,20 +48,20 @@ export function TableContextProvider<T extends UnknownRecord>(props: Readonly<Pr
             let foundStuckedElement = false;
             for (const observerEntry of e) {
               if (observerEntry.boundingClientRect.right > observerEntry.intersectionRect.right) {
-                document.querySelectorAll('#sticky-cell-right').forEach(addShadowToElement);
+                document?.querySelectorAll('#sticky-cell-right').forEach(addShadowToElement);
                 foundStuckedElement = true;
                 break;
               } else if (
                 observerEntry.boundingClientRect.left < observerEntry.intersectionRect.left
               ) {
-                document.querySelectorAll('#sticky-cell-left').forEach(addShadowToElement);
+                document?.querySelectorAll('#sticky-cell-left').forEach(addShadowToElement);
                 foundStuckedElement = true;
                 break;
               }
             }
 
             if (!foundStuckedElement) {
-              document.querySelectorAll('[id^="sticky-cell-"]').forEach(removeShadowFromElement);
+              document?.querySelectorAll('[id^="sticky-cell-"]').forEach(removeShadowFromElement);
             }
           },
           { threshold: 1, rootMargin: '0% 100% 0% 100%' },
@@ -68,7 +71,7 @@ export function TableContextProvider<T extends UnknownRecord>(props: Readonly<Pr
     return () => {
       if (observer) observer.disconnect();
     };
-  }, []);
+  }, [columns, rowSelection]);
 
   //@ts-expect-error I couldn't pass generic type <T extends UnknownRecord> to createContext so value have type error.
   return <tableContext.Provider value={{ observer, ...rest }}>{children}</tableContext.Provider>;

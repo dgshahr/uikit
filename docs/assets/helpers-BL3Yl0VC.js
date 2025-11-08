@@ -1,8 +1,8 @@
 function n(e, l) {
-  const s = document.getElementsByClassName('sb-show-main').item(0);
+  const s = document?.getElementsByClassName('sb-show-main').item(0);
   s && ((s.style.justifyContent = 'center'), (s.style.alignItems = 'center')),
     setTimeout(() => {
-      Array.from(document.getElementsByClassName('innerZoomElementWrapper')).forEach((t) => {
+      Array.from(document?.getElementsByClassName('innerZoomElementWrapper')).forEach((t) => {
         t &&
           ((t.style.display = e?.notFlex ? 'block' : 'flex'),
           (t.style.height = e?.height ?? 'auto'),
@@ -11,7 +11,7 @@ function n(e, l) {
       });
     }, 200),
     setTimeout(() => {
-      document.querySelectorAll('[scale="1"]').forEach((t) => {
+      document?.querySelectorAll('[scale="1"]').forEach((t) => {
         t.classList.add('dgsuikit:!w-full');
       });
     }, 300);

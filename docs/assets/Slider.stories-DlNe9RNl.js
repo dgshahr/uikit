@@ -2,10 +2,11 @@
 import { j as e } from './jsx-runtime-D_zvdyIk.js';
 import { r as n } from './index-CTzypqlY.js';
 import { c as y } from './clsx-B-dksMZM.js';
-import { I as F } from './IconArrowLeft2-DI3fgQDw.js';
-import { I as $ } from './IconArrowRight2-C2yC-io_.js';
-import { B as _ } from './index-ba2HXqsI.js';
-/* empty css               */ const A = n.createContext({
+import { i as T } from './isBrowser-CEYOmsdG.js';
+import { I as $ } from './IconArrowLeft2-DI3fgQDw.js';
+import { I as H } from './IconArrowRight2-C2yC-io_.js';
+import { B as E } from './index-CK5dQjob.js';
+/* empty css               */ const R = n.createContext({
     slidesPerView: 1,
     spaceBetween: 0,
     navigationVariant: 'outside',
@@ -14,8 +15,8 @@ import { B as _ } from './index-ba2HXqsI.js';
     childrenCount: 0,
     sliderId: '',
   }),
-  T = () => n.useContext(A);
-function H({ active: i, autoplay: t, variant: r = 'outside' }) {
+  V = () => n.useContext(R);
+function K({ active: i, autoplay: t, variant: r = 'outside' }) {
   return [
     {
       inside: 'dgsuikit:bg-gray-500/50 dgsuikit:hover:bg-gray-500/80',
@@ -25,9 +26,9 @@ function H({ active: i, autoplay: t, variant: r = 'outside' }) {
     t ? 'dgsuikit:p-[1px]' : '',
   ];
 }
-const R = (i) => {
+const D = (i) => {
   const { active: t, onClick: r, onNavigateToNext: d, index: s } = i,
-    { autoplay: l, navigationVariant: h = 'outside' } = T(),
+    { autoplay: l, navigationVariant: h = 'outside' } = V(),
     [u, c] = n.useState(0);
   return (
     n.useEffect(() => {
@@ -46,7 +47,7 @@ const R = (i) => {
     e.jsx('button', {
       className: y(
         'dgsuikit:rounded-full dgsuikit:overflow-hidden dgsuikit:transition-all dgsuikit:h-[6px]',
-        H({ active: t, autoplay: l, variant: h }),
+        K({ active: t, autoplay: l, variant: h }),
       ),
       onClick: r,
       'aria-label': `slider-navigation-dot-${s + 1}`,
@@ -62,7 +63,7 @@ const R = (i) => {
     })
   );
 };
-R.__docgenInfo = {
+D.__docgenInfo = {
   description: '',
   methods: [],
   displayName: 'NavigationDot',
@@ -91,8 +92,8 @@ R.__docgenInfo = {
     },
   },
 };
-const E = 'dgsuikit:opacity-0 dgsuikit:group-hover:opacity-100 dgsuikit:transition-opacity',
-  D = (i) => {
+const A = 'dgsuikit:opacity-0 dgsuikit:group-hover:opacity-100 dgsuikit:transition-opacity',
+  L = (i) => {
     const { onNavigate: t, slideIndex: r, slidesCount: d } = i,
       {
         navigationButtonsShowType: s = 'hide',
@@ -101,24 +102,24 @@ const E = 'dgsuikit:opacity-0 dgsuikit:group-hover:opacity-100 dgsuikit:transiti
         navigationVariant: u = 'outside',
         showNavigationDots: c = !0,
         showPaginationText: f,
-      } = T(),
+      } = V(),
       v = () => {
-        const o = y('dgsuikit:!absolute dgsuikit:top-1/2 dgsuikit:-translate-y-1/2', E);
+        const o = y('dgsuikit:!absolute dgsuikit:top-1/2 dgsuikit:-translate-y-1/2', A);
         return e.jsxs(e.Fragment, {
           children: [
-            e.jsx(_, {
+            e.jsx(E, {
               type: 'button',
               variant: 'secondary',
               onClick: () => t(r - 1),
-              rightIcon: e.jsx($, {}),
+              rightIcon: e.jsx(H, {}),
               'aria-label': 'slider-previous-button',
               className: s === 'onSides' ? y(o, 'dgsuikit:right-[5.5%]') : void 0,
             }),
-            e.jsx(_, {
+            e.jsx(E, {
               type: 'button',
               variant: 'secondary',
               onClick: () => t(r + 1),
-              rightIcon: e.jsx(F, {}),
+              rightIcon: e.jsx($, {}),
               'aria-label': 'slider-next-button',
               className: s === 'onSides' ? y(o, 'dgsuikit:left-[5.5%]') : void 0,
             }),
@@ -147,7 +148,7 @@ const E = 'dgsuikit:opacity-0 dgsuikit:group-hover:opacity-100 dgsuikit:transiti
               e.jsx('div', {
                 className: y(
                   'dgsuikit:flex dgsuikit:gap-2',
-                  s === 'hover' && E,
+                  s === 'hover' && A,
                   u === 'inside' && 'dgsuikit:absolute dgsuikit:bottom-0 dgsuikit:left-[5.5%]',
                 ),
                 children: v(),
@@ -180,7 +181,7 @@ const E = 'dgsuikit:opacity-0 dgsuikit:group-hover:opacity-100 dgsuikit:transiti
                       ),
                       children: Array.from(Array(d).keys()).map((o, m) =>
                         e.jsx(
-                          R,
+                          D,
                           {
                             active: r === m,
                             index: m,
@@ -198,7 +199,7 @@ const E = 'dgsuikit:opacity-0 dgsuikit:group-hover:opacity-100 dgsuikit:transiti
       ],
     });
   };
-D.__docgenInfo = {
+L.__docgenInfo = {
   description: '',
   methods: [],
   displayName: 'Navigation',
@@ -220,7 +221,7 @@ D.__docgenInfo = {
     slidesCount: { required: !0, tsType: { name: 'number' }, description: '' },
   },
 };
-const V = n.forwardRef((i, t) => {
+const B = n.forwardRef((i, t) => {
   const [r, d] = n.useState(i),
     {
       className: s = '',
@@ -235,12 +236,12 @@ const V = n.forwardRef((i, t) => {
       containerXPadding: g = 0,
     } = r,
     [N, C] = n.useState(0),
-    [B, W] = n.useState(0),
-    M = Object.fromEntries(Object.entries(r).filter(([a]) => a !== 'children')),
+    [_, M] = n.useState(0),
+    O = Object.fromEntries(Object.entries(r).filter(([a]) => a !== 'children')),
     p = n.useRef(null),
-    k = Math.ceil(B / Math.floor(u)),
-    O = (h || (c && c !== 'hide') || v) && k > 1;
-  function q(a) {
+    k = Math.ceil(_ / Math.floor(u)),
+    q = (h || (c && c !== 'hide') || v) && k > 1;
+  function F(a) {
     if (
       Math.ceil(Math.abs(a.currentTarget.scrollLeft)) + a.currentTarget.clientWidth + 1 + g >=
       a.currentTarget.scrollWidth
@@ -270,9 +271,10 @@ const V = n.forwardRef((i, t) => {
         : p.current.scrollBy({ behavior: 'smooth', left: P });
   }
   function I() {
+    if (!T()) return;
     const x = Object.keys(i.responsive)
         .sort((b, P) => Number(b) - Number(P))
-        .findLast((b) => Number(b) <= window.innerWidth),
+        .findLast((b) => Number(b) <= window?.innerWidth),
       w = x ? i.responsive[Number(x)] : null;
     d(w ? { ...r, ...w } : i);
   }
@@ -284,15 +286,15 @@ const V = n.forwardRef((i, t) => {
     n.useEffect(() => {
       if (!p.current) return;
       let a = p.current.childElementCount;
-      g > 0 && (a -= 2), W(a);
+      g > 0 && (a -= 2), M(a);
     }, [i.children, p, g]),
     n.useEffect(() => {
-      if (!(!i.responsive || Object.keys(i.responsive).length <= 0))
+      if (!(!i.responsive || Object.keys(i.responsive).length <= 0 || !T()))
         return (
           I(),
-          window.addEventListener('resize', I),
+          window?.addEventListener('resize', I),
           () => {
-            window.removeEventListener('resize', I);
+            window?.removeEventListener('resize', I);
           }
         );
     }, [i.responsive]),
@@ -302,8 +304,8 @@ const V = n.forwardRef((i, t) => {
     n.useEffect(() => {
       typeof m == 'number' && p.current && j(Math.max(0, m - 1));
     }, [m, p.current]),
-    e.jsx(A.Provider, {
-      value: { ...M, childrenCount: B, sliderId: n.useId() },
+    e.jsx(R.Provider, {
+      value: { ...O, childrenCount: _, sliderId: n.useId() },
       children: e.jsxs('div', {
         className: y('dgsuikit:overflow-hidden dgsuikit:relative dgsuikit:group', s),
         style: { direction: 'rtl' },
@@ -314,7 +316,7 @@ const V = n.forwardRef((i, t) => {
               l,
             ),
             style: { marginLeft: -f },
-            onScroll: q,
+            onScroll: F,
             ref: p,
             children: [
               g > 0 &&
@@ -330,14 +332,14 @@ const V = n.forwardRef((i, t) => {
                 }),
             ],
           }),
-          O && e.jsx(D, { onNavigate: j, slideIndex: N, slidesCount: k }),
+          q && e.jsx(L, { onNavigate: j, slideIndex: N, slidesCount: k }),
         ],
       }),
     })
   );
 });
-V.displayName = 'Slider';
-V.__docgenInfo = {
+B.displayName = 'Slider';
+B.__docgenInfo = {
   description: '',
   methods: [
     {
@@ -350,7 +352,7 @@ V.__docgenInfo = {
   ],
   displayName: 'Slider',
 };
-function K({
+function X({
   slidesPerView: i,
   childIndex: t,
   centerMode: r,
@@ -371,7 +373,7 @@ function K({
   }
   return 'start';
 }
-const L = (i) => {
+const W = (i) => {
   const { children: t, className: r, style: d, ...s } = i,
     {
       slidesPerView: l = 1,
@@ -380,19 +382,20 @@ const L = (i) => {
       containerXPadding: c = 0,
       childrenCount: f = 0,
       sliderId: v,
-    } = T(),
+    } = V(),
     o = n.useRef(null),
     [m, g] = n.useState(0);
   return (
     n.useEffect(() => {
-      o.current &&
+      !o.current ||
+        !T() ||
         g(
           Array.prototype.indexOf.call(
-            document.querySelectorAll(`[id='slide-item-${v}']`),
+            document?.querySelectorAll(`[id='slide-item-${v}']`),
             o.current,
           ),
         );
-    }, [o, f, c]),
+    }, [o, f, c, v]),
     e.jsx('div', {
       ...s,
       ref: o,
@@ -401,7 +404,7 @@ const L = (i) => {
       style: {
         width: 100 / (l ?? 1) + '%',
         paddingLeft: h,
-        scrollSnapAlign: K({
+        scrollSnapAlign: X({
           slidesPerView: l,
           childIndex: m,
           centerMode: u,
@@ -414,10 +417,10 @@ const L = (i) => {
     })
   );
 };
-L.__docgenInfo = { description: '', methods: [], displayName: 'Slide' };
-const Z = {
+W.__docgenInfo = { description: '', methods: [], displayName: 'Slide' };
+const te = {
     title: 'Components/Slider',
-    component: V,
+    component: B,
     parameters: {
       docs: {
         description: {
@@ -523,7 +526,7 @@ const Z = {
         .fill(null)
         .map((i, t) =>
           e.jsx(
-            L,
+            W,
             {
               children: e.jsx('div', {
                 className:
@@ -564,5 +567,5 @@ S.parameters = {
     },
   },
 };
-const ee = ['Default'];
-export { S as Default, ee as __namedExportsOrder, Z as default };
+const ie = ['Default'];
+export { S as Default, ie as __namedExportsOrder, te as default };
