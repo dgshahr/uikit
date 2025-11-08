@@ -60,7 +60,7 @@ const __vite__mapDeps = (
       './Select.stories-t-T64LmR.js',
       './Switch.stories-Cily9Yck.js',
       './Textarea.stories-DQdZVXNe.js',
-      './Timepicker.stories-GKpMxIgv.js',
+      './Timepicker.stories-Gq2nZxTC.js',
       './Menu.stories-DQeCQ9om.js',
       './IconSetting-DvmZJ3cO.js',
       './Pagination.stories-CooyasJZ.js',
@@ -75,16 +75,16 @@ const __vite__mapDeps = (
       './index-kh85Mhac.js',
       './Tabs.stories-DuENWojf.js',
       './Tooltip.stories-CbZPFAw8.js',
-      './colors-D9DCeguf.js',
+      './colors-dMPTxEvb.js',
       './index-Syj0H2O1.js',
-      './index-DBa517sS.js',
+      './index-BurABzaK.js',
       './index-CFeRKNTJ.js',
       './index-DrFu-skq.js',
       './constants-DXQArO81.js',
-      './contributing-CpyW92xT.js',
-      './introductions-B8nYxd0v.js',
+      './contributing-D3hNhHTa.js',
+      './introductions-DumZbGYP.js',
       './preview-Dj_l7GHp.js',
-      './entry-preview-siCNZPIq.js',
+      './entry-preview-CWnFzwyE.js',
       './chunk-XP5HYGXS-D5tuasO7.js',
       './entry-preview-docs-BoyI6TfX.js',
       './preview-DGZ5Qq08.js',
@@ -10567,7 +10567,7 @@ const importers = {
     ),
   './src/components/Form/Timepicker/Timepicker.stories.tsx': () =>
     __vitePreload(
-      () => import('./Timepicker.stories-GKpMxIgv.js'),
+      () => import('./Timepicker.stories-Gq2nZxTC.js'),
       __vite__mapDeps([
         57, 1, 2, 16, 47, 4, 37, 38, 39, 10, 40, 41, 42, 43, 5, 28, 29, 24, 30, 31, 32, 7, 11,
       ]),
@@ -10645,19 +10645,19 @@ const importers = {
     ),
   './src/documents/colors/colors.mdx': () =>
     __vitePreload(
-      () => import('./colors-D9DCeguf.js'),
+      () => import('./colors-dMPTxEvb.js'),
       __vite__mapDeps([72, 1, 73, 2, 74, 38, 39, 75, 76, 4, 77, 7]),
       import.meta.url,
     ),
   './src/documents/contributing/contributing.mdx': () =>
     __vitePreload(
-      () => import('./contributing-CpyW92xT.js'),
+      () => import('./contributing-D3hNhHTa.js'),
       __vite__mapDeps([78, 1, 73, 2, 74, 38, 39, 75, 76, 77, 7]),
       import.meta.url,
     ),
   './src/documents/introductions/introductions.mdx': () =>
     __vitePreload(
-      () => import('./introductions-B8nYxd0v.js'),
+      () => import('./introductions-DumZbGYP.js'),
       __vite__mapDeps([79, 1, 73, 2, 74, 38, 39, 75, 76, 77, 7]),
       import.meta.url,
     ),
@@ -10677,7 +10677,7 @@ const { composeConfigs, PreviewWeb } = __STORYBOOK_MODULE_PREVIEW_API__,
     const r = await Promise.all([
       t[0] ??
         __vitePreload(
-          () => import('./entry-preview-siCNZPIq.js'),
+          () => import('./entry-preview-CWnFzwyE.js'),
           __vite__mapDeps([81, 82, 2]),
           import.meta.url,
         ),
@@ -10703,7 +10703,7 @@ const { composeConfigs, PreviewWeb } = __STORYBOOK_MODULE_PREVIEW_API__,
         ),
       t[6] ?? __vitePreload(() => import('./preview-caVMbCIR.js'), [], import.meta.url),
       t[7] ?? __vitePreload(() => import('./preview-WIE65ICp.js'), [], import.meta.url),
-      t[8] ?? __vitePreload(() => import('./preview-D9og_0oh.js'), [], import.meta.url),
+      t[8] ?? __vitePreload(() => import('./preview-DDzyYNTg.js'), [], import.meta.url),
     ]);
     return composeConfigs([...r, e]);
   };
