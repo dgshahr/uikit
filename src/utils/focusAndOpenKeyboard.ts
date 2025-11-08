@@ -1,21 +1,23 @@
+import { isBrowser } from './isBrowser';
+
 export default function focusAndOpenKeyboard(el: HTMLElement | null, timeout = 100) {
-  if (!el) return;
+  if (!el || !isBrowser()) return;
   // Focus on element if device was desktop
-  if (window.innerWidth > 768) {
+  if (window?.innerWidth > 768) {
     el.focus();
     el.click();
     return;
   }
   // Align temp input element approximately where the input element is
   // so the cursor doesn't jump around
-  const tempEl = document.createElement('input');
+  const tempEl = document?.createElement('input');
   tempEl.style.position = 'absolute';
   tempEl.style.top = `${el.offsetTop + 7}px`;
   tempEl.style.left = `${el.offsetLeft}px`;
   tempEl.style.height = `${0}px`;
   tempEl.style.opacity = `${0}px`;
   // Put this temp element as a child of the page <body> and focus on it
-  document.body.appendChild(tempEl);
+  document?.body.appendChild(tempEl);
   tempEl.focus();
 
   // The keyboard is open. Now do a delayed focus on the target element
@@ -23,6 +25,6 @@ export default function focusAndOpenKeyboard(el: HTMLElement | null, timeout = 1
     el.focus();
     el.click();
     // Remove the temp element
-    document.body.removeChild(tempEl);
+    document?.body.removeChild(tempEl);
   }, timeout);
 }

@@ -2,6 +2,7 @@
 import clsx from 'clsx';
 import { useEffect, useRef, type ChangeEvent, type FC, type KeyboardEvent } from 'react';
 import { persianToEnglish } from '@/src/utils/convertNumbers';
+import { isBrowser } from '@/src/utils/isBrowser';
 import FieldBottomInfo from '../Common/FieldBottomInfo/FieldBottomInfo';
 import FieldLabel from '../Common/FieldLabel/FieldLabel';
 import Input, { type InputProps } from '../Input';
@@ -34,7 +35,8 @@ const OtpInput: FC<OtpInputProps> = (props) => {
   const canTriggerOnEnd = useRef(false);
 
   function focusOnInput(index: number) {
-    const input = document.getElementById(`dgsuikit:otp-input-${index}`) as HTMLInputElement;
+    if (!isBrowser()) return;
+    const input = document?.getElementById(`dgsuikit:otp-input-${index}`) as HTMLInputElement;
     input?.focus();
   }
 
