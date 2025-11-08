@@ -1,4 +1,4 @@
-import type { HasOrNotRange, HasOrNotSubmitButton } from '../Datepicker/types';
+import type { HasOrNotRange, HasOrNotSubmitButton } from '../types/DateAndTimePicker';
 import type { PickerWrapperProps } from '../Wrappers/PickerWrapper/type';
 
 export type TimeValue = { hour: number | null; minute: number | null };

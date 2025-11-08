@@ -1,16 +1,17 @@
 import { j as a } from './jsx-runtime-D_zvdyIk.js';
 import { r as w, R as L } from './index-CTzypqlY.js';
-import { f as G } from './helpers-BLnSDN_K.js';
-import { D as z, u as J } from './DateAndTimePickerFooter-CnjakdM4.js';
+import { f as G } from './helpers-BL3Yl0VC.js';
+import { D as z, u as J } from './DateAndTimePickerFooter-BT391n9D.js';
 import { d as I } from './index-GdYbSsJO.js';
 import { c as q } from './clsx-B-dksMZM.js';
 import { I as Q } from './index-725Xjxr6.js';
-import './PickerWrapper-nJRjDv8h.js';
+import './PickerWrapper-lGkRsg09.js';
 /* empty css               */ import './index-BRSOB10J.js';
 import './index-X_f_OX5J.js';
 import './IconCloseRemove-B6m37iwz.js';
-import './useFlipPosition-D78LAv0q.js';
-import './useOutsideClick-OW2A_t1-.js';
+import './isBrowser-CEYOmsdG.js';
+import './useFlipPosition-Cg5sZ8Du.js';
+import './useOutsideClick-BZ98SsGu.js';
 import './IconArrowDown2-BBhufJ55.js';
 import './index-CK5dQjob.js';
 import './IconEye-Cb9e2e14.js';
@@ -136,7 +137,7 @@ const y = [0, 1, 3, 4],
       minute: !n.includes('-') && Z(n) ? Number(n) : null,
     };
   },
-  P = (e, t = !0) => {
+  S = (e, t = !0) => {
     const n = y.indexOf(e);
     if (n === -1) return t ? y[0] : (y[y.length - 1] ?? 0);
     const r = t ? n + 1 : n - 1;
@@ -157,7 +158,7 @@ const y = [0, 1, 3, 4],
       setCaretToEditable: (n, r = !0) => {
         const i = e.current;
         if (!i) return;
-        const o = y.includes(n) ? n : P(n, r);
+        const o = y.includes(n) ? n : S(n, r);
         typeof o == 'number' && i.setSelectionRange(o, o + 1);
       },
     };
@@ -184,19 +185,19 @@ const y = [0, 1, 3, 4],
       },
       k = (g, h) => {
         const b = g === 'ArrowRight';
-        c(P(h, b), b);
+        c(S(h, b), b);
       },
       p = (g, h) => {
-        const b = y.includes(h) ? h : P(h, !1),
+        const b = y.includes(h) ? h : S(h, !1),
           m = [...l];
         (m[b] = '-'), u(m), n(H(m));
-        const v = g === 'Backspace' ? P(b, !1) : P(b, !0);
+        const v = g === 'Backspace' ? S(b, !1) : S(b, !0);
         setTimeout(() => c(v, g !== 'Backspace'), 0);
       },
       R = (g, h) => {
-        const b = y.includes(h) ? h : P(h, !0),
+        const b = y.includes(h) ? h : S(h, !0),
           m = [...l];
-        ee(g, b, m) && ((m[b] = g), u(m), n(H(m)), setTimeout(() => c(P(b, !0), !0), 0));
+        ee(g, b, m) && ((m[b] = g), u(m), n(H(m)), setTimeout(() => c(S(b, !0), !0), 0));
       },
       T = (g) => {
         if ((g.preventDefault(), r)) return;
@@ -877,10 +878,11 @@ function re(e) {
 }
 const B = (e) => {
   const { showSubmitButton: t = !0, showNowButton: n = !0 } = e,
-    { Wrapper: r, wrapperProps: i } = J({ props: e, standaloneMode: 'time', formatValue: re });
-  return a.jsx(r, {
-    ...i,
-    children: a.jsxs(_, { timePickerProps: e, children: [a.jsx(F, {}), (t || n) && a.jsx(K, {})] }),
+    r = e.acceptRange === void 0 ? { ...e, acceptRange: !1 } : e,
+    { Wrapper: i, wrapperProps: o } = J({ props: r, standaloneMode: 'time', formatValue: re });
+  return a.jsx(i, {
+    ...o,
+    children: a.jsxs(_, { timePickerProps: r, children: [a.jsx(F, {}), (t || n) && a.jsx(K, {})] }),
   });
 };
 B.__docgenInfo = {
@@ -909,7 +911,7 @@ B.__docgenInfo = {
     minuteStep: { required: !1, tsType: { name: 'number' }, description: '' },
   },
 };
-const xe = {
+const We = {
     title: 'Components/Form/TimePicker',
     component: B,
     parameters: {
@@ -958,7 +960,7 @@ const xe = {
       children: a.jsx(B, { ...e, acceptRange: !1, value: t, onChange: n }),
     });
   },
-  S = { args: { value: new Date(), onChange: () => {} }, render: (e) => a.jsx(j, { ...e }) },
+  P = { args: { value: new Date(), onChange: () => {} }, render: (e) => a.jsx(j, { ...e }) },
   ae = (e) => {
     const [t, n] = w.useState({
       start: new Date(),
@@ -973,23 +975,27 @@ const xe = {
     });
   },
   x = {
-    args: { value: new Date(), onChange: () => {}, acceptRange: !0 },
+    args: { value: { start: new Date(), end: new Date() }, onChange: () => {}, acceptRange: !0 },
     render: (e) => a.jsx(ae, { ...e }),
   },
   W = {
-    ...S,
+    ...P,
     args: {
-      ...S.args,
+      ...P.args,
       mode: 'time',
       wrapperClassName: 'dgsuikit:w-[350px] dgsuikit:shadow-2xl dgsuikit:rounded-lg',
     },
     render: (e) => a.jsx(j, { ...e }),
   },
-  N = { ...S, args: { ...S.args, dropdownType: 'drawer' }, render: (e) => a.jsx(j, { ...e }) };
-S.parameters = {
-  ...S.parameters,
+  N = {
+    ...P,
+    args: { value: new Date(), onChange: () => {}, dropdownType: 'drawer' },
+    render: (e) => a.jsx(j, { ...e }),
+  };
+P.parameters = {
+  ...P.parameters,
   docs: {
-    ...S.parameters?.docs,
+    ...P.parameters?.docs,
     source: {
       originalSource: `{
   args: {
@@ -998,7 +1004,7 @@ S.parameters = {
   },
   render: args => <DefaultTimePickerExample {...args} />
 }`,
-      ...S.parameters?.docs?.source,
+      ...P.parameters?.docs?.source,
     },
   },
 };
@@ -1009,7 +1015,10 @@ x.parameters = {
     source: {
       originalSource: `{
   args: {
-    value: new Date(),
+    value: {
+      start: new Date(),
+      end: new Date()
+    },
     onChange: () => {},
     acceptRange: true
   },
@@ -1045,7 +1054,8 @@ N.parameters = {
       originalSource: `{
   ...Default,
   args: {
-    ...Default.args,
+    value: new Date(),
+    onChange: () => {},
     dropdownType: 'drawer'
   },
   render: args => <DefaultTimePickerExample {...args} />
@@ -1054,12 +1064,12 @@ N.parameters = {
     },
   },
 };
-const We = ['Default', 'Range', 'OpenMode', 'DrawerMode'];
+const Ne = ['Default', 'Range', 'OpenMode', 'DrawerMode'];
 export {
-  S as Default,
+  P as Default,
   N as DrawerMode,
   W as OpenMode,
   x as Range,
-  We as __namedExportsOrder,
-  xe as default,
+  Ne as __namedExportsOrder,
+  We as default,
 };

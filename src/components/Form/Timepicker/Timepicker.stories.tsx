@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { TimepickerProps } from './types';
 import { fullWidthStory } from '../../../utils/storybook/helpers';
-import { WithRange } from '../Datepicker/types';
+import { WithRange } from '../types/DateAndTimePicker';
 import TimePicker from './index';
 
 const meta = {
