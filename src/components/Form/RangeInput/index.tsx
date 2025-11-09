@@ -24,6 +24,8 @@ function RangeInput<T extends RangeValueType>(props: Readonly<RangeInputProps<T>
     endTitle,
     startTitle,
     tooltip = true,
+    tooltipSize = 'medium',
+    tooltipClassName,
   } = props;
 
   const isMultipleRange = Array.isArray(value);
@@ -52,6 +54,8 @@ function RangeInput<T extends RangeValueType>(props: Readonly<RangeInputProps<T>
     color,
     tooltip,
     disabled,
+    tooltipSize,
+    tooltipClassName,
   };
 
   return (

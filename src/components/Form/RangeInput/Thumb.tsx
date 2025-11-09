@@ -1,10 +1,14 @@
 import clsx from 'clsx';
 import type { FC } from 'react';
 import { humanize } from '@/src/utils/humanize';
-import { THUMB_SIZE } from './constants';
+import { THUMB_SIZE, TOOLTIP_SIZES } from './constants';
 import type { RangeInputProps, RangeValueType } from './types';
 
-interface RangeThumbProps extends Pick<RangeInputProps<RangeValueType>, 'tooltip' | 'color'> {
+interface RangeThumbProps
+  extends Pick<
+    RangeInputProps<RangeValueType>,
+    'tooltip' | 'color' | 'tooltipSize' | 'tooltipClassName'
+  > {
   percent: number;
   disabled?: boolean;
   icon?: React.ReactNode;
@@ -22,7 +26,16 @@ function getThumbColor(
     : 'dgsuikit:bg-secondary-600 dgsuikit:group-hover:bg-secondary-500 dgsuikit:group-active:bg-secondary-700';
 }
 const RangeThumb: FC<RangeThumbProps> = (props) => {
-  const { percent, disabled, icon, tooltip, value, color } = props;
+  const {
+    percent,
+    disabled,
+    icon,
+    tooltip,
+    value,
+    color,
+    tooltipSize = 'medium',
+    tooltipClassName,
+  } = props;
 
   return (
     <div
@@ -39,10 +52,15 @@ const RangeThumb: FC<RangeThumbProps> = (props) => {
       }}
     >
       {icon}
-
       {tooltip && (
         <div className="dgsuikit:absolute dgsuikit:bottom-full dgsuikit:left-1/2 dgsuikit:-translate-x-1/2 dgsuikit:flex dgsuikit:flex-col dgsuikit:items-center dgsuikit:opacity-0 dgsuikit:group-hover:opacity-100 dgsuikit:transition-opacity dgsuikit:z-10 dgsuikit:mb-2.5">
-          <div className="dgsuikit:flex dgsuikit:py-3 dgsuikit:px-4 dgsuikit:rounded-lg dgsuikit:bg-gray-700 dgsuikit:shadow-md dgsuikit:text-white dgsuikit:font-p2-regular dgsuikit:border dgsuikit:border-gray-300 dgsuikit:ss02">
+          <div
+            className={clsx(
+              'dgsuikit:flex dgsuikit:rounded-lg dgsuikit:bg-gray-700 dgsuikit:shadow-md dgsuikit:text-white dgsuikit:font-p2-regular dgsuikit:border dgsuikit:border-gray-300 dgsuikit:ss02',
+              TOOLTIP_SIZES[tooltipSize],
+              tooltipClassName,
+            )}
+          >
             {typeof tooltip === 'boolean' ? humanize(value) : tooltip}
           </div>
           <div className="dgsuikit:w-4 dgsuikit:h-4 dgsuikit:bg-gray-700 dgsuikit:border-gray-300 dgsuikit:absolute dgsuikit:rotate-45 dgsuikit:left-1/2 dgsuikit:-translate-x-1/2 dgsuikit:bottom-0 dgsuikit:translate-y-1/2 dgsuikit:border-b dgsuikit:border-r dgsuikit:rounded-br" />
