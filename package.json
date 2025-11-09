@@ -1,15 +1,8 @@
 {
   "name": "@dgshahr/ui-kit",
-  "version": "1.9.2",
+  "version": "1.9.4",
   "description": "A modern, accessible, and customizable React component library",
   "author": "dgshahr",
-  "contributes": [
-    {
-      "name": "Mohammad Nazari",
-      "email": "mohammadnazary2000@gmail.com",
-      "url": "https://github.com/nazari2079"
-    }
-  ],
   "license": "MIT",
   "type": "module",
   "homepage": "https://dgshahr.github.io/uikit/",
