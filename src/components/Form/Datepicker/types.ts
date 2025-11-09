@@ -1,4 +1,3 @@
-import type { HasOrNotRange, HasOrNotSubmitButton } from '../types/DateAndTimePicker';
 import type { PickerWrapperProps } from '../Wrappers/PickerWrapper/type';
 
 export interface IRangeDate {
