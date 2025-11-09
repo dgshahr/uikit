@@ -88,6 +88,19 @@ const meta = {
         },
       },
     },
+    tooltipSize: {
+      control: 'select',
+      options: ['small', 'medium', 'large'],
+      description: 'Size of the tooltip',
+      table: {
+        type: {
+          summary: "'small' | 'medium' | 'large'",
+        },
+        defaultValue: {
+          summary: 'medium',
+        },
+      },
+    },
     wrapperClassName: {
       control: 'text',
       table: {
