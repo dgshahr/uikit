@@ -49,6 +49,18 @@ const meta = {
         type: { summary: 'string' },
       },
     },
+    maxLength: {
+      control: { type: 'number' },
+      table: {
+        type: { summary: 'number' },
+      },
+    },
+    showMaxLength: {
+      control: { type: 'boolean' },
+      table: {
+        type: { summary: 'boolean' },
+      },
+    },
   },
 } satisfies Meta<typeof Input>;
 
