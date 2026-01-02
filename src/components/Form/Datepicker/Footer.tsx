@@ -8,8 +8,14 @@ const Footer: FC = () => {
   const { showSubmitButton = true, showTodayButton = true, onSubmit } = datepickerProps;
 
   const handleTodayClick = () => {
-    setInternalDate(new Date());
+    const today = new Date();
+    setInternalDate(today);
     setDateType(DateTypes.Day);
+    if (datepickerProps.acceptRange) {
+      datepickerProps.onChange({ start: today, end: null });
+    } else {
+      datepickerProps.onChange(today);
+    }
   };
 
   return (

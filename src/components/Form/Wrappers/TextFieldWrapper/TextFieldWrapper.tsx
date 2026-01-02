@@ -91,7 +91,8 @@ const TextFieldWrapper: FC<TextFieldWrapperProps> = (props) => {
           errorMessage={errorMessage}
           hintMessage={hintMessage}
           extraHelper={
-            maxLength && (
+            maxLength &&
+            showMaxLength && (
               <span className="dgsuikit:ss02">
                 {value?.toString()?.length ?? 0}/{maxLength}
               </span>
