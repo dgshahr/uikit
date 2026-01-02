@@ -1,14 +1,14 @@
 'use client';
 import { j as e } from './jsx-runtime-D_zvdyIk.js';
-import { c as f } from './clsx-B-dksMZM.js';
+import { c as k } from './clsx-B-dksMZM.js';
 import { R as N } from './index-CTzypqlY.js';
 import { F as w } from './FieldBottomInfo-DcydcAx7.js';
-/* empty css               */ const k = (a) => {
+/* empty css               */ const h = (a) => {
   const { link: r, labelContent: i, required: d, disabled: s, labelAddon: n } = a;
   return e.jsxs(e.Fragment, {
     children: [
       e.jsxs('div', {
-        className: f('dgsuikit:flex', {
+        className: k('dgsuikit:flex', {
           'dgsuikit:justify-between': i && r?.href,
           'dgsuikit:mb-2': !n,
           'dgsuikit:justify-start': i && !r?.href,
@@ -40,7 +40,7 @@ import { F as w } from './FieldBottomInfo-DcydcAx7.js';
     ],
   });
 };
-k.__docgenInfo = {
+h.__docgenInfo = {
   description: '',
   methods: [],
   displayName: 'FieldLabel',
@@ -82,29 +82,29 @@ const R = (a) => {
       isError: n,
       errorMessage: l,
       hintMessage: c,
-      required: h,
-      labelAddon: y,
+      required: y,
+      labelAddon: b,
       maxLength: o,
       disabled: t,
-      value: b,
+      value: x,
       wrapperClassName: u,
-      showMaxLength: x,
+      showMaxLength: p,
       children: q,
     } = a,
-    p = !!(l || c || (o && x)),
-    g = !!(r || i?.href),
-    T = p || g || u ? 'div' : N.Fragment,
+    g = !!(l || c || (o && p)),
+    m = !!(r || i?.href),
+    T = g || m || u ? 'div' : N.Fragment,
     j = (v) => {
-      const m = v.currentTarget.querySelector('textarea, input');
-      m && m.focus();
+      const f = v.currentTarget.querySelector('textarea, input');
+      f && f.focus();
     };
   return e.jsxs(T, {
     ...(u ? { className: u } : {}),
     children: [
-      g && e.jsx(k, { disabled: t, labelContent: r, link: i, required: h, labelAddon: y }),
+      m && e.jsx(h, { disabled: t, labelContent: r, link: i, required: y, labelAddon: b }),
       e.jsxs('div', {
         onClick: j,
-        className: f(
+        className: k(
           `dgsuikit:relative dgsuikit:cursor-text dgsuikit:border dgsuikit:border-solid dgsuikit:rounded-lg dgsuikit:ring-4 dgsuikit:flex dgsuikit:justify-between dgsuikit:gap-x-3 dgsuikit:p-3 dgsuikit:bg-gray-100 dgsuikit:transition-all dgsuikit:ring-transparent dgsuikit:has-[:focus]:bg-white ${!t && 'dgsuikit:hover:ring-gray-50'}`,
           n || l
             ? 'dgsuikit:border-error-500 dgsuikit:has-[:focus]:ring-error-50'
@@ -114,16 +114,17 @@ const R = (a) => {
         ),
         children: [s && e.jsx('div', { className: 'dgsuikit:text-gray-600', children: s }), q],
       }),
-      p &&
+      g &&
         e.jsx(w, {
           disabled: t,
           errorMessage: l,
           hintMessage: c,
           extraHelper:
             o &&
+            p &&
             e.jsxs('span', {
               className: 'dgsuikit:ss02',
-              children: [b?.toString()?.length ?? 0, '/', o],
+              children: [x?.toString()?.length ?? 0, '/', o],
             }),
         }),
     ],
@@ -203,4 +204,4 @@ R.__docgenInfo = {
   },
   composes: ['Omit'],
 };
-export { k as F, R as T };
+export { h as F, R as T };
