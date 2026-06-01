@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import type { DeepNamePath } from '@/src/utils/types/deepNamePath';
+import type { SelectProps } from '../Form/Select/types';
 import type { PaginationProps } from '../Pagination';
 import type { TooltipProps } from '../Tooltip';
 
@@ -43,11 +44,30 @@ interface ColumnsTypeWithDataIndex<T> {
 export type ColumnsType<T extends UnknownRecord = UnknownRecord> = ColumnsTypeBase<T> &
   (ColumnsTypeWithKey<T> | ColumnsTypeWithDataIndex<T>);
 
+export interface PageCountSelectorProps {
+  options: SelectProps<number>['options'];
+  defaultValue?: number;
+  onPageCountChange?: (value: number) => void;
+  selectProps?: Omit<
+    SelectProps<number>,
+    | 'options'
+    | 'value'
+    | 'onChange'
+    | 'mode'
+    | 'customInput'
+    | 'dropdownType'
+    | 'drawerProps'
+    | 'optionsTitle'
+    | 'separateSelectedOptions'
+  >;
+}
+
 export interface TableHeaderProps {
   title?: string;
   showTotal?: boolean;
   extraElement?: ReactNode;
   className?: string;
+  pageCountSelector?: PageCountSelectorProps;
 }
 
 export interface RowSelectionProps<T> extends Pick<ColumnsType, 'align' | 'sticky' | 'className'> {
