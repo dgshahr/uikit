@@ -273,6 +273,30 @@ export const WithHeaderAndPagination: Story = {
   },
 };
 
+export const WithPageCountSelector: Story = {
+  args: {
+    ...defaultArgs,
+    header: {
+      title: 'جدول محصولات',
+      showTotal: true,
+      pageCountSelector: {
+        options: [
+          { value: 10, label: '10' },
+          { value: 25, label: '25' },
+          { value: 50, label: '50' },
+          { value: 100, label: '100' },
+        ],
+        defaultValue: 10,
+        onPageCountChange: (value) => console.error('page count changed:', value),
+      },
+    },
+    pagination: {
+      pageSize: 6,
+      totalCount: 120,
+    },
+  },
+};
+
 const TableWithSelectionExample: FC<Story['args']> = (props) => {
   const [selectedRowKeys, setselectedRowKeys] = useState<string[]>([]);
 
