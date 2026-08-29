@@ -14,6 +14,7 @@ export interface ProgressStepProps {
   showStepsCount?: boolean;
   className?: string;
   progress?: number;
+  containerClassName?: string;
 }
 const ProgressStep: FC<ProgressStepProps> = (props) => {
   const {
@@ -27,6 +28,7 @@ const ProgressStep: FC<ProgressStepProps> = (props) => {
     showSubtitle,
     showStepsCount,
     className,
+    containerClassName,
     progress = 100,
   } = props;
 
@@ -40,7 +42,12 @@ const ProgressStep: FC<ProgressStepProps> = (props) => {
   const isRtl = type === 'rtl';
 
   return (
-    <div className="dgsuikit:border dgsuikit:border-solid dgsuikit:border-gray-100">
+    <div
+      className={clsx(
+        'dgsuikit:border dgsuikit:border-solid dgsuikit:border-gray-100',
+        containerClassName,
+      )}
+    >
       <div
         className={clsx(
           'dgsuikit:flex dgsuikit:flex-col dgsuikit:justify-between dgsuikit:gap-3 dgsuikit:px-4',
