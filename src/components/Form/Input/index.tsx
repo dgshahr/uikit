@@ -51,6 +51,7 @@ const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTM
     'hintMessage',
     'wrapperClassName',
     'showMaxLength',
+    'hintMessageClassName',
   ]);
 
   const [type, setType] = useState(restProps.type);
