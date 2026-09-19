@@ -1,6 +1,6 @@
 'use client';
 
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { FC } from 'react';
 import IconArrowDown2 from '@/src/icons/IconArrowDown2';
 import IconArrowUp2 from '@/src/icons/IconArrowUp2';

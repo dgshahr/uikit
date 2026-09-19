@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, { useState } from 'react';
 import cities from './cities.json';
 import IconArrowDown2 from '../../../icons/IconArrowDown2';

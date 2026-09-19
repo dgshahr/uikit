@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { ElementType } from 'react';
 import type { DatepickerProps } from '@/src/components/Form/Datepicker/types';
 import type { TimepickerProps } from '@/src/components/Form/Timepicker/types';

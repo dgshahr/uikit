@@ -1,6 +1,6 @@
 {
   "name": "@dgshahr/ui-kit",
-  "version": "1.9.8",
+  "version": "1.9.9",
   "description": "A modern, accessible, and customizable React component library",
   "author": "dgshahr",
   "license": "MIT",
@@ -176,6 +176,12 @@
       "types": "./dist/Progress/Doughnut/index.d.ts",
       "import": "./dist/Progress/Doughnut/index.mjs",
       "require": "./dist/Progress/Doughnut/index.cjs"
+    },
+    "./Progress/Step/*": null,
+    "./Progress/Step": {
+      "types": "./dist/Progress/Step/index.d.ts",
+      "import": "./dist/Progress/Step/index.mjs",
+      "require": "./dist/Progress/Step/index.cjs"
     },
     "./Rate": {
       "types": "./dist/Rate/index.d.ts",

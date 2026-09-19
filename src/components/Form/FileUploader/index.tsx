@@ -1,6 +1,6 @@
 'use client';
 
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { Fragment, type FC } from 'react';
 import FileInput from './Input/FileInput';
 import MultipleModePreview from './Preview/MultipleMode/MultipleModePreview';

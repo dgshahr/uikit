@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { FC } from 'react';
 
 type GradientOverlayProps = { position: 'top' | 'bottom' };

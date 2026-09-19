@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React from 'react';
 import { TableContextProvider } from './context';
 import TableHeader from './Header';

@@ -1,6 +1,6 @@
 'use client';
 
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { useState, type FC, type PropsWithChildren } from 'react';
 import Drawer from '@/src/components/Drawer';
 import { useFlipPosition } from '@/src/hooks/useFlipPosition';

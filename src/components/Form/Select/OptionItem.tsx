@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { memo } from 'react';
 import type { Option, SelectProps } from './types';
 import Checkbox from '../Checkbox';

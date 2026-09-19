@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { ButtonProps } from '../../../Button';
 import Button from '../../../Button';
 import type { ActionConfig, FilePreviewProps, FileType } from '../types';

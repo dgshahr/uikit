@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { ColumnsType, TableProps, UnknownRecord } from './types';
 import type { CheckboxProps } from '../Form/Checkbox';
 import Checkbox from '../Form/Checkbox';
@@ -33,7 +33,7 @@ export function isSelectionAvailable<T extends UnknownRecord>(
 ) {
   return Boolean(
     (rowSelection && rowSelection.selectedRowKeys.length > 1) ||
-      typeof rowSelection?.onSelectRow === 'function',
+    typeof rowSelection?.onSelectRow === 'function',
   );
 }
 

@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import IconSearch from '@/src/icons/IconSearch';
 import OptionItem from './OptionItem';

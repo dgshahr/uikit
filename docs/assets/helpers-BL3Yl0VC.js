@@ -1,6 +1,6 @@
 function n(e, l) {
   const s = document?.getElementsByClassName('sb-show-main').item(0);
-  s && ((s.style.justifyContent = 'center'), (s.style.alignItems = 'center')),
+  (s && ((s.style.justifyContent = 'center'), (s.style.alignItems = 'center')),
     setTimeout(() => {
       Array.from(document?.getElementsByClassName('innerZoomElementWrapper')).forEach((t) => {
         t &&
@@ -14,6 +14,6 @@ function n(e, l) {
       document?.querySelectorAll('[scale="1"]').forEach((t) => {
         t.classList.add('dgsuikit:!w-full');
       });
-    }, 300);
+    }, 300));
 }
 export { n as f };

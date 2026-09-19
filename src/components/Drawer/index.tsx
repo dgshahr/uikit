@@ -1,6 +1,6 @@
 'use client';
 
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { useEffect, useState, type CSSProperties, type FC, type ReactNode } from 'react';
 import '@/src/styles.css';
 import { createPortal } from 'react-dom';

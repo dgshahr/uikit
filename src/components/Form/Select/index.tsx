@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import IconCloseSquare from '@/src/icons/IconCloseSquare';
 import Options from './Options';
 import type { SelectProps, SelectWithMultipleMode } from './types';

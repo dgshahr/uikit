@@ -1,5 +1,5 @@
 'use client';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { useState, type ReactNode } from 'react';
 import IconCheckCircleBold from '@/src/icons/IconCheckCircleBold';
 import IconCloseRemove from '@/src/icons/IconCloseRemove';

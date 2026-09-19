@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import IconArrowLeft2 from '@/src/icons/IconArrowLeft2';
 import { useSidebarContext } from './context';
 import { showItemsClass } from './utils';

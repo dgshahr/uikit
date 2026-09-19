@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { FC, ReactNode, SyntheticEvent } from 'react';
 import fallbackImage from './preveiwFallback.svg';
 import ProgressDoughnut from '../../../Progress/Doughnut';

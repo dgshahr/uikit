@@ -1,6 +1,6 @@
 'use client';
 
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { Fragment, useEffect, type FC } from 'react';
 import IconLogout from '@/src/icons/IconLogout';
 import { isBrowser } from '@/src/utils/isBrowser';

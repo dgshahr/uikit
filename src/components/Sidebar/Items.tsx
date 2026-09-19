@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import debounce from 'lodash.debounce';
 import { Fragment, useCallback, useEffect, useState, type FC } from 'react';
 import {

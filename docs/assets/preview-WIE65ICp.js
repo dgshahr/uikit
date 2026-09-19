@@ -42,7 +42,7 @@ function A(e, t, n) {
   if (y.randomUUID && !e) return y.randomUUID();
   e = e || {};
   const r = e.random || (e.rng || x)();
-  return (r[6] = (r[6] & 15) | 64), (r[8] = (r[8] & 63) | 128), S(r);
+  return ((r[6] = (r[6] & 15) | 64), (r[8] = (r[8] & 63) | 128), S(r));
 }
 const { addons: D } = __STORYBOOK_MODULE_PREVIEW_API__,
   { ImplicitActionsDuringRendering: w } = __STORYBOOK_MODULE_CORE_EVENTS_PREVIEW_ERRORS__,
@@ -107,7 +107,7 @@ function _(e, t = {}) {
         };
       o.emit(f, T);
     };
-  return (r.isAction = !0), (r.implicit = t.implicit), r;
+  return ((r.isAction = !0), (r.implicit = t.implicit), r);
 }
 var m = (e, t) => typeof t[e] > 'u' && !(e in t),
   K = (e) => {
@@ -151,7 +151,7 @@ var m = (e, t) => typeof t[e] > 'u' && !(e in t),
       typeof p.__STORYBOOK_TEST_ON_MOCK_CALL__ == 'function'
     ) {
       let n = p.__STORYBOOK_TEST_ON_MOCK_CALL__;
-      n((r, s) => {
+      (n((r, s) => {
         let o = r.getMockName();
         o !== 'spy' &&
           (!/^next\/.*::/.test(o) ||
@@ -167,7 +167,7 @@ var m = (e, t) => typeof t[e] > 'u' && !(e in t),
             ].some((c) => o.startsWith(c))) &&
           _(o)(s);
       }),
-        (R = !0);
+        (R = !0));
     }
   },
   P = [B];

@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { FC, SVGProps } from 'react';
 
 const SpinnerLoading: FC<SVGProps<SVGSVGElement>> = (props) => {

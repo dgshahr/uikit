@@ -1,14 +1,13 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { FC } from 'react';
 import { humanize } from '@/src/utils/humanize';
 import { THUMB_SIZE, TOOLTIP_SIZES } from './constants';
 import type { RangeInputProps, RangeValueType } from './types';
 
-interface RangeThumbProps
-  extends Pick<
-    RangeInputProps<RangeValueType>,
-    'tooltip' | 'color' | 'tooltipSize' | 'tooltipClassName'
-  > {
+interface RangeThumbProps extends Pick<
+  RangeInputProps<RangeValueType>,
+  'tooltip' | 'color' | 'tooltipSize' | 'tooltipClassName'
+> {
   percent: number;
   disabled?: boolean;
   icon?: React.ReactNode;

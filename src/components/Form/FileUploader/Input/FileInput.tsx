@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { useState, type DragEvent, type FC } from 'react';
 import IconPlus4 from '@/src/icons/IconPlus4';
 import IconPlusBold from '@/src/icons/IconPlusBold';
