@@ -25,7 +25,8 @@
     "url": "https://github.com/dgshahr/uikit/issues"
   },
   "files": [
-    "dist"
+    "dist",
+    "INTEGRATION.md"
   ],
   "sideEffects": [
     "**/*.css"
