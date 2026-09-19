@@ -18,6 +18,7 @@ export interface TextFieldBaseProps
   isError?: boolean;
   wrapperClassName?: string;
   showMaxLength?: boolean;
+  hintMessageClassName?: string;
 }
 
 interface TextFieldWrapperProps extends TextFieldBaseProps {
@@ -43,6 +44,7 @@ const TextFieldWrapper: FC<TextFieldWrapperProps> = (props) => {
     wrapperClassName,
     showMaxLength,
     children,
+    hintMessageClassName,
   } = props;
 
   const showInfo = Boolean(errorMessage || hintMessage || (maxLength && showMaxLength));
@@ -90,6 +92,7 @@ const TextFieldWrapper: FC<TextFieldWrapperProps> = (props) => {
           disabled={disabled}
           errorMessage={errorMessage}
           hintMessage={hintMessage}
+          className={hintMessageClassName}
           extraHelper={
             maxLength &&
             showMaxLength && (
