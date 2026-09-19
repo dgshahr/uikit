@@ -34,6 +34,10 @@ Visit the [documentation site](https://dgshahr.github.io/uikit/) to learn more a
 - Customizing theme tokens like colors
 - Contributing to the project
 
+## 🤖 Integration Guide & AI Agents
+
+[`INTEGRATION.md`](./INTEGRATION.md) is a full integration reference: imports, theming, props for every component, and copy-paste instructions for AI coding agents (Claude Code, Cursor, Copilot, Windsurf). It ships with the package, so agents can read it from `node_modules/@dgshahr/ui-kit/INTEGRATION.md`.
+
 ## 🧱 Project Structure
 
 Each component lives in its own folder under the `src/components` directory.
