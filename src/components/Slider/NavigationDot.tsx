@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { useEffect, useState } from 'react';
 import { useSliderContext } from './context';
 import type { SliderProps } from './types';

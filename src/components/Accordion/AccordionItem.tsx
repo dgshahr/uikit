@@ -1,5 +1,5 @@
 'use client';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { useId } from 'react';
 import type { FC, PropsWithChildren, ReactNode } from 'react';
 import IconArrowDown2 from '@/src/icons/IconArrowDown2';

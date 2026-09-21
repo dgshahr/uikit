@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import IconCheckmark from '@/src/icons/IconCheckmark';
 import IconMinus4 from '@/src/icons/IconMinus4';

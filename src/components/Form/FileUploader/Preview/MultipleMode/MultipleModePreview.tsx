@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { FC } from 'react';
 import GridTypePreview from './Grid/GridTypePreview';
 import ListTypePreview from './List/ListTypePreview';

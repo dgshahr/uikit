@@ -1,44 +1,44 @@
 try {
   (() => {
-    var g = __STORYBOOK_API__,
+    var O = __STORYBOOK_API__,
       {
-        ActiveTabs: T,
-        Consumer: O,
-        ManagerContext: f,
-        Provider: v,
-        RequestResponseError: x,
-        addons: n,
-        combineParameters: A,
-        controlOrMetaKey: k,
-        controlOrMetaSymbol: M,
-        eventMatchesShortcut: P,
-        eventToShortcut: R,
-        experimental_MockUniversalStore: w,
-        experimental_UniversalStore: C,
-        experimental_requestResponse: G,
-        experimental_useUniversalStore: I,
-        isMacLike: K,
-        isShortcutTaken: U,
-        keyToSymbol: q,
-        merge: B,
-        mockChannel: F,
-        optionOrAltSymbol: Y,
-        shortcutMatchesShortcut: j,
-        shortcutToHumanString: E,
-        types: H,
-        useAddonState: L,
-        useArgTypes: N,
-        useArgs: z,
-        useChannel: D,
-        useGlobalTypes: J,
-        useGlobals: Q,
-        useParameter: V,
+        ActiveTabs: P,
+        Consumer: T,
+        ManagerContext: h,
+        Provider: g,
+        RequestResponseError: f,
+        addons: i,
+        combineParameters: U,
+        controlOrMetaKey: v,
+        controlOrMetaSymbol: A,
+        eventMatchesShortcut: x,
+        eventToShortcut: j,
+        experimental_MockUniversalStore: M,
+        experimental_UniversalStore: R,
+        experimental_requestResponse: C,
+        experimental_useUniversalStore: w,
+        isMacLike: B,
+        isShortcutTaken: E,
+        keyToSymbol: I,
+        merge: K,
+        mockChannel: N,
+        optionOrAltSymbol: G,
+        shortcutMatchesShortcut: L,
+        shortcutToHumanString: Y,
+        types: q,
+        useAddonState: D,
+        useArgTypes: F,
+        useArgs: H,
+        useChannel: V,
+        useGlobalTypes: z,
+        useGlobals: J,
+        useParameter: Q,
         useSharedState: W,
         useStoryPrepared: X,
         useStorybookApi: Z,
         useStorybookState: $,
       } = __STORYBOOK_API__;
-    var S = (() => {
+    var d = (() => {
         let e;
         return (
           typeof window < 'u'
@@ -53,16 +53,16 @@ try {
           e
         );
       })(),
-      c = 'tag-filters',
+      m = 'tag-filters',
       p = 'static-filter';
-    n.register(c, (e) => {
-      let i = Object.entries(S.TAGS_OPTIONS ?? {}).reduce((t, r) => {
-        let [o, u] = r;
-        return u.excludeFromSidebar && (t[o] = !0), t;
+    i.register(m, (e) => {
+      let u = Object.entries(d.TAGS_OPTIONS ?? {}).reduce((o, t) => {
+        let [r, a] = t;
+        return (a.excludeFromSidebar && (o[r] = !0), o);
       }, {});
-      e.experimental_setFilter(p, (t) => {
-        let r = t.tags ?? [];
-        return (r.includes('dev') || t.type === 'docs') && r.filter((o) => i[o]).length === 0;
+      e.experimental_setFilter(p, (o) => {
+        let t = o.tags ?? [];
+        return (t.includes('dev') || o.type === 'docs') && t.filter((r) => u[r]).length === 0;
       });
     });
   })();

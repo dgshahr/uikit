@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { DURATION_CLASS } from './constants';
 import type {
   FirstLevelSidebarItem,

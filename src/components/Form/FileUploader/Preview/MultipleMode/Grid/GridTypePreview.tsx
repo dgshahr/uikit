@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { FC } from 'react';
 import IconDelete1 from '@/src/icons/IconDelete1';
 import IconMinimize from '@/src/icons/IconMinimize';

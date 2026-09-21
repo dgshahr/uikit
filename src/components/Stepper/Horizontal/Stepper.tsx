@@ -1,5 +1,5 @@
 'use client';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, { type FC, type PropsWithChildren, type ReactElement } from 'react';
 import { StepperContext } from './context';
 import type { HorizontalStepProps } from './Step';

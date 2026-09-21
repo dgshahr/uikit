@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { useEffect, useRef, type FC, type ReactNode } from 'react';
 import { useTableContext } from './context';
 import type { ColumnsType } from './types';

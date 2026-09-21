@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { FC } from 'react';
 import RateStar, { type RateStarProps } from './RateStar';
 import type { RateProps } from './types';

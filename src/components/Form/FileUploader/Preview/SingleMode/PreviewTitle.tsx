@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { FC } from 'react';
 import { TITLE_CLASS, COMPACT_TITLE_CLASS } from '../../constants';
 import type { FileType } from '../../types';

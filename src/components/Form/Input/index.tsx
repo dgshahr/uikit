@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import {
   type ForwardedRef,
   type InputHTMLAttributes,
@@ -15,8 +15,7 @@ import TextFieldWrapper from '../Wrappers/TextFieldWrapper/TextFieldWrapper';
 import type { TextFieldBaseProps } from '../Wrappers/TextFieldWrapper/TextFieldWrapper';
 
 export interface InputProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'dir' | 'prefix'>,
-    TextFieldBaseProps {
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'dir' | 'prefix'>, TextFieldBaseProps {
   leftIcon?: JSX.Element;
   prefix?: ReactNode;
   prefixClassName?: string;

@@ -1,10 +1,12 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { type FC, type RefObject } from 'react';
 import type { PopperPosition } from '../Form/Wrappers/PickerWrapper/type';
 import type { TooltipProps } from '.';
 
-interface TooltipContentProps
-  extends Pick<TooltipProps, 'content' | 'footer' | 'title' | 'icon' | 'className' | 'position'> {
+interface TooltipContentProps extends Pick<
+  TooltipProps,
+  'content' | 'footer' | 'title' | 'icon' | 'className' | 'position'
+> {
   open: boolean;
   ref: RefObject<HTMLDivElement | null>;
 }

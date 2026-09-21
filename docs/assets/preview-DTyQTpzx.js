@@ -28,9 +28,9 @@ function G() {
   );
 }
 function A(e, t, { width: o, height: l }) {
-  (e.style.width = `${o}px`), (e.style.height = `${l}px`);
+  ((e.style.width = `${o}px`), (e.style.height = `${l}px`));
   let i = d.window.devicePixelRatio;
-  (e.width = Math.floor(o * i)), (e.height = Math.floor(l * i)), t.scale(i, i);
+  ((e.width = Math.floor(o * i)), (e.height = Math.floor(l * i)), t.scale(i, i));
 }
 var h = {};
 function U() {
@@ -40,12 +40,12 @@ function H() {
   h.context && h.context.clearRect(0, 0, h.width ?? 0, h.height ?? 0);
 }
 function V(e) {
-  H(), e(h.context);
+  (H(), e(h.context));
 }
 function Z() {
-  S(h.canvas), S(h.context), A(h.canvas, h.context, { width: 0, height: 0 });
+  (S(h.canvas), S(h.context), A(h.canvas, h.context, { width: 0, height: 0 }));
   let { width: e, height: t } = Y();
-  A(h.canvas, h.context, { width: e, height: t }), (h.width = e), (h.height = t);
+  (A(h.canvas, h.context, { width: e, height: t }), (h.width = e), (h.height = t));
 }
 function J() {
   h.canvas && (H(), h.canvas.parentNode?.removeChild(h.canvas), (h = {}));
@@ -59,7 +59,7 @@ var w = {
   },
   c = 6;
 function W(e, { x: t, y: o, w: l, h: i, r: n }) {
-  (t = t - l / 2),
+  ((t = t - l / 2),
     (o = o - i / 2),
     l < 2 * n && (n = l / 2),
     i < 2 * n && (n = i / 2),
@@ -69,7 +69,7 @@ function W(e, { x: t, y: o, w: l, h: i, r: n }) {
     e.arcTo(t + l, o + i, t, o + i, n),
     e.arcTo(t, o + i, t, o, n),
     e.arcTo(t, o, t + l, o, n),
-    e.closePath();
+    e.closePath());
 }
 function Q(e, { padding: t, border: o, width: l, height: i, top: n, left: r }) {
   let f = l - o.left - o.right - t.left - t.right,
@@ -148,7 +148,7 @@ function X(e, t, { x: o, y: l, w: i, h: n }, r) {
   );
 }
 function C(e, t) {
-  (e.font = '600 12px monospace'), (e.textBaseline = 'middle'), (e.textAlign = 'center');
+  ((e.font = '600 12px monospace'), (e.textBaseline = 'middle'), (e.textAlign = 'center'));
   let o = e.measureText(t),
     l = o.actualBoundingBoxAscent + o.actualBoundingBoxDescent,
     i = o.width + c * 2,
@@ -158,11 +158,11 @@ function C(e, t) {
 function ot(e, t, { type: o, position: l = 'center', text: i }, n, r = !1) {
   let { x: f, y: a } = Q(l, t),
     { offsetX: s, offsetY: u } = x(o, l, t, c + 1, r);
-  (f += s), (a += u);
+  ((f += s), (a += u));
   let { w: g, h: m } = C(e, i);
   if (n && tt({ x: f, y: a, w: g, h: m }, n)) {
     let v = et(l, { x: f, y: a, w: g }, n);
-    (f = v.x), (a = v.y);
+    ((f = v.x), (a = v.y));
   }
   return X(e, o, { x: f, y: a, w: g, h: m }, i);
 }
@@ -177,7 +177,7 @@ function lt(e, t, { type: o, text: l }) {
     f = n[i.y],
     { w: a, h: s } = C(e, l),
     { offsetX: u, offsetY: g } = it(i, { w: a, h: s });
-  return (r += u), (f += g), X(e, o, { x: r, y: f, w: a, h: s }, l);
+  return ((r += u), (f += g), X(e, o, { x: r, y: f, w: a, h: s }, l));
 }
 function E(e, t, o, l) {
   let i = [];
@@ -195,11 +195,11 @@ function nt(e, t, o, l) {
     ),
     {},
   );
-  i.top && E(e, t, i.top, l),
+  (i.top && E(e, t, i.top, l),
     i.right && E(e, t, i.right, l),
     i.bottom && E(e, t, i.bottom, l),
     i.left && E(e, t, i.left, l),
-    i.center && E(e, t, i.center, l);
+    i.center && E(e, t, i.center, l));
 }
 var L = { margin: '#f6b26ba8', border: '#ffe599a8', padding: '#93c47d8c', content: '#6fa8dca8' },
   B = 30;
@@ -244,10 +244,10 @@ function rt(e) {
       borderLeftWidth: $,
       borderRightWidth: N,
     } = t;
-  (o = o + d.window.scrollY),
+  ((o = o + d.window.scrollY),
     (l = l + d.window.scrollX),
     (n = n + d.window.scrollY),
-    (i = i + d.window.scrollX);
+    (i = i + d.window.scrollX));
   let y = { top: p(a), bottom: p(s), left: p(u), right: p(g) },
     q = { top: p(m), bottom: p(v), left: p(k), right: p(F) },
     z = { top: p(D), bottom: p(I), left: p($), right: p(N) },
@@ -268,11 +268,11 @@ function rt(e) {
 }
 function at(e, { margin: t, width: o, height: l, top: i, left: n, bottom: r, right: f }) {
   let a = l + t.bottom + t.top;
-  (e.fillStyle = L.margin),
+  ((e.fillStyle = L.margin),
     e.fillRect(n, i - t.top, o, t.top),
     e.fillRect(f, i - t.top, t.right, a),
     e.fillRect(n, r, o, t.bottom),
-    e.fillRect(n - t.left, i - t.top, t.left, a);
+    e.fillRect(n - t.left, i - t.top, t.left, a));
   let s = [
     { type: 'margin', text: b(t.top), position: 'top' },
     { type: 'margin', text: b(t.right), position: 'right' },
@@ -287,11 +287,11 @@ function st(
 ) {
   let s = l - o.left - o.right,
     u = i - t.top - t.bottom - o.top - o.bottom;
-  (e.fillStyle = L.padding),
+  ((e.fillStyle = L.padding),
     e.fillRect(r + o.left, n + o.top, s, t.top),
     e.fillRect(a - t.right - o.right, n + t.top + o.top, t.right, u),
     e.fillRect(r + o.left, f - t.bottom - o.bottom, s, t.bottom),
-    e.fillRect(r + o.left, n + t.top + o.top, t.left, u);
+    e.fillRect(r + o.left, n + t.top + o.top, t.left, u));
   let g = [
     { type: 'padding', text: t.top, position: 'top' },
     { type: 'padding', text: t.right, position: 'right' },
@@ -302,11 +302,11 @@ function st(
 }
 function ht(e, { border: t, width: o, height: l, top: i, left: n, bottom: r, right: f }) {
   let a = l - t.top - t.bottom;
-  (e.fillStyle = L.border),
+  ((e.fillStyle = L.border),
     e.fillRect(n, i, o, t.top),
     e.fillRect(n, r - t.bottom, o, t.bottom),
     e.fillRect(n, i + t.top, t.left, a),
-    e.fillRect(f - t.right, i + t.top, t.right, a);
+    e.fillRect(f - t.right, i + t.top, t.right, a));
   let s = [
     { type: 'border', text: t.top, position: 'top' },
     { type: 'border', text: t.right, position: 'right' },
@@ -354,7 +354,7 @@ var gt = (e, t) => {
   O,
   M = { x: 0, y: 0 };
 function R(e, t) {
-  (O = gt(e, t)), mt(O);
+  ((O = gt(e, t)), mt(O));
 }
 var pt = (e, t) => {
     let { measureEnabled: o } = t.globals;
@@ -362,7 +362,7 @@ var pt = (e, t) => {
       T(() => {
         let l = (i) => {
           window.requestAnimationFrame(() => {
-            i.stopPropagation(), (M.x = i.clientX), (M.y = i.clientY);
+            (i.stopPropagation(), (M.x = i.clientX), (M.y = i.clientY));
           });
         };
         return (
@@ -375,7 +375,7 @@ var pt = (e, t) => {
       T(() => {
         let l = (n) => {
             window.requestAnimationFrame(() => {
-              n.stopPropagation(), R(n.clientX, n.clientY);
+              (n.stopPropagation(), R(n.clientX, n.clientY));
             });
           },
           i = () => {
@@ -391,7 +391,7 @@ var pt = (e, t) => {
             window.addEventListener('resize', i),
             R(M.x, M.y)),
           () => {
-            window.removeEventListener('resize', i), J();
+            (window.removeEventListener('resize', i), J());
           }
         );
       }, [o, t.viewMode]),

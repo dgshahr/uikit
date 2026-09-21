@@ -1,5 +1,5 @@
 'use client';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { useEffect, useRef, type ChangeEvent, type FC, type KeyboardEvent } from 'react';
 import { persianToEnglish } from '@/src/utils/convertNumbers';
 import { isBrowser } from '@/src/utils/isBrowser';

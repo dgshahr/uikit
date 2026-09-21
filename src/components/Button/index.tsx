@@ -1,14 +1,13 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { FC, JSX, PropsWithChildren } from 'react';
 import { iconOnlyButtonSizeStyle, sizeStyle, variantStyle } from './variants';
 
 import '@/src/styles.css';
 
-export interface ButtonProps
-  extends React.DetailedHTMLProps<
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  > {
+export interface ButtonProps extends React.DetailedHTMLProps<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+> {
   variant?: 'primary' | 'secondary' | 'outline' | 'text';
   color?: 'primary' | 'warning' | 'error' | 'success' | 'gray';
   isFullWidth?: boolean;

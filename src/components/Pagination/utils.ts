@@ -7,8 +7,9 @@ function range(start: number, end: number) {
   return Array.from({ length }, (_, idx) => idx + start);
 }
 
-interface GetPaginationRangeArguments
-  extends Required<Pick<PaginationProps, 'totalCount' | 'pageSize' | 'siblingCount'>> {
+interface GetPaginationRangeArguments extends Required<
+  Pick<PaginationProps, 'totalCount' | 'pageSize' | 'siblingCount'>
+> {
   currentPage: number;
 }
 

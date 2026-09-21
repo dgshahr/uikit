@@ -1,5 +1,5 @@
 'use client';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, { type FC, type JSX, type ReactNode } from 'react';
 import FieldBottomInfo, {
   type FieldBottomInfoProps,
@@ -9,8 +9,7 @@ import FieldLabel, { type FieldLabelProps } from '../../Common/FieldLabel/FieldL
 import '@/src/styles.css';
 
 export interface TextFieldBaseProps
-  extends FieldLabelProps,
-    Omit<FieldBottomInfoProps, 'extraHelper'> {
+  extends FieldLabelProps, Omit<FieldBottomInfoProps, 'extraHelper'> {
   containerClassName?: string;
   rightIcon?: JSX.Element;
   dir?: 'rtl' | 'ltr';

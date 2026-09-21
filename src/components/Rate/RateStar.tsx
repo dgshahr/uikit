@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { FC } from 'react';
 import IconStarFill from '@/src/icons/IconStarFill';
 import IconStarHalfFill from '@/src/icons/IconStarHalfFill';

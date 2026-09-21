@@ -1,5 +1,5 @@
 'use client';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { useMemo, useState, type FC, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { useFlipPosition } from '@/src/hooks/useFlipPosition';

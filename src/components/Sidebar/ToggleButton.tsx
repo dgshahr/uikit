@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { FC } from 'react';
 import IconArrowLeft2 from '@/src/icons/IconArrowLeft2';
 import { DURATION_CLASS } from './constants';

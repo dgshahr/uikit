@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { useState, type FC } from 'react';
 
 import { useFlipPosition } from '@/src/hooks/useFlipPosition';

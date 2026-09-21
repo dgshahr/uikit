@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { useEffect, useRef, type FC, type ReactNode } from 'react';
 import isNullish from '@/src/utils/isNullish';
 import Connector from './Connector';

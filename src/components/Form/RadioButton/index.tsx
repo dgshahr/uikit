@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import omitObject from '@/src/utils/omitObjects';
 import type { RadioCheckboxBaseUnionProps } from '../Wrappers/RadioCheckboxWrapper/RadioCheckboxWrapper';

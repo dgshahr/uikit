@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { FC } from 'react';
 import Button from '@/src/components/Button';
 import IconDelete from '@/src/icons/IconDelete';

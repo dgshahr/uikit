@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import {
   forwardRef,
   type DetailedHTMLProps,
@@ -10,7 +10,8 @@ import type { TextFieldBaseProps } from '../Wrappers/TextFieldWrapper/TextFieldW
 import TextFieldWrapper from '../Wrappers/TextFieldWrapper/TextFieldWrapper';
 
 interface TextareaProps
-  extends Omit<
+  extends
+    Omit<
       DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>,
       'dir' | 'onClick'
     >,

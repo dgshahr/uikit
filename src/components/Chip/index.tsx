@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { ButtonHTMLAttributes, FC, HTMLAttributes, ReactNode } from 'react';
 import omitObject from '@/src/utils/omitObjects';
 import Badge, { type BadgeProps } from '../Badge';

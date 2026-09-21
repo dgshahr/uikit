@@ -1,6 +1,6 @@
 'use client';
 
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import type { FC } from 'react';
 import TabelCell from './Cell';
 import { useTableContext } from './context';

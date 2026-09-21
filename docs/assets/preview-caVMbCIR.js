@@ -17,7 +17,7 @@ var n = 'storybook/highlight',
     h();
     let i = Array.from(new Set(e.elements)),
       o = _.createElement('style');
-    o.setAttribute('id', t),
+    (o.setAttribute('id', t),
       (o.innerHTML = i
         .map(
           (a) => `${a}{
@@ -25,7 +25,7 @@ var n = 'storybook/highlight',
          }`,
         )
         .join(' ')),
-      _.head.appendChild(o);
+      _.head.appendChild(o));
   },
   h = () => {
     let e = d,

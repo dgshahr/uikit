@@ -32,11 +32,10 @@ export interface MultipleFilePreviewProps extends Omit<FilePreviewProps, 'type'>
   type?: 'list' | 'grid';
 }
 
-export interface FileInputProps
-  extends Omit<
-    DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
-    'type' | 'onChange' | 'onDragEnter' | 'onDragLeave' | 'onDrop'
-  > {
+export interface FileInputProps extends Omit<
+  DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+  'type' | 'onChange' | 'onDragEnter' | 'onDragLeave' | 'onDrop'
+> {
   title?: string;
   description?: string;
   hideIcon?: boolean;
