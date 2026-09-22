@@ -76,7 +76,10 @@ const ProgressStep: FC<ProgressStepProps> = (props) => {
             </span>
             {showStepsCount && isRtl && (
               <p
-                className={clsx('dgsuikit:font-p2-regular', isLarge && 'dgsuikit:font-p1-regular')}
+                className={clsx(
+                  'dgsuikit:font-p2-regular dgsuikit:text-gray-400',
+                  isLarge && 'dgsuikit:font-p1-regular',
+                )}
               >
                 <span
                   className={clsx('dgsuikit:ss02 dgsuikit:font-p1-regular', {
@@ -130,12 +133,7 @@ const ProgressStep: FC<ProgressStepProps> = (props) => {
             </p>
           )}
         </div>
-        <div
-          className={clsx('dgsuikit:h-1 dgsuikit:relative dgsuikit:-mx-4', {
-            'dgsuikit:bg-primary-100': color === 'primary',
-            'dgsuikit:bg-secondary-100': color === 'secondary',
-          })}
-        >
+        <div className={clsx('dgsuikit:h-1 dgsuikit:relative dgsuikit:-mx-4 dgsuikit:bg-gray-100')}>
           <div
             className={clsx(
               'dgsuikit:absolute dgsuikit:right-0 dgsuikit:h-2/3 dgsuikit:top-[0.7px] dgsuikit:transition-all dgsuikit:duration-500 dgsuikit:ease-out',
