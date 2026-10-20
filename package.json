@@ -1,6 +1,6 @@
 {
   "name": "@dgshahr/ui-kit",
-  "version": "1.9.91",
+  "version": "1.10.0",
   "description": "A modern, accessible, and customizable React component library",
   "author": "dgshahr",
   "license": "MIT",
@@ -54,6 +54,11 @@
       "types": "./dist/Badge/index.d.ts",
       "import": "./dist/Badge/index.mjs",
       "require": "./dist/Badge/index.cjs"
+    },
+    "./BottomNav": {
+      "types": "./dist/BottomNav/index.d.ts",
+      "import": "./dist/BottomNav/index.mjs",
+      "require": "./dist/BottomNav/index.cjs"
     },
     "./Breadcrumb": {
       "types": "./dist/Breadcrumb/index.d.ts",
