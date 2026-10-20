@@ -3,12 +3,12 @@ import type { Meta, StoryObj } from '@storybook/react';
 import ProgressStep from './index';
 
 const meta = {
-  title: 'Components/Progress/StepBar',
+  title: 'Components/Progress/Step',
   component: ProgressStep,
   parameters: {
     docs: {
       description: {
-        component: `### \n\`\`\`js\nimport ProgressStep from '@dgshahr/ui-kit/Progress/Bar';\nOr\nimport { ProgressStep } from '@dgshahr/ui-kit';\n\`\`\``,
+        component: `### \n\`\`\`js\nimport ProgressStep from '@dgshahr/ui-kit/Progress/Step';\nOr\nimport { ProgressStep } from '@dgshahr/ui-kit';\n\`\`\``,
       },
     },
   },

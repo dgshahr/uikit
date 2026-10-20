@@ -55,6 +55,11 @@
       "import": "./dist/Badge/index.mjs",
       "require": "./dist/Badge/index.cjs"
     },
+    "./BottomNav": {
+      "types": "./dist/BottomNav/index.d.ts",
+      "import": "./dist/BottomNav/index.mjs",
+      "require": "./dist/BottomNav/index.cjs"
+    },
     "./Breadcrumb": {
       "types": "./dist/Breadcrumb/index.d.ts",
       "import": "./dist/Breadcrumb/index.mjs",
