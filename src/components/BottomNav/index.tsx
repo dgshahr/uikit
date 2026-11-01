@@ -60,7 +60,7 @@ const BottomNav: FC<BottomNavProps> = ({ items, activeItemId, containerClassName
   return (
     <div
       className={clsx(
-        'dgsuikit:flex dgsuikit:justify-center dgsuikit:rounded-full dgsuikit:p-3 dgsuikit:bg-white dgsuikit:shadow-[0_0_24px_0_rgba(8,8,8,0.08)] dgsuikit:h-14.5',
+        'dgsuikit:flex dgsuikit:justify-center dgsuikit:rounded-full dgsuikit:p-3 dgsuikit:bg-[rgba(255,255,255,0.8)] dgsuikit:shadow-[0_0_24px_0_rgba(8,8,8,0.08)] dgsuikit:h-[60px]',
         containerClassName,
       )}
     >
@@ -115,8 +115,8 @@ const BottomNav: FC<BottomNavProps> = ({ items, activeItemId, containerClassName
             {showTitle && (
               <span
                 className={clsx(
-                  'dgsuikit:text-[10px] dgsuikit:font-semibold dgsuikit:leading-[12px] dgsuikit:text-gray-600',
-                  isActive && 'dgsuikit:text-primary-500',
+                  'dgsuikit:text-[10px] dgsuikit:font-oveline-regular dgsuikit:leading-[12px] dgsuikit:text-gray-600',
+                  isActive && 'dgsuikit:text-primary-500 dgsuikit:font-semibold',
                   isDisabled && 'dgsuikit:text-gray-300!',
                 )}
               >
