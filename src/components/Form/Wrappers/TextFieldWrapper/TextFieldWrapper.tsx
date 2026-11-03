@@ -91,7 +91,7 @@ const TextFieldWrapper: FC<TextFieldWrapperProps> = (props) => {
           disabled={disabled}
           errorMessage={errorMessage}
           hintMessage={hintMessage}
-          className={hintMessageClassName}
+          hintMessageClassName={hintMessageClassName}
           extraHelper={
             maxLength &&
             showMaxLength && (
