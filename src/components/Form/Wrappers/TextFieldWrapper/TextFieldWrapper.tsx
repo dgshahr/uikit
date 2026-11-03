@@ -9,7 +9,8 @@ import FieldLabel, { type FieldLabelProps } from '../../Common/FieldLabel/FieldL
 import '@/src/styles.css';
 
 export interface TextFieldBaseProps
-  extends FieldLabelProps, Omit<FieldBottomInfoProps, 'extraHelper'> {
+  extends FieldLabelProps,
+    Omit<FieldBottomInfoProps, 'extraHelper'> {
   containerClassName?: string;
   rightIcon?: JSX.Element;
   dir?: 'rtl' | 'ltr';
@@ -91,7 +92,7 @@ const TextFieldWrapper: FC<TextFieldWrapperProps> = (props) => {
           disabled={disabled}
           errorMessage={errorMessage}
           hintMessage={hintMessage}
-          className={hintMessageClassName}
+          hintMessageClassName={hintMessageClassName}
           extraHelper={
             maxLength &&
             showMaxLength && (

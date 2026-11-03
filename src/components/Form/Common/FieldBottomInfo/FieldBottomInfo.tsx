@@ -7,11 +7,17 @@ export interface FieldBottomInfoProps {
   errorMessage?: ReactNode;
   hintMessage?: ReactNode;
   extraHelper?: ReactNode;
-  className?: string;
+  hintMessageClassName?: string;
 }
 
 const FieldBottomInfo = (props: FieldBottomInfoProps) => {
-  const { errorMessage, hintMessage, extraHelper, disabled, className } = props;
+  const {
+    errorMessage,
+    hintMessage,
+    extraHelper,
+    disabled,
+    hintMessageClassName = 'dgsuikit:text-primary-500',
+  } = props;
   return (
     <div
       className={clsx(
@@ -22,8 +28,7 @@ const FieldBottomInfo = (props: FieldBottomInfoProps) => {
           'dgsuikit:justify-end': !(errorMessage ?? hintMessage) && extraHelper,
           'dgsuikit:text-gray-400': disabled,
         },
-        errorMessage ? 'dgsuikit:text-error-500' : 'dgsuikit:text-primary-500',
-        className,
+        errorMessage ? 'dgsuikit:text-error-500' : hintMessageClassName,
       )}
     >
       {(errorMessage || hintMessage) && (
